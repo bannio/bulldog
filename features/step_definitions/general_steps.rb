@@ -3,9 +3,9 @@ Given(/^the application exists$/) do
 end
 
 When(/^I visit the home page$/) do
-  visit("/")
+  visit '/'
 end
 
-Then(/^I should see the home page$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see the (\w+) page$/) do |page|
+  # TODO decide what to match pages on
 end
