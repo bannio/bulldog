@@ -1,6 +1,8 @@
+<% content_for :title do %>Bulldog-Clip | Sign In<% end %>
+<% content_for :description do %>Sign in to Bulldog-Clip<% end %>
 <div class="authform">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
-    <h3>Log in</h3>
+    <h3>Sign in</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%- if devise_mapping.registerable? %>
