@@ -2,7 +2,13 @@
   <section class="col-md-4">
     Copyright <%= Time.now.strftime('%Y') %>
   </section>
-  <section class="col-md-8">
+  <section class="col-md-4">
     All rights reserved.
   </section>
+  <section class="col-md-4">
+    <%- if user_signed_in? %>
+      <span>signed in as: <%= current_user.email %> </span>
+    <%- end %>
+  </section>
 </footer>
+<%= debug(params) if Rails.env.development? %>

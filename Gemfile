@@ -45,6 +45,7 @@ end
 
 group :test do
   gem 'cucumber-rails', require: false
+  gem 'email_spec'
 end
 
 group :development do
