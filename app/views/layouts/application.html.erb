@@ -13,7 +13,8 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
+      <%= flash_messages if show_layout_flash? %>
+       <%# render 'layouts/messages' %>
        <%= yield %>
     </main>
     <%= render 'layouts/footer' %>

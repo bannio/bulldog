@@ -15,6 +15,12 @@ img {
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
+// Note from Owen:
+// Uses semantic tags mapped to bootstrap styles e.g 
+// section extends .row
+// main extends .container
+// therefore no need to code the bootstrap specific 
+// classes in many cases.
 .column {
   @extend .col-md-6;
   @extend .text-center;
@@ -76,4 +82,22 @@ section {
 }
 #error_explanation h2 {
   font-size: 16px;
+}
+
+// styles used by layout_helper.rb
+// note some duplication or conflict with styles added by rails_layout gem
+
+#flash_notice {
+  @extend .alert;
+  @extend .alert-success
+}
+
+#flash_error, #flash_alert {
+  @extend .alert;
+  @extend .alert-danger;
+}
+
+#flash_warning {
+  @extend .alert;
+  @extend .alert-warning;
 }
