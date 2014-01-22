@@ -1,9 +1,13 @@
 <%# add navigation links to this file %>
 <li><%= link_to 'About', page_path('about') %></li>
-<%- if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+<% if user_signed_in? %>
+  <% if user_has_account? %>
+      <li><%= link_to 'Account', account_path(current_user.account.id) %></li>
+    <% else %>
+      <li><%= link_to 'Account', new_account_path %></li>
+    <% end %>
   <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-<%- else %>
+<% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
-<%- end %>
+<% end %>

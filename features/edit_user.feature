@@ -5,7 +5,8 @@ Feature: Edit User Account
   I can change my password and/or my email
 
   Background:
-    Given I am logged in
+    Given I am a user with an account
+    And I sign in
 
   Scenario: I sign in and edit my account
     When I edit my account details

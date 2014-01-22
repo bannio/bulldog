@@ -13,7 +13,7 @@ def create_unconfirmed_user
   create_visitor
   delete_user
   sign_up
-  visit '/users/sign_out'
+  visit '/sign_out'
 end
 
 def create_user
@@ -22,14 +22,23 @@ def create_user
   @user = FactoryGirl.create(:user, @visitor)
 end
 
+def create_account
+  create_user
+  @account = FactoryGirl.create(:account, user_id: @user.id)
+end
+
 def delete_user
   @user ||= User.where(:email => @visitor[:email]).first
   @user.destroy unless @user.nil?
 end
 
+def delete_account
+  @user.account.destroy unless @user.account.nil?
+end
+
 def sign_up
   delete_user
-  visit '/users/sign_up'
+  visit '/sign_up'
   # fill_in "user_name", :with => @visitor[:name]
   fill_in "user_email", :with => @visitor[:email]
   fill_in "user_password", :with => @visitor[:password]
@@ -39,7 +48,7 @@ def sign_up
 end
 
 def sign_in
-  visit '/users/sign_in'
+  visit '/sign_in'
   fill_in "user_email", :with => @visitor[:email]
   fill_in "user_password", :with => @visitor[:password]
   click_button "Sign in"
@@ -47,7 +56,7 @@ end
 
 ### GIVEN ###
 Given /^I am not logged in$/ do
-  visit '/users/sign_out'
+  visit '/sign_out'
 end
 
 Given /^I am logged in$/ do
@@ -68,14 +77,27 @@ Given /^I exist as an unconfirmed user$/ do
   create_unconfirmed_user
 end
 
+Given(/^I have no account$/) do
+  create_user
+  delete_account
+end
+
+Given(/^I am a user with an account$/) do
+  create_account
+end
+
 ### WHEN ###
 When /^I sign in with valid credentials$/ do
   create_visitor
   sign_in
 end
 
+When /^I sign in$/ do
+  sign_in
+end
+
 When /^I sign out$/ do
-  visit '/users/sign_out'
+  visit '/sign_out'
 end
 
 When /^I sign up with valid user data$/ do
@@ -122,7 +144,8 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Edit account"
+  click_link "Account"
+  click_link "Change Password"
   fill_in "user_password", :with => "newpassword"
   fill_in "user_password_confirmation", :with => "newpassword"
   fill_in "user_current_password", :with => @visitor[:password]
@@ -130,15 +153,16 @@ When /^I edit my account details$/ do
 end
 
 When(/^I edit my account and change the email to "(.*?)"$/) do |email|
-  click_link "Edit account"
+  click_link "Account"
+  click_link "Change Password"
   fill_in "user_email", with: email
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"
 end
 
-When /^I look at the list of users$/ do
-  visit '/'
-end
+# When /^I look at the list of users$/ do
+#   visit '/'
+# end
 
 ### THEN ###
 Then /^I should be signed in$/ do
@@ -167,19 +191,23 @@ Then /^I should see a successful sign up message$/ do
 end
 
 Then /^I should see an invalid email message$/ do
-  page.should have_content "Email is invalid"
+  page.should have_content "is invalid"
+  # page.should have_content "Email is invalid"
 end
 
 Then /^I should see a missing password message$/ do
-  page.should have_content "Password can't be blank"
+  page.should have_content "can't be blank"
+  # page.should have_content "Password can't be blank"
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Password confirmation doesn't match"
+  # page.should have_content "Password confirmation doesn't match"
+  page.should have_content "doesn't match"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Password confirmation doesn't match"
+  page.should have_content "doesn't match"
+  # page.should have_content "Password confirmation doesn't match"
 end
 
 Then /^I should see a signed out message$/ do

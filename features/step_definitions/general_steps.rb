@@ -10,7 +10,7 @@ When(/^I visit the home page$/) do
   visit '/'
 end
 
-Then(/^I should be on the (\w+) page$/) do |pagename|
+Then(/^I should be on the (.*) page$/) do |pagename|
   # assumes that content_for :title includes pagename
   # e.g. <% content_for :title do %>Bulldog-Clip:Home<% end %>
   title.should include pagename
@@ -49,4 +49,11 @@ Then(/^I should not see "(.*?)"$/) do |text|
   # save_and_open_page
   # expect(page.has_content?(text)).to be_true
   page.should_not have_content text
+end
+
+When(/^I fill in address details and click save$/) do
+  fill_in 'account_name', with: 'My Name'
+  fill_in 'account_address', with: 'My House\n My Street\n My Town'
+  fill_in 'account_postcode', with: 'ABC 123'
+  click_on 'Save'
 end

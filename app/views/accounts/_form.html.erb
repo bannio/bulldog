@@ -1,0 +1,20 @@
+<%= form_for(@account) do |f| %>
+  <h3>Edit Account</h3>
+  <%= form_group_for f, :name, label: false do %>
+    <div class="input-group">
+      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name' %>
+    </div>
+  <% end %>
+  <%= form_group_for f, :address, label: false do %>
+    <div class="input-group">
+      <%= f.text_area :address, autofocus: true, class: 'form-control', placeholder: 'Address' %>
+    </div>
+  <% end %>
+  <%= form_group_for f, :postcode, label: false do %>
+    <div class="input-group">
+      <%= f.text_field :postcode, autofocus: true, class: 'form-control', placeholder: 'postcode' %>
+    </div>
+  <% end %>
+  <%= f.submit 'Save', :class => 'btn btn-primary btn-block' %>
+  <%= flash_messages layout_flash: false %>
+<% end %>

@@ -1,0 +1,21 @@
+<% content_for :title do %>Bulldog-Clip | Account<% end %>
+<% content_for :description do %>Sign in to Bulldog-Clip<% end %>
+
+<h1>Show Account</h1>
+
+<table>
+  <tr>
+    <td>Name</td><td><%= @account.name %></td>
+  </tr>
+  <tr>
+    <td>Address</td><td><%= @account.address %></td>
+  </tr>
+  <tr>
+    <td>Postcode</td><td><%= @account.postcode %></td>
+  </tr>
+</table>
+
+<ul>
+  <li><%= link_to 'Edit', edit_account_path(@account) %></li>
+  <li><%= link_to 'Change Password', edit_user_registration_path %></li>
+</ul>
