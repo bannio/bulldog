@@ -57,3 +57,8 @@ When(/^I fill in address details and click save$/) do
   fill_in 'account_postcode', with: 'ABC 123'
   click_on 'Save'
 end
+
+Then(/^I have an Account record saved$/) do
+  account = Account.find_by user_id: @user.id
+  expect(account).to be_true
+end
