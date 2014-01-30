@@ -10,4 +10,14 @@ class ApplicationController < ActionController::Base
       new_account_path
     end
   end
+
+  def user_has_account?
+    @has_account ||= current_user.account.present?
+  end
+  helper_method :user_has_account?
+
+  def current_account
+    @current_account ||= user_has_account? ? current_user.account : nil
+  end
+  helper_method :current_account
 end

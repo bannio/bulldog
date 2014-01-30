@@ -4,6 +4,7 @@ Bulldog::Application.routes.draw do
   # get 'accounts/new' => 'accounts#new', as: :new_account
 
   resources :accounts
+  resources :bills
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

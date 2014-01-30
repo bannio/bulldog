@@ -1,0 +1,14 @@
+<%= form_for @bill do |f| %>
+  <p><%= f.hidden_field :account_id %></p>
+  <p><%= f.text_field :date, {class: 'date_picker'} %>
+</p>
+  <p><%= f.collection_select :customer_id, current_account.customers, :id, :name, allow_blank: true %></p>
+  <p><%= f.collection_select :supplier_id, current_account.suppliers, :id, :name %></p>
+  <p><%= f.collection_select :category_id, current_account.categories, :id, :name  %></p>
+  <p><%= f.text_field :description %></p>
+  <p><%= f.text_field :amount %></p>
+  <p><%= errors_for f, :amount %></p>
+  
+  <%= f.submit 'Save', :class => 'btn btn-primary' %>
+<% end %>
+<%= render 'layouts/messages' %>

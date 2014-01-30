@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121200304) do
+ActiveRecord::Schema.define(version: 20140130085222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,52 @@ ActiveRecord::Schema.define(version: 20140121200304) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "bills", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "customer_id"
+    t.integer  "supplier_id"
+    t.integer  "category_id"
+    t.text     "description"
+    t.decimal  "amount",      precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "date"
+  end
+
+  add_index "bills", ["account_id"], name: "index_bills_on_account_id", using: :btree
+  add_index "bills", ["category_id"], name: "index_bills_on_category_id", using: :btree
+  add_index "bills", ["customer_id"], name: "index_bills_on_customer_id", using: :btree
+  add_index "bills", ["supplier_id"], name: "index_bills_on_supplier_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["account_id"], name: "index_categories_on_account_id", using: :btree
+
+  create_table "customers", force: true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.text     "address"
+    t.string   "postcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
+
+  create_table "suppliers", force: true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "suppliers", ["account_id"], name: "index_suppliers_on_account_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

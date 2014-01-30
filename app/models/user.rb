@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
          :confirmable, :timeoutable
 
   has_one :account
+
+  def after_database_authentication
+    # set current_account here ?
+  end
 end
