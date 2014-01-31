@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :category do
-    name "MyString"
+    name "MyCategory"
     account nil
   end
 end

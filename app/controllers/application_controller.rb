@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_has_account?
-    @has_account ||= current_user.account.present?
+    @has_account ||= current_user ? current_user.account.present? : false
   end
   helper_method :user_has_account?
 

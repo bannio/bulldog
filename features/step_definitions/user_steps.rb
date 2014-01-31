@@ -23,8 +23,14 @@ def create_user
 end
 
 def create_account
-  create_user
+  @user ||= create_user
   @account = FactoryGirl.create(:account, user_id: @user.id)
+end
+
+def create_customer
+  @user ||= create_user
+  @account ||= FactoryGirl.create(:account, user_id: @user.id)
+  @customer = FactoryGirl.create(:customer, account_id: @account.id)
 end
 
 def delete_user
@@ -34,6 +40,10 @@ end
 
 def delete_account
   @user.account.destroy unless @user.account.nil?
+end
+
+def delete_customer
+  @account.customers.first.destroy unless @account.customers.empty?
 end
 
 def sign_up
@@ -80,6 +90,11 @@ end
 Given(/^I have no account$/) do
   create_user
   delete_account
+end
+
+Given(/^I have no customer$/) do
+  # create_user
+  delete_customer
 end
 
 Given(/^I am a user with an account$/) do

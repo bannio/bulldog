@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :customer do
-    name "MyString"
-    account nil
+    sequence(:name) { |n| "Customer ##{n}" }
+    account
     address "MyText"
     postcode "MyString"
   end

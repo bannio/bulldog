@@ -8,6 +8,6 @@ FactoryGirl.define do
     supplier
     category
     description "MyText"
-    amount ""
+    amount "1"
   end
 end

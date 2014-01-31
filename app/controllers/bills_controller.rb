@@ -7,6 +7,7 @@ class BillsController < ApplicationController
 
   def new
     @bill = Bill.new(account_id: current_account.id)
+    @bill.date = Date.today
   end
 
   def create

@@ -28,6 +28,10 @@ Then(/^I should not see a (.*) link$/) do |link|
   expect(page.has_link?(link)).to be_false
 end
 
+Given /^I click the first table row$/ do
+  find(:xpath, "//table/tbody/tr[1]").click 
+end
+
 When(/^I click on (.+)$/) do |link|
   click_link(link)
 end
@@ -61,4 +65,24 @@ end
 Then(/^I have an Account record saved$/) do
   account = Account.find_by user_id: @user.id
   expect(account).to be_true
+end
+
+When(/^I fill in customer details and click save$/) do
+  fill_in 'customer_name', with: 'My Customer'
+  fill_in 'customer_address', with: 'My House\n My Street\n My Town'
+  fill_in 'customer_postcode', with: 'ABC 123'
+  click_on 'Save'
+end
+
+Then(/^I should have a Customer record saved$/) do
+  customer = Customer.find_by account_id: @account.id
+  expect(customer).to be_true
+end
+
+Given(/^I have a customer$/) do
+  create_customer
+end
+
+Given(/^I visit the Customers page$/) do
+  visit '/customers'
 end

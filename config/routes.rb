@@ -1,10 +1,13 @@
 Bulldog::Application.routes.draw do
+  get "customers/index"
   devise_for :users, path: ""
 
   # get 'accounts/new' => 'accounts#new', as: :new_account
 
   resources :accounts
   resources :bills
+  resources :customers
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -47,11 +50,11 @@ Bulldog::Application.routes.draw do
   #   end
 
   # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  # concern :toggleable do
+  #   post 'toggle'
+  # end
+  # resources :posts, concerns: :toggleable
+  # resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
   #   namespace :admin do

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :account do
-    user_id 1
+    user
     name "MyString"
     address "MyText"
     postcode "MyString"

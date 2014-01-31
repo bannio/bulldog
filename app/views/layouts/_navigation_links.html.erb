@@ -6,6 +6,7 @@
     <% else %>
       <li><%= link_to 'Account', new_account_path %></li>
     <% end %>
+  <li><%= link_to 'Customers', customers_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
