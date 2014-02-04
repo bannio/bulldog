@@ -28,3 +28,10 @@ Feature: Manage Customer records
     And I fill in customer details and click save
     Then I should see "Customer successfully updated"
     And I should be on the Customers page
+
+  Scenario: I can only see my own customers
+    Given There is another account with a customer
+    And I have a customer
+    When I visit the Customers page
+    Then debug
+    Then I should only see my customer

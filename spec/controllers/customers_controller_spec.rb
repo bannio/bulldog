@@ -3,10 +3,12 @@ require 'spec_helper'
 describe CustomersController do
 
   login_user
+  # let(:account){mock_model Account, current_id: 1}
   
   def create_account
     user = subject.current_user
     account = FactoryGirl.create(:account, user_id: user.id)
+    # Account.current_id = account.id
   end
 
   def valid_attributes
@@ -23,6 +25,7 @@ describe CustomersController do
 
   describe "GET 'index'" do
     it "returns http success even when no customers" do
+      create_account
       get 'index'
       response.should be_success
     end

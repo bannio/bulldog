@@ -86,3 +86,11 @@ end
 Given(/^I visit the Customers page$/) do
   visit '/customers'
 end
+
+Given(/^There is another account with a customer$/) do
+  create_another_customer
+end
+
+Then(/^I should only see my customer$/) do
+  page.should_not have_content 'Another'
+end
