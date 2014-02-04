@@ -1,6 +1,10 @@
 Bulldog::Application.routes.draw do
   get "customers/index"
-  devise_for :users, path: ""
+
+  as :user do
+      patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
+  end
+  devise_for :users, path: "", controllers: {confirmations: 'confirmations'}
 
   # get 'accounts/new' => 'accounts#new', as: :new_account
 

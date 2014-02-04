@@ -91,8 +91,8 @@ def sign_up
   visit '/sign_up'
   # fill_in "user_name", :with => @visitor[:name]
   fill_in "user_email", :with => @visitor[:email]
-  fill_in "user_password", :with => @visitor[:password]
-  fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
+  # fill_in "user_password", :with => @visitor[:password]
+  # fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
   click_button "Sign up"
   find_user
 end
@@ -160,6 +160,23 @@ When /^I sign up with valid user data$/ do
   sign_up
 end
 
+When(/^I sign up with just my email$/) do
+  create_visitor
+  sign_up
+  # delete_user
+  # visit '/sign_up'
+  # fill_in "user_email", :with => @visitor[:email]
+  # click_button "Sign up"
+  # find_user
+end
+
+When(/^I enter account activation details$/) do
+  fill_in 'user_password', with: 'password'
+  fill_in 'user_password_confirmation', with: 'password'
+  click_button 'Activate'
+
+end
+
 When /^I sign up with an invalid email$/ do
   create_visitor
   @visitor = @visitor.merge(:email => "notanemail")
@@ -176,6 +193,36 @@ When /^I sign up without a password$/ do
   create_visitor
   @visitor = @visitor.merge(:password => "")
   sign_up
+end
+
+When /^I activate without a password$/ do
+  create_visitor
+  sign_up
+  open_email(@visitor[:email])
+  click_first_link_in_email
+  fill_in 'user_password', with: ''
+  fill_in 'user_password_confirmation', with: 'password'
+  click_button 'Activate'
+end
+
+When /^I activate without a password confirmation$/ do
+  create_visitor
+  sign_up
+  open_email(@visitor[:email])
+  click_first_link_in_email
+  fill_in 'user_password', with: 'password'
+  fill_in 'user_password_confirmation', with: ''
+  click_button 'Activate'
+end
+
+When /^I activate with a mismatched password confirmation$/ do
+  create_visitor
+  sign_up
+  open_email(@visitor[:email])
+  click_first_link_in_email
+  fill_in 'user_password', with: 'password'
+  fill_in 'user_password_confirmation', with: 'anotherpassword'
+  click_button 'Activate'
 end
 
 When /^I sign up with a mismatched password confirmation$/ do

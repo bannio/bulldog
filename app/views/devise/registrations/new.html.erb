@@ -11,16 +11,6 @@
           <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Email' %>
         </div>
       <% end %>
-      <%= form_group_for f, :password, label: false do %>
-        <div>
-          <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
-        </div>
-      <% end %>
-      <%= form_group_for f, :password_confirmation, label: false do %>
-        <div>
-          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password' %>
-        </div>
-      <% end %>
 
        <%= f.submit 'Sign up', :class => 'btn btn-primary btn-block' %>
        <%= flash_messages layout_flash: false %>

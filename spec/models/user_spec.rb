@@ -65,14 +65,26 @@ describe User do
 
   describe "password validations" do
 
-    it "should require a password" do
+    it "should not require a password when new" do
       User.new(@attr.merge(:password => "", :password_confirmation => "")).
-        should_not be_valid
+        should be_valid
     end
 
-    it "should require a matching password confirmation" do
+    it "should not require a matching password confirmation when new" do
       User.new(@attr.merge(:password_confirmation => "invalid")).
-        should_not be_valid
+        should be_valid
+    end
+
+    it "should require a password when persisted" do
+      user = User.create!(@attr)
+      user.update_attributes(password: "").
+        should_not be_true
+    end
+
+    it "should require a matching password confirmation when persisted" do
+      user = User.create!(@attr)
+      user.update_attributes(password_confirmation: "invalid").
+        should_not be_true
     end
 
     it "should reject short passwords" do
