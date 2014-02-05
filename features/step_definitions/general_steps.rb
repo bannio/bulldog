@@ -44,14 +44,10 @@ When(/^I enter a valid email and password$/) do
 end
 
 Then(/^I should see "(.*?)"$/) do |text|
-  # save_and_open_page
-  # expect(page.has_content?(text)).to be_true
   page.should have_content text
 end
 
 Then(/^I should not see "(.*?)"$/) do |text|
-  # save_and_open_page
-  # expect(page.has_content?(text)).to be_true
   page.should_not have_content text
 end
 
@@ -63,6 +59,7 @@ When(/^I fill in address details and click save$/) do
 end
 
 Then(/^I have an Account record saved$/) do
+  find_user
   account = Account.find_by user_id: @user.id
   expect(account).to be_true
 end

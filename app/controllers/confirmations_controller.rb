@@ -4,12 +4,13 @@ class ConfirmationsController < Devise::ConfirmationsController
   skip_before_filter :require_no_authentication
   skip_before_filter :authenticate_user!
 
-  # PUT /resource/confirmation
-  def update
+  # PATCH /confirmation
+  def update    # unique to us, not in Devise::ConfirmationsController
     with_unconfirmed_confirmable do
       if @confirmable.has_no_password?
         @confirmable.attempt_set_password(params[:user])
         if @confirmable.valid?
+          @confirmable.account_set_up(params[:user])
           do_confirm
         else
           do_show
@@ -21,11 +22,11 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
 
     if !@confirmable.errors.empty?
-      render 'confirmations/new' #Change this if you don't have the views on default path
+      render 'confirmations/new'
     end
   end
 
-  # GET /resource/confirmation?confirmation_token=abcdef
+  # GET /confirmation?confirmation_token=abcdef
   def show
     with_unconfirmed_confirmable do
       if @confirmable.has_no_password?
@@ -36,7 +37,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
     if !@confirmable.errors.empty?
       self.resource = @confirmable
-      render 'confirmations/new' #Change this if you don't have the views on default path 
+      render 'confirmations/new' 
     end
   end
 

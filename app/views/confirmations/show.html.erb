@@ -7,6 +7,8 @@
   <fieldset>
     <legend>Account Activation<%# if resource.user_name %> for <%# resource.user_name %><%# end %></legend>
 
+    <%= f.text_field :account_name %>
+
   <% if @requires_password %>
       <p><%= f.label :password,'Choose a Password:' %> <%= f.password_field :password %></p>
       <p><%= f.label :password_confirmation,'Password Confirmation:' %> <%= f.password_field :password_confirmation %></p>

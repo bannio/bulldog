@@ -33,5 +33,4 @@ Feature: Manage Customer records
     Given There is another account with a customer
     And I have a customer
     When I visit the Customers page
-    Then debug
     Then I should only see my customer

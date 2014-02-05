@@ -128,8 +128,7 @@ Given /^I exist as an unconfirmed user$/ do
 end
 
 Given(/^I have no account$/) do
-  create_user
-  delete_account
+  delete_account if @user
 end
 
 Given(/^I have no customer$/) do
@@ -171,6 +170,7 @@ When(/^I sign up with just my email$/) do
 end
 
 When(/^I enter account activation details$/) do
+  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: 'password'
   click_button 'Activate'
@@ -195,11 +195,23 @@ When /^I sign up without a password$/ do
   sign_up
 end
 
+When /^I activate with a valid password$/ do
+  # create_visitor
+  # sign_up
+  open_email(@visitor[:email])
+  click_first_link_in_email
+  fill_in 'user_account_name', with: 'My Account'
+  fill_in 'user_password', with: 'password'
+  fill_in 'user_password_confirmation', with: 'password'
+  click_button 'Activate'
+end
+
 When /^I activate without a password$/ do
   create_visitor
   sign_up
   open_email(@visitor[:email])
   click_first_link_in_email
+  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: ''
   fill_in 'user_password_confirmation', with: 'password'
   click_button 'Activate'
@@ -210,6 +222,7 @@ When /^I activate without a password confirmation$/ do
   sign_up
   open_email(@visitor[:email])
   click_first_link_in_email
+  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: ''
   click_button 'Activate'
@@ -220,6 +233,7 @@ When /^I activate with a mismatched password confirmation$/ do
   sign_up
   open_email(@visitor[:email])
   click_first_link_in_email
+  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: 'anotherpassword'
   click_button 'Activate'

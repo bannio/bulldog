@@ -9,11 +9,10 @@ Feature: Account
 
   Scenario: Sign in first time
     Given I have no account
-    When I sign in with valid credentials
-    Then I should be on the New Account page
-    When I fill in address details and click save
-    Then I should see "Account successfully created"
-    And I should be on the Home page
+    And I sign up with just my email
+    When I activate with a valid password
+    Then I should be on the Home page
+    And I should see "Your account was successfully confirmed."
     And I have an Account record saved
 
   Scenario: Sign in a second time

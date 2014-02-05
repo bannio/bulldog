@@ -3,14 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # around_filter :scope_current_account
-
   def after_sign_in_path_for(resource)
-    if resource.account.present?
-      root_path
-    else
-      new_account_path
-    end
+    root_path  # change this when we know where the new user should really start
   end
 
   def user_has_account?
@@ -24,11 +18,4 @@ class ApplicationController < ActionController::Base
   helper_method :current_account
 
   private
-
-  # def scope_current_account
-  #   Account.current_id = current_account.id
-  #   yield
-  # ensure
-  #   Account.current_id = nil
-  # end
 end
