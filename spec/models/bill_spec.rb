@@ -41,4 +41,16 @@ describe Bill do
   it "is invalid without amount" do
     expect(Bill.new(@attr.merge(amount: ""))).to_not be_valid
   end
+
+  it "can name its customer, supplier etc." do
+    customer = create(:customer, name: 'John')
+    supplier = create(:supplier, name: 'Fred')
+    category = create(:category, name: 'Food')
+    bill = Bill.new(@attr.merge(customer_id: customer.id,
+                                supplier_id: supplier.id,
+                                category_id: category.id))
+    expect(bill.customer_name).to eq 'John'
+    expect(bill.supplier_name).to eq 'Fred'
+    expect(bill.category_name).to eq 'Food'
+  end
 end

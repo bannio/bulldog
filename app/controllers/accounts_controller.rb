@@ -1,15 +1,16 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def show
-    @account = Account.find(params[:id])
+    @account = Account.owned_by_user(current_user).find(params[:id])
   end
   def new
     @account = Account.new
   end
 
   def edit
-    @account = Account.find(params[:id])
+    @account = Account.owned_by_user(current_user).find(params[:id])
   end
 
   def update
@@ -27,9 +28,9 @@ class AccountsController < ApplicationController
     @account.user_id = current_user.id
     if @account.save
       flash[:success] = "Account successfully created"
-      redirect_to home_path
+      redirect_to @account
     else
-      render 'edit'
+      render 'new'
     end
   end
 
@@ -37,5 +38,14 @@ class AccountsController < ApplicationController
 
   def account_params
     params.require(:account).permit(:name, :address, :postcode)
+  end
+
+  def record_not_found
+    flash[:error] = "You don't have access to that account"
+    begin
+      redirect_to :back
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
+    end
   end
 end

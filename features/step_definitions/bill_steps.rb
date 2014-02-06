@@ -29,9 +29,6 @@ Given /^I have the following data already saved$/ do |table|
 end
 
 When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer, supplier, value|
-  # cust = Customer.find_by_name(customer) # requires customer to be set up in background
-  # supp = Supplier.find_by_name(supplier) # which makes this step unuseable elsewhere!!!
-  # FactoryGirl.create(:bill, customer_id: cust.id, supplier_id: supp.id, amount: value)
   fill_in 'bill_date',        with: Date.today
   select supplier,            from: 'bill_supplier_id'
   select customer,            from: 'bill_customer_id'
@@ -69,4 +66,32 @@ end
 
 When /^I am on the new bill screen$/ do
   visit '/bills/new'
+end
+
+When(/^I am on the bills page$/) do
+  visit '/bills'
+end
+
+Given /^I have the following bills$/ do |table|
+  #puts table.raw
+  table.raw.each do |row|
+      customer = Customer.find_or_create_by(name: row[0])
+      supplier = Supplier.find_or_create_by(name: row[1])
+      category = Category.find_or_create_by(name: row[2])
+      date = row[3]
+      description = row[4]
+      amount = row[5]
+      bill = FactoryGirl.create(:bill,
+                        account_id: @account.id,     # assumes user with an account already called
+                        customer_id: customer.id,
+                        supplier_id: supplier.id, 
+                        category_id: category.id, 
+                        date: date, 
+                        description: description,
+                        amount: amount)
+  end
+end
+
+Then(/^there is a link to add a new bill$/) do
+  find_link('New').visible?
 end

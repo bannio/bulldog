@@ -29,3 +29,16 @@ Feature: In order to track my costs
     When I leave the amount empty
     Then I should see "can't be blank"
     And I should be on the New Bill page
+
+  Scenario: I can list bills
+    Given I have the following bills
+    # customer  | supplier | category | date       | description        | amount |
+    | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
+    | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
+    | Business  | Asda     | Mileage  | 10-12-2012 | business trip      | 100.00 |
+    | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   |
+    | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   | 
+    When I am on the bills page
+    Then I should see "more coffee"
+    And I should see "Coffee"
+    And there is a link to add a new bill
