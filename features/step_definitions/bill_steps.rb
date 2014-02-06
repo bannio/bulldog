@@ -92,6 +92,15 @@ Given /^I have the following bills$/ do |table|
   end
 end
 
+When(/^I change the bill (.*?) to "(.*?)" and press save$/) do |field, value|
+  fill_in field, with: value
+  click_button 'Save'
+end
+
 Then(/^there is a link to add a new bill$/) do
   find_link('New').visible?
 end
+
+
+
+

@@ -14,4 +14,10 @@ module ControllerMacros
       sign_in @user
     end
   end
+
+  def create_account
+    before(:each) do
+      @account = FactoryGirl.create(:account, user_id: @user.id)
+    end
+  end
 end
