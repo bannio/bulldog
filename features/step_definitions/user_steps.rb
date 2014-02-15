@@ -110,7 +110,8 @@ Given /^I am not logged in$/ do
 end
 
 Given /^I am logged in$/ do
-  create_user
+  # create_user
+  create_account
   sign_in
 end
 
@@ -142,7 +143,11 @@ end
 
 ### WHEN ###
 When /^I sign in with valid credentials$/ do
-  create_visitor
+  create_account
+  sign_in
+end
+
+When /^I sign in with invalid credentials$/ do
   sign_in
 end
 
