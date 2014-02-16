@@ -10,7 +10,10 @@ describe Bill do
       supplier_id: 1,
       category_id: 1,
       description: "",
-      amount: "1"
+      amount: "1",
+      new_customer: "",
+      new_supplier: "",
+      new_category: ""
     }
   end
 
@@ -52,5 +55,35 @@ describe Bill do
     expect(bill.customer_name).to eq 'John'
     expect(bill.supplier_name).to eq 'Fred'
     expect(bill.category_name).to eq 'Food'
+  end
+
+  it "can accept a new customer" do
+    expect(Bill.new(@attr.merge(customer_id: "A new customer"))).to be_valid
+  end
+
+  it "can accept a new supplier" do
+    expect(Bill.new(@attr.merge(supplier_id: "A new supplier"))).to be_valid
+  end
+
+  it "can accept a new category" do
+    expect(Bill.new(@attr.merge(category_id: "A new category"))).to be_valid
+  end
+
+  it "allocates the correct account to the new customer" do
+    bill = Bill.create(@attr.merge(customer_id: "A new customer", new_customer: "A new customer"))
+    # bill.reload
+    expect(bill.customer.account_id).to eq bill.account_id
+  end
+
+  it "allocates the correct account to the new supplier" do
+    bill = Bill.create(@attr.merge(supplier_id: "A new supplier", new_supplier: "A new supplier"))
+    # bill.reload
+    expect(bill.supplier.account_id).to eq bill.account_id
+  end
+
+  it "allocates the correct account to the new category" do
+    bill = Bill.create(@attr.merge(category_id: "A new category", new_category: "A new category"))
+    # bill.reload
+    expect(bill.category.account_id).to eq bill.account_id
   end
 end

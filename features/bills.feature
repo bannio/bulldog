@@ -14,7 +14,9 @@ Feature: In order to track my costs
     | Business  | Tesco    | Clothes  |
     And I start with a total expenses balance of £0
     And I am on the new bill screen
-    
+
+
+  @javascript @undertest   
   Scenario: Enter a receipt for known supplier and customer
     When I add a Household bill from Asda for £20
     And I am on the new bill screen
@@ -25,6 +27,7 @@ Feature: In order to track my costs
     And the Tesco supplier total should be £5
     And the Business customer total should be £5
 
+  @javascript
   Scenario: Try to save a bill with no amount
     When I leave the amount empty
     Then I should see "can't be blank"

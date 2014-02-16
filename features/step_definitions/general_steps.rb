@@ -36,6 +36,10 @@ When(/^I click on (.+)$/) do |link|
   click_link(link)
 end
 
+When(/^I click button (.*?)$/) do |btn|
+  click_button(btn)
+end
+
 When(/^I enter a valid email and password$/) do
   fill_in 'user_email', with: 'example@example.com'
   fill_in 'user_password', with: 'secret12'

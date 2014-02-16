@@ -104,3 +104,9 @@ section {
 
 // set pointer to hand
 .pointer { cursor: pointer; } 
+
+// apparently missing from latest bootstrap
+// added to highlight the New in select2
+.label-important {
+    background-color: rgb(185, 74, 72);
+}

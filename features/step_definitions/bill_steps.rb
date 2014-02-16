@@ -28,11 +28,23 @@ Given /^I have the following data already saved$/ do |table|
   end
 end
 
+# When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer, supplier, value|
+#   fill_in 'bill_date',        with: Date.today
+#   select supplier,            from: 'bill_supplier_id'
+#   select customer,            from: 'bill_customer_id'
+#   select 'Food',              from: 'bill_category_id'
+#   fill_in 'bill_description', with: 'my bill'
+#   fill_in 'bill_amount',      with: value
+#   click_button 'Save'
+# end
+
 When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer, supplier, value|
   fill_in 'bill_date',        with: Date.today
-  select supplier,            from: 'bill_supplier_id'
-  select customer,            from: 'bill_customer_id'
-  select 'Food',              from: 'bill_category_id'
+  steps %{
+    When I type "#{customer}" in the customer select field
+    When I type "#{supplier}" in the supplier select field
+    When I type "Food" in the category select field
+  }
   fill_in 'bill_description', with: 'my bill'
   fill_in 'bill_amount',      with: value
   click_button 'Save'
@@ -40,9 +52,11 @@ end
 
 When(/^I leave the amount empty$/) do
   fill_in 'bill_date',        with: Date.today
-  select 'Asda',              from: 'bill_supplier_id'
-  select 'Household',         from: 'bill_customer_id'
-  select 'Food',              from: 'bill_category_id'
+  steps %{
+    When I type "Household" in the customer select field
+    When I type "Asda" in the supplier select field
+    When I type "Food" in the category select field
+  }
   fill_in 'bill_description', with: 'my bill'
   # fill_in 'bill_amount',      with: value
   click_button 'Save'
@@ -53,7 +67,7 @@ Then /^the total expenses should be £(#{CAPTURE_A_NUMBER})$/ do |amount|
 end
 
 Then /^the (\w+) customer total should be £(#{CAPTURE_A_NUMBER})$/ do |customer, amount|
-  Customer.find_by_name(customer).total.should eq(amount)
+  Customer.find_by_name(customer).reload.total.should eq(amount)
 end
 
 Then /^the (\w+) supplier total should be £(#{CAPTURE_A_NUMBER})$/ do |supplier, amount|
@@ -101,6 +115,12 @@ Then(/^there is a link to add a new bill$/) do
   find_link('New').visible?
 end
 
+When(/^I type "(.*?)" in the (.*?) select field$/) do |value, field|
+  page.find("#s2id_bill_#{field}_id b" ).click
+  page.find(".select2-drop-active .select2-search .select2-input").set(value)
+  page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
+end
 
-
-
+When(/^I enter "(.*?)" in the (.*?) field$/) do |value, field|
+  fill_in field, with: value
+end
