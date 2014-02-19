@@ -2,6 +2,7 @@
 <li><%= link_to 'About', page_path('about') %></li>
 <% if user_signed_in? %>
   <li><%= link_to 'Bills', bills_path %></li>
+  <li><%= link_to 'Invoices', invoices_path %></li>
   <li><%= link_to 'Account', account_path(current_user.account.id) %></li>
   <li><%= link_to 'Customers', customers_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>

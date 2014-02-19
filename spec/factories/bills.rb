@@ -2,12 +2,13 @@
 
 FactoryGirl.define do
   factory :bill do
-    account
+    account_id "1"
     date "2014-01-01"
-    customer
+    customer_id "1"
     supplier
     category
     description "MyText"
     amount "1"
+    invoice_id ""
   end
 end

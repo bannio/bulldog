@@ -20,6 +20,7 @@
     <%= f.text_field :amount, placeholder: 'amount', class: "form-control" %>
   <% end %> 
   <%= f.submit 'Save', :class => 'btn btn-primary' %>
+  <%= link_to "Cancel", bills_path, class: "btn btn-warning"  %>
 <% end %> <!-- end of form_for -->
 
 <%= render 'layouts/messages' %>

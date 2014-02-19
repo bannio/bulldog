@@ -55,8 +55,34 @@ describe CustomersController do
    end
  end
 
+ describe "PATCH #update" do
+
+  before :each do
+    @customer = Customer.create! valid_attributes
+  end
+   context "with valid attributes" do
+     it "updates the requested customer" do
+       patch :update, id: @customer, customer: valid_attributes
+       expect(assigns(:customer)).to eq @customer
+     end
+   end
+
+   context "with invalid attributes" do
+     it "re-render edit" do
+       patch :update, id: @customer, customer: {name: ""}
+       expect(response).to render_template 'edit'
+     end
+
+     it "rejects someone else's customer" do
+       customer = Customer.create! valid_attributes.merge(account_id: "999")
+       patch :update, id: customer, customer: valid_attributes.merge(account_id: "999")
+       expect(response).to redirect_to home_path
+     end
+   end
+ end
+
  describe "POST create" do
-   describe "with valid params" do
+   context "with valid params" do
      it "creates a new Customer" do
        expect {
          post :create, {:customer => valid_attributes}
@@ -75,7 +101,7 @@ describe CustomersController do
      end
    end
 
-   describe "with invalid params" do
+   context "with invalid params" do
      it "assigns a newly created but unsaved customer as @customer" do
        Customer.any_instance.stub(:save).and_return(false)
        post :create, {:customer => { name: "" }}

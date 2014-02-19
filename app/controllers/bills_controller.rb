@@ -2,7 +2,7 @@ class BillsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @bills = current_account.bills
+    @bills = current_account.bills.uninvoiced
   end
 
   def new
@@ -21,12 +21,12 @@ class BillsController < ApplicationController
   end
 
   def edit
-    @bill = Bill.find(params[:id])
+    @bill = Bill.visible_to(current_user).find(params[:id])
   end
 
   def update
     collect_new_entries
-    @bill = Bill.find(params[:id])
+    @bill = Bill.visible_to(current_user).find(params[:id])
     if @bill.update(bill_params)
       flash[:success] = "Bill successfully updated"
       redirect_to bills_path
@@ -34,6 +34,12 @@ class BillsController < ApplicationController
       render 'edit'
     end
   end
+
+  # def remove  # called from invoice#edit
+  #   Book.where('title LIKE ?', '%Rails%').order(:created_at).limit(5).update_all(author: 'David')
+  #   Bill.visible_to(current_user).update_all({invoice_id: nil}, {id: params[:bill_ids]})
+  #   redirect_to edit_invoice_path(params[:id])
+  # end
 
   private
   def bill_params

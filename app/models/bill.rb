@@ -1,4 +1,6 @@
 class Bill < ActiveRecord::Base
+  include Visible
+
   belongs_to :account
   belongs_to :customer
   belongs_to :supplier
@@ -8,6 +10,8 @@ class Bill < ActiveRecord::Base
 
   attr_accessor :new_category, :new_supplier, :new_customer
   before_save :create_category, :create_supplier, :create_customer
+
+  scope :uninvoiced, -> {where(invoice_id: nil)}
 
   def customer_name
     customer.name

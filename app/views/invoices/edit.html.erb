@@ -1,0 +1,9 @@
+<% content_for :title do %>Bulldog-Clip | Edit Invoice<% end %>
+<% content_for :description do %>Edit invoice<% end %>
+
+<div class="col-md-10 col-md-offset-1 panel panel-default">
+  <div class="panel-body">
+  <h1>Invoice <%= @invoice.number %></h1>
+    <%= render 'form' %>  
+  </div>
+</div>

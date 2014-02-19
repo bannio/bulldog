@@ -1,0 +1,27 @@
+<% content_for :title do %>Bulldog-Clip | Invoices<% end %>
+<% content_for :description do %>Bulldog-Clip invoices index<% end %>
+<h1>Invoices</h1>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Customer</th>
+      <th>Comment</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr title="click to edit", class="pointer rowlink",
+          data-rowlink="<%= edit_invoice_path(invoice)%>">
+        <td><%= invoice.date %></td>
+        <td><%= invoice.customer_name %></td>
+        <td><%= invoice.comment %></td>
+        <td><%= number_to_currency(invoice.total) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "New", new_invoice_path, class: "btn btn-primary"  %></p>

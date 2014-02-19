@@ -89,9 +89,9 @@ end
 Given /^I have the following bills$/ do |table|
   #puts table.raw
   table.raw.each do |row|
-      customer = Customer.find_or_create_by(name: row[0])
-      supplier = Supplier.find_or_create_by(name: row[1])
-      category = Category.find_or_create_by(name: row[2])
+      customer = Customer.find_or_create_by(name: row[0], account_id: @account.id)
+      supplier = Supplier.find_or_create_by(name: row[1], account_id: @account.id)
+      category = Category.find_or_create_by(name: row[2], account_id: @account.id)
       date = row[3]
       description = row[4]
       amount = row[5]
@@ -124,3 +124,32 @@ end
 When(/^I enter "(.*?)" in the (.*?) field$/) do |value, field|
   fill_in field, with: value
 end
+
+Given(/^another user has a bill$/) do
+  create_another_account
+  @another_bill = FactoryGirl.create(:bill, account_id: @another_account.id)
+
+end
+
+Given(/^I type in the other users bill ID in the \/bills\/ID\/edit URL$/) do
+  visit "/bills/#{@another_bill.id}/edit"
+end
+
+Given(/^I am on the edit page for the first bill$/) do
+  bill = Bill.first
+  visit "/bills/#{bill.id}/edit"
+end
+
+# Then(/^I should see a Cancel button$/) do
+#   find_link('Cancel').visible?
+# end
+
+When(/^I change the bill (.*?) to "(.*?)" and press Cancel$/) do |field, value|
+  fill_in field, with: value
+  click_link 'Cancel'
+end
+
+Then(/^I should see "(.*?)" in the "(.*?)" field$/) do |text, field|
+  find_field(field).value.should eq text
+end
+

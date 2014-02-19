@@ -20,4 +20,16 @@ module ControllerMacros
       @account = FactoryGirl.create(:account, user_id: @user.id)
     end
   end
+
+  def create_customer
+    before(:each) do
+      @customer = FactoryGirl.create(:customer, account_id: @account.id)
+    end
+  end
+
+  def create_bill
+    before(:each) do
+      @bill = FactoryGirl.create(:bill, account_id: @account.id, customer_id: @customer.id )
+    end
+  end
 end

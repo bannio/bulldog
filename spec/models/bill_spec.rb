@@ -71,19 +71,16 @@ describe Bill do
 
   it "allocates the correct account to the new customer" do
     bill = Bill.create(@attr.merge(customer_id: "A new customer", new_customer: "A new customer"))
-    # bill.reload
     expect(bill.customer.account_id).to eq bill.account_id
   end
 
   it "allocates the correct account to the new supplier" do
     bill = Bill.create(@attr.merge(supplier_id: "A new supplier", new_supplier: "A new supplier"))
-    # bill.reload
     expect(bill.supplier.account_id).to eq bill.account_id
   end
 
   it "allocates the correct account to the new category" do
     bill = Bill.create(@attr.merge(category_id: "A new category", new_category: "A new category"))
-    # bill.reload
     expect(bill.category.account_id).to eq bill.account_id
   end
 end

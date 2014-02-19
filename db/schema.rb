@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130085222) do
+ActiveRecord::Schema.define(version: 20140217135823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,11 +35,13 @@ ActiveRecord::Schema.define(version: 20140130085222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date"
+    t.integer  "invoice_id"
   end
 
   add_index "bills", ["account_id"], name: "index_bills_on_account_id", using: :btree
   add_index "bills", ["category_id"], name: "index_bills_on_category_id", using: :btree
   add_index "bills", ["customer_id"], name: "index_bills_on_customer_id", using: :btree
+  add_index "bills", ["invoice_id"], name: "index_bills_on_invoice_id", using: :btree
   add_index "bills", ["supplier_id"], name: "index_bills_on_supplier_id", using: :btree
 
   create_table "categories", force: true do |t|
@@ -61,6 +63,20 @@ ActiveRecord::Schema.define(version: 20140130085222) do
   end
 
   add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
+
+  create_table "invoices", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "customer_id"
+    t.date     "date"
+    t.string   "number"
+    t.decimal  "total",       precision: 8, scale: 2
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoices", ["account_id"], name: "index_invoices_on_account_id", using: :btree
+  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
 
   create_table "suppliers", force: true do |t|
     t.string   "name"

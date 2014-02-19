@@ -16,7 +16,7 @@ Feature: In order to track my costs
     And I am on the new bill screen
 
 
-  @javascript @undertest   
+  @javascript 
   Scenario: Enter a receipt for known supplier and customer
     When I add a Household bill from Asda for £20
     And I am on the new bill screen
@@ -62,5 +62,27 @@ Feature: In order to track my costs
     When I change the bill description to "changed it here" and press save
     Then I should be on the Bills page
     And I should see "changed it here"
+
+  Scenario: I cannot cheat and type in the URL of someone else's bill
+    Given another user has a bill
+    And I type in the other users bill ID in the /bills/ID/edit URL
+    Then I should see "not found or not authorised"
+    And I should be on the Home page
+
+  Scenario: I can cancel an edit
+    Given I have the following bills
+    # customer  | supplier | category | date       | description        | amount |
+    | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
+    | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
+    And I am on the edit page for the first bill
+    Then I should see "Coffee" in the "description" field
+    And I should see a Cancel button
+    When I change the bill description to "changed it here" and press Cancel
+    Then I should be on the Bills page
+    And I should not see "changed it here"
+    And I should see "Coffee"
+
+
+
 
 

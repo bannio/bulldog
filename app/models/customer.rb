@@ -1,6 +1,9 @@
 class Customer < ActiveRecord::Base
+  include Visible
+  
   belongs_to :account
   has_many :bills
+  has_many :invoices
 
   validates :name, :account_id, presence: true
   before_destroy :check_has_no_bills?
@@ -9,6 +12,10 @@ class Customer < ActiveRecord::Base
 
   def total
     bills.sum(:amount)
+  end
+
+  def has_uninvoiced_bills?
+    !bills.uninvoiced.empty?
   end
 
   private

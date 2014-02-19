@@ -34,3 +34,9 @@ Feature: Manage Customer records
     And I have a customer
     When I visit the Customers page
     Then I should only see my customer
+
+  Scenario: I cannot cheat by typing in the URL field
+    Given There is another account with a customer
+    And I have a customer
+    And I type the other customers ID in the edit URL
+    Then I should see "not found or not authorised"

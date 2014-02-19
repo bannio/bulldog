@@ -95,3 +95,8 @@ end
 Then(/^I should only see my customer$/) do
   page.should_not have_content 'Another'
 end
+
+Given(/^I type the other customers ID in the edit URL$/) do
+  id = @another_customer.id
+  visit "/customers/#{id}/edit"
+end

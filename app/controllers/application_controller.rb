@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def after_sign_in_path_for(resource)
     root_path  # change this when we know where the new user should really start
@@ -18,4 +19,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_account
 
   private
+
+  def record_not_found
+    flash[:alert] = "Item not found or not authorised"
+    redirect_to home_path
+  end
 end

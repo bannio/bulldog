@@ -22,11 +22,11 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.visible_to(current_user).find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = Customer.visible_to(current_user).find(params[:id])
     if @customer.update_attributes(cust_params)
       redirect_to customers_url, notice: "Customer successfully updated"
     else
