@@ -13,8 +13,8 @@
   </thead>
   <tbody>
     <% @invoices.each do |invoice| %>
-      <tr title="click to edit", class="pointer rowlink",
-          data-rowlink="<%= edit_invoice_path(invoice)%>">
+      <tr title="click to show details", class="pointer rowlink",
+          data-rowlink="<%= invoice_path(invoice)%>">
         <td><%= invoice.date %></td>
         <td><%= invoice.customer_name %></td>
         <td><%= invoice.comment %></td>

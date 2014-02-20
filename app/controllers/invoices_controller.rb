@@ -31,7 +31,8 @@ class InvoicesController < ApplicationController
     if params[:bill_ids]
       Bill.where('id IN (?)', params[:bill_ids]).update_all(invoice_id: nil)
     end
-    if @invoice.update(invoice_params)
+    total = @invoice.bills.sum(:amount)
+    if @invoice.update(invoice_params.merge(total: total))
       flash[:success] = "Invoice successfully updated"
       redirect_to invoice_path(@invoice)
     else
@@ -54,6 +55,19 @@ class InvoicesController < ApplicationController
       redirect_to invoice_path(@invoice)
     else
       render :new
+    end
+  end
+
+  def destroy
+    @invoice = Invoice.find(params[:id])
+    @invoice.bills.each do |bill|
+                   bill.invoice_id = nil
+                   bill.save
+                 end
+    @invoice.destroy
+
+    respond_to do |format|
+      format.html { redirect_to invoices_url }
     end
   end
 

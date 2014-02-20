@@ -14,6 +14,7 @@ Given(/^I have created the (.*?) invoice$/) do |customer|
   steps %{
     Given I am on the New Invoice page
     And I select the customer #{customer}
+    And I change the comment to "My business invoice"
     And I click button Create Invoice
   }
 end

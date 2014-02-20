@@ -145,12 +145,40 @@ describe InvoicesController do
         expect(assigns(:customers)).to eq [@invoice.customer]
       end
 
+      it "recalculates the total" do
+        customer = create(:customer, account_id: @account.id)
+        bill = create(:bill, account_id: @account.id, customer_id: customer.id, amount: "10")
+        post :create, {invoice: valid_attributes.merge(customer_id: customer.id)}
+        invoice = Invoice.last
+        id = invoice.id
+        expect(invoice.total).to eq 10
+        bill.destroy
+        patch :update, id: id, invoice: {comment: "updated"}
+        invoice = Invoice.find(id)
+        expect(invoice.total).to eq 0
+      end
+
     end
     context "with invalid attributes" do
       it "re-renders the edit template" do
         patch :update, id: @invoice, invoice: attributes_for(:invoice, date: "")
         expect(response).to render_template 'edit'
       end
+    end
+  end
+
+  describe "DELETE destroy" do
+    before :each do
+      @invoice = create(:invoice, valid_attributes)
+    end
+    it "destroys the requested invoice" do
+      expect{
+        delete :destroy, id: @invoice.to_param
+      }.to change(Invoice, :count).by(-1)
+    end
+    it "redirects to the invoice index" do
+      delete :destroy, id: @invoice.to_param
+      expect(response).to redirect_to invoices_path
     end
   end
 

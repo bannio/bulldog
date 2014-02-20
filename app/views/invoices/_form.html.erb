@@ -36,6 +36,7 @@
   <% case params[:action] %>
     <% when 'edit' %>
       <%= f.submit 'Update Invoice', class: 'btn btn-primary' %>
+      <%= link_to 'Destroy', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     <% when 'new' %>
       <%= f.submit 'Create Invoice', class: 'btn btn-primary' %>
     <% when 'create' %>
@@ -43,5 +44,6 @@
     <% when 'show' %>
       <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'btn btn-primary' %>
   <% end %>
-  <%= link_to "Cancel", invoices_path, class: "btn btn-warning"  %>
+  <%= link_to params[:action] == 'show' ? "Back" : "Cancel", invoices_path, class: 'btn btn-warning' %>  
+
 <% end %>

@@ -16,7 +16,7 @@ ready = function() {
     };
   function create_choice(term, data) {
       if ($(data).filter(function() {
-        return this.name.localeCompare(term) === 0;
+        return this.name.toLowerCase().localeCompare(term.toLowerCase()) === 0;
       }).length === 0) {
         return {id: term, text: term, isNew: true};
       } 
