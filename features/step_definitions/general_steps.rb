@@ -40,12 +40,12 @@ When(/^I click button (.*?)$/) do |btn|
   click_button(btn)
 end
 
-When(/^I enter a valid email and password$/) do
-  fill_in 'user_email', with: 'example@example.com'
-  fill_in 'user_password', with: 'secret12'
-  fill_in 'user_password_confirmation', with: 'secret12'
-  click_on 'Sign Up'
-end
+# When(/^I enter a valid email and password$/) do
+#   fill_in 'user_email', with: 'example@example.com'
+#   fill_in 'user_password', with: 'secret12'
+#   fill_in 'user_password_confirmation', with: 'secret12'
+#   click_on 'Sign Up'
+# end
 
 Then(/^I should see "(.*?)"$/) do |text|
   page.should have_content text

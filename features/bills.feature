@@ -82,6 +82,24 @@ Feature: In order to track my costs
     And I should not see "changed it here"
     And I should see "Coffee"
 
+  @undertest
+  Scenario: I can delete a bill if it hasn't been invoiced
+    Note that only uninvoiced bills are visible in the index list
+    Deleting by tamporing with the URL is tested in Rspec
+    
+    Given I have the following bills
+    # customer  | supplier | category | date       | description        | amount |
+    | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
+    | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
+    And I am on the edit page for the first bill
+    Then I should see "Destroy"
+    When I click on Destroy
+    Then I should see "Bill successfully deleted"
+    And I should be on the Bills page
+    And I should not see "Coffee"
+
+
+
 
 
 

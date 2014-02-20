@@ -10,6 +10,7 @@ class Bill < ActiveRecord::Base
 
   attr_accessor :new_category, :new_supplier, :new_customer
   before_save :create_category, :create_supplier, :create_customer
+  before_destroy :check_for_invoice
 
   scope :uninvoiced, -> {where(invoice_id: nil)}
 
@@ -23,6 +24,8 @@ class Bill < ActiveRecord::Base
     category.name
   end
 
+  private
+
   def create_customer
     self.customer = Customer.create(name: new_customer, account_id: self.account_id) if new_customer.present?
   end
@@ -33,5 +36,12 @@ class Bill < ActiveRecord::Base
   
   def create_supplier
     self.supplier = Supplier.create(name: new_supplier, account_id: self.account_id) if new_supplier.present?
+  end
+
+  def check_for_invoice
+    unless self.invoice_id.blank?
+      errors.add(:amount, "This bill is invoiced and cannot be deleted") 
+      false
+    end
   end
 end

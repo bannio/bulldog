@@ -104,4 +104,31 @@ describe BillsController do
     end
   end
 
+  describe "DELETE destroy" do
+    context "with invoice number null" do
+      before :each do
+        @bill = create(:bill, account_id: @account.id)
+      end
+
+      it "destroys the requested bill" do
+        expect{
+          delete :destroy, id: @bill.to_param 
+        }.to change(Bill, :count).by(-1)
+      end
+      it "redirects to the bills index" do
+        delete :destroy, id: @bill.to_param 
+        expect(response).to redirect_to bills_url
+      end
+    end
+
+    context "with an invoice number" do
+      it "does not destroy the bill" do
+        @bill = create(:bill, account_id: @account.id, invoice_id: "1")
+        expect{
+          delete :destroy, id: @bill.to_param 
+        }.to change(Bill, :count).by(0)
+      end
+    end
+  end
+
 end

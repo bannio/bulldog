@@ -29,17 +29,21 @@ class BillsController < ApplicationController
     @bill = Bill.visible_to(current_user).find(params[:id])
     if @bill.update(bill_params)
       flash[:success] = "Bill successfully updated"
-      redirect_to bills_path
+      redirect_to bills_url
     else
       render 'edit'
     end
   end
 
-  # def remove  # called from invoice#edit
-  #   Book.where('title LIKE ?', '%Rails%').order(:created_at).limit(5).update_all(author: 'David')
-  #   Bill.visible_to(current_user).update_all({invoice_id: nil}, {id: params[:bill_ids]})
-  #   redirect_to edit_invoice_path(params[:id])
-  # end
+  def destroy
+    @bill = Bill.visible_to(current_user).find(params[:id])
+    if @bill.destroy
+      flash[:success] = "Bill successfully deleted"
+      redirect_to bills_url
+    else
+      render 'edit'
+    end
+  end
 
   private
   def bill_params

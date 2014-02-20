@@ -20,6 +20,9 @@
     <%= f.text_field :amount, placeholder: 'amount', class: "form-control" %>
   <% end %> 
   <%= f.submit 'Save', :class => 'btn btn-primary' %>
+  <% if params[:action] == 'edit' %>
+    <%= link_to 'Destroy', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <% end %>
   <%= link_to "Cancel", bills_path, class: "btn btn-warning"  %>
 <% end %> <!-- end of form_for -->
 
