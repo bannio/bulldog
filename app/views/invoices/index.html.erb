@@ -2,19 +2,26 @@
 <% content_for :description do %>Bulldog-Clip invoices index<% end %>
 <h1>Invoices</h1>
 
-<table class="table table-hover table-condensed">
+<%= form_tag invoices_path, method: 'get', class: "navbar-search pull-right", id: "invoices_search" do %>
+  <%= text_field_tag :search, params[:search], class: "search-query", placeholder: 'Search comment', autofocus: "autofocus" %>
+  <%= submit_tag "Search", name: nil, class: "hidden" %>
+<% end %>
+
+<table class="table table-hover table-condensed" id="invoice_table">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Customer</th>
-      <th>Comment</th>
-      <th>Amount</th>
+      <th><%= sortable "number", "No." %> <%= arrow "number" %></th>
+      <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+      <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+      <th><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
+      <th><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
     </tr>
   </thead>
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr title="click to show details", class="pointer rowlink",
           data-rowlink="<%= invoice_path(invoice)%>">
+        <td><%= invoice.number %></td>
         <td><%= invoice.date %></td>
         <td><%= invoice.customer_name %></td>
         <td><%= invoice.comment %></td>
@@ -23,5 +30,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @invoices %>
 
 <p><%= link_to "New", new_invoice_path, class: "btn btn-primary"  %></p>

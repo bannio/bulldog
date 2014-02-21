@@ -8,7 +8,7 @@
     <td>Name</td><td><%= @account.name %></td>
   </tr>
   <tr>
-    <td>Address</td><td><%= @account.address %></td>
+    <td>Address</td><td><%= simple_format("#{@account.address}") %></td>
   </tr>
   <tr>
     <td>Postcode</td><td><%= @account.postcode %></td>

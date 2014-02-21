@@ -1,9 +1,10 @@
 class InvoicesController < ApplicationController
 
   before_action :authenticate_user!
+  helper_method :sort_column, :sort_direction
 
   def index
-    @invoices = Invoice.visible_to(current_user)
+    @invoices = Invoice.visible_to(current_user).includes(:customer).search(params[:search]).page(params[:page]).order(sort_column + " " + sort_direction)
   end
 
   def show
@@ -76,4 +77,12 @@ class InvoicesController < ApplicationController
   def invoice_params
     params.require(:invoice).permit(:date, :customer_id, :comment, :number, :account_id, :total)
   end
+
+    def sort_column
+     %w[number customers.name date total comment].include?(params[:sort]) ? params[:sort] : "number"
+   end
+
+   def sort_direction
+     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+   end
 end

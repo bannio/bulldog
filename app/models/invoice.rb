@@ -34,4 +34,14 @@ class Invoice < ActiveRecord::Base
       return false
     end
   end
+
+  def self.search(search)
+    if search.present?
+      # where('customer_id in (select id from customers where name ilike :q)', q: "%#{search}%")
+      where('comment ilike :q', q: "%#{search}%")
+
+    else
+      all
+    end
+  end
 end

@@ -34,13 +34,21 @@ Feature: Invoices
     Then I should not see "Business"
     And I should see "Household"
 
+  @undertest
   Scenario: list invoices
     There should be an index list of invoices, [sortable by customer, date]
 
     Given I visit the home page
     And I click on Invoices
     Then I should be on the Invoices page
-    And I should see a New button 
+    And I should see 5 invoices
+    And I should see a New button
+    And There is a search field for comment
+    When I type "coff" in the search field and press enter
+    Then I should see 3 invoices
+
+
+
 
   @javascript
   Scenario: Edit an invoice

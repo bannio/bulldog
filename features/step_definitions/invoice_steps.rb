@@ -42,3 +42,15 @@ When(/^I check one bill and click Update Invoice$/) do
   end
   click_button('Update Invoice')
 end
+
+Then(/^I should see (\d+) invoices$/) do |arg1|
+  (all("table#invoice_table tr").count - 2) == arg1
+end
+
+Then(/^There is a search field for comment$/) do
+  page.has_selector?("#invoices_search")
+end
+
+When(/^I type "(.*?)" in the search field and press enter$/) do |search|
+  fill_in 'search', with: search + '\n'
+end
