@@ -13,4 +13,8 @@ class Account < ActiveRecord::Base
     where(user_id: user.id)
   end
 
+  def include_bank_details?
+    self.include_bank
+  end
+
 end

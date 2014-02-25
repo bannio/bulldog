@@ -4,13 +4,28 @@ class InvoicesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @invoices = Invoice.visible_to(current_user).includes(:customer).search(params[:search]).page(params[:page]).order(sort_column + " " + sort_direction)
+    @invoices = Invoice.visible_to(current_user).includes(:customer).
+                                                customer_filter(params[:invoice_customer_id]).
+                                                search(params[:search]).
+                                                page(params[:page]).
+                                                order(sort_column + " " + sort_direction)
   end
 
   def show
     @invoice = Invoice.find(params[:id])
     @customers = []
     @customers << @invoice.customer
+    @bills = @invoice.bills
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice, @bills, view_context)
+        send_data pdf.render, filename: "invoice_#{@invoice.number}",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   def new

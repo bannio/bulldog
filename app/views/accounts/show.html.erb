@@ -1,8 +1,7 @@
 <% content_for :title do %>Bulldog-Clip | Account<% end %>
-<% content_for :description do %>Sign in to Bulldog-Clip<% end %>
+<% content_for :description do %>User account details<% end %>
 
-<h1>Show Account</h1>
-
+<h1>Account Details</h1>
 <table>
   <tr>
     <td>Name</td><td><%= @account.name %></td>
@@ -13,9 +12,32 @@
   <tr>
     <td>Postcode</td><td><%= @account.postcode %></td>
   </tr>
+  <tr>
+    <td>Include bank details?</td><td><%= @account.include_bank ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <td>Account Name</td><td><%= @account.bank_account_name %></td>
+  </tr>
+  <tr>
+    <td>Bank Name</td><td><%= @account.bank_name %></td>
+  </tr>
+  <tr>
+    <td>Branch Name</td><td><%= @account.bank_address %></td>
+  </tr>
+  <tr>
+    <td>Account Number</td><td><%= @account.bank_account_no %></td>
+  </tr>
+  <tr>
+    <td>Sort Code</td><td><%= @account.bank_sort %></td>
+  </tr>
+  <tr>
+    <td>BIC</td><td><%= @account.bank_bic %></td>
+  </tr>
+  <tr>
+    <td>IBAN</td><td><%= @account.bank_iban %></td>
+  </tr>
 </table>
+<br/>
 
-<ul>
-  <li><%= link_to 'Edit', edit_account_path(@account) %></li>
-  <li><%= link_to 'Change Password', edit_user_registration_path %></li>
-</ul>
+<%= link_to 'Edit', edit_account_path(@account), class: "btn btn-primary" %>
+<%= link_to 'Change Password', edit_user_registration_path, class: "btn btn-primary" %>

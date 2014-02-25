@@ -1,8 +1,11 @@
 // $(document).ready(function(){
 var ready;
 ready = function() {
-  $("input.date_picker").datepicker({ 
-    dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true });
+
+  var customerData        = $('#bill_customer_id').data('customers');
+  var invoiceCustomerData = $('#invoice_customer_id').data('customers');
+  var supplierData        = $('#bill_supplier_id').data('suppliers');
+  var categoryData        = $('#bill_category_id').data('categories');
 
   function format(item) { return item.name || item.text; };
   function text(value) { return value[0].name || ""; };
@@ -22,9 +25,8 @@ ready = function() {
       } 
     };
 
-  var customerData = $('#bill_customer_id').data('customers');
-  var supplierData = $('#bill_supplier_id').data('suppliers');
-  var categoryData = $('#bill_category_id').data('categories');
+  $("input.date_picker").datepicker({ 
+    dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true });
 
   $('#bill_customer_id').select2({
     placeholder: 'Customer',
@@ -40,6 +42,23 @@ ready = function() {
     },
     createSearchChoice: create_choice,
     formatResult: format_result,
+    formatSelection: format
+  });
+
+  $('#invoice_customer_id').select2({
+    placeholder: 'by customer',
+    width: 'resolve',
+    allowClear: true,
+    data: {results: invoiceCustomerData, text: 'name'},
+    initSelection : function (element, callback) {
+        var value = $(invoiceCustomerData).filter(function(index){
+                      return this.id == element.val();
+                    });
+        var data = {id: element.val(), 
+                    text: text(value)};
+        callback(data);
+    },
+    formatResult: format,
     formatSelection: format
   });
 
@@ -80,4 +99,5 @@ ready = function() {
 };
 
 $(document).ready(ready);
-$(document).on('page:change', ready);
+// $(document).on('page:change', ready);
+$(document).on('page:update', ready);

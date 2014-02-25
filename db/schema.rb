@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217135823) do
+ActiveRecord::Schema.define(version: 20140221221928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20140217135823) do
     t.string   "postcode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "include_bank"
+    t.string   "bank_account_name"
+    t.string   "bank_name"
+    t.text     "bank_address"
+    t.string   "bank_account_no"
+    t.string   "bank_bic"
+    t.string   "bank_iban"
+    t.string   "invoice_heading"
+    t.string   "bank_sort"
   end
 
   create_table "bills", force: true do |t|

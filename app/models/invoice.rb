@@ -35,6 +35,14 @@ class Invoice < ActiveRecord::Base
     end
   end
 
+  def self.customer_filter(customer)
+    if customer.present?
+      where(customer_id: customer)
+    else
+      all
+    end
+  end
+
   def self.search(search)
     if search.present?
       # where('customer_id in (select id from customers where name ilike :q)', q: "%#{search}%")

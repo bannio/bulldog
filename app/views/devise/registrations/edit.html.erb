@@ -29,11 +29,15 @@
         <%= f.password_field :current_password, class: 'form-control', placeholder: 'current password' %>
       </div>
     </fieldset>
-    <%= f.submit 'Update', :class => 'button right' %>
+    <%= link_to 'Cancel', :back, class: 'btn btn-warning' %>
+    <%= f.submit 'Update', :class => 'btn btn-primary' %>
   <% end %>
 </div>
 <div class="authform">
 <h3>Cancel Account</h3>
+<fieldset>
 <p>Unhappy? We'll be sad to see you go.</p>
-<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+<%= link_to 'Cancel', :back, class: 'btn btn-warning' %>
+<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-primary' %>
+</fieldset>
 </div>
