@@ -24,6 +24,25 @@ class Bill < ActiveRecord::Base
     category.name
   end
 
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << %w{Date Customer Supplier Description Amount Invoice}
+      all.each do |bill|
+        row = [bill.date, bill.customer_name, bill.supplier_name, 
+              bill.description, bill.amount, bill.invoice_id]
+        csv << row
+      end     
+    end
+  end
+
+  # def self.import(file)
+  #   CSV.foreach(file.path, headers: true) do |row|
+  #     bill = new
+  #     bill.attributes = row.to_hash.slice(*accessible_attributes)
+  #     bill.save!
+  #   end
+  # end 
+
   private
 
   def create_customer

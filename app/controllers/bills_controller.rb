@@ -3,6 +3,12 @@ class BillsController < ApplicationController
 
   def index
     @bills = current_account.bills.uninvoiced.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv  { @bills = current_account.bills.includes(:customer, :supplier, :category)
+                    send_data @bills.to_csv }
+    end
   end
 
   def new
