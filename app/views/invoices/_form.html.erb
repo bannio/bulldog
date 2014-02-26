@@ -3,9 +3,16 @@
   <%= form_group_for f, :date, label: false do %>
     <%= f.text_field :date, class: "date_picker" %>
   <% end %>
-  <%= form_group_for f, :customer_id, label: false do %>
-    <%= f.collection_select :customer_id, @customers, :id, :name %>
+  <% if params[:action] == 'new' %>
+    <%= form_group_for f, :customer_id, label: false do %>
+      <%= f.collection_select :customer_id, @customers, :id, :name %>
+    <% end %>
+  <% else %>
+    <div class="input-group">
+      <p><%= @invoice.customer_name %></p>
+    </div>
   <% end %>
+
   <%= form_group_for f, :comment, label: false do %>
     <%= f.text_area :comment %>
   <% end %>

@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.visible_to(current_user).includes(:customer).
-                                                customer_filter(params[:invoice_customer_id]).
+                                                customer_filter(params[:inv_customer_id]).
                                                 search(params[:search]).
                                                 page(params[:page]).
                                                 order(sort_column + " " + sort_direction)

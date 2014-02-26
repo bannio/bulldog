@@ -2,7 +2,7 @@ class BillsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @bills = current_account.bills.uninvoiced.page(params[:page])
+    @bills = current_account.bills.uninvoiced.includes(:customer, :supplier, :category).page(params[:page])
 
     respond_to do |format|
       format.html

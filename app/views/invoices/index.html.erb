@@ -1,17 +1,17 @@
 <% content_for :title do %>Bulldog-Clip | Invoices<% end %>
 <% content_for :description do %>Bulldog-Clip invoices index<% end %>
 <h1>Invoices</h1>
-
+<%= form_tag invoices_path, method: 'get', id: "invoices_search" do %>
 <table class="table table-hover table-condensed" id="invoice_table">
   <thead>
-    <tr><%= form_tag invoices_path, method: 'get', class: "navbar-search pull-right", id: "invoices_search" do %>
+    <tr>
     <td></td>
     <td>Filter:</td>
-    <td><%= hidden_field_tag :invoice_customer_id, params[:invoice_customer_id], data: {customers: get_customer_data} %> </td>
+    <td><%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %> </td>
     <td><%= text_field_tag :search, params[:search], class: "search-query", placeholder: 'text within comment' %></td>
     <td><button class="btn btn-primary btn-small" type="submit" value="Refresh"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
     <%#= submit_tag "Refresh", name: nil, class: "btn btn-primary btn-small" %></td>
-    <% end %>
+    
     </tr>
     <tr>
       <th><%= sortable "number", "No." %> <%= arrow "number" %></th>
@@ -34,6 +34,7 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
 <%= paginate @invoices %>
 

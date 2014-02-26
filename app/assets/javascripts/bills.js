@@ -3,7 +3,7 @@ var ready;
 ready = function() {
 
   var customerData        = $('#bill_customer_id').data('customers');
-  var invoiceCustomerData = $('#invoice_customer_id').data('customers');
+  var invCustomerData     = $('#inv_customer_id').data('customers');
   var supplierData        = $('#bill_supplier_id').data('suppliers');
   var categoryData        = $('#bill_category_id').data('categories');
 
@@ -45,13 +45,13 @@ ready = function() {
     formatSelection: format
   });
 
-  $('#invoice_customer_id').select2({
+  $('#inv_customer_id').select2({
     placeholder: 'by customer',
     width: 'resolve',
     allowClear: true,
-    data: {results: invoiceCustomerData, text: 'name'},
+    data: {results: invCustomerData, text: 'name'},
     initSelection : function (element, callback) {
-        var value = $(invoiceCustomerData).filter(function(index){
+        var value = $(invCustomerData).filter(function(index){
                       return this.id == element.val();
                     });
         var data = {id: element.val(), 
