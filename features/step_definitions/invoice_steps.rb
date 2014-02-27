@@ -33,7 +33,7 @@ Given(/^I am on the edit page for this invoice$/) do
 end
 
 Then(/^I should see (\d+) bills?$/) do |arg1|
-  (all("table#bill_table tr").count - 2) == arg1
+  expect(all("table#bill_table tr").count - 2).to eq arg1
 end
 
 When(/^I check one bill and click Update Invoice$/) do
@@ -44,7 +44,7 @@ When(/^I check one bill and click Update Invoice$/) do
 end
 
 Then(/^I should see (\d+) invoices$/) do |arg1|
-  (all("table#invoice_table tr").count - 2) == arg1
+  expect(all("table#invoice_table tr").count - 2).to eq arg1
 end
 
 Then(/^There is a search field for comment$/) do
@@ -52,5 +52,24 @@ Then(/^There is a search field for comment$/) do
 end
 
 When(/^I type "(.*?)" in the search field and press enter$/) do |search|
-  fill_in 'search', with: search + '\n'
+  fill_in 'search', with: search
+  click_button('Refresh')
+end
+
+Given /^I have the following invoices$/ do |table|
+  #puts table.raw
+  table.raw.each do |row|
+      number   = row[0]
+      customer = Customer.find_or_create_by(name: row[1], account_id: @account.id)
+      comment  = row[2]
+      date     = row[3]
+      total    = row[4]
+      invoice  = FactoryGirl.create(:invoice,
+                        account_id: @account.id,     # assumes user with an account already called
+                        number: number,
+                        customer_id: customer.id,
+                        date: date, 
+                        comment: comment,
+                        total: total)
+  end
 end

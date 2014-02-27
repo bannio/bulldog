@@ -97,9 +97,35 @@ Feature: In order to track my costs
     And I should be on the Bills page
     And I should not see "Coffee"
 
-
-
-
-
-
+  Scenario: I can sort bills by date, supplier, category etc.
+    Default sort order is by date with youngest at the top.
+    Note that the sort order is case sensitive so capitals may come first.
+    Given I have the following bills
+    # customer  | supplier | category | date       | description        | amount |
+    | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
+    | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
+    | Business  | BigCo    | Mileage  | 10-12-2012 | business trip      | 100.00 |
+    | Household | Asda     | Food     | 14-11-2012 | more coffee        | 4.00   |
+    | Business  | Asda     | Food     | 13-11-2012 | coffee biscuits    | 5.00   | 
+    And I am on the bills page
+    Then row 1 should include "Tickets"
+    And row 2 should include "Coffee"
+    When I click on Date
+    Then row 1 should include "coffee biscuits"
+    And row 2 should include "more coffee"
+    When I click on Category
+    Then row 1 should include "Tickets"
+    And row 5 should include "business trip"
+    When I click on Description
+    Then row 1 should include "Coffee"
+    And row 5 should include "more coffee"
+    When I click on Amount
+    Then row 1 should include "more coffee"
+    And row 5 should include "business trip"
+    When I click on Supplier
+    Then row 1 should include "Asda"
+    And row 4 should include "BigCo"
+    When I click on Customer
+    Then row 1 should include "Business"
+    And row 3 should include "Household"
 

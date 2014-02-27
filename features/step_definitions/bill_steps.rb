@@ -153,3 +153,9 @@ Then(/^I should see "(.*?)" in the "(.*?)" field$/) do |text, field|
   find_field(field).value.should eq text
 end
 
+Then(/^row (\d+) should include "(.*?)"$/) do |row, text|
+  within("tbody") do
+    expect(find("tr:nth-child(#{row.to_i})")).to have_content(text)
+  end
+end
+

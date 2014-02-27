@@ -1,8 +1,11 @@
 class BillsController < ApplicationController
   before_action :authenticate_user!
+  helper_method :sort_column, :sort_direction
 
   def index
-    @bills = current_account.bills.uninvoiced.includes(:customer, :supplier, :category).page(params[:page])
+    @bills = current_account.bills.uninvoiced.includes(:customer, :supplier, :category).
+                                              page(params[:page]).
+                                              order(sort_column + " " + sort_direction)
 
     respond_to do |format|
       format.html
@@ -63,4 +66,12 @@ class BillsController < ApplicationController
     params[:bill][:new_customer] =  params[:bill][:customer_id] if params[:bill][:customer_id].to_i == 0
     params[:bill][:new_category] =  params[:bill][:category_id] if params[:bill][:category_id].to_i == 0
   end
+
+  def sort_column
+     %w[date customers.name suppliers.name categories.name description amount].include?(params[:sort]) ? params[:sort] : "date"
+   end
+
+   def sort_direction
+     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+   end
 end

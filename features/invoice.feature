@@ -34,9 +34,17 @@ Feature: Invoices
     Then I should not see "Business"
     And I should see "Household"
 
-  @undertest
   Scenario: list invoices
-    There should be an index list of invoices, [sortable by customer, date]
+    There should be an index list of invoices, sortable by customer, date etc.
+    The default order is youngest number first.
+
+    Given I have the following invoices
+    # no | customer | comment     | date       | total  |
+    | 1 | Household | A invoice   | 10-12-2012 | 5.46   |
+    | 2 | Business  | B invoice   | 12-12-2012 | 46.00  |
+    | 3 | Business  | C invoice B | 10-12-2012 | 100.00 |
+    | 4 | Household | D invoice   | 10-11-2012 | 4.00   |
+    | 5 | Business  | E invoice   | 10-11-2012 | 5.00   | 
 
     Given I visit the home page
     And I click on Invoices
@@ -44,11 +52,22 @@ Feature: Invoices
     And I should see 5 invoices
     And I should see a New button
     And There is a search field for comment
-    When I type "coff" in the search field and press enter
-    Then I should see 3 invoices
-
-
-
+    When I type "B" in the search field and press enter
+    Then I should see 2 invoices
+    When I type "" in the search field and press enter
+    Then I should see 5 invoices
+    When I click on No.
+    Then row 1 should include "A invoice"
+    And row 5 should include "E invoice"
+    When I click on Comment
+    Then row 1 should include "A invoice"
+    And row 5 should include "E invoice"
+    When I click on Date
+    Then row 1 should include "E invoice"
+    And row 5 should include "B invoice"
+    When I click on Amount
+    Then row 1 should include "D invoice"
+    And row 5 should include "C invoice"
 
   @javascript
   Scenario: Edit an invoice

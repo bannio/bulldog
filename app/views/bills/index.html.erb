@@ -5,12 +5,12 @@
 <table class="table table-hover table-condensed">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Customer</th>
-      <th>Supplier</th>
-      <th>Category</th>
-      <th>Description</th>
-      <th>Amount</th>
+      <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+      <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+      <th><%= sortable "suppliers.name", "Supplier" %> <%= arrow "suppliers.name" %></th>
+      <th><%= sortable "categories.name", "Category" %> <%= arrow "categories.name" %></th>
+      <th><%= sortable "description", "Description" %> <%= arrow "description" %></th>
+      <th><%= sortable "amount", "Amount" %> <%= arrow "amount" %></th>
     </tr>
   </thead>
   <tbody>
