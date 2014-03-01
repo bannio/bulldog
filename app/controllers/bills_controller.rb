@@ -54,6 +54,21 @@ class BillsController < ApplicationController
     end
   end
 
+  def category_chart
+    render json: Bill.visible_to(current_user).
+                      includes(:category).
+                      group("categories.name").
+                      references(:category).
+                      order("categories.name").
+                      sum(:amount)
+  end
+
+  def group_by_day_chart
+    render json: Bill.visible_to(current_user).
+                      group_by_month(:date).
+                      sum(:amount)
+  end
+
   private
   def bill_params
     params.require(:bill).permit(:account_id, :customer_id, :supplier_id, 

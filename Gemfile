@@ -27,6 +27,8 @@ gem 'devise'
 gem 'figaro'
 gem 'prawn'
 gem 'kaminari'
+gem 'groupdate'
+gem 'chartkick'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

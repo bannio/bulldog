@@ -12,7 +12,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.visible_to(current_user).find(params[:id])
     @customers = []
     @customers << @invoice.customer
     @bills = @invoice.bills
@@ -66,7 +66,7 @@ class InvoicesController < ApplicationController
     if @invoice.save
       @bills.each do |bill|
             bill.update_attribute(:invoice_id, @invoice.id)
-            bill.save
+            # bill.save
           end
       redirect_to invoice_path(@invoice)
     else
@@ -94,7 +94,7 @@ class InvoicesController < ApplicationController
   end
 
     def sort_column
-     %w[number customers.name date total comment].include?(params[:sort]) ? params[:sort] : "number"
+     %w[number customers.name date total comment].include?(params[:sort]) ? params[:sort] : "id"
    end
 
    def sort_direction

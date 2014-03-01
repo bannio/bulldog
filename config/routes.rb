@@ -12,6 +12,9 @@ Bulldog::Application.routes.draw do
   resources :bills, except: :show
   resources :customers, except: :show
   resources :invoices
+
+  get 'bills/category_chart' => 'bills#category_chart', as: :category_chart
+  get 'bills/group_by_day_chart' => 'bills#group_by_day_chart', as: :group_by_day_chart
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
