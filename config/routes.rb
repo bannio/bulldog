@@ -1,4 +1,5 @@
 Bulldog::Application.routes.draw do
+
   get "customers/index"
 
   as :user do
@@ -6,15 +7,17 @@ Bulldog::Application.routes.draw do
   end
   devise_for :users, path: "", controllers: {confirmations: 'confirmations'}
 
-  # get 'accounts/new' => 'accounts#new', as: :new_account
-
   resources :accounts
   resources :bills, except: :show
   resources :customers, except: :show
   resources :invoices
+  resources :reports, only: [:new, :create]
 
-  get 'bills/category_chart' => 'bills#category_chart', as: :category_chart
-  get 'bills/group_by_day_chart' => 'bills#group_by_day_chart', as: :group_by_day_chart
+
+  # get 'bills/category_chart' => 'bills#category_chart', as: :category_chart
+  # get 'bills/group_by_day_chart' => 'bills#group_by_day_chart', as: :group_by_day_chart
+  # get 'bills/last_year_chart' => 'bills#last_year_chart', as: :last_year_chart
+  # get 'bills/this_year_chart' => 'bills#this_year_chart', as: :this_year_chart
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

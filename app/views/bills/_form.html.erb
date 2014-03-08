@@ -13,7 +13,7 @@
   <%= form_group_for f, :category_id, label: false do %>
     <%= f.hidden_field :category_id, data: {categories: get_category_data} %>
   <% end %>
-  <%= form_group_for f, :cdescription, label: false do %>
+  <%= form_group_for f, :description, label: false do %>
     <%= f.text_field :description, placeholder: 'description', class: "form-control" %>
   <% end %>
   <%= form_group_for f, :amount, label: false do %>

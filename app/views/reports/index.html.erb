@@ -1,0 +1,22 @@
+<h1>Reports#index</h1>
+<% content_for :title do %>Bulldog-Clip | Reports<% end %>
+<% content_for :description do %>Bulldog-Clip reports index<% end %>
+
+<%#= pie_chart category_chart_path %>
+
+<%#= column_chart [
+  {name: "Last Year", data: Bill.visible_to(current_user).last_year_by_monthly_sum},
+  {name: "This Year", data: Bill.visible_to(current_user).this_year_by_monthly_sum}
+] %>
+
+<%= form_for @report do |f| %>
+  <%= f.hidden_field :account_id %>
+  <%= f.text_field :from_date, class: "date_picker" %>
+  <%= f.text_field :to_date, class: "date_picker" %>
+  <%= f.collection_select :customer_id, Customer.visible_to(current_user).all, :id, :name %>
+  <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).all, :id, :name %>
+  <%= f.collection_select :category_id, Category.visible_to(current_user).all, :id, :name %>
+  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+
+  <%= link_to "Cancel", reports_path, class: "btn btn-warning"  %>
+<% end %> <!-- end of form -->
