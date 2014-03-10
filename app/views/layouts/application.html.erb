@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <header>
+    <header role="navigation">
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
@@ -18,6 +18,8 @@
        <%# render 'layouts/messages' %>
        <%= yield %>
     </main>
+    <footer role="contentinfo">
     <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

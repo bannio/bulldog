@@ -10,27 +10,75 @@ h3, p {
   color: $text-color;
 }
 
-/*font sizes*/
-h1 {
-  margin: $no-margin;
-  // font-size: 2.5em;
-  font-size: $font-size-h1;
-}
 
-h2 {
-  // font-size: 2em;
-  font-size: $font-size-h2;
-}
 
-h3 {
-  // font-size: 1.5em;
-  font-size: $font-size-h3;
+//Para Text Resize Responsively
+@media(max-width: $screen-xs){
+  p {font-size: 12px} //12px when screen is below 480px
 }
-
-p {
-  font-size: $font-size-base;
+@media(min-width: $screen-xs){
+  p {font-size: 12px} //12px when screen is below 768px
 }
+@media(min-width: $screen-sm){
+  p {font-size: 14px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  p {font-size: 16px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  p {font-size: 18px} //18px when screen is above 1200px
+  } 
 
+//H1 text resize
+@media(max-width: $screen-xs){
+  h1 {font-size: 16px} //12px when screen is below 480px
+}
+@media(min-width: $screen-xs){
+  h1 {font-size: 22px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  h1 {font-size: 30px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  h1 {font-size: 36px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  h1 {font-size: 40px} //18px when screen is above 1200px
+  } 
+
+//H2 text resize
+@media(max-width: $screen-xs){
+  h2 {font-size: 16px} //12px when screen is below 480px
+}
+@media(min-width: $screen-xs){
+  h2 {font-size: 20px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  h2 {font-size: 24px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  h2 {font-size: 28px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  h2 {font-size: 30px} //18px when screen is above 1200px
+  } 
+
+//H3 text resize
+@media(max-width: $screen-xs){
+  h3 {font-size: 12px} //12px when screen is below 480px
+}
+@media(min-width: $screen-xs){
+  h3 {font-size: 18px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  h3 {font-size: 26px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  h3 {font-size: 30px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  h3 {font-size: 30px} //18px when screen is above 1200px
+  } 
 
 /*BODY MAIN*/
 
@@ -98,6 +146,11 @@ main {
   margin: $no-margin;
 }
 
+.herotitle {
+  margin: 0 auto; 
+}
+
+
 .banner-logo {
   // padding: 3em 0em 0em 0em;
 
@@ -106,26 +159,35 @@ main {
 
 
 .banner-logo-text {
-  padding: 4% 0 0 0;
+  padding: 5% 0 0 0;
 }
 
 .strapline {
-  padding: 4% 0em 0em 2em;
+  padding: 1% 0 0 2%;
   margin: $no-margin;
+}
+
+.strapline h1 {
+  margin: 0 0 2% 0;
 }
 
 .video {
-  margin-top: -30px; 
-  margin-bottom: -60px; 
-}
-
-.banner-btns {
-  padding: 1em 0em 0em 0em;
+  // margin-top: 0%; 
+  margin-bottom: -10%; 
 }
 
 .lower-banner {
-  padding-top: 4em;
+  padding-top: 10%;
   margin: $no-margin;
+}
+
+.lower-banner h3 {
+  margin-top: 1%;
+}
+
+.banner-btns {
+  padding: 1% 0em;
+  text-align: center;
 }
 
 
@@ -188,8 +250,12 @@ main {
   color: $text-color;
   text-shadow: none;
   text-align: left;
+  bottom: -50px;
 }
 
+.carousel-inner {
+   margin-bottom: 50px;
+}
 
 /*pricing*/
 

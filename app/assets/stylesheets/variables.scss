@@ -98,11 +98,12 @@ $font-sans-serif: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-se
 $font-serif:  Georgia, "Times New Roman", Times, serif;
 $font-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$font-size-base:          14px;
-$font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
-$font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
-$font-size-h3:            ceil(($font-size-base * 1.7)); // ~24px
-$font-size-h4:            ceil(($font-size-base * 1.25)); // ~18px
+
+$font-size-base:          12px;
+$font-size-h1:            floor(($font-size-base * 1.75)); // ~18px
+$font-size-h2:            floor(($font-size-base * 1.5)); // ~16px
+$font-size-h3:            ceil(($font-size-base * 1.25)); // ~14px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~14px
 
 
 //NAVBAR
