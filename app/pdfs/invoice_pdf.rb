@@ -119,13 +119,13 @@ class InvoicePdf < Prawn::Document
 
   def payment_table
     pay_table = []
-    pay_table = pay_table << ["Account Name","#{@invoice.account.bank_account_name}"] if @invoice.account.bank_account_name
-    pay_table = pay_table << ["Bank","#{@invoice.account.bank_name}"] if @invoice.account.bank_name
-    pay_table = pay_table << ["Branch","#{@invoice.account.bank_address}"] if @invoice.account.bank_address
-    pay_table = pay_table << ["Sort Code:","#{@invoice.account.bank_sort}"] if @invoice.account.bank_sort
-    pay_table = pay_table << ["Account No:","#{@invoice.account.bank_account_no}"] if @invoice.account.bank_account_no
-    pay_table = pay_table << ["BIC:","#{@invoice.account.bank_bic}"] if @invoice.account.bank_bic
-    pay_table = pay_table << ["IBAN:","#{@invoice.account.bank_iban}"] if @invoice.account.bank_iban
+    pay_table = pay_table << ["Account Name","#{@invoice.account.bank_account_name}"] if @invoice.account.bank_account_name.present?
+    pay_table = pay_table << ["Bank","#{@invoice.account.bank_name}"] if @invoice.account.bank_name.present?
+    pay_table = pay_table << ["Branch","#{@invoice.account.bank_address}"] if @invoice.account.bank_address.present?
+    pay_table = pay_table << ["Sort Code:","#{@invoice.account.bank_sort}"] if @invoice.account.bank_sort.present?
+    pay_table = pay_table << ["Account No:","#{@invoice.account.bank_account_no}"] if @invoice.account.bank_account_no.present?
+    pay_table = pay_table << ["BIC:","#{@invoice.account.bank_bic}"] if @invoice.account.bank_bic.present?
+    pay_table = pay_table << ["IBAN:","#{@invoice.account.bank_iban}"] if @invoice.account.bank_iban.present?
   end
 
   def payment_details

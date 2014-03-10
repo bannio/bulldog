@@ -13,6 +13,8 @@ class Bill < ActiveRecord::Base
   before_destroy :check_for_invoice
 
   scope :uninvoiced, -> {where(invoice_id: nil)}
+  scope :this_year, -> {where(date: Time.now.all_year)}
+  scope :last_year, -> {where(date: Time.now.prev_year.all_year)}
 
   def customer_name
     customer.name
@@ -42,6 +44,24 @@ class Bill < ActiveRecord::Base
   #     bill.save!
   #   end
   # end 
+
+  def self.last_year_by_monthly_sum
+    last_year.monthly_sum
+  end
+
+  def self.this_year_by_monthly_sum
+    this_year.monthly_sum
+  end
+
+  # If timestamp is required for Y-axis then you can use groupdate functions e.g. group_by_month
+  # This monthly_sum method returns integers 1 to 12 to represent months so that multiple years can be laid
+  # over each other in chartkick charts. Note that this is only available for bar or column charts.
+  def self.monthly_sum
+    order("cast(EXTRACT(month FROM date) as integer)"). 
+    group("cast(EXTRACT(month FROM date) as integer)").
+    sum(:amount)
+  end
+
 
   private
 

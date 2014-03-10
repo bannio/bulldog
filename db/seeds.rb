@@ -18,7 +18,7 @@ puts 'New user demo@example.com created: '
 
 puts 'Setting up customers'
 @home = Customer.create(account_id: @account.id, name: 'Home', address: "My House,\n Hometown,\n Norfolk", postcode: 'AB1 2CD')
-@business = Customer.create(account_id: @account.id, name: 'Business', address: "The Office,\n Big Town\n, Norfolk", postcode: 'AB2 1DC')
+@business = Customer.create(account_id: @account.id, name: 'Business', address: "The Office,\n Big Town,\n Norfolk", postcode: 'AB2 1DC')
 
 puts 'Setting up suppliers'
 s1 = Supplier.create(account_id: @account.id, name: 'Airport parking')

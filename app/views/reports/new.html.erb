@@ -1,0 +1,65 @@
+<h1>Analysis</h1>
+<% content_for :title do %>Bulldog-Clip | Reports<% end %>
+<% content_for :description do %>Bulldog-Clip new report<% end %>
+
+<%#= pie_chart category_chart_path %>
+
+<%#= column_chart [
+  {name: "Last Year", data: Bill.visible_to(current_user).last_year_by_monthly_sum},
+  {name: "This Year", data: Bill.visible_to(current_user).this_year_by_monthly_sum}
+] %>
+
+<ul>
+  <% @report.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+
+<%= form_for @report do |f| %>
+  <%= f.hidden_field :account_id %>
+  <%= f.label :from_date %>
+  <%= f.text_field :from_date, class: "date_picker" %>
+  <%= f.label :to_date %>
+  <%= f.text_field :to_date, class: "date_picker" %>
+  <%= f.collection_select :customer_id, Customer.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
+  <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
+  <%= f.collection_select :category_id, Category.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
+  <%= f.submit 'Submit', :class => 'btn btn-primary', data: {toggle: "tooltip"}, title: "Submit filter choices to refresh data." %>
+  
+  <%= link_to "Clear", new_report_path, class: "btn btn-warning", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+  <%= f.submit 'Export', class: 'btn btn-primary', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
+<% end %> <!-- end of form -->
+
+<%= line_chart @report.bills.group_by_month(:date).count %>
+
+<%= column_chart [
+  {name: "Last Year", data: @report.bills.last_year_by_monthly_sum},
+  {name: "This Year", data: @report.bills.this_year_by_monthly_sum}
+] %>
+
+<%= pie_chart @report.bills.group("categories.name").references(:category).
+                      order("categories.name").
+                      sum(:amount) %>
+
+<table class="table" id="bill_table">
+  <tr>
+    <th>Date</th>
+    <th>Supplier</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th style="text-align: right">Amount</th>
+  </tr>
+    <% @bills.each do |bill| %>
+        <tr>
+          <td><%= bill.date %></td>
+          <td><%= bill.supplier_name %></td>
+          <td><%= bill.category_name %></td>
+          <td><%= bill.description %></td>
+          <td style="text-align: right"><%= number_to_currency(bill.amount) %></td>
+        </tr>
+    <% end %>
+</table>
+
+<%= paginate @bills %>
+
+
