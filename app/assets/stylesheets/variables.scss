@@ -1,0 +1,156 @@
+// THIS IS WHERE ALL BOOTSTRAP SASS VARIABLE OVERRIDES CAN GO //
+
+
+// COLORS
+
+$white: #ffffff;
+$black: #000000;
+$dark-grey: #252422;
+
+
+// main backdrop color
+$background-lt-color: #fffcf5;
+
+// banner color
+$background-dk-color: #252422;
+
+$gradient-color: #f1ebe1;
+
+$accent-color: #a13b00;
+
+$text-color: #3b3a3e;
+
+$text-color-lt: #fffcf5;
+
+// subnav color
+$background-md-color: #f2eadf;
+$border: 2px $background-dk-color solid;
+
+// $text-color-dk: 
+
+$link-color-dk: #252422;
+$link-color-lt: #fffcf5;
+
+$link-hover-color:      darken($link-color-dk, 15%);
+
+
+$brand-primary:         #428bca !default;
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+
+
+// MEDIA QUERY BREAKPOINTS
+// Phone
+$screen-xs:                  480px !default;
+$screen-xs-min:              $screen-xs !default;
+$screen-phone:               $screen-xs-min !default;
+
+// Small screen / tablet
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+$screen-tablet:              $screen-sm-min !default;
+
+// Medium screen / desktop
+$screen-md:                  992px !default;
+$screen-md-min:              $screen-md !default;
+$screen-desktop:             $screen-md-min !default;
+
+// Large screen / wide desktop
+$screen-lg:                  1200px !default;
+$screen-lg-min:              $screen-lg !default;
+$screen-lg-desktop:          $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
+
+
+//CONTAINTER SIZES
+//## Define the maximum width of `.container` for different screen sizes.
+$grid-gutter-width:         30px !default;
+// Small screen / tablet
+// $container-tablet:             ((720px + $grid-gutter-width)) !default;
+// //** For `$screen-sm-min` and up.
+// $container-sm:                 $container-tablet !default;
+
+// // Medium screen / desktop
+// $container-desktop:            ((940px + $grid-gutter-width)) !default;
+// //** For `$screen-md-min` and up.
+// $container-md:                 $container-desktop !default;
+
+// // Large screen / wide desktop
+$container-lg-desktop:      ((1140px + $grid-gutter-width));
+//** For `$screen-lg-min` and up.
+// $container-lg:                 $container-large-desktop !default;
+
+// // MARGINS and PADDING
+
+// centered
+$centered: 0 auto;
+$no-margin: 0 0;
+
+// TYPOGRAPHY
+
+$font-sans-serif: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-serif:  Georgia, "Times New Roman", Times, serif;
+$font-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$font-size-base:          14px;
+$font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
+$font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
+$font-size-h3:            ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~18px
+
+
+//NAVBAR
+$navbar-min-height: 50px;
+$navbar-max-height: 60px;
+$navbar-margin-bottom: 0px;
+
+
+// BUTTONS
+
+
+$btn-font-weight:                normal;
+
+$btn-default-color:              #333;
+$btn-default-bg:                 #fff;
+$btn-default-border:             #ccc;
+
+$btn-primary-color:              #fff;
+$btn-primary-bg:                 $brand-primary;
+$btn-primary-border:             darken($btn-primary-bg, 5%);
+
+$btn-success-color:              #fff;
+$btn-success-bg:                 $brand-success;
+$btn-success-border:             darken($btn-success-bg, 5%);
+
+$btn-info-color:                 #fff;
+$btn-info-bg:                    $brand-info;
+$btn-info-border:                darken($btn-info-bg, 5%);
+
+$btn-warning-color:              #fff;
+$btn-warning-bg:                 $brand-warning;
+$btn-warning-border:             darken($btn-warning-bg, 5%);
+
+$btn-danger-color:               #fff;
+$btn-danger-bg:                  $brand-danger;
+$btn-danger-border:              darken($btn-danger-bg, 5%);
+
+
+// DROP SHADOWS
+// Drop shadows
+//
+// Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
+//   supported browsers that have box shadow capabilities now support the
+//   standard `box-shadow` property.
+
+
+// FORMS
+
+// LAYOUT
+
+
