@@ -1,0 +1,202 @@
+// THIS IS WHERE ALL BOOTSTRAP SASS MIXIN OVERRIDES CAN GO //
+// MY MIXINS
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+// Note: Deprecated $screen-xs and $screen-phone as of v3.0.1, and $screen-xs-min as of v3.2.0
+$screen-xs:                  480px !default;
+$screen-xs-min:              $screen-xs !default;
+$screen-phone:               $screen-xs-min !default;
+
+// Small screen / tablet
+// Note: Deprecated $screen-sm and $screen-tablet as of v3.0.1
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+$screen-tablet:              $screen-sm-min !default;
+
+// Medium screen / desktop
+// Note: Deprecated $screen-md and $screen-desktop as of v3.0.1
+$screen-md:                  992px !default;
+$screen-md-min:              $screen-md !default;
+$screen-desktop:             $screen-md-min !default;
+
+// Large screen / wide desktop
+// Note: Deprecated $screen-lg and $screen-lg-desktop as of v3.0.1
+$screen-lg:                  1200px !default;
+$screen-lg-min:              $screen-lg !default;
+$screen-lg-desktop:          $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+$grid-columns:              12 !default;
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:         30px !default;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint:     $screen-sm-min !default;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+$container-tablet:             ((720px + $grid-gutter-width)) !default;
+//** For `$screen-sm-min` and up.
+$container-sm:                 $container-tablet !default;
+
+// Medium screen / desktop
+$container-desktop:            ((940px + $grid-gutter-width)) !default;
+//** For `$screen-md-min` and up.
+$container-md:                 $container-desktop !default;
+
+// Large screen / wide desktop
+$container-large-desktop:      ((1140px + $grid-gutter-width)) !default;
+//** For `$screen-lg-min` and up.
+$container-lg:                 $container-large-desktop !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// RESPONSIVE LAYOUT
+
+@mixin feature-img {
+
+}
+
+
+
+// BOOTSTRAP MIXINS
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+          box-shadow: $shadow;
+}
+
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}
+
+
+// Responsive image
+//
+// Keep images from scaling beyond the width of their parents.
+
+@mixin img-responsive($display: block) {
+  display: $display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+// Button variants
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: $color;
+    background-color: darken($background, 8%);
+        border-color: darken($border, 12%);
+  }
+  .open & { &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 8%);
+        border-color: darken($border, 12%);
+  } }
+  &:active,
+  &.active {
+    background-image: none;
+  }
+  .open & { &.dropdown-toggle {
+    background-image: none;
+  } }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+
+  .badge {
+    color: $background;
+    background-color: $color;
+  }
+}
+
+// Button sizes
+// -------------------------
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
+
+// Pagination
+// -------------------------
+@mixin pagination-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {
+  > li {
+    > a,
+    > span {
+      padding: $padding-vertical $padding-horizontal;
+      font-size: $font-size;
+    }
+    &:first-child {
+      > a,
+      > span {
+        @include border-left-radius($border-radius);
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        @include border-right-radius($border-radius);
+      }
+    }
+  }
+}

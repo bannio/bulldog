@@ -1,0 +1,227 @@
+/*TEXT*/
+
+h1, h2 {
+  font-family: $font-sans-serif;
+  color: $accent-color;
+}
+
+h3, p {
+  font-family: $font-sans-serif;
+  color: $text-color;
+}
+
+/*font sizes*/
+h1 {
+  margin: $no-margin;
+  // font-size: 2.5em;
+  font-size: $font-size-h1;
+}
+
+h2 {
+  // font-size: 2em;
+  font-size: $font-size-h2;
+}
+
+h3 {
+  // font-size: 1.5em;
+  font-size: $font-size-h3;
+}
+
+p {
+  font-size: $font-size-base;
+}
+
+
+/*BODY MAIN*/
+
+body {
+  background-color: $background-lt-color;
+  padding: 0;
+  margin: $no-margin;
+}
+
+main { 
+  padding-top: 50px; 
+  background-color: $background-lt-color;
+}
+
+.row {
+  max-width: $container-lg-desktop;
+  margin: $centered;
+}
+
+.btn-info {
+  color: $white;
+  background-color: $btn-info-bg;
+  border-color: $btn-info-border;
+}
+
+
+.btn-success {
+  color: $white;
+  background-color: $btn-success-bg;
+  border-color: $btn-success-border;
+}
+
+/*NAVBAR*/
+
+.navbar {
+  max-height: $navbar-max-height;
+  min-height: $navbar-min-height;
+  margin-bottom: $navbar-margin-bottom;
+}
+
+.navbar-fixed-top {
+  padding: 0.6em 2em 0 2em;
+}
+
+.navbar-logo {
+  margin: 0em 0em;
+  padding: 0em 0em;
+}
+
+.navbar-img {
+  margin: auto 0 auto auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.navbar-items {
+  max-width: $container-lg-desktop;
+  // margin: $centered;
+}
+
+
+/*BANNER*/
+.top-banner {
+  background-color: $background-dk-color;
+  margin: $no-margin;
+}
+
+.banner-logo {
+  // padding: 3em 0em 0em 0em;
+
+  margin: 20% auto 0 auto;
+}
+
+
+.banner-logo-text {
+  padding: 4% 0 0 0;
+}
+
+.strapline {
+  padding: 4% 0em 0em 2em;
+  margin: $no-margin;
+}
+
+.video {
+  margin-top: -30px; 
+  margin-bottom: -60px; 
+}
+
+.banner-btns {
+  padding: 1em 0em 0em 0em;
+}
+
+.lower-banner {
+  padding-top: 4em;
+  margin: $no-margin;
+}
+
+
+/*SUB NAVBAR*/
+.subnav {
+  background-color: $background-md-color;
+  border-top: $border;
+  border-bottom: $border;
+
+}
+
+.subnav-item {
+  color: $link-color-dk;
+  margin: $centered;
+}
+
+
+
+/*FEATURES*/
+.feature {
+  margin: $centered;
+}
+
+.feature .row {
+  padding: 2em 0em;
+}
+
+.gradient {
+  /* can be treated like a fallback */
+  background-color: $background-lt-color;
+  /* will be "on top", if browser supports it */
+  background-image: -webkit-linear-gradient(bottom, $gradient-color 0%, $background-lt-color 27%);
+}
+
+.carousel {
+  width: 80%;
+  margin: $centered;
+}
+
+.carousel-control.left {
+  background-image: none;
+}
+
+.carousel-control.right {
+  
+  background-image: none;
+}
+
+.carousel-indicators li {
+  border: 1px solid $link-color-dk;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: none;
+}
+.carousel-indicators .active {
+  background-color: $link-color-dk;
+}
+
+.carousel-caption {
+  color: $text-color;
+  text-shadow: none;
+  text-align: left;
+}
+
+
+/*pricing*/
+
+.pricing {
+  margin: 2em auto;
+}
+
+/*FOOTER*/
+
+footer {
+  background-color: $background-dk-color;
+}
+
+footer p {
+  color: $text-color-lt;
+  text-align: center;
+  margin: 1em 0;
+}
+
+.footer-links {
+  margin: 2em 0;
+  color: $link-color-lt;
+}
+
+
+
+
+// Positioning
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
