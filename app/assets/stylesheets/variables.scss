@@ -98,18 +98,22 @@ $font-sans-serif: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-se
 $font-serif:  Georgia, "Times New Roman", Times, serif;
 $font-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$font-size-base:          14px;
-$font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
-$font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
-$font-size-h3:            ceil(($font-size-base * 1.7)); // ~24px
-$font-size-h4:            ceil(($font-size-base * 1.25)); // ~18px
-
+$font-size-base:          12px;
+$font-size-h1:            floor(($font-size-base * 1.75)); // ~18px
+$font-size-h2:            floor(($font-size-base * 1.5)); // ~16px
+$font-size-h3:            ceil(($font-size-base * 1.25)); // ~14px
+$font-size-h4:            ceil(($font-size-base * 1.25)); // ~14px
 
 //NAVBAR
 $navbar-min-height: 50px;
 $navbar-max-height: 60px;
 $navbar-margin-bottom: 0px;
 
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint:     890px;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1);
 
 // BUTTONS
 

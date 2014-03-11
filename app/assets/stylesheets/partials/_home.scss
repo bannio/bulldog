@@ -10,39 +10,103 @@ h3, p {
   color: $text-color;
 }
 
-/*font sizes*/
-h1 {
-  margin: $no-margin;
-  // font-size: 2.5em;
-  font-size: $font-size-h1;
-}
 
-h2 {
-  // font-size: 2em;
-  font-size: $font-size-h2;
+//Para Text Resize Responsively
+@media(max-width: $screen-xs){
+  p {font-size: 12px} //12px when screen is below 480px
 }
-
-h3 {
-  // font-size: 1.5em;
-  font-size: $font-size-h3;
+@media(min-width: $screen-xs){
+  p {font-size: 12px} //12px when screen is below 768px
 }
+@media(min-width: $screen-sm){
+  p {font-size: 14px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  p {font-size: 16px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  p {font-size: 18px} //18px when screen is above 1200px
+  } 
 
-p {
-  font-size: $font-size-base;
+//H1 text resize
+@media(max-width: $screen-xs){
+  h1 {font-size: 16px} //12px when screen is below 480px
 }
+@media(min-width: $screen-xs){
+  h1 {font-size: 22px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  h1 {font-size: 30px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  h1 {font-size: 36px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  h1 {font-size: 40px} //18px when screen is above 1200px
+  } 
 
+//H2 text resize
+@media(max-width: $screen-xs){
+  h2 {font-size: 16px} //12px when screen is below 480px
+}
+@media(min-width: $screen-xs){
+  h2 {font-size: 20px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  h2 {font-size: 24px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  h2 {font-size: 28px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  h2 {font-size: 30px} //18px when screen is above 1200px
+  } 
+
+//H3 text resize
+@media(max-width: $screen-xs){
+  h3 {font-size: 12px} //12px when screen is below 480px
+}
+@media(min-width: $screen-xs){
+  h3 {font-size: 18px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  h3 {font-size: 26px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  h3 {font-size: 30px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  h3 {font-size: 30px} //18px when screen is above 1200px
+  } 
+
+  @media(max-width: $screen-xs){
+  .carousel-caption {font-size: 12px} //12px when screen is below 480px
+}
+@media(min-width: $screen-xs){
+  .carousel-caption {font-size: 12px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  .carousel-caption {font-size: 14px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  .carousel-caption {font-size: 16px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  .carousel-caption {font-size: 18px} //18px when screen is above 1200px
+  } 
 
 /*BODY MAIN*/
 
-body { padding-top: 50px; }
-
-main {
+body {
   background-color: $background-lt-color;
   padding: 0;
   margin: $no-margin;
 }
 
-
+main { 
+  padding-top: 50px; 
+  background-color: $background-lt-color;
+}
 
 .row {
   max-width: $container-lg-desktop;
@@ -55,11 +119,20 @@ main {
   border-color: $btn-info-border;
 }
 
+.btn-warning {
+  color: $white;
+  background-color: $btn-warning-bg;
+  border-color: $btn-warning-border;
+}
 
 .btn-success {
   color: $white;
   background-color: $btn-success-bg;
   border-color: $btn-success-border;
+}
+
+button a {
+  color: $link-color-dk;
 }
 
 /*NAVBAR*/
@@ -75,12 +148,42 @@ main {
 }
 
 .navbar-logo {
-  padding-top: 0em;
+  margin: 0em 0em;
+  padding: 0em 0em;
+}
+
+@media(max-width: $screen-xs){
+  .navbar-logo {
+    position:absolute;
+  } //12px when screen is below 768px
+}
+
+.navbar-img {
+  margin: auto 10px auto auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 .navbar-items {
   max-width: $container-lg-desktop;
-  margin: $centered;
+  // margin: $centered;
+}
+
+.navbar-toggle {
+  position: relative;
+  float: left;
+  margin-right: $navbar-padding-horizontal;
+  padding: 9px 10px;
+  @include navbar-vertical-align(34px);
+  background-color: transparent;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  border-radius: $border-radius-base;
+}
+
+.navbar-collapse {
+    margin-right: $navbar-padding-horizontal;
+    margin-left:  0;
 }
 
 /*BANNER*/
@@ -89,31 +192,48 @@ main {
   margin: $no-margin;
 }
 
-.banner-logo {
-  padding: 3em 0em 0em 0em;
+.herotitle {
+  margin: 0 auto; 
 }
 
+
+.banner-logo {
+  // padding: 3em 0em 0em 0em;
+
+  margin: 20% auto 0 auto;
+}
+
+
 .banner-logo-text {
-  padding: 3em 0em 0em 2em;
+  padding: 5% 0 0 0;
 }
 
 .strapline {
-  padding: 0em 0em 0em 2em;
+  padding: 1% 0 0 2%;
   margin: $no-margin;
+}
+
+.strapline h1 {
+  margin: 0 0 2% 0;
 }
 
 .video {
-  margin-top: -30px; 
-  margin-bottom: -60px; 
-}
-
-.banner-btns {
-  padding: 1em 0em 0em 0em;
+  // margin-top: 0%; 
+  margin-bottom: -10%; 
 }
 
 .lower-banner {
-  padding-top: 4em;
+  padding-top: 10%;
   margin: $no-margin;
+}
+
+.lower-banner h3 {
+  margin-top: 1%;
+}
+
+.banner-btns {
+  padding: 1% 0em;
+  text-align: center;
 }
 
 
@@ -122,15 +242,20 @@ main {
   background-color: $background-md-color;
   border-top: $border;
   border-bottom: $border;
-
+  margin-top: 2%;
 }
 
 .subnav-item {
-  color: $link-color-dk;
   margin: $centered;
 }
 
+.subnav a {
+  color: $link-color-dk;
+}
 
+.glyphicon-cog:before, .glyphicon-tag:before, .glyphicon-picture:before, .glyphicon-user:before, {
+padding-right: 8%;
+}
 
 /*FEATURES*/
 .feature {
@@ -148,6 +273,8 @@ main {
   background-image: -webkit-linear-gradient(bottom, $gradient-color 0%, $background-lt-color 27%);
 }
 
+//Carousel
+
 .carousel {
   width: 80%;
   margin: $centered;
@@ -162,21 +289,99 @@ main {
   background-image: none;
 }
 
-.carousel-indicators li {
-  border: 1px solid $link-color-dk;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: none;
+.carousel-control {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  bottom: 10%;
+  width: 10%;
+  opacity: 1;
+  filter: none;
+  font-size: 10%;
+  color: $link-color-dk;
+  text-align: center;
+  text-shadow: none; 
 }
-.carousel-indicators .active {
-  background-color: $link-color-dk;
+  .carousel-control.left {
+    background-image: none;
+  }
+  .carousel-control.right {
+    left: auto;
+    right: -10%;
+    background-image: none;
+    background-repeat: none;
+  }
+  .carousel-control:hover, .carousel-control:focus {
+    outline: none;
+    color: $accent-color;
+    text-decoration: none;
+    opacity: 1;
+    filter: none; 
+  }
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next,
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .glyphicon-chevron-right {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block; 
+  }
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    font-family: serif; 
+  }
+
+
+
+.carousel-indicators {
+  position: relative;
+  bottom: 10px;
+  left: 50%;
+  z-index: 0;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
+  list-style: none;
+  text-align: center; 
 }
+  .carousel-indicators li {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 1px;
+    text-indent: -999px;
+    border: 1px solid $link-color-dk;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: transparent; 
+  }
+  .carousel-indicators .active {
+    margin: 0;
+    width: 6px;
+    height: 6px;
+    background-color: $link-color-dk; 
+  }
+
 
 .carousel-caption {
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 0;
   color: $text-color;
   text-shadow: none;
-  text-align: left;
+  text-align: $centered;
 }
+
+.feature .row .carousel-caption {
+    padding: 2% 0 2% 0;
+  }
 
 
 /*pricing*/
@@ -199,11 +404,14 @@ footer p {
 
 .footer-links {
   margin: 2em 0;
-  color: $link-color-lt;
+
 }
 
 
+// Positioning
 
-
-
-
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
