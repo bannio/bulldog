@@ -267,17 +267,25 @@ padding-right: 8%;
 }
 
 .gradient {
-  /* can be treated like a fallback */
-  background-color: $background-lt-color;
-  /* will be "on top", if browser supports it */
-  background-image: -webkit-linear-gradient(bottom, $gradient-color 0%, $background-lt-color 27%);
+  background-color: $background-lt-color; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, $gradient-color 0%, $background-lt-color 27%); /* For Chrome and Safari */
+  background-image:    -moz-linear-gradient(top, $gradient-color 0%, $background-lt-color 27%); /* For old Fx (3.6 to 15) */
+  background-image:     -ms-linear-gradient(top, $gradient-color 0%, $background-lt-color 27%); /* For pre-releases of IE 10*/
+  background-image:      -o-linear-gradient(top, $gradient-color 0%, $background-lt-color 27%); /* For old Opera (11.1 to 12.0) */
+  background-image:         linear-gradient(to top, $gradient-color 0%, $background-lt-color 27%); /* Standard syntax; must be last */
 }
+
 
 //Carousel
 
 .carousel {
   width: 80%;
   margin: $centered;
+  margin-top: 0;
+}
+
+.feature .row .carousel-row {
+  padding: 0 0;
 }
 
 .carousel-control.left {
