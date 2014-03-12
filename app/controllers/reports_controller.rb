@@ -12,15 +12,14 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     if @report.valid?
       @report.generate
+      @bills = @report.bills.page(params[:page]).per(10)
       if params[:commit] == "Export"
         send_data @report.bills.to_csv
       else
-        @bills = @report.bills.page(params[:page]).per(10)
         render :new
       end
     else
       flash[:error] = 'something not right'
-      @bills = @report.bills.page(params[:page]).per(10)
       render :new
     end
   end

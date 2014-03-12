@@ -135,7 +135,7 @@ describe InvoicesController do
         patch :update, id: @invoice, invoice: attributes_for(:invoice)
         expect(assigns(:invoice)).to eq @invoice
       end
-      it "redirects to invoice index" do
+      it "redirects to invoice show " do
         patch :update, id: @invoice, invoice: attributes_for(:invoice)
         expect(response).to redirect_to @invoice
       end

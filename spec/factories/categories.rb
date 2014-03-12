@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :category do
-    name "MyCategory"
+    sequence(:name) { |n| "Category#{n}" }
     account nil
   end
 end

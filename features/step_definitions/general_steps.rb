@@ -32,8 +32,20 @@ Given /^I click the first table row$/ do
   find(:xpath, "//table/tbody/tr[1]").click 
 end
 
+Given /^I click the second table row$/ do
+  find(:xpath, "//table/tbody/tr[2]").click 
+end
+
+Given /^I click the third table row$/ do
+  find(:xpath, "//table/tbody/tr[3]").click 
+end
+
 When(/^I click on (.+)$/) do |link|
   click_link(link)
+end
+
+When(/^I click the (.+) link within the (.*?)$/) do |link, context|
+  within(context){click_link(link)}
 end
 
 When(/^I click button (.*?)$/) do |btn|

@@ -15,7 +15,7 @@ Scenario: The application has a home page
 Scenario: There is an About page 
   When I visit the home page
   Then I should see a About link
-  When I click on About
+  When I click the About link within the footer
   Then I should be on the About page
 
 Scenario: The available links depend on if I am signed in or not
