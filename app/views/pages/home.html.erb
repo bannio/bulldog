@@ -5,225 +5,117 @@
 <!-- BODY CONTAINER -->
 
 <!-- <main role="main"> --><!--repeated in application.html.erb-->
-    <div class="container-fluid">
 
-    <!-- BANNER SECTION -->
+<div class="landing-page container">
+    <div class="row landing-top-row">
+      <div class="col-xs-6">
+        <img src="/assets/bills.png" alt="Bills Image" class="bills-img">
+      </div>
+      <div class="col-xs-6">
+          <h1 class="strapline">The <br>simple <br>way to <br>manage <br>your <br>bills</h1>
+      </div>
 
-    <!-- TOP BANNER -->
+    </div><!--end row -->
+</div>
 
-        <section class="top-banner" role="banner"><!--top banner-->
+<div class="container landing-info">
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>Simple Capture</h2>
+        <p>Very easily add a record of all your costs on a single page.Simple by design. No need to add companies or categories in advance. Just add them on the fly. Add the ones you want. There are no constraints. Once they have been used once then they are available to use again with minimal typing.</p>
+      </div>
+    </div>
+  </section>
 
-            <div class="row herotitle"> <!-- logo and strapline row-->
-                <div class="col-xs-2"><!-- logo image-->
-                    <img class="banner-logo img-responsive" src="/assets/banner_logo.png"  alt="Bulldog Clip logo">      
-                </div>
-                <div class="col-sm-10"><!-- logotext and strapline-->
-                    <div class="row col-xs-10">
-                        <img class="banner-logo-text img-responsive" src="/assets/banner_text.png" alt="Bulldog Clip text logo">
-                    </div><!-- end logo text row -->
-                    <div class="strapline row col-xs-12">
-                        <h1>Strapline goes here to tell everyone how fantastic our product is</h1>
-                    </div><!--end strapline row -->                    
-                </div><!-- end logotext and strapline col-->
-            </div><!--end logo and strapline row-->
-            <div class="row">
-                <img class="video img-responsive col-md-8 col-md-offset-2"  src="/assets/video.png" alt="video">
-            </div>
-        </section><!--end top-banner-->
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>Simple Flow</h2>
+        <p>Although it will work well on a mobile, Bulldog Clip is expected to be used in the comfort of your home or office, not in the bustle of the high street. Who wants to be shuffling till receipts or typing in names and quantities on the move?
+        When you get back to base, empty all of those receipts into a box or, better still, a bulldog clip, ready to process at your leisure.
+        When you do sit down to record them, Bulldog clip makes it so easy it is almost fun and definitely rewarding. Remember to re-clip the recorded bills away from the unrecorded ones. You don't want to scare yourself by double entering your costs.</p>
+      </div>
+    </div>
+  </section>
 
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>Simple Analysis</h2>
+        <p>See at a glance where the money has gone. Simple charts by category, by supplier, by customer (if you are recharging) or family member (if you want to), over time and any time.
+        Easily export the data to a spreadsheet for further analysis or just as a backup. Select the data to export or just take the lot.</p>
+      </div>
+    </div>
+  </section>
 
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>Simple Reclaim</h2>
+        <p>One click to generate a PDF invoice or expense reclaim to recharge your clients, reclaim from your employer and/or to provide itemised backup to your bookkeeper. 
+  You might like to clear your pool of household bills into a monthly statement even if non of these other reasons apply.
+  Bills that have been "invoiced" cannot be deleted or edited so they are safe from accidental removal. Of course you can always edit an "invoice" to return bills to the pool if you do need to make a change.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- LOWER BANNER -->
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>Simply Safe and Secure</h2>
+        <p>The entire transaction is encrypted as it goes across the Internet using the familiar, high street bank level of security.
+        The bills are stored in the cloud so do not get lost if you have an unfortunate incident with your computer.
+        At any time, you can take your own backup using one of the the export functions which download a spreadsheet compatible file to your machine. For the technically minded, this is a comma separated variables (CSV) file so it is universally compatible.</p>
+      </div>
+    </div>
+  </section>
 
-        <section class="lower-banner">
-            <div class="row">                  
-                <div class="text-center col-md-8">
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Aliquam, fugit, dolorum voluptatum sequi sunt similiqueipsum quaerat nesciunt. Scroll down to find out more ...</h3>
-                </div><!--end lower banner text -->
-                <div class="banner-btns col-md-4">
-                    <button type="button" class="btn btn-success btn-lg"
-                    ><%= link_to 'Free Demo', new_user_session_path %></button>           
-                    <button type="button" class="btn btn-warning btn-lg"><%= link_to 'Sign Up Now', new_user_session_path %></button>
-                </div><!-- end banner buttons-->
-            </div><!-- end lower banner row -->
-        </section><!--end lower banner -->
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>Why Bills?</h2>
+        <p>Most of what you are likely to record in Bulldog Clip are not strictly speaking 'bills'. They will often be receipts, till receipts, credit card transaction advice notes, or even invoices. Bill is a short and friendly name. That's why we use it. Not to be 'correct' but to be simple and effective, like a bulldog clip.</p>
+      </div>
+    </div>
+  </section>
 
-   
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>So Why Invoice?</h2>
+        <p>OK. Bill is short and simple but 'invoice' sounds technical and nine out of ten users will not need to create one - as an invoice. 
+        It happens that the friend who first had a need for a better, simpler system, did have a need to invoice a client for expenses. (See the Story). When we were developing what became Bulldog Clip the name for the function just stuck. 
+        Of course, you can choose what title you give the document and what appears on it. Invoice is a single, reasonably short word to use for what is actually a way to archive bills, to print organised lists of bills, to facilitate recovery of some of your costs and generally get enhanced value from using Bulldog Clip. 
+        They are optional. You don't need to use them.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- SCROLL MENU -->
-        
-        <section class="subnav" role="navigation">
-            <div class="row">
-                <nav class="nav nav-justified" >
-                    <ul class="nav nav-justified">
-                        <li class="subnav-item"><a href="#" class="glyphicon glyphicon-cog col-sm-3 col-xs-6">Features</a></li>
-                        <li class="subnav-item"><a href="#" class="glyphicon glyphicon-tag col-sm-3 col-xs-6">Pricing</a></li>
-                        <li class="subnav-item"><a href="#" class="glyphicon glyphicon-picture col-sm-3 col-xs-6">Views</a></li>
-                        <li class="subnav-item"><a href="#" class="glyphicon glyphicon-user col-sm-3 col-xs-6">Community</a></li>
-                    </ul>
-                </nav>
-            </div><!--end scrollmenu row-->
-        </section><!--end scrollmenu container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>The Story</h2>
+        <p>Someone, who shall remain nameless, once used to record all their small business expenses on a word processor and add them up with a calculator. They packaged up the receipts and a printout of the document into monthly envelopes to give to their bookkeeper/accountant. It took hours each month and wasn't enjoyable.
+        The accountant re-did the arithmetic and checked all the paper work. It took hours each year and wasn't enjoyable - or cheap.
+        Step one was to help them start using a spreadsheet instead of a word processor. But computers are not my friend's forte. Spreadsheet files proliferated. Naming conventions varied. Even the adding up couldn't be relied upon. (Sum(A1..A32)?). 
+        Two key changes were introduced. One was the simple use of a bulldog clip (real mechanical device) to keep pending bills in one place. The other was the little and often principle. Don't put it off to the busy end of the month, do it every day, one or two at a time. Its so easy that way.
+        The precursor to Bulldog Clip was born. As a database, it didn't need file names and technical jiggery pokery to keep it in order. As a web-based system it was always available in the office or in the home. Once bills were entered, they were clipped in a bulldog clip AND in Bulldog Clip. Straight from wallet or pocket to a safe place.
+        Now, once a month, the bulldog clip is emptied and the bills stapled together with a printout. Total time a couple of minutes. Print an invoice to recharge expenses to clients, another couple of minutes. Saving in time and mental agony, very considerable.
+        The accountant gets a file, legible invoices and the neatly stapled receipts.</p>
+      </div>
+    </div>
+  </section>
 
-
-
-
-    <!-- FEATURES -->
-
-    <!-- FEATURE 1 -->
-
-
-        <section class="feature gradient">
-            <div class="row">
-                <div class="col-md-5">
-<!--                     <img class="img-responsive" src="/assets/feature1.png" alt="bills"> -->
-                    <img class="img-responsive" src="http://placehold.it/400x300/888888/ffffff&text=bills">
-                </div>
-                <div class="col-md-7">
-                    <h2>Store your bills</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, explicabo, esse eveniet voluptates corrupti optio excepturi ipsam magni ipsa modi laboriosam provident nulla nihil dolor ex laborum eum iste dolorum soluta minima distinctio totam quaerat dicta sit perferendis possimus quasi!</p>
-                </div>
-            </div><!--end feature1 row-->          
-        </section><!--end feature1 container-->
-
-
-    <!-- FEATURE 2 -->
-        <section class="feature gradient">
-            <div class="row">
-
-                <div class="col-md-5 col-md-push-7">
-                    <!-- <img class="img-responsive" src="/assets/feature2.png" alt="reports"> -->
-                    <img class="img-responsive" src="http://placehold.it/400x300/888888/ffffff&text=reports">
-                </div>
-                <div class="col-md-7 col-md-pull-5">
-                    <h2>Generate reports</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    <br> Est, explicabo, esse eveniet voluptates corrupti optio excepturi ipsam magni ipsa modi laboriosam provident nulla nihil dolor ex laborum eum iste dolorum soluta minima distinctio totam quaerat dicta sit perferendis possimus quasi!</p>
-                </div>                
-            </div><!--end feature2 row-->
-        </section><!--end feature2 container-->
-
-
-    <!-- FEATURE 3 -->
-        <section class="feature gradient">
-            <div class="row">
-                <div class="col-md-5">
-                    <!-- <img class="img-responsive" src="/assets/feature3.png" alt="invoice"> -->
-                    <img class="img-responsive" src="http://placehold.it/400x300/888888/ffffff&text=invoice">
-                </div>
-                <div class="col-md-7">
-                    <h2>Store your bills</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, explicabo, esse eveniet voluptates corrupti optio excepturi ipsam magni ipsa modi laboriosam provident nulla nihil dolor ex laborum eum iste dolorum soluta minima distinctio totam quaerat dicta sit perferendis possimus quasi!</p>
-                </div>
-            </div><!--end feature3 row-->
-        </section><!--end feature3 container-->
-
-
-
-    <!-- CAROUSEL -->
-
-        <section class="feature gradient">
-            <div class="carousel-row">
-                <h2>Screenshot slider</h2>
-            </div>
-
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-<!-- Wrapper for slides -->
-                        <div class="carousel-inner carousel-row">
-                            <div class="active item">
-
-                                <img class="carousel-img row" src="/assets/slider1.png" alt="Screenshot 1">
-                                <div class="carousel-caption row">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, error. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, dignissimos. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit cum recusandae expedita hic. Corporis, provident.
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img class="carousel-img row" src="/assets/slider2.png" alt="Screenshot 2">
-                                <div class="carousel-caption row">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, error. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, quidem quasi reiciendis dolorum esse aut asperiores a sit qui libero.
-                                </div>
-                            </div>   
-                            <div class="item">
-                                <img class="carousel-img row" src="/assets/slider3.png" alt="Screenshot 3">
-                                <div class="carousel-caption row">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, error. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, corrupti.
-                                </div>
-                            </div>   
-                            <div class="item">
-                                <img class="carousel-img row" src="/assets/slider4.png" alt="Screenshot 4">
-                                <div class="carousel-caption row">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, error. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, cum, soluta quos labore aliquid quibusdam!
-                                </div>
-                            </div>   
-                        </div><!--end carousel inner-->
-
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
-                      </ol>
-
-                      <!-- Controls -->
-                      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                      </a>
-                      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                      </a>
-
-                    </div><!-- end carousel slide -->
-                </div><!--end carousel contents row-->
-            </div><!--end row -->   
-        </section><!-- end carousel container --> 
-
-
-    <!-- PRICING -->
-
-        <section class="feature gradient">
-            <div class="row">            
-                <div class="pricing col-xs-12 col-sm-6 col-md-5">
-                    <img src="/assets/pricing.png" class="img-responsive" alt="pricing">
-                </div><!--end pricing image col-->
-                <section class="col-xs-12 col-sm-6 col-md-7 pull-right">
-                    <h2>Pricing</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, tenetur, ipsam, dolor amet iste delectus nostrum non accusantium expedita totam veritatis fugiat nulla natus voluptate odit perferendis consequuntur a optio?</p>
-                    <button type="button" class="btn btn-warning btn-md"><%= link_to 'Sign Up Now', new_user_session_path %></button>
-                </section><!--end pricing text and button section-->
-            </div><!--end pricing row-->
-        </section><!--end pricing container-->
-
-
-    <!-- SOCIAL MEDIA -->
-
-        <section class="feature gradient">
-
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <h2>Join our community on...</h2>
-                </div>
-            </div><!--end social media text row-->
-
-            <div class="row">
-                <div class="col-xs-3">
-                       <img src="/assets/facebook.png" class="img-responsive center-block" alt="Facebook">
-                </div>
-                <div class="col-xs-3">
-                    <img class="img-responsive center-block" src="/assets/linked_in.png" alt="Linked In">
-                </div>
-                <div class="col-xs-3">
-                    <img class="img-responsive center-block" src="/assets/twitter.png" alt="Twitter">
-                </div>
-                <div class="col-xs-3">
-                    <img class="img-responsive center-block" src="/assets/youtube.png" alt="You Tube">
-                </div>
-            </div><!--end social media icons row-->
-
-        </section><!-- end social media container -->
-
-
-
-    </div> <!--end body fluid container-->
-
-<!-- </main> --> <!--end main-->
-
-
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h2>Why £5 a year?</h2>
+        <p>Sadly there are costs to running any online application. Many of these costs vary with the number of users. To allow us to keep it running, it must at least cover those costs. To keep it simple, effective and friendly to use, we don't want to introduce advertising which gets in the way. 
+        We hope that you will agree that £5 a year, less than 10p a week, is a reasonable cost. We believe that we will need to charge it every year, not just as a one off payment, because the unavoidable costs of running the system also happen every year. 
+        If you run a small business and have to record expenses or if you use Bulldog Clip to reclaim expenses, you could be saving hours of your time each month. What is that worth?
+        If you just want to use Bulldog Clip to track where your money is going, you will be amazed what insights you can achieve, even if you don't track every last penny. </p>
+      </div>
+    </div>
+  </section>
+</div>

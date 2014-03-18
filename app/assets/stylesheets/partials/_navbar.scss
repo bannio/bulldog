@@ -1,0 +1,201 @@
+/*NAVBAR*/
+.navbar-container {
+  background-color: #ffffff;
+  width: 100vw;
+  margin: 0;
+  min-height: 70px;
+  position: fixed;
+  z-index: 1030;
+}
+
+.navbar-row {
+  width: 80%;
+  margin: 0 10%;
+  min-height: 70px;
+  border-bottom: #000000 1px solid;
+  background-color: #ffffff;
+}
+
+div.logo-col, div.btn-col {
+  min-height: 60px;
+  display:inline-block;
+}
+
+// navbar logo 
+div .navbar-logo {
+  padding: 0px;
+  height: 60px;
+  margin: 1px 1px;
+}
+
+.navbar-logo img {
+  margin: 12px 0 0 0;
+}
+
+
+// signin/signup btns
+
+a.nav-btn {
+  border: #000000 1px solid;
+  border-radius: 50px 50px;
+  text-align: center;
+  color: #000000;
+  padding: 8px 15px;
+  font-size: 12pt;
+  // float: right;
+  margin: 14px 5px 0 0;
+  overflow: hidden;
+  // position: relative;
+}
+
+
+a.nav-btn:hover, a.nav-btn:focus {
+text-decoration: none;
+background-color: #eeeeee;
+}
+
+
+//  div.btn-col {
+//   float: right;
+//  } //when screen is below 480px
+
+// @media(min-width: $screen-sm){
+//   div.btn-col {float: right;}
+// }
+
+
+ a.nav-btn {float: left;
+ } //when screen is below 480px
+
+@media(min-width: $screen-sm){
+  a.nav-btn {float: right;}
+}
+
+
+div.logo-col {
+  padding-left: 10%;
+}
+
+div.btn-col {
+  padding-left: 20%;
+}
+
+// center logo and button 
+@media(min-width: $screen-sm) {
+  div.logo-col, div.btn-col {
+    padding-left: 15px;
+    min-height: 70px;
+  }
+}
+
+
+
+// signed in signed out text
+.navbar-text p {
+  margin: 0 15px 0 0;
+  font-size: 12pt;
+  text-align: center;
+}
+
+
+
+// .navbar {
+//   max-height: $navbar-max-height;
+//   min-height: $navbar-min-height;
+//   margin-bottom: $navbar-margin-bottom;
+// }
+
+// .navbar-fixed-top {
+//   padding: 0.6em 2em 0 2em;
+// }
+
+// .navbar-logo {
+//   margin: 0em 0em;
+//   padding: 0em 0em;
+// }
+
+// @media(max-width: $screen-xs){
+//   .navbar-logo {
+//     position:absolute;
+//   } //12px when screen is below 768px
+// }
+
+// .navbar-img {
+//   margin: auto 10px auto auto;
+//   position: absolute;
+//   top: 0; left: 0; bottom: 0; right: 0;
+// }
+
+// .navbar-items {
+//   max-width: $container-lg-desktop;
+//   // margin: $centered;
+// }
+
+// .navbar-toggle {
+//   position: relative;
+//   float: left;
+//   margin-right: $navbar-padding-horizontal;
+//   padding: 9px 10px;
+//   @include navbar-vertical-align(34px);
+//   background-color: transparent;
+//   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+//   border: 1px solid transparent;
+//   border-radius: $border-radius-base;
+// }
+
+// .navbar-collapse {
+//     margin-right: $navbar-padding-horizontal;
+//     margin-left:  0;
+// }
+
+// /*NAVBAR*/
+
+// .navbar {
+//   max-height: $navbar-max-height;
+//   min-height: $navbar-min-height;
+//   margin-bottom: $navbar-margin-bottom;
+//   background-color: #ffffff;
+// }
+
+// .navbar-fixed-top {
+//   padding: 0.6em 2em 0 2em;
+// }
+
+// .navbar-logo {
+//   margin: 0em 0em;
+//   padding: 0em 0em;
+// }
+
+// @media(max-width: $screen-xs){
+//   .navbar-logo {
+//     position:absolute;
+//   } //12px when screen is below 768px
+// }
+
+// .navbar-img {
+//   margin: auto 10px auto auto;
+//   position: absolute;
+//   top: 0; left: 0; bottom: 0; right: 0;
+// }
+
+// .navbar-items {
+//   max-width: $container-lg-desktop;
+//   // margin: $centered;
+// }
+
+// .navbar-toggle {
+//   position: relative;
+//   float: left;
+//   margin-right: $navbar-padding-horizontal;
+//   padding: 9px 10px;
+//   @include navbar-vertical-align(34px);
+//   background-color: transparent;
+//   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+//   border: 1px solid transparent;
+//   border-radius: $border-radius-base;
+// }
+
+// .navbar-collapse {
+//     margin-right: $navbar-padding-horizontal;
+//     margin-left:  0;
+// }
