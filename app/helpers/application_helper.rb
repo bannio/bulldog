@@ -11,4 +11,20 @@ module ApplicationHelper
     arrow = '<i class="glyphicon ' << "#{icon}" << '"></i>'
     arrow = raw(arrow)
   end
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def flash_normal
+   render "layouts/flashes"
+  end
 end

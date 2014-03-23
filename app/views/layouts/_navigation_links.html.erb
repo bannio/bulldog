@@ -13,5 +13,6 @@
   <li><a href="#">Pricing</a></li>
   <li><a href="#">Free Demo</a></li>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
+  <li><%= link_to 'Remote Sign in', remote_sign_in_path, remote: true %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>

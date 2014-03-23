@@ -1,0 +1,39 @@
+<div id="sign_in_modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Sign In</h4>
+      </div>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}, remote: true) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :email %>
+            <%- if devise_mapping.registerable? %>
+              <%= link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right'  %>
+            <% end -%>
+            <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%- if devise_mapping.recoverable? %>
+              <%= link_to "Forgot password?", new_password_path(resource_name), class: 'pull-right' %>
+            <% end -%>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+            
+          <% if devise_mapping.rememberable? -%>
+            <div class="checkbox">
+              <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+      
+        </div><!-- /.modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Sign in', :class => 'btn btn-primary' %>
+        </div>
+      <% end %><!-- end of form for -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
