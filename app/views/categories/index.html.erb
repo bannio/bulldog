@@ -1,19 +1,26 @@
 <% content_for :title do %>Bulldog-Clip | Categories<% end %>
 <% content_for :description do %>Bulldog-Clip categories index<% end %>
-<h1>Categories</h1>
 
-<table class="table table-hover table-condensed" id="categories_table">
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr title="click to edit", class="pointer rowlink",
-          data-rowlink="<%= edit_category_path(category)%>">
-        <td><%= category.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container"> 
+  <div class="col-md-8 col-md-offset-2 panel panel-default">
+    <div class="panel-body">
+      <h1>Categories</h1>
+
+      <table class="table table-hover table-condensed" id="categories_table">
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr title="click to edit", class="pointer rowlink",
+                data-rowlink="<%= edit_category_path(category)%>">
+              <td><%= category.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>  
+</div>

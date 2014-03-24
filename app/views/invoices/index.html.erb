@@ -1,41 +1,50 @@
 <% content_for :title do %>Bulldog-Clip | Invoices<% end %>
 <% content_for :description do %>Bulldog-Clip invoices index<% end %>
-<h1>Invoices</h1>
-<%= form_tag invoices_path, method: 'get', id: "invoices_search" do %>
-<table class="table table-hover table-condensed" id="invoice_table">
-  <thead>
-    <tr>
-    <td></td>
-    <td>Filter:</td>
-    <td><%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %> </td>
-    <td><%= text_field_tag :search, params[:search], class: "search-query", placeholder: 'text within comment' %></td>
-    <td><button class="btn btn-primary btn-small" type="submit" value="Refresh"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
-    <%#= submit_tag "Refresh", name: nil, class: "btn btn-primary btn-small" %></td>
-    
-    </tr>
-    <tr>
-      <th><%= sortable "number", "No." %> <%= arrow "number" %></th>
-      <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
-      <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
-      <th><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
-      <th><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @invoices.each do |invoice| %>
-      <tr title="click to show details", class="pointer rowlink",
-          data-rowlink="<%= invoice_path(invoice)%>">
-        <td><%= invoice.number %></td>
-        <td><%= invoice.date %></td>
-        <td><%= invoice.customer_name %></td>
-        <td><%= invoice.comment %></td>
-        <td><%= number_to_currency(invoice.total) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
 
-<%= paginate @invoices %>
+<div class="container">
+  <h1>Invoices</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+          <%#= link_to "New", new_invoice_path, class: "std-btn"  %>
+      <%= form_tag invoices_path, method: 'get', id: "invoices_search" do %>
+      <table class="table table-hover table-condensed" id="invoice_table">
+        <thead>
+          <tr>
+          <td><%= link_to "New", new_invoice_path, class: "std-btn"  %></td>
+          <td>Filter:</td>
+          <td><%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %> </td>
+          <td><%= text_field_tag :search, params[:search], class: "search-query", placeholder: 'text within comment' %></td>
+<!--           <td><a class="std-btn" type="submit" value="Refresh"><span class="glyphicon glyphicon-refresh"></span> Refresh</a> -->
+          <td><%= submit_tag "Refresh", name: nil, class: "std-btn" %></td>
+          
+          </tr>
+          <tr>
+            <th><%= sortable "number", "No." %> <%= arrow "number" %></th>
+            <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+            <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+            <th><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
+            <th><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @invoices.each do |invoice| %>
+            <tr title="click to show details", class="pointer rowlink",
+                data-rowlink="<%= invoice_path(invoice)%>">
+              <td><%= invoice.number %></td>
+              <td><%= invoice.date %></td>
+              <td><%= invoice.customer_name %></td>
+              <td><%= invoice.comment %></td>
+              <td><%= number_to_currency(invoice.total) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
 
-<p><%= link_to "New", new_invoice_path, class: "btn btn-primary"  %></p>
+
+      <%= paginate @invoices %>
+
+
+    </div>
+  </div>
+</div>

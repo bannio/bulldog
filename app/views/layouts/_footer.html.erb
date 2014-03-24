@@ -1,6 +1,6 @@
 <!-- footer -->
 
-<div class="container">
+<div class="container footer-background">
     <section class="row">
 
         <div class="footer-links col-xs-3">
@@ -78,17 +78,14 @@
     
 
     <section class="row">
-        <div class="col-sm-4 hidden-xs">
-          <img class="pull-left" src="/assets/navbar_logo_reverse.png" alt="Bulldog Clip logo text">
+        <div class="col-sm-6 col-xs-6">
+            <p class="copyright">&copy; <%= Time.now.strftime('%Y') %> Owen Bannister Limited. All rights reserved</p> 
         </div>
-        <div class="col-sm-4 col-xs-12">
-            <p>&copy; <%= Time.now.strftime('%Y') %> Owen Bannister Limited. All rights reserved</p> 
-        </div>
-        <div class="col-sm-4 col-xs-12 pull-right">
+        <div class="col-sm-6 col-xs-6">
           <%- if user_signed_in? %>
-            <p>Signed in as: <%= current_user.email %> </p>
+            <p class="status">Signed in as: <%= current_user.email %> </p>
           <% else %>
-            <p>You are not currently signed in</p>
+            <p class="status">You are not currently signed in</p>
           <%- end %>
         </div>
     </section><!--end footer copyright row-->

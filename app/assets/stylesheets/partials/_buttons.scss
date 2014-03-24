@@ -1,0 +1,61 @@
+// Input Buttons
+
+input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].std-btn {
+-webkit-appearance: none;
+-webkit-user-select: none;
+white-space: pre;
+// -webkit-background-clip: none;
+// -webkit-background-origin: none;
+// -webkit-background-size: none;
+}
+
+
+// GENERIC BUTTON
+
+a.std-btn, input.std-btn {
+  border: #444 2px solid;
+  border-radius: 50px 50px;
+  text-align: center;
+  color: #444;
+  padding: 6px 12px;
+  font-size: 10pt;
+  font-weight: 600;
+  margin: 5px 5px 5px 0px;
+  overflow: hidden;
+  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  display: inline-block;
+}
+
+
+.std-btn:hover, .std-btn:focus, input.std-btn:hover, input.std-btn:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+
+// ALIGNS INPUT/SUBMIT BUTTONS WITH STD BTNS
+input.std-btn, select.std-btn, button.std-btn {
+vertical-align: top; 
+}
+
+
+// REMOVES DARK GREY INHERITED BACKGROUND COLOUR ON INPUT AND SUBMIT BUTTONS
+input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].std-btn, button.std-btn {
+  background-color: #ffffff;
+}
+
+// GIVES GREY HOVER COLOR
+input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="submit"].std-btn:hover, 
+input[type="submit"].std-btn:focus, input[type="reset"].std-btn:hover, 
+input[type="reset"].std-btn:focus, button.std-btn:hover,button.std-btn:focus {
+  background-color: #eeeeee;
+}
+
+// REMOVES BLUE FOCUS OUTLINE
+input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="submit"].std-btn:hover, 
+input[type="submit"].std-btn:focus, input[type="reset"].std-btn:hover, 
+input[type="reset"].std-btn:focus, button.std-btn:hover,button.std-btn:focus {
+outline: 0px;
+outline-width: 0px;
+}

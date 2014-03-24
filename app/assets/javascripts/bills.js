@@ -95,9 +95,14 @@ ready = function() {
     formatResult: format_result,
     formatSelection: format
   });
-
 };
 
+  var subnavToggle = function(){
+    return $('#subnavBtn').on( "click", function(){
+    $('#subnav').toggleClass("hidden");
+    });
+  };
 $(document).ready(ready);
 // $(document).on('page:change', ready);
 $(document).on('page:update', ready);
+$(document).on('page:update', subnavToggle);

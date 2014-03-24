@@ -1,34 +1,44 @@
 <% content_for :title do %>Bulldog-Clip | Bills<% end %>
 <% content_for :description do %>Bulldog-Clip bills index<% end %>
-<h1>Bills</h1>
 
-<table class="table table-hover table-condensed">
-  <thead>
-    <tr>
-      <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
-      <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
-      <th><%= sortable "suppliers.name", "Supplier" %> <%= arrow "suppliers.name" %></th>
-      <th><%= sortable "categories.name", "Category" %> <%= arrow "categories.name" %></th>
-      <th><%= sortable "description", "Description" %> <%= arrow "description" %></th>
-      <th><%= sortable "amount", "Amount" %> <%= arrow "amount" %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bills.each do |bill| %>
-      <tr title="click to edit", class="pointer rowlink",
-          data-rowlink="<%= edit_bill_path(bill)%>">
-        <td><%= bill.date %></td>
-        <td><%= bill.customer_name %></td>
-        <td><%= bill.supplier_name %></td>
-        <td><%= bill.category_name %></td>
-        <td><%= bill.description %></td>
-        <td><%= number_to_currency(bill.amount) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <h1>Bills</h1>
 
-<%= paginate @bills %>
 
-<p><%= link_to "New", new_bill_path, class: "btn btn-primary"  %></p>
-<p><%= link_to "Export", bills_path(format: "csv"), class: "btn btn-primary"  %></p>
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <%= link_to "New", new_bill_path, class: "std-btn"  %>
+      <%= link_to "Export", bills_path(format: "csv"), class: "std-btn"  %>
+
+
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+            <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+            <th><%= sortable "suppliers.name", "Supplier" %> <%= arrow "suppliers.name" %></th>
+            <th><%= sortable "categories.name", "Category" %> <%= arrow "categories.name" %></th>
+            <th><%= sortable "description", "Description" %> <%= arrow "description" %></th>
+            <th><%= sortable "amount", "Amount" %> <%= arrow "amount" %></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @bills.each do |bill| %>
+          <tr title="click to edit", class="pointer rowlink",
+              data-rowlink="<%= edit_bill_path(bill)%>">
+            <td><%= bill.date %></td>
+            <td><%= bill.customer_name %></td>
+            <td><%= bill.supplier_name %></td>
+            <td><%= bill.category_name %></td>
+            <td><%= bill.description %></td>
+            <td><%= number_to_currency(bill.amount) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @bills %>
+    </div>
+  </div>
+</div><!--end container -->
