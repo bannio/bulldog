@@ -33,3 +33,37 @@ footer p {
   margin: 2em 0;
 }
 
+// /*FOOTER*/
+
+footer {
+  background-color: #ffffff;
+}
+
+footer>div.footer-background {
+  background-color: #eeeeee;
+  border-top: #000000 1px solid;
+}
+
+footer p {
+  color: #000000;
+  text-align: center;
+  margin: 1em 0;
+}
+
+div.footer-links {
+  padding-left: 30px;
+  padding-right: 0px;
+}
+
+.footer-links a {
+  margin: 2em 0;
+  color: #000000;
+}
+
+p.status {
+  text-align: right;
+}
+
+p.copyright {
+  text-align: left;
+}

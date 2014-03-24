@@ -39,18 +39,24 @@ div .navbar-logo {
 }
 
 .navbar-logo img {
-  margin: 12px 0 0 0;
+  margin: 18px 0 0 0;
+
 }
 
-
+@media(min-width: $screen-sm){
+  .navbar-logo img {
+  margin: 12px 0 0 0;
+  } 
+}
 // signin/signup btns
 
 a.nav-btn {
-  border: #000000 1px solid;
+  border: #000000 2px solid;
   border-radius: 50px 50px;
   text-align: center;
   color: #000000;
-  padding: 8px 15px;
+  // padding: 8px 15px;
+  padding: 6px 12px;
   font-size: 12pt;
   margin: 14px 5px 0 0;
   overflow: hidden;
@@ -86,6 +92,9 @@ a.nav-btn {float: right;
   background-color: #ffffff;
 }
 
+.subnav-col {
+  padding: 0 0;
+}
 
 // signin/signup btns
 

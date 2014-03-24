@@ -3,11 +3,11 @@
   <div class="navbar-container container">
     <div class="navbar-row row">
 
-      <div class="col-sm-6 logo-col">
-        <%= link_to (image_tag 'navbar_logo.png'), root_path, class: 'navbar-logo pull-left' %>
+      <div class="col-xs-6 logo-col">
+        <%= link_to (image_tag 'navbar_logo.png', class: 'img-responsive'), root_path, class: 'navbar-logo pull-left' %>
       </div><!-- end logo-col -->
 
-      <div class="col-sm-6 btn-col">
+      <div class="col-xs-6 btn-col">
       <% if user_signed_in? %>
         <a class="nav-btn" id="subnavBtn">
             <span class="sr-only">Toggle navigation</span>
@@ -16,8 +16,8 @@
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-btn' %>
       <% else %>
             <%#= link_to 'Sign in', new_user_session_path, class: 'nav-btn' %><!--replaced by modal remote sign in -->
-            <%= link_to 'Sign In', remote_sign_in_path, remote: true, class: 'std-btn' %>
-        <%= link_to 'Sign up', new_user_registration_path, class: 'std-btn' %>
+            <%= link_to 'Sign In', remote_sign_in_path, remote: true, class: 'nav-btn' %>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'nav-btn' %>
       <% end %>
       </div><!-- end logo-col -->
 

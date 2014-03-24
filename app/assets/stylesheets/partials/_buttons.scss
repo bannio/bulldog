@@ -1,376 +1,62 @@
-// MODIFIED BUTTONS
-// --------------------------------------------------
 
-// .btn.btn-reports {
-//   display: inline-block;
-//   margin-bottom: 0; // For input.btn
-//   font-weight: bold;
-//   text-align: center;
-//   text-decoration:none;
-//   text-align:center;
-//   text-shadow:1px 1px 0px #aade7c;
-//   text-indent: 0px;
-//   vertical-align: middle;
-//   color:#306108;
-//   font-size: 16px;
-//   font-style: normal;
-//   cursor: pointer;
-//   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-//   border: 1px solid #424242; // Changed colour EGB
-//   white-space: nowrap;
-//   font-weight: normal;
-//   padding-left: 12px; //change padding to change shape EGB
-//   padding-right: 12px;
-//   padding-top: 5px;
-//   padding-bottom: 5px;
+// Input Buttons
 
-//   line-height: 30px; //changed from bootstrap computed line height
-//   border-radius: 28px; // change to round corners EGB
-//   background-color: #00b218;
-//   width: 100px;
-//   height: 30px;
-//   box-shadow:inset 0px 1px 10px 0px #caefab;
-//   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
-//   background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
-//   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
-//   background-color:#77d42a;
-//   border:2px solid #268a16;
+input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].std-btn {
+-webkit-appearance: none;
+-webkit-user-select: none;
+white-space: pre;
+// -webkit-background-clip: none;
+// -webkit-background-origin: none;
+// -webkit-background-size: none;
+}
 
 
+// GENERIC BUTTON
 
-
-
-// User select
-// For selecting text on the page
-  // @include user-select(none);
-
-  // &,
-  // &:active,
-  // &.active {
-  //   &:focus {
-  //     @include tab-focus();
-  //   }
-  // }
-// WebKit-style focus
-// @mixin tab-focus() {
-  // Default
-  // outline: thin dotted;
-  // WebKit
-//   outline: 5px auto -webkit-focus-ring-color;
-//   outline-offset: -2px;
-// }
-
-//   &:hover,
-//   &:focus {
-//     color: #333;
-//     background-color: #00650E;
-//     text-decoration: none;
-//   }
-
-//   &:active,
-//   &.active {
-//     outline: 0;
-//     background-image: none;
-//     background-color: #19FE39;
-//     @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-//   }
-// }
-
-
-// BOOTSTRAPS DEFAULT SETTINGS BELOW
-.btn{
-  display: inline-block;
-  margin-bottom: 0; // For input.btn
-  font-weight: $btn-font-weight;
+a.std-btn, input.std-btn {
+  border: #444 2px solid;
+  border-radius: 50px 50px;
   text-align: center;
-  vertical-align: middle;
+  color: #444;
+  padding: 6px 12px;
+  font-size: 10pt;
+  font-weight: 600;
+  margin: 5px 5px 5px 0px;
+  overflow: hidden;
+  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  display: inline-block;
+}
+
+
+.std-btn:hover, .std-btn:focus, input.std-btn:hover, input.std-btn:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
   cursor: pointer;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
-  white-space: nowrap;
-  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $border-radius-base);
-  @include user-select(none);
-
-  &,
-  &:active,
-  &.active {
-    &:focus {
-      @include tab-focus();
-    }
-  }
-
-  &:hover,
-  &:focus {
-    color: $btn-default-color;
-    text-decoration: none;
-  }
-
-  &:active,
-  &.active {
-    outline: 0;
-    background-image: none;
-    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: not-allowed;
-    pointer-events: none; // Future-proof disabling of clicks
-    @include opacity(.65);
-    @include box-shadow(none);
-  }
 }
 
 
-// Alternate buttons
-// --------------------------------------------------
-
-.btn-default {
-  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
-}
-.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-}
-// Success appears as green
-.btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
-}
-// Info appears as blue-green
-.btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
-}
-// Warning appears as orange
-.btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-}
-// Danger and error appear as red
-.btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+// ALIGNS INPUT/SUBMIT BUTTONS WITH STD BTNS
+input.std-btn, select.std-btn, button.std-btn {
+vertical-align: top; 
 }
 
 
-// Link buttons
-// -------------------------
-
-// Make a button look and behave like a link
-.btn-link {
-  color: $link-color;
-  font-weight: normal;
-  cursor: pointer;
-  border-radius: 0;
-
-  &,
-  &:active,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: transparent;
-    @include box-shadow(none);
-  }
-  &,
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
-  &:hover,
-  &:focus {
-    color: $link-hover-color;
-    text-decoration: underline;
-    background-color: transparent;
-  }
-  &[disabled],
-  fieldset[disabled] & {
-    &:hover,
-    &:focus {
-      color: $btn-link-disabled-color;
-      text-decoration: none;
-    }
-  }
+// REMOVES DARK GREY INHERITED BACKGROUND COLOUR ON INPUT AND SUBMIT BUTTONS
+input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].std-btn, button.std-btn {
+  background-color: #ffffff;
 }
 
-
-// Button Sizes
-// --------------------------------------------------
-
-.btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
-  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
-}
-.btn-sm {
-  // line-height: ensure proper height of button next to small input
-  @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
-}
-.btn-xs {
-  @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $border-radius-small);
+// GIVES GREY HOVER COLOR
+input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="submit"].std-btn:hover, 
+input[type="submit"].std-btn:focus, input[type="reset"].std-btn:hover, 
+input[type="reset"].std-btn:focus, button.std-btn:hover,button.std-btn:focus {
+  background-color: #eeeeee;
 }
 
-
-// Block button
-// --------------------------------------------------
-
-.btn-block {
-  display: block;
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+// REMOVES BLUE FOCUS OUTLINE
+input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="submit"].std-btn:hover, 
+input[type="submit"].std-btn:focus, input[type="reset"].std-btn:hover, 
+input[type="reset"].std-btn:focus, button.std-btn:hover,button.std-btn:focus {
+outline: 0px;
+outline-width: 0px;
 }
-
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: 5px;
-}
-
-// Specificity overrides
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  &.btn-block {
-    width: 100%;
-  }
-}
-
-// Button variants
-// -------------------------
-// Easily pump out default styles, as well as :hover, :focus, :active,
-// and disabled options for all buttons
-@mixin button-variant($color, $background, $border) {
-  color: $color;
-  background-color: $background;
-  border-color: $border;
-
-  &:hover,
-  &:focus,
-  &:active,
-  &.active {
-    color: $color;
-    background-color: darken($background, 8%);
-        border-color: darken($border, 12%);
-  }
-  .open & { &.dropdown-toggle {
-    color: $color;
-    background-color: darken($background, 8%);
-        border-color: darken($border, 12%);
-  } }
-  &:active,
-  &.active {
-    background-image: none;
-  }
-  .open & { &.dropdown-toggle {
-    background-image: none;
-  } }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &,
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      background-color: $background;
-          border-color: $border;
-    }
-  }
-
-  .badge {
-    color: $background;
-    background-color: $color;
-  }
-}
-
-// Button sizes
-// -------------------------
-@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
-  padding: $padding-vertical $padding-horizontal;
-  font-size: $font-size;
-  line-height: $line-height;
-  border-radius: $border-radius;
-}
-
-//** Unit-less `line-height` for use in components like buttons.
-$line-height-base:        1.428571429 !default; // 20/14
-//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
-// /== Buttons
-//
-//## For each of Bootstrap's buttons, define text, background and border color.
-
-$btn-font-weight:                normal !default;
-
-$btn-default-color:              #333 !default;
-$btn-default-bg:                 #fff !default;
-$btn-default-border:             #ccc !default;
-
-$btn-primary-color:              #fff !default;
-$btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
-
-$btn-success-color:              #fff !default;
-$btn-success-bg:                 $brand-success !default;
-$btn-success-border:             darken($btn-success-bg, 5%) !default;
-
-$btn-info-color:                 #fff !default;
-$btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 5%) !default;
-
-$btn-warning-color:              #fff !default;
-$btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
-
-$btn-danger-color:               #fff !default;
-$btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
-
-$btn-link-disabled-color:        $gray-light !default;button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0; }
-
-button {
-  overflow: visible; }
-
-button,
-select {
-  text-transform: none; }
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer; }
-
-button[disabled],
-html input[disabled] {
-  cursor: default; }
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0; }
-
-input {
-  line-height: normal; }
-
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0; }
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
-
-input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box; }
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }

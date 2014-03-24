@@ -1,34 +1,15 @@
-// HEADER SECTION
-
-// page header inline block to make just size of text not full row
-h1.page-title {
-  display: inline-block;
-  padding: 0 1% 0 0;
-}
 
 // FORM SECTION
 
-// reports form container
-
-.well.reports-well {
-  display: inline-block;
-  width: 100%;
-
-}
-
-.well {
-  background-color: $white;
-}
-
 // date field labels
-label.control-label {
-  padding: 7px 0px 0px 15px;
-}
+// label.control-label {
+//   padding: 7px 0px 0px 15px;
+// }
 
-// category select fields width and spacing
+//select fields width and spacing
 .select2-container {
   display: block;
-  width: 90%;
+  width: 100%;
 }
 
 div.select2-container {
@@ -36,10 +17,9 @@ div.select2-container {
 }
 
 // reduce margin on stage 4 help text to bring button inline
-span.stage-4 {
-  margin-bottom: 2px;
-}
-
+// span.stage-4 {
+//   margin-bottom: 2px;
+// }
 
 // BUTTON (see buttons partial)
 
@@ -108,16 +88,13 @@ cursor: default;
 
 div.tab-content
 {
-// border: 2px solid #dddddd;
-box-shadow: 2px 2px 5px #dddddd;
-margin-bottom: 5%;
 border: 1px solid #dddddd;
 }
 
 //chart background
-div.chart {
-  background-color: #ffffff;
-}
+// div.chart {
+//   background-color: #ffffff;
+// }
 
 // chart headings positioning and color
 div.chart h2 {

@@ -1,27 +1,3 @@
-// GENERIC BUTTON
-
-a.std-btn, input.std-btn {
-  border: #000000 1px solid;
-  border-radius: 50px 50px;
-  text-align: center;
-  color: #000000;
-  padding: 6px 12px;
-  font-size: 10pt;
-  margin: 5px 5px 5px 0px;
-  overflow: hidden;
-  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
-  display: inline-block;
-}
-
-
-.std-btn:hover, .std-btn:focus {
-text-decoration: none;
-background-color: #eeeeee;
-cursor: pointer;
-}
-
-
-// makes table headers black and underline on hover
 
 th>a {
   color: #000000;
@@ -126,7 +102,6 @@ body {
   margin: $no-margin;
 }
 
-
 main { 
   padding-top: 130px; 
   background-color: #ffffff;
@@ -179,24 +154,6 @@ h1.strapline {
   .strapline {font-size: 70px} //18px when screen is above 1200px
   } 
 
-// a.action-btn {
-//   border: #000000 1px solid;
-//   border-radius: 50px 50px;
-//   padding: 20px 40px;
-//   float: right;
-//   font-size: 25px;
-//   color: #000000;
-// }
-
-// .call-to-action {
-//   padding: 10% 20% 10% 0;
-//   text-align: center;
-// }
-
-// .call-to-action a:hover, .call-to-action a:focus {
-// text-decoration: none;
-// background-color: #eeeeee;
-// }
 
 .landing-info h2 {
   font-size: 2.8em;
@@ -208,57 +165,4 @@ h1.strapline {
   font-size: 1.8em;
   line-height: 28px;
   font-weight: 200;
-}
-
-div.scroll-arrow {
-  display: inline-block;
-  margin: 0 auto;
-}
-
-img.scroll-arrow {
-  
-  height: 80px;
-}
-
-/*FOOTER*/
-
-footer {
-  background-color: #ffffff;
-}
-
-footer>div.footer-background {
-  background-color: #eeeeee;
-  border-top: #000000 1px solid;
-}
-
-footer p {
-  color: #000000;
-  text-align: center;
-  margin: 1em 0;
-}
-
-div.footer-links {
-  padding-left: 30px;
-  padding-right: 0px;
-}
-
-.footer-links a {
-  margin: 2em 0;
-  color: #000000;
-}
-
-p.status {
-  text-align: right;
-}
-
-p.copyright {
-  text-align: left;
-}
-
-// Positioning
-
-.absolute-center {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
 }
