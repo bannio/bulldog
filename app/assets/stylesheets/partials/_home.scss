@@ -1,3 +1,40 @@
+// GENERIC BUTTON
+
+a.std-btn, input.std-btn {
+  border: #000000 1px solid;
+  border-radius: 50px 50px;
+  text-align: center;
+  color: #000000;
+  padding: 6px 12px;
+  font-size: 10pt;
+  margin: 5px 5px 5px 0px;
+  overflow: hidden;
+  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  display: inline-block;
+}
+
+
+.std-btn:hover, .std-btn:focus {
+text-decoration: none;
+background-color: #eeeeee;
+cursor: pointer;
+}
+
+
+// makes table headers black and underline on hover
+
+th>a {
+  color: #000000;
+  text-decoration: none; }
+  a:hover, a:focus {
+    color: #000000;
+    text-decoration: underline; }
+  a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+
+
 /*TEXT*/
 
 h1, h2 {
@@ -91,37 +128,42 @@ body {
 
 
 main { 
-  padding-top: 140px; 
+  padding-top: 130px; 
   background-color: #ffffff;
   height: 100%
 }
 
 @media (min-width: $screen-sm){
   main {
-    padding-top: 70px;
+    padding-top: 130px;
   }
 }
 
 // BODY
 
-// div.landing-page.container {
-//   height: 100%;
-//   width: 80vw;
-// }
-
+div.landing-page.container {
+  height: 100vh;
+}
 div.row.landing-top-row {
   padding-top: 2%;
+  // max-height: 500px;
+}
+
+div.landing-col {
+  max-height: 462px;
 }
 
 img.bills-img {
   float: right;
-  width: 50%;
+  // width: 50%;
+  max-height: 100%;
 }
 
 
 h1.strapline {
   text-align: left;
   font-family: 'Source Sans Pro','Proxima Nova Condensed', sans-serif;
+  max-height: 500px;
 }
 
 
@@ -131,10 +173,10 @@ h1.strapline {
   .strapline {font-size: 66px} //14px when screen is below 992px
   }    
 @media(min-width: $screen-md){
-  .strapline {font-size: 76px} //16px when screen is below 1200px
+  .strapline {font-size: 70px} //16px when screen is below 1200px
   }    
 @media(min-width: $screen-lg){
-  .strapline {font-size: 100px} //18px when screen is above 1200px
+  .strapline {font-size: 70px} //18px when screen is above 1200px
   } 
 
 // a.action-btn {
@@ -165,7 +207,17 @@ h1.strapline {
 .landing-info p {
   font-size: 1.8em;
   line-height: 28px;
-  font-weight: 400;
+  font-weight: 200;
+}
+
+div.scroll-arrow {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+img.scroll-arrow {
+  
+  height: 80px;
 }
 
 /*FOOTER*/

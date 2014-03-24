@@ -19,11 +19,11 @@
   <%= form_group_for f, :amount, label: false do %>
     <%= f.text_field :amount, placeholder: 'amount', class: "form-control" %>
   <% end %> 
-  <%= f.submit 'Save', :class => 'btn btn-primary' %>
+  <%= f.submit 'Save', :class => 'std-btn' %>
   <% if params[:action] == 'edit' %>
     <%= link_to 'Destroy', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   <% end %>
-  <%= link_to "Cancel", bills_path, class: "btn btn-warning"  %>
+  <%= link_to "Cancel", bills_path, class: "std-btn"  %>
 <% end %> <!-- end of form_for -->
 
 <%= render 'layouts/messages' %>
