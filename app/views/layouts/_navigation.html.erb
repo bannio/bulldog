@@ -1,48 +1,44 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%#= link_to 'Home', root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%#= render 'layouts/navigation_links' %>
-      </ul>
-    </div>
-  </div>
-</nav> -->
 
-<!-- FIXED TOP NAVBAR -->
-<div class="row">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <!-- NAV TOGGLING -->
-            <div class="navbar-header col-sm-9 col-xs-6">
-                <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>    
-            </div><!--end navbar toggling-->    
-           
-            <!-- NAVBAR ITEMS -->
-            <div class="navbar-items row">
-              <div class="navbar-links navbar-collapse collapse col-sm-7 col-xs-6">
-                  <ul class="nav navbar-nav">
-                    <%= render 'layouts/navigation_links' %>
-                  </ul>
-              </div><!--end navbar-collapse-->
+<nav class="navbar-wrapper container">
+  <div class="navbar-container container">
+    <div class="navbar-row row">
 
-              <!-- NAVBAR LOGO -->
-              <a class="navbar-logo nav navbar-nav navbar-brand navbar-right push-right col-sm-3 col-xs-6" href="#">
-                  <img src="/assets/navbar_logo.png" class="navbar-img img-responsive" alt="navbar logo">
-              </a><!--end navbar logo--> <!--NOTE columns don't add up to 12 to stop navitems pushing logo off navbar too early -->
-            </div>
-    </nav> <!--end navbar-->           
-</div> <!--end header row-->
+      <div class="col-sm-6 logo-col">
+        <%= link_to (image_tag 'navbar_logo.png'), root_path, class: 'navbar-logo pull-left' %>
+      </div><!-- end logo-col -->
+
+      <div class="col-sm-6 btn-col">
+      <% if user_signed_in? %>
+        <a class="nav-btn" id="subnavBtn">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </a>
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-btn' %>
+      <% else %>
+            <%#= link_to 'Sign in', new_user_session_path, class: 'nav-btn' %><!--replaced by modal remote sign in -->
+            <%= link_to 'Sign In', remote_sign_in_path, remote: true, class: 'std-btn' %>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'std-btn' %>
+      <% end %>
+      </div><!-- end logo-col -->
+
+    </div><!--end navbar-row-->
+  </div><!--end navbar-container-->
+
+  <!-- SUBNAV -->
+  <% if user_signed_in? %>
+  <div class="subnav-container container hidden" role="menu" id="subnav">
+    <div class="subnav-row row">
+      <div class="subnav-col col-sm-6 col-xs-12 justified-nav">
+            <div class="subnav-link"><%= link_to 'Bills', bills_path, class: 'subnav-btn active' %></div>
+            <div class="subnav-link"><%= link_to 'Invoices', invoices_path, class: 'subnav-btn' %></div>
+            <div class="subnav-link"><%= link_to 'Reports', new_report_path, class: 'subnav-btn' %></div>
+      </div>
+      <div class="subnav-col col-sm-6 col-xs-12 justified-nav">
+            <div class="subnav-link"><%= link_to 'Account', account_path(current_user.account.id), class: 'subnav-btn' %></div>
+            <div class="subnav-link"><%= link_to 'Customers', customers_path, class: 'subnav-btn' %></div>
+            <div class="subnav-link"><%= link_to 'Categories', categories_path, class: 'subnav-btn' %></div>
+      </div><!-- end subnav-links-->
+    </div><!--end subnav-row --> 
+    </div><!--end subnav-container-->
+   <% end %>
+</nav><!--end navbar wrapper containing nav and subnav-->
