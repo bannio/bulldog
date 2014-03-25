@@ -1,0 +1,76 @@
+footer {
+   position:absolute;
+   bottom:0;
+   height:202px;   /* Height of the footer */
+   width: 100%
+
+}/*FOOTER*/
+
+footer {
+  background-color: $background-dk-color;
+}
+
+footer p {
+  color: $text-color-lt;
+  text-align: center;
+  margin: 1em 0;
+}
+
+// Footer copyright font size
+
+@media(max-width: $screen-xs){
+  footer p {font-size: 8px} //12px when screen is below 480px
+}
+@media(min-width: $screen-xs){
+  footer p  {font-size: 8px} //12px when screen is below 768px
+}
+@media(min-width: $screen-sm){
+  footer p  {font-size: 10px} //14px when screen is below 992px
+  }    
+@media(min-width: $screen-md){
+  footer p  {font-size: 10px} //16px when screen is below 1200px
+  }    
+@media(min-width: $screen-lg){
+  footer p  {font-size: 10px} //18px when screen is above 1200px
+  } 
+
+
+.footer-links {
+  margin: 2em 0;
+}
+
+// /*FOOTER*/
+
+footer {
+  background-color: #ffffff;
+}
+
+footer>div.footer-background {
+  background-color: #eeeeee;
+  border-top: #000000 1px solid;
+}
+
+footer p {
+  color: #000000;
+  text-align: center;
+  margin: 1em 0;
+}
+
+div.footer-links {
+  padding-left: 30px;
+  padding-right: 0px;
+}
+
+.footer-links a {
+  margin: 2em 0;
+  color: #000000;
+}
+
+p.status {
+  text-align: right;
+}
+
+p.copyright {
+  text-align: left;
+}
+

@@ -1,0 +1,135 @@
+// NAVBAR OUTER CONTAINER
+nav.navbar-wrapper {
+  width: 100vw;
+  margin: 0;
+  min-height: 116px;
+  position: fixed;
+  z-index: 1030;
+  padding: 0 0;
+}
+
+/*TOP NAVBAR*/
+.navbar-container {
+  background-color: #ffffff;
+  min-height: 70px;
+  border-bottom: #000000 1px solid;  
+  background-color: #ffffff;
+}
+
+.navbar-row {
+  min-height: 70px;
+}
+
+div.logo-col, div.btn-col {
+  min-height: 60px;
+}
+
+// places buttons to right of navbar at full width when signed out
+div.btn-col {
+  >a {
+  float: right;
+  }
+}
+
+// navbar logo 
+div .navbar-logo {
+  padding: 0px;
+  height: 60px;
+  margin: 1px 1px;
+}
+
+.navbar-logo img {
+  margin: 18px 0 0 0;
+
+}
+
+@media(min-width: $screen-sm){
+  .navbar-logo img {
+  margin: 12px 0 0 0;
+  } 
+}
+// signin/signup btns
+
+a.nav-btn {
+  border: #000000 2px solid;
+  // border-radius: 50px 50px;
+  text-align: center;
+  color: #000000;
+  // padding: 8px 15px;
+  padding: 6px 12px;
+  font-size: 12pt;
+  margin: 14px 5px 0 0;
+  overflow: hidden;
+  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  font-weight: 600;
+  display: inline;
+  clear:none;
+}
+
+
+a.nav-btn:hover, a.nav-btn:focus {
+text-decoration: none;
+background-color: #eeeeee;
+cursor: pointer;
+}
+
+
+a.nav-btn {float: right;
+} 
+
+
+
+// SUBNAV
+
+.subnav-container {
+  background-color: #ffffff;
+  min-height: 45px;
+  border-bottom: #000000 1px solid;  
+}
+
+.subnav-row {
+  width: 100%;
+  min-height: 40px;
+  background-color: #ffffff;
+}
+.subnav-col {
+  padding: 0 0;
+}
+
+// signin/signup btns
+
+div.subnav-link {
+    float: none;
+      text-align: center;
+      display: table-cell;
+      width: 1%;
+      padding: 8px 0px;
+    }
+
+a.subnav-btn {
+  text-align: center;
+  color: #000000;
+  font-size: 12pt;
+  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  padding-top: 8px;
+}
+
+
+// Active states including thick underline and pointer
+a.subnav-btn:hover, a.subnav-btn:focus, a.subnav-btn:active {
+  text-decoration: none;
+  border-bottom: #000000 4px solid;
+  cursor: pointer;
+}
+
+// / Justified subnav links
+
+.justified-nav {
+  > a {
+    float: none;
+      text-align: center;
+      display: table-cell;
+      width: 1%;
+  }
+}
+

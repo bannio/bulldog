@@ -1,0 +1,148 @@
+// FORM FIELDS BORDERS AND COLOURING
+
+input.search-query {
+  border: 1px solid #444;
+  border-radius: 0px;
+}
+
+// plain text entry fields
+.form-control {
+  border: 1px solid #444;
+  border-radius: 0px;
+}
+
+// drop down menu boxes
+.select2-container > a.select2-choice {
+  border: 1px solid #444;
+  border-radius: 0px;
+  background-image: none;
+}
+
+// drop down box arrow box (arrow itself is an img)
+.select2-container > a.select2-choice > span.select2-arrow {
+  border-left: 1px solid #444;
+  border-radius: 0 0; 
+  // background: #E9E9E9; grey version
+  background-color: #ffffff;
+  background-image: none;
+  color: #444;
+// background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee));
+}
+
+// background of entry field on selected menu
+.select2-dropdown-open > a.select2-choice{
+  background-color: #ffffff;
+  color: #444;
+}
+
+// glow or outline on active dropdown menu container
+div.select2-drop-active {
+border: 1px solid #444;
+border-top: none;
+}
+
+// highlight on dropdown menu items as you hover
+ div.select2-result-label:focus, div.select2-result-label:hover, div.select2-result-label:active, div.select2-result-label:visited {
+  // background-color: #eee;
+}
+
+
+// active item on dropdown menu is highlighted 
+ul.select2-results > li.select2-highlighted {
+  background: #eee;
+  color: #000;
+}
+
+
+
+// OVERIDES INLINE STYLING TO GIVE 100% WIDTH TO SELECT2-CONTAINERS
+div.select2-container {
+  width: 100% !important;
+}
+
+div.form-group {
+  width: 100%;
+}
+
+input.date_picker {
+  width: 60%;
+}
+
+
+// ACCOUNT DETAILS FORM
+.input-group.name, .input-group.address {
+  width: 100%;
+}
+
+.input-group.bank, .input-group.postcode  {
+  width: 60%;
+}
+
+input[type="checkbox"] {
+  margin: 4px 0 0 4px;
+}
+
+// INVOICE FILTER FORM
+
+.table > thead > tr > td.title {
+  font-weight: 600;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.table > thead > tr > td.filter-field {
+  vertical-align: middle;
+}
+
+td > input.search-query {
+  width: 90%;
+  line-height: 22px;
+  padding: 1px 1px;
+  vertical-align: middle;
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+// date field minimum size width fits date picker drop down
+div > input.date_picker.invoice-date-picker {
+  max-width: 100%;
+  min-width: 100px;
+  width: 226px;
+}
+
+select {
+  border: 1px solid #444;
+  border-radius: 0;
+}
+
+// OPTION MENU 
+// option:focus {
+// // outline: -webkit-focus-ring-color auto 5px;
+// // outline-color: -webkit-focus-ring-color;
+// // outline-style: auto;
+// // outline-width: 5px;
+// }
+
+// STYLE REPORTS FORM
+
+label.analysis {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 80px;
+}
+
+input.date_picker.analysis {
+  display: inline-block;
+  float: right;
+  width: 70%;
+}
+
+input.date_picker.analysis, div.select2-container.analysis {
+  margin-bottom: 5px;
+}
+
+
