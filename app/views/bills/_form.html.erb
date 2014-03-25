@@ -2,7 +2,7 @@
 <%= form_for @bill do |f| %>
   <%= f.hidden_field :account_id %>
   <div class="form-group">
-    <%= f.text_field :date, class: "date_picker" %>
+    <%= f.text_field :date, class: "date_picker form-control" %>
   </div>
   <%= form_group_for f, :customer_id, label: false do %>
     <%= f.hidden_field :customer_id, data: {customers: get_customer_data} %>

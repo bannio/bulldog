@@ -1,4 +1,11 @@
 /*FOOTER*/
+footer {
+   position:absolute;
+   bottom:0;
+   height:202px;   /* Height of the footer */
+   width: 100%
+
+}
 
 footer {
   background-color: $background-dk-color;
@@ -67,3 +74,4 @@ p.status {
 p.copyright {
   text-align: left;
 }
+
