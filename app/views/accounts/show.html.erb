@@ -6,45 +6,45 @@
   <div class="col-md-4 col-md-offset-4 panel panel-default">
     <div class="panel-body">
       <h1>Account Details</h1>
-      <table>
+      <table class="account-details">
         <tr>
-          <td>Name</td><td><%= @account.name %></td>
+          <td class="td-name">Name</td><td class="td-content"><%= @account.name %></td>
         </tr>
         <tr>
-          <td>Address</td><td><%= simple_format("#{@account.address}") %></td>
+          <td class="td-name">Address</td><td class="td-content"><%= simple_format("#{@account.address}") %></td>
         </tr>
         <tr>
-          <td>Postcode</td><td><%= @account.postcode %></td>
+          <td class="td-name">Postcode</td><td class="td-content"><%= @account.postcode %></td>
         </tr>
         <tr>
-          <td>Include bank details?</td><td><%= @account.include_bank ? "Yes" : "No" %></td>
+          <td class="td-name">Include bank details?</td><td class="td-content"><%= @account.include_bank ? "Yes" : "No" %></td>
         </tr>
         <tr>
-          <td>Account Name</td><td><%= @account.bank_account_name %></td>
+          <td class="td-name">Account Name</td><td class="td-content"><%= @account.bank_account_name %></td>
         </tr>
         <tr>
-          <td>Bank Name</td><td><%= @account.bank_name %></td>
+          <td class="td-name">Bank Name</td><td class="td-content"><%= @account.bank_name %></td>
         </tr>
         <tr>
-          <td>Branch Name</td><td><%= @account.bank_address %></td>
+          <td class="td-name">Branch Name</td><td class="td-content"><%= @account.bank_address %></td>
         </tr>
         <tr>
-          <td>Account Number</td><td><%= @account.bank_account_no %></td>
+          <td class="td-name">Account Number</td><td class="td-content"><%= @account.bank_account_no %></td>
         </tr>
         <tr>
-          <td>Sort Code</td><td><%= @account.bank_sort %></td>
+          <td class="td-name">Sort Code</td><td class="td-content"><%= @account.bank_sort %></td>
         </tr>
         <tr>
-          <td>BIC</td><td><%= @account.bank_bic %></td>
+          <td class="td-name">BIC</td><td class="td-content"><%= @account.bank_bic %></td>
         </tr>
         <tr>
-          <td>IBAN</td><td><%= @account.bank_iban %></td>
+          <td class="td-name">IBAN</td><td class="td-content"><%= @account.bank_iban %></td>
         </tr>
       </table>
       <br/>
 
-      <%= link_to 'Edit', edit_account_path(@account), class: "std-btn" %>
-      <%= link_to 'Change Password', edit_user_registration_path, class: "std-btn" %>
+      <%= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn" %>
+      <%= link_to 'Change Password', edit_user_registration_path, class: "warn-btn std-btn" %>
     </div>
   </div>
 </div>

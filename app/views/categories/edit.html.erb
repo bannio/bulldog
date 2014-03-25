@@ -4,19 +4,23 @@
 <div class="container">
   <div class="col-md-4 col-md-offset-4 panel panel-default">
     <div class="panel-body">
-      <div class="row">
-        <h2>Rename Category</h2>
+      <h2>Rename Category</h2>
+      <div>
         <p>All categories have bills associated with them. When you rename a category those bills will be reassigned to the new named category. If the new category already exists then the categories will be merged.</p>
         <p>Use this feature to tidy up mis-spellings or merge little used categories.</p>
         <p>Renaming categories can also be seen as re-classifying bills.</p>
       </div>
+      <div class="form">
         <%= form_for @category do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <%= f.submit 'Save', :class => 'std-btn' %>
-        <% end %>      
-      </div>
-    </div>
-  </div>
-
+        <%#= f.label :name %>
+        <%= f.label :name, "Enter new category name" %>
+        <%= f.text_field :name, :class => 'category-name' %>
+        <div class="category-btns">
+        <%= f.submit 'Save', :class => 'create-btn std-btn' %>        
+        <%= link_to "Cancel", categories_path, class: "action-btn std-btn" %>
+        <% end %>     
+        </div> 
+      </div><!--end form-->
+    </div><!-- end panel-body -->
+  </div><!--end panel -->
 </div><!-- end container-->

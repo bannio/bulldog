@@ -3,7 +3,8 @@
 
 <div class="container">
   <h1>Analysis</h1>
-  <div class="panel panel-default">
+
+  <div class="panel panel-default col-md-4" style="float:none">
     <div class="panel-body">
 
       <%#= pie_chart category_chart_path %>
@@ -21,24 +22,30 @@
 
       <%= form_for @report do |f| %>
         <%= f.hidden_field :account_id %>
-        <%= f.label :from_date %>
-        <%= f.text_field :from_date, class: "date_picker" %>
-        <%= f.label :to_date %>
-        <%= f.text_field :to_date, class: "date_picker" %>
+        <div class="form-group analysis">
+        <%= f.label :from_date, class: "analysis"%>
+        <%= f.text_field :from_date, class: "date_picker analysis" %>
+        </div>
+        <div class="form-group analysis">
+        <%= f.label :to_date, class: "analysis" %>
+        <%= f.text_field :to_date, class: "date_picker analysis" %>
+        </div>
         <%= f.collection_select :customer_id, Customer.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
         <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
         <%= f.collection_select :category_id, Category.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
 
-        <%= f.submit 'Submit', :class => 'std-btn', data: {toggle: "tooltip"}, title: "Submit filter choices to refresh data." %> 
-        <%= link_to "Clear", new_report_path, class: "std-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
-        <%= f.submit 'Export', class: 'std-btn', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
+        <%= f.submit 'Submit', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submit filter choices to refresh data." %> 
+        <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= f.submit 'Export', class: 'export-btn std-btn', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
       <% end %> <!-- end of form -->
     </div><!--end panel body -->
   </div><!--end panel-->
 
 
-  <div class="panel panel-default">
-    <div class="panel-body">
+
+  <div class="panel panel-default analysis-panel">
+    <!-- <div class="panel-body"> -->
+
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">

@@ -52,7 +52,7 @@ div .navbar-logo {
 
 a.nav-btn {
   border: #000000 2px solid;
-  border-radius: 50px 50px;
+  border-radius: 5px 5px;
   text-align: center;
   color: #000000;
   // padding: 8px 15px;
@@ -61,6 +61,7 @@ a.nav-btn {
   margin: 14px 5px 0 0;
   overflow: hidden;
   font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  font-weight: 600;
   display: inline;
   clear:none;
 }

@@ -10,12 +10,12 @@
       <table class="table table-hover table-condensed" id="invoice_table">
         <thead>
           <tr>
-          <td><%= link_to "New", new_invoice_path, class: "std-btn"  %></td>
-          <td>Filter:</td>
-          <td><%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %> </td>
-          <td><%= text_field_tag :search, params[:search], class: "search-query", placeholder: 'text within comment' %></td>
+          <td><%= link_to "New", new_invoice_path, class: "create-btn std-btn"  %></td>
+          <td class="title">Filter invoices:</td>
+          <td class="filter-field"><%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %> </td>
+          <td class="filter-field"><%= text_field_tag :search, params[:search], class: "search-query", placeholder: ' by text within comment' %></td>
 <!--           <td><a class="std-btn" type="submit" value="Refresh"><span class="glyphicon glyphicon-refresh"></span> Refresh</a> -->
-          <td><%= submit_tag "Refresh", name: nil, class: "std-btn" %></td>
+          <td><%= submit_tag "Filter", name: nil, class: "action-btn std-btn" %></td>
           
           </tr>
           <tr>

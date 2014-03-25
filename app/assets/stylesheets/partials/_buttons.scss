@@ -11,13 +11,38 @@ white-space: pre;
 }
 
 
-// GENERIC BUTTON
+// BUTTON COLOURS
 
+ // green
+a.create-btn, input.create-btn {
+  border: #008418 2px solid;
+  color: #008418;
+}
+
+// blue
+a.action-btn, input.action-btn {
+  border: #2056BF 2px solid;
+  color: #2056BF;
+}
+
+// red
+a.warn-btn, input.warn-btn {
+  border: #D82410 2px solid;
+  color: #D82410;
+}
+
+// purple
+a.export-btn, input.export-btn {
+  border: #890086 2px solid;
+  color: #890086;
+}
+
+// GENERIC BUTTON
 a.std-btn, input.std-btn {
-  border: #444 2px solid;
-  border-radius: 50px 50px;
+  // border: #000000 2px solid;
+  border-radius: 5px 5px;
   text-align: center;
-  color: #444;
+  // color: #000000;
   padding: 6px 12px;
   font-size: 10pt;
   font-weight: 600;
@@ -25,6 +50,9 @@ a.std-btn, input.std-btn {
   overflow: hidden;
   font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
   display: inline-block;
+  // min height required to ensure it doesn't inherit input fields height
+  min-height: 34px;
+  max-height: 34px;
 }
 
 
@@ -32,6 +60,7 @@ a.std-btn, input.std-btn {
   text-decoration: none;
   background-color: #eeeeee;
   cursor: pointer;
+  color: #000000;
 }
 
 

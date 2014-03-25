@@ -1,0 +1,86 @@
+// keep any font styling here
+
+
+// table contents
+td {
+font-size: 12px;
+font-family: Arial, sans-serif;
+font-weight: 400;
+color: #444;
+}
+
+td > p {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+}
+
+
+
+
+// placeholder text 
+::input-placeholder {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  // padding:
+}
+
+input::-moz-placeholder {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  // padding:
+}
+
+input:-moz-placeholder {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  // padding:
+}
+
+input:-ms-input-placeholder {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  // padding:
+}
+
+
+::-webkit-input-placeholder {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+}
+
+span, span.select2-chosen {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+    // padding:
+}
+
+input, input[placeholder] {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;  
+    // padding:
+}
+
+
+
+p.help-block {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: red;   
+}
