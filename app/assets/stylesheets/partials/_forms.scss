@@ -1,5 +1,26 @@
+// table contents
+// tbody > tr > td {
+// font-size: 18px;
+// font-family: 'Source Sans Pro', Arial, sans-serif;
+// font-weight: 400;
+// }
+
+// p {
+//   font-size: 12px;
+//   font-family: 'Source Sans Pro', Arial, sans-serif;
+//   font-weight: 400;
+// }
 
 // FORM FIELDS BORDERS AND COLOURING
+
+input {
+  height: 26px;
+}
+
+input, textarea {
+  border: 1px solid #444;
+  border-radius: 0px;
+}
 
 input.search-query {
   border: 1px solid #444;
@@ -36,15 +57,82 @@ input.search-query {
   color: #444;
 }
 
-// glow or outline on active dropdown menu container
+// GLOW ON CONTAINERS INPUT FIELDS
+
+ // glow or outline on active dropdown menu container
 div.select2-drop-active {
-border: 1px solid #444;
-border-top: none;
+  border: 1px solid #66afe9;
+  border-top: none;
 }
 
-// highlight on dropdown menu items as you hover
- div.select2-result-label:focus, div.select2-result-label:hover, div.select2-result-label:active, div.select2-result-label:visited {
-  // background-color: #eee;
+
+// hover, focus, active and visited states
+//  div.select2-result-label:focus, div.select2-result-label:hover, 
+//  div.select2-result-label:active, div.select2-result-label:visited, 
+//  div.select2-container:focus, div.select2-container:hover, 
+//  div.select2-container:active, div.select2-container:visited,
+//  a.select2-choice:focus, a.select2-choice:hover, 
+//  a.select2-choice:active, a.select2-choice:visited, 
+// .form-control:focus, input:focus, .select2-container:focus,
+// .form-control:hover, input:hover, .select2-container:hover, 
+// .form-control:active, input:active, .select2-container:active, 
+// textarea:focus, textarea:hover, textarea:active, 
+// {
+  // border-color: #444;
+  // outline: 0;
+  // -webkit-box-shadow: inset 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  // box-shadow: inset 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  // outline: 0px auto #66afe9;
+  // outline-offset: 0px;
+//     border-color: #444;
+//   outline: 0;
+//   -webkit-box-shadow: 0 1px 1px #66afe9, 0 0 8px #66afe9;
+//   box-shadow: 0 1px 1px #66afe9, 0 0 8px #66afe9;
+//   outline: 0px auto #66afe9;
+//   outline-offset: 0px;
+// }
+
+
+ div.select2-result-label:focus,
+ div.select2-result-label:active, div.select2-result-label:visited, 
+ div.select2-container:focus, 
+ div.select2-container:active, div.select2-container:visited,
+ a.select2-choice:focus,
+ a.select2-choice:active, a.select2-choice:visited, 
+.form-control:focus, input:focus, .select2-container:focus,
+.form-control:active, input:active, .select2-container:active, 
+textarea:focus, textarea:active, 
+{
+  // border-color: #444;
+  // outline: 0;
+  // -webkit-box-shadow: inset 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  // box-shadow: inset 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  // outline: 0px auto #66afe9;
+  // outline-offset: 0px;
+    border-color: #444;
+  outline: 0;
+  -webkit-box-shadow: 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  box-shadow: 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  outline: 0px auto #66afe9;
+  outline-offset: 0px;
+}
+
+div.select2-result-label:hover, div.select2-container:hover, a.select2-choice:hover, 
+.form-control:hover, input:hover, .select2-container:hover, 
+textarea:hover
+{
+  // border-color: #444;
+  // outline: 0;
+  // -webkit-box-shadow: inset 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  // box-shadow: inset 0 1px 1px #66afe9, 0 0 8px #66afe9;
+  // outline: 0px auto #66afe9;
+  // outline-offset: 0px;
+    border-color: #444;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0px auto #66afe9;
+  outline-offset: 0px;
 }
 
 
@@ -67,20 +155,43 @@ div.form-group {
 
 input.date_picker {
   width: 60%;
+  height: 26px;
+  border: 1px solid #444;
+  border-radius: 0px;
 }
 
 
 // ACCOUNT DETAILS FORM
-.input-group.name, .input-group.address {
+.input-group.name, .input-group.address, .input-group.bank,  {
   width: 100%;
 }
 
-.input-group.bank, .input-group.postcode  {
+.input-group.postcode  {
   width: 60%;
+}
+
+.input-group.address > textarea.address {
+  min-height: 90px;
+  max-width: 100%;
 }
 
 input[type="checkbox"] {
   margin: 4px 0 0 4px;
+}
+
+// makes account detail table fill full form field
+table.account-details {
+  width: 100%;
+}
+
+table.account-details > tbody > tr > td.td-name {
+  width: 40%;
+  vertical-align: top;
+}
+
+table.account-details > tbody > tr > td.td-content {
+  width: 60%;
+  vertical-align: top;
 }
 
 // INVOICE FILTER FORM
@@ -112,6 +223,7 @@ div > input.date_picker.invoice-date-picker {
   max-width: 100%;
   min-width: 100px;
   width: 226px;
+  padding-left: 5px;
 }
 
 select {
@@ -119,13 +231,15 @@ select {
   border-radius: 0;
 }
 
-// OPTION MENU 
-// option:focus {
-// // outline: -webkit-focus-ring-color auto 5px;
-// // outline-color: -webkit-focus-ring-color;
-// // outline-style: auto;
-// // outline-width: 5px;
-// }
+// NEW INVOICE FORM
+
+// styles select customer select2 uses important to overright inline styling
+div.customer-select > div.select2-container {
+  width: 226px !important; 
+  margin-bottom: 0;
+  }
+
+
 
 // STYLE REPORTS FORM
 
@@ -134,6 +248,10 @@ label.analysis {
     float: left;
     clear: left;
     width: 80px;
+}
+
+div.form-group.analysis {
+  clear: right;
 }
 
 input.date_picker.analysis {
@@ -146,3 +264,63 @@ input.date_picker.analysis, div.select2-container.analysis {
   margin-bottom: 5px;
 }
 
+// STYLE NEW CUSTOMER FORM
+
+input.name {
+  width: 100%;
+}
+
+// textarea.address {
+//   width: 100%;
+//   max-width: 100%;
+// }
+
+input.postcode {
+  width: 60%;
+}
+
+div.customer-form > textarea.address {
+  min-height: 80px;
+  width: 100%;
+  max-width: 100%;
+}
+
+p.help-block {
+  margin: 5px 0px;
+}
+
+// STYLE FOR CATEGORIES 
+
+input.category-name {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+form.edit_category {
+  margin: 10px 0px;
+}
+
+div.category-btns {
+  display: block;
+}
+
+// PAGINATION
+
+// changes colour of pagination
+nav.pagination > span > a {
+  color: #444;
+}
+
+// moves pagination in from side of page
+.pagination {
+  padding-left: 5px;
+}
+
+// MODAL
+input.form-control {
+  height: 26px;
+}
+
+div.checkbox > input {
+height: 15px;
+}

@@ -4,9 +4,11 @@
     <%= f.text_field :date, class: "date_picker invoice-date-picker" %>
   <% end %>
   <% if params[:action] == 'new' %>
-    <%= form_group_for f, :customer_id, label: false do %>
-      <%= f.collection_select :customer_id, @customers, :id, :name %>
+    <%= form_group_for f, :customer_id, label: false do%>
+    <div class="customer-select">
+      <%= f.collection_select :customer_id, @customers, :id, :name%>
     <% end %>
+    </div>
   <% else %>
     <div class="input-group">
       <p><%= @invoice.customer_name %></p>
@@ -42,15 +44,15 @@
 
   <% case params[:action] %>
     <% when 'edit' %>
-      <%= f.submit 'Update Invoice', class: 'std-btn' %>
-      <%= link_to 'Destroy', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'std-btn' %>
+      <%= f.submit 'Update Invoice', class: 'create-btn std-btn' %>
+      <%= link_to 'Destroy', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
     <% when 'new' %>
-      <%= f.submit 'Create Invoice', class: 'std-btn' %>
+      <%= f.submit 'Create Invoice', class: 'create-btn std-btn' %>
     <% when 'create' %>
-      <%= f.submit 'Create Invoice', class: 'std-btn' %>
+      <%= f.submit 'Create Invoice', class: 'create-btn std-btn' %>
     <% when 'show' %>
-      <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'std-btn' %>
+      <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'create-btn std-btn' %>
   <% end %>
-  <%= link_to params[:action] == 'show' ? "Back" : "Cancel", invoices_path, class: 'std-btn' %>  
+  <%= link_to params[:action] == 'show' ? "Back" : "Cancel", invoices_path, class: 'action-btn std-btn' %>  
 
 <% end %>

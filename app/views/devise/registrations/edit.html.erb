@@ -32,16 +32,17 @@
               <%= f.password_field :current_password, class: 'form-control', placeholder: 'current password' %>
             </div>
           </fieldset>
-          <%= link_to 'Cancel', :back, class: 'std-btn' %>
-          <%= f.submit 'Update', :class => 'std-btn' %>
+          <%= link_to 'Cancel', :back, class: 'action-btn std-btn' %>
+          <%= f.submit 'Update', :class => 'create-btn std-btn' %>
         <% end %>
       </div>
       <div class="authform">
       <h3>Cancel Account</h3>
       <fieldset>
       <p>Unhappy? We'll be sad to see you go.</p>
-      <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'std-btn' %>
-      <%= link_to 'Cancel', :back, class: 'std-btn' %>
+
+      <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'warn-btn std-btn' %>
+      <%= link_to 'Cancel', :back, class: 'action-btn std-btn' %>
       </fieldset>
       </div>
     </div>

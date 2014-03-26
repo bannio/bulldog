@@ -14,16 +14,16 @@
     <%= f.hidden_field :category_id, data: {categories: get_category_data} %>
   <% end %>
   <%= form_group_for f, :description, label: false do %>
-    <%= f.text_field :description, placeholder: 'description', class: "form-control" %>
+    <%= f.text_field :description, placeholder: 'Description', class: "form-control" %>
   <% end %>
   <%= form_group_for f, :amount, label: false do %>
-    <%= f.text_field :amount, placeholder: 'amount', class: "form-control" %>
+    <%= f.text_field :amount, placeholder: 'Amount', class: "form-control" %>
   <% end %> 
-  <%= f.submit 'Save', :class => 'std-btn' %>
+  <%= f.submit 'Save', :class => 'create-btn std-btn' %>
   <% if params[:action] == 'edit' %>
-    <%= link_to 'Destroy', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'std-btn' %>
+    <%= link_to 'Destroy', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
   <% end %>
-  <%= link_to "Cancel", bills_path, class: "std-btn"  %>
+  <%= link_to "Cancel", bills_path, class: "action-btn std-btn"  %>
 <% end %> <!-- end of form_for -->
 
 <%= render 'layouts/messages' %>

@@ -2,12 +2,15 @@
 
 
       <%= f.hidden_field :account_id %>
-      
-      <%= f.text_field :name, placeholder: 'name' %>
-      <%= errors_for f, :name %>
-      <%= f.text_area :address, placeholder: 'address'  %>
-      <%= f.text_field :postcode, placeholder: 'postcode'  %>
-      
-      <%= f.submit 'Save', :class => 'std-btn' %>
+      <div class="customer-form">
+        <%= f.text_field :name, placeholder: 'name', class: 'name' %>
+        <%= errors_for f, :name %>
+        <%= f.text_area :address, placeholder: 'address', class: 'address' %>
+        <%= f.text_field :postcode, placeholder: 'postcode', class: 'postcode' %>
+      </div>
+      <div>
+      <%= f.submit 'Save', :class => 'create-btn std-btn' %>
+      <%= link_to "Cancel", customers_path, class: "action-btn std-btn" %>
     <% end %>
+      </div>
     <%= render 'layouts/messages' %>

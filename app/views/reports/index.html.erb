@@ -11,12 +11,16 @@
 
 <%= form_for @report do |f| %>
   <%= f.hidden_field :account_id %>
-  <%= f.text_field :from_date, class: "date_picker analysis" %>
+  <div class="form-group">
+    <%= f.text_field :from_date, class: "date_picker analysis" %>
+  </div>
+  <div class="form-group">
   <%= f.text_field :to_date, class: "date_picker analysis" %>
+  </div>
   <%= f.collection_select :customer_id, Customer.visible_to(current_user).all, :id, :name %>
   <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).all, :id, :name %>
   <%= f.collection_select :category_id, Category.visible_to(current_user).all, :id, :name %>
-  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+  <%= f.submit 'Submit', :class => 'create-btn std-btn' %>
 
-  <%= link_to "Cancel", reports_path, class: "btn btn-warning"  %>
+  <%= link_to "Cancel", reports_path, class: "action-btn std-btn"  %>
 <% end %> <!-- end of form -->
