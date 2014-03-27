@@ -2,8 +2,10 @@
 <% content_for :description do %>Bulldog-Clip bills index<% end %>
 
 <div class="container">
+
   <h1>Bills</h1>
 
+     <a href="#" id="pop" class="info-btn pop" data-trigger="click" data-placement="left" data-container= "body" data-original-title="About this page" data-content="All of your existing bills are listed in the table below. You can edit a bill from the table by clicking anywhere on the row it appears in. Use the 'New' button to create a new bill. The 'Export' button allows you to download your bills as a file to save or use the data elsewhere"><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
 
   <div class="panel panel-default">
     <div class="panel-body">
@@ -27,7 +29,7 @@
         <% @bills.each do |bill| %>
           <tr title="click to edit", class="pointer rowlink",
               data-rowlink="<%= edit_bill_path(bill)%>">
-            <td><%= bill.date %></td>
+            <!-- <td><%= bill.date %></td> -->
             <td><%= bill.customer_name %></td>
             <td><%= bill.supplier_name %></td>
             <td><%= bill.category_name %></td>

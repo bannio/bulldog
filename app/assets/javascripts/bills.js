@@ -106,3 +106,13 @@ $(document).ready(ready);
 // $(document).on('page:change', ready);
 $(document).on('page:update', ready);
 $(document).on('page:update', subnavToggle);
+
+
+
+
+$(function() {
+$('#pop').click(function(e) {
+e.preventDefault();
+})
+$('#pop').popover();
+});

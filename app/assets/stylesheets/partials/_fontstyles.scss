@@ -1,22 +1,55 @@
 // keep any font styling here
 
+html, body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.428571429;
+  color: #444;
+  background-color: white; }
 
-// table contents
+
+// page headings
+h1 {
+font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+color: #000000;
+font-weight: 700;
+font-size: 24px;
+margin-bottom: 15px;
+display: inline-block;
+}
+
+
+// table contents and headers
+
+th {
+font-size: 13px;
+font-family: Arial, sans-serif;
+font-weight: 700;
+color: #000;
+}
+
 td {
-font-size: 12px;
+font-size: 13px;
 font-family: Arial, sans-serif;
 font-weight: 400;
 color: #444;
 }
 
 td > p {
-  font-size: 12px;
+  font-size: 13px;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #444;
 }
 
 
+// styles text fields once text has been added
+.form-control, textarea, input, span {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+}
 
 
 // placeholder text 
@@ -24,32 +57,28 @@ td > p {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #444;
-  // padding:
+  color: #87878A;
 }
 
 input::-moz-placeholder {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #444;
-  // padding:
+  color: #87878A;
 }
 
 input:-moz-placeholder {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #444;
-  // padding:
+  color: #87878A;
 }
 
 input:-ms-input-placeholder {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #444;
-  // padding:
+  color: #87878A;
 }
 
 
@@ -57,24 +86,25 @@ input:-ms-input-placeholder {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #444;
+  color: #87878A;
 }
 
-span, span.select2-chosen {
+// input[placeholder] {
+//   font-size: 12px;
+//   font-family: Arial, sans-serif;
+//   font-weight: 400;
+//   color: #87878A;  
+// }
+
+// makes dropdown placeholder same colour as others 
+// but also makes everything in dropdown menu that colour too
+span.select2-chosen { 
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #444;
-    // padding:
+  color: #87878A;
 }
 
-input, input[placeholder] {
-  font-size: 12px;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  color: #444;  
-    // padding:
-}
 
 
 
@@ -82,5 +112,5 @@ p.help-block {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: red;   
+  color: #D82410;   
 }

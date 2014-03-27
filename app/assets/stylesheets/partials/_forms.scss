@@ -194,6 +194,8 @@ table.account-details > tbody > tr > td.td-content {
   vertical-align: top;
 }
 
+
+
 // INVOICE FILTER FORM
 
 .table > thead > tr > td.title {
@@ -323,4 +325,10 @@ input.form-control {
 
 div.checkbox > input {
 height: 15px;
+}
+
+// ERRORS
+.has-error .form-control {
+// border-color: #a94442;
+border-color: #444;
 }
