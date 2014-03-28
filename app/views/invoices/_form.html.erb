@@ -18,30 +18,35 @@
   <%= form_group_for f, :comment, label: false do %>
     <%= f.text_area :comment %>
   <% end %>
-
-  <table class="table" id="bill_table">
-    <tr>
-      <th>Date</th>
-      <th>Supplier</th>
-      <th>Category</th>
-      <th>Description</th>
-      <th style="text-align: right">Amount</th>
-      <% if params[:action] == 'edit' %>
-        <td>remove?</td>
-      <% end %>
-    </tr>
-      <% @invoice.bills.each do |bill| %>
-        <%= render 'bill_fields', f: bill %>
-      <% end %>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Total </td>
-      <td style="text-align: right"><%= number_to_currency(@invoice.total) %></td>
-    </tr>
-  </table>
-
+  
+  <div class="table-responsive">
+    <table class="table table-condensed" id="bill_table">
+      <thead>
+        <tr>
+          <th class="first-col">Date</th>
+          <th>Supplier</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th class="align-right">Amount</th>
+          <% if params[:action] == 'edit' %>
+          <th>Remove?</th>
+          <% end %>
+        </tr>
+        <% @invoice.bills.each do |bill| %>
+          <%= render 'bill_fields', f: bill %>
+        <% end %>
+      </thead>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="title-td">Total </td>
+          <td class="align-right"><%= number_to_currency(@invoice.total) %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
   <% case params[:action] %>
     <% when 'edit' %>
       <%= f.submit 'Update Invoice', class: 'create-btn std-btn' %>

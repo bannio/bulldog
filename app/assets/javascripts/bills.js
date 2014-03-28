@@ -28,6 +28,7 @@ ready = function() {
   $("input.date_picker").datepicker({ 
     dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true });
 
+
   $('#bill_customer_id').select2({
     placeholder: 'Customer',
     width: 'resolve',
