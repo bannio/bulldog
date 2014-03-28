@@ -32,6 +32,8 @@ gem 'chartkick'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+# To try to fix possible conflicts between turbolinks and other libraries
+# gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -64,7 +66,7 @@ group :test, :development do
   # gem 'capybara','~> 2.0.1'         installed as part of cucumber-rails
   gem 'factory_girl_rails'
   gem 'launchy'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
   gem 'selenium-client'
   gem "selenium-webdriver"
   gem 'simplecov', :require => false

@@ -102,6 +102,13 @@ ready = function() {
     $('#subnav').toggleClass("hidden");
     });
   };
+
+  // var alertClose = function(){
+  //   return $('.alert').on('click', function(){
+  //     $(".alert").alert()
+  //   });
+  // };
+
 $(document).ready(ready);
 // $(document).on('page:change', ready);
 $(document).on('page:update', ready);
@@ -116,3 +123,4 @@ e.preventDefault();
 })
 $('#pop').popover();
 });
+

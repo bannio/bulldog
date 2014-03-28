@@ -59,7 +59,7 @@ Feature: In order to track my costs
     And there is a link to add a new bill
     When I click the first table row
     Then I should be on the Edit Bill page
-    When I change the bill description to "changed it here" and press save
+    When I change the bill Description to "changed it here" and press save
     Then I should be on the Bills page
     And I should see "changed it here"
 
@@ -75,9 +75,9 @@ Feature: In order to track my costs
     | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
     | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
     And I am on the edit page for the first bill
-    Then I should see "Coffee" in the "description" field
+    Then I should see "Coffee" in the "Description" field
     And I should see a Cancel button
-    When I change the bill description to "changed it here" and press Cancel
+    When I change the bill Description to "changed it here" and press Cancel
     Then I should be on the Bills page
     And I should not see "changed it here"
     And I should see "Coffee"

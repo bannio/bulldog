@@ -16,7 +16,7 @@
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-btn' %>
       <% else %>
             <%#= link_to 'Sign in', new_user_session_path, class: 'nav-btn' %><!--replaced by modal remote sign in -->
-            <%= link_to 'Sign In', remote_sign_in_path, remote: true, class: 'nav-btn' %>
+            <%= link_to 'Sign in', remote_sign_in_path, remote: true, class: 'nav-btn' %>
         <%= link_to 'Sign up', new_user_registration_path, class: 'nav-btn' %>
       <% end %>
       </div><!-- end logo-col -->

@@ -29,7 +29,7 @@
         <% @bills.each do |bill| %>
           <tr title="click to edit", class="pointer rowlink",
               data-rowlink="<%= edit_bill_path(bill)%>">
-            <!-- <td><%= bill.date %></td> -->
+            <td><%= bill.date %></td>
             <td><%= bill.customer_name %></td>
             <td><%= bill.supplier_name %></td>
             <td><%= bill.category_name %></td>
