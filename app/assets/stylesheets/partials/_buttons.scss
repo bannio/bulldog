@@ -11,6 +11,48 @@ white-space: pre;
 }
 
 
+// INFO BUTTON
+.info-btn {
+  max-width: 26px;
+  max-height: 26px;
+  margin-right: 0px;
+  margin-top: 17px;
+  float: right;
+  // float: right;
+    // display: inline-block;
+}
+
+.info-btn.form-btn {
+  max-width: 26px;
+  max-height: 26px;
+  margin-right: 0px;
+  margin-top: 17px;
+  float: right;
+  float: right;
+  display: inline-block;
+}
+
+img.info-img {
+  vertical-align: top;
+  max-width: 26px;
+  max-height: 26px;
+}
+
+a.info-btn {
+  margin: 17px 0px;
+  // display: block;
+}
+
+// Moves arrow to top of popover box
+.popover.left .arrow {
+  top: 10%;
+}
+// moves popover down page
+.popover {
+  top: 90px !important;
+}
+
+
 // BUTTON COLOURS
 
  // green
