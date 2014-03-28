@@ -819,6 +819,7 @@ def create_invoices(start_date, end_date, customer)
   bills.each do |bill|
     bill.update_attribute(:invoice_id, @invoice.id)
   end
+  @invoice.update_attribute(:total, bills.sum(:amount))
 end 
 
 until Bill.count - Bill.count(:invoice_id) < 30

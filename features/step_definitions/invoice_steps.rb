@@ -53,7 +53,7 @@ end
 
 When(/^I type "(.*?)" in the search field and press enter$/) do |search|
   fill_in 'search', with: search
-  click_button('Refresh')
+  click_button('Filter')
 end
 
 Given /^I have the following invoices$/ do |table|

@@ -16,8 +16,8 @@ class AccountsController < ApplicationController
   def update
     @account = Account.find(params[:id])
     if @account.update(account_params)
-      flash[:success] = "Account successfully updated"
-      redirect_to @account
+      # flash[:notice] = "Account successfully updated"
+      redirect_to @account, notice: "Account successfully updated"
     else
       render 'edit'
     end

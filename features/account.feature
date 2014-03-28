@@ -11,14 +11,14 @@ Feature: Account
     Given I have no account
     And I sign up with just my email
     When I activate with a valid password
-    Then I should be on the Home page
+    Then I should be on the Bills page
     And I should see "Your account was successfully confirmed."
     And I have an Account record saved
 
   Scenario: Sign in a second time
     Given I am a user with an account
     When I sign in
-    Then I should be on the Home page
+    Then I should be on the Bills page
 
   Scenario: I can update my account address details
     Given I am a user with an account

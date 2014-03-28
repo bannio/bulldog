@@ -14,6 +14,7 @@
       <%= link_to "Export", bills_path(format: "csv"), class: "action-btn std-btn"  %>
 
 
+
       <div class="table-responsive">
         <table class="table table-hover table-condensed">
           <thead>
@@ -41,6 +42,7 @@
           </tbody>
         </table>
       </div><!--end table responsive -->
+
 
       <%= paginate @bills %>
     </div><!--end panel body -->

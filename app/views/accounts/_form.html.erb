@@ -75,7 +75,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Cancel', :back, class: 'action-btn std-btn' %>
+<%= link_to 'Cancel', account_path(@account), class: 'action-btn std-btn' %>
 <%= f.submit 'Save', :class => 'create-btn std-btn' %>
 <%#= flash_messages layout_flash: false %>
 <% end %>
