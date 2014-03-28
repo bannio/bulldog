@@ -1,0 +1,78 @@
+
+// provides space at top of table
+div.table-responsive {
+  margin-top: 10px;
+}
+
+
+// aligns amount col right to keep numbers in line
+th.align-right, td.align-right {
+  text-align: right;
+}
+
+// padding to keep 1st and last columns away from edge of page
+.table-condensed > thead > tr > th.align-right,
+.table-condensed > thead > tr > td.align-right,
+.table-condensed > tbody > tr > th.align-right,
+.table-condensed > tbody > tr > td.align-right,
+.table-condensed > tfoot > tr > th.align-right,
+.table-condensed > tfoot > tr > td.align-right
+ {
+  padding-right: 10px ;
+}
+
+.table-condensed > thead > tr > th.first-col,
+.table-condensed > thead > tr > td.first-col,
+.table-condensed > tbody > tr > th.first-col,
+.table-condensed > tbody > tr > td.first-col,
+.table-condensed > tfoot > tr > th.first-col,
+.table-condensed > tfoot > tr > td.first-col {
+  padding-left: 10px;
+}
+
+
+tfoot {
+  border-top: 2px solid #bbbbbb;
+  border-bottom: 2px solid #dddddd;
+}
+
+thead {
+  border-bottom: 2px solid #444;
+}
+
+tfoot > tr > td.title-td {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+}
+
+
+// scroll as soon as too much content
+@media (max-width: $screen-lg) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    // Tighten up spacing and give a background color
+    > .table {
+      margin-bottom: 0;
+      background-color: #fff;
+
+      // Ensure the table head content doesn't wrap add >td to prevent any wrap
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+      }
+    }
+
+
+

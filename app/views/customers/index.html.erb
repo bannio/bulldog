@@ -2,34 +2,39 @@
 <% content_for :description do %>lists Customers<% end %>
 
 
-
 <div class="container"> 
+<!-- <div class="container"> 
 <h1>Customers</h1>
-    <a href="#" id="pop" class="info-btn pop" data-trigger="click" data-placement="left" data-container= "body" data-original-title="About this page" data-content="This is a list of all your current customers. To edit any of their details just click on the relevant row from the table"><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
-  <div class="panel panel-default">
+    <a href="#" id="pop" class="info-btn pop" data-trigger="click" data-placement="left" data-container= "body" data-original-title="About this page" data-content="This is a list of all your current customers. To edit any of their details just click on the relevant row from the table"><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a> -->
+  <div class="panel panel-default col-md-6 col-md-offset-3">
     <div class="panel-body">
 
+<h1>Customers</h1>
+    <a href="#" id="pop" class="info-btn pop clearfix" data-trigger="click" data-placement="left" data-container= "body" data-original-title="About this page" data-content="This is a list of all your current customers. To edit any of their details just click on the relevant row from the table"><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
+    <div>
       <%= link_to 'New Customer', new_customer_path, class: 'create-btn std-btn' %>
-
-      <table class="table table-hover table-condensed">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Postcode</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @customers.each do |customer| %>
-            <tr title="click to edit", class="pointer rowlink",
-                data-rowlink="<%= edit_customer_path(customer)%>">
-              <td><%= customer.name %></td>
-              <td><%= simple_format("#{customer.address}") %></td>
-              <td><%= customer.postcode %></td>
+    </div>
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th class="first-col">Name</th>
+              <th>Address</th>
+              <th>Postcode</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr title="click to edit", class="pointer rowlink",
+                  data-rowlink="<%= edit_customer_path(customer)%>">
+                <td class="first-col"><%= customer.name %></td>
+                <td><%= simple_format("#{customer.address}") %></td>
+                <td><%= customer.postcode %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>  
 </div>

@@ -11,6 +11,23 @@
 //   font-weight: 400;
 // }
 
+// MODAL FORM WIDTH
+@media (min-width: 768px) {
+.modal-dialog {
+width: 400px;
+margin: 30px auto;
+}
+}
+.modal-footer {
+  margin-top: 0px;
+  padding: 15px 20px 10px 20px;
+  border-top: 0px solid #ffffff;
+}
+
+.modal-body {
+  padding-bottom: 5px;
+}
+
 // FORM FIELDS BORDERS AND COLOURING
 
 input {
@@ -47,14 +64,14 @@ input.search-query {
   // background: #E9E9E9; grey version
   background-color: #ffffff;
   background-image: none;
-  color: #444;
+  // color: #444;
 // background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee));
 }
 
 // background of entry field on selected menu
 .select2-dropdown-open > a.select2-choice{
   background-color: #ffffff;
-  color: #444;
+  // color: #444;
 }
 
 // GLOW ON CONTAINERS INPUT FIELDS
@@ -65,6 +82,19 @@ div.select2-drop-active {
   border-top: none;
 }
 
+.select2-chosen {
+  // color: #444;
+}
+
+
+.select2-container {
+  display: block;
+  width: 100%;
+}
+
+div.select2-container {
+  margin: 0 0 1% 0;
+}
 
 // hover, focus, active and visited states
 //  div.select2-result-label:focus, div.select2-result-label:hover, 
@@ -136,13 +166,26 @@ textarea:hover
 }
 
 
-// active item on dropdown menu is highlighted 
+// active item on dropdown menu is highlighted and text is black
 ul.select2-results > li.select2-highlighted {
   background: #eee;
   color: #000;
 }
 
+// attempts to make selected and placeholder text different colours
+// .select2-choice {
+// color: red !important; 
+// }
 
+// .select2-default {
+// color: red !important;
+// }
+
+
+// dropdown 'new' warning set to blue
+span.label.label-important {
+  color: #2056BF;
+}
 
 // OVERIDES INLINE STYLING TO GIVE 100% WIDTH TO SELECT2-CONTAINERS
 div.select2-container {
@@ -160,6 +203,9 @@ input.date_picker {
   border-radius: 0px;
 }
 
+input.search-query {
+  width: 100%;
+}
 
 // ACCOUNT DETAILS FORM
 .input-group.name, .input-group.address, .input-group.bank,  {

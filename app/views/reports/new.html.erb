@@ -54,42 +54,48 @@
         <li><a href="#Table" data-toggle="tab">Table</a></li>
       </ul>
 
-      <!-- Tab panes -->
+      <!-- Tab pane charts -->
       <div class="tab-content">
         <div class="tab-pane active" id="Charts"><%= line_chart @report.bills.group_by_month(:date).count %>
-        <!-- </div> -->
-        <!-- <div class="tab-pane" id="ColumnChart"> -->
           <%= column_chart [
             {name: "Last Year", data: @report.bills.last_year_by_monthly_sum},
             {name: "This Year", data: @report.bills.this_year_by_monthly_sum}
           ] %>
-        <!-- </div> -->
-        <!-- <div class="tab-pane" id="PieChart"> -->
           <%= pie_chart @report.bills.group("categories.name").references(:category).
                       order("categories.name").
                       sum(:amount) %>
-        </div>
+        </div><!--end tab pane -->
+
+      <!-- Tab pane tables -->
         <div class="tab-pane" id="Table">
-          <table class="table" id="bill_table">
-              <tr>
-                <th>Date</th>
-                <th>Supplier</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th style="text-align: right">Amount</th>
-              </tr>
-                <% @bills.each do |bill| %>
-                    <tr>
-                      <td><%= bill.date %></td>
-                      <td><%= bill.supplier_name %></td>
-                      <td><%= bill.category_name %></td>
-                      <td><%= bill.description %></td>
-                      <td style="text-align: right"><%= number_to_currency(bill.amount) %></td>
-                    </tr>        
-                <% end %>
+          <div class="table-responsive">
+            <table class="table table-condensed" id="bill_table">
+              <thead>
+                <tr>
+                  <th class="first-col">Date</th>
+                  <th>Customer</th>
+                  <th>Supplier</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                  <th class="align-right">Amount</th>
+                </tr>
+              <thead>
+              <tbody>
+                  <% @bills.each do |bill| %>
+                      <tr>
+                        <td class="first-col"><%= bill.date %></td>
+                        <td><%= bill.customer_name %></td>
+                        <td><%= bill.supplier_name %></td>
+                        <td><%= bill.category_name %></td>
+                        <td><%= bill.description %></td>
+                        <td class="align-right"><%= number_to_currency(bill.amount) %></td>
+                      </tr>        
+                  <% end %>
+              </tbody>
             </table>
-            <%= paginate @bills %>
-          </div><!--end tab pane -->
+          </div>
+          <%= paginate @bills %>
+        </div><!--end tab pane -->
       </div><!-- end tab content-->
     </div><!-- end panel body -->
   </div><!-- end panel -->

@@ -3,49 +3,55 @@
 
 <div class="container">
   <h1>Invoices</h1>
-       <a href="#" id="pop" class="info-btn pop" data-trigger="click" data-placement="left" data-container= "body" data-original-title="About this page" data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dicta adipisci natus eveniet dolorem fuga numquam accusantium. Repellendus, ab ad."><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
-  <div class="panel panel-default">
+       <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left auto" data-container= "body" data-original-title="About this page" data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dicta adipisci natus eveniet dolorem fuga numquam accusantium. Repellendus, ab ad."><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
+
+  <div class="panel panel-default col-md-4" style="float:none">
     <div class="panel-body">
-          <%#= link_to "New", new_invoice_path, class: "std-btn"  %>
       <%= form_tag invoices_path, method: 'get', id: "invoices_search" do %>
-      <table class="table table-hover table-condensed" id="invoice_table">
-        <thead>
-          <tr>
-          <td><%= link_to "New", new_invoice_path, class: "create-btn std-btn"  %></td>
-          <td class="title">Filter invoices:</td>
-          <td class="filter-field"><%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %> </td>
-          <td class="filter-field"><%= text_field_tag :search, params[:search], class: "search-query", placeholder: ' by text within comment' %></td>
-<!--           <td><a class="std-btn" type="submit" value="Refresh"><span class="glyphicon glyphicon-refresh"></span> Refresh</a> -->
-          <td><%= submit_tag "Filter", name: nil, class: "action-btn std-btn" %></td>
-          
-          </tr>
-          <tr>
-            <th><%= sortable "number", "No." %> <%= arrow "number" %></th>
-            <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
-            <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
-            <th><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
-            <th><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @invoices.each do |invoice| %>
-            <tr title="click to show details", class="pointer rowlink",
-                data-rowlink="<%= invoice_path(invoice)%>">
-              <td><%= invoice.number %></td>
-              <td><%= invoice.date %></td>
-              <td><%= invoice.customer_name %></td>
-              <td><%= invoice.comment %></td>
-              <td><%= number_to_currency(invoice.total) %></td>
+      <div class="form-group">
+        <label class="title">Filter invoices:</label>
+          <%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], class: "search-query form-control", placeholder: ' by text within comment' %>
+      </div>
+      <div>
+        <%= link_to "New", new_invoice_path, class: "create-btn std-btn" %>  
+        <%= submit_tag "Filter", name: nil, class: "action-btn std-btn" %>      
+      </div>
+      <% end %><!-- end of form -->
+    </div><!--end panel body -->
+  </div><!--end panel-->    
+
+  <div class="panel panel-default">
+    <div class="panel-body">             
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed" id="invoice_table">
+          <thead>
+
+            <tr>
+              <th class="first-col"><%= sortable "number", "No." %> <%= arrow "number" %></th>
+              <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+              <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+              <th><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
+              <th class="align-right"><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% end %>
-
-
+          </thead>
+          <tbody>
+            <% @invoices.each do |invoice| %>
+              <tr title="click to show details", class="pointer rowlink",
+                  data-rowlink="<%= invoice_path(invoice)%>">
+                <td class="first-col"><%= invoice.number %></td>
+                <td><%= invoice.date %></td>
+                <td><%= invoice.customer_name %></td>
+                <td><%= invoice.comment %></td>
+                <td class="align-right"><%= number_to_currency(invoice.total) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div><!--end table responsive -->
       <%= paginate @invoices %>
-
-
-    </div>
-  </div>
-</div>
+    </div><!--end panel body -->
+  </div><!--end panel-->  
+</div><!-- end container -->
