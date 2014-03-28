@@ -38,7 +38,7 @@ class InvoicePdf < Prawn::Document
   
   def address_box
     if @invoice.customer.address
-      text_box "#{@invoice.customer.address}#{@invoice.customer.postcode}"
+      text_box "#{@invoice.customer.address}\n#{@invoice.customer.postcode}"
     else
       text_box "Update your customer \n address to appear here"
     end
@@ -54,7 +54,7 @@ class InvoicePdf < Prawn::Document
     if @invoice.account.address
       addr = @invoice.account.address
       postcode = @invoice.account.postcode
-      text_box "#{addr}#{postcode}", 
+      text_box "#{addr}\n#{postcode}", 
         align: :center 
     else
       text_box "Update your account \n for address to appear here",
