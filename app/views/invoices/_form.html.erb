@@ -32,10 +32,12 @@
           <th>Remove?</th>
           <% end %>
         </tr>
-        <% @invoice.bills.each do |bill| %>
-          <%= render 'bill_fields', f: bill %>
-        <% end %>
       </thead>
+      <tbody>
+      <% @invoice.bills.each do |bill| %>
+        <%= render 'bill_fields', f: bill %>
+      <% end %>
+      </tbody>
       <tfoot>
         <tr>
           <td></td>

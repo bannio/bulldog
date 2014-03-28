@@ -37,14 +37,14 @@ Then(/^I should see (\d+) bills?$/) do |arg1|
 end
 
 When(/^I check one bill and click Update Invoice$/) do
-  within(:xpath, "//table/tr[2]") do
+  within(:xpath, "//table/tbody/tr[1]") do
     check('bill_ids_')
   end
   click_button('Update Invoice')
 end
 
 Then(/^I should see (\d+) invoices$/) do |arg1|
-  expect(all("table#invoice_table tr").count - 2).to eq arg1
+  expect(all("table#invoice_table tr").count - 1).to eq arg1
 end
 
 Then(/^There is a search field for comment$/) do
