@@ -74,6 +74,9 @@ input.search-query {
   // color: #444;
 }
 
+
+
+
 // GLOW ON CONTAINERS INPUT FIELDS
 
  // glow or outline on active dropdown menu container
@@ -287,6 +290,16 @@ div.customer-select > div.select2-container {
   margin-bottom: 0;
   }
 
+
+// removes webkit styling from customer select 
+div.customer-select>select {
+  -webkit-appearance: none;
+  max-width: 100%;
+  min-width: 100px;
+  width: 226px;
+  padding-left: 5px;
+  height: 26px;
+}
 
 
 // STYLE REPORTS FORM
