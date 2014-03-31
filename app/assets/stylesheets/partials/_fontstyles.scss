@@ -78,7 +78,7 @@ td > p {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #444;
+  // color: #444;
 }
 
 
@@ -96,6 +96,10 @@ input::-moz-placeholder {
   font-weight: 400;
   color: #87878A;
 }
+.select2-default {
+  color: #999 !important;
+}
+
 
 input:-moz-placeholder {
   font-size: 12px;
@@ -132,8 +136,9 @@ span.select2-chosen {
   font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  color: #87878A;
+  // color: #87878A;
 }
+
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
  {

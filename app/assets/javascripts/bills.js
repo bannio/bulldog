@@ -31,6 +31,7 @@ ready = function() {
 
   $('#bill_customer_id').select2({
     placeholder: 'Customer',
+    allowClear: true,
     width: 'resolve',
     data: {results: customerData, text: 'name'},
     initSelection : function (element, callback) {
@@ -48,8 +49,8 @@ ready = function() {
 
   $('#inv_customer_id').select2({
     placeholder: 'by customer',
-    width: 'resolve',
     allowClear: true,
+    width: 'resolve',
     data: {results: invCustomerData, text: 'name'},
     initSelection : function (element, callback) {
         var value = $(invCustomerData).filter(function(index){
@@ -65,6 +66,7 @@ ready = function() {
 
   $('#bill_supplier_id').select2({
     placeholder: 'Supplier',
+    allowClear: true,
     width: 'resolve',
     data: {results: supplierData, text: 'name'},
     initSelection : function (element, callback) {
@@ -82,6 +84,7 @@ ready = function() {
 
   $('#bill_category_id').select2({
     placeholder: 'Category',
+    allowClear: true,
     width: 'resolve',
     data: {results: categoryData, text: 'name'},
     initSelection : function (element, callback) {
@@ -104,7 +107,8 @@ $('#pop').popover();
 };
 
 
-// $(document).ready(ready);
+$(document).ready(ready);
+$(document).ready(bd_popover);
 $(document).on('page:update', ready);
 $(document).on('page:update', bd_popover);
 
