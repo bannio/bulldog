@@ -1,7 +1,37 @@
+// LANDING PAGE PARA FONT
+
+.landing-info p {
+  font-size: 1.5em;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.5em;
+  color: #444;
+}
+
+// Landing page strapline
+h1.strapline {
+  font-family: 'Source Sans Pro', serif;
+  text-align: center;
+  // max-height: 500px;
+  font-size: 4em;
+  // margin: 0 auto;
+  display: block;
+  padding: 0em 0.5em;
+}
+
+// LANDING PAGE TITLES
+.landing-info h2 {
+  font-size: 2em;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.25em;
+  color: #444;
+}
+
 // keep any font styling here
 
 html, body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 12px;
   line-height: 1.428571429;
   color: #444;
@@ -10,7 +40,7 @@ html, body {
 
 // page headings
 h1 {
-font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-family: 'Source Sans Pro', Arial, sans-serif;
 color: #000000;
 font-weight: 700;
 font-size: 24px;

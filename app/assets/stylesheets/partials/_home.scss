@@ -1,103 +1,5 @@
 
 
-th>a {
-  color: #000000;
-  text-decoration: none; }
-  a:hover, a:focus {
-    color: #000000;
-    text-decoration: underline; }
-  a:focus {
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px; }
-
-
-/*TEXT*/
-
-// h1, h2 {
-//   font-family: 'Source Sans Pro';
-//   color: #000000;
-//   font-weight: 400;
-// }
-
-
-// h3 {
-//   font-family: 'Source Sans Pro';
-//   color: #000000;
-//   font-weight: 300;
-// }
-
-
-// //Para Text Resize Responsively
-// @media(max-width: $screen-xs){
-//   p {font-size: 12px} //12px when screen is below 480px
-// }
-// @media(min-width: $screen-xs){
-//   p {font-size: 12px} //12px when screen is below 768px
-// }
-// @media(min-width: $screen-sm){
-//   p {font-size: 14px} //14px when screen is below 992px
-//   }    
-// @media(min-width: $screen-md){
-//   p {font-size: 16px} //16px when screen is below 1200px
-//   }    
-// @media(min-width: $screen-lg){
-//   p {font-size: 18px} //18px when screen is above 1200px
-//   } 
-
-// //H1 text resize
-// // @media(max-width: $screen-xs){
-// //   h1 {font-size: 16px} //12px when screen is below 480px
-// // }
-// // @media(min-width: $screen-xs){
-// //   h1 {font-size: 22px} //12px when screen is below 768px
-// // }
-// // @media(min-width: $screen-sm){
-// //   h1 {font-size: 30px} //14px when screen is below 992px
-// //   }    
-// // @media(min-width: $screen-md){
-// //   h1 {font-size: 36px} //16px when screen is below 1200px
-// //   }    
-// // @media(min-width: $screen-lg){
-// //   h1 {font-size: 40px} //18px when screen is above 1200px
-// //   } 
-
-// //H2 text resize
-// @media(max-width: $screen-xs){
-//   h2 {font-size: 16px} //12px when screen is below 480px
-// }
-// @media(min-width: $screen-xs){
-//   h2 {font-size: 20px} //12px when screen is below 768px
-// }
-// @media(min-width: $screen-sm){
-//   h2 {font-size: 24px} //14px when screen is below 992px
-//   }    
-// @media(min-width: $screen-md){
-//   h2 {font-size: 28px} //16px when screen is below 1200px
-//   }    
-// @media(min-width: $screen-lg){
-//   h2 {font-size: 30px} //18px when screen is above 1200px
-//   } 
-
-// //H3 text resize
-// @media(max-width: $screen-xs){
-//   h3 {font-size: 12px} //12px when screen is below 480px
-// }
-// @media(min-width: $screen-xs){
-//   h3 {font-size: 18px} //12px when screen is below 768px
-// }
-// @media(min-width: $screen-sm){
-//   h3 {font-size: 26px} //14px when screen is below 992px
-//   }    
-// @media(min-width: $screen-md){
-//   h3 {font-size: 30px} //16px when screen is below 1200px
-//   }    
-// @media(min-width: $screen-lg){
-//   h3 {font-size: 30px} //18px when screen is above 1200px
-//   } 
-
-
-
 /*BODY MAIN*/
 
 // ensures content always fill full height of view port
@@ -127,7 +29,7 @@ main {
 // BODY
 
 div.landing-page.container {
-  height: 100vh;
+  height: 90vh;
 }
 div.row.landing-top-row {
   padding-top: 2%;
@@ -139,41 +41,74 @@ div.landing-col {
 }
 
 img.bills-img {
-  float: right;
-  // width: 50%;
-  max-height: 100%;
+  margin: 0 auto;
+  max-height: 60%;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
-
-h1.strapline {
-  text-align: left;
-  font-family: 'source-sans-pro','Proxima Nova Condensed', sans-serif;
-  max-height: 500px;
+.strapline {
+  align: center;
 }
 
-
-.strapline {font-size: 30px} //12px when screen is below 480px
-
-@media(min-width: $screen-sm){
-  .strapline {font-size: 66px} //14px when screen is below 992px
-  }    
-@media(min-width: $screen-md){
-  .strapline {font-size: 70px} //16px when screen is below 1200px
-  }    
-@media(min-width: $screen-lg){
-  .strapline {font-size: 70px} //18px when screen is above 1200px
-  } 
-
-
-.landing-info h2 {
-  font-size: 2.8em;
-  line-height: 28px;
-  font-weight: 200;
+hr {
+ background-color: #000;
 }
 
-.landing-info p {
-  font-size: 1.8em;
-  line-height: 28px;
-  font-weight: 200;
+div.row.strapline {
+  border-bottom: 1px solid #000;
+  padding-bottom: 20px;
 }
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-top: 20px solid #000;
+  margin: 0 auto;
+}
+
+.arrow-down-overlay {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-top: 20px solid #fff;
+  margin: 0 auto;
+}
+
+// h1.strapline {
+//   text-align: left;
+//   font-family: 'source-sans-pro','Proxima Nova Condensed', sans-serif;
+//   max-height: 500px;
+// }
+
+
+// .strapline {font-size: 30px} //12px when screen is below 480px
+
+// @media(min-width: $screen-sm){
+//   .strapline {font-size: 66px} //14px when screen is below 992px
+//   }    
+// @media(min-width: $screen-md){
+//   .strapline {font-size: 70px} //16px when screen is below 1200px
+//   }    
+// @media(min-width: $screen-lg){
+//   .strapline {font-size: 70px} //18px when screen is above 1200px
+//   } 
+
+
+// .landing-info h2 {
+//   font-size: 2.8em;
+//   line-height: 28px;
+//   font-weight: 200;
+// }
+
+// .landing-info p {
+//   font-size: 1.8em;
+//   line-height: 28px;
+//   font-weight: 200;
+// }
 
