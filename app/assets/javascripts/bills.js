@@ -98,37 +98,14 @@ ready = function() {
   });
 };
 
-  var subnavToggle = function(){
-    return $('#subnavBtn').on( "click", function(){
-    $('#subnav').toggleClass("hidden");
-    });
-  };
 
-// var bd_popover = function() {
-//   $('#pop').click(function(e) {
-//   e.preventDefault();
-//   })
-//   $('#pop').popover();
-// }; 
-
-var bd_popover = function() {
-  $('#pop').popover();
-};
-
-// $(function() {
-// $('#pop').click(function(e) {
-// e.preventDefault();
-// })
 var bd_popover = function () {
 $('#pop').popover();
 };
 
-// });
 
-$(document).ready(ready);
-// $(document).on('page:change', ready);
+// $(document).ready(ready);
 $(document).on('page:update', ready);
-$(document).on('page:update', subnavToggle);
 $(document).on('page:update', bd_popover);
 
 

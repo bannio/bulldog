@@ -4,7 +4,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
     <h1>Invoice <%= @invoice.number %></h1>
-      <a href="#" id="pop" class="info-btn pop" data-trigger="click" data-placement="left" data-container= "body" data-original-title="About this page" data-content="The 'Edit' button will allow you to change the comment or remove bills from this invoice. The 'PDF' button will allow you to preview, download or print a formatted invoice. * Note that you cannot change the customer. If you have invoiced the wrong customer, destroy this invoice and the bills will be returned to the pool. You will then need to edit the bills to be associated with the correct customer before creating a new invoice.">
+      <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="About this page" data-content="The 'Edit' button will allow you to change the comment or remove bills from this invoice. The 'PDF' button will allow you to preview, download or print a formatted invoice. * Note that you cannot change the customer. If you have invoiced the wrong customer, destroy this invoice and the bills will be returned to the pool. You will then need to edit the bills to be associated with the correct customer before creating a new invoice.">
         <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
       </a>
       <%= render 'form' %>  
