@@ -104,24 +104,25 @@ ready = function() {
     });
   };
 
-  // var alertClose = function(){
-  //   return $('.alert').on('click', function(){
-  //     $(".alert").alert()
-  //   });
-  // };
+// var bd_popover = function() {
+//   $('#pop').click(function(e) {
+//   e.preventDefault();
+//   })
+//   $('#pop').popover();
+// }; 
+
+var bd_popover = function() {
+  $('#pop').popover();
+};
 
 $(document).ready(ready);
 // $(document).on('page:change', ready);
 $(document).on('page:update', ready);
 $(document).on('page:update', subnavToggle);
+$(document).on('page:update', bd_popover);
 
 
 
 
-$(function() {
-$('#pop').click(function(e) {
-e.preventDefault();
-})
-$('#pop').popover();
-});
+
 

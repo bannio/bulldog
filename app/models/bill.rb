@@ -7,6 +7,7 @@ class Bill < ActiveRecord::Base
   belongs_to :category
 
   validates :account_id, :date, :customer_id, :supplier_id, :category_id, :amount, presence: true
+  validates :amount, numericality: true
 
   attr_accessor :new_category, :new_supplier, :new_customer
   before_save :create_category, :create_supplier, :create_customer
