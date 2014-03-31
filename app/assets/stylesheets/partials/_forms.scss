@@ -11,6 +11,18 @@
 //   font-weight: 400;
 // }
 
+th>a {
+  color: #000000;
+  text-decoration: none; }
+  a:hover, a:focus {
+    color: #000000;
+    text-decoration: underline; }
+  a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+    
+
 // MODAL FORM WIDTH
 @media (min-width: 768px) {
 .modal-dialog {

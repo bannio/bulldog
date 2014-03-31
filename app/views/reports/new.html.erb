@@ -36,7 +36,7 @@
         <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
         <%= f.collection_select :category_id, Category.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
 
-        <%= f.submit 'Submit', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submit filter choices to refresh data." %> 
+        <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data." %> 
         <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
         <%= f.submit 'Export', class: 'export-btn std-btn', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
       <% end %> <!-- end of form -->

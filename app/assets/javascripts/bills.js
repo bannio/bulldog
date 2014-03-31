@@ -115,6 +115,16 @@ var bd_popover = function() {
   $('#pop').popover();
 };
 
+// $(function() {
+// $('#pop').click(function(e) {
+// e.preventDefault();
+// })
+var bd_popover = function () {
+$('#pop').popover();
+};
+
+// });
+
 $(document).ready(ready);
 // $(document).on('page:change', ready);
 $(document).on('page:update', ready);
