@@ -51,7 +51,7 @@ class InvoicePdf < Prawn::Document
   end
   
   def our_address
-    if @invoice.account.address
+    if @invoice.account.address.present?
       addr = @invoice.account.address
       postcode = @invoice.account.postcode
       text_box "#{addr}\n#{postcode}", 
