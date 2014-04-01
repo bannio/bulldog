@@ -4,78 +4,177 @@
 
 <!-- BODY CONTAINER -->
 
-<!-- <main role="main"> --><!--repeated in application.html.erb-->
-
 <div class="landing-page container">
     <div class="row landing-top-row">
-      <!-- <div class="col-xs-6 landing-col"> -->
         <img src="/assets/door_dog.png" alt="Bills Image" class="bills-img img-responsive">
-      <!-- </div> -->
-<!--       <div class="col-xs-6 landing-col">
-          <h1 class="strapline">The <br>simple <br>way to <br>manage <br>your<br> bills</h1>
-      </div> -->
     </div>
-    <div class="row strapline">
-      <h1 class="strapline">Bulldog Clip <small>(the software)</small> is...</h1>
+    <div class="row strapline arrow-box">
+      <h1 class="strapline">Capture, analyse and reclaim your expenses</h1>
     </div>
-    <div class="arrow-down">
-    </div>
-    <div class="arrow-down-overlay">
-    </div>
-</div>
+</div><!--end landing-page container-->
 
+<!-- Sub Heading -->
+<div class="row strapline">
+  <h1 class="strapline">Bulldog Clip <small>(the software)</small> is...</h1>
+</div><!--end row strapline-->
+<!-- <hr> -->
+
+<!-- Section 1 - Capture -->
 <div class="container landing-info">
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <h2>Simple Capture</h2>
-        <p>Very easily add a record of all your costs on a single page.Simple by design. No need to add companies or categories in advance. Just add them on the fly. Add the ones you want. There are no constraints. Once they have been used once then they are available to use again with minimal typing.</p>
+        <h2>A simple way to <br>capture your costs</h2>
       </div>
-    </div>
-  </section>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <img src="/assets/capture.png" alt="Clipped bills" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>Very easily record your spend on a single page. Simple by design. Add suppliers and categories on the fly as you need them. No complex spreadsheets.</p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div><!-- end container landing-info -->
+
+<div class="btn-center">
+  <%= link_to "Try now for free", '/try_now', class: "create-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+</div>
+
+<!-- Section 2 - Analyse-->
+<div class="container landing-info">
 <hr>
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <h2>Simple Flow</h2>
-        <p>Although it will work well on a mobile, Bulldog Clip is expected to be used in the comfort of your home or office, not in the bustle of the high street. Who wants to be shuffling till receipts or typing in names and quantities on the move?
-        When you get back to base, empty all of those receipts into a box or, better still, a bulldog clip, ready to process at your leisure.
-        When you do sit down to record them, Bulldog clip makes it so easy it is almost fun and definitely rewarding. Remember to re-clip the recorded bills away from the unrecorded ones. You don't want to scare yourself by double entering your costs.</p>
+        <h2>See at a glance where<br> the money has gone</h2>
       </div>
-    </div>
-  </section>
-<hr>
+    </div><!--end row-->
+  </section><!--end container-->
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <h2>Simple Analysis</h2>
-        <p>See at a glance where the money has gone. Simple charts by category, by supplier, by customer (if you are recharging) or family member (if you want to), over time and any time.
+        <img src="/assets/pie_chart.png" alt="Pie Chart" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>Simple charts by category, by supplier, by customer (if you are recharging) or family member (if you want to), over time and any time.
         Easily export the data to a spreadsheet for further analysis or just as a backup. Select the data to export or just take the lot.</p>
       </div>
-    </div>
-  </section>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div><!-- end container landing-info -->
+
+<div class="btn-center">
+  <%= link_to "Try now for free", '/try_now', class: "create-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+</div>
+
+<!-- Section 3 - Reclaim -->
+<div class="container landing-info">
 <hr>
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <h2>Simple Reclaim</h2>
-        <p>One click to generate a PDF invoice or expense reclaim to recharge your clients, reclaim from your employer and/or to provide itemised backup to your bookkeeper. 
-  You might like to clear your pool of household bills into a monthly statement even if non of these other reasons apply.
-  Bills that have been "invoiced" cannot be deleted or edited so they are safe from accidental removal. Of course you can always edit an "invoice" to return bills to the pool if you do need to make a change.</p>
+        <h2>One click invoice process</h2>
       </div>
-    </div>
-  </section>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <img src="/assets/reclaim.png" alt="Invoice" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>One click to generate a PDF invoice or expense reclaim to recharge your clients, reclaim from your employer and/or to provide itemised backup to your bookkeeper. 
+        You might like to clear your pool of household bills into a monthly statement even if non of these other reasons apply.
+        Bills that have been "invoiced" cannot be deleted or edited so they are safe from accidental removal. Of course you can always edit an "invoice" to return bills to the pool if you do need to make a change.</p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div><!-- end container landing-info -->
+
+<div class="btn-center">
+  <%= link_to "Try now for free", '/try_now', class: "create-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+</div>
+
+<!-- Section 4 - Simple and Safe -->
+<div class="container landing-info">
 <hr>
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <h2>Simply Safe and Secure</h2>
+        <h2>Safe and Secure</h2>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+    <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <img src="/assets/store.png" alt="File" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <p>The entire transaction is encrypted as it goes across the Internet using the familiar, high street bank level of security.
         The bills are stored in the cloud so do not get lost if you have an unfortunate incident with your computer.
-        At any time, you can take your own backup using one of the the export functions which download a spreadsheet compatible file to your machine. For the technically minded, this is a comma separated variables (CSV) file so it is universally compatible.</p>
+        At any time, you can take your own backup using one of the the export functions which download a spreadsheet compatible file to your machine. For the technically minded, this is a comma separated variables (CSV) file so it is universally compatible.
+        </p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div><!-- end container landing-info -->
+
+<div class="btn-center">
+  <%= link_to "Try now for free", '/try_now', class: "create-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+</div>
+
+<!-- Section 4 - Simple Flow -->
+<div class="container landing-info">
+<hr>
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+       <h2>Simple Workflow</h2>
       </div>
     </div>
-  </section>
-<hr>
-  
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <img src="/assets/bill_pile.png" alt="Pile of bills" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>Although it will work well on a mobile, Bulldog Clip is expected to be used in the comfort of your home or office, not in the bustle of the high street. Who wants to be shuffling till receipts or typing in names and quantities on the move? <br>
+        When you get back to base, empty all of those receipts into a box or, better still, a bulldog clip, ready to process at your leisure.<br>
+        When you do sit down to record them, Bulldog clip makes it so easy it is almost fun and definitely rewarding.<br> Remember to re-clip the recorded bills away from the unrecorded ones. You don't want to scare yourself by double entering your costs.</p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div>
+<div class="btn-center">
+  <%= link_to "Try now for free", '/try_now', class: "create-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
 </div>

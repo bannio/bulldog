@@ -51,64 +51,54 @@ img.bills-img {
   align: center;
 }
 
-hr {
- background-color: #000;
-}
-
 div.row.strapline {
-  border-bottom: 1px solid #000;
   padding-bottom: 20px;
 }
 
-.arrow-down {
-  width: 0; 
-  height: 0; 
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  
-  border-top: 20px solid #000;
+
+img.langing-img {
   margin: 0 auto;
+  max-height: 60%;
 }
 
-.arrow-down-overlay {
-  width: 0; 
-  height: 0; 
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  
-  border-top: 20px solid #fff;
-  margin: 0 auto;
+
+.arrow-box {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #000;
 }
 
-// h1.strapline {
-//   text-align: left;
-//   font-family: 'source-sans-pro','Proxima Nova Condensed', sans-serif;
-//   max-height: 500px;
-// }
+.arrow-box:after, .arrow-box:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
 
+.arrow-box:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #000;
+  border-width: 21px;
+  margin-left: -21px;
+}
 
-// .strapline {font-size: 30px} //12px when screen is below 480px
+.arrow-box:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-top-color: #fff;
+  border-width: 20px;
+  margin-left: -20px;
+}
 
-// @media(min-width: $screen-sm){
-//   .strapline {font-size: 66px} //14px when screen is below 992px
-//   }    
-// @media(min-width: $screen-md){
-//   .strapline {font-size: 70px} //16px when screen is below 1200px
-//   }    
-// @media(min-width: $screen-lg){
-//   .strapline {font-size: 70px} //18px when screen is above 1200px
-//   } 
-
-
-// .landing-info h2 {
-//   font-size: 2.8em;
-//   line-height: 28px;
-//   font-weight: 200;
-// }
-
-// .landing-info p {
-//   font-size: 1.8em;
-//   line-height: 28px;
-//   font-weight: 200;
-// }
+// try now button positioning
+div.btn-center {
+  text-align: center;
+}
+.try-now-btn {
+  display: inline-block;
+  margin: 0 auto;
+}
 
