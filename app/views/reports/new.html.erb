@@ -9,13 +9,6 @@
   <div class="panel panel-default col-md-4" style="float:none">
     <div class="panel-body">
 
-      <%#= pie_chart category_chart_path %>
-
-      <%#= column_chart [
-        {name: "Last Year", data: Bill.visible_to(current_user).last_year_by_monthly_sum},
-        {name: "This Year", data: Bill.visible_to(current_user).this_year_by_monthly_sum}
-      ] %>
-
       <ul>
         <% @report.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -38,8 +31,8 @@
 
         <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data." %> 
         <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
-        <%= f.submit 'Export', class: 'export-btn std-btn', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
-      <% end %> <!-- end of form -->
+        
+      <%# end %> <!-- end of form -->
     </div><!--end panel body -->
   </div><!--end panel-->
 
@@ -49,25 +42,38 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
         <li class="active"><a href="#Charts" data-toggle="tab">Charts</a></li>
-        <!-- <li><a href="#ColumnChart" data-toggle="tab">Column Chart</a></li> -->
-        <!-- <li><a href="#PieChart" data-toggle="tab">Pie Chart</a></li> -->
         <li><a href="#Table" data-toggle="tab">Table</a></li>
       </ul>
 
       <!-- Tab pane charts -->
       <div class="tab-content">
-        <div class="tab-pane active" id="Charts"><%= line_chart @report.bills.group_by_month(:date).count %>
+        <div class="tab-pane active" id="Charts">
+          <div class="row">
+            <div class="col-md-6">
+              <%= pie_chart @report.bills.group("categories.name").references(:category).
+                    order("categories.name").
+                    sum(:amount),
+                    library: {title: "Total by Category"} %>
+            </div>
+            <div class="col-md-6">
+              <%= pie_chart @report.bills.group("suppliers.name").references(:supplier).
+                    order("suppliers.name").
+                    sum(:amount),
+                    library: {title: "Total by Supplier"} %>
+            </div>
+          </div><!--end of row -->
           <%= column_chart [
             {name: "Last Year", data: @report.bills.last_year_by_monthly_sum},
             {name: "This Year", data: @report.bills.this_year_by_monthly_sum}
-          ] %>
-          <%= pie_chart @report.bills.group("categories.name").references(:category).
-                      order("categories.name").
-                      sum(:amount) %>
+          ], library: {title: "Total spend by month"} %>
+          <%= line_chart @report.bills.group_by_month(:date).count, library: {title: "Number of bills per month"} %>
+
         </div><!--end tab pane -->
 
       <!-- Tab pane tables -->
         <div class="tab-pane" id="Table">
+        <%= f.submit 'Export', class: 'export-btn std-btn', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
+        <% end %> <!-- end of form -->
           <div class="table-responsive">
             <table class="table table-condensed" id="bill_table">
               <thead>
