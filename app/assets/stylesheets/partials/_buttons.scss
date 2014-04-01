@@ -5,9 +5,6 @@ input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].
 -webkit-appearance: none;
 -webkit-user-select: none;
 white-space: pre;
-// -webkit-background-clip: none;
-// -webkit-background-origin: none;
-// -webkit-background-size: none;
 }
 
 
@@ -18,8 +15,6 @@ white-space: pre;
   margin-right: 0px;
   margin-top: 17px;
   float: right;
-  // float: right;
-    // display: inline-block;
 }
 
 .info-btn.form-btn {
@@ -45,16 +40,15 @@ a.info-btn {
 
 // Moves arrow to top of popover box
 .popover.left .arrow {
-  top: 0%;
-  margin-top: 5%;
+  top: 20px;
+  margin-top: 0;
 }
+
 
 // moves popover down page
 .popover {
   top: 90px !important;
 }
-
-
 
 
 // BUTTON COLOURS
@@ -65,10 +59,29 @@ a.create-btn, input.create-btn {
   color: #008418;
 }
 
-// blue
+a.create-btn:hover, input.create-btn:hover,
+a.create-btn:active, input.create-btn:active, 
+a.create-btn:focus, input.create-btn:focus  {
+  border: #008418 2px solid;
+  color: #008418;
+  outline: none;
+  // background-color: #CCE6D1;
+}
+
+// blue  
 a.action-btn, input.action-btn {
   border: #2056BF 2px solid;
   color: #2056BF;
+}
+
+a.action-btn:hover, input.action-btn:hover,
+a.action-btn:active, input.action-btn:active
+a.action-btn:focus, input.action-btn:focus, 
+input.action-btn.std-btn:active {
+  border: #2056BF 2px solid;  
+  color: #2056BF;
+  outline: none;
+  // background-color: #BCCCEC;
 }
 
 // red
@@ -77,10 +90,26 @@ a.warn-btn, input.warn-btn {
   color: #D82410;
 }
 
+a.warn-btn:hover, input.warn-btn:hover,
+a.warn-btn:active, input.warn-btn:active,
+a.warn-btn:focus, input.warn-btn:focus {
+  border: #D82410 2px solid;
+  color: #D82410;
+  outline: none;
+}
+
 // purple
 a.export-btn, input.export-btn {
   border: #890086 2px solid;
   color: #890086;
+}
+
+a.export-btn:hover, input.export-btn:hover,
+a.export-btn:active, input.export-btn:active,
+a.export-btn:focus, input.export-btn:focus {
+  border: #890086 2px solid;
+  color: #890086;
+  outline: none;
 }
 
 // GENERIC BUTTON
@@ -102,12 +131,7 @@ a.std-btn, input.std-btn {
 }
 
 
-.std-btn:hover, .std-btn:focus, input.std-btn:hover, input.std-btn:focus {
-  text-decoration: none;
-  background-color: #eeeeee;
-  cursor: pointer;
-  color: #000000;
-}
+
 
 
 // ALIGNS INPUT/SUBMIT BUTTONS WITH STD BTNS
@@ -121,11 +145,24 @@ input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].
   background-color: #ffffff;
 }
 
-// GIVES GREY HOVER COLOR
-input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="submit"].std-btn:hover, 
-input[type="submit"].std-btn:focus, input[type="reset"].std-btn:hover, 
-input[type="reset"].std-btn:focus, button.std-btn:hover,button.std-btn:focus {
+// GIVES GREY HOVER COLOR AND REMOVES BLUE HALO ON BUTTONS
+.std-btn:hover, .std-btn:focus, 
+input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="button"].std-btn:active,
+input[type="submit"].std-btn:hover, input[type="submit"].std-btn:focus, input[type="submit"].std-btn:active,
+input[type="reset"].std-btn:hover, input[type="reset"].std-btn:focus, input[type="reset"].std-btn:active,
+input.std-btn:hover, input.std-btn:focus, input.std-btn:active,
+select.std-btn:hover, select.std-btn:focus, select.std-btn:active,
+button.std-btn:hover, button.std-btn:focus, button.std-btn:active
+ {
+  text-decoration: none;
   background-color: #eeeeee;
+  cursor: pointer;
+  // color: #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  // -webkit-box-shadow: 0 1px 1px #90AADF, 0 0 8px #90AADF;
+  // box-shadow: 0 1px 1px #90AADF, 0 0 8px #90AADF;
 }
 
 // REMOVES BLUE FOCUS OUTLINE
