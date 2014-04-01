@@ -59,5 +59,15 @@ div.tab-content
 border: 1px solid #dddddd;
 }
 
+// move pie charts down from top of tab 
+div.tab-pane > div.row {
+  margin-top: 10px;
+}
 
+//TABLE
+// moves export button away from edge of box
+div.tab-pane > .export-btn {
+  margin-top: 10px;
+  margin-left: 10px;
+}
 
