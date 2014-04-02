@@ -9,30 +9,17 @@
 outline: none;
 }
 
-// table contents
-// tbody > tr > td {
-// font-size: 18px;
-// font-family: 'Source Sans Pro', Arial, sans-serif;
-// font-weight: 400;
-// }
-
-// p {
-//   font-size: 12px;
-//   font-family: 'Source Sans Pro', Arial, sans-serif;
-//   font-weight: 400;
-// }
-
 th>a {
   color: #000000;
   text-decoration: none; }
-  a:hover, a:focus {
+
+th>a:hover, th>a:focus {
     color: #000000;
-    text-decoration: underline; }
-  a:focus {
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px; }
-    
+    text-decoration: underline; } 
+
+// removes grey outline on focus
+a:focus {
+  outline: none; }
 
 // MODAL FORM WIDTH
 @media (min-width: 768px) {
@@ -194,8 +181,10 @@ div.select2-container {
   width: 100% !important;
 }
 
+// gives equal spacing between form fields
 div.form-group {
   width: 100%;
+  margin-bottom: 5px;
 }
 
 input.date_picker {
@@ -345,8 +334,9 @@ div.customer-form > textarea.address {
   max-width: 100%;
 }
 
+// gives spacing between form fields (must match div.formgroup margin bottom) and colours outline red
 p.help-block {
-  margin: 5px 0px;
+  margin: 0px 0px 5px 5px;
   color: #a94442;
 }
 
@@ -389,4 +379,37 @@ height: 15px;
 // red border on error fields using errors_for helper
 div.field_with_errors>input {
   border-color: #a94442;
+}
+
+/* Red border styling for Select2s with errors */
+div.has-error ul.select2-choices {
+  border-color: #a94442;
+}
+
+div.has-error>div.select2-container>a.select2-choice {
+  border-color: #a94442; 
+}
+
+// remove grey box shadow
+.select2-drop, 
+.select2-drop.select2-drop-above, 
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices,
+.select2-container-multi.select2-container-active .select2-choices,
+.select2-container-multi .select2-choices .select2-search-choice {
+  -webkit-box-shadow: none;
+  box-shadow: none;  
+// -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+//             box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+// aligns placeholder text with select2 placeholders
+.form-control {
+padding: 6px 8px;
+}
+
+
+// Adds padding above contact form to give space between p and panel
+div.contact-page.panel { 
+margin-top: 20px;
 }

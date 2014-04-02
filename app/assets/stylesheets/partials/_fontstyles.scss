@@ -1,11 +1,11 @@
 // LANDING PAGE PARA FONT
 
-.landing-info p {
+.landing-info p, .contact-page p{
   font-size: 1.5em;
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.5em;
-  color: #444;
+  color: #000;
   text-align: center;
 }
 
@@ -26,24 +26,108 @@ h1.strapline {
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.25em;
-  color: #444;
+  color: #000;
   text-align: center;
 }
 
-// keep any font styling here
+// INFO PAGE TEXT
+.info-page p {
+  font-size: 1.5em;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.5em;
+  color: #000;
+  text-align: left;
+}
 
+.info-page h2,  .contact-page h2{
+  font-size: 3em;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.25em;
+  color: #000;
+  text-align: center;
+}
+
+.info-page h3 {
+  font-size: 2em;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.25em;
+  color: #000;
+  text-align: left;
+}
+
+.info-page li {
+  font-size: 1.5em;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.5em;
+  color: #000;
+  text-align: left; 
+}
+
+.info-page a {
+  font-size: 1em;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.5em;
+  color: #000;
+  text-align: left; 
+}
+
+h1.info-page {
+  font-family: 'Source Sans Pro', serif;
+  text-align: center;
+  // max-height: 500px;
+  font-size: 4em;
+  // margin: 0 auto;
+  display: block;
+  padding: 0em 0.5em;
+}
+
+.info-page dl {
+  font-size: 1.5em;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.5em;
+  color: #000;
+  text-align: left; 
+}
+
+.info-page dt {
+  font-size: 1em;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.5em;
+  color: #000;
+  text-align: left; 
+}
+
+.info-page dd {
+  font-size: 0.75em;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.5em;
+  color: #000;
+  text-align: left; 
+}
+
+
+// base font size and style
 html, body {
   font-family: Arial, sans-serif;
   font-size: 12px;
+  // font-size: 1em;
   line-height: 1.428571429;
   color: #444;
   background-color: white; }
 
 
-// page headings
+// page headings and panel headings
 h1 {
 font-family: 'Source Sans Pro', Arial, sans-serif;
-color: #000000;
+color: #000;
 font-weight: 700;
 font-size: 24px;
 margin-bottom: 15px;
