@@ -1,13 +1,13 @@
 <% content_for :title do %>Bulldog-Clip | New Invoice<% end %>
 <% content_for :description do %>Create new invoice<% end %>
 <div class="container">
-  <div class="panel panel-default">
+  <div class="panel panel-default col-md-4 col-md-offset-4">
     <div class="panel-body">
     <h1>New Invoice</h1>
-      <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="About this page" data-content="All of your existing bills are listed in the table below. You can edit a bill from the table by clicking anywhere on the row it appears in. Use the 'New' button to create a new bill. The 'Export' button allows you to download your bills as a file to save or use the data elsewhere">
+      <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="New Invoice" data-content="Select the customer and add any comment you wish to appear on the invoice. When you click on 'Create Invoice' the system will fetch all uninvoiced bills for the chosen customer and display them. You will have the opportunity to remove any unwanted bills. ">
         <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
       </a>
-      <%= render 'form' %>  
+      <%= render 'new_form' %>  
     </div>
   </div>
 </div>

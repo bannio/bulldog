@@ -1,0 +1,30 @@
+<%= form_for @invoice do |f| %>
+  <%= f.hidden_field :account_id %>
+  <%= form_group_for f, :date, label: false do %>
+    <%= f.text_field :date, class: "date_picker invoice-date-picker" %>
+  <% end %>
+  <% if params[:action] == 'new' %>
+    <%= form_group_for f, :customer_id, label: false do%>
+    <div class="customer-select">
+      <%= f.collection_select :customer_id, @customers, :id, :name%>
+    <% end %>
+    </div>
+  <% else %>
+    <div class="input-group">
+      <p><strong>Customer:</strong> <%= @invoice.customer_name %></p>
+    </div>
+  <% end %>
+
+  <%= form_group_for f, :comment, label: false do %>
+    <%= f.text_area :comment, placeholder: "Invoice comment - appears on PDF" %>
+  <% end %>
+
+  <%= f.submit 'Save Changes', class: 'create-btn std-btn' %>
+  <%= link_to 'Back', invoices_path, class: 'action-btn std-btn' %>
+  <%= link_to 'Destroy', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
+ 
+  <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %> 
+
+  <%= render 'form' %>
+
+<% end %>

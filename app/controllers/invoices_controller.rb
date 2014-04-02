@@ -50,7 +50,7 @@ class InvoicesController < ApplicationController
     total = @invoice.bills.sum(:amount)
     if @invoice.update(invoice_params.merge(total: total))
       flash[:success] = "Invoice successfully updated"
-      redirect_to invoice_path(@invoice)
+      redirect_to invoices_path
     else
       render 'edit'
     end
@@ -68,7 +68,7 @@ class InvoicesController < ApplicationController
             bill.update_attribute(:invoice_id, @invoice.id)
             # bill.save
           end
-      redirect_to invoice_path(@invoice)
+      redirect_to edit_invoice_path(@invoice)
     else
       render :new
     end
@@ -93,11 +93,12 @@ class InvoicesController < ApplicationController
     params.require(:invoice).permit(:date, :customer_id, :comment, :number, :account_id, :total)
   end
 
-    def sort_column
-     %w[number customers.name date total comment].include?(params[:sort]) ? params[:sort] : "id"
-   end
+  def sort_column
+    %w[id number customers.name date total comment].include?(params[:sort]) ? params[:sort] : "id"
+  end
 
    def sort_direction
      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
    end
+
 end

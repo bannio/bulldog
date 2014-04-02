@@ -2,13 +2,13 @@
 <% content_for :description do %>Edit invoice<% end %>
 <div class="container">
     <h1>Invoice <%= @invoice.number %></h1>
-         <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="About this page" data-content="Edit invoices using this form">
+         <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="Edit Invoice" data-content="* Note that you cannot change the customer. If you have invoiced the wrong customer, destroy this invoice and the bills will be returned to the pool. You will then need to edit the bills to be associated with the correct customer before creating a new invoice. The 'Print Preview' button will open a PDF version in a new window so that you can download or print a formatted invoice.">
           <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
          </a>
     <div class="panel panel-default">
       <div class="panel-body">
 
-        <%= render 'form' %>  
+        <%= render 'edit_header' %>  
     </div>
   </div>
 </div>

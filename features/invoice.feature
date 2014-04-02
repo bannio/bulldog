@@ -15,6 +15,7 @@ Feature: Invoices
     | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   |
     | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   | 
 
+  @javascript
   Scenario: Create an invoice
     As an invoice gathers all uninvoiced bills for the selected customer
     and the bills index page only shows uninvoiced bills, after creating
@@ -25,9 +26,9 @@ Feature: Invoices
     Then I should see "Business"
     And I should see "Household"
     Given I am on the New Invoice page
-    And I select the customer Business
+    And I select "Business" as the invoice customer
     And I click button Create Invoice
-    Then I should be on the Show Invoice page
+    Then I should be on the Edit Invoice page
     And I should see "Invoice 1"
     And I should see "Total £105.00"
     When I am on the bills page
@@ -40,34 +41,35 @@ Feature: Invoices
 
     Given I have the following invoices
     # no | customer | comment     | date       | total  |
-    | 1 | Household | A invoice   | 10-12-2012 | 5.46   |
-    | 2 | Business  | B invoice   | 12-12-2012 | 46.00  |
-    | 3 | Business  | C invoice B | 10-12-2012 | 100.00 |
-    | 4 | Household | D invoice   | 10-11-2012 | 4.00   |
-    | 5 | Business  | E invoice   | 10-11-2012 | 5.00   | 
+    | 1  | Household | A invoice   | 2012-12-10 | 5.46   |
+    | 2  | Business  | B invoice   | 2012-12-12 | 46.00  |
+    | 3  | Business  | C invoice B | 2012-10-12 | 100.00 |
+    | 4  | Household | D invoice   | 2012-10-11 | 4.00   |
+    | 5  | Business  | E invoice   | 2012-10-10 | 5.00   | 
+    | 10 | Business  | F invoice   | 2012-10-11 | 5.00   | 
 
     Given I visit the home page
     And I click on Invoices
     Then I should be on the Invoices page
-    And I should see 5 invoices
+    And I should see 6 invoices
     And I should see a New button
     And There is a search field for comment
     When I type "B" in the search field and press enter
     Then I should see 2 invoices
     When I type "" in the search field and press enter
-    Then I should see 5 invoices
+    Then I should see 6 invoices
     When I click on No.
     Then row 1 should include "A invoice"
-    And row 5 should include "E invoice"
+    And row 6 should include "F invoice"
     When I click on Comment
     Then row 1 should include "A invoice"
-    And row 5 should include "E invoice"
+    And row 6 should include "F invoice"
     When I click on Date
     Then row 1 should include "E invoice"
-    And row 5 should include "B invoice"
+    And row 6 should include "B invoice"
     When I click on Amount
     Then row 1 should include "D invoice"
-    And row 5 should include "C invoice"
+    And row 6 should include "C invoice"
 
   @javascript
   Scenario: Edit an invoice
@@ -82,17 +84,22 @@ Feature: Invoices
     Then I should be on the Edit Invoice page
     When I change the comment to "changed comment"
     And I change the date to "2014-01-01"
-    And I click button Update Invoice
-    Then I should be on the Show Invoice page
+    And I click button Save Changes
+    Then I should be on the Invoices page
     And I should see "changed comment"
 
+  @under_test @javascript
   Scenario: Remove selected bills from invoice
     Given I have created the Business invoice
     And I am on the edit page for this invoice
     Then I should see 2 bills
-    When I check one bill and click Update Invoice
+    When I check one bill and click Save Changes
+    Then I should be on the Invoices page
+    When I click the first table row
+    Then I should be on the Show Invoice page 
     Then I should see 1 bill 
 
+  @javascript
   Scenario: Delete an invoice
     Given I have created the Business invoice
     When I am on the bills page
@@ -101,7 +108,7 @@ Feature: Invoices
     Then I should see "My business invoice"
     When I am on the edit page for this invoice
     Then I should see "Destroy"
-    When I click on Destroy
+    When I click the Destroy button and confirm OK
     Then I should be on the Invoices page
     And I should not see "My business invoice"
     When I am on the bills page

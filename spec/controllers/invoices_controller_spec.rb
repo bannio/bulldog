@@ -76,7 +76,7 @@ describe InvoicesController do
 
       it "displays the show view for checking of bills" do
         post :create, {invoice: valid_attributes}
-        response.should redirect_to(invoice_path(Invoice.last))
+        response.should redirect_to(edit_invoice_path(Invoice.last))
       end
 
       it "updates associated bills" do
@@ -137,7 +137,7 @@ describe InvoicesController do
       end
       it "redirects to invoice show " do
         patch :update, id: @invoice, invoice: attributes_for(:invoice)
-        expect(response).to redirect_to @invoice
+        expect(response).to redirect_to invoices_path
       end
 
       it "limits the customer choice to one" do

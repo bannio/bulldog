@@ -2,8 +2,8 @@
 <% content_for :description do %>Bulldog-Clip invoices index<% end %>
 
 <div class="container">
-  <h1>Invoices</h1>
-       <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left auto" data-container= "body" data-original-title="About this page" data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dicta adipisci natus eveniet dolorem fuga numquam accusantium. Repellendus, ab ad."><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
+  <h1>Invoices List</h1>
+       <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left auto" data-container= "body" data-original-title="Invoices" data-content="This table lists all your invoices. Click on a row to see the details of an invoice. You can filter the list by customer or text within the comment. Click on a column heading to sort by that column. Use the New Invoice button to create a new invoice. "><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
 
   <div class="panel panel-default col-md-4" style="float:none">
     <div class="panel-body">
@@ -16,8 +16,8 @@
         <%= text_field_tag :search, params[:search], class: "search-query form-control", placeholder: ' by text within comment' %>
       </div>
       <div>
-        <%= link_to "New", new_invoice_path, class: "create-btn std-btn" %>  
-        <%= submit_tag "Filter", name: nil, class: "action-btn std-btn" %>      
+        <%= submit_tag "Filter", name: nil, class: "action-btn std-btn" %>
+        <%= link_to "New Invoice", new_invoice_path, class: "create-btn std-btn" %>        
       </div>
       <% end %><!-- end of form -->
     </div><!--end panel body -->
@@ -30,7 +30,7 @@
           <thead>
 
             <tr>
-              <th class="first-col"><%= sortable "number", "No." %> <%= arrow "number" %></th>
+              <th class="first-col"><%= sortable "id", "No." %> <%= arrow "id" %></th>
               <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
               <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
               <th><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
