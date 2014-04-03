@@ -1,3 +1,12 @@
+// base font size and style
+html, body {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  // font-size: 1em;
+  line-height: 1.428571429;
+  color: #444;
+  background-color: #fff; }
+
 // LANDING PAGE PARA FONT
 
 .landing-info p, .contact-page p{
@@ -32,12 +41,18 @@ h1.strapline {
 
 // INFO PAGE TEXT
 .info-page p {
-  font-size: 1.5em;
-  font-weight: 200;
+  // font-size: 1.5em;
+  // font-weight: 200;
+  // font-family: 'Source Sans Pro', Arial, sans-serif;
+  // line-height: 1.5em;
+  // color: #000;
+  // text-align: left;
+  font-size: 1.25em;
+  font-weight: 300;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.5em;
   color: #000;
-  text-align: left;
+  text-align: left; 
 }
 
 .info-page h2,  .contact-page h2{
@@ -59,8 +74,14 @@ h1.strapline {
 }
 
 .info-page li {
-  font-size: 1.5em;
-  font-weight: 200;
+  // font-size: 1.5em;
+  // font-weight: 200;
+  // font-family: 'Source Sans Pro', Arial, sans-serif;
+  // line-height: 1.5em;
+  // color: #000;
+  // text-align: left; 
+  font-size: 1.25em;
+  font-weight: 300;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.5em;
   color: #000;
@@ -114,14 +135,7 @@ h1.info-page {
 }
 
 
-// base font size and style
-html, body {
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  // font-size: 1em;
-  line-height: 1.428571429;
-  color: #444;
-  background-color: white; }
+
 
 
 // page headings and panel headings
@@ -185,6 +199,7 @@ input::-moz-placeholder {
 .select2-default {
   color: #999 !important;
 }
+
 
 
 input:-moz-placeholder {

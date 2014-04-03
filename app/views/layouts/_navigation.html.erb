@@ -31,12 +31,12 @@
       <div class="subnav-col col-sm-6 col-xs-12 justified-nav">
             <div class="subnav-link"><%= link_to 'Bills', bills_path, class: 'subnav-btn active' %></div>
             <div class="subnav-link"><%= link_to 'Invoices', invoices_path, class: 'subnav-btn' %></div>
-            <div class="subnav-link"><%= link_to 'Reports', new_report_path, class: 'subnav-btn' %></div>
+            <div class="subnav-link"><%= link_to 'Analysis', new_report_path, class: 'subnav-btn' %></div>
       </div>
       <div class="subnav-col col-sm-6 col-xs-12 justified-nav">
-            <div class="subnav-link"><%= link_to 'Account', account_path(current_user.account.id), class: 'subnav-btn' %></div>
             <div class="subnav-link"><%= link_to 'Customers', customers_path, class: 'subnav-btn' %></div>
             <div class="subnav-link"><%= link_to 'Categories', categories_path, class: 'subnav-btn' %></div>
+            <div class="subnav-link"><%= link_to 'Account', account_path(current_user.account.id), class: 'subnav-btn' %></div>
       </div><!-- end subnav-links-->
     </div><!--end subnav-row --> 
     </div><!--end subnav-container-->

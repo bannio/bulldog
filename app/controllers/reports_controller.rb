@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
 
   def new
     @report ||= Report.new(account_id: current_account.id)
-    @bills = @report.bills.page(params[:page]).per(10)
+    @bills = @report.bills.page(params[:page]).per(25)
   end
 
   def create

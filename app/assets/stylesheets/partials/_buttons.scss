@@ -130,8 +130,11 @@ a.std-btn, input.std-btn {
   max-height: 34px;
 }
 
-
-
+// Pulls button to right of page, used on reports table
+.btn-right, input.std-btn.btn-right {
+  float: right;
+  margin-right: 20px;
+}
 
 
 // ALIGNS INPUT/SUBMIT BUTTONS WITH STD BTNS
