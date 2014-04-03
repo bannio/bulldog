@@ -4,6 +4,16 @@ div.analysis-panel {
   border: 0px solid #ffffff;
 }
 
+// FORM
+h2.filter {
+color: #000;
+font-weight: 400;
+font-family: Arial, sans-serif;
+// font-weight: 700;
+// font-family: 'Source sans pro', Arial, sans-serif;
+// font-size: 1em;
+}
+
 
 // TABS
 
@@ -66,8 +76,7 @@ div.tab-pane > div.row {
 
 //TABLE
 // moves export button away from edge of box
-div.tab-pane > .export-btn {
-  margin-top: 10px;
-  margin-left: 10px;
+div.tab-pane > .action-btn, div.tab-pane > .export-btn {
+  margin: 10px 10px 10px 10px; 
 }
 

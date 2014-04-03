@@ -1,3 +1,12 @@
+// base font size and style
+html, body {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  // font-size: 1em;
+  line-height: 1.428571429;
+  color: #444;
+  background-color: #fff; }
+
 // LANDING PAGE PARA FONT
 
 .landing-info p, .contact-page p{
@@ -32,26 +41,62 @@ h1.strapline {
 
 // INFO PAGE TEXT
 .info-page p {
-  font-size: 1.5em;
+  // font-size: 1.5em;
+  // font-weight: 200;
+  // font-family: 'Source Sans Pro', Arial, sans-serif;
+  // line-height: 1.5em;
+  // color: #000;
+  // text-align: left;
+  font-size: 1.2em;
   font-weight: 200;
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: 'Source sans pro' Arial, sans-serif;
   line-height: 1.5em;
   color: #000;
-  text-align: left;
+  text-align: left; 
 }
 
-.info-page h2,  .contact-page h2{
+// h1.info-page {
+//   font-family: 'Source Sans Pro', serif;
+//   text-align: center;
+//   // max-height: 500px;
+//   font-size: 4em;
+//   // margin: 0 auto;
+//   display: block;
+//   padding: 0em 0.5em;
+// }
+
+h1.info-page, .info-page h1,  .contact-page h1{
   font-size: 3em;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.25em;
   color: #000;
   text-align: center;
+  display: block;
+  padding: 0em 0.5em;
+}
+
+.info-page h2 {
+  font-size: 2em;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.25em;
+  color: #000;
+  text-align: left;
+}
+
+.contact-page h2 {
+  font-size: 2em;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.25em;
+  color: #000;
+  text-align: left;
 }
 
 .info-page h3 {
-  font-size: 2em;
-  font-weight: 200;
+  font-size: 1.75em;
+  font-weight: 300;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.25em;
   color: #000;
@@ -59,8 +104,14 @@ h1.strapline {
 }
 
 .info-page li {
-  font-size: 1.5em;
-  font-weight: 200;
+  // font-size: 1.5em;
+  // font-weight: 200;
+  // font-family: 'Source Sans Pro', Arial, sans-serif;
+  // line-height: 1.5em;
+  // color: #000;
+  // text-align: left; 
+  font-size: 1.25em;
+  font-weight: 300;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.5em;
   color: #000;
@@ -76,15 +127,6 @@ h1.strapline {
   text-align: left; 
 }
 
-h1.info-page {
-  font-family: 'Source Sans Pro', serif;
-  text-align: center;
-  // max-height: 500px;
-  font-size: 4em;
-  // margin: 0 auto;
-  display: block;
-  padding: 0em 0.5em;
-}
 
 .info-page dl {
   font-size: 1.5em;
@@ -114,14 +156,7 @@ h1.info-page {
 }
 
 
-// base font size and style
-html, body {
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  // font-size: 1em;
-  line-height: 1.428571429;
-  color: #444;
-  background-color: white; }
+
 
 
 // page headings and panel headings
@@ -185,6 +220,7 @@ input::-moz-placeholder {
 .select2-default {
   color: #999 !important;
 }
+
 
 
 input:-moz-placeholder {

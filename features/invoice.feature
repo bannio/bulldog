@@ -109,8 +109,8 @@ Feature: Invoices
     When I am on the invoices index page
     Then I should see "My business invoice"
     When I am on the edit page for this invoice
-    Then I should see "Destroy"
-    When I click the Destroy button and confirm OK
+    Then I should see "Delete"
+    When I click the Delete button and confirm OK
     Then I should be on the Invoices page
     And I should not see "My business invoice"
     When I am on the bills page

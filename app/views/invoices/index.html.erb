@@ -9,7 +9,8 @@
     <div class="panel-body">
       <%= form_tag invoices_path, method: 'get', id: "invoices_search" do %>
       <div class="form-group">
-        <label class="title">Filter invoices:</label>
+        <!-- <label class="title">Filter invoices:</label> -->
+        <h2 class="filter">Filter invoices</h2>
           <%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %>
       </div>
       <div class="form-group">

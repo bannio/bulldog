@@ -1,5 +1,5 @@
-@reports
-Feature: Reports menu
+@under_test @reports
+Feature: Analysis menu
   In order to view graphs and maybe extract data from tables
   I need to have a menu option and views for reports
 
@@ -14,16 +14,16 @@ Background:
     | Household | Asda     | Clothes  | 2013-02-01 | from George        | 5.00   |
     | Business  | Asda     | Food     | 2013-03-01 | coffee biscuits    | 5.00   | 
 
-Scenario: Reports Menu exists
+Scenario: Analysis Menu exists
   
   Given I visit the home page
-  And I click on Reports
+  And I click on Analysis
   Then I should be on the Reports page
   And I should find 5 bills
 
 
 Scenario: I can filter by date ranges
-  Given I visit the Reports page
+  Given I visit the Analysis page
   And I select "2013-01-01" as start date
   And I click button Submit
   Then I should find 3 bills
@@ -32,7 +32,7 @@ Scenario: I can filter by date ranges
   Then I should find 2 bills
 
 Scenario: I can filter by customer, supplier and category
-  Given I visit the Reports page
+  Given I visit the Analysis page
   And I select "Household" as customer
   And I click button Submit
   Then I should find 3 bills

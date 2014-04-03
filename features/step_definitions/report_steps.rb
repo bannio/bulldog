@@ -6,7 +6,7 @@ Then(/^I should find (\d+) bills$/) do |bills|
   expect(all("table#bill_table tr").count - 1).to eq bills
 end
 
-Given(/^I visit the Reports page$/) do
+Given(/^I visit the Analysis page$/) do
   visit '/reports/new'
 end
 

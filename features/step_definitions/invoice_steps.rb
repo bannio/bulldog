@@ -92,7 +92,7 @@ When(/^I select "(.*?)" as the invoice customer$/) do |value|
   page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
 end
 
-When(/^I click the Destroy button and confirm OK$/) do
+When(/^I click the Delete button and confirm OK$/) do
   page.evaluate_script("window.confirm = function(msg) { return true; }")
-  find_link('Destroy').click
+  find_link('Delete').click
 end

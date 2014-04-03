@@ -1,3 +1,11 @@
+// styles form labels
+label {
+  font-weight: 600;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1.1em;
+  margin: 0px 0px 2px 0px;
+}
+
 // sets dropdown menu border color to blue
 .select2-drop .select2-display-none .select2-with-searchbox .select2-drop-active {
   border-color: #2056BF;

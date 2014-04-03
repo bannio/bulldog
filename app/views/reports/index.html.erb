@@ -1,9 +1,9 @@
-<h1>Reports#index</h1>
+<h1>Analysis#index</h1>
   <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="About this page" data-content="All of your existing bills are listed in the table below. You can edit a bill from the table by clicking anywhere on the row it appears in. Use the 'New' button to create a new bill. The 'Export' button allows you to download your bills as a file to save or use the data elsewhere">
     <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
   </a>
-<% content_for :title do %>Bulldog-Clip | Reports<% end %>
-<% content_for :description do %>Bulldog-Clip reports index<% end %>
+<% content_for :title do %>Bulldog-Clip | Analysis<% end %>
+<% content_for :description do %>Bulldog-Clip analysis index<% end %>
 
 <%#= pie_chart category_chart_path %>
 
@@ -14,6 +14,7 @@
 
 <%= form_for @report do |f| %>
   <%= f.hidden_field :account_id %>
+
   <div class="form-group">
     <%= f.text_field :from_date, class: "date_picker analysis" %>
   </div>
@@ -24,6 +25,5 @@
   <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).all, :id, :name %>
   <%= f.collection_select :category_id, Category.visible_to(current_user).all, :id, :name %>
   <%= f.submit 'Submit', :class => 'create-btn std-btn' %>
-
   <%= link_to "Cancel", reports_path, class: "action-btn std-btn"  %>
 <% end %> <!-- end of form -->
