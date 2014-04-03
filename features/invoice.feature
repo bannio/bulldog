@@ -29,7 +29,7 @@ Feature: Invoices
     And I select "Business" as the invoice customer
     And I click button Create Invoice
     Then I should be on the Edit Invoice page
-    And I should see "Back"
+    And I should not see "Back"
     And I should see "Invoice 1"
     And I should see "Total £105.00"
     When I am on the bills page
@@ -92,7 +92,7 @@ Feature: Invoices
 
   @javascript
   Scenario: Remove selected bills from invoice
-    Given I have created the Business invoice
+    Given I have the Business invoice
     And I am on the edit page for this invoice
     Then I should see 2 bills
     When I check one bill and click Save Changes
@@ -116,7 +116,6 @@ Feature: Invoices
     When I am on the bills page
     Then I should see "business trip"
 
-  @under_test
   Scenario: Button labels change in edit depending on origin
     Given I have the Business invoice
     And I am on the edit page for this invoice

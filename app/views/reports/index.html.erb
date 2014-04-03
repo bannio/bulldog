@@ -1,29 +1,4 @@
-<h1>Analysis#index</h1>
-  <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="About this page" data-content="All of your existing bills are listed in the table below. You can edit a bill from the table by clicking anywhere on the row it appears in. Use the 'New' button to create a new bill. The 'Export' button allows you to download your bills as a file to save or use the data elsewhere">
-    <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
-  </a>
-<% content_for :title do %>Bulldog-Clip | Analysis<% end %>
-<% content_for :description do %>Bulldog-Clip analysis index<% end %>
 
-<%#= pie_chart category_chart_path %>
+<!-- Think that this file is not used anymore -->
+<!-- <h1>Reports#index</h1>
 
-<%#= column_chart [
-  {name: "Last Year", data: Bill.visible_to(current_user).last_year_by_monthly_sum},
-  {name: "This Year", data: Bill.visible_to(current_user).this_year_by_monthly_sum}
-] %>
-
-<%= form_for @report do |f| %>
-  <%= f.hidden_field :account_id %>
-
-  <div class="form-group">
-    <%= f.text_field :from_date, class: "date_picker analysis" %>
-  </div>
-  <div class="form-group">
-  <%= f.text_field :to_date, class: "date_picker analysis" %>
-  </div>
-  <%= f.collection_select :customer_id, Customer.visible_to(current_user).all, :id, :name %>
-  <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).all, :id, :name %>
-  <%= f.collection_select :category_id, Category.visible_to(current_user).all, :id, :name %>
-  <%= f.submit 'Submit', :class => 'create-btn std-btn' %>
-  <%= link_to "Cancel", reports_path, class: "action-btn std-btn"  %>
-<% end %> <!-- end of form -->

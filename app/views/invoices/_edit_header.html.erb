@@ -21,11 +21,13 @@
 
   <%= f.submit 'Save Changes', class: 'create-btn std-btn' %>
 
+  <% if session[:new_invoice] == true then %>
+    <% session[:new_invoice] = nil %>
+  <% else %>
+    <%= link_to 'Cancel', invoices_path, class: 'action-btn std-btn' %>
+  <% end %>
   
-  <%= link_to session[:new_invoice] == true ? 'Back' : 'Cancel', invoices_path, class: 'action-btn std-btn' %>
-
-  <% session[:new_invoice] = nil %>
-  <%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
+  <%= link_to 'Destroy', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
  
   <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %> 
 

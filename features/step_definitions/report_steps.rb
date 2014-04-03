@@ -29,3 +29,15 @@ end
 Given(/^I select "(.*?)" from category$/) do |category|
   select category, from: 'report_category_id'
 end
+
+Then(/^I should not see "(.*?)" in the table$/) do |text|
+  within(:xpath, "//table/tbody") do
+    expect(page).to_not have_content text
+  end
+end
+
+Then(/^I should see "(.*?)" in the table$/) do |text|
+  within(:xpath, "//table/tbody") do
+    expect(page).to have_content text
+  end
+end
