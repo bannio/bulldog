@@ -4,7 +4,11 @@
   </div>
 
   <div class="input-group">
-    <p><strong>Customer:</strong> <%= @invoice.customer_name %></p>
+    <p><strong>Customer: </strong> <%= @invoice.customer_name %></p>
+  </div>
+
+  <div>
+    <p><strong>Comment: </strong> <%= simple_format(@invoice.comment) %></p>
   </div>
 
   <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'create-btn std-btn' %>

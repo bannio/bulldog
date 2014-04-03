@@ -68,6 +68,7 @@ class InvoicesController < ApplicationController
             bill.update_attribute(:invoice_id, @invoice.id)
             # bill.save
           end
+      session[:new_invoice] = true
       redirect_to edit_invoice_path(@invoice)
     else
       render :new

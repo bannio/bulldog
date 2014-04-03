@@ -19,6 +19,18 @@ Given(/^I have created the (.*?) invoice$/) do |customer|
   }
 end
 
+Given(/^I have the (.*?) invoice$/) do |customer|
+  customer = Customer.find_by_name(customer)
+  invoice = Invoice.new(account_id: @account.id, 
+                       customer_id: customer.id, 
+                       date: Time.now,
+                       comment: "My business invoice")
+  bills = Bill.uninvoiced.where(customer_id: customer.id)
+  invoice.total =bills.sum(:amount)
+  invoice.save
+  bills.each {|bill| bill.update_attribute(:invoice_id, invoice.id)}
+end
+
 Given(/^I am on the invoices index page$/) do
   visit '/invoices/'
 end

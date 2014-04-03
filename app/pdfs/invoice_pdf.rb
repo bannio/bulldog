@@ -37,10 +37,11 @@ class InvoicePdf < Prawn::Document
   end
   
   def address_box
-    if @invoice.customer.address
-      text_box "#{@invoice.customer.address}\n#{@invoice.customer.postcode}"
+    if @invoice.customer.address.present?
+      text_box "#{@invoice.customer.name}\n#{@invoice.customer.address}\n#{@invoice.customer.postcode}"
     else
-      text_box "Update your customer \n address to appear here"
+      text_box "#{@invoice.customer.name}\n<color rgb='ff0000'>Update your Customer for their \n address to appear here</color>", 
+      inline_format: true
     end
   end
   
@@ -57,8 +58,9 @@ class InvoicePdf < Prawn::Document
       text_box "#{addr}\n#{postcode}", 
         align: :center 
     else
-      text_box "Update your account \n for address to appear here",
-        align: :center 
+      text_box "<color rgb='ff0000'>Update your Account \n for address to appear here</color>",
+        align: :center,
+        inline_format: true
     end
   end
   
@@ -126,11 +128,12 @@ class InvoicePdf < Prawn::Document
     pay_table = pay_table << ["Account No:","#{@invoice.account.bank_account_no}"] if @invoice.account.bank_account_no.present?
     pay_table = pay_table << ["BIC:","#{@invoice.account.bank_bic}"] if @invoice.account.bank_bic.present?
     pay_table = pay_table << ["IBAN:","#{@invoice.account.bank_iban}"] if @invoice.account.bank_iban.present?
+    pay_table
   end
 
   def payment_details
 
-    if @invoice.account.include_bank_details?
+    if @invoice.account.include_bank_details? && payment_table.length > 0
       # move_down 20
       if cursor < 200 #cursor lower than 100
         start_new_page

@@ -29,6 +29,7 @@ Feature: Invoices
     And I select "Business" as the invoice customer
     And I click button Create Invoice
     Then I should be on the Edit Invoice page
+    And I should see "Back"
     And I should see "Invoice 1"
     And I should see "Total £105.00"
     When I am on the bills page
@@ -82,13 +83,14 @@ Feature: Invoices
     Then I should be on the Show Invoice page
     When I click on Edit
     Then I should be on the Edit Invoice page
+    And I should see "Cancel"
     When I change the comment to "changed comment"
     And I change the date to "2014-01-01"
     And I click button Save Changes
     Then I should be on the Invoices page
     And I should see "changed comment"
 
-  @under_test @javascript
+  @javascript
   Scenario: Remove selected bills from invoice
     Given I have created the Business invoice
     And I am on the edit page for this invoice
@@ -113,6 +115,13 @@ Feature: Invoices
     And I should not see "My business invoice"
     When I am on the bills page
     Then I should see "business trip"
+
+  @under_test
+  Scenario: Button labels change in edit depending on origin
+    Given I have the Business invoice
+    And I am on the edit page for this invoice
+    Then I should see 2 bills
+    And I should see "Cancel"
 
 
 
