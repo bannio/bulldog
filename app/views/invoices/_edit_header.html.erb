@@ -20,8 +20,10 @@
   <% end %>
 
   <%= f.submit 'Save Changes', class: 'create-btn std-btn' %>
+
   
   <%= link_to session[:new_invoice] == true ? 'Back' : 'Cancel', invoices_path, class: 'action-btn std-btn' %>
+
   <% session[:new_invoice] = nil %>
   <%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
  
