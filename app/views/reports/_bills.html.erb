@@ -1,0 +1,10 @@
+<% @bills.each do |bill| %>
+    <tr>
+      <td class="first-col"><%= bill.date %></td>
+      <td><%= bill.customer_name %></td>
+      <td><%= bill.supplier_name %></td>
+      <td><%= bill.category_name %></td>
+      <td><%= bill.description %></td>
+      <td class="align-right"><%= number_to_currency(bill.amount) %></td>
+    </tr>        
+<% end %>

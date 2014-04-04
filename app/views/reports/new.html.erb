@@ -83,21 +83,14 @@
                   <th class="align-right">Amount</th>
                 </tr>
               <thead>
-              <tbody>
-                  <% @bills.each do |bill| %>
-                      <tr>
-                        <td class="first-col"><%= bill.date %></td>
-                        <td><%= bill.customer_name %></td>
-                        <td><%= bill.supplier_name %></td>
-                        <td><%= bill.category_name %></td>
-                        <td><%= bill.description %></td>
-                        <td class="align-right"><%= number_to_currency(bill.amount) %></td>
-                      </tr>        
-                  <% end %>
+              <tbody id="report_bills">
+                <%= render 'bills' %>
               </tbody>
             </table>
           </div>
-          <%= paginate @bills %>
+          <div id="paginator">
+          <%= paginate @bills, remote: true %>
+          </div>
         </div><!--end tab pane -->
       </div><!-- end tab content-->
     </div><!-- end panel body -->
