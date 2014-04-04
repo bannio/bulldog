@@ -1,0 +1,18 @@
+// .affix-top,.affix{
+//   position: static;
+// }
+
+// stops navbar being fixed at small size when it stacks on top of
+@media (min-width: 692px) {
+  .sidebar.affix-top {
+    position: static;
+    margin-top:30px;
+    width:228px;
+  }
+  
+  .sidebar.affix-top {
+    position: fixed;
+    top:160px;
+    width:228px;
+  }
+}
