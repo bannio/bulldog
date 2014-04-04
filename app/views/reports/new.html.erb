@@ -67,8 +67,10 @@
 
       <!-- Tab pane tables -->
         <div class="tab-pane" id="Table">
+        <div class="row">
         <%= f.submit 'Export', class: 'action-btn std-btn btn-right', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
         <% end %> <!-- end of form -->
+        </div>
           <div class="table-responsive">
             <table class="table table-condensed" id="bill_table">
               <thead>

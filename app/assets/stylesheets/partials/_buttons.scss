@@ -1,4 +1,6 @@
-
+.sidebar.affix-top {
+  position: static;
+}
 // Input Buttons
 
 input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].std-btn {
@@ -37,19 +39,6 @@ a.info-btn {
   margin: 17px 0px;
   // display: block;
 }
-
-// Moves arrow to top of popover box
-.popover.left .arrow {
-  top: 20px;
-  margin-top: 0;
-}
-
-
-// moves popover down page
-.popover {
-  top: 90px !important;
-}
-
 
 // BUTTON COLOURS
 
