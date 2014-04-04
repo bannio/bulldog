@@ -230,15 +230,39 @@ table.account-details {
 }
 
 table.account-details > tbody > tr > td.td-name {
-  width: 40%;
+  width: 30%;
   vertical-align: top;
 }
 
 table.account-details > tbody > tr > td.td-content {
-  width: 60%;
+  width: 70%;
   vertical-align: top;
 }
 
+// account details show form 
+td.td-name {
+  font-size: 13px;
+  // font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.5em;
+}
+
+td.td-content, td.td-content>p {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  line-height: 1.5em;
+  vertical-align: bottom;
+}
+
+td.td-content {
+  border-bottom: 1px solid #eee;
+  border-collapse: separate;
+  padding-left: 10px;
+}
 
 
 // INVOICE FILTER FORM
