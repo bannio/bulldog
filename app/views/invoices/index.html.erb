@@ -45,7 +45,7 @@
                 <td class="first-col"><%= invoice.number %></td>
                 <td><%= invoice.date %></td>
                 <td><%= invoice.customer_name %></td>
-                <td><%= invoice.comment %></td>
+                <td><%= simple_format(invoice.comment) %></td>
                 <td class="align-right"><%= number_to_currency(invoice.total) %></td>
               </tr>
             <% end %>

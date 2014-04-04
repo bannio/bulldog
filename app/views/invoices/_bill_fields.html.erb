@@ -5,6 +5,6 @@
   <td><%= f.description %></td>
   <td class="align-right"><%= number_to_currency(f.amount) %></td>
   <% if params[:action] == 'edit' %>
-    <td><%= check_box_tag "bill_ids[]", f.id %><%#= link_to 'Remove', remove_bill_path(f), data: { confirm: 'Are you sure? This bill will be returned to the pool' }%> </td>
+    <td><%= check_box_tag "bill_ids[]", f.id %></td>
   <% end %>
 </tr>

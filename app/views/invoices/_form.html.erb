@@ -24,7 +24,9 @@
           <td></td>
           <td class="title-td">Total </td>
           <td class="align-right"><%= number_to_currency(@invoice.total) %></td>
+          <% if params[:action] == 'edit' %>
           <td></td>
+          <% end %>
         </tr>
       </tfoot>
     </table>
