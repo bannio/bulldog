@@ -1,18 +1,13 @@
-// .affix-top,.affix{
-//   position: static;
-// }
-
-// stops navbar being fixed at small size when it stacks on top of
-@media (min-width: 692px) {
-  .sidebar.affix-top {
+// sets standard position to static so sits above content at small sizes
+  dl.affix {
     position: static;
-    margin-top:30px;
-    width:228px;
   }
-  
-  .sidebar.affix-top {
+
+// sets position fixed at 80px from top for larger sizes. 
+// data-offset-top of 120 gives allows it to scroll 120px from start position before fixing
+@media (min-width: 694px) {
+  dl.affix {
+    top: 80px; 
     position: fixed;
-    top:160px;
-    width:228px;
   }
 }
