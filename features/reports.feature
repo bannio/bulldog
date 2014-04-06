@@ -90,7 +90,7 @@ Scenario: Pagination keeps the selection criteria
   | Business  | Asda     | Food     | 2013-03-01 | coffee biscuits    | 5.00   |
 
   And I visit the home page
-  And I click on Reports
+  And I click on Analysis
   Then I should be on the Reports page
   And I should find 25 bills
   When I select "Household" as customer
