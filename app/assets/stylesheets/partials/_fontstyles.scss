@@ -9,7 +9,7 @@ html {
 body {
   font-family: Arial, sans-serif;
   font-size: 1.2rem;
-  line-height: 1.428571429;
+  line-height: 1.5rem;
   color: #444;
   background-color: #fff; 
 }
@@ -32,7 +32,7 @@ h1.strapline {
   text-align: center;
   font-size: 4.5rem;
   display: block;
-  padding: 0em 0.5rem;
+  padding: 0rem 0.5rem;
 }
 
 // h1.strapline {
@@ -64,130 +64,104 @@ h1.strapline {
   text-align: left; 
 }
 
-// h1.info-page {
-//   font-family: 'Source Sans Pro', serif;
-//   text-align: center;
-//   // max-height: 500px;
-//   font-size: 4em;
-//   // margin: 0 auto;
-//   display: block;
-//   padding: 0em 0.5em;
-// }
-
-h1.info-page, .info-page h1,  .contact-page h1{
-  font-size: 3em;
+h1.info-page, .info-page h1, .contact-page h1{
+  font-size: 4rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.25em;
+  line-height: 1.25rem;
   color: #000;
   text-align: center;
   display: block;
-  padding: 0em 0.5em;
+  padding: 0rem 0.5rem;
 }
 
 h1.info-menu-page, .info-menu-page h1 {
-  font-size: 3em;
+  font-size: 4rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.25em;
+  line-height: 1.25rem;
   color: #000;
   text-align: left;
   display: block;
-  padding: 0em;
+  padding: 0rem;
 }
 
 .info-page h2 {
-  font-size: 2em;
+  font-size: 2.5rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.25em;
+  line-height: 3rem;
   color: #000;
   text-align: left;
-  margin-top: 0px;
+  margin-top: 0rem;
 }
 
 .contact-page h2 {
-  font-size: 2em;
+  font-size: 2.25rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.25em;
+  line-height: 2.5rem;
   color: #000;
   text-align: left;
 }
 
 .info-page h3 {
-  font-size: 1.75em;
+  font-size: 2rem;
   font-weight: 300;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.25em;
+  line-height: 2.25rem;
   color: #000;
   text-align: left;
-  margin-top: 0px;
+  margin-top: 0rem;
 }
 
 .info-page li {
-  // font-size: 1.5em;
-  // font-weight: 200;
-  // font-family: 'Source Sans Pro', Arial, sans-serif;
-  // line-height: 1.5em;
-  // color: #000;
-  // text-align: left; 
-  font-size: 1.25em;
+  font-size: 1.5rem;
   font-weight: 300;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.5em;
+  line-height: 2.25rem;
   color: #000;
   text-align: left; 
 }
 
+// back to top links
 .info-page a {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.5em;
+  line-height: 1.25rem;
   color: #000;
   text-align: left; 
 }
 
-
-.info-page dl {
-  font-size: 1.5em;
-  font-weight: 200;
-  font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.5em;
-  color: #000;
-  text-align: left; 
-}
-
+// sidenav title
 .info-page dt {
-  font-size: 1em;
+  font-size: 2rem;
   font-weight: 300;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.5em;
+  line-height: 2rem;
   color: #000;
   text-align: left; 
 }
 
-.info-page dd {
-  font-size: 0.75em;
+// sidenav
+.info-page dd > a {
+  font-size: 1.25rem;
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.5em;
+  line-height: 2.25rem;
   color: #000;
   text-align: left; 
 }
-
-
-
-
 
 // page headings and panel headings
 h1 {
 font-family: 'Source Sans Pro', Arial, sans-serif;
 color: #000;
 font-weight: 700;
-font-size: 24px;
-margin-bottom: 15px;
+font-size: 2.4rem;
+margin-top: 17px; 
+margin-bottom: 1.5rem;
 display: inline-block;
 }
 
@@ -195,21 +169,21 @@ display: inline-block;
 // table contents and headers
 
 th {
-font-size: 13px;
+font-size: 1.3rem;
 font-family: Arial, sans-serif;
 font-weight: 700;
 color: #000;
 }
 
 td {
-font-size: 13px;
+font-size: 1.3rem;
 font-family: Arial, sans-serif;
 font-weight: 400;
 color: #444;
 }
 
 td > p {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #444;
@@ -217,23 +191,22 @@ td > p {
 
 // styles text fields once text has been added
 .form-control, textarea, input, span {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  // color: #444;
 }
 
 
 // placeholder text 
 ::input-placeholder {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #87878A;
 }
 
 input::-moz-placeholder {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #87878A;
@@ -245,14 +218,14 @@ input::-moz-placeholder {
 
 
 input:-moz-placeholder {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #87878A;
 }
 
 input:-ms-input-placeholder {
-  font-size: 12px;
+  font-size: 1.2 rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #87878A;
@@ -260,26 +233,18 @@ input:-ms-input-placeholder {
 
 
 ::-webkit-input-placeholder {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #87878A;
 }
 
-// input[placeholder] {
-//   font-size: 12px;
-//   font-family: Arial, sans-serif;
-//   font-weight: 400;
-//   color: #87878A;  
-// }
-
 // makes dropdown placeholder same colour as others 
 // but also makes everything in dropdown menu that colour too
 span.select2-chosen { 
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
-  // color: #87878A;
 }
 
 
@@ -300,7 +265,7 @@ span.select2-chosen {
 
 
 p.help-block {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #D82410;   

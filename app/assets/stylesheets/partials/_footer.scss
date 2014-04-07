@@ -23,19 +23,19 @@ footer p {
 // Footer copyright font size
 
 @media(max-width: $screen-xs){
-  footer p {font-size: 8px} //12px when screen is below 480px
+  footer p {font-size: 1rem} //12px when screen is below 480px
 }
 @media(min-width: $screen-xs){
-  footer p  {font-size: 8px} //12px when screen is below 768px
+  footer p  {font-size: 1rem} //12px when screen is below 768px
 }
 @media(min-width: $screen-sm){
-  footer p  {font-size: 10px} //14px when screen is below 992px
+  footer p  {font-size: 1rem} //14px when screen is below 992px
   }    
 @media(min-width: $screen-md){
-  footer p  {font-size: 10px} //16px when screen is below 1200px
+  footer p  {font-size: 1rem} //16px when screen is below 1200px
   }    
 @media(min-width: $screen-lg){
-  footer p  {font-size: 10px} //18px when screen is above 1200px
+  footer p  {font-size: 1rem} //18px when screen is above 1200px
   } 
 
 
@@ -57,7 +57,7 @@ footer>div.footer-background {
 footer p {
   color: #000000;
   text-align: center;
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
 div.footer-links {
@@ -66,7 +66,7 @@ div.footer-links {
 }
 
 .footer-links a {
-  margin: 2em 0;
+  margin: 2rem 0;
   color: #000000;
 }
 
@@ -81,3 +81,4 @@ p.copyright {
 dt {
   color: #000;
 }
+
