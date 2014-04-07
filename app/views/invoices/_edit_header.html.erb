@@ -10,9 +10,12 @@
     <% end %>
     </div>
   <% else %>
-    <div class="input-group">
-      <p><strong>Customer:</strong> <%= @invoice.customer_name %></p>
-    </div>
+  <table class="invoice-edit">
+    <tr>
+      <th class="th-invoice">Customer:</th>
+      <td class="td-invoice"><%= @invoice.customer_name %></td>
+    </tr>
+  </table>
   <% end %>
 
   <%= form_group_for f, :comment, label: false do %>
@@ -34,3 +37,7 @@
   <%= render 'form' %>
 
 <% end %>
+
+<!-- <div class="input-group">
+      <p><strong>Customer:</strong> <%= @invoice.customer_name %></p>
+    </div> -->

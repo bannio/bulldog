@@ -18,16 +18,27 @@ html, body {
   text-align: center;
 }
 
-// Landing page strapline
+// LANDING PAGE STRAPLINE
+
 h1.strapline {
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: 'ubuntu', Arial, sans-serif;
   text-align: center;
   // max-height: 500px;
-  font-size: 4em;
+  font-size: 3.5em;
   // margin: 0 auto;
   display: block;
   padding: 0em 0.5em;
 }
+
+// h1.strapline {
+//   font-family: 'architects_daughter', Arial, sans-serif;
+//   text-align: center;
+//   // max-height: 500px;
+//   font-size: 3em;
+//   // margin: 0 auto;
+//   display: block;
+//   padding: 0em 0.5em;
+// }
 
 // LANDING PAGE TITLES
 .landing-info h2 {

@@ -2,17 +2,17 @@
     <table class="table table-condensed" id="bill_table">
       <thead>
         <tr>
-          <th class="first-col">Date</th>
-          <th>Supplier</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th class="align-right">Amount</th>
+          <th class="first-col date-col">Date</th>
+          <th class="supplier-col">Supplier</th>
+          <th class="category-col">Category</th>
+          <th class="description-col-lg">Description</th>
+          <th class="amount-col align-right">Amount</th>
           <% if params[:action] == 'edit' %>
           <th>Remove?</th>
           <% end %>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="bill_table_body">
       <% @invoice.bills.each do |bill| %>
         <%= render 'bill_fields', f: bill %>
       <% end %>
@@ -22,7 +22,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td class="title-td">Total </td>
+          <td class="title-td align-right">Total </td>
           <td class="align-right"><%= number_to_currency(@invoice.total) %></td>
           <% if params[:action] == 'edit' %>
           <td></td>

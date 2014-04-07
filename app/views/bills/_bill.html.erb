@@ -1,9 +1,9 @@
 <tr title="click to edit", class="pointer rowlink",
     data-rowlink="<%= edit_bill_path(bill)%>">
-  <td class="first-col"><%= bill.date %></td> 
-  <td><%= bill.customer_name %></td>
-  <td><%= bill.supplier_name %></td>
-  <td><%= bill.category_name %></td>
-  <td><%= bill.description %></td>
-  <td class="align-right"><%= number_to_currency(bill.amount) %></td>
+  <td class="first-col date-col"><%= bill.date %></td> 
+  <td class="customer-col"><%= bill.customer_name %></td>
+  <td class="supplier-col"><%= bill.supplier_name %></td>
+  <td class="category-col"><%= bill.category_name %></td>
+  <td class="description-col-sm"><%= bill.description %></td>
+  <td class="align-right amount-col"><%= number_to_currency(bill.amount) %></td>
 </tr>

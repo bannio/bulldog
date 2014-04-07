@@ -53,3 +53,25 @@
 }
 
 
+@font-face {
+    font-family: 'ubuntu';
+    src: url('ubuntu-regular.eot');
+    src: url('ubuntu-regular.eot?#iefix') format('embedded-opentype'),
+         url('ubuntu-regular.woff') format('woff'),
+         url('ubuntu-regular.ttf') format('truetype'),
+         url('ubuntu-regular.svg#ubunturegular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'architects_daughter';
+    src: url('architectsdaughter-webfont.eot');
+    src: url('architectsdaughter-webfont.eot?#iefix') format('embedded-opentype'),
+         url('architectsdaughter-webfont.woff') format('woff'),
+         url('architectsdaughter-webfont.ttf') format('truetype'),
+         url('architectsdaughter-webfont.svg#architects_daughterregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+
+}

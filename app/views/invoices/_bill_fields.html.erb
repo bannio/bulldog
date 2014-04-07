@@ -1,10 +1,10 @@
 <tr>
-  <td class="first-col"><%= f.date %></td>
-  <td><%= f.supplier_name %></td>
-  <td><%= f.category_name %></td>
-  <td><%= f.description %></td>
-  <td class="align-right"><%= number_to_currency(f.amount) %></td>
+  <td class="first-col date-col"><%= f.date %></td>
+  <td class="supplier-col"><%= f.supplier_name %></td>
+  <td class="category-col"><%= f.category_name %></td>
+  <td class="description-col"><%= f.description %></td>
+  <td class="align-right amount-col"><%= number_to_currency(f.amount) %></td>
   <% if params[:action] == 'edit' %>
-    <td><%= check_box_tag "bill_ids[]", f.id %></td>
+    <td class="remove-col"><%= check_box_tag "bill_ids[]", f.id %></td>
   <% end %>
 </tr>
