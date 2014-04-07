@@ -8,3 +8,65 @@ input[type="checkbox"] {
   margin-top: 0px;
 }
 
+// width and spacing below header tables
+table.invoice-show, table.invoice-edit {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+// invoice show header styling
+table.invoice-show > tbody > tr > th.th-invoice {
+  width: 100px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.5em;
+}
+
+table.invoice-show > tbody > tr > td.td-invoice {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5em;
+}
+
+table.invoice-show > tbody > tr > td.td-invoice > p {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5em;
+  margin: 0; 
+}
+
+// invoice edit styling
+table.invoice-edit > tbody > tr > th.th-invoice {
+  width: 80px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.5em;
+}
+table.invoice-edit > tbody > tr > td.td-invoice {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5em;
+}
+
+table.invoice-edit > tbody > tr > td.td-invoice > p {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.5em;
+  margin: 0; 
+}
+
+.line-through {
+  text-decoration: line-through;
+}

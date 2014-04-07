@@ -31,22 +31,22 @@
           <thead>
 
             <tr>
-              <th class="first-col"><%= sortable "id", "No." %> <%= arrow "id" %></th>
-              <th><%= sortable "date", "Date" %> <%= arrow "date" %></th>
-              <th><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
-              <th><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
-              <th class="align-right"><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
+              <th class="first-col number-col"><%= sortable "id", "No." %> <%= arrow "id" %></th>
+              <th class="date-col"><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+              <th class="customer-col"><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+              <th class="comment-col"><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
+              <th class="amount-col"><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
             </tr>
           </thead>
           <tbody>
             <% @invoices.each do |invoice| %>
               <tr title="click to show details", class="pointer rowlink",
                   data-rowlink="<%= invoice_path(invoice)%>">
-                <td class="first-col"><%= invoice.number %></td>
-                <td><%= invoice.date %></td>
-                <td><%= invoice.customer_name %></td>
-                <td><%= simple_format(invoice.comment) %></td>
-                <td class="align-right"><%= number_to_currency(invoice.total) %></td>
+                <td class="first-col number-col"><%= invoice.number %></td>
+                <td class="date-col"><%= invoice.date %></td>
+                <td class="customer-col"><%= invoice.customer_name %></td>
+                <td class="comment-col"><%= simple_format(invoice.comment) %></td>
+                <td class="align-right amount-col"><%= number_to_currency(invoice.total) %></td>
               </tr>
             <% end %>
           </tbody>
