@@ -2,8 +2,17 @@
 label {
   font-weight: 600;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  font-size: 1.1em;
-  margin: 0px 0px 2px 0px;
+  font-size: 1.3rem;
+  margin: 5px 0px 5px 0px;
+}
+
+div.form-group > a.pull-right {
+  padding-top: 5px;
+}
+
+.panel {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 // sets dropdown menu border color to blue
@@ -241,20 +250,20 @@ table.account-details > tbody > tr > td.td-content {
 
 // account details show form 
 td.td-name {
-  font-size: 13px;
+  font-size: 1.3rem;
   // font-family: 'Source Sans Pro', Arial, sans-serif;
   font-family: Arial, sans-serif;
   font-weight: 600;
   color: #000;
-  line-height: 1.5em;
+  line-height: 2rem;
 }
 
 td.td-content, td.td-content>p {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #444;
-  line-height: 1.5em;
+  line-height: 2rem;
   vertical-align: bottom;
 }
 
@@ -406,6 +415,12 @@ input.form-control {
 
 div.checkbox > input {
 height: 15px;
+}
+
+// new bills modal header
+
+div.modal-header > button.close {
+  padding-top: 7px;
 }
 
 // red border on error fields using errors_for helper

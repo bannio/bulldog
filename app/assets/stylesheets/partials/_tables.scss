@@ -41,7 +41,7 @@ thead {
 }
 
 tfoot > tr > td.title-td {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #000;
 }
@@ -176,10 +176,11 @@ td.customer-name {
   white-space: pre-line;
 }
 
+// white-space pre-line commented out because it adds an additional carriage return
 td.customer-address {
   width: 50%;
   min-width: 110px;
-  white-space: pre-line;
+  // white-space: pre-line;
 }
 
 td.customer-postcode {
