@@ -23,6 +23,7 @@ body {
   line-height: 3rem;
   color: #000;
   text-align: center;
+  padding: 10px 0px;
 }
 
 // LANDING PAGE STRAPLINE
@@ -32,7 +33,7 @@ h1.strapline {
   text-align: center;
   font-size: 4.5rem;
   display: block;
-  padding: 0rem 0.5rem;
+  padding: 10px 0;
 }
 
 // h1.strapline {
@@ -52,6 +53,7 @@ h1.strapline {
   line-height: 4rem;
   color: #000;
   text-align: center;
+  padding-top: 20px;
 }
 
 // INFO PAGE TEXT
@@ -68,18 +70,17 @@ h1.info-page, .info-page h1, .contact-page h1{
   font-size: 4rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.25rem;
+  line-height: 4rem;
   color: #000;
   text-align: center;
   display: block;
-  padding: 0rem 0.5rem;
 }
 
 h1.info-menu-page, .info-menu-page h1 {
   font-size: 4rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  line-height: 1.25rem;
+  line-height: 4rem;
   color: #000;
   text-align: left;
   display: block;
@@ -93,7 +94,7 @@ h1.info-menu-page, .info-menu-page h1 {
   line-height: 3rem;
   color: #000;
   text-align: left;
-  margin-top: 0rem;
+  padding: 10px 0px;
 }
 
 .contact-page h2 {
@@ -103,6 +104,7 @@ h1.info-menu-page, .info-menu-page h1 {
   line-height: 2.5rem;
   color: #000;
   text-align: left;
+  padding: 0 0 5px 0;
 }
 
 .info-page h3 {
@@ -112,7 +114,7 @@ h1.info-menu-page, .info-menu-page h1 {
   line-height: 2.25rem;
   color: #000;
   text-align: left;
-  margin-top: 0rem;
+  padding: 10px 0px;
 }
 
 .info-page li {
@@ -142,6 +144,7 @@ h1.info-menu-page, .info-menu-page h1 {
   line-height: 2rem;
   color: #000;
   text-align: left; 
+  padding: 10px 0px;
 }
 
 // sidenav
@@ -269,4 +272,14 @@ p.help-block {
   font-family: Arial, sans-serif;
   font-weight: 400;
   color: #D82410;   
+}
+
+// new bill modal header
+
+h4 {
+  font-size: 2rem;
+}
+
+.close {
+  font-size: 1.8rem;
 }

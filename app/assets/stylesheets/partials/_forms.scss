@@ -3,7 +3,11 @@ label {
   font-weight: 600;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   font-size: 1.3rem;
-  margin: 0px 0px 2px 0px;
+  margin: 5px 0px 5px 0px;
+}
+
+div.form-group > a.pull-right {
+  padding-top: 5px;
 }
 
 .panel {
@@ -411,6 +415,12 @@ input.form-control {
 
 div.checkbox > input {
 height: 15px;
+}
+
+// new bills modal header
+
+div.modal-header > button.close {
+  padding-top: 7px;
 }
 
 // red border on error fields using errors_for helper
