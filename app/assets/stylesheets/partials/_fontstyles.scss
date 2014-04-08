@@ -138,13 +138,13 @@ h1.info-menu-page, .info-menu-page h1 {
 
 // sidenav title
 .info-page dt {
-  font-size: 2rem;
-  font-weight: 300;
+  font-size: 1.5rem;
+  font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 2rem;
   color: #000;
   text-align: left; 
-  padding: 10px 0px;
+  padding: 10px 0px 5px 0px;
 }
 
 // sidenav
@@ -282,4 +282,16 @@ h4 {
 
 .close {
   font-size: 1.8rem;
+}
+
+// links within faq text
+a.faq-link {
+  font-size: 1.5rem;
+  // font-style: italic;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 2.25rem;
+  color: #2056BF;
+  // color: #000;
+  text-decoration: underline;
 }
