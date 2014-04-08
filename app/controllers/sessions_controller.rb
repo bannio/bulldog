@@ -29,11 +29,10 @@ class SessionsController < Devise::SessionsController
       }
       format.js {
         Rails.logger.info "in the JS side of the SessionsController#new method"
-        flash[:alert] = "Sign in failed"
-        render :template => "remote_content/devise_errors.js.erb"
-        flash.discard
+          flash[:alert] = "Sign in failed"
+          render :template => "remote_content/devise_errors.js.erb"
+          flash.discard
       }
     end
   end
-
 end

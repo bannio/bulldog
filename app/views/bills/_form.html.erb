@@ -1,5 +1,5 @@
 
-<%= form_for @bill do |f| %>
+<%= form_for @bill, remote: true do |f| %>
   <%= f.hidden_field :account_id %>
   <div class="form-group">
     <%= f.text_field :date, class: "date_picker form-control" %>
@@ -23,7 +23,5 @@
   <% if params[:action] == 'edit' %>
     <%= link_to 'Destroy', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
   <% end %>
-  <%= link_to "Cancel", bills_path, class: "action-btn std-btn"  %>
+  <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true  %>
 <% end %> <!-- end of form_for -->
-
-<%#= render 'layouts/messages' %>

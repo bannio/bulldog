@@ -11,6 +11,7 @@ class BillsController < ApplicationController
       format.html
       format.csv  { @bills = current_account.bills.includes(:customer, :supplier, :category)
                     send_data @bills.to_csv }
+      format.js
     end
   end
 
@@ -38,7 +39,10 @@ class BillsController < ApplicationController
     @bill = Bill.visible_to(current_user).find(params[:id])
     if @bill.update(bill_params)
       flash[:success] = "Bill successfully updated"
-      redirect_to bills_url
+      respond_to do |format|
+        format.html {redirect_to bills_url}
+        format.js {redirect_to bills_url, remote: true}
+      end
     else
       render 'edit'
     end

@@ -25,7 +25,7 @@
               <th class="amount-col"><%= sortable "amount", "Amount" %> <%= arrow "amount" %></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="bill_index_table">
             <%# @bills.each do |bill| %>
               <%= render @bills %>
             <%# end %>
@@ -33,22 +33,23 @@
         </table>
       </div><!--end table responsive -->
 
-
-      <%= paginate @bills %>
+      <div id="paginator">
+        <%= paginate @bills, remote: true %>
+      </div>
     </div><!--end panel body -->
   </div><!--end panel -->
 
 </div><!--end container -->
 
   <!-- Modal -->
-  <div class="modal fade" id="new_bill_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="bill_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">New Bill</h4>
+          <h4 class="modal-title" id="modal_title">New Bill</h4>
         </div>
-        <div class="modal-body" id="new_bill_form">
+        <div class="modal-body" id="bill_form">
           loading ...
         </div>
         <div class="modal-footer">

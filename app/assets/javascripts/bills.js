@@ -121,12 +121,37 @@ ready = function() {
     formatResult: format_result,
     formatSelection: format
   });
+
+  // This function is adapted to work on either data-rowlink (invoices)
+  // or data-url (bills) within a table where the rows have a class of 
+  // rowlink. If/when the invoices table changes to JS then this could 
+  // be simplified. Note that data-rowlink results in an HTML 
+
+  $('tbody').on('click', 'tr.rowlink', function(e){
+    // window.location = $(this).data("rowlink")
+    var link = $(this).data("url");
+    var link2 = $(this).data("rowlink");
+    if (link) {
+      $.getScript(link);
+      e.stopImmediatePropagation();
+    }
+    else if (link2) {
+      window.location = link2;
+    }
+    else {
+      return false;
+    }
+  })
 };
 
 
 var bd_popover = function () {
 $('#pop').popover();
 };
+
+// fix for Select2 not working in modals. Note that this
+// overwrites something and maybe isn't the safest option.
+$.fn.modal.Constructor.prototype.enforceFocus = function() {};
 
 
 $(document).ready(ready);
