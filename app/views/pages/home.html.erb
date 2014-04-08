@@ -7,6 +7,7 @@
 <div class="landing-page container">
     <div class="row landing-top-row">
         <img src="/assets/door_dog.png" alt="Bills Image" class="bills-img img-responsive">
+        <!-- <img src="/assets/clipped_bills.png" alt="Bills Image" class="bills-img img-responsive"> -->
     </div>
     <div class="row strapline arrow-box">
       <h1 class="strapline">Capture, analyse and reclaim your expenses</h1>
@@ -17,7 +18,7 @@
 <div class="row strapline">
   <h1 class="strapline">Bulldog Clip is...</h1>
 </div><!--end row strapline-->
-<!-- <hr> -->
+<hr>
 
 <!-- Section 1 - Capture -->
 <div class="container landing-info">
@@ -38,16 +39,22 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>Simple by design. Minimal set up. Fast and easy to use. No more complex spreadsheets.</p>
+        <p>Simple by design. Minimal set up. Fast and easy to use. No more complex spreadsheets. <a href="/features#bills" class="read-more">Read more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <hr>
 </div><!-- end container landing-info -->
 
-<div class="btn-center">
-  <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
-  <%= link_to 'Sign me up', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- Section 2 - Analyse-->
@@ -70,16 +77,22 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>Simple charts by category, by supplier, by customer (if you are recharging) or family member (if you want to), over time and any time.<br>Easily export for further analysis - or just as a backup.</p>
+        <p>Select from a range of charts to visualise your data. Quickly identify spending patterns. View your costs by date, category, supplier or customer. Easily export your data tables for use elsewhere - or as a backup. <a href="/features#analysis" class="read-more">Read more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <hr>
 </div><!-- end container landing-info -->
 
-<div class="btn-center">
-  <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
-  <%= link_to 'Sign me up', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- Section 3 - Reclaim -->
@@ -88,30 +101,36 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <h2>One click invoice process</h2>
+        <h2>Custom invoice and <br>expense claims</h2>
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src="/assets/reclaim.png" alt="Invoice" class="img-responsive landing-img">
+        <img src="/assets/invoice_screenshot.png" alt="Invoice" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>One click to generate a formatted invoice or expense reclaim to recharge your clients, reclaim from your employer and/or to provide itemised backup to your bookkeeper.<br>You might also like to clear a pool of household bills into a monthly statement even if none of these other reasons apply.</p>
+        <p>One click generates a formatted invoice or expense claim. <br>Choose to customise with your company details and logo. Recharge your clients, reclaim from your employer or provide itemised backup to your bookkeeper. <a href="/features#invoices" class="read-more">Read more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <hr>
 </div><!-- end container landing-info -->
 
-<div class="btn-center">
-  <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
-  <%= link_to 'Sign me up', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- Section 4 - Simple and Safe -->
@@ -127,52 +146,103 @@
     <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src="/assets/store.png" alt="File" class="img-responsive landing-img">
+        <img src="/assets/new_bill.png" alt="File" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>Although it will work on the go, Bulldog Clip is expected to be used in the comfort of your home or office, not in the bustle of the high street.<br> When you get back to base, empty all of those receipts into a box or, better still, a bulldog clip, ready to process at your leisure.<br>When you do sit down to record them, Bulldog clip makes it so easy it is almost fun and definitely rewarding. Do it little and often and it never becomes a chore.<br>Remember to re-clip the recorded bills away from the unrecorded ones. You don't want to scare yourself by double entering your costs.
-        </p>
+        <p> Save time processing bills. With our simple workflow it is so easy it never becomes a chore. Bulldog Clips intuitive software remembers previous entries so the more you use it the quicker it gets. <a href="/features#customers" class="read-more">Read more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <hr>
 </div><!-- end container landing-info -->
 
-<div class="btn-center">
-  <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
-  <%= link_to 'Sign me up', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+      </div>
+    </div>
+  </section>
 </div>
 
-<!-- Section 4 - Simple Flow -->
+<!-- Section 4 - Safe and Secure -->
 <div class="container landing-info">
 <hr>
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-       <h2>Simply Safe and Secure</h2>
+       <h2>Safe and Secure</h2>
       </div>
     </div>
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src="/assets/bill_pile.png" alt="Pile of bills" class="img-responsive landing-img">
+        <img src="/assets/cloud.png" alt="Pile of bills" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>The entire transaction is encrypted as it goes across the Internet using the familiar, high street bank level of security.<br>The bills are stored in the cloud so do not get lost if you have an unfortunate incident with your computer.<br>At any time, you can take your own backup using one of the the export functions which download a spreadsheet compatible file to your machine.<br>Bills that have been "invoiced" cannot be deleted or edited so they are safe from accidental removal. Of course you can always edit an "invoice" to return bills to the pool if you do need to make a change.</p>
+        <p>All your data is encrypted using the familiar, high street bank level of security.<br>The bills are stored in the cloud so they won't be lost if you have an unfortunate incident with your computer. <br>With the export function you can download a copy of your data to your computer. <a href="/features#security" class="read-more">Read more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <hr>
 </div>
-<div class="btn-center">
-  <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
-  <%= link_to 'Sign me up', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+      </div>
+    </div>
+  </section>
 </div>
+
+<!-- Section 4 - Access -->
+<div class="container landing-info">
+<hr>
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <h2>Access anywhere</h2>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+    <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <img src="/assets/access.png" alt="File" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>You can use Bulldog Clip on phone and tablet devices as well as your desktop computer. So if you are away from base you can still check in.<br>Because your data is stored in the cloud you can log in securely from anywhere with internet access. <a href="/features#access" class="read-more">Read more<a></p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div><!-- end container landing-info -->
+
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+      </div>
+    </div>
+  </section>
+</div>
+
