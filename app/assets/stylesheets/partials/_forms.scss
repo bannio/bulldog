@@ -47,12 +47,16 @@ margin: 30px auto;
 }
 .modal-footer {
   margin-top: 0px;
-  padding: 15px 20px 10px 20px;
+  padding: 0px 20px 5px 20px;
   border-top: 0px solid #ffffff;
 }
 
 .modal-body {
   padding-bottom: 5px;
+}
+
+div.modal-header {
+  padding: 15px 20px;
 }
 
 // FORM FIELDS BORDERS AND COLOURING

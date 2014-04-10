@@ -4,9 +4,19 @@
   <div class="panel panel-default col-md-4 col-md-offset-4">
     <div class="panel-body">
     <h1>New Invoice</h1>
-      <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="New Invoice" data-content="Select the customer and add any comment you wish to appear on the invoice. When you click on 'Create Invoice' the system will fetch all uninvoiced bills for the chosen customer and display them. You will have the opportunity to remove any unwanted bills. ">
-        <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
-      </a>
+
+     <a href="#" id="pop" class="info-btn pop"  
+     data-title="Create New Invoice" 
+     data-content="
+     <ul class='info-ul'>
+     <li>Enter the date you want to appear on the invoice.</li>
+     <li>Select the customer and add any comments.</li>
+     <li>When you click on 'Create Invoice' the system will fetch all uninvoiced bills for the chosen customer and display them.</li> 
+     <li>You will have the opportunity to remove any unwanted bills.</li>    
+     </ul>">
+     <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
+     </a>
+
       <%= render 'new_form' %>  
     </div>
   </div>

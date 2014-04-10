@@ -5,7 +5,18 @@
     <div class="panel-body">
       <div class = 'authform'>
         <h1>Account Details</h1>
-          <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="How to edit your account" data-content="These are your current account details that will be used in any invoices you create. Use the 'Edit' button to change your details."><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
+
+     <a href="#" id="pop" class="info-btn pop"  
+     data-title="Edit Your Account Details" 
+     data-content="
+     <ul class='info-ul'>
+     <li>Edit the details that will be used on any new invoices you create.</li>
+     <li>You can enter an invoice heading e.g. Invoice or Expense Claim.</li>
+     <li>Tick the checkbox to include your bank details.</li>    
+     </ul>">
+     <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
+     </a>
+
         <%= render 'form' %>
       </div>
     </div>

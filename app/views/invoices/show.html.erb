@@ -4,9 +4,18 @@
   <div class="panel panel-default">
     <div class="panel-body">
     <h1>Invoice <%= @invoice.number %></h1>
-      <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="Invoice Detail" data-content="The 'Edit' button will allow you to change the comment or remove bills from this invoice. The 'Print Preview' button will open a PDF version in a new window so that you can download or print a formatted invoice. 'Back' goes back to the list of all invoices.">
-        <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
-      </a>
+
+     <a href="#" id="pop" class="info-btn pop"  
+     data-title="Review An Invoice" 
+     data-content="
+     <ul class='info-ul'>
+     <li>Use the 'Edit' button to change the comment or remove bills from this invoice.</li>
+     <li>'Print Preview' opens a fully formatted PDF version in a new window for you to download or print.</li>
+     <li>Select 'Back' to return to the list of invoices.</li>    
+     </ul>">
+     <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
+     </a>
+
       <%= render 'show_header' %>  
     </div>
   </div>

@@ -6,7 +6,19 @@
   <div class="col-sm-6 col-sm-offset-3 panel panel-default">
     <div class="panel-body">
       <h1>Account Details</h1>
-        <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="How to use this page" data-content="This is how to use this page. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, quis, doloribus, dicta est culpa ipsa voluptatem incidunt eveniet molestias optio unde neque facilis cum quam ut expedita quaerat odit! Inventore, ratione, nulla atque temporibus minima cumque sapiente deleniti similique porro quam molestias nobis esse sit nisi cupiditate iure dolorum laborum."><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
+
+     <a href="#" id="pop" class="info-btn pop"  
+     data-title="Your Account Details" 
+     data-content="
+     <ul class='info-ul'>
+     <li>Your account details will be used in any invoices you create.</li>
+     <li>Bank account details will only appear if you have selected to include them.</li>
+     <li>Use the 'Edit' button to update your details.</li>
+     <li>To change your account email address or password select 'Change password'</li>      
+     </ul>">
+     <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
+     </a>
+
       <table class="account-details">
         <tr>
           <td class="td-name">Name</td><td class="td-content"><%= @account.name %></td>
@@ -16,6 +28,9 @@
         </tr>
         <tr>
           <td class="td-name">Postcode</td><td class="td-content"><%= @account.postcode %></td>
+        </tr>
+        <tr>
+          <td class="td-name">Invoice heading</td><td class="td-content"><%= @account.invoice_heading %></td>
         </tr>
         <tr>
           <td class="td-name">Include bank details?</td><td class="td-content"><%= @account.include_bank ? "Yes" : "No" %></td>

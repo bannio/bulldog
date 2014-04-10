@@ -91,8 +91,8 @@ Feature: In order to track my costs
     | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
     | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
     And I am on the edit page for the first bill
-    Then I should see "Destroy"
-    When I click on Destroy
+    Then I should see "Delete"
+    When I click on Delete
     Then I should see "Bill successfully deleted"
     And I should be on the Bills page
     And I should not see "Coffee"
