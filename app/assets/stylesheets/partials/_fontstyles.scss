@@ -16,7 +16,17 @@ body {
 
 // LANDING PAGE PARA FONT
 
-.landing-info p, .contact-page p{
+.landing-info p {
+  font-size: 1.75rem;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 3rem;
+  color: #000;
+  text-align: center;
+  padding: 0px 0px 20px 0px;
+}
+
+.contact-page p{
   font-size: 1.75rem;
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;
@@ -24,6 +34,36 @@ body {
   color: #000;
   text-align: center;
   padding: 10px 0px;
+}
+
+.story-info p {
+  font-size: 1.75rem;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 3rem;
+  color: #000;
+  text-align: center;
+  padding: 10px 0px 0px 0px;
+}
+
+.demo-info p {
+  font-size: 1.75rem;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 3rem;
+  color: #000;
+  text-align: left;
+  padding: 20px 0px 10px 0px;
+}
+
+.demo-info li {
+  font-size: 1.75rem;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 3rem;
+  color: #000;
+  text-align: left;
+  padding: 10px 0px 0px 0px;
 }
 
 // LANDING PAGE STRAPLINE
@@ -48,12 +88,14 @@ h1.strapline {
 // LANDING PAGE TITLES
 .landing-info h2 {
   font-size: 3.5rem;
-  font-weight: 200;
+  font-weight: 400;
+  // font-family: 'ubuntu', Arial, sans-serif;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 4rem;
   color: #000;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 40px;
+  padding-left: 0px;
 }
 
 // INFO PAGE TEXT
@@ -66,7 +108,7 @@ h1.strapline {
   text-align: left; 
 }
 
-h1.info-page, .info-page h1, .contact-page h1{
+h1.info-page, .info-page h1, .contact-page h1, .demo-info h1{
   font-size: 4rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', Arial, sans-serif;
@@ -286,7 +328,7 @@ h4 {
 
 // links within faq text
 a.faq-link {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   // font-style: italic;
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;
@@ -295,3 +337,16 @@ a.faq-link {
   // color: #000;
   text-decoration: underline;
 }
+
+// links to features page read more
+a.read-more {
+  font-size: 1.5rem;
+  // font-style: italic;
+  font-weight: 200;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 2.25rem;
+  color: #2056BF;
+  // color: #000;
+  text-decoration: underline;  
+}
+
