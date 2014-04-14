@@ -3,11 +3,12 @@
   <div class="navbar-container container">
     <div class="navbar-row row" id="navbar">
 
-      <div class="col-xs-6 logo-col">
-        <%= link_to (image_tag 'nav_logo2.png', class: 'img-responsive'), root_path, class: 'navbar-logo pull-left' %>
+      <div class="col-sm-6 col-xs-6 col-xxs-3 logo-col">
+        <%= link_to (image_tag 'bulldog_clip_navbar_logo.png', class: 'img-responsive'), root_path, class: 'navbar-logo pull-left' %>
+        <%= link_to (image_tag 'bulldog_clip_navbar_icon.png', class: 'navbar-icon'), root_path, class: 'navbar-icon pull-left' %>
       </div><!-- end logo-col -->
 
-      <div class="col-xs-6 btn-col">
+      <div class="col-sm-6 col-xs-6 col-xxs-9 btn-col">
       <% if user_signed_in? %>
         <a class="nav-btn" id="subnavBtn">
             <span class="sr-only">Toggle navigation</span>

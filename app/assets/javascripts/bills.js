@@ -145,19 +145,13 @@ ready = function() {
 };
 
 
-var bd_popover = function () {
-$('#pop').popover();
-};
-
 // fix for Select2 not working in modals. Note that this
 // overwrites something and maybe isn't the safest option.
 $.fn.modal.Constructor.prototype.enforceFocus = function() {};
 
-
 $(document).ready(ready);
-$(document).ready(bd_popover);
 $(document).on('page:update', ready);
-$(document).on('page:update', bd_popover);
+
 
 
 

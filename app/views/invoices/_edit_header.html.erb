@@ -30,7 +30,7 @@
     <%= link_to 'Cancel', invoices_path, class: 'action-btn std-btn' %>
   <% end %>
   
-  <%= link_to 'Destroy', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
+  <%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
  
   <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %> 
 
