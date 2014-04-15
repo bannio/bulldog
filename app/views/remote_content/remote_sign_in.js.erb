@@ -2,6 +2,6 @@ if($('#sign_in_modal').length > 0) {
  $("#sign_in_modal").modal();
 }
 else {
- $("body").prepend("<%= escape_javascript(render "remote_sign_in", :formats => [:html]) %>");
+ $("body").prepend("<%= escape_javascript(render "remote_content/remote_sign_in", :formats => [:html]) %>");
  $("#sign_in_modal").modal();
 }

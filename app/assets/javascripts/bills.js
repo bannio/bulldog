@@ -9,7 +9,14 @@ ready = function() {
   var categoryData        = $('#bill_category_id').data('categories');
 
   function format(item) { return item.name || item.text; };
-  function text(value) { return value[0].name || ""; };
+  function text(value) { 
+      if (value[0]){
+        return value[0].name;
+      }
+      else {
+        return "";
+      }
+    };
   function format_result(term) {
       if (term.isNew) {
         return '<span class="label label-important">New</span> ' + term.text;

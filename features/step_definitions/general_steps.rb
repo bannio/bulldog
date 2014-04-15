@@ -41,6 +41,7 @@ Given /^I click the third table row$/ do
 end
 
 When(/^I click on (.+)$/) do |link|
+  find_link(link)
   click_link(link)
 end
 

@@ -16,6 +16,7 @@ Given(/^I have created the (.*?) invoice$/) do |customer|
     And I select "#{customer}" as the invoice customer
     And I change the comment to "My business invoice"
     And I click button Create Invoice
+    And I click button Save Changes
   }
 end
 
@@ -26,6 +27,7 @@ Given(/^I have the (.*?) invoice$/) do |customer|
                        date: Time.now,
                        comment: "My business invoice")
   bills = Bill.uninvoiced.where(customer_id: customer.id)
+  invoice.number = Invoice.next_number(@account)
   invoice.total =bills.sum(:amount)
   invoice.save
   bills.each {|bill| bill.update_attribute(:invoice_id, invoice.id)}
@@ -49,7 +51,7 @@ Then(/^I should see (\d+) bills?$/) do |arg1|
 end
 
 When(/^I check one bill and click Save Changes$/) do
-  within(:xpath, "//table/tbody/tr[1]") do
+  within(:xpath, "//table[@id='bill_table']/tbody/tr[1]") do
     check('bill_ids_')
   end
   click_button('Save Changes')
@@ -95,4 +97,8 @@ end
 When(/^I click the Delete button and confirm OK$/) do
   page.evaluate_script("window.confirm = function(msg) { return true; }")
   find_link('Delete').click
+end
+
+And(/^I wait$/) do
+  sleep 1
 end

@@ -29,9 +29,11 @@ Feature: In order to track my costs
 
   @javascript
   Scenario: Try to save a bill with no amount
+    When I am on the bills page
+    And I click on New
     When I leave the amount empty
-    Then I should see "can't be blank"
-    And I should be on the New Bill page
+    Then I should see "can't be blank" in modal form
+    And I should be on the "New Bill" modal
 
   Scenario: I can list bills
     Given I have the following bills
@@ -58,7 +60,7 @@ Feature: In order to track my costs
     And I am on the bills page
     And there is a link to add a new bill
     When I click the first table row
-    Then I should be on the Edit Bill page
+    Then I should be on the "Edit Bill" modal
     When I change the bill Description to "changed it here" and press save
     Then I should be on the Bills page
     And I should see "changed it here"

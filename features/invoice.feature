@@ -5,6 +5,7 @@ Feature: Invoices
   I need to be able to create an invoice based on customer and date
 
   Background:
+    Given I am not logged in
     Given I am a user with an account
     And I sign in 
     And I have the following bills
@@ -72,16 +73,17 @@ Feature: Invoices
     Then row 1 should include "D invoice"
     And row 6 should include "C invoice"
 
-  @javascript
+  @javascript @ut
   Scenario: Edit an invoice
     I can edit everything except the customer. If the customer were to change,
     all the bills would be removed in any case. 
 
-    Given I have created the Business invoice
+    Given I have the Business invoice
     And I am on the invoices index page
     When I click the first table row
     Then I should be on the Show Invoice page
     When I click on Edit
+    And I wait
     Then I should be on the Edit Invoice page
     And I should see "Cancel"
     When I change the comment to "changed comment"
@@ -103,7 +105,7 @@ Feature: Invoices
 
   @javascript
   Scenario: Delete an invoice
-    Given I have created the Business invoice
+    Given I have the Business invoice
     When I am on the bills page
     Then I should not see "business trip"
     When I am on the invoices index page

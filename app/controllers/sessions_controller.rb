@@ -1,5 +1,7 @@
 class SessionsController < Devise::SessionsController
 
+  skip_before_filter :verify_authenticity_token
+
   # POST /resource/sign_in
   def create
     self.resource = warden.authenticate!(auth_options)
@@ -29,9 +31,17 @@ class SessionsController < Devise::SessionsController
       }
       format.js {
         Rails.logger.info "in the JS side of the SessionsController#new method"
-          flash[:alert] = "Sign in failed"
-          render :template => "remote_content/devise_errors.js.erb"
-          flash.discard
+          #flash[:alert] = "Sign in failed"
+          if flash[:timedout] && flash[:alert]
+            # Your session expired. Please sign in again to continue.
+            Rails.logger.info "flash timedout and alert = #{flash[:alert]}"
+            # @user = current_user
+            render template: "remote_content/remote_sign_in.js.erb"
+          else
+            Rails.logger.info "NOT flash timedout and alert = #{flash[:alert]}"
+            render :template => "remote_content/devise_errors.js.erb"
+            flash.discard
+          end
       }
     end
   end

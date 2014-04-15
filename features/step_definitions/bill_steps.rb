@@ -159,3 +159,16 @@ Then(/^row (\d+) should include "(.*?)"$/) do |row, text|
   end
 end
 
+Then(/^I should see "(.*?)" in modal form$/) do |text|
+  within('#bill_form') do
+    expect(page).to have_content(text)
+  end
+end
+
+Then(/^I should be on the "(.*?)" modal$/) do |text|
+  within('#modal_title') do
+    expect(page).to have_content(text)
+  end
+end
+
+

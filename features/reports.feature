@@ -1,4 +1,4 @@
-@under_test @reports
+@reports
 Feature: Analysis menu
   In order to view graphs and maybe extract data from tables
   I need to have a menu option and views for reports
@@ -43,7 +43,6 @@ Scenario: I can filter by customer, supplier and category
   And I click button Submit
   Then I should find 1 bills
 
-@under_test
 Scenario: Pagination keeps the selection criteria
   (note assumed pagination of 25)
   Given I have the following bills

@@ -14,7 +14,7 @@ Feature: Create customers, suppliers and categories on the fly
 
     Given I am on the bills page
     And I click on New
-    Then I should be on the New Bill page
+    Then I should be on the "New Bill" modal
     When I type "a new customer" in the customer select field
     And I type "a new supplier" in the supplier select field
     And I type "a new category" in the category select field

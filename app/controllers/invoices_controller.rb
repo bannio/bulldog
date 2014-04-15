@@ -15,7 +15,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.visible_to(current_user).find(params[:id])
     @customers = []
     @customers << @invoice.customer
-    @bills = @invoice.bills
+    @bills = @invoice.bills.includes(:category, :supplier)
 
     respond_to do |format|
       format.html # show.html.erb
