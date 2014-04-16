@@ -11,18 +11,18 @@ nav.navbar-wrapper {
 /*TOP NAVBAR*/
 .navbar-container {
   background-color: #ffffff;
-  min-height: 70px;
+  max-height: 70px;
   border-bottom: #000000 1px solid;  
   background-color: #ffffff;
 }
 
 .navbar-row {
-  min-height: 70px;
+  max-height: 70px;
   z-index: 1030;
 }
 
 div.logo-col, div.btn-col {
-  min-height: 60px;
+  max-height: 70px;
 }
 
 // places buttons to right of navbar at full width when signed out
@@ -33,23 +33,53 @@ div.btn-col {
 }
 
 // navbar logo 
-div .navbar-logo {
+div .navbar-logo, div .navbar-icon {
   padding: 0px;
   height: 60px;
   margin: 1px 1px;
 }
 
 .navbar-logo img {
-  margin: 18px 0 0 0;
+  // margin: 18px 0 0 0;
   max-height: 45px;
-
 }
 
-@media(min-width: $screen-sm){
-  .navbar-logo img {
+.navbar-icon img {
+  max-height: 38px;
+}
+
+// @media(min-width: $screen-sm){
+  .navbar-logo img, .navbar-icon img {
   margin: 12px 0 0 0;
   } 
+// }
+
+@media screen and (min-width: 480px){
+// @media screen and (min-width: 768px){
+    .navbar-logo {display:block;}
+    .navbar-icon {display:none;}
 }
+
+/* logo media queries */
+
+@media screen and (max-width: 479px){
+// @media screen and (max-width: 767px){
+
+    .navbar-logo {display:none;}
+    .navbar-icon {display:block;}
+}
+
+
+@media (max-width: 479px) {
+  .col-xxs-3 {
+  width: 25%;
+  }
+  .col-xxs-9 {
+    width: 75%;
+  }
+}
+ 
+
 // signin/signup btns
 
 a.nav-btn {
