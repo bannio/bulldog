@@ -32,6 +32,16 @@ Scenario: edit VAT rate
   Then I should be on the VAT page
   And the "Old Standard" rate should be inactive
 
+@javascript @ut
+Scenario: list only active rates, button to show all
+  Given I have an active "Standard" rate at 20%
+  And I have an active "Reduced" rate at 5%
+  And I have an inactive "Old rate" rate at 20%
+  When I visit the VAT page
+  Then I should see 2 rates
+  When I click on Show All
+  Then I should see 3 rates
+
 @javascript
 Scenario: delete a VAT rate
   This should not be allowed if there are bills using the rate

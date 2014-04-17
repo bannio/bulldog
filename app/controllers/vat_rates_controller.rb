@@ -4,6 +4,7 @@ class VatRatesController < ApplicationController
 
   def index
     @vat_rates = VatRate.visible_to(current_user).order(name: :asc )
+    @vat_rates = @vat_rates.active unless params[:all]
     # @vat_rates = current_account.vat_rates if current_account
   end
 
@@ -50,4 +51,5 @@ class VatRatesController < ApplicationController
   def vat_params
     params.require(:vat_rate).permit(:account_id, :name, :rate, :active)
   end
+
 end

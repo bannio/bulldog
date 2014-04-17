@@ -21,6 +21,11 @@
     <div class="panel-body">
 
       <%= link_to "New", new_vat_rate_path, remote: true, class: "create-btn std-btn"  %>
+      <% if params[:all] %>
+        <%= link_to "Show Active", vat_rates_path, class: "action-btn std-btn"  %>
+      <% else %>
+        <%= link_to "Show All", vat_rates_path(all: true), class: "action-btn std-btn"  %>
+      <% end %>
 
       <div class="table-responsive">
         <table class="table table-hover table-condensed">

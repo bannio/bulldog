@@ -8,6 +8,8 @@ class VatRate < ActiveRecord::Base
 
   before_destroy :check_for_bills
 
+  scope :active, -> { where(active: true) }
+
   private
 
   def check_for_bills

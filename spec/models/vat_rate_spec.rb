@@ -44,4 +44,10 @@ describe VatRate do
     expect(vat_rate.active?).to be_true
   end
 
+  it "has a scope for active only" do
+    vat_rate = VatRate.create(@attr)
+    vat_rate2 = VatRate.create(@attr.merge(active: false))
+    expect(VatRate.active.length).to eq 1
+  end
+
 end

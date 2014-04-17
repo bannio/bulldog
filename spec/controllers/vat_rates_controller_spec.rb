@@ -13,7 +13,8 @@ describe VatRatesController do
   def valid_attributes
    { name: "Standard",
     rate: "20", 
-    account_id: create_account.id
+    account_id: create_account.id,
+    active: true
    }
  end
 
@@ -31,6 +32,18 @@ describe VatRatesController do
    it "assigns all vat rates as @vat_rates" do
      vat_rate = VatRate.create! valid_attributes
      get :index, {}
+     assigns(:vat_rates).should eq([vat_rate])
+   end
+
+   it "shows active rates by default" do
+     vat_rate = VatRate.create! valid_attributes.merge(active: false)
+     get :index, {}
+     assigns(:vat_rates).should eq([])
+   end
+
+   it "shows inactive rates by request" do
+     vat_rate = VatRate.create! valid_attributes.merge(active: false)
+     get :index, {all: true}
      assigns(:vat_rates).should eq([vat_rate])
    end
  end

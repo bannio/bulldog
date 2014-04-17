@@ -14,9 +14,9 @@ When(/^I check active$/) do
   check 'vat_rate_active'
 end
 
-Given(/^I have an (.*?)"(.*?)" rate at (\d+)%$/) do |active, name, rate|
-  active == "active" ? active = true : active = false
-  vat_rate = VatRate.new(account_id: @account.id, name: name, rate: rate, active: active)
+Given(/^I have an (.*?) "(.*?)" rate at (\d+)%$/) do |active, name, rate|
+  isactive = active == "active" ? true : false
+  vat_rate = VatRate.new(account_id: @account.id, name: name, rate: rate, active: isactive)
   vat_rate.save
 end
 
@@ -56,4 +56,8 @@ end
 
 Given(/^VAT is enabled$/) do
   @account.update_attribute(:vat_enabled, true)
+end
+
+Then(/^I should see (\d+) rates$/) do |num|
+  expect(all("tbody#vat_rate_index_table tr").count).to eq num
 end
