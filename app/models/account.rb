@@ -4,6 +4,7 @@ class Account < ActiveRecord::Base
   has_many :customers
   has_many :categories
   has_many :bills
+  has_many :vat_rates
 
   validates :user_id, :name, presence: true
 

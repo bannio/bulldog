@@ -10,5 +10,7 @@ FactoryGirl.define do
     description "MyText"
     amount "1"
     invoice_id ""
+    vat ""
+    vat_rate_id ""
   end
 end

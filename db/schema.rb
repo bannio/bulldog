@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221221928) do
+ActiveRecord::Schema.define(version: 20140416131739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140221221928) do
     t.string   "bank_iban"
     t.string   "invoice_heading"
     t.string   "bank_sort"
+    t.boolean  "vat_enabled"
   end
 
   create_table "bills", force: true do |t|
@@ -45,6 +46,8 @@ ActiveRecord::Schema.define(version: 20140221221928) do
     t.datetime "updated_at"
     t.date     "date"
     t.integer  "invoice_id"
+    t.integer  "vat_rate_id"
+    t.decimal  "vat",         precision: 8, scale: 2
   end
 
   add_index "bills", ["account_id"], name: "index_bills_on_account_id", using: :btree
@@ -52,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140221221928) do
   add_index "bills", ["customer_id"], name: "index_bills_on_customer_id", using: :btree
   add_index "bills", ["invoice_id"], name: "index_bills_on_invoice_id", using: :btree
   add_index "bills", ["supplier_id"], name: "index_bills_on_supplier_id", using: :btree
+  add_index "bills", ["vat_rate_id"], name: "index_bills_on_vat_rate_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -121,5 +125,16 @@ ActiveRecord::Schema.define(version: 20140221221928) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vat_rates", force: true do |t|
+    t.integer  "account_id"
+    t.string   "name"
+    t.decimal  "rate",       precision: 5, scale: 2
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vat_rates", ["account_id"], name: "index_vat_rates_on_account_id", using: :btree
 
 end

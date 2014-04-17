@@ -79,7 +79,8 @@ Given /^the supplier (\w+) does not exist$/ do |supplier|
 end
 
 When /^I am on the new bill screen$/ do
-  visit '/bills/new'
+  visit '/bills'
+  click_on 'New'
 end
 
 When(/^I am on the bills page$/) do
@@ -118,7 +119,7 @@ end
 When(/^I type "(.*?)" in the (.*?) select field$/) do |value, field|
   page.find("#s2id_bill_#{field}_id b" ).click
   page.find(".select2-drop-active .select2-search .select2-input").set(value)
-  page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
+  page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:tab)
 end
 
 When(/^I enter "(.*?)" in the (.*?) field$/) do |value, field|
@@ -169,6 +170,14 @@ Then(/^I should be on the "(.*?)" modal$/) do |text|
   within('#modal_title') do
     expect(page).to have_content(text)
   end
+end
+
+Then(/^I should see placeholder "(.*?)"$/) do |field|
+  expect(page).to have_xpath("//input[@placeholder='#{field}']")
+end
+
+Then(/^I should not see placeholder "(.*?)"$/) do |field|
+  expect(page).to_not have_xpath("//input[@placeholder='#{field}']")
 end
 
 

@@ -53,6 +53,11 @@ When(/^I click button (.*?)$/) do |btn|
   click_button(btn)
 end
 
+When(/^I click Delete and confirm$/) do
+  click_on 'Delete'
+  page.driver.browser.switch_to.alert.accept
+end
+
 # When(/^I enter a valid email and password$/) do
 #   fill_in 'user_email', with: 'example@example.com'
 #   fill_in 'user_password', with: 'secret12'

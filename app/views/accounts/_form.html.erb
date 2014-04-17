@@ -28,11 +28,18 @@
   </div>
 <% end %>
 
+<%= form_group_for f, :vat_enabled, label: false do %>
+  <div class="input-group">
+    <%= f.label "Enable VAT on bills?" %>
+    <%= f.check_box :vat_enabled, id: 'check_vat' %>
+  </div>
+<% end %>
+
 <%= form_group_for f, :include_bank, label: false do %>
-<div class="input-group">
-  <%= f.label "include bank details on invoice?" %>
-  <%= f.check_box :include_bank, id: 'check' %>
-</div>
+  <div class="input-group">
+    <%= f.label "include bank details on invoice?" %>
+    <%= f.check_box :include_bank, id: 'check_bank' %>
+  </div>
 <% end %>
 
 

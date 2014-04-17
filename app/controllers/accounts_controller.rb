@@ -39,7 +39,8 @@ class AccountsController < ApplicationController
   def account_params
     params.require(:account).permit(:name, :address, :postcode, 
       :include_bank, :bank_account_name, :bank_name, :bank_address, 
-      :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :invoice_heading)
+      :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :invoice_heading,
+      :vat_enabled)
   end
 
   def record_not_found

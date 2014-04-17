@@ -7,6 +7,7 @@ ready = function() {
   var invoiceCustomerData = $('#invoice_customer_id').data('customers');
   var supplierData        = $('#bill_supplier_id').data('suppliers');
   var categoryData        = $('#bill_category_id').data('categories');
+  var vatRateData         = $('#bill_vat_rate_id').data('vat-rates');
 
   function format(item) { return item.name || item.text; };
   function text(value) { 
@@ -125,6 +126,24 @@ ready = function() {
         callback(data);
     },
     createSearchChoice: create_choice,
+    formatResult: format_result,
+    formatSelection: format
+  });
+
+  $('#bill_vat_rate_id').select2({
+    placeholder: 'VAT rate',
+    allowClear: true,
+    width: 'resolve',
+    data: {results: vatRateData, text: 'name'},
+    // initSelection : function (element, callback) {
+    //     var value = $(vatRateData).filter(function(index){
+    //                   return this.id == element.val();
+    //                 });
+    //     var data = {id: element.val(), 
+    //                 text: text(value)};
+    //     callback(data);
+    // },
+    // createSearchChoice: create_choice,
     formatResult: format_result,
     formatSelection: format
   });

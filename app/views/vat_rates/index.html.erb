@@ -1,0 +1,61 @@
+<% content_for :title do %>Bulldog-Clip | VAT table<% end %>
+<% content_for :description do %>VAT table<% end %>
+
+<div class="container">
+
+  <h1>VAT Rates</h1>
+
+     <a href="#" id="pop" class="info-btn pop"  
+     data-title="VAT table" 
+     data-content="
+     <ul class='info-ul'>
+     <li>Use 'New' to enter a new rate.</li>
+     <li>You can edit a rate by selecting the row in the table.</li>
+     <li>Rates that have been used cannot be deleted but can be de-activated. Only active rates are available to new bills.</li> 
+     <li>New rates can have the same name as old rates. For example, if the Government changes 'Standard' rate from 20% to 17.5%, you can create a new 'Standard' and deactivate the old one. Existing bills will then be unaffected. </li>
+     </ul>">
+     <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
+     </a>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <%= link_to "New", new_vat_rate_path, remote: true, class: "create-btn std-btn"  %>
+
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th class="first-col vat-name-col">Name</th>
+              <th class="vat-rate-col">Rate</th>
+              <th class="vat-active-col">Active</th>
+            </tr>
+          </thead>
+          <tbody id="vat_rate_index_table">
+              <%= render @vat_rates %>
+          </tbody>
+        </table>
+      </div><!--end table responsive -->
+    </div><!--end panel body -->
+  </div><!--end panel -->
+
+</div><!--end container -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="vat_rate_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="modal_title">New VAT Rate</h4>
+        </div>
+        <div class="modal-body" id="vat_rate_form">
+          loading ...
+        </div>
+        <div class="modal-footer">
+<!--           <button type="button" class="action-btn std-btn" data-dismiss="modal">Cancel</button>
+          <button type="button" class="create-btn std-btn">Submit</button> -->
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

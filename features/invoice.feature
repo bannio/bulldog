@@ -73,7 +73,7 @@ Feature: Invoices
     Then row 1 should include "D invoice"
     And row 6 should include "C invoice"
 
-  @javascript @ut
+  @javascript
   Scenario: Edit an invoice
     I can edit everything except the customer. If the customer were to change,
     all the bills would be removed in any case. 

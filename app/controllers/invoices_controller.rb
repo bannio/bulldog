@@ -38,6 +38,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.visible_to(current_user).find(params[:id])
     @customers = []
     @customers << @invoice.customer
+    @bills = @invoice.bills.includes(:category, :supplier)
   end
 
   def update

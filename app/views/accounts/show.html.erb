@@ -33,6 +33,9 @@
           <td class="td-name">Invoice heading</td><td class="td-content"><%= @account.invoice_heading %></td>
         </tr>
         <tr>
+          <td class="td-name">Enable VAT on bills?</td><td class="td-content"><%= @account.vat_enabled ? "Yes" : "No" %></td>
+        </tr>
+        <tr>
           <td class="td-name">Include bank details?</td><td class="td-content"><%= @account.include_bank ? "Yes" : "No" %></td>
         </tr>
         <tr>

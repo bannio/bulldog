@@ -1,0 +1,4 @@
+$('#flashes').remove();
+$('main').prepend("<%= escape_javascript raw(flash_normal) %>");
+$('tbody#vat_rate_index_table').html('<%= escape_javascript render @vat_rates %>');
+$('#vat_rate_modal').modal('hide');

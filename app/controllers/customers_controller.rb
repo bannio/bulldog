@@ -2,14 +2,11 @@ class CustomersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @customers = Customer.all
     @customers = current_account.customers if current_account
-    # @customers = Customer.all
   end
 
   def new
     @customer = current_account.customers.build
-    # @customer = Customer.new
   end
 
   def create

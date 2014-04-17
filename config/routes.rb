@@ -15,5 +15,6 @@ Bulldog::Application.routes.draw do
   resources :reports, only: [:new, :create]
   get 'reports' => 'reports#new'
   resources :categories
+  resources :vat_rates
 
 end
