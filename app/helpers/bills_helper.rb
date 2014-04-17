@@ -13,7 +13,7 @@ module BillsHelper
   end
 
   def get_vat_rate_data
-    vat_rates = current_account.vat_rates.order(:name).to_json(only: [:id, :name])
+    vat_rates = current_account.vat_rates.active.order(:name).to_json(only: [:id, :name])
   end
 
 end

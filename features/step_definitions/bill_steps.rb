@@ -93,17 +93,23 @@ Given /^I have the following bills$/ do |table|
       customer = Customer.find_or_create_by(name: row[0], account_id: @account.id)
       supplier = Supplier.find_or_create_by(name: row[1], account_id: @account.id)
       category = Category.find_or_create_by(name: row[2], account_id: @account.id)
+      vat_rate = VatRate.find_or_create_by(name: row[6], account_id: @account.id, 
+                                rate: row[7], active: true) unless row[6].blank?
       date = row[3]
       description = row[4]
       amount = row[5]
+      vat = row[7] || ""
+      vat_rate_id = vat_rate ? vat_rate.id : ""
       bill = FactoryGirl.create(:bill,
-                        account_id: @account.id,     # assumes user with an account already called
+                        account_id:  @account.id,  # assumes user with an account already called
                         customer_id: customer.id,
                         supplier_id: supplier.id, 
                         category_id: category.id, 
-                        date: date, 
+                        date:        date, 
                         description: description,
-                        amount: amount)
+                        amount:      amount,
+                        vat_rate_id: vat_rate_id,
+                        vat:         vat)
   end
 end
 
@@ -163,6 +169,12 @@ end
 Then(/^I should see "(.*?)" in modal form$/) do |text|
   within('#bill_form') do
     expect(page).to have_content(text)
+  end
+end
+
+Then(/^I should not see "(.*?)" in modal form$/) do |text|
+  within('#bill_form') do
+    expect(page).to_not have_content(text)
   end
 end
 

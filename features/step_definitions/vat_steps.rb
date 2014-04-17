@@ -61,3 +61,4 @@ end
 Then(/^I should see (\d+) rates$/) do |num|
   expect(all("tbody#vat_rate_index_table tr").count).to eq num
 end
+

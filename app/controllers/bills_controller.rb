@@ -3,13 +3,13 @@ class BillsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @bills = current_account.bills.uninvoiced.includes(:customer, :supplier, :category).
+    @bills = current_account.bills.uninvoiced.includes(:customer, :supplier, :category, :vat_rate).
                                               page(params[:page]).
                                               order(sort_column + " " + sort_direction)
 
     respond_to do |format|
       format.html
-      format.csv  { @bills = current_account.bills.includes(:customer, :supplier, :category)
+      format.csv  { @bills = current_account.bills.includes(:customer, :supplier, :category, :vat_rate)
                     send_data @bills.to_csv }
       format.js
     end
@@ -71,7 +71,8 @@ class BillsController < ApplicationController
   def bill_params
     params.require(:bill).permit(:account_id, :customer_id, :supplier_id, 
                                  :date, :category_id, :description, :amount, 
-                                 :new_customer, :new_supplier, :new_category)
+                                 :new_customer, :new_supplier, :new_category,
+                                 :vat_rate_id, :vat)
   end
 
   def collect_new_entries

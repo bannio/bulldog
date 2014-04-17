@@ -27,6 +27,9 @@ class Bill < ActiveRecord::Base
   def category_name
     category.name
   end
+  def vat_rate_name
+    vat_rate_id ? vat_rate.name : ""
+  end
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

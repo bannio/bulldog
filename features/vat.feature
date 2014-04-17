@@ -32,7 +32,7 @@ Scenario: edit VAT rate
   Then I should be on the VAT page
   And the "Old Standard" rate should be inactive
 
-@javascript @ut
+@javascript
 Scenario: list only active rates, button to show all
   Given I have an active "Standard" rate at 20%
   And I have an active "Reduced" rate at 5%
@@ -79,18 +79,38 @@ Scenario: select to enable VAT
   Then I should not see "VAT rate"
   And I should not see placeholder "VAT amount" 
 
-@javascript
-Scenario: VAT select field limits choice to defined entries
+@javascript @ut
+Scenario: VAT select field limits choice to defined active entries
+  The way the system and this test works, the previous valid entry is retained
+  if an invalid entry is typed in and you press 'tab' to leave the field
   Given I have an active "Standard" rate at 20%
   And I have an active "Reduced" rate at 5%
+  And I have an inactive "Old" rate at 15%
   And VAT is enabled
   When I visit the Bills page
   And I click on New
-  Then I should see "VAT rate"
+  Then I should see "VAT rate" in modal form
   And I type "Standard" in the vat_rate select field
   Then I should see "Standard"
-  And I should not see "VAT rate"
+  And I should not see "VAT rate" in modal form
   When I type "missing" in the vat_rate select field
   Then I should not see "missing"
   And I should see "Standard"
+  When I type "Old" in the vat_rate select field
+  Then I should not see "Old"
+  And I should see "Standard"
+
+Scenario: The bills index table lists VAT when VAt is enabled in the account
+  Given I have an active "Standard" rate at 20%
+  And VAT is enabled
+  And I have the following bills
+    # customer  | supplier | category | date       | description        | amount | vat_rate | vat |
+    | Household | Asda     | Food     | 16-12-2012 | Coffee             | 5.46   |          |     |
+    | Household | Tesco    | Clothes  | 15-12-2012 | Tickets            | 46.00  | Zero     | 0   |
+    | Business  | Asda     | Mileage  | 14-12-2012 | business trip      | 120.00 | Standard | 20  |
+    | Household | Asda     | Food     | 13-12-2012 | more coffee        | 5.00   |          |     |
+    | Business  | Asda     | Food     | 12-12-2012 | coffee biscuits    | 5.00   | Zero     | 0   |
+    When I am on the bills page
+    Then row 3 should include "Standard £20.00"
+    And row 5 should include "Zero £0.00"
 
