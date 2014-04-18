@@ -8,13 +8,14 @@ Feature: Invoices
     Given I am not logged in
     Given I am a user with an account
     And I sign in 
+    And I have an active "Standard" rate at 20%
     And I have the following bills
-    # customer  | supplier | category | date       | description        | amount |
-    | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
-    | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
-    | Business  | Asda     | Mileage  | 10-12-2012 | business trip      | 100.00 |
-    | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   |
-    | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   | 
+    # customer  | supplier | category | date       | description        | amount | vat_rate | vat |
+    | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |          |     |
+    | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |          |     |
+    | Business  | Asda     | Mileage  | 10-12-2012 | business trip      | 120.00 | Standard | 20  |
+    | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   |          |     |
+    | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   | Standard |  1  |
 
   @javascript
   Scenario: Create an invoice
@@ -32,7 +33,7 @@ Feature: Invoices
     Then I should be on the Edit Invoice page
     And I should not see "Back"
     And I should see "Invoice 1"
-    And I should see "Total £105.00"
+    And I should see "Total £125.00"
     When I am on the bills page
     Then I should not see "Business"
     And I should see "Household"
@@ -123,6 +124,16 @@ Feature: Invoices
     And I am on the edit page for this invoice
     Then I should see 2 bills
     And I should see "Cancel"
+
+  @ut
+  Scenario: VAT columns and totals
+    Given VAT is enabled
+    And I have the Business invoice
+    And I am on the edit page for this invoice
+    Then I should see "VAT"
+    And I should see "Standard £20.00"
+    And I should see "Total £125.00 £21.00"
+
 
 
 

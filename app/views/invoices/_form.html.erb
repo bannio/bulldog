@@ -7,6 +7,10 @@
           <th class="category-col">Category</th>
           <th class="description-col-lg">Description</th>
           <th class="amount-col align-right">Amount</th>
+          <% if current_account.vat_enabled? %>
+                <th class="vat-rate-col">VAT rate</th>
+                <th class="amount-col">VAT</th>
+              <% end %>
           <% if params[:action] == 'edit' %>
           <th>Remove?</th>
           <% end %>
@@ -24,6 +28,10 @@
           <td></td>
           <td class="title-td align-right">Total </td>
           <td class="align-right"><%= number_to_currency(@invoice.total) %></td>
+          <% if current_account.vat_enabled? %>
+            <td></td>
+            <td class="align-right"><%= number_to_currency(total_vat(@invoice)) %></td>
+          <% end %>
           <% if params[:action] == 'edit' %>
           <td></td>
           <% end %>

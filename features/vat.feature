@@ -79,7 +79,7 @@ Scenario: select to enable VAT
   Then I should not see "VAT rate"
   And I should not see placeholder "VAT amount" 
 
-@javascript @ut
+@javascript
 Scenario: VAT select field limits choice to defined active entries
   The way the system and this test works, the previous valid entry is retained
   if an invalid entry is typed in and you press 'tab' to leave the field

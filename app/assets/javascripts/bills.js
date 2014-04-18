@@ -135,15 +135,6 @@ ready = function() {
     allowClear: true,
     width: 'resolve',
     data: {results: vatRateData, text: 'name'},
-    // initSelection : function (element, callback) {
-    //     var value = $(vatRateData).filter(function(index){
-    //                   return this.id == element.val();
-    //                 });
-    //     var data = {id: element.val(), 
-    //                 text: text(value)};
-    //     callback(data);
-    // },
-    // createSearchChoice: create_choice,
     formatResult: format_result,
     formatSelection: format
   });

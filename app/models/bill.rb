@@ -17,6 +17,7 @@ class Bill < ActiveRecord::Base
   scope :uninvoiced, -> {where(invoice_id: nil)}
   scope :this_year, -> {where(date: Time.now.all_year)}
   scope :last_year, -> {where(date: Time.now.prev_year.all_year)}
+  scope :vat,       -> (rate){where(vat_rate_id: rate.id)}
 
   def customer_name
     customer.name
