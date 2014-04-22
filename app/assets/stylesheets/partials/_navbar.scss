@@ -58,7 +58,6 @@ div .navbar-logo, div .navbar-icon {
 // @media screen and (min-width: 768px){
     .navbar-logo {display:block;}
     .navbar-icon {display:none;}
-<<<<<<< HEAD
 }
 
 /* logo media queries */
@@ -70,19 +69,7 @@ div .navbar-logo, div .navbar-icon {
     .navbar-icon {display:block;}
 }
 
-=======
-}
 
-/* logo media queries */
-
-@media screen and (max-width: 479px){
-// @media screen and (max-width: 767px){
-
-    .navbar-logo {display:none;}
-    .navbar-icon {display:block;}
-}
-
->>>>>>> a91d8d8... resolves merge conflicts
 
 @media (max-width: 479px) {
   .col-xxs-3 {
@@ -154,7 +141,7 @@ div.subnav-link {
       padding: 12px 0px 8px 0px;
     }
 
-a.subnav-btn {
+a.subnav-btn, a.menu-item {
   text-align: center;
   color: #000000;
   font-size: 1.6rem;
@@ -162,6 +149,9 @@ a.subnav-btn {
   padding-top: 8px;
 }
 
+div.subnav-link>li.dropdown {
+  list-style-type: none;
+}
 
 // Active states including thick underline and pointer
 a.subnav-btn:hover, a.subnav-btn:focus, a.subnav-btn:active {
