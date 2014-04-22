@@ -10,22 +10,27 @@ describe InvoicesHelper do
     @bill = create(:bill, account_id: @account.id, customer_id: @customer.id, amount: "120", vat: "20", vat_rate_id: @vat_rate.id )
     @bill2 = create(:bill, account_id: @account.id, customer_id: @customer.id, amount: "120", vat: "20", vat_rate_id: @vat_rate.id )
     @bill3 = create(:bill, account_id: @account.id, customer_id: @customer.id, amount: "105", vat: "5", vat_rate_id: @vat_rate2.id )
+    @bill4 = create(:bill, account_id: @account.id, customer_id: @customer.id, amount: "105", vat: "5", vat_rate_id: @vat_rate2.id )
+    @bill5 = create(:bill, account_id: @account.id, customer_id: @customer.id, amount: "120", vat: "20", vat_rate_id: @vat_rate.id )
     @invoice = create(:invoice, customer_id: @customer.id, account_id: @account.id)
     @bill.update_attributes(invoice_id: @invoice.id)
     @bill2.update_attributes(invoice_id: @invoice.id)
     @bill3.update_attributes(invoice_id: @invoice.id)
+    @bill4.update_attributes(invoice_id: @invoice.id)
+    @bill5.update_attributes(invoice_id: @invoice.id)
   end
 
   it "calculates VAT total" do
-    expect(total_vat(@invoice)).to eq 45
+    expect(total_vat(@invoice)).to eq 70
   end
 
   it "calculates sums by rate" do
-    expect(vat_by_rate(@invoice, @vat_rate)).to eq 40
-    expect(vat_by_rate(@invoice, @vat_rate2)).to eq 5
+    expect(vat_by_rate(@invoice, @vat_rate)).to eq 60
+    expect(vat_by_rate(@invoice, @vat_rate2)).to eq 10
   end
 
   it "lists vat rates" do
+    # expect an array of vat rate objects
     @bills = @invoice.bills
     expect(vat_rates(@bills)).to eq [@vat_rate, @vat_rate2]
   end

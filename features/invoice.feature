@@ -9,12 +9,14 @@ Feature: Invoices
     Given I am a user with an account
     And I sign in 
     And I have an active "Standard" rate at 20%
+    And I have an active "Zero" rate at 0%
     And I have the following bills
     # customer  | supplier | category | date       | description        | amount | vat_rate | vat |
     | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |          |     |
     | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |          |     |
     | Business  | Asda     | Mileage  | 10-12-2012 | business trip      | 120.00 | Standard | 20  |
-    | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   |          |     |
+    | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   | Zero     |  0  |
+    | Business  | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   | Zero     |  0  |
     | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   | Standard |  1  |
 
   @javascript
@@ -33,7 +35,7 @@ Feature: Invoices
     Then I should be on the Edit Invoice page
     And I should not see "Back"
     And I should see "Invoice 1"
-    And I should see "Total £125.00"
+    And I should see "Total £130.00"
     When I am on the bills page
     Then I should not see "Business"
     And I should see "Household"
@@ -97,12 +99,12 @@ Feature: Invoices
   Scenario: Remove selected bills from invoice
     Given I have the Business invoice
     And I am on the edit page for this invoice
-    Then I should see 2 bills
+    Then I should see 3 bills
     When I check one bill and click Save Changes
     Then I should be on the Invoices page
     When I click the first table row
     Then I should be on the Show Invoice page 
-    Then I should see 1 bill 
+    Then I should see 2 bill 
 
   @javascript
   Scenario: Delete an invoice
@@ -122,7 +124,7 @@ Feature: Invoices
   Scenario: Button labels change in edit depending on origin
     Given I have the Business invoice
     And I am on the edit page for this invoice
-    Then I should see 2 bills
+    Then I should see 3 bills
     And I should see "Cancel"
 
   @ut
@@ -132,10 +134,9 @@ Feature: Invoices
     And I am on the edit page for this invoice
     Then I should see "VAT"
     And I should see "Standard £20.00"
-    And I should see "Total £125.00 £21.00"
-
-
-
-
-
+    And I should see "Total £130.00 £21.00"
+    And I am on the show page for this invoice
+    And I should see "VAT Summary"
+    And I should see "Standard £21.00"
+    And I should see "Zero £0.00"
 
