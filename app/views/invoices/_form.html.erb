@@ -9,7 +9,7 @@
           <th class="amount-col align-right">Amount</th>
           <% if current_account.vat_enabled? %>
                 <th class="vat-rate-col">VAT rate</th>
-                <th class="amount-col">VAT</th>
+                <th class="amount-col align-right">VAT</th>
               <% end %>
           <% if params[:action] == 'edit' %>
           <th>Remove?</th>

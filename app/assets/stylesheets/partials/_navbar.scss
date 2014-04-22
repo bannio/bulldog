@@ -58,6 +58,7 @@ div .navbar-logo, div .navbar-icon {
 // @media screen and (min-width: 768px){
     .navbar-logo {display:block;}
     .navbar-icon {display:none;}
+<<<<<<< HEAD
 }
 
 /* logo media queries */
@@ -69,6 +70,19 @@ div .navbar-logo, div .navbar-icon {
     .navbar-icon {display:block;}
 }
 
+=======
+}
+
+/* logo media queries */
+
+@media screen and (max-width: 479px){
+// @media screen and (max-width: 767px){
+
+    .navbar-logo {display:none;}
+    .navbar-icon {display:block;}
+}
+
+>>>>>>> a91d8d8... resolves merge conflicts
 
 @media (max-width: 479px) {
   .col-xxs-3 {

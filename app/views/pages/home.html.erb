@@ -7,31 +7,29 @@
 <div class="landing-page container">
     <div class="row landing-top-row">
         <img src="/assets/door_dog.png" alt="Bills Image" class="bills-img img-responsive">
-        <!-- <img src="/assets/clipped_bills.png" alt="Bills Image" class="bills-img img-responsive"> -->
     </div>
     <div class="row strapline arrow-box">
       <h1 class="strapline">Capture, analyse and reclaim your expenses</h1>
+      <!-- <h1 class="strapline">A simple way to capture your costs</h1> -->
     </div>
+   <div class="row strapline">
+  </div>
 </div><!--end landing-page container-->
-
-<!-- Sub Heading -->
-<!-- <div class="row strapline">
-  <h1 class="strapline">Bulldog Clip is...</h1>
-<hr> -->
-<!-- </div>end row strapline -->
 
 
 <!-- Section 1 - Capture -->
 <div class="container landing-info">
   <section class="container">
+
 <!-- Sub Heading -->
 <div class="row strapline">
-  <h1 class="strapline">Bulldog Clip is...</h1>
+  <!-- <h1 class="strapline">Bulldog Clip is...</h1> -->
 <hr>
 </div><!--end row strapline-->
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <h2>A simple way to <br>capture your costs</h2>
+        <!-- <h2> Capture, analyse and <br>reclaim expenses</h2> -->
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -45,7 +43,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>Simple by design. Minimal set up. Fast and easy to use. No more complex spreadsheets. <a href="/features#bills" class="read-more">Read more<a></p>
+        <p>Simple by design. Minimal set up. Fast and easy to use. No more complex spreadsheets. <a href="/features#bills" class="read-more">Find out more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -83,7 +81,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>Select from a range of charts to visualise your data. Quickly identify spending patterns. View your costs by date, category, supplier or customer. Easily export your data tables for use elsewhere - or as a backup. <a href="/features#analysis" class="read-more">Read more<a></p>
+        <p>Select from a range of charts to visualise your data. Quickly identify spending patterns. <br>View your costs by date, category, supplier or customer. Easily export your data tables for use elsewhere - or as a backup. <a href="/features#analysis" class="read-more">Find out more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -121,7 +119,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>One click generates a formatted invoice or expense claim. <br>Choose to customise with your company details and logo. Recharge your clients, reclaim from your employer or provide itemised backup to your bookkeeper. <a href="/features#invoices" class="read-more">Read more<a></p>
+        <p>One click generates a formatted invoice or expense claim. <br>Choose to customise with your company details and logo. Recharge your clients, reclaim from your employer or provide itemised backup to your bookkeeper. <a href="/features#invoices" class="read-more">Find out more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -139,7 +137,45 @@
   </section>
 </div>
 
-<!-- Section 4 - Simple and Safe -->
+<!-- Section 7 - VAT Support -->
+<div class="container landing-info">
+<hr>
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <h2>VAT Support</h2>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+    <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <img src="/assets/access.png" alt="File" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>If your VAT registered we can support you.  <a href="/features#vat" class="read-more">Find out more<a></p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div><!-- end container landing-info -->
+
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Section 4 - Simple Workflow -->
 <div class="container landing-info">
 <hr>
   <section class="container">
@@ -159,7 +195,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p> Save time processing bills. With our simple workflow it is so easy it never becomes a chore. Bulldog Clips intuitive software remembers previous entries so the more you use it the quicker it gets. <a href="/features#customers" class="read-more">Read more<a></p>
+        <p> Save time processing bills. With our simple workflow it is so easy it never becomes a chore. Bulldog Clips intuitive software remembers previous entries so the more you use it the quicker it gets. <a href="/features#customers" class="read-more">Find out more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -177,7 +213,7 @@
   </section>
 </div>
 
-<!-- Section 4 - Safe and Secure -->
+<!-- Section 5 - Safe and Secure -->
 <div class="container landing-info">
 <hr>
   <section class="container">
@@ -196,7 +232,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>All your data is encrypted using the familiar, high street bank level of security.<br>The bills are stored in the cloud so they won't be lost if you have an unfortunate incident with your computer. <br>With the export function you can download a copy of your data to your computer. <a href="/features#security" class="read-more">Read more<a></p>
+        <p>All your data is encrypted using the familiar, high street bank level of security.<br>The bills are stored in the cloud so they won't be lost if you have an unfortunate incident with your computer. <br>With the export function you can download a copy of your data to your computer. <a href="/features#security" class="read-more">Find out more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -214,7 +250,7 @@
   </section>
 </div>
 
-<!-- Section 4 - Access -->
+<!-- Section 6 - Access -->
 <div class="container landing-info">
 <hr>
   <section class="container">
@@ -234,18 +270,19 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>You can use Bulldog Clip on phone and tablet devices as well as your desktop computer. So if you are away from base you can still check in.<br>Because your data is stored in the cloud you can log in securely from anywhere with internet access. <a href="/features#access" class="read-more">Read more<a></p>
+        <p>You can use Bulldog Clip on phone and tablet devices as well as your desktop computer. So if you are away from base you can still check in.<br>Because your data is stored in the cloud you can log in securely from anywhere with internet access. <a href="/features#access" class="read-more">Find out more<a></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
   <hr>
 </div><!-- end container landing-info -->
 
+
 <div class="container landing-info">
   <section class="container">
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= link_to "Try now for free", '/try_now', class: "action-btn std-btn try-now-btn", data: {toggle: "tooltip"}, title: "Free demo account."  %>
         <%= link_to 'Sign me up now', new_user_registration_path, class: 'create-btn std-btn try-now-btn' %>
       </div>
     </div>
