@@ -93,8 +93,7 @@ Given /^I have the following bills$/ do |table|
       customer = Customer.find_or_create_by(name: row[0], account_id: @account.id)
       supplier = Supplier.find_or_create_by(name: row[1], account_id: @account.id)
       category = Category.find_or_create_by(name: row[2], account_id: @account.id)
-      vat_rate = VatRate.find_or_create_by(name: row[6], account_id: @account.id, 
-                                rate: row[7], active: true) unless row[6].blank?
+      vat_rate = VatRate.find_or_create_by(name: row[6], account_id: @account.id) unless row[6].blank?
       date = row[3]
       description = row[4]
       amount = row[5]

@@ -127,7 +127,6 @@ Feature: Invoices
     Then I should see 3 bills
     And I should see "Cancel"
 
-  @ut
   Scenario: VAT columns and totals
     Given VAT is enabled
     And I have the Business invoice

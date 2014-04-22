@@ -102,6 +102,7 @@ Scenario: VAT select field limits choice to defined active entries
 
 Scenario: The bills index table lists VAT when VAt is enabled in the account
   Given I have an active "Standard" rate at 20%
+  Given I have an active "Zero" rate at 0%
   And VAT is enabled
   And I have the following bills
     # customer  | supplier | category | date       | description        | amount | vat_rate | vat |
