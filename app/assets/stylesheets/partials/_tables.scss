@@ -74,6 +74,10 @@ tfoot > tr > td.title-td {
       }
     }
 
+thead {
+  white-space: nowrap;
+}
+
 // remove margin bottom on p tags in tables
 td > p {
   margin-bottom: 0;
@@ -88,6 +92,7 @@ td > p {
 .table-responsive > .table > thead > tr > td.supplier-col,
 .table-responsive > .table > thead > tr > td.category-col,
 .table-responsive > .table > thead > tr > td.date-col,
+.table-responsive > .table > thead > tr > td.vat-rate-col,
 .table-responsive > .table > tbody > tr > td.comment-col,
 .table-responsive > .table > tbody > tr > td.customer-col,
 .table-responsive > .table > tbody > tr > td.description-col-lg,
@@ -95,13 +100,15 @@ td > p {
 .table-responsive > .table > tbody > tr > td.supplier-col,
 .table-responsive > .table > tbody > tr > td.category-col,
 .table-responsive > .table > tbody > tr > td.date-col,
+.table-responsive > .table > tbody > tr > td.vat-rate-col,
 .table-responsive > .table > tfoot > tr > td.comment-col,
 .table-responsive > .table > tfoot > tr > td.customer-col,
 .table-responsive > .table > tfoot > tr > td.description-col-lg,
 .table-responsive > .table > tfoot > tr > td.description-col-sm,
 .table-responsive > .table > tfoot > tr > td.supplier-col,
 .table-responsive > .table > tfoot > tr > td.category-col,
-.table-responsive > .table > tfoot > tr > td.date-col  {
+.table-responsive > .table > tfoot > tr > td.date-col,
+.table-responsive > .table > tfoot > tr > td.vat-rate-col  {
   white-space: pre-line;
 } 
 
@@ -114,6 +121,11 @@ th.amount-col {
   width: 5%;
   min-width: 60px;
 }  
+
+th.vat-rate-col {
+  width: 10%;
+  min-width: 60px;
+}
 
 th.number-col {
   width: 10%;
