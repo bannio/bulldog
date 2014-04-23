@@ -29,21 +29,25 @@
   <% if user_signed_in? %>
   <div class="subnav-container container hidden" role="menu" id="subnav">
     <div class="subnav-row row">
-      <div class="subnav-col col-sm-6 col-sm-offset-1 col-xs-12 justified-nav">
+      <!-- <div class="subnav-col col-sm-6 col-sm-offset-1 col-xs-12 justified-nav"> -->
+      <div class="subnav-col justified-nav">
+        <div class="col-xs-12 col-sm-7 split-row">
             <div class="subnav-link"><%= link_to 'Bills', bills_path, class: 'subnav-btn active' %></div>
             <div class="subnav-link"><%= link_to 'Invoices', invoices_path, class: 'subnav-btn' %></div>
-            <div class="subnav-link"><%= link_to 'Analysis', new_report_path, class: 'subnav-btn' %></div>
-      </div>
-      <div class="subnav-col col-sm-4 col-xs-12 justified-nav">
+            <div class="subnav-link"><%= link_to 'Analysis', new_report_path, class: 'subnav-btn'%></div>
+                <hr class="visible-xs">
+        </div><!--end col for row breakpoint-->
+      <!-- </div> -->
+      <!-- <div class="subnav-col col-sm-6 col-xs-12 justified-nav"> -->
             <!-- <div class="subnav-link"><#%= link_to 'Customers', customers_path, class: 'subnav-btn' %></div> -->
             <!-- <div class="subnav-link"><#%= link_to 'Categories', categories_path, class: 'subnav-btn' %></div> -->
             <!-- <div class="subnav-link"><#%= link_to 'Account', account_path(current_user.account.id), class: 'subnav-btn' %> -->
 <!-- DROPDOWN TOOLS MENU -->
+        <div class="col-xs-12 col-sm-5 split-row">
              <div class="subnav-link">
-              <li class="dropdown">
-<!--                 <a href="#" class="dropdown-toggle subnav-btn" data-toggle="dropdown">Account<b class="caret"></b></a>      -->           
-<a href="#" class="dropdown-toggle subnav-btn" data-toggle="dropdown">Tools</a>
-                <ul class="dropdown-menu">
+              <li class="dropdown">        
+                <a href="#" class="dropdown-toggle subnav-btn" data-toggle="dropdown">Tools</a>
+                <ul class="tools-menu dropdown-menu">
                   <li><%= link_to 'Customers', customers_path, class: 'menu-item' %></li>
                   <hr>
                   <li><%= link_to 'Categories', categories_path, class: 'menu-item' %></li>
@@ -55,16 +59,14 @@
                   <li><a href="#" class="menu-item">Invoice Setup</a></li>
                 </ul>
               </li>
-            </div>
-      </div><!-- end subnav-links-->
+            </div><!--end subnav-links -->
 
 
 <!-- DROPDOWN ACCOUNTS MENU -->             
-             <div class="subnav-link">
-              <li class="dropdown">
-<!--                 <a href="#" class="dropdown-toggle subnav-btn" data-toggle="dropdown">Account<b class="caret"></b></a>      -->           
-<a href="#" class="dropdown-toggle subnav-btn" data-toggle="dropdown">Account</a>
-                <ul class="dropdown-menu">
+            <div class="subnav-link account-btn">
+              <li class="dropdown">         
+                <a href="#" class="dropdown-toggle subnav-btn" data-toggle="dropdown">Account</a>
+                <ul class="account-menu dropdown-menu">
                   <li><%= link_to 'Change Password', edit_user_registration_path, class: "menu-item" %></li>
                   <hr>
                   <li><a href="#" class="menu-item">Change Email Address</a></li>
@@ -72,9 +74,14 @@
                   <li><a href="#" class="menu-item">Manage Subscription</a></li>
                 </ul>
               </li>
-            </div>
-      </div><!-- end subnav-links-->
-    </div><!--end subnav-row --> 
+            </div><!--end subnav-links -->
+<!--HIDDEN NAV FIELD TO SPACE 2ND ROW-->
+        <div class="subnav-link hidden-link"><a href="" class="subnav-btn"></a>
+        </div><!--end hidden subnav-link-->
+
+          </div><!--end col for row breakpoint-->
+        </div>
+      </div><!--end subnav-row --> 
     </div><!--end subnav-container-->
    <% end %>
 </nav><!--end navbar wrapper containing nav and subnav-->
