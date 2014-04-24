@@ -41,11 +41,14 @@ thead {
 }
 
 tfoot > tr > td.title-td {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #000;
 }
 
+tfoot.no-line > tr > td {
+  border-top: 0px !important;
+}
 
 // scroll as soon as too much content
 @media (max-width: $screen-lg) {
@@ -200,3 +203,36 @@ td.customer-postcode {
   min-width: 70px;
   white-space: nowrap;
 }
+
+th.vat-name-col, td.vat_rate_name_col {
+  width: 50%;
+  // min-width: 
+  white-space: nowrap;
+}
+
+th.vat-name-col, td.vat_rate_name_col {
+  width: 50%;
+  // min-width: 
+  white-space: nowrap;
+}
+
+th.vat-active-col, td.vat_active-col {
+  width: 30%;
+  // min-width: 
+  white-space: nowrap;
+  text-align: right; 
+}
+
+th.vat-rate-col, td.vat_rate-col {
+  width: 20%;
+  // min-width: 
+  white-space: nowrap; 
+  text-align: right; 
+}
+
+.table-condensed > thead > tr > th.last-col,
+.table-condensed > tbody > tr > td.last-col {
+  padding-right: 10px;
+}
+
+

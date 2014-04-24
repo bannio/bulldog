@@ -2,6 +2,8 @@
 <% content_for :description do %>VAT table<% end %>
 
 <div class="container">
+  <div class="panel panel-default col-sm-6 col-sm-offset-3">
+    <div class="panel-body">
 
   <h1>VAT Rates</h1>
 
@@ -17,23 +19,24 @@
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-
+<!--   <div class="panel panel-default">
+    <div class="panel-body"> -->
+    <div>
       <%= link_to "New", new_vat_rate_path, remote: true, class: "create-btn std-btn"  %>
       <% if params[:all] %>
         <%= link_to "Show Active", vat_rates_path, class: "action-btn std-btn"  %>
       <% else %>
         <%= link_to "Show All", vat_rates_path(all: true), class: "action-btn std-btn"  %>
       <% end %>
+    </div>
 
       <div class="table-responsive">
         <table class="table table-hover table-condensed">
           <thead>
             <tr>
               <th class="first-col vat-name-col">Name</th>
-              <th class="vat-rate-col">Rate</th>
-              <th class="vat-active-col">Active</th>
+              <th class="vat-rate-col">Rate (%)</th>
+              <th class="vat-active-col last-col">Active</th>
             </tr>
           </thead>
           <tbody id="vat_rate_index_table">

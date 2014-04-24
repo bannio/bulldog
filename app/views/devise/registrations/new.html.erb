@@ -1,25 +1,21 @@
 <% content_for :title do %>Bulldog-Clip | Sign Up<% end %>
-<% content_for :description do %>Reset Bulldog-Clip password<% end %>
+<% content_for :description do %>Sign Up<% end %>
+
 <div class="container">
   <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 panel panel-default">
     <div class="panel-body">
       <h1>Sign up</h1>
-        <div class="signup-form">
-          <form role="form">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form'}) do |f| %>
-
-              <%= form_group_for f, :email, label: false do %>
-                <div class="form-group">
-                  <%= f.label :email_address %>
-                  <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Verification email sent here' %>
-                </div>
-              <% end %>
-              <p class="small-print">By clicking 'Sign up' you are agreeing to our <a href="/terms">terms and conditions.</a></p>
-                <%= f.submit 'Sign up', :class => 'create-btn std-btn pull-right' %>
-                <%= link_to 'Close', home_path, class: 'action-btn std-btn pull-right' %> 
-                <%= flash_messages layout_flash: false %>
+      <div class="signup-form">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form'}) do |f| %>
+            <%= form_group_for f, :email, label: false do %>
+                <%= f.label :email_address %>
+                <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Verification email sent here' %>
             <% end %>
-        </form>
+            <p class="small-print">By clicking 'Sign up' you are agreeing to our <a href="/terms">terms and conditions.</a></p>
+              <%= f.submit 'Sign up', class: 'create-btn std-btn pull-right' %>
+              <%= link_to 'Close', home_path, class: 'action-btn std-btn pull-right' %> 
+              <%= flash_messages layout_flash: false %>
+          <% end %>
       </div>
     </div> 
   </div>

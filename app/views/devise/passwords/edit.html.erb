@@ -9,17 +9,21 @@
           <form role="form">      
       <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
 
-        <%= devise_error_messages! %>
+        <%#= devise_error_messages! %>
 
         <%= f.hidden_field :reset_password_token %>
 
         <div class="form-group">
+          <%= form_group_for f, :password, label: false do %>  
           <%= f.label "New password" %>
           <%= f.password_field :password, :required => true, :autofocus => true, class: 'form-control', placeholder: 'Enter new password' %>
+          <% end %>
         </div>
-        <div class="form-group">        
+        <div class="form-group">   
+          <%= form_group_for f, :password, label: false do %>      
           <%= f.label "Confirm your new password" %>
           <%= f.password_field :password_confirmation, :required => true, class: 'form-control', placeholder: 'Re-enter new password' %>
+          <% end %>
         </div>
         <%= f.submit 'Change Password', :class => 'create-btn std-btn right' %>
       <% end %>

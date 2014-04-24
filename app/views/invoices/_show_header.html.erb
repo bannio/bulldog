@@ -21,14 +21,3 @@
 
   <%= render 'form' %>
 
-  <% if current_account.vat_enabled? %>
-  <p>VAT Summary</p>
-    <table class="invoice-vat-summary">
-      <% vat_rates(@bills).each do |rate| %>
-        <tr>
-          <td><%= rate.name if rate %></td>
-          <td class="align-right"><%= number_to_currency(vat_by_rate(@invoice, rate)) if rate %></td>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
