@@ -1,19 +1,41 @@
 <% content_for :title do %>Bulldog-Clip | Account Activation<% end %>
-<% content_for :description do %>Bulldog-Clip confirmation sign up<% end %>
-<h2>Account Activation</h2>
+<% content_for :description do %>Bulldog-Clip account activation<% end %>
 
-<%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch'}, :id => 'activation-form' do |f| %>
-  <%= devise_error_messages! %>
-  <fieldset>
-    <legend>Account Activation<%# if resource.user_name %> for <%# resource.user_name %><%# end %></legend>
 
-    <%= f.text_field :account_name %>
-
-  <% if @requires_password %>
-      <p><%= f.label :password,'Choose a Password:' %> <%= f.password_field :password %></p>
-      <p><%= f.label :password_confirmation,'Password Confirmation:' %> <%= f.password_field :password_confirmation %></p>
-  <% end %>
-  <%= hidden_field_tag :confirmation_token,@confirmation_token %>
-  <p><%= f.submit "Activate" %></p>
-  </fieldset>
-<% end %>
+<div class="container">
+  <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 panel panel-default">
+    <div class="panel-body">
+      <h1>Account Activation</h1>
+        <div class="activate-form">
+        <!-- <form role="form"> -->
+            <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch'}, :id => 'activation-form' do |f| %>
+              <%#= devise_error_messages! %>
+          <div class="form-group">
+            <!-- <label class="form">Account activation<%# if resource.user_name %> for <%# resource.user_name %><%# end %></label> -->
+            <%= form_group_for f, :account_name, label: false do %>
+                <%= f.label :account_name, 'Create account name' %>   
+                <%= f.text_field :account_name, class: 'form-control', autofocus: true, placeholder: 'Enter an account name'  %>
+            <% end %>
+          </div>
+          <div class="form-group">
+              <% if @requires_password %>
+                <%= form_group_for f, :password, label: false do %>
+                  <%= f.label :password,'Choose password' %> 
+                  <%= f.password_field :password, class: 'form-control', placeholder: 'Enter a password' %>
+                <% end %>
+          </div>
+          <div class="form-group">
+                <%= form_group_for f, :password, label: false do %>
+                  <%= f.label :password_confirmation,'Password confirmation' %> 
+                  <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Re-enter password' %>
+                <% end %>
+          </div>
+              <% end %>
+              <%= hidden_field_tag :confirmation_token,@confirmation_token %>
+              <%= f.submit "Activate", class: 'create-btn std-btn pull-right' %>
+        <% end %>
+        <!-- </form> -->
+      </div>
+    </div> 
+  </div>
+</div>

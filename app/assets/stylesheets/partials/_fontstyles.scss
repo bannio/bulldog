@@ -14,6 +14,7 @@ body {
   background-color: #fff; 
 }
 
+
 // LANDING PAGE PARA FONT
 
 .landing-info p {
@@ -221,6 +222,19 @@ margin-bottom: 1.5rem;
 display: inline-block;
 }
 
+h2 {
+font-family: 'Source Sans Pro', Arial, sans-serif;
+color: #000;
+font-weight: 700;
+font-size: 1.4rem;
+}
+
+h3 {
+font-family: 'Source Sans Pro', Arial, sans-serif;
+color: #000;
+font-weight: 500;
+font-size: 1.2rem; 
+}
 
 // table contents and headers
 
@@ -371,6 +385,24 @@ a.read-more {
   color: #2056BF;
   // color: #000;
   text-decoration: underline;  
+}
+
+// sign up confirmation form
+h2.form-h2 {
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  padding-bottom: 15px;
+  padding-top: 5px;  
+}
+
+// small print on sign up form
+p.small-print {
+  font-family: Arial, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  color: #444;
 }
 
 // POPOVER STYLING

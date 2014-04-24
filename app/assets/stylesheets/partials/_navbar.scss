@@ -48,14 +48,13 @@ div .navbar-logo, div .navbar-icon {
   max-height: 38px;
 }
 
-// @media(min-width: $screen-sm){
-  .navbar-logo img, .navbar-icon img {
-  margin: 12px 0 0 0;
-  } 
-// }
+
+.navbar-logo img, .navbar-icon img {
+margin: 12px 0 0 0;
+} 
+
 
 @media screen and (min-width: 480px){
-// @media screen and (min-width: 768px){
     .navbar-logo {display:block;}
     .navbar-icon {display:none;}
 }
@@ -63,12 +62,9 @@ div .navbar-logo, div .navbar-icon {
 /* logo media queries */
 
 @media screen and (max-width: 479px){
-// @media screen and (max-width: 767px){
-
     .navbar-logo {display:none;}
     .navbar-icon {display:block;}
 }
-
 
 
 @media (max-width: 479px) {
@@ -111,7 +107,12 @@ a.nav-btn {float: right;
 
 
 
-// SUBNAV
+// SUBNAV and DROPDOWN MENUS
+
+// removes gap between the two navbar columns
+.split-row {
+  padding: 0 0;
+}
 
 .subnav-container {
   background-color: #ffffff;
@@ -131,13 +132,13 @@ a.nav-btn {float: right;
   padding: 0 0;
 }
 
-// signin/signup btns
 
 div.subnav-link {
     float: none;
       text-align: center;
       display: table-cell;
       width: 1%;
+      min-width: 90px;
       padding: 12px 0px 8px 0px;
     }
 
@@ -152,6 +153,64 @@ a.subnav-btn, a.menu-item {
 div.subnav-link>li.dropdown {
   list-style-type: none;
 }
+
+// aligns dropdown with bottom of subnav
+.dropdown-menu {
+  right: 0; 
+  left: auto;
+  min-width: 228px;
+  margin-top: 15px;
+  }
+
+// aligns dropdown with bottom of subnav at xs
+  @media (max-width: 767px) {
+    .dropdown-menu {
+      margin-top: 8px;       
+    }
+  }
+
+// sticks dropdown menu for tools to left of screen at xs
+  @media (max-width: 767px) {
+    .tools-menu {
+      left: 0;
+      right: auto;       
+    }
+  }
+
+// dropdown menu for accounts aprox centered at xs
+  @media (max-width: 767px) {
+    .account-menu {
+      left: -60px;
+      right: auto;       
+    }
+  }
+
+// makes hr dividing subnav rows at xs span full width
+  @media (max-width: 767px) {
+    div.subnav-container.container, div.subnav-row.row, div.subnav-col {
+      padding-right: 0px;
+      padding-left: 0px;      
+    }
+  }
+
+  @media (max-width: 767px) {
+    div.subnav-row.row {
+      margin-right: 0px;
+      margin-left: 0px;      
+    }
+  }
+
+  @media (max-width: 767px) {
+    div.subnav-link.hidden-link {
+      display: table-cell;   
+    }
+  }
+
+  @media (min-width: 768px) {
+    div.subnav-link.hidden-link {
+      display: none;   
+    }
+  }
 
 // Active states including thick underline and pointer
 a.subnav-btn:hover, a.subnav-btn:focus, a.subnav-btn:active {

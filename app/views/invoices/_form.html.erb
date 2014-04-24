@@ -21,7 +21,7 @@
         <%= render 'bill_fields', f: bill %>
       <% end %>
       </tbody>
-      <tfoot>
+      <tfoot class="no-line">
         <tr>
           <td></td>
           <td></td>
@@ -36,6 +36,36 @@
           <td></td>
           <% end %>
         </tr>
+
+        <% if current_account.vat_enabled? %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td colspan="2" class="title-td align-right">VAT Summary</td>
+          <td></td>
+          <td></td>
+          <% if params[:action] == 'edit' %>
+          <td></td>
+          <% end %>          
+        </tr>
+        
+        <tr>
+          <% vat_rates(@bills).each_with_index do |rate, index| %>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td colspan="2" class="title-td align-right"><% "VAT Summary" if index == 0 %></td>
+<!--           <td></td>
+          <td></td> -->
+          <td class=""><%= rate.name if rate %></td>
+          <td class="align-right"><%= number_to_currency(vat_by_rate(@invoice, rate)) if rate %></td>
+          <% if params[:action] == 'edit' %>
+          <td></td>
+          <% end %>
+         </tr>
+         <% end %>
+         <% end %>                     
       </tfoot>
     </table>
   </div>

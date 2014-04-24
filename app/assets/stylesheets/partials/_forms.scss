@@ -1,3 +1,48 @@
+// resend confirmation email
+div.confirmation-error > form >div.form-group {
+  margin: 20px 0px 20px 0px;
+}
+
+div.confirmation-error > form > p {
+  margin-top: 10px; 
+}
+
+// forgot password form
+div.forgot-pwd > form.new_user > p {
+  margin: 10px 0px 20px 0px;
+}
+
+div.forgot-pwd > form > div.form-group {
+  margin: 15px 0px 30px 0px;
+}
+
+// change password form
+div.change-pwd > form > div.form-group {
+  margin: 0px 0px 20px 0px;
+}
+
+// sign up form 
+div.signup-form > form > div.control-group > div.form-group {
+  margin: 15px 0px 30px 0px;
+}
+
+div.signup-form > form > p {
+  margin: 10px 0px 0px 0px;
+}
+
+div.signup-form > form > p.small-print {
+  margin: 20px 0px 20px 0px;
+}
+
+// activate account form
+div.activate-form > form >div.form-group {
+  margin: 0px 0px 20px 0px;
+}
+
+div.activate-form > form {
+  margin: 5px 0px 0px 0px;
+}
+
 // styles form labels
 label {
   font-weight: 600;
