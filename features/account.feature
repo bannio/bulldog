@@ -20,14 +20,12 @@ Feature: Account
     When I sign in
     Then I should be on the Bills page
 
-  Scenario: I can update my account address details
+  Scenario: I can change my password
     Given I am a user with an account
     And  I sign in
     When I visit the home page
     And I click on Account
-    And I click on Edit
-    Then I should be on the Edit Account page
-    When I fill in address details and click save
-    Then I should see "Account successfully updated"
+    And I click on Change Password
+    Then I should be on the Change Password page
 
   Scenario: I can only see my own account

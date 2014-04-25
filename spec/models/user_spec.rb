@@ -111,5 +111,15 @@ describe User do
 
   end
 
+  describe "account creation" do
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+    it "should create an account object and persist it" do
+      @user.account_set_up({account_name: "test"})
+      expect(@user.reload.account.name).to eq "test"
+    end
+  end
+
 end
 

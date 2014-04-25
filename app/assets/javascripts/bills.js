@@ -5,6 +5,7 @@ ready = function() {
   var customerData        = $('#bill_customer_id').data('customers');
   var invCustomerData     = $('#inv_customer_id').data('customers');
   var invoiceCustomerData = $('#invoice_customer_id').data('customers');
+  var invoiceHeaderData   = $('#invoice_header_id').data('headers');
   var supplierData        = $('#bill_supplier_id').data('suppliers');
   var categoryData        = $('#bill_category_id').data('categories');
   var vatRateData         = $('#bill_vat_rate_id').data('vat-rates');
@@ -72,6 +73,24 @@ ready = function() {
     //     callback(data);
     // },
     formatResult: format,
+    formatSelection: format
+  });
+
+  $('#invoice_header_id').select2({
+    placeholder: 'Header',
+    allowClear: true,
+    width: 'resolve',
+    data: {results: invoiceHeaderData, text: 'name'},
+    initSelection : function (element, callback) {
+        var value = $(invoiceHeaderData).filter(function(index){
+                      return this.id == element.val();
+                    });
+        var data = {id: element.val(), 
+                    text: text(value)};
+        callback(data);
+    },
+    createSearchChoice: create_choice,
+    formatResult: format_result,
     formatSelection: format
   });
 

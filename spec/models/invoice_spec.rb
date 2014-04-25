@@ -63,4 +63,10 @@ describe Invoice do
     expect(Invoice.next_number(account)).to eq "1"
   end
 
+  it "knows its header" do
+    header = create(:header, name: "Invoice")
+    invoice = Invoice.new(header_id: header.id )
+    expect(invoice.header_name).to eq "Invoice"
+  end
+
 end

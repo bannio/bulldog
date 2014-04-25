@@ -18,6 +18,10 @@
   </table>
   <% end %>
 
+  <%= form_group_for f, :header_id, label: false do %>
+    <%= f.text_field :header_id, data: {headers: get_header_data}, placeholder: "Header - will appear on printed invoice" %>
+  <% end %>
+
   <%= form_group_for f, :comment, label: false do %>
     <%= f.text_area :comment, placeholder: "Invoice comment - appears on PDF" %>
   <% end %>

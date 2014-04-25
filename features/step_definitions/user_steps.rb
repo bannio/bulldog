@@ -47,6 +47,10 @@ def create_another_account
   @another_account = FactoryGirl.create(:account, user_id: @another_user.id)
 end
 
+def create_setting
+  @setting = @account.create_setting
+end
+
 def create_customer
   @user ||= create_user
   @account ||= FactoryGirl.create(:account, user_id: @user.id)
@@ -346,4 +350,8 @@ end
 Then /^I should see my name$/ do
   create_user
   page.should have_content @user[:name]
+end
+
+Given(/^I have a settings entry$/) do
+  create_setting
 end

@@ -8,8 +8,12 @@
     <%= f.hidden_field :customer_id, data: {customers: get_customer_data} %>
   <% end %>
 
+  <%= form_group_for f, :header_id, label: false do %>
+    <%= f.text_field :header_id, data: {headers: get_header_data}, placeholder: "Header - will appear as title on printed invoice" %>
+  <% end %>
+
   <%= form_group_for f, :comment, label: false do %>
-    <%= f.text_area :comment, placeholder: "Comment - will appear on printed invoice", rows: "5" %>
+    <%= f.text_area :comment, placeholder: "Comment - will appear as on printed invoice", rows: "5" %>
   <% end %>
 
   

@@ -21,6 +21,12 @@ module ControllerMacros
     end
   end
 
+  def create_setting
+    before(:each) do
+      @setting = FactoryGirl.create(:setting, account_id: @account.id)
+    end
+  end
+
   def create_customer
     before(:each) do
       @customer = FactoryGirl.create(:customer, account_id: @account.id)

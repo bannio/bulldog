@@ -8,6 +8,10 @@
     <td class="td-invoice"><%= @invoice.customer_name %></td>
   </tr>
   <tr>
+    <th class="th-invoice">Header:</th>
+    <td class="td-invoice"><%= @invoice.header_name %></td>
+  </tr>
+  <tr>
     <th class="th-invoice">Comment:</th>
     <td class="td-invoice"><%= simple_format(@invoice.comment) %></td>
   </tr>

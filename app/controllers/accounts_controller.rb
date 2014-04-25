@@ -23,6 +23,7 @@ class AccountsController < ApplicationController
     end
   end
 
+  # should this be removed? Accounts are set up at user confirmation
   def create
     @account = Account.new(account_params)
     @account.user_id = current_user.id

@@ -1,0 +1,81 @@
+<%= form_for @setting do |f| %>
+
+<h1>Your details</h1>
+
+<%= form_group_for f, :name, label: false do %>
+  <div class="input-group name">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Enter account name' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :address, label: false do %>
+  <div class="input-group address">
+    <%= f.label :name, "Address" %>
+    <%= f.text_area :address, autofocus: true, class: 'form-control address', placeholder: 'Enter address' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :postcode, label: false do %>
+  <div class="input-group postcode">
+    <%= f.label :name, "Postcode" %>
+    <%= f.text_field :postcode, autofocus: true, class: 'form-control', placeholder: 'Enter postcode' %>
+  </div>
+<% end %>
+
+<h1>Your Bank details</h1>
+
+<%= form_group_for f, :bank_account_name, label: false do %>
+  <div class="input-group name">
+    <%= f.label :name, "Bank account name" %>
+    <%= f.text_field :bank_account_name, autofocus: true, class: 'form-control', placeholder: 'Enter bank account name' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :bank_name, label: false do %>
+  <div class="input-group name">
+    <%= f.label :name, "Bank name" %>
+    <%= f.text_field :bank_name, autofocus: true, class: 'form-control', placeholder: 'Enter bank name' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :bank_address, label: false do %>
+  <div class="input-group name">
+    <%= f.label :name, "Bank branch" %>
+    <%= f.text_field :bank_address, autofocus: true, class: 'form-control', placeholder: 'Enter bank branch' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :bank_account_no, label: false do %>
+  <div class="input-group bank">
+    <%= f.label :name, "Account number" %>
+    <%= f.text_field :bank_account_no, autofocus: true, class: 'form-control', placeholder: 'Enter account number' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :bank_sort, label: false do %>
+  <div class="input-group bank">
+    <%= f.label :name, "Sortcode" %>
+    <%= f.text_field :bank_sort, autofocus: true, class: 'form-control', placeholder: 'Enter sortcode' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :bank_bic, label: false do %>
+  <div class="input-group bank">
+    <%= f.label :name, "BIC code" %>
+    <%= f.text_field :bank_bic, autofocus: true, class: 'form-control', placeholder: 'Enter BIC code' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :bank_iban, label: false do %>
+  <div class="input-group bank">
+    <%= f.label :name, "IBAN code" %>
+    <%= f.text_field :bank_iban, autofocus: true, class: 'form-control', placeholder: 'Enter IBAN code' %>
+  </div>
+<% end %>
+
+<%= f.submit 'Save', :class => 'create-btn std-btn' %>
+<%= link_to 'Cancel', setting_path(@setting), class: 'action-btn std-btn' %>
+
+<%#= flash_messages layout_flash: false %>
+<% end %>

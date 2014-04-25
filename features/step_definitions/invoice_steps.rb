@@ -94,6 +94,12 @@ When(/^I select "(.*?)" as the invoice customer$/) do |value|
   page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
 end
 
+When(/^I fill in header with "(.*?)"$/) do |value|
+  page.find("#s2id_invoice_header_id b" ).click
+  page.find(".select2-drop-active .select2-search .select2-input").set(value)
+  page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
+end
+
 When(/^I click the Delete button and confirm OK$/) do
   page.evaluate_script("window.confirm = function(msg) { return true; }")
   find_link('Delete').click

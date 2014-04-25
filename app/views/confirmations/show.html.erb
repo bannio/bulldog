@@ -9,7 +9,7 @@
         <div class="activate-form">
         <!-- <form role="form"> -->
             <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch'}, :id => 'activation-form' do |f| %>
-              <%#= devise_error_messages! %>
+              <%= devise_error_messages! %>
           <div class="form-group">
             <!-- <label class="form">Account activation<%# if resource.user_name %> for <%# resource.user_name %><%# end %></label> -->
             <%= form_group_for f, :account_name, label: false do %>

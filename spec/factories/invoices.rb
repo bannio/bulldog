@@ -8,5 +8,8 @@ FactoryGirl.define do
     number "MyString"
     total "9.99"
     comment "MyText"
+    header_id "1"
+    include_bank false
+    include_vat false
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416131739) do
+ActiveRecord::Schema.define(version: 20140424201503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,19 +77,49 @@ ActiveRecord::Schema.define(version: 20140416131739) do
 
   add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
 
+  create_table "headers", force: true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "headers", ["account_id"], name: "index_headers_on_account_id", using: :btree
+
   create_table "invoices", force: true do |t|
     t.integer  "account_id"
     t.integer  "customer_id"
     t.date     "date"
     t.string   "number"
-    t.decimal  "total",       precision: 8, scale: 2
+    t.decimal  "total",        precision: 8, scale: 2
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "header_id"
+    t.boolean  "include_bank"
+    t.boolean  "include_vat"
   end
 
   add_index "invoices", ["account_id"], name: "index_invoices_on_account_id", using: :btree
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+
+  create_table "settings", force: true do |t|
+    t.integer  "account_id"
+    t.string   "name"
+    t.text     "address"
+    t.string   "postcode"
+    t.string   "bank_account_name"
+    t.string   "bank_name"
+    t.string   "bank_address"
+    t.string   "bank_account_no"
+    t.string   "bank_bic"
+    t.string   "bank_iban"
+    t.string   "bank_sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["account_id"], name: "index_settings_on_account_id", using: :btree
 
   create_table "suppliers", force: true do |t|
     t.string   "name"

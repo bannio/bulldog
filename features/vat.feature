@@ -10,7 +10,7 @@ Background:
 @javascript
 Scenario: Add VAT rates
   When I visit the VAT page
-  Then I should see "Name Rate Active"
+  Then I should see "Name Rate (%) Active"
   When I click on New
   And I fill in name with "Standard"
   And I fill in rate with "20"
@@ -20,8 +20,7 @@ Scenario: Add VAT rates
   And I should see "VAT rate successfully added"
 
 @javascript
-Scenario: edit VAT rate
-  The rate column should not be editable if there are bills
+Scenario: change the name of an active rate and deactivate it
   Given I have an active "Standard" rate at 20%
   When I visit the VAT page
   Then row 1 should include "Standard"
@@ -31,6 +30,49 @@ Scenario: edit VAT rate
   And I uncheck "active" and click Save
   Then I should be on the VAT page
   And the "Old Standard" rate should be inactive
+
+@javascript
+Scenario: Cannot duplicate name of an active rate
+  Given I have an active "Standard" rate at 20%
+  And I visit the VAT page
+  When I click on New
+  And I fill in name with "Standard"
+  And I fill in rate with "20"
+  And I check active 
+  And I click button Save
+  Then I should see "There is already an active rate with this name"
+
+@javascript
+Scenario: I can duplicate name of an inactive rate
+  Given I have an inactive "Standard" rate at 20%
+  And I visit the VAT page
+  When I click on New
+  And I fill in name with "Standard"
+  And I fill in rate with "20"
+  And I check active 
+  And I click button Save
+  Then I should see "VAT rate successfully added"
+
+@javascript
+Scenario: I cannot change the % rate if it has been used
+  Given I have an active "Standard" rate at 20%
+  And I have a bill using the "Standard" rate
+  When I visit the VAT page
+  And I click the first table row
+  Then I should be on the "Edit VAT Rate" modal
+  When I fill in rate with "10"
+  And I click button Save
+  Then I should see "% rate already in use on bills"
+
+@javascript
+Scenario: I can change the % rate if it has not been used
+  Given I have an active "Standard" rate at 20%
+  When I visit the VAT page
+  And I click the first table row
+  Then I should be on the "Edit VAT Rate" modal
+  When I fill in rate with "10"
+  And I click button Save
+  Then I should see "VAT rate successfully updated"
 
 @javascript
 Scenario: list only active rates, button to show all
@@ -58,8 +100,6 @@ Scenario: delete a VAT rate
   When I click Delete and confirm
   Then I should see "This rate is in use and cannot be deleted"
   
-
-
 @javascript
 Scenario: select to enable VAT
   When I visit the Account page
@@ -100,7 +140,7 @@ Scenario: VAT select field limits choice to defined active entries
   Then I should not see "Old"
   And I should see "Standard"
 
-Scenario: The bills index table lists VAT when VAt is enabled in the account
+Scenario: The bills index table lists VAT when VAT is enabled in the account
   Given I have an active "Standard" rate at 20%
   Given I have an active "Zero" rate at 0%
   And VAT is enabled

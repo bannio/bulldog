@@ -2,6 +2,7 @@ class Invoice < ActiveRecord::Base
   include Visible
   belongs_to :account
   belongs_to :customer
+  belongs_to :header
   has_many   :bills
 
   #scope :current, -> { where(account_id: current_account.id) }
@@ -11,12 +12,19 @@ class Invoice < ActiveRecord::Base
 
   validate :customer_has_uninvoiced_bills?, on: :create
 
+  attr_accessor :new_header
+  before_save :create_header
+
   def self.next_number(account)
     self.where(account_id: account.id).last ? self.where(account_id: account.id).last.number.next : '1'
   end
 
   def customer_name
     customer.name
+  end
+
+  def header_name
+    header ? header.name : ""
   end
 
   private
@@ -51,5 +59,9 @@ class Invoice < ActiveRecord::Base
     else
       all
     end
+  end
+
+  def create_header
+    self.header = Header.create(name: new_header, account_id: self.account_id) if new_header.present?
   end
 end

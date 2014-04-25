@@ -42,6 +42,7 @@ class InvoicesController < ApplicationController
   end
 
   def update
+    collect_new_entries
     @invoice = Invoice.visible_to(current_user).find(params[:id])
     @customers = []
     @customers << @invoice.customer
@@ -58,6 +59,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    collect_new_entries
     @invoice = Invoice.new(invoice_params)
     @invoice.number = Invoice.next_number(current_account)
     @bills =  current_account.bills.uninvoiced.where(customer_id: @invoice.customer_id)
@@ -91,8 +93,12 @@ class InvoicesController < ApplicationController
 
   private
 
+  def collect_new_entries
+    params[:invoice][:new_header] = params[:invoice][:header_id] if params[:invoice][:header_id].to_i == 0 
+  end
+
   def invoice_params
-    params.require(:invoice).permit(:date, :customer_id, :comment, :number, :account_id, :total)
+    params.require(:invoice).permit(:date, :customer_id, :comment, :number, :account_id, :total, :new_header)
   end
 
   def sort_column

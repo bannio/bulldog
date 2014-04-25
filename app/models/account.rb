@@ -5,6 +5,11 @@ class Account < ActiveRecord::Base
   has_many :categories
   has_many :bills
   has_many :vat_rates
+  has_many :headers
+  has_one  :setting
+
+  # accepts_nested_attributes_for :setting
+  after_create :add_setting
 
   validates :user_id, :name, presence: true
 
@@ -16,6 +21,12 @@ class Account < ActiveRecord::Base
 
   def include_bank_details?
     self.include_bank
+  end
+
+  private
+
+  def add_setting
+    create_setting
   end
 
 end

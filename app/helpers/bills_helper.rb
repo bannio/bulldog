@@ -16,4 +16,8 @@ module BillsHelper
     vat_rates = current_account.vat_rates.active.order(:name).to_json(only: [:id, :name])
   end
 
+  def get_header_data
+    headers = current_account.headers.order(:name).to_json(only: [:id, :name])
+  end
+
 end
