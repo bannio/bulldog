@@ -17,7 +17,7 @@
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
      <br>
-    <h2 class="form-sub-head">Your details</h2>
+    <h2 class="form-sub-head">Your Address Details</h2>
       <table class="account-details">
         <tr>
           <td class="td-name">Name</td><td class="td-content"><%= @setting.name %></td>
@@ -30,7 +30,7 @@
         </tr>
       </table>
     <br>
-    <h2 class="form-sub-head">Your bank details</h2>
+    <h2 class="form-sub-head">Your Bank Details</h2>
     <p>(optional)</p>
       <table class="account-details">
         <tr>
@@ -56,6 +56,15 @@
         </tr>
       </table>
       <br/>
+      <% if current_account.vat_enabled? %>
+        <h2 class="form-sub-head">Your VAT Details</h2>
+          <table class="account-details">
+            <tr>
+              <td class="td-name">VAT Registration Number</td><td class="td-content"><%= @setting.vat_reg_no %></td>
+            </tr>
+          </table>
+        <br>
+      <% end %>
 
       <%= link_to 'Edit', edit_setting_path(@setting), class: "create-btn std-btn" %>
     </div>

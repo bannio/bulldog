@@ -118,3 +118,7 @@ Given(/^I type the other customers ID in the edit URL$/) do
   id = @another_customer.id
   visit "/customers/#{id}/edit"
 end
+
+Given(/^I visit the settings page$/) do
+  visit "/settings"
+end

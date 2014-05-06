@@ -26,6 +26,6 @@ class SettingsController < ApplicationController
   def setting_params
     params.require(:setting).permit(:account_id, :name, :address, :postcode, 
       :bank_account_name, :bank_name, :bank_address, 
-      :bank_account_no, :bank_sort, :bank_bic, :bank_iban)
+      :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :vat_reg_no)
   end
 end
