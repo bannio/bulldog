@@ -17,7 +17,7 @@
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
      <br>
-    <h1>Your details</h1>
+    <h2 class="form-sub-head">Your details</h2>
       <table class="account-details">
         <tr>
           <td class="td-name">Name</td><td class="td-content"><%= @setting.name %></td>
@@ -29,7 +29,9 @@
           <td class="td-name">Postcode</td><td class="td-content"><%= @setting.postcode %></td>
         </tr>
       </table>
-    <h1>Your bank details</h1><p> (optional)</p>
+    <br>
+    <h2 class="form-sub-head">Your bank details</h2>
+    <p>(optional)</p>
       <table class="account-details">
         <tr>
           <td class="td-name">Account Name</td><td class="td-content"><%= @setting.bank_account_name %></td>

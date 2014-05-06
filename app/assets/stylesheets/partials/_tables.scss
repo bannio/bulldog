@@ -32,8 +32,8 @@ th.align-right, td.align-right {
 
 
 tfoot {
-  border-top: 2px solid #bbbbbb;
-  border-bottom: 2px solid #dddddd;
+  border-top: 2px solid #dddddd;
+  // border-bottom: 2px solid #dddddd;
 }
 
 thead {
@@ -48,6 +48,10 @@ tfoot > tr > td.title-td {
 
 tfoot.no-line > tr > td {
   border-top: 0px !important;
+}
+
+tfoot > tr.underline {
+  border-bottom: 2px solid #dddddd;
 }
 
 // scroll as soon as too much content
