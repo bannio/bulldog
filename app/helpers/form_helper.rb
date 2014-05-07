@@ -13,4 +13,12 @@ module FormHelper
       concat errors_for(form, field)
     end
   end
+
+  def checkbox_image(boolean)
+    if boolean 
+      "<span class='glyphicon glyphicon-check'></span>"
+    else
+      "<span class='glyphicon glyphicon-unchecked'></span>"
+    end
+  end
 end

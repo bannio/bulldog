@@ -150,7 +150,7 @@ Feature: Invoices
     Then I should be on the Show Invoice page
     And I should see "Test Header"
 
-  @javascript @ut
+  @javascript
   Scenario: Set an existing print header
     Given the header "Test Header" exists
     Given I have the Business invoice
@@ -161,6 +161,13 @@ Feature: Invoices
     When I click the first table row
     Then I should be on the Show Invoice page
     And I should see "Test Header"
+
+  @javascript @ut
+  Scenario: Set vat and bank details flags
+    Given I have the Business invoice
+    And I am on the edit page for this invoice
+    Then I should see "Print vat details?"
+    And I should see "Print bank details?"
 
     
 

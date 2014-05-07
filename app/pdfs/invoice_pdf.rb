@@ -70,9 +70,9 @@ end
     # adds customer address_box
     bounding_box([14,0], :width => 360) do
       if @invoice.customer.address.present?
-        text_box "#{@invoice.customer.name}\n#{@invoice.customer.address}\n#{@invoice.customer.postcode}" 
+        text_box "#{@invoice.customer_name}\n#{@invoice.customer.address}\n#{@invoice.customer.postcode}" 
       else
-        text_box "#{@invoice.customer.name}\n<color rgb='ff0000'>Update your Customer for their \n address to appear here</color>", 
+        text_box "#{@invoice.customer_name}\n<color rgb='ff0000'>Update your Customer for their \n address to appear here</color>", 
         inline_format: true
       end 
     end
@@ -257,13 +257,13 @@ end
 
   def payment_table
     pay_table = []
-    pay_table = pay_table << ["Account Name","#{@invoice.account.bank_account_name}"] if @invoice.account.bank_account_name.present?
-    pay_table = pay_table << ["Bank","#{@invoice.account.bank_name}"] if @invoice.account.bank_name.present?
-    pay_table = pay_table << ["Branch","#{@invoice.account.bank_address}"] if @invoice.account.bank_address.present?
-    pay_table = pay_table << ["Sort Code:","#{@invoice.account.bank_sort}"] if @invoice.account.bank_sort.present?
-    pay_table = pay_table << ["Account No:","#{@invoice.account.bank_account_no}"] if @invoice.account.bank_account_no.present?
-    pay_table = pay_table << ["BIC:","#{@invoice.account.bank_bic}"] if @invoice.account.bank_bic.present?
-    pay_table = pay_table << ["IBAN:","#{@invoice.account.bank_iban}"] if @invoice.account.bank_iban.present?
+    pay_table = pay_table << ["Account Name","#{@invoice.setting.bank_account_name}"] if @invoice.setting.bank_account_name.present?
+    pay_table = pay_table << ["Bank","#{@invoice.setting.bank_name}"] if @invoice.setting.bank_name.present?
+    pay_table = pay_table << ["Branch","#{@invoice.setting.bank_address}"] if @invoice.setting.bank_address.present?
+    pay_table = pay_table << ["Sort Code:","#{@invoice.setting.bank_sort}"] if @invoice.setting.bank_sort.present?
+    pay_table = pay_table << ["Account No:","#{@invoice.setting.bank_account_no}"] if @invoice.setting.bank_account_no.present?
+    pay_table = pay_table << ["BIC:","#{@invoice.setting.bank_bic}"] if @invoice.setting.bank_bic.present?
+    pay_table = pay_table << ["IBAN:","#{@invoice.setting.bank_iban}"] if @invoice.setting.bank_iban.present?
     pay_table
 
   end
