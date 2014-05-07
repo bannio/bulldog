@@ -98,7 +98,7 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:date, :customer_id, :comment, :number, :account_id, :total, :new_header)
+    params.require(:invoice).permit(:date, :customer_id, :comment, :number, :account_id, :total, :new_header, :header_id)
   end
 
   def sort_column
