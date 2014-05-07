@@ -139,8 +139,8 @@ Feature: Invoices
     And I should see "Standard £21.00"
     And I should see "Zero £0.00"
 
-  @javascript @ut
-  Scenario: Set a print header
+  @javascript
+  Scenario: Set a new print header
     Given I have the Business invoice
     And I am on the edit page for this invoice
     When I fill in header with "Test Header"
@@ -149,5 +149,19 @@ Feature: Invoices
     When I click the first table row
     Then I should be on the Show Invoice page
     And I should see "Test Header"
+
+  @javascript @ut
+  Scenario: Set an existing print header
+    Given the header "Test Header" exists
+    Given I have the Business invoice
+    And I am on the edit page for this invoice
+    When I fill in header with "Test Header"
+    And I click button Save Changes
+    Then I should be on the Invoices page
+    When I click the first table row
+    Then I should be on the Show Invoice page
+    And I should see "Test Header"
+
+    
 
 

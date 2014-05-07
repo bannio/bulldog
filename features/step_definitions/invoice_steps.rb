@@ -113,3 +113,7 @@ Then(/^I am on the show page for this invoice$/) do
   id = Invoice.last.id
   visit "/invoices/#{id}"
 end
+
+Given(/^the header "(.*?)" exists$/) do |header|
+  @account.headers.create(name: header)
+end
