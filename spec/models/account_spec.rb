@@ -15,13 +15,6 @@ describe Account do
     expect(account.vat_enabled?).to be_false
   end
 
-  it "responds to include_bank?" do
-    account = Account.new(include_bank: true)
-    expect(account.include_bank?).to be_true
-    account.include_bank = false
-    expect(account.include_bank?).to be_false
-  end
-
   it "sets up the settings entry" do
     @user = FactoryGirl.create(:user)
     account = Account.create(user_id: @user.id, name: "test")

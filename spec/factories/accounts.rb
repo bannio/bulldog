@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :account do
     user
     name "MyString"
-    address "MyText"
-    postcode "MyString"
+    vat_enabled false
   end
 end

@@ -1,7 +1,7 @@
 @account
 Feature: Account
   To facilitate future subscription plans and to store information
-  for invoice address etc. An account should be created after first
+  for VAT enabled etc. An account should be created after first
   sign in (following confirmation) and this should be editable.
 
   Background:
@@ -68,3 +68,16 @@ Feature: Account
     And I click button Update
     Then I should see "can't be blank"
     And I should be on the Change Email Address page
+
+  Scenario: Edit account level settings - VAT enabled
+    Given I am a user with an account
+    And  I sign in
+    When I visit the home page
+    And I click on Account
+    And I click on Manage Subscription
+    Then I should be on the Account page
+    When I click on Edit
+    And I check VAT Enabled?
+    And I click button Save
+    Then I should be on the Account page
+    And VAT Enabled? should be checked

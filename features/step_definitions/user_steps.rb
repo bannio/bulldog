@@ -279,7 +279,7 @@ end
 
 When(/^I edit my account and change the email to "(.*?)"$/) do |email|
   click_link "Account"
-  click_link "Change Password"
+  click_link "Change Email Address"
   fill_in "user_email", with: email
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"

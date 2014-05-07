@@ -73,7 +73,7 @@
                   <hr>
                   <li><%= link_to 'Change Email Address', edit_email_user_registration_path, class: "menu-item" %></li>
                   <hr>
-                  <li><a href="#" class="menu-item">Manage Subscription</a></li>
+                  <li><%= link_to 'Manage Subscription', account_path(current_account), class: "menu-item" %></li>
                 </ul>
               </li>
             </div><!--end subnav-links -->
@@ -87,7 +87,6 @@
     </div><!--end subnav-container-->
    <% end %>
 </nav><!--end navbar wrapper containing nav and subnav-->
-
 
 
 
