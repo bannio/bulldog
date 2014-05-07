@@ -2,9 +2,11 @@ Bulldog::Application.routes.draw do
 
   as :user do
       patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
+      get '/edit_email' => 'registrations#edit_email', :via => :get, :as => :edit_email_user_registration
   end
   devise_for :users, path: "", controllers: {confirmations: 'confirmations',
-                                              sessions: 'sessions'}
+                                              sessions: 'sessions',
+                                              registrations: 'registrations'}
 
   get '/remote_sign_in' => 'remote_content#remote_sign_in', as: :remote_sign_in
 

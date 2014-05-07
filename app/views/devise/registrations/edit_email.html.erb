@@ -1,4 +1,4 @@
-<% content_for :title do %>Bulldog-Clip | Change Email<% end %>
+<% content_for :title do %>Bulldog-Clip | Change Email Address<% end %>
 <% content_for :description do %>Reset Bulldog-Clip email<% end %>
 <!-- This is intended to be used with a modified registrations controller
       to allow the editing of email address on its own. NOT implemented yet -->
@@ -6,9 +6,11 @@
   <div class="col-md-4 col-md-offset-4 panel panel-default">
     <div class="panel-body">
       <div class="authform">
-        <h1>Edit <%= resource_name.to_s.humanize %></h1>
+        <h1>Change Email Address</h1>
+        <p>An email will be sent to the new email address to confirm the address change</p>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
           <%#= devise_error_messages! %>
+          <%= f.hidden_field :edit_email %>
           <div class="form-group">
             <%= f.label :email %>
             <%= f.email_field :email, :autofocus => true, class: 'form-control' %>

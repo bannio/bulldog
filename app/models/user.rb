@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # validates :email, uniqueness: true # apparently handled by Devise!
   # accepts_nested_attributes_for :account
   attr :account_name
+  attr_accessor :edit_email
 
   def after_database_authentication
     # set current_account here ?
