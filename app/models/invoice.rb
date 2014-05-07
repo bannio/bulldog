@@ -27,6 +27,17 @@ class Invoice < ActiveRecord::Base
     header ? header.name : ""
   end
 
+  def setting
+    account.setting
+  end
+  def include_bank_details?
+    include_bank
+  end
+
+  def include_vat?
+    include_vat
+  end
+  
   private
 
   def customer_has_uninvoiced_bills?
