@@ -31,7 +31,6 @@ Feature: The tools menu provides access to a number of set up
     When I click on Edit
     Then I should not see "Your VAT Details"
 
-  @ut
   Scenario: Set printing preferences
     Given VAT is enabled
     And I visit the settings page
@@ -41,4 +40,20 @@ Feature: The tools menu provides access to a number of set up
     When I click on Edit
     And I should see "Include VAT?"
     And I should see "Include Bank Details?"
+
+  @ut
+  Scenario: telephone and email
+    Given I visit the settings page
+    Then I should see "Telephone No."
+    And I should see "Email address"
+    When I click on Edit
+    And I enter "0101010101" in the setting_telephone field
+    And I enter "test@example.com" in the setting_email field
+    And I click button Save
+    Then I should be on the Invoice Setup page
+    And I should see "0101010101"
+    And I should see "test@example.com"
+
+
+
     

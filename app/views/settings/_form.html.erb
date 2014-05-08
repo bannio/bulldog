@@ -23,6 +23,20 @@
   </div>
 <% end %>
 
+<%= form_group_for f, :telephone, label: false do %>
+  <div class="input-group telephone">
+    <%#= f.label :name, "telephone" %>
+    <%= f.text_field :telephone, autofocus: true, class: 'form-control', placeholder: 'Telephone No.' %>
+  </div>
+<% end %>
+
+<%= form_group_for f, :email, label: false do %>
+  <div class="input-group email">
+    <%#= f.label :name, "email" %>
+    <%= f.text_field :email, autofocus: true, class: 'form-control', placeholder: 'Email address' %>
+  </div>
+<% end %>
+
 <h2 class="form-sub-head">Your Bank Details</h2>
 
 <%= form_group_for f, :bank_account_name, label: false do %>

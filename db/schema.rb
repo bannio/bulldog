@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508091715) do
+ActiveRecord::Schema.define(version: 20140508151047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 20140508091715) do
     t.string   "vat_reg_no"
     t.boolean  "include_vat"
     t.boolean  "include_bank"
+    t.string   "telephone"
+    t.string   "email"
   end
 
   add_index "settings", ["account_id"], name: "index_settings_on_account_id", using: :btree
