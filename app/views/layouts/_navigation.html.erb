@@ -52,7 +52,7 @@
                   <hr>
                   <li><%= link_to 'Categories', categories_path, class: 'menu-item' %></li>
                   <hr>
-                  <li><a href="#" class="menu-item">Suppliers</a></li>
+                  <li><%= link_to 'Suppliers', suppliers_path, class: 'menu-item' %></li>
                   <hr>
                   <% if current_account.vat_enabled? %>
                     <li><%= link_to 'VAT Rates', vat_rates_path, class: 'menu-item' %></li>
