@@ -9,6 +9,6 @@ module InvoicesHelper
   end
 
   def vat_rates(bills)
-    rates = bills.map {|bill| bill.vat_rate}.uniq
+    rates = bills.map {|bill| bill.vat_rate}.uniq.compact
   end
 end
