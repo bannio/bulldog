@@ -13,5 +13,7 @@ FactoryGirl.define do
     bank_bic "MyString"
     bank_iban "MyString"
     bank_sort "MyString"
+    include_vat nil
+    include_bank nil
   end
 end

@@ -92,7 +92,7 @@ Feature: Invoices
     When I change the comment to "changed comment"
     And I change the date to "2014-01-01"
     And I click button Save Changes
-    Then I should be on the Invoices page
+    Then I should be on the Show Invoice page
     And I should see "changed comment"
 
   @javascript
@@ -101,9 +101,7 @@ Feature: Invoices
     And I am on the edit page for this invoice
     Then I should see 3 bills
     When I check one bill and click Save Changes
-    Then I should be on the Invoices page
-    When I click the first table row
-    Then I should be on the Show Invoice page 
+    Then I should be on the Show Invoice page
     Then I should see 2 bill 
 
   @javascript
@@ -145,8 +143,6 @@ Feature: Invoices
     And I am on the edit page for this invoice
     When I fill in header with "Test Header"
     And I click button Save Changes
-    Then I should be on the Invoices page
-    When I click the first table row
     Then I should be on the Show Invoice page
     And I should see "Test Header"
 
@@ -157,18 +153,16 @@ Feature: Invoices
     And I am on the edit page for this invoice
     When I fill in header with "Test Header"
     And I click button Save Changes
-    Then I should be on the Invoices page
-    When I click the first table row
     Then I should be on the Show Invoice page
     And I should see "Test Header"
 
-  @javascript @ut
+  @javascript
   Scenario: Set vat and bank details flags
     Given I have the Business invoice
     And VAT is enabled
     And I am on the edit page for this invoice
-    Then I should see "Print vat details?"
-    And I should see "Print bank details?"
+    Then I should see "Print VAT Details?"
+    And I should see "Print Bank Details?"
 
     
 

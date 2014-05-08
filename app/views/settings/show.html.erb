@@ -66,6 +66,19 @@
         <br>
       <% end %>
 
+      <h2 class="form-sub-head">Printing Preferences - set defaults</h2>
+
+      <table class="account-details">
+      <% if current_account.vat_enabled? %>
+        <tr>
+          <td class="td-name">Include VAT?</td><td class="td-content"><%= @setting.include_vat ? "yes" : "no" %></td>
+        </tr>
+      <% end %>
+        <tr>
+          <td class="td-name">Include Bank Details?</td><td class="td-content"><%= @setting.include_bank ? "yes" : "no" %></td>
+        </tr>
+      </table>
+
       <%= link_to 'Edit', edit_setting_path(@setting), class: "create-btn std-btn" %>
     </div>
   </div>

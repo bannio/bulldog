@@ -8,3 +8,6 @@ en:
       invoice:
         include_vat: "Print VAT Details?"
         include_bank: "Print Bank Details?"
+      setting:
+        include_vat: "Include VAT?"
+        include_bank: "Include Bank Details?"

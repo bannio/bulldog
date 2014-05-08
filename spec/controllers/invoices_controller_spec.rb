@@ -12,7 +12,9 @@ describe InvoicesController do
    comment:     "My invoice", 
    customer_id: @customer.id,
    account_id:  @account.id,
-   total:       "0.0"
+   total:       "0.0",
+   include_vat: nil,
+   include_bank: nil
    }
  end
 
@@ -95,6 +97,20 @@ describe InvoicesController do
           post :create, {invoice: valid_attributes.merge(customer_id: customer.id)}
         }.to_not change(Invoice, :count)
       end
+
+      it "sets defaults for printing" do
+        @account.setting.update_attribute(:include_vat, true)
+        post :create, {invoice: valid_attributes}
+        expect(Invoice.last.include_vat).to be_true
+        expect(Invoice.last.include_bank).to be_false
+      end
+
+      it "sets defaults for printing" do
+        @account.setting.update_attribute(:include_bank, true)
+        post :create, {invoice: valid_attributes}
+        expect(Invoice.last.include_vat).to be_false
+        expect(Invoice.last.include_bank).to be_true
+      end
     end
 
     describe "with invalid attributes" do
@@ -137,7 +153,7 @@ describe InvoicesController do
       end
       it "redirects to invoice show " do
         patch :update, id: @invoice, invoice: attributes_for(:invoice)
-        expect(response).to redirect_to invoices_path
+        expect(response).to redirect_to @invoice
       end
 
       it "limits the customer choice to one" do

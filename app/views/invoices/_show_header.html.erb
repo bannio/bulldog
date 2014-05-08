@@ -18,12 +18,14 @@
   <% if current_account.vat_enabled? %>
     <tr>
       <th class="th-invoice">Print VAT details?:</th>
-      <td class="td-invoice"><%= checkbox_image(@invoice.include_vat).html_safe %></td>
+      <!-- <td class="td-invoice"><%= checkbox_image(@invoice.include_vat).html_safe %></td> -->
+      <td class="td-invoice"><%= @invoice.include_vat ? "yes" : "no" %></td>
     </tr>
   <% end %>
   <tr>
     <th class="th-invoice">Print Bank details?:</th>
-    <td class="td-invoice"><%= checkbox_image(@invoice.include_bank).html_safe %></td>
+    <!-- <td class="td-invoice"><%= checkbox_image(@invoice.include_bank).html_safe %></td> -->
+    <td class="td-invoice"><%= @invoice.include_bank ? "yes" : "no" %></td>
   </tr>
 </table>
 

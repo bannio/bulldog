@@ -52,7 +52,7 @@ class InvoicesController < ApplicationController
     total = @invoice.bills.sum(:amount)
     if @invoice.update(invoice_params.merge(total: total))
       flash[:success] = "Invoice successfully updated"
-      redirect_to invoices_path
+      redirect_to @invoice
     else
       render 'edit'
     end
@@ -65,6 +65,8 @@ class InvoicesController < ApplicationController
     @bills =  current_account.bills.uninvoiced.where(customer_id: @invoice.customer_id)
     @invoice.total = @bills.sum(:amount)
     @customers = current_account.customers # in case of no save
+    @invoice.include_vat = current_account.setting.include_vat  # set default
+    @invoice.include_bank = current_account.setting.include_bank  # set default
 
     if @invoice.save
       @bills.each do |bill|

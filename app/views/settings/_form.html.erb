@@ -85,6 +85,24 @@
   <% end %>
 <% end %>
 
+<h2 class="form-sub-head">Printing Preferences - set defaults</h2>
+
+<% if current_account.vat_enabled? %>
+  <%= form_group_for f, :include_vat, label: false do %>
+    <div class="input-group">
+      <%= f.label :include_vat %>
+      <%= f.check_box :include_vat %>
+    </div>
+  <% end %>
+<% end %>
+
+  <%= form_group_for f, :include_bank, label: false do %>
+  <div class="input-group">
+    <%= f.label :include_bank %>
+    <%= f.check_box :include_bank %>
+  </div>
+<% end %>
+
 <%= f.submit 'Save', :class => 'create-btn std-btn' %>
 <%= link_to 'Cancel', setting_path(@setting), class: 'action-btn std-btn' %>
 
