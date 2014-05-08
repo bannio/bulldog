@@ -165,6 +165,7 @@ Feature: Invoices
   @javascript @ut
   Scenario: Set vat and bank details flags
     Given I have the Business invoice
+    And VAT is enabled
     And I am on the edit page for this invoice
     Then I should see "Print vat details?"
     And I should see "Print bank details?"

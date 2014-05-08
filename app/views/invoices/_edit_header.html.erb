@@ -26,16 +26,18 @@
     <%= f.text_area :comment, placeholder: "Invoice comment - appears on PDF" %>
   <% end %>
 
-  <%= form_group_for f, :include_vat, label: false do %>
-    <div class="input-group">
-      <%= f.label "Print VAT details?" %>
-      <%= f.check_box :include_vat %>
-    </div>
+  <% if current_account.vat_enabled? %>
+    <%= form_group_for f, :include_vat, label: false do %>
+      <div class="input-group">
+        <%= f.label :include_vat %>
+        <%= f.check_box :include_vat %>
+      </div>
+    <% end %>
   <% end %>
 
     <%= form_group_for f, :include_bank, label: false do %>
     <div class="input-group">
-      <%= f.label "Print Bank details?" %>
+      <%= f.label :include_bank %>
       <%= f.check_box :include_bank %>
     </div>
   <% end %>

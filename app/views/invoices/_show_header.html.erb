@@ -15,10 +15,12 @@
     <th class="th-invoice">Comment:</th>
     <td class="td-invoice"><%= simple_format(@invoice.comment) %></td>
   </tr>
-  <tr>
-    <th class="th-invoice">Print VAT details?:</th>
-    <td class="td-invoice"><%= checkbox_image(@invoice.include_vat).html_safe %></td>
-  </tr>
+  <% if current_account.vat_enabled? %>
+    <tr>
+      <th class="th-invoice">Print VAT details?:</th>
+      <td class="td-invoice"><%= checkbox_image(@invoice.include_vat).html_safe %></td>
+    </tr>
+  <% end %>
   <tr>
     <th class="th-invoice">Print Bank details?:</th>
     <td class="td-invoice"><%= checkbox_image(@invoice.include_bank).html_safe %></td>

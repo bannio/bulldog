@@ -3,3 +3,8 @@ en:
       currency:
           format:
               unit: "£"
+  helpers:
+    label:
+      invoice:
+        include_vat: "Print VAT Details?"
+        include_bank: "Print Bank Details?"
