@@ -1,10 +1,7 @@
 <% content_for :title do %>Bulldog-Clip | Show Invoice<% end %>
 <% content_for :description do %>Show invoice<% end %>
 <div class="container">
-  <div class="panel panel-default">
-    <div class="panel-body">
     <h1>Invoice <%= @invoice.number %></h1>
-
      <a href="#" id="pop" class="info-btn pop"  
      data-title="Review An Invoice" 
      data-content="
@@ -15,8 +12,10 @@
      </ul>">
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
-
-      <%= render 'show_header' %>  
+     <%= render 'show_header' %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+        <%= render 'form' %>
     </div>
   </div>
 </div>

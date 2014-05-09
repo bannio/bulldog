@@ -9,14 +9,14 @@ input[type="checkbox"] {
 }
 
 // width and spacing below header tables
-table.invoice-show, table.invoice-edit {
+table.invoice-show {
   max-width: 100%;
   margin-bottom: 10px;
 }
 
 // invoice show header styling
 table.invoice-show > tbody > tr > th.th-invoice {
-  width: 100px;
+  width: 150px;
   font-size: 1.3rem;
   font-family: Arial, sans-serif;
   font-weight: 600;
@@ -42,10 +42,43 @@ table.invoice-show > tbody > tr > td.td-invoice > p {
 }
 
 // invoice edit styling
+
+table.invoice-edit {
+max-width: 100%;
+margin: 5px 0px;
+}
+
+div.invoice-edit > div.select2-container {
+max-width: 80%;
+margin: 0 0 0 0;
+}
+
+div.invoice-edit > textarea.form-control {
+  width: 80%;
+  max-width: 80%;
+  min-height: 60px;
+}
+
+div.input-group.invoice-edit {
+  width: 100%;
+}
+
+div.invoice-edit > label {
+  width: 20%;
+}
+
+div.invoice-edit > label.check {
+  width: 115px;
+}
+
+table.invoice-edit {
+  width: 100%;
+}
+
 table.invoice-edit > tbody > tr > th.th-invoice {
-  width: 80px;
+  width: 20%;
   font-size: 1.3rem;
-  font-family: Arial, sans-serif;
+  font-family: "Source Sans Pro", Arial, sans-serif;
   font-weight: 600;
   color: #000;
   line-height: 2rem;
@@ -56,9 +89,11 @@ table.invoice-edit > tbody > tr > td.td-invoice {
   font-weight: 400;
   color: #000;
   line-height: 2rem;
+  padding-left: 9px;
 }
 
 table.invoice-edit > tbody > tr > td.td-invoice > p {
+  width: 80%;
   font-size: 1.3rem;
   font-family: Arial, sans-serif;
   font-weight: 400;

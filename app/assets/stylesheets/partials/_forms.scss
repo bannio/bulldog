@@ -1,4 +1,11 @@
 
+
+table.account-details > tbody > tr > td.td-content {
+  width: 70%;
+  vertical-align: top;
+}
+
+
 // resend confirmation email
 div.confirmation-error > form >div.form-group {
   margin: 20px 0px 20px 0px;
@@ -266,16 +273,50 @@ input.search-query {
   width: 100%;
 }
 
-// ACCOUNT DETAILS FORM
-.input-group.name, .input-group.address, .input-group.bank,  {
+// INVOICE SETTINGS FORM
+
+.input-group .form-control{
+  width: 70%;
+  float: right;
+}
+
+label {
+  width: 30%;
+}
+
+label.edit-settings.control-label {
+  width: 30%;
+  float: left;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+form > div > div.edit-settings {
+  width: 70%;
+  float: right;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.input-group.name, .input-group.address, .input-group.bank, .input-group.vat-check, .input-group.vat-reg {
   width: 100%;
 }
 
-.input-group.postcode  {
+
+.input-group.vat-check > checkbox {
   width: 60%;
 }
 
-.input-group.address > textarea.address {
+.input-group.vat-check > label {
+  width: 40%;
+}
+
+.input-group.address {
+  min-height: 90px;
+  max-width: 100%;
+}
+
+.input-group.address > textarea {
   min-height: 90px;
   max-width: 100%;
 }
