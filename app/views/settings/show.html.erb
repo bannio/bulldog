@@ -36,8 +36,7 @@
         </tr>
       </table>
     <br>
-    <h2 class="form-sub-head">Your Bank Details</h2>
-    <p>(optional)</p>
+    <h2 class="form-sub-head">Your Bank Details <small>(optional)</small></h2>
       <table class="account-details">
         <tr>
           <td class="td-name">Account Name</td><td class="td-content"><%= @setting.bank_account_name %></td>
@@ -72,7 +71,7 @@
         <br>
       <% end %>
 
-      <h2 class="form-sub-head">Printing Preferences - set defaults</h2>
+      <h2 class="form-sub-head">Printing Preferences <small>(set defaults)</small></h2>
 
       <table class="account-details">
       <% if current_account.vat_enabled? %>

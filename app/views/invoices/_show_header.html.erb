@@ -1,39 +1,43 @@
-<table class="invoice-show">
-  <tr>
-    <th class="th-invoice">Invoice Date:</th>
-    <td class="td-invoice"><%= @invoice.date %></td>
-  </tr>
-  <tr>
-    <th class="th-invoice">Customer:</th>
-    <td class="td-invoice"><%= @invoice.customer_name %></td>
-  </tr>
-  <tr>
-    <th class="th-invoice">Header:</th>
-    <td class="td-invoice"><%= @invoice.header_name %></td>
-  </tr>
-  <tr>
-    <th class="th-invoice">Comment:</th>
-    <td class="td-invoice"><%= simple_format(@invoice.comment) %></td>
-  </tr>
-  <% if current_account.vat_enabled? %>
-    <tr>
-      <th class="th-invoice">Print VAT details?:</th>
-      <!-- <td class="td-invoice"><%= checkbox_image(@invoice.include_vat).html_safe %></td> -->
-      <td class="td-invoice"><%= @invoice.include_vat ? "yes" : "no" %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <th class="th-invoice">Print Bank details?:</th>
-    <!-- <td class="td-invoice"><%= checkbox_image(@invoice.include_bank).html_safe %></td> -->
-    <td class="td-invoice"><%= @invoice.include_bank ? "yes" : "no" %></td>
-  </tr>
-</table>
+<div class="panel panel-default col-md-6" style="float:none">
+    <div class="panel-body">
+        <table class="invoice-show">
+          <tr>
+            <th class="th-invoice">Invoice Date:</th>
+            <td class="td-invoice"><%= @invoice.date %></td>
+          </tr>
+          <tr>
+            <th class="th-invoice">Customer:</th>
+            <td class="td-invoice"><%= @invoice.customer_name %></td>
+          </tr>
+          <tr>
+            <th class="th-invoice">Header:</th>
+            <td class="td-invoice"><strong><%= @invoice.header_name %></strong></td>
+          </tr>
+          <tr>
+            <th class="th-invoice">Comment:</th>
+            <td class="td-invoice"><%= simple_format(@invoice.comment) %></td>
+          </tr>
+          <% if current_account.vat_enabled? %>
+            <tr>
+              <th class="th-invoice">Print VAT details?</th>
+              <!-- <td class="td-invoice"><%= checkbox_image(@invoice.include_vat).html_safe %></td> -->
+              <td class="td-invoice"><%= @invoice.include_vat ? "Yes" : "No" %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <th class="th-invoice">Print Bank details?</th>
+            <!-- <td class="td-invoice"><%= checkbox_image(@invoice.include_bank).html_safe %></td> -->
+            <td class="td-invoice"><%= @invoice.include_bank ? "Yes" : "No" %></td>
+          </tr>
+        </table>
 
-  <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'create-btn std-btn' %>
+          <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'create-btn std-btn' %>
 
-  <%= link_to "Back", invoices_path, class: 'action-btn std-btn' %>
-  
-  <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %>  
+          <%= link_to "Back", invoices_path, class: 'action-btn std-btn' %>
+          
+          <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %>  
+      </div>
+    </div>
 
-  <%= render 'form' %>
+          
 

@@ -8,7 +8,7 @@
   <% end %>
 
   <%= form_group_for f, :vat_enabled, label: false do %>
-    <div class="input-group">
+    <div class="input-group vat-check">
       <%= f.label "Enable VAT on bills?" %>
       <%= f.check_box :vat_enabled, id: 'check_vat' %>
     </div>
