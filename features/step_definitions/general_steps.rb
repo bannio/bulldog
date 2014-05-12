@@ -17,7 +17,7 @@ Then(/^I should be on the (.*) page$/) do |pagename|
 end
 
 Given(/^I am not signed in$/) do
-  visit '/users/sign_out'
+  visit '/sign_out'
 end
 
 Then(/^I should see a (.*) link$/) do |link|

@@ -16,20 +16,24 @@
   <%= form_group_for f, :description, label: false do %>
     <%= f.text_field :description, placeholder: 'Description', class: "form-control" %>
   <% end %>
+
+  
   <%= form_group_for f, :amount, label: false do %>
-    <%= f.text_field :amount, placeholder: 'Amount', class: "form-control" %>
+  <span class="currency-sign">£</span>
+    <%= f.text_field :amount, placeholder: 'Amount', class: "form-control currency" %>
   <% end %>
   <% if current_account.vat_enabled? %>
     <%= form_group_for f, :vat_rate_id, label: false do %>
       <%= f.hidden_field :vat_rate_id, data: {vat_rates: get_vat_rate_data} %>
     <% end %>
     <%= form_group_for f, :vat, label: false do %>
-      <%= f.text_field :vat, placeholder: 'VAT amount', class: "form-control" %>
+    <span class="currency-sign">£</span>
+      <%= f.text_field :vat, placeholder: 'VAT amount', class: "form-control currency" %>
     <% end %>
   <% end %> <!-- end of VAT fields -->
   <%= f.submit 'Save', :class => 'create-btn std-btn' %>
   <% if params[:action] == 'edit' %>
     <%= link_to 'Delete', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
   <% end %>
-  <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true  %>
+  <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true %>
 <% end %> <!-- end of form_for -->

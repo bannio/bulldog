@@ -6,19 +6,19 @@
     <div class="panel-body">
       <h1>Rename Category</h1>
 
-<a href="#" id="pop" class="info-btn pop"  
-     data-title="Rename Categories" 
+<a href="#" id="pop" class="info-btn pop"
+     data-title="Rename Categories"
      data-content="
      <ul class='info-ul'>
-     <li>All categories have bills associated with them.</li> 
+     <li>All categories have bills associated with them.</li>
      <li>Any bills already linked to the category you rename will automatically be reassigned to the new category.</li>
-     <li>If you use a name that already exists then the two categories will be merged.</li> 
+     <li>If you use a name that already exists then the two categories will be merged.</li>
      <li>To rename a category just enter the new name you want to use and click save.</li>
      </ul>">
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
       <div>
-<!--         <p>All categories have bills associated with them. When you rename a category those bills will be reassigned to the new named category. If the new category already exists then the categories will be merged.</p>
+<!--<p>All categories have bills associated with them. When you rename a category those bills will be reassigned to the new named category. If the new category already exists then the categories will be merged.</p>
         <p>Use this feature to tidy up mis-spellings or merge little used categories.</p>
         <p>Renaming categories can also be seen as re-classifying bills.</p> -->
       </div>
@@ -28,10 +28,10 @@
         <%= f.label :name, "Enter new category name" %>
         <%= f.text_field :name, :class => 'category-name' %>
         <div class="category-btns">
-        <%= f.submit 'Save', :class => 'create-btn std-btn' %>        
+        <%= f.submit 'Save', :class => 'create-btn std-btn' %>
         <%= link_to "Cancel", categories_path, class: "action-btn std-btn" %>
-        <% end %>     
-        </div> 
+        <% end %>
+        </div>
       </div><!--end form-->
     </div><!-- end panel-body -->
   </div><!--end panel -->

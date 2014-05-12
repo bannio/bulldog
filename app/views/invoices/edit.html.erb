@@ -3,8 +3,8 @@
 <div class="container">
     <h1>Invoice <%= @invoice.number %></h1>
 
-     <a href="#" id="pop" class="info-btn pop"  
-     data-title="Edit Invoice" 
+     <a href="#" id="pop" class="info-btn pop"
+     data-title="Edit Invoice"
      data-content="
      <ul class='info-ul'>
      <li>Select any bills that you want to remove from the invoice. Once you are happy with all your changes use the 'Save Changes' button to confirm.</li>
@@ -15,11 +15,10 @@
      </ul>">
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
-        <%= render 'edit_header' %> 
+        <%= render 'edit_header' %>
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= render 'form' %> 
+        <%= render 'form' %>
     </div>
-
   </div>
 </div>

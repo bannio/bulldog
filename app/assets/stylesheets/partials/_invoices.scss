@@ -102,6 +102,10 @@ table.invoice-edit > tbody > tr > td.td-invoice > p {
   margin: 0; 
 }
 
+th.th-invoice.th-comment {
+  vertical-align: top;
+}
+
 .line-through {
   text-decoration: line-through;
 }

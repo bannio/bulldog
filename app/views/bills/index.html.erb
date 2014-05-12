@@ -5,13 +5,13 @@
 
   <h1>Bills</h1>
 
-     <a href="#" id="pop" class="info-btn pop"  
-     data-title="Bills Index" 
+     <a href="#" id="pop" class="info-btn pop"
+     data-title="Bills Index"
      data-content="
      <ul class='info-ul'>
      <li>All of your uninvoiced bills are listed here.</li>
      <li>Use 'New' to enter a new bill.</li>
-     <li>You can edit or delete a bill by selecting the row in the table.</li> 
+     <li>You can edit or delete a bill by selecting the row in the table.</li>
      <li>'Export' downloads the table as a CSV file.</li>
      <li>Click on column headings to sort the data table.</li>
      </ul>">
@@ -23,8 +23,8 @@
   <div class="panel panel-default">
     <div class="panel-body">
 
-      <%= link_to "New", new_bill_path, remote: true, class: "create-btn std-btn"  %>
-      <%= link_to "Export", bills_path(format: "csv"), class: "action-btn std-btn"  %>
+      <%= link_to "New", new_bill_path, remote: true, class: "create-btn std-btn" %>
+      <%= link_to "Export", bills_path(format: "csv"), class: "action-btn std-btn" %>
 
       <div class="table-responsive">
         <table class="table table-hover table-condensed">
@@ -70,7 +70,7 @@
           loading ...
         </div>
         <div class="modal-footer">
-<!--           <button type="button" class="action-btn std-btn" data-dismiss="modal">Cancel</button>
+<!--=<button type="button" class="action-btn std-btn" data-dismiss="modal">Cancel</button>
           <button type="button" class="create-btn std-btn">Submit</button> -->
         </div>
       </div><!-- /.modal-content -->

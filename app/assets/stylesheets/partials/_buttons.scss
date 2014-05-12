@@ -49,8 +49,8 @@ a.create-btn, input.create-btn {
 }
 
 a.create-btn:hover, input.create-btn:hover,
-a.create-btn:active, input.create-btn:active, 
-a.create-btn:focus, input.create-btn:focus  {
+a.create-btn:active, input.create-btn:active,
+a.create-btn:focus, input.create-btn:focus {
   border: #008418 2px solid;
   color: #008418;
   outline: none;
@@ -65,9 +65,9 @@ a.action-btn, input.action-btn {
 
 a.action-btn:hover, input.action-btn:hover,
 a.action-btn:active, input.action-btn:active
-a.action-btn:focus, input.action-btn:focus, 
+a.action-btn:focus, input.action-btn:focus,
 input.action-btn.std-btn:active {
-  border: #2056BF 2px solid;  
+  border: #2056BF 2px solid;
   color: #2056BF;
   outline: none;
   // background-color: #BCCCEC;
@@ -128,7 +128,7 @@ a.std-btn, input.std-btn {
 
 // ALIGNS INPUT/SUBMIT BUTTONS WITH STD BTNS
 input.std-btn, select.std-btn, button.std-btn {
-vertical-align: top; 
+vertical-align: top;
 }
 
 
@@ -138,7 +138,7 @@ input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].
 }
 
 // GIVES GREY HOVER COLOR AND REMOVES BLUE HALO ON BUTTONS
-.std-btn:hover, .std-btn:focus, 
+.std-btn:hover, .std-btn:focus,
 input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="button"].std-btn:active,
 input[type="submit"].std-btn:hover, input[type="submit"].std-btn:focus, input[type="submit"].std-btn:active,
 input[type="reset"].std-btn:hover, input[type="reset"].std-btn:focus, input[type="reset"].std-btn:active,
@@ -159,7 +159,7 @@ button.std-btn:hover, button.std-btn:focus, button.std-btn:active
 
 // REMOVES BLUE FOCUS OUTLINE
 input[type="button"].std-btn:hover, input[type="button"].std-btn:focus, input[type="submit"].std-btn:hover, 
-input[type="submit"].std-btn:focus, input[type="reset"].std-btn:hover, 
+input[type="submit"].std-btn:focus, input[type="reset"].std-btn:hover,
 input[type="reset"].std-btn:focus, button.std-btn:hover,button.std-btn:focus {
 outline: 0px;
 outline-width: 0px;

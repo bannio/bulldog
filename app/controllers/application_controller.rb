@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # before_filter :https_redirect
 
   def after_sign_in_path_for(resource)
-    bills_path  # change this when we know where the new user should really start
+    welcome_index_path  # change this when we know where the new user should really start
   end
 
   def after_sign_out_path_for(resource)

@@ -4,14 +4,14 @@
 
 <%= form_group_for f, :name, label: false do %>
   <div class="input-group name">
-    <%= f.label :name, "Name" %>
+    <%= f.label :name, "Name", class: "invoice-settings" %>
     <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Name' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :address, label: false do %>
   <div class="input-group address">
-    <%= f.label :address, "Address" %>
+    <%= f.label :address, "Address", class: "invoice-settings" %>
     <%= f.text_area :address, autofocus: true, class: 'form-control', placeholder: 'Address' %>
   </div>
 <% end %>
@@ -19,21 +19,21 @@
 
 <%= form_group_for f, :postcode, label: false do %>
   <div class="input-group name">
-    <%= f.label :postcode, "Postcode" %>
+    <%= f.label :postcode, "Postcode", class: "invoice-settings" %>
     <%= f.text_field :postcode, autofocus: true, class: 'form-control', placeholder: 'Postcode' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :telephone, label: false do %>
   <div class="input-group name">
-    <%= f.label :telephone, "Telephone" %>
+    <%= f.label :telephone, "Telephone", class: "invoice-settings" %>
     <%= f.text_field :telephone, autofocus: true, class: 'form-control', placeholder: 'Telephone No.' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :email, label: false do %>
   <div class="input-group name">
-    <%= f.label :email, "Email" %>
+    <%= f.label :email, "Email", class: "invoice-settings" %>
     <%= f.text_field :email, autofocus: true, class: 'form-control', placeholder: 'Email address' %>
   </div>
 <% end %>
@@ -42,49 +42,49 @@
 
 <%= form_group_for f, :bank_account_name, label: false do %>
   <div class="input-group name">
-    <%= f.label :bank_account_name, "Bank account name" %>
+    <%= f.label :bank_account_name, "Bank account name", class: "invoice-settings" %>
     <%= f.text_field :bank_account_name, autofocus: true, class: 'form-control', placeholder: 'Bank account name' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_name, label: false do %>
   <div class="input-group name">
-    <%= f.label :bank_name, "Bank name" %>
+    <%= f.label :bank_name, "Bank name", class: "invoice-settings" %>
     <%= f.text_field :bank_name, autofocus: true, class: 'form-control', placeholder: 'Bank name' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_address, label: false do %>
   <div class="input-group name">
-    <%= f.label :bank_address, "Bank branch" %>
+    <%= f.label :bank_address, "Bank branch", class: "invoice-settings" %>
     <%= f.text_field :bank_address, autofocus: true, class: 'form-control', placeholder: 'Bank branch' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_account_no, label: false do %>
   <div class="input-group bank">
-    <%= f.label :bank_account_no, "Account number" %>
+    <%= f.label :bank_account_no, "Account number", class: "invoice-settings" %>
     <%= f.text_field :bank_account_no, autofocus: true, class: 'form-control', placeholder: 'Account number' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_sort, label: false do %>
   <div class="input-group bank">
-    <%= f.label :bank_sort, "Sortcode" %>
+    <%= f.label :bank_sort, "Sortcode", class: "invoice-settings" %>
     <%= f.text_field :bank_sort, autofocus: true, class: 'form-control', placeholder: 'Sortcode' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_bic, label: false do %>
   <div class="input-group bank">
-    <%= f.label :bank_bic, "BIC code" %>
+    <%= f.label :bank_bic, "BIC code", class: "invoice-settings" %>
     <%= f.text_field :bank_bic, autofocus: true, class: 'form-control', placeholder: 'BIC code' %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_iban, label: false do %>
   <div class="input-group bank">
-    <%= f.label :bank_iban, "IBAN code" %>
+    <%= f.label :bank_iban, "IBAN code", class: "invoice-settings" %>
     <%= f.text_field :bank_iban, autofocus: true, class: 'form-control', placeholder: 'IBAN code' %>
   </div>
 <% end %>
@@ -94,7 +94,7 @@
 
   <%= form_group_for f, :vat_reg_no, label: false do %>
     <div class="input-group vat-reg">
-      <%= f.label :vat_reg_no, "VAT Registration Number" %>
+      <%= f.label :vat_reg_no, "VAT Registration Number", class: "invoice-settings" %>
       <%= f.text_field :vat_reg_no, autofocus: true, class: 'form-control', placeholder: 'VAT Registration Number' %>
     </div>
   <% end %>

@@ -1,4 +1,4 @@
-<div class="panel panel-default col-md-6" style="float:none">
+<div class="panel panel-default col-md-6 col-sm-8" style="float:none">
     <div class="panel-body">
         <table class="invoice-show">
           <tr>
@@ -14,7 +14,7 @@
             <td class="td-invoice"><strong><%= @invoice.header_name %></strong></td>
           </tr>
           <tr>
-            <th class="th-invoice">Comment:</th>
+            <th class="th-invoice th-comment">Comment:</th>
             <td class="td-invoice"><%= simple_format(@invoice.comment) %></td>
           </tr>
           <% if current_account.vat_enabled? %>
@@ -35,9 +35,8 @@
 
           <%= link_to "Back", invoices_path, class: 'action-btn std-btn' %>
           
-          <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %>  
+          <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %>
       </div>
     </div>
 
-          
 
