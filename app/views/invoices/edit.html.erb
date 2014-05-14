@@ -15,10 +15,17 @@
      </ul>">
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
-        <%= render 'edit_header' %>
+
+  <%= form_for @invoice do |f| %>
+    <div class="panel panel-default col-md-6 col-sm-8" style="float:none">
+      <div class="panel-body">
+        <%= render 'edit_header', f: f %>
+      </div>
+    </div>
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= render 'form' %>
+        <%= render 'form', f: f %> 
+      </div>
     </div>
-  </div>
+  <% end %><!-- end of form_for -->
 </div>

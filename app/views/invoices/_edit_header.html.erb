@@ -1,76 +1,67 @@
-<div class="panel panel-default col-md-6 col-sm-8" style="float:none">
-    <div class="panel-body">
-<%= form_for @invoice do |f| %>
-  <%= f.hidden_field :account_id %>
+<%= f.hidden_field :account_id %>
 
-  <%= form_group_for f, :date, label: false do %>
+<%= form_group_for f, :date, label: false do %>
   <div class="input-group invoice-edit">
     <%= f.label :name, "Date:" %>
     <%= f.text_field :date, class: "date_picker invoice-date-picker" %>
   </div>
-  <% end %>
+<% end %>
 
-  <% if params[:action] == 'new' %>
-    <%= form_group_for f, :customer_id, label: false do%>
-    <div class="customer-select">
-      <%= f.collection_select :customer_id, @customers, :id, :name%>
-    <% end %>
-    </div>
-  <% else %>
+<% if params[:action] == 'new' %>
+  
+<%= form_group_for f, :customer_id, label: false do%>
+  <div class="customer-select invoice-edit">
+    <%= f.collection_select :customer_id, @customers, :id, :name%>
+  </div>
+<% end %>
+ 
+<% else %>
   <table class="invoice-edit">
     <tr>
       <th class="th-invoice">Customer:</th>
       <td class="td-invoice"><%= @invoice.customer_name %></td>
     </tr>
   </table>
-  <% end %>
+<% end %>
 
-  <%= form_group_for f, :header_id, label: false do %>
+<%= form_group_for f, :header_id, label: false do %>
   <div class="input-group invoice-edit">
     <%= f.label :header, "Header:" %>
     <%= f.text_field :header_id, data: {headers: get_header_data}, placeholder: "Header - will appear on printed invoice" %>
-  <% end %>
   </div>
+<% end %>
 
-  <%= form_group_for f, :comment, label: false do %>
+<%= form_group_for f, :comment, label: false do %>
   <div class="input-group invoice-edit">
     <%= f.label :comment, "Comment:" %>
     <%= f.text_area :comment, placeholder: "Invoice comment - appears on PDF", class: 'form-control' %>
-  <% end %>
   </div>
-
-  <% if current_account.vat_enabled? %>
-    <%= form_group_for f, :include_vat, label: false do %>
-      <div class="input-group invoice-edit">
-        <%= f.label :include_vat, :class => "check"%>
-        <%= f.check_box :include_vat %>
-      </div>
-    <% end %>
-  <% end %>
-
-    <%= form_group_for f, :include_bank, label: false do %>
-    <div class="input-group invoice-edit">
-      <%= f.label :include_bank, :class => "check" %>
-      <%= f.check_box :include_bank %>
-    </div>
-  <% end %>
-
-  <%= f.submit 'Save Changes', class: 'create-btn std-btn' %>
-
-  <% if session[:new_invoice] == true then %>
-    <% session[:new_invoice] = nil %>
-  <% else %>
-    <%= link_to 'Cancel', invoices_path, class: 'action-btn std-btn' %>
-  <% end %>
-  
-  <%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
- 
-  <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %>
-  </div>
-</div>
 <% end %>
 
+<% if current_account.vat_enabled? %>
+  <%= form_group_for f, :include_vat, label: false do %>
+    <div class="input-group invoice-edit">
+      <%= f.label :include_vat, :class => "check"%>
+      <%= f.check_box :include_vat %>
+    </div>
+  <% end %>
+<% end %>
 
-<!-- <div class="input-group">
-      <p><strong>Customer:</strong> <%= @invoice.customer_name %></p>
-    </div> -->
+<%= form_group_for f, :include_bank, label: false do %>
+  <div class="input-group invoice-edit">
+    <%= f.label :include_bank, :class => "check" %>
+    <%= f.check_box :include_bank %>
+  </div>
+<% end %>
+
+<%= f.submit 'Save Changes', class: 'create-btn std-btn' %>
+
+<% if session[:new_invoice] == true then %>
+  <% session[:new_invoice] = nil %>
+<% else %>
+  <%= link_to 'Cancel', invoices_path, class: 'action-btn std-btn' %>
+<% end %>
+
+<%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
+
+<%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %> 

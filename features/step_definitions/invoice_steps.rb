@@ -7,7 +7,7 @@ Given(/^I select the customer (.*?)$/) do |customer|
 end
 
 Then(/^I should see a (.*?) button$/) do |btn|
-  find_link(btn) || find_button(btn)
+  find_link(btn, exact: true) || find_button(btn, exact: true)
 end
 
 Given(/^I have created the (.*?) invoice$/) do |customer|

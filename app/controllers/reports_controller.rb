@@ -1,22 +1,26 @@
 class ReportsController < ApplicationController
   before_action :authenticate_user!
 
-  # respond_to :html
-
   def new
-    if params[:report]
-      @report = Report.new(report_params)
-    else 
-      @report = Report.new(account_id: current_account.id)
+    respond_to do |format|
+      format.html do
+        @report = Report.new(account_id: current_account.id)
+        @bills = @report.bills.page(params[:page]).per(25)
+      end
+
+      format.js do
+        # pagination request only
+        @report = Report.new(report_params)
+        @report.valid? # trigger validations
+        @bills = @report.bills.page(params[:page]).per(25)
+      end
     end
-    @bills = @report.bills.page(params[:page]).per(25)
   end
 
   def create
-
     @report = Report.new(report_params)
     if @report.valid?
-      @report.generate
+      #@report.generate
       @bills = @report.bills.page(params[:page]).per(25)
       if params[:commit] == "Export"
         send_data @report.bills.to_csv
@@ -24,7 +28,8 @@ class ReportsController < ApplicationController
         render :new
       end
     else
-      flash[:error] = 'something not right'
+      flash.now[:error] = "Please correct the highlighted errors" 
+      @bills = @report.bills.page(params[:page]).per(25)
       render :new
     end
   end

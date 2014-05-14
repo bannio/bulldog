@@ -269,7 +269,7 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Account"
+  within('div.account-btn'){click_link "Account"}
   click_link "Change Password"
   fill_in "user_password", :with => "newpassword"
   fill_in "user_password_confirmation", :with => "newpassword"
@@ -278,7 +278,7 @@ When /^I edit my account details$/ do
 end
 
 When(/^I edit my account and change the email to "(.*?)"$/) do |email|
-  click_link "Account"
+  within('div.account-btn'){click_link "Account"}
   click_link "Change Email Address"
   fill_in "user_email", with: email
   fill_in "user_current_password", :with => @visitor[:password]

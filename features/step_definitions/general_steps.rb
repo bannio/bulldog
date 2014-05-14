@@ -58,6 +58,10 @@ When(/^I click Delete and confirm$/) do
   page.driver.browser.switch_to.alert.accept
 end
 
+When(/^I click for the next page$/) do
+  find('span.next a', visible: false).click
+end
+
 # When(/^I enter a valid email and password$/) do
 #   fill_in 'user_email', with: 'example@example.com'
 #   fill_in 'user_password', with: 'secret12'

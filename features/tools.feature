@@ -41,7 +41,6 @@ Feature: The tools menu provides access to a number of set up
     And I should see "Include VAT?"
     And I should see "Include Bank Details?"
 
-  @ut
   Scenario: telephone and email
     Given I visit the settings page
     Then I should see "Telephone No."

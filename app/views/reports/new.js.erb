@@ -1,2 +1,4 @@
+$('#flashes').remove();
+$('main').prepend("<%= escape_javascript raw(flash_normal) %>");
 $('tbody#report_bills').html('<%= escape_javascript render('bills') %>');
 $('#paginator').html('<%= escape_javascript(paginate(@bills, :remote => true).to_s) %>');

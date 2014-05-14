@@ -57,7 +57,7 @@ Feature: Invoices
     And I click on Invoices
     Then I should be on the Invoices page
     And I should see 6 invoices
-    And I should see a New button
+    And I should see a New Invoice button
     And There is a search field for comment
     When I type "B" in the search field and press enter
     Then I should see 2 invoices
@@ -95,14 +95,14 @@ Feature: Invoices
     Then I should be on the Show Invoice page
     And I should see "changed comment"
 
-  @javascript
+  @javascript @ut
   Scenario: Remove selected bills from invoice
     Given I have the Business invoice
     And I am on the edit page for this invoice
     Then I should see 3 bills
     When I check one bill and click Save Changes
     Then I should be on the Show Invoice page
-    Then I should see 2 bill 
+    Then I should see 2 bills 
 
   @javascript
   Scenario: Delete an invoice
