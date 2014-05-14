@@ -2,6 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a.clickable-block {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+a.clickable-block:hover {
+color: #262626;
+text-decoration: underline;
+cursor: pointer;
+border: 1px solid transparent;
+border-radius: 4px;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+border-color: #444444;
+}
+
+a.clickable-block > p {
+text-align: center;
+color: #000000;
+font-size: 1.6rem;
+font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+padding-top: 0;
+display: inline-block;
+}
+
+a.clickable-block > p:hover {
+border-bottom: #000000 4px solid;
+}
+
 div.row.welcome {
   margin-top: 2%;
   margin-bottom: 2%;
@@ -25,14 +56,56 @@ div.panel.welcome {
 div.panel.welcome > div.panel-body {
   display: inline-block;
   vertical-align: top;
-  margin-top: 10%;
+  // margin-top: 10%;
+  width: 100%;
+  height: 100%;
+  padding: 0 0;
+  position: relative;
+}
+
+div.panel.welcome.flipable {
+  border-color: transparent;
+}
+
+div.panel.welcome.flipable > div.panel-body {
+border: 1px solid transparent;
+border-radius: 4px;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+border-color: #dddddd;
+position: absolute;
+}
+
+div.panel-body.back.card {
+  padding: 0 0;
 }
 
 img.welcome {
   height: 80px;
-  margin: 0 auto;
+  margin: 15% auto 0;
   display: block;
   vertical-align: top;
+}
+
+ul.tools-flip-menu {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul.tools-flip-menu > li > a {
+display: block;
+padding: 3px 20px;
+clear: both;
+font-weight: normal;
+line-height: 1.428571429;
+color: #333333;
+white-space: nowrap;
+}
+
+ul.tools-flip-menu > li > a:hover {
+text-decoration: none;
+color: #262626;
+background-color: whitesmoke;
 }
 
 .flipable {
