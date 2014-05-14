@@ -34,7 +34,7 @@ Feature: The tools menu provides access to a number of set up
   Scenario: Set printing preferences
     Given VAT is enabled
     And I visit the settings page
-    Then I should see "Printing Preferences - set defaults"
+    Then I should see "Printing Preferences (set defaults)"
     And I should see "Include VAT?"
     And I should see "Include Bank Details?"
     When I click on Edit
