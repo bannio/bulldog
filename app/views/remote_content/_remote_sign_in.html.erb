@@ -10,7 +10,7 @@
           <div class="form-group">
             <%= f.label :email %>
             <%- if devise_mapping.registerable? %>
-              <%= link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right'  %>
+              <%= link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right' %>
             <% end -%>
             <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
           </div>
@@ -31,7 +31,7 @@
         </div><!-- /.modal-body -->
         <div class="modal-footer">
           <a class="action-btn std-btn" data-dismiss="modal">Close</a>
-<!--                     <button type="button" class="action-btn std-btn" data-dismiss="modal">Close</button> -->
+<!--<button type="button" class="action-btn std-btn" data-dismiss="modal">Close</button> -->
           <%= f.submit 'Sign in', :class => 'create-btn std-btn' %>
         </div>
       <% end %><!-- end of form for -->

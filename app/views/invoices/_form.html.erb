@@ -2,6 +2,9 @@
     <table class="table table-condensed" id="bill_table">
       <thead>
         <tr>
+          <% if params[:action] == 'edit' %>
+            <th>Remove?</th>
+          <% end %>
           <th class="first-col date-col">Date</th>
           <th class="supplier-col">Supplier</th>
           <th class="category-col">Category</th>
@@ -11,18 +14,20 @@
             <th class="vat-rate-col">VAT rate</th>
             <th class="amount-col align-right">VAT</th>
           <% end %>
-          <% if params[:action] == 'edit' %>
-            <th>Remove?</th>
-          <% end %>
         </tr>
       </thead>
+
       <tbody id="bill_table_body">
         <% @bills.each do |bill| %>
           <%= render 'bill_fields', f: bill %>
         <% end %>
       </tbody>
+
       <tfoot class="no-line">
         <tr class="underline">
+          <% if params[:action] == 'edit' %>
+            <td></td>
+          <% end %>
           <td></td>
           <td></td>
           <td></td>
@@ -32,26 +37,23 @@
             <td></td>
             <td class="align-right"><%= number_to_currency(total_vat(@invoice)) %></td>
           <% end %>
-          <% if params[:action] == 'edit' %>
-            <td></td>
-          <% end %>
         </tr>
 
         <% if current_account.vat_enabled? %>
           <% vat_rates(@bills).each_with_index do |rate, index| %>
             <tr>
+              <% if params[:action] == 'edit' %>
+                <td></td>
+              <% end %>
               <td></td>
               <td></td>
               <td></td>
               <td colspan="2" class="title-td align-right"><%= "VAT Summary" if index == 0 %></td>
               <td class=""><%= rate.name if rate %></td>
               <td class="align-right"><%= number_to_currency(vat_by_rate(@invoice, rate)) if rate %></td>
-              <% if params[:action] == 'edit' %>
-                <td></td>
-              <% end %>
              </tr>
            <% end %>
-         <% end %>                     
+         <% end %>
       </tfoot>
     </table>
   </div>

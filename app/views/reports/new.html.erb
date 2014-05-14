@@ -4,8 +4,8 @@
 <div class="container">
   <h1>Analysis</h1>
   </a>
-     <a href="#" id="pop" class="info-btn pop"  
-     data-title="Data Analysis" 
+     <a href="#" id="pop" class="info-btn pop"
+     data-title="Data Analysis"
      data-content="
      <ul class='info-ul'>
      <li>Pick filters and select 'View' to generate charts and a data table.</li>
@@ -25,18 +25,18 @@
         <!-- <br> -->
         <div class="form-group analysis">
         <%= f.label :from_date, class: "analysis"%>
-        <%= f.text_field :from_date, class: "date_picker analysis" %>
+        <%= f.text_field :from_date, class: "date_picker analysis", placeholder: "yyyy-mm-dd" %>
         </div>
         <div class="form-group analysis">
         <%= f.label :to_date, class: "analysis" %>
-        <%= f.text_field :to_date, class: "date_picker analysis" %>
+        <%= f.text_field :to_date, class: "date_picker analysis", placeholder: "yyyy-mm-dd" %>
         </div>
         <%= f.collection_select :customer_id, Customer.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
         <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
         <%= f.collection_select :category_id, Category.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
 
-        <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data." %> 
-        <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters."  %>
+        <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data." %>
+        <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters." %>
         
     </div><!--end panel body -->
   </div><!--end panel-->

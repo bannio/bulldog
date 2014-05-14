@@ -6,7 +6,8 @@
   <% end %>
   <%= form_group_for f, :rate, label: false do %>
     <%= f.label :VAT_rate %>
-    <%= f.text_field :rate, placeholder: 'enter VAT rate %', class: "form-control" %>
+    <%= f.text_field :rate, placeholder: 'enter VAT rate %', class: "form-control percentage" %>
+    <span class="percentage-symbol">%</span>
   <% end %>
 
   <%= form_group_for f, :active, label: true do %>
@@ -17,5 +18,5 @@
   <% if params[:action] == 'edit' %>
     <%= link_to 'Delete', @vat_rate, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
   <% end %>
-  <%= link_to "Cancel", vat_rates_path, class: "action-btn std-btn", remote: true  %>
+  <%= link_to "Cancel", vat_rates_path, class: "action-btn std-btn", remote: true %>
 <% end %> <!-- end of form_for -->

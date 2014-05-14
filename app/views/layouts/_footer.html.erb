@@ -9,14 +9,18 @@
                     Company
                 </dt>
                 <dd>
-                    <%= link_to 'About Us', page_path('about') %>  
+                    <%= link_to 'About Us', page_path('about') %>
                 </dd>
-                <dd>          
+                <dd>
                     <%= link_to 'Contact Us', page_path('contact') %>
                 </dd>
                 <br>
                 <dd>
+                    <% if user_signed_in? %>
+                    <%= link_to 'Home', page_path('welcome') %>
+                    <% else %>
                     <%= link_to 'Home', page_path('home') %>
+                    <% end %>
                 </dd>
             </dl>
         </div>
@@ -28,13 +32,13 @@
                     Policies and Terms
                 </dt>
                 <dd>
-                    <%= link_to 'Privacy Policy', page_path('privacy') %> 
+                    <%= link_to 'Privacy Policy', page_path('privacy') %>
                 </dd>
                 <dd>
-                    <%= link_to 'Terms and Conditions', page_path('terms') %> 
+                    <%= link_to 'Terms and Conditions', page_path('terms') %>
                 </dd>
                 <dd>
-                    <%= link_to 'Cookie Policy', page_path('cookies') %> 
+                    <%= link_to 'Cookie Policy', page_path('cookies') %>
                 </dd>
             </dl>
         </div>
@@ -45,12 +49,12 @@
                     Community
                 </dt>
                 <dd>
-                    <a href="#">Twitter</a>  
+                    <a href="#">Twitter</a>
                 </dd>
-                <dd>          
+                <dd>
                     <a href="#">Facebook</a>
                 </dd>
-                <dd> 
+                <dd>
                     <a href="#">Linked In</a>
                 </dd>
                 <dd>
@@ -70,13 +74,13 @@
                 <dd>
                     <%= link_to 'Pricing', page_path('pricing') %>
                 </dd>
-                <dd>          
+                <dd>
                     <%= link_to 'FAQs', page_path('faq') %>
                 </dd>
-                <dd> 
+                <dd>
                     <%= link_to 'Story', page_path('story') %>
                 </dd>
-                <dd> 
+                <dd>
                     <%= link_to 'Features', page_path('features') %>
                 </dd>
             </dl>
@@ -86,7 +90,7 @@
 
     <section class="row">
         <div class="col-sm-6 col-xs-6">
-            <p class="copyright">&copy; <%= Time.now.strftime('%Y') %> Owen Bannister Limited. All rights reserved</p> 
+            <p class="copyright">&copy; <%= Time.now.strftime('%Y') %> Owen Bannister Limited. All rights reserved</p>
         </div>
         <div class="col-sm-6 col-xs-6">
           <%- if user_signed_in? %>

@@ -20,5 +20,6 @@ Bulldog::Application.routes.draw do
   resources :vat_rates
   resources :settings, only: [:index, :show, :edit, :update]
   resources :suppliers, only: [:index, :edit, :update]
+  resources :welcome, only: [:index]
 
 end

@@ -11,3 +11,6 @@ en:
       setting:
         include_vat: "Include VAT?"
         include_bank: "Include Bank Details?"
+      vat_rate:
+        VAT_rate: "VAT rate"
+        VAT_rate_name: "VAT rate name"

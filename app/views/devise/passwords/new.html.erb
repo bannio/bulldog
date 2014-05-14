@@ -12,7 +12,7 @@
         <p>Enter your account email address and we will send you instructions to reset your password.</p>
         <%#= devise_error_messages! %>
         <div class="form-group">
-          <%= form_group_for f, :email, label: false do %>      
+          <%= form_group_for f, :email, label: false do %>
             <%= f.label :email, 'Email address' %>
             <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Enter email address' %>
           <% end %>

@@ -17,7 +17,7 @@ Feature: Sign up
     Then I should be on the Account Activation page
     When I enter account activation details 
     Then I should see "Your account was successfully confirmed."
-    And I should be on the Bills page
+    And I should be on the Welcome page
     And I have an Account record saved
     
   Scenario: User signs up with invalid email

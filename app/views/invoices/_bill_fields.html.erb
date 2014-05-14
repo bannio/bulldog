@@ -1,4 +1,7 @@
 <tr>
+  <% if params[:action] == 'edit' %>
+    <td class="remove-col"><%= check_box_tag "bill_ids[]", f.id %></td>
+  <% end %>
   <td class="first-col date-col"><%= f.date %></td>
   <td class="supplier-col"><%= f.supplier_name %></td>
   <td class="category-col"><%= f.category_name %></td>
@@ -7,8 +10,5 @@
   <% if current_account.vat_enabled? %>
     <td class="vat-rate-col"><%= f.vat_rate_name %></td>
     <td class="align-right amount-col"><%= number_to_currency(f.vat) %></td>
-  <% end %>
-  <% if params[:action] == 'edit' %>
-    <td class="remove-col"><%= check_box_tag "bill_ids[]", f.id %></td>
   <% end %>
 </tr>
