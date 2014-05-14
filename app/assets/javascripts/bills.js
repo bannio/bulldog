@@ -78,6 +78,7 @@ ready = function() {
 
   $('#invoice_header_id').select2({
     placeholder: 'Header',
+    maximumInputLength: 27,
     allowClear: true,
     width: 'resolve',
     data: {results: invoiceHeaderData, text: 'name'},

@@ -1,3 +1,39 @@
+// remove yellow background from form fields eg sign up form (doesn't work because color is linked to Chrome autocomplete)
+// input:-webkit-autofill {
+//     background-color: white !important;
+// }
+
+// stripe form errors
+div.stripe-error {
+  color: #a94442;
+}
+
+div.card-expiration > label {
+  display: block;
+}
+
+div.card-expiration > select {
+  display: inline-block;
+  -webkit-appearance: menulist;
+  background-color: #ffffff;
+  color: #424242;
+  height: 3.25rem;
+}
+
+div.card-expiration > select#card_month {
+  width: 60%;
+}
+
+div.card-expiration > select#card_year {
+  width: 38%;
+  float: right;
+}
+
+div.invoice > input.date_picker {
+  float: right;
+  width: 70%;
+}
+
 a.select2-choice:hover,
 div.select2-container:hover,
 input:hover {
@@ -20,35 +56,37 @@ outline-offset: 0px !important;
 
 span.currency-sign {
   display: inline-block;
-  width: 5%;
+  width: 7%;
   float: left;
-  padding: 6px 4px;
+  padding: 9px 8px;
   border-top: 1px solid #444;
   border-bottom: 1px solid #444;
   border-left: 1px solid #444;
-  height: 26px;
+  // height: 26px;
+  height: 3.25rem;
   color: #555;
 }
 
 span.percentage-symbol {
   display: inline-block;
-  width: 5%;
+  width: 7%;
   float: right;
-  padding: 6px 4px;
+  padding: 9px 6px;
   border-top: 1px solid #444;
   border-bottom: 1px solid #444;
   border-right: 1px solid #444;
-  height: 26px;
+  // height: 26px;
+  height: 3.25rem;
   color: #555; 
 }
 
 input.form-control.currency {
-  width: 95%;
+  width: 93%;
   display: inline-block;
 }
 
 input.form-control.percentage  {
-  width: 95%;
+  width: 93%;
   display: inline-block;
   float: left;
 }
@@ -58,7 +96,8 @@ input.date_picker.analysis {
 }
 
 // div.ui-datepicker.ui-widget.ui-widget-content {
-//   z-index: 2 !important;
+
+//   z-index: 1051;
 // }
 
 
@@ -185,7 +224,8 @@ div.modal-header {
 // FORM FIELDS BORDERS AND COLOURING
 
 input {
-  height: 26px;
+  // height: 26px;
+  height: 3.25rem;
 }
 
 input, textarea {
@@ -209,17 +249,20 @@ input.search-query {
   border: 1px solid #444;
   border-radius: 0px;
   background-image: none;
+  height: 3.25rem;
+  line-height: 3.25rem;
+  // margin-bottom: 5px; spaces analysis form but adds too much space to select2s with p.helpblocks
 }
 
 // drop down box arrow box (arrow itself is an img)
 .select2-container > a.select2-choice > span.select2-arrow {
   border-left: 1px solid #444;
   border-radius: 0 0; 
-  // background: #E9E9E9; grey version
   background-color: #ffffff;
   background-image: none;
-  // color: #444;
-// background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee));
+  padding-left: 3px;
+  padding-top: 3px;
+  width: 2.5rem;
 }
 
 // background of entry field on selected menu
@@ -250,7 +293,7 @@ div.select2-drop-active {
 }
 
 div.select2-container {
-  margin: 0 0 1% 0;
+  // margin: 0 0 1% 0;
 }
 
 // form field box shadow on hover, focus, active and visited
@@ -329,11 +372,13 @@ div.select2-container {
 div.form-group {
   width: 100%;
   margin-bottom: 5px;
+  min-height: 3.25rem;
 }
 
 input.date_picker {
   width: 60%;
-  height: 26px;
+  height: 3.25rem;
+  // height: 26px;
   border: 1px solid #444;
   border-radius: 0px;
 }
@@ -395,7 +440,7 @@ form > div > div.edit-settings {
 }
 
 input[type="checkbox"] {
-  margin: 4px 0 0 4px;
+  // margin: 4px 0 0 4px;
 }
 
 // makes account detail table fill full form field
@@ -492,7 +537,8 @@ div.customer-select>select {
   min-width: 100px;
   width: 226px;
   padding-left: 5px;
-  height: 26px;
+  // height: 26px;
+  height: 3.25rem;
 }
 
 
@@ -544,7 +590,7 @@ div.customer-form > textarea.address {
 p.help-block {
   margin: 0px 0px 5px 5px;
   color: #a94442;
-  display: inline-block;
+  // display: inline-block; 
 }
 
 
@@ -579,11 +625,13 @@ nav.pagination > span > a {
 
 // MODAL
 input.form-control {
-  height: 26px;
+  // height: 26px;
+  height: 3.25rem;
 }
 
 div.checkbox > input {
 height: 15px;
+width: 15px;
 }
 
 // new bills modal header

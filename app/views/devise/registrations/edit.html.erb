@@ -6,13 +6,14 @@
       <div class="authform">
         <h1>Change Password</h1>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
-          <div class="form-group">
+          
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="form-group">
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            </div>
             <% end %>
-          </div>
-          <fieldset>
-          <br>
+          <!-- <fieldset> -->
+          <!-- <br> -->
             <%= form_group_for f, :password, label: false do %>
               <div class="form-group">
                 <%= f.label :'New password' %>
@@ -25,8 +26,8 @@
                 <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Re-enter new password' %>
               </div>
             <% end %>
-          </fieldset>
-          <fieldset>
+          <!-- </fieldset> -->
+          <!-- <fieldset> -->
           <br>
             <p>You must enter your current password to make changes.</p>
             <%= form_group_for f, :current_password, label: false do %>
@@ -35,8 +36,8 @@
                 <%= f.password_field :current_password, class: 'form-control', placeholder: 'Enter current password' %>
               </div>
             <% end %>
-          </fieldset>
-          <%= link_to 'Cancel', bills_path, class: 'action-btn std-btn' %>
+          <!-- </fieldset> -->
+          <%= link_to 'Cancel', welcome_index_path, class: 'action-btn std-btn' %>
           <%= f.submit 'Update', :class => 'create-btn std-btn' %>
         <% end %>
       </div>

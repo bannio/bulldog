@@ -1,3 +1,8 @@
+// Ensures datepicker fields appear over text fields
+div.input-group {
+  z-index: 2;
+}
+
 // NAVBAR OUTER CONTAINER
 nav.navbar-wrapper {
   width: 100vw;
@@ -152,6 +157,10 @@ a.subnav-btn, a.menu-item {
 
 div.subnav-link>li.dropdown {
   list-style-type: none;
+}
+
+.dropdown-menu > li > a {
+  padding: 7px 20px;
 }
 
 // aligns dropdown with bottom of subnav

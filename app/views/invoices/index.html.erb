@@ -23,11 +23,11 @@
         <div class="form-group">
           <h2 class="filter">Filter invoices</h2>
         </div>
-        <div class="form-group">
+        <div class="form-group invoice">
               <%= label_tag :from_date %>
               <%= text_field_tag :from_date, params[:from_date], class: "date_picker", placeholder: "yyyy-mm-dd" %>
           </div>
-          <div class="form-group">
+          <div class="form-group invoice">
               <%= label_tag :to_date %>
               <%= text_field_tag :to_date, params[:to_date], class: "date_picker", placeholder: "yyyy-mm-dd" %>
           </div>
