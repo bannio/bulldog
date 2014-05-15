@@ -57,9 +57,9 @@ input.date_picker.analysis {
   padding-left: 5px;
 }
 
-div.ui-datepicker.ui-widget.ui-widget-content {
-  z-index: 2 !important;
-}
+// div.ui-datepicker.ui-widget.ui-widget-content {
+//   z-index: 2 !important;
+// }
 
 
 table.account-details > tbody > tr > td.td-content {
@@ -343,6 +343,10 @@ input.search-query {
 }
 
 // INVOICE SETTINGS FORM
+
+.input-group {
+  z-index: 2;
+}
 
 .input-group .form-control{
   width: 70%;
@@ -630,3 +634,6 @@ margin-top: 20px;
 // .line-through {
 //   text-decoration: line-through;
 // }
+
+// attempt to make datepicker visible in modal
+

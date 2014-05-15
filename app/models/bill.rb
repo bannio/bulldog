@@ -7,6 +7,7 @@ class Bill < ActiveRecord::Base
   belongs_to :category
   belongs_to :vat_rate
 
+  validates :date, date: true
   validates :account_id, :date, :customer_id, :supplier_id, :category_id, :amount, presence: true
   validates :amount, numericality: true
 

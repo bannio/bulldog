@@ -7,6 +7,8 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.visible_to(current_user).includes(:customer).
                                                 customer_filter(params[:inv_customer_id]).
                                                 search(params[:search]).
+                                                filter_from(params[:from_date]).
+                                                filter_to(params[:to_date]).
                                                 page(params[:page]).
                                                 order(sort_column + " " + sort_direction)
   end

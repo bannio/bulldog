@@ -5,7 +5,7 @@ FactoryGirl.define do
     account_id "1"
     customer
     date "2014-02-17"
-    number "MyString"
+    sequence(:number) {|n| "#{n}"} 
     total "9.99"
     comment "MyText"
     header_id "1"

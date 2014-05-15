@@ -270,7 +270,7 @@ end
 
 When /^I edit my account details$/ do
   within('div.account-btn'){click_link "Account"}
-  click_link "Change Password"
+  within('div.account-btn'){click_link "Change Password"}
   fill_in "user_password", :with => "newpassword"
   fill_in "user_password_confirmation", :with => "newpassword"
   fill_in "user_current_password", :with => @visitor[:password]
@@ -279,7 +279,7 @@ end
 
 When(/^I edit my account and change the email to "(.*?)"$/) do |email|
   within('div.account-btn'){click_link "Account"}
-  click_link "Change Email Address"
+  within('div.account-btn'){click_link "Change Email Address"}
   fill_in "user_email", with: email
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"

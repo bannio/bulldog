@@ -4,7 +4,8 @@ class ReportsController < ApplicationController
   def new
     respond_to do |format|
       format.html do
-        @report = Report.new(account_id: current_account.id)
+        params[:report] = {account_id: current_account.id}
+        @report = Report.new(params[:report])
         @bills = @report.bills.page(params[:page]).per(25)
       end
 

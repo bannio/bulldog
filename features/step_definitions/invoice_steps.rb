@@ -117,3 +117,11 @@ end
 Given(/^the header "(.*?)" exists$/) do |header|
   @account.headers.create(name: header)
 end
+
+Given(/^I select "(.*?)" as invoice from date$/) do |date|
+  fill_in 'from_date', with: date
+end
+
+Given(/^I select "(.*?)" as invoice to date$/) do |date|
+  fill_in 'to_date', with: date
+end

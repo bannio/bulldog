@@ -95,7 +95,7 @@ Feature: Invoices
     Then I should be on the Show Invoice page
     And I should see "changed comment"
 
-  @javascript @ut
+  @javascript
   Scenario: Remove selected bills from invoice
     Given I have the Business invoice
     And I am on the edit page for this invoice
@@ -163,6 +163,32 @@ Feature: Invoices
     And I am on the edit page for this invoice
     Then I should see "Print VAT Details?"
     And I should see "Print Bank Details?"
+
+  @ut  
+  Scenario: filter invoices list by date
+    Given I have the following invoices
+    # no | customer | comment     | date       | total  |
+    | 1  | Household | A invoice   | 2012-12-10 | 5.46   |
+    | 2  | Business  | B invoice   | 2012-12-12 | 46.00  |
+    | 3  | Business  | C invoice B | 2012-10-12 | 100.00 |
+    | 4  | Household | D invoice   | 2012-10-11 | 4.00   |
+    | 5  | Business  | E invoice   | 2012-10-10 | 5.00   | 
+    | 10 | Business  | F invoice   | 2012-10-11 | 5.00   | 
+
+    Given I visit the home page
+    And I click on Invoices
+    Then I should be on the Invoices page
+    And I should see 6 invoices
+    And I select "2012-10-12" as invoice from date
+    And I click button Filter
+    Then I should see 3 invoices
+    When I select "2012-12-10" as invoice to date
+    And I click button Filter
+    Then I should see 2 invoices
+    When I click on Clear
+    Then I should see 6 invoices
+
+
 
     
 

@@ -11,8 +11,10 @@ class Invoice < ActiveRecord::Base
   validates :customer_id, :date, presence: true
 
   validate :customer_has_uninvoiced_bills?, on: :create
+  validates :from_date, :to_date, date: true, allow_blank: true
+  #validate :from_date_after_to_date
 
-  attr_accessor :new_header
+  attr_accessor :new_header, :from_date, :to_date
   before_save :create_header
 
   def self.next_number(account)
@@ -62,6 +64,22 @@ class Invoice < ActiveRecord::Base
     end
   end
 
+  def self.filter_from(date)
+    if date.present? && date_valid?(date)
+      where('date >= :q', q: "#{date}")
+    else
+      all
+    end
+  end
+
+  def self.filter_to(date)
+    if date.present? && date_valid?(date)
+      where('date <= :q', q: "#{date}")
+    else
+      all
+    end
+  end
+
   def self.search(search)
     if search.present?
       # where('customer_id in (select id from customers where name ilike :q)', q: "%#{search}%")
@@ -74,5 +92,14 @@ class Invoice < ActiveRecord::Base
 
   def create_header
     self.header = Header.create(name: new_header, account_id: self.account_id) if new_header.present?
+  end
+
+  def self.date_valid?(date)
+    true if (date.is_a?(Date) || date =~ /\A\d{4}-\d{2}-\d{2}\z/ ) && 
+      begin
+        date.to_date.is_a?(Date)
+      rescue ArgumentError
+        false
+      end
   end
 end

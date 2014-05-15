@@ -92,6 +92,10 @@ Scenario: Pagination keeps the selection criteria
   And I visit the Analysis page
   Then I should see "Filter bills"
   Then I should find 25 bills
+  When I click on Table
+  And I click for the next page
+  And I click on Table
+  Then I should find 20 bills
   When I select "Household" as customer
   And I click button View
   And I click on Table

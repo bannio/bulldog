@@ -69,4 +69,53 @@ describe Invoice do
     expect(invoice.header_name).to eq "Invoice"
   end
 
+  it "can create a new header" do
+    invoice = Invoice.new(customer_id: @customer.id,
+                                 date: "2014-02-01",
+                                 new_header: "Test Header" )
+    expect(invoice.header_id).to be_blank
+    invoice.instance_eval{create_header}
+    expect(invoice.header_id).to_not be_blank
+  end
+
+  it "can filter by from and to dates" do
+    customer2 = create(:customer)
+    bill = create(:bill, customer: customer2)
+    invoice = create(:invoice, customer_id: @customer.id, date: "2013-05-01")
+    invoice2 = create(:invoice, customer_id: customer2.id, date: "2014-05-01")
+    expect(Invoice.filter_from("2013-12-01")).to eq [invoice2]
+    expect(Invoice.filter_from("2012-01-01")).to eq [invoice, invoice2]
+    expect(Invoice.filter_from("")).to eq [invoice, invoice2]
+    expect(Invoice.filter_from("2014-12-01")).to eq []
+    expect(Invoice.filter_to("2014-12-01")).to eq [invoice, invoice2]
+    expect(Invoice.filter_to("2013-12-01")).to eq [invoice]
+    expect(Invoice.filter_to("2012-12-01")).to eq []
+    expect(Invoice.filter_to("")).to eq [invoice, invoice2]
+  end
+
+  it "can filter by customer" do
+    customer2 = create(:customer)
+    customer3 = create(:customer)
+    bill = create(:bill, customer: customer2)
+    invoice = create(:invoice, customer_id: @customer.id)
+    invoice2 = create(:invoice, customer_id: customer2.id)
+    expect(Invoice.customer_filter(@customer)).to eq [invoice]
+    expect(Invoice.customer_filter(customer2)).to eq [invoice2]
+    expect(Invoice.customer_filter("")).to eq [invoice, invoice2]
+    expect(Invoice.customer_filter(customer3)).to eq []
+  end
+
+  it "can search by comment" do
+    customer2 = create(:customer)
+    bill = create(:bill, customer: customer2)
+    invoice = create(:invoice, customer_id: @customer.id, comment: "Test one")
+    invoice2 = create(:invoice, customer_id: customer2.id, comment: "test two")
+    expect(Invoice.search("test")).to eq [invoice, invoice2]
+    expect(Invoice.search("TEST")).to eq [invoice, invoice2]
+    expect(Invoice.search("")).to eq [invoice, invoice2]
+    expect(Invoice.search("two")).to eq [invoice2]
+    expect(Invoice.search("ONE")).to eq [invoice]
+    expect(Invoice.search("xyz")).to eq []
+  end
+
 end

@@ -59,7 +59,8 @@ When(/^I click Delete and confirm$/) do
 end
 
 When(/^I click for the next page$/) do
-  find('span.next a', visible: false).click
+  # find('span.next a', visible: false).click
+  click_on '2'
 end
 
 # When(/^I enter a valid email and password$/) do
