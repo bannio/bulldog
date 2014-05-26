@@ -5,8 +5,43 @@
     <div class="panel-body">
       <h1>New Account</h1>
         <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="How to use this page" data-content="This is how to use this page. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, quis, doloribus, dicta est culpa ipsa voluptatem incidunt eveniet molestias optio unde neque facilis cum quam ut expedita quaerat odit! Inventore, ratione, nulla atque temporibus minima cumque sapiente deleniti similique porro quam molestias nobis esse sit nisi cupiditate iure dolorum laborum."><img src="/assets/info_btn.png" alt="info button" class="info-img"/></a>
-      <div class="authform">
-      <%= render 'form' %>
+      <div class="signup-form">
+        <%= form_for @account do |f| %>
+          <%= f.hidden_field :plan_id %>
+          <%= f.hidden_field :stripe_card_token %>
+          <%= form_group_for f, :name, label: false do %>
+          <%= f.label :name %>
+          <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Account name' %>
+          <% end %>
+          <%= form_group_for f, :email, label: false do %>
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control', placeholder: 'Verification email sent here' %>
+          <% end %>
+
+          <% if @account.stripe_card_token.present? %>
+            Credit card has been provided.
+          <% else %>
+            <div class="field">
+              <%= label_tag :card_number, "Card Number" %>
+              <%= text_field_tag :card_number, nil, name: nil %>
+            </div>
+            <div class="field">
+              <%= label_tag :card_code, "Security Code on Card (CVC)" %>
+              <%= text_field_tag :card_code, nil, name: nil %>
+            </div>
+            <div class="field">
+              <%= label_tag :card_month, "Card Expiration" %>
+              <%= select_month nil, {add_month_numbers: false}, {name: nil, id: "card_month"} %>
+              <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+            </div>
+          <% end %>
+          <div id="stripe_error">
+            <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+          </div>
+          <div class="actions">
+            <%= f.submit "Subscribe" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>  

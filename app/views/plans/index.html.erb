@@ -1,0 +1,22 @@
+<% content_for :title do %>Bulldog-Clip | Plans<% end %>
+<% content_for :description do %>Subscription plans<% end %>
+
+
+<div id="plans">
+  <h1>Subscription Plans</h1>
+  <% @plans.each do |plan| %>
+    <div class="plan">
+      <div class="name"><%= plan.name %></div>
+      <div class="details">
+        <div class="price">
+          <%= number_to_currency plan.amount/100 %>
+        </div>
+        <div class="per_month">per year</div>
+        <div class="signup">
+          <%= link_to "Sign up", new_account_path(:plan_id => plan.id) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>

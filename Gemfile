@@ -29,6 +29,7 @@ gem 'prawn'
 gem 'kaminari'
 gem 'groupdate'
 gem 'chartkick'
+gem 'stripe'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -52,12 +53,14 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'email_spec'
+  gem 'action_mailer_cache_delivery', '~> 0.3.7'
 end
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "rails_layout"
+  gem "letter_opener"
 end
 
 group :test, :development do

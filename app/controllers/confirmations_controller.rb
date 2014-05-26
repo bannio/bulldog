@@ -10,7 +10,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       if @confirmable.has_no_password?
         @confirmable.attempt_set_password(params[:user])
         if @confirmable.valid?
-          @confirmable.account_set_up(params[:user])
+          # @confirmable.account_set_up(params[:user])
           do_confirm
         else
           do_show

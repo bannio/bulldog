@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508151047) do
+ActiveRecord::Schema.define(version: 20140521105849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,12 @@ ActiveRecord::Schema.define(version: 20140508151047) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "vat_enabled"
+    t.string   "email"
+    t.integer  "plan_id"
+    t.string   "stripe_customer_token"
   end
+
+  add_index "accounts", ["plan_id"], name: "index_accounts_on_plan_id", using: :btree
 
   create_table "bills", force: true do |t|
     t.integer  "account_id"
@@ -91,6 +96,14 @@ ActiveRecord::Schema.define(version: 20140508151047) do
 
   add_index "invoices", ["account_id"], name: "index_invoices_on_account_id", using: :btree
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+
+  create_table "plans", force: true do |t|
+    t.string   "name"
+    t.integer  "amount"
+    t.string   "interval"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "settings", force: true do |t|
     t.integer  "account_id"

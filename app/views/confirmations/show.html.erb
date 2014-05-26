@@ -9,12 +9,6 @@
           <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch'}, :id => 'activation-form' do |f| %>
 
           <div class="form-group">
-            <%= form_group_for f, :account_name, label: false do %>
-                <%= f.label :account_name, 'Create account name' %>
-                <%= f.text_field :account_name, class: 'form-control', autofocus: true, placeholder: 'Enter an account name' %>
-            <% end %>
-          </div>
-          <div class="form-group">
             <%= form_group_for f, :password, label: false do %>
               <%= f.label :password,'Choose password' %>
               <%= f.password_field :password, class: 'form-control', placeholder: 'Enter a password' %>

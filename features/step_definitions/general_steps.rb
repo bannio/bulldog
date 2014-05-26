@@ -7,7 +7,7 @@ Given(/^the application exists$/) do
 end
 
 When(/^I visit the home page$/) do
-  visit '/'
+  visit home_path
 end
 
 Then(/^I should be on the (.*) page$/) do |pagename|
@@ -41,6 +41,7 @@ Given /^I click the third table row$/ do
 end
 
 When(/^I click on (.+)$/) do |link|
+  Capybara.exact = true
   find_link(link)
   click_link(link)
 end
@@ -86,8 +87,8 @@ When(/^I fill in address details and click save$/) do
 end
 
 Then(/^I have an Account record saved$/) do
-  find_user
-  account = Account.find_by user_id: @user.id
+  user = User.where(email: 'example@example.com').first
+  account = Account.find_by user_id: user.id
   expect(account).to be_true
 end
 
@@ -127,3 +128,16 @@ end
 Given(/^I visit the settings page$/) do
   visit "/settings"
 end
+
+And(/^wait (\d+)$/) do |secs|
+  sleep secs
+end
+
+Then(/^we should be on the Plans page$/) do
+  expect(current_path).to eq("/plans")
+end
+
+Then(/^we should be on the New Account page$/) do
+  expect(current_path).to eq("/accounts/new")
+end
+

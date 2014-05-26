@@ -36,7 +36,8 @@ describe AccountsController do
 
   describe "GET #new" do
     it "assigns an new account as @account" do
-      get :new
+      plan = FactoryGirl.create(:plan)
+      get :new, plan_id: plan.to_param
       expect(assigns(:account)).to be_a_new(Account)
     end
   end
@@ -66,25 +67,44 @@ describe AccountsController do
   describe "POST #create" do
 
     context "with valid attributes" do
-      it "saves the new account to the database" do
-        expect{
-          post :create, account: attributes_for(:account)
-        }.to change(Account, :count).by(1)
+      before(:each) do
+
+        sign_out @user
+        user = double(User)
+        Account.any_instance.stub(:save_with_payment).and_return(user)
       end
-      it "redirects to show" do
-        post :create, account: attributes_for(:account)
-        expect(response).to redirect_to account_path(assigns(:account))
+      subject {post :create, account: attributes_for(:account).merge(user_id: "")}
+
+      it "redirects to home path" do
+        expect(subject).to redirect_to home_path
+      end
+      it "flashes a message" do
+        expect(subject.request.flash[:notice]).to_not be_nil
       end
     end
 
+      it 'does not creates a new subscription if stripe fails to create a token' do
+        exception = Stripe::InvalidRequestError.new("",{})
+        Stripe::Customer.should_receive(:create).and_raise(exception)
+        expect {
+          post :create, account: attributes_for(:account).merge(user_id: "")
+        }.to change(Account, :count).by(0)
+      end
+
     context "with invalid attributes" do
+      before(:each) do
+        sign_out @user
+        # err = double(Stripe::InvalidRequestError)
+        stripe_customer = OpenStruct.new(id: "cust_id")
+        Stripe::Customer.stub(:create).with(anything()).and_return(stripe_customer)
+      end
       it "does not save the new account to the database" do
         expect{
-          post :create, account: attributes_for(:account).merge(name: "")
+          post :create, account: attributes_for(:account).merge(email: "")
         }.to_not change(Account, :count).by(1)
       end
       it "renders the new template" do
-        post :create, account: attributes_for(:account).merge(name: "")
+        post :create, account: attributes_for(:account).merge(email: "")
         expect(response).to render_template :new
       end
     end

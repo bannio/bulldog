@@ -18,6 +18,7 @@
 # Ignore things with passwords
 /config/database.yml
 /config/application.yml
+/config/initializers/stripe.rb
 
 /coverage
 

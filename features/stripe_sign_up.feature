@@ -1,4 +1,4 @@
-@sign_up
+@stripe_sign_up
 Feature: Sign up
   In order to get access to protected sections of the site
   As a user
@@ -6,11 +6,21 @@ Feature: Sign up
 
   Background:
     Given I am not logged in
+    And a Base Plan exists
+    And no emails have been sent
 
+  @ut @javascript
   Scenario: User signs up with valid data
-    When I sign up with just my email
-    Then I should see a successful sign up message
-    And I should receive an email
+    When I visit the home page
+    When I click on Sign up
+    Then we should be on the Plans page
+    When I Sign up for Base Plan
+    Then we should be on the New Account page
+    When I enter my name and email address
+    And my credit card details
+    And I click button Subscribe
+    And wait 5
+    Then I should receive an email
     When I open the email
     Then I should see "confirm" in the email body
     When I follow "confirm" in the email
@@ -32,6 +42,6 @@ Feature: Sign up
     When I activate without a password confirmation
     Then I should see a missing password confirmation message
 
-  Scenario: User acctivates account with mismatched password and confirmation
+  Scenario: User activates account with mismatched password and confirmation
     When I activate with a mismatched password confirmation
     Then I should see a mismatched password message

@@ -28,12 +28,12 @@ class User < ActiveRecord::Base
     update_attributes(p)
   end
 
-  def account_set_up(params)
-    p = {}
-    p[:user_id] = id
-    p[:name] = params[:account_name]
-    Account.create(p) unless self.account.present?
-  end
+  # def account_set_up(params)
+  #   p = {}
+  #   p[:user_id] = id
+  #   p[:name] = params[:account_name]
+  #   Account.create(p) unless self.account.present?
+  # end
 
   # new function to return whether a password has been set
   def has_no_password?

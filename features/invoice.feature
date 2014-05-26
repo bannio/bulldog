@@ -164,7 +164,6 @@ Feature: Invoices
     Then I should see "Print VAT Details?"
     And I should see "Print Bank Details?"
 
-  @ut  
   Scenario: filter invoices list by date
     Given I have the following invoices
     # no | customer | comment     | date       | total  |

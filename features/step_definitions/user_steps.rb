@@ -179,7 +179,6 @@ When(/^I sign up with just my email$/) do
 end
 
 When(/^I enter account activation details$/) do
-  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: 'password'
   click_button 'Activate'
@@ -220,7 +219,6 @@ When /^I activate without a password$/ do
   sign_up
   open_email(@visitor[:email])
   click_first_link_in_email
-  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: ''
   fill_in 'user_password_confirmation', with: 'password'
   click_button 'Activate'
@@ -231,7 +229,6 @@ When /^I activate without a password confirmation$/ do
   sign_up
   open_email(@visitor[:email])
   click_first_link_in_email
-  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: ''
   click_button 'Activate'
@@ -242,7 +239,6 @@ When /^I activate with a mismatched password confirmation$/ do
   sign_up
   open_email(@visitor[:email])
   click_first_link_in_email
-  fill_in 'user_account_name', with: 'My Account'
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: 'anotherpassword'
   click_button 'Activate'

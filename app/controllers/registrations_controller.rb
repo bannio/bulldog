@@ -1,8 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  # This is designed to go with a modal registration
-  # May not need it. Don't set in devise routes yet.
-
   prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy, :edit_email]
 
   def edit_email

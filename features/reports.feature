@@ -25,22 +25,22 @@ Scenario: Analysis Menu exists
 Scenario: I can filter by date ranges
   Given I visit the Analysis page
   And I select "2013-01-01" as start date
-  And I click button Submit
+  And I click button View
   Then I should find 3 bills
   When I select "2013-02-25" as end date
-  And I click button Submit
+  And I click button View
   Then I should find 2 bills
 
 Scenario: I can filter by customer, supplier and category
   Given I visit the Analysis page
   And I select "Household" as customer
-  And I click button Submit
+  And I click button View
   Then I should find 3 bills
   When I select "Asda" as supplier
-  And I click button Submit
+  And I click button View
   Then I should find 2 bills
   When I select "Clothes" from category
-  And I click button Submit
+  And I click button View
   Then I should find 1 bills
   
 @javascript
