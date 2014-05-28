@@ -2,21 +2,27 @@
 <% content_for :description do %>Subscription plans<% end %>
 
 
-<div id="plans">
-  <h1>Subscription Plans</h1>
-  <% @plans.each do |plan| %>
-    <div class="plan">
-      <div class="name"><%= plan.name %></div>
-      <div class="details">
-        <div class="price">
-          <%= number_to_currency plan.amount/100 %>
-        </div>
-        <div class="per_month">per year</div>
-        <div class="signup">
-          <%= link_to "Sign up", new_account_path(:plan_id => plan.id) %>
+<div id="container plans">
+  <div class="col-md-4 col-md-offset-4 panel panel-default">
+    <div class="panel-body">
+    <h1>Subscription Plans</h1>
+    <% @plans.each do |plan| %>
+      <div class="plan">
+        <div class="name"><%= plan.name %></div>
+        <div class="details">
+          <div class="price">
+            <%= number_to_currency plan.amount/100 %>
+          </div>
+          <div class="per_year">per year</div>
+          <div class="signup pull-right">
+            <a href="/home" class="action-btn std-btn">Cancel</a>
+            <%= link_to "Sign up", new_account_path(:plan_id => plan.id), class: "create-btn std-btn" %>
+          </div>
         </div>
       </div>
+    <% end %>
+    <div class="clear">
     </div>
-  <% end %>
-  <div class="clear"></div>
+    </div>
+  </div>
 </div>

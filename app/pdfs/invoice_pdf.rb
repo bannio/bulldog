@@ -88,7 +88,9 @@ end
       bounding_box([360,0], :width => 180) do
         text_box (@invoice.header_name.upcase).presence || "INVOICE", 
               size: 16, 
-              style: :bold
+              style: :bold,
+              :width => 180, :height => 20,
+              :overflow => :shrink_to_fit
     end
     
     # adds invoice_number_and_date

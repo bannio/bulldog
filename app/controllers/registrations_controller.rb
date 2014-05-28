@@ -7,6 +7,10 @@ class RegistrationsController < Devise::RegistrationsController
     render :edit_email
   end
 
+  # def after_update_path_for(resource)
+  #   welcome_index_path
+  # end
+
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
@@ -19,6 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
           :update_needs_confirmation : :updated
         set_flash_message :notice, flash_key
       end
+      logger.info "LINE 22 RegistrationsController #{after_update_path_for(resource)}"
       sign_in resource_name, resource, bypass: true
       respond_with resource, location: after_update_path_for(resource)
     else
@@ -26,6 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
       if edit_email?
         render :edit_email
       else
+        logger.info "LINE 30 RegistrationsController #{after_update_path_for(resource)}"
         respond_with resource
       end
     end
@@ -35,6 +41,10 @@ class RegistrationsController < Devise::RegistrationsController
     params[:user][:edit_email]
   end
 
+  protected
+    def after_update_path_for(resource)
+      welcome_index_path
+  end
  # def create
  #  build_resource(sign_up_params)
 
