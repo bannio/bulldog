@@ -34,7 +34,7 @@ Feature: Account
     And I should see "we need to verify your new email address."
     And I should see "Please check your email and click on the confirm link"
     And I should see "to finalize confirming your new email address."
-    And I should be on the Home page
+    And I should be on the Welcome page
 
   Scenario: I give the wrong current password
     Given I am a user with an account

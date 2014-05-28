@@ -5,11 +5,12 @@
     <title><%= content_for?(:title) ? yield(:title) : "Bulldog" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Bulldog" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <%= javascript_include_tag "https://js.stripe.com/v2/", "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
   </head>
-  <body><a name="top"></a><!--makes back to top of page links work-->
+  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+  <a name="top"></a><!--makes back to top of page links work-->
     <header role="navigation">
       <%= render 'layouts/navigation' %>
     </header>

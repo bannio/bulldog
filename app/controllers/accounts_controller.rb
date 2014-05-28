@@ -17,14 +17,12 @@ class AccountsController < ApplicationController
   def update
     @account = Account.find(params[:id])
     if @account.update(account_params)
-      # flash[:notice] = "Account successfully updated"
       redirect_to @account, notice: "Account successfully updated"
     else
       render 'edit'
     end
   end
 
-  # should this be removed? Accounts are set up at user confirmation
   def create
     @account = Account.new(account_params)
     if @account.save_with_payment
@@ -34,14 +32,6 @@ class AccountsController < ApplicationController
       flash[:error] = @account.errors[:base][0]
       render 'new'
     end
-
-    # @account.user_id = current_user.id
-    # if @account.save
-    #   flash[:success] = "Account successfully created"
-    #   redirect_to @account
-    # else
-    #   render 'new'
-    # end
   end
 
   private
