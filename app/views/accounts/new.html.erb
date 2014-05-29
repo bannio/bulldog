@@ -15,7 +15,7 @@
           <% end %>
           <%= form_group_for f, :email, label: false do %>
           <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control', placeholder: 'Verification email sent here' %>
+          <%= f.text_field :email, class: 'form-control', placeholder: 'Verification email sent here' %>
           <% end %>
 
           <% if @account.stripe_card_token.present? %>

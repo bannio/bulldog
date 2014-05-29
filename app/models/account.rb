@@ -13,6 +13,7 @@ class Account < ActiveRecord::Base
   after_create :add_setting
 
   validates :name, :email, :plan_id, presence: true
+  validates :email, uniqueness: true, format: {with: /\A[^@]+@[^@]+\z/}
   # validates :user_id, presence: true, on: :create
 
   # scope :owned_by_user, -> { where(user_id: current_user.id) }

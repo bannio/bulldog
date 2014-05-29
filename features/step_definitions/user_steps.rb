@@ -92,12 +92,15 @@ end
 
 def sign_up
   delete_user
-  visit '/sign_up'
-  # fill_in "user_name", :with => @visitor[:name]
-  fill_in "user_email", :with => @visitor[:email]
-  # fill_in "user_password", :with => @visitor[:password]
-  # fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
+  plan = Plan.first || FactoryGirl.create(:plan)
+  visit new_account_path(plan_id: plan.id)
+  fill_in "account_name", with: @visitor[:name]
+  fill_in "account_email", with: @visitor[:email]
+  fill_in 'card_number', with: '4242424242424242'
+  fill_in 'card_code', with: '123'
+  select('January', from: 'card_month')
+  select('2020', from: 'card_year')
+  click_button "Subscribe"
   find_user
 end
 
@@ -168,8 +171,9 @@ When /^I sign up with valid user data$/ do
   sign_up
 end
 
-When(/^I sign up with just my email$/) do
+When(/^I sign up without a name$/) do
   create_visitor
+  @visitor = @visitor.merge(:name => "")
   sign_up
   # delete_user
   # visit '/sign_up'
@@ -214,31 +218,36 @@ When /^I activate with a valid password$/ do
   click_button 'Activate'
 end
 
+def set_up_unconfirmed_user
+  new_token = Devise.token_generator.digest(User, :confirmation_token, 'xyz')
+  @user = FactoryGirl.create(:user,
+                          password: "",
+                          password_confirmation: "",
+                          confirmation_token: new_token)
+  @account = FactoryGirl.create(:account, 
+                          user_id: @user.id, 
+                          email: @user.email)
+  @user.update_attribute(:confirmed_at, "")
+  @user.save
+  visit '/confirmation?confirmation_token=xyz'
+end
+
 When /^I activate without a password$/ do
-  create_visitor
-  sign_up
-  open_email(@visitor[:email])
-  click_first_link_in_email
+  set_up_unconfirmed_user
   fill_in 'user_password', with: ''
   fill_in 'user_password_confirmation', with: 'password'
   click_button 'Activate'
 end
 
 When /^I activate without a password confirmation$/ do
-  create_visitor
-  sign_up
-  open_email(@visitor[:email])
-  click_first_link_in_email
+  set_up_unconfirmed_user
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: ''
   click_button 'Activate'
 end
 
 When /^I activate with a mismatched password confirmation$/ do
-  create_visitor
-  sign_up
-  open_email(@visitor[:email])
-  click_first_link_in_email
+  set_up_unconfirmed_user
   fill_in 'user_password', with: 'password'
   fill_in 'user_password_confirmation', with: 'anotherpassword'
   click_button 'Activate'
@@ -317,6 +326,11 @@ Then /^I should see an invalid email message$/ do
 end
 
 Then /^I should see a missing password message$/ do
+  page.should have_content "can't be blank"
+  # page.should have_content "Password can't be blank"
+end
+
+Then /^I should see a missing name message$/ do
   page.should have_content "can't be blank"
   # page.should have_content "Password can't be blank"
 end

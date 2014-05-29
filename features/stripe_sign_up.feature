@@ -9,7 +9,7 @@ Feature: Sign up
     And a Base Plan exists
     And no emails have been sent
 
-  @ut @javascript
+  @wip @javascript
   Scenario: User signs up with valid data
     When I visit the home page
     When I click on Sign up
@@ -30,10 +30,16 @@ Feature: Sign up
     And I should be on the Welcome page
     And I have an Account record saved
     
+  
   Scenario: User signs up with invalid email
     When I sign up with an invalid email
     Then I should see an invalid email message
 
+  Scenario: User signs up without a name
+    When I sign up with an invalid email
+    Then I should see a missing name message
+
+  @ut
   Scenario: User activates account without password
     When I activate without a password
     Then I should see a missing password message
