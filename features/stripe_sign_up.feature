@@ -39,7 +39,6 @@ Feature: Sign up
     When I sign up with an invalid email
     Then I should see a missing name message
 
-  @ut
   Scenario: User activates account without password
     When I activate without a password
     Then I should see a missing password message

@@ -253,11 +253,11 @@ When /^I activate with a mismatched password confirmation$/ do
   click_button 'Activate'
 end
 
-When /^I sign up with a mismatched password confirmation$/ do
-  create_visitor
-  @visitor = @visitor.merge(:password_confirmation => "changeme123")
-  sign_up
-end
+# When /^I sign up with a mismatched password confirmation$/ do
+#   create_visitor
+#   @visitor = @visitor.merge(:password_confirmation => "changeme123")
+#   sign_up
+# end
 
 When /^I return to the site$/ do
   visit '/'
