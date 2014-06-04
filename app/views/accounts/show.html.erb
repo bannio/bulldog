@@ -27,7 +27,7 @@
       </table>
       <br/>
 
-      <%= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn" %>
+      <%= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit account settings"  %>
       <%#= link_to 'Change Password', edit_user_registration_path, class: "warn-btn std-btn" %>
     </div>
   </div>

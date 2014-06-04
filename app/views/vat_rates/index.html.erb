@@ -22,11 +22,11 @@
 <!--   <div class="panel panel-default">
     <div class="panel-body"> -->
     <div>
-      <%= link_to "New", new_vat_rate_path, remote: true, class: "create-btn std-btn"  %>
+      <%= link_to "New", new_vat_rate_path, remote: true, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Create new VAT rate"   %>
       <% if params[:all] %>
-        <%= link_to "Show Active", vat_rates_path, class: "action-btn std-btn"  %>
+        <%= link_to "Show Active", vat_rates_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Show active VAT rates"   %>
       <% else %>
-        <%= link_to "Show All", vat_rates_path(all: true), class: "action-btn std-btn"  %>
+        <%= link_to "Show All", vat_rates_path(all: true), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Show all active and inactive VAT rates"   %>
       <% end %>
     </div>
 

@@ -201,6 +201,17 @@ h1.info-menu-page, .info-menu-page h1 {
   padding: 10px 0px 5px 0px;
 }
 
+// sidenav accordian title
+.info-page dt > a {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 2rem;
+  color: #000;
+  text-align: left;
+  padding: 10px 0px 5px 0px;
+}
+
 // sidenav
 .info-page dd > a {
   font-size: 1.25rem;

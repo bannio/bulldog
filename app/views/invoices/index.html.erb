@@ -38,8 +38,8 @@
           <%= text_field_tag :search, params[:search], class: "search-query form-control", placeholder: ' by text within comment' %>
         </div>
         <div>
-          <%= submit_tag "Filter", name: nil, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data." %>
-          <%= link_to "Clear", invoices_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters." %>
+          <%= submit_tag "Filter", name: nil, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
+          <%= link_to "Clear", invoices_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>
           <%= link_to "New Invoice", new_invoice_path, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Create a new invoice." %>
         </div>
       <% end %><!-- end of form -->
@@ -67,8 +67,9 @@
                 <td class="first-col number-col"><%= invoice.number %></td>
                 <td class="date-col"><%= invoice.date %></td>
                 <td class="customer-col"><%= invoice.customer_name %></td>
-                <td class="comment-col"><%= invoice.comment %></td>
-                <td class="align-right amount-col"><%= number_to_currency(invoice.total) %></td>
+                <td class="comment-col"><%= truncate(invoice.comment, length: 60, separator: ' ') %></td>
+<!--                 <td class="comment-col"><%= invoice.comment.first(50) %></td>
+ -->                <td class="align-right amount-col"><%= number_to_currency(invoice.total) %></td>
               </tr>
             <% end %>
           </tbody>

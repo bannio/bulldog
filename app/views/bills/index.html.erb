@@ -23,8 +23,8 @@
   <div class="panel panel-default">
     <div class="panel-body">
 
-      <%= link_to "New", new_bill_path, remote: true, class: "create-btn std-btn" %>
-      <%= link_to "Export", bills_path(format: "csv"), class: "action-btn std-btn" %>
+      <%= link_to "New", new_bill_path, remote: true, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Create a new bill" %>
+      <%= link_to "Export", bills_path(format: "csv"), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Download a CSV file of your bills"  %>
 
       <div class="table-responsive">
         <table class="table table-hover table-condensed">

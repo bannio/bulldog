@@ -9,8 +9,8 @@
         <%= f.text_field :postcode, placeholder: 'Postcode', class: 'postcode' %>
       </div>
       <div>
-      <%= f.submit 'Save', :class => 'create-btn std-btn' %>
-      <%= link_to "Cancel", customers_path, class: "action-btn std-btn" %>
+      <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save customers details"  %>
+      <%= link_to "Cancel", customers_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel and return to list of customers"  %>
     <% end %>
       </div>
     <%= render 'layouts/messages' %>

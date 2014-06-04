@@ -5,11 +5,11 @@
 
       <div class="col-sm-6 col-xs-6 col-xxs-3 logo-col">
       <% if user_signed_in? %>
-        <%= link_to (image_tag 'bulldog_clip_navbar_logo.png', class: 'img-responsive'), welcome_index_path, class: 'navbar-logo pull-left' %>
-        <%= link_to (image_tag 'bulldog_clip_navbar_icon.png', class: 'navbar-icon'), welcome_index_path, class: 'navbar-icon pull-left' %>
+        <%= link_to (image_tag 'bulldog_clip_navbar_logo.png', class: 'img-responsive'), welcome_index_path, class: 'navbar-logo pull-left', data: {toggle: "tooltip"}, title: "Return to home page" %>
+        <%= link_to (image_tag 'bulldog_clip_navbar_icon.png', class: 'navbar-icon'), welcome_index_path, class: 'navbar-icon pull-left', data: {toggle: "tooltip"}, title: "Return to home page" %>
       <% else %>
-        <%= link_to (image_tag 'bulldog_clip_navbar_logo.png', class: 'img-responsive'), root_path, class: 'navbar-logo pull-left' %>
-        <%= link_to (image_tag 'bulldog_clip_navbar_icon.png', class: 'navbar-icon'), root_path, class: 'navbar-icon pull-left' %>
+        <%= link_to (image_tag 'bulldog_clip_navbar_logo.png', class: 'img-responsive'), root_path, class: 'navbar-logo pull-left', data: {toggle: "tooltip"}, title: "Return to home page" %>
+        <%= link_to (image_tag 'bulldog_clip_navbar_icon.png', class: 'navbar-icon'), root_path, class: 'navbar-icon pull-left', data: {toggle: "tooltip"}, title: "Return to home page" %>
       <% end %>
 
       </div><!-- end logo-col -->
@@ -20,11 +20,11 @@
             <span class="sr-only">Toggle navigation</span>
             <span class="glyphicon glyphicon-align-justify"></span>
         </a>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-btn' %>
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign out of your account" %>
       <% else %>
             <%#= link_to 'Sign in', new_user_session_path, class: 'nav-btn' %><!--replaced by modal remote sign in -->
-            <%= link_to 'Sign in', remote_sign_in_path, remote: true, class: 'nav-btn' %>
-        <%= link_to 'Sign up', plans_path, class: 'nav-btn' %>
+            <%= link_to 'Sign in', remote_sign_in_path, remote: true, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign in to your Bulldog Clip account" %>
+        <%= link_to 'Sign up', plans_path, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign up for a Bulldog Clip account." %>
       <% end %>
       </div><!-- end logo-col -->
 

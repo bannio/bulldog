@@ -31,11 +31,11 @@
           </tr>
         </table>
 
-          <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'create-btn std-btn' %>
+          <%=  link_to 'Edit', edit_invoice_path(@invoice), class: 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Edit selected invoice"  %>
 
-          <%= link_to "Back", invoices_path, class: 'action-btn std-btn' %>
+          <%= link_to "Back", invoices_path, class: 'action-btn std-btn', data: {toggle: "tooltip"}, title: "Return to invoice list"  %>
           
-          <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank" %>
+          <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank", data: {toggle: "tooltip"}, title: "Download PDF of invoice for print or email"  %>
       </div>
     </div>
 

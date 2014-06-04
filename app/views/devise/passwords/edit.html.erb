@@ -25,7 +25,7 @@
           <%= f.password_field :password_confirmation, :required => true, class: 'form-control', placeholder: 'Re-enter new password' %>
           <% end %>
         </div>
-        <%= f.submit 'Change Password', :class => 'create-btn std-btn right' %>
+        <%= f.submit 'Change Password', :class => 'create-btn std-btn right', data: {toggle: "tooltip"}, title: "Change your account password"  %>
       <% end %>
     <%#= render "devise/shared/links" %>
         </form>

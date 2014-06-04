@@ -17,9 +17,11 @@
     <%= f.text_field :description, placeholder: 'Description', class: "form-control" %>
   <% end %>
   <%= form_group_for f, :amount, label: false do %>
+  <div class= "field_with_errors">
   <span class="currency-sign">£</span>
     <%= f.text_field :amount, placeholder: 'Amount', class: "form-control currency" %>
   <% end %>
+  </div>
   <%= f.submit 'Save', class: 'create-btn std-btn' %>
   <% if params[:action] == 'edit' %>
     <%= link_to 'Delete', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
