@@ -50,3 +50,32 @@ Feature: Sign up
   Scenario: User activates account with mismatched password and confirmation
     When I activate with a mismatched password confirmation
     Then I should see a mismatched password message
+
+  @javascript
+  Scenario Outline: User enters an invalid credit card number
+    Note that the dates and years will go out of date. Need to ind a better way.
+    The form prevents years in the past.
+    When I go to the new account page
+    And I enter my name and email address
+    And I enter <card_no>, <cvc>, <month> and <year>
+    Then I should get <result>
+
+    Examples: 
+      | card_no          | cvc | month    | year | result       |
+      | 4242424242424242 | 123 | January  | 2014 | Your card's expiration month is invalid |
+      | 4242424242424242 | 1   | December | 2014 | Your card's security code is invalid   |
+      | 4242424242424242 |     | December | 2014 | Your card's security code is invalid   |
+      | 4000000000000002 | 123 | December | 2014 | Your card was declined   |
+      | 4000000000000127 | 321 | December | 2014 | Your card's security code is incorrect |
+      | 4242424242424241 | 321 | December | 2014 | Your card number is incorrect |
+      | 4000000000000101 | 321 | December | 2014 | Your card's security code is incorrect |
+
+  @ut @javascript
+  Scenario: Card is declined and alternative card entered
+    When I go to the new account page
+    And I enter my name and email address
+    And I enter 4000000000000002, 321, October and 2020
+    Then I should see "Your card was declined"
+    When I enter 4242424242424242, 321, October and 2020
+    Then I should see "Thanks for subscribing."
+

@@ -30,9 +30,9 @@ class Account < ActiveRecord::Base
       self.user = User.create(email: self.email)
       save!
     end
-  rescue Stripe::InvalidRequestError => e
+  rescue Stripe::InvalidRequestError, Stripe::CardError => e
     logger.error "Stripe error while creating customer: #{e.message}"
-    errors.add :base, "There was a problem with your payment card."
+    errors.add :base, "There was a problem with your payment card: #{e.message}"
     false
   end
 

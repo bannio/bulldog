@@ -2,6 +2,7 @@
       common: {
         init: function() {
         // application-wide code
+        console.log( "SITE init common" );
         }
       },
      
@@ -12,7 +13,13 @@
      
         new: function() {
         // action-specific code
-          // console.log( "Stripe ready!" );
+          console.log( "accounts#new" );
+          Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+          return STRIPE.setupForm();
+        },
+        create: function() {
+        // action-specific code
+          console.log( "accounts#create" );
           Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
           return STRIPE.setupForm();
         }
@@ -21,6 +28,7 @@
 
     STRIPE = {
       setupForm: function() {
+        console.log( "STRIPE setupForm" );
         return $('#new_account').submit(function() {
           $('input[type=submit]').attr('disabled', true);
           if ($('#card_number').length) {
@@ -32,7 +40,7 @@
         });
       },
       processCard: function() {
-        // console.log( "STRIPE process card" );
+        console.log( "STRIPE process card" );
         var card;
         card = {
           number: $('#card_number').val(),

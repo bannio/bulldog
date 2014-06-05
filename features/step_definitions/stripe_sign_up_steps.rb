@@ -21,3 +21,20 @@ end
 When(/^I Sign up for Base Plan$/) do
   within("div.signup"){click_link("Sign up")}
 end
+
+When(/^I enter (\d*), (\d*), (\w*) and (\d*)$/) do |card_number, cvc, month, year|
+  fill_in 'card_number', with: card_number.to_i
+  fill_in 'card_code', with: cvc.to_i
+  select(month, from: 'card_month')
+  select(year.to_i.to_s, from: 'card_year')
+  click_button "Subscribe"
+end
+
+When(/^I go to the new account page$/) do
+  plan = Plan.first || FactoryGirl.create(:plan)
+  visit new_account_path(plan_id: plan.id)
+end
+
+Then(/^I should get (.*)$/) do |result|
+  expect(page).to have_content(result)
+end

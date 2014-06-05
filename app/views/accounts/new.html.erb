@@ -18,7 +18,7 @@
           <%= f.text_field :email, class: 'form-control', placeholder: 'Verification email sent here' %>
           <% end %>
 
-          <% if @account.stripe_card_token.present? %>
+          <% if @account.stripe_card_token.present? && @account.errors[:base].empty?%>
             Credit card has been provided.
           <% else %>
             <div class="field">
