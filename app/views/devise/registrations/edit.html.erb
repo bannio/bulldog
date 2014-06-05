@@ -37,8 +37,8 @@
               </div>
             <% end %>
           <!-- </fieldset> -->
-          <%= link_to 'Cancel', welcome_index_path, class: 'action-btn std-btn' %>
-          <%= f.submit 'Update', :class => 'create-btn std-btn' %>
+          <%= link_to 'Cancel', welcome_index_path, class: 'action-btn std-btn', data: {toggle: "tooltip"}, title: "Cancel and return to home page"  %>
+          <%= f.submit 'Update', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Update your password"  %>
         <% end %>
       </div>
     </div>

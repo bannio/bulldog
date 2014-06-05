@@ -17,9 +17,9 @@
                 <br>
                 <dd>
                     <% if user_signed_in? %>
-                    <%= link_to 'Home', page_path('welcome') %>
+                    <%= link_to 'Home', page_path('welcome'), data: {toggle: "tooltip"}, title: "Return to home page" %>
                     <% else %>
-                    <%= link_to 'Home', page_path('home') %>
+                    <%= link_to 'Home', page_path('home'), data: {toggle: "tooltip"}, title: "Return to home page" %>
                     <% end %>
                 </dd>
             </dl>
@@ -32,13 +32,13 @@
                     Policies and Terms
                 </dt>
                 <dd>
-                    <%= link_to 'Privacy Policy', page_path('privacy') %>
+                    <%= link_to 'Privacy Policy', page_path('privacy'), data: {toggle: "tooltip"}, title: "Read our privacy policy" %>
                 </dd>
                 <dd>
-                    <%= link_to 'Terms and Conditions', page_path('terms') %>
+                    <%= link_to 'Terms and Conditions', page_path('terms'), data: {toggle: "tooltip"}, title: "Read our terms and conditions" %>
                 </dd>
                 <dd>
-                    <%= link_to 'Cookie Policy', page_path('cookies') %>
+                    <%= link_to 'Cookie Policy', page_path('cookies'), data: {toggle: "tooltip"}, title: "Read our cookie policy" %>
                 </dd>
             </dl>
         </div>
@@ -49,19 +49,19 @@
                     Community
                 </dt>
                 <dd>
-                    <a href="#">Twitter</a>
+                    <a href="#", data: {toggle: "tooltip"}, title: "Follow Bulldog Clip on Twitter">Twitter</a>
                 </dd>
                 <dd>
-                    <a href="#">Facebook</a>
+                    <a href="#", data: {toggle: "tooltip"}, title: "Follow Bulldog Clip on Facebook">Facebook</a>
                 </dd>
                 <dd>
-                    <a href="#">Linked In</a>
+                    <a href="#", data: {toggle: "tooltip"}, title: "Follow Bulldog Clip on Linked In">Linked In</a>
                 </dd>
                 <dd>
-                    <a href="#">Blog</a>
+                    <a href="#", data: {toggle: "tooltip"}, title: "Read the Bulldog Clip blog">Blog</a>
                 </dd>
                 <dd>
-                    <a href="#">Forum</a>
+                    <a href="#", data: {toggle: "tooltip"}, title: "Access the Bulldog Clip forum">Forum</a>
                 </dd>
             </dl>
         </div>
@@ -72,16 +72,16 @@
                     Product
                 </dt>
                 <dd>
-                    <%= link_to 'Pricing', page_path('pricing') %>
+                    <%= link_to 'Pricing', plans_path, data: {toggle: "tooltip"}, title: "View Bulldog Clip subscription plans" %>
                 </dd>
                 <dd>
-                    <%= link_to 'FAQs', page_path('faq') %>
+                    <%= link_to 'FAQs', page_path('faq'), data: {toggle: "tooltip"}, title: "Read frequently asked questions" %>
                 </dd>
                 <dd>
-                    <%= link_to 'Story', page_path('story') %>
+                    <%= link_to 'Story', page_path('story'), data: {toggle: "tooltip"}, title: "Read the story behind Bulldog Clip" %>
                 </dd>
                 <dd>
-                    <%= link_to 'Features', page_path('features') %>
+                    <%= link_to 'Features', page_path('features'), data: {toggle: "tooltip"}, title: "Bulldog Clip features" %>
                 </dd>
             </dl>
         </div>

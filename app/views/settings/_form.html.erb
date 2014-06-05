@@ -119,8 +119,8 @@
   </div>
 <% end %>
 
-<%= f.submit 'Save', :class => 'create-btn std-btn' %>
-<%= link_to 'Cancel', setting_path(@setting), class: 'action-btn std-btn' %>
+<%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save new invoice print settings"  %>
+<%= link_to 'Cancel', setting_path(@setting), class: 'action-btn std-btn', data: {toggle: "tooltip"}, title: "Cancel and return to view current invoice print settings"  %>
 
 <%#= flash_messages layout_flash: false %>
 <% end %>

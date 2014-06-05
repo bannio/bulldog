@@ -28,8 +28,8 @@
         <%= f.label :name, "Enter new category name" %>
         <%= f.text_field :name, :class => 'category-name' %>
         <div class="category-btns">
-        <%= f.submit 'Save', :class => 'create-btn std-btn' %>
-        <%= link_to "Cancel", categories_path, class: "action-btn std-btn" %>
+        <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save new category name"  %>
+        <%= link_to "Cancel", categories_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel and return to list of categories"  %>
         <% end %>
         </div>
       </div><!--end form-->

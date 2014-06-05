@@ -10,7 +10,7 @@
           <%= devise_error_messages! %>
           <div class="form-group">
             <%- if devise_mapping.registerable? %>
-            <%= link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right' %>
+            <%= link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right', data: {toggle: "tooltip"}, title: "Sign up for a Bulldog Clip account" %>
             <% end -%>
             <%= f.label :email %>
             <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
@@ -18,13 +18,13 @@
           </div>
           <div class="form-group">
             <%- if devise_mapping.recoverable? %>
-            <%= link_to "Forgot password?", new_password_path(resource_name), class: 'pull-right' %>
+            <%= link_to "Forgot password?", new_password_path(resource_name), class: 'pull-right', data: {toggle: "tooltip"}, title: "Reset your password" %>
             <% end -%>
             <%= f.label :password %>
             <%= f.password_field :password, class: 'form-control' %>
        
           </div>
-            <%= f.submit 'Sign in', :class => 'create-btn std-btn pull-right' %>
+            <%= f.submit 'Sign in', :class => 'create-btn std-btn pull-right', data: {toggle: "tooltip"}, title: "Sign in to your Bulldog Clip account" %>
             <% if devise_mapping.rememberable? -%>
               <div class="checkbox">
                 <%= f.check_box :remember_me %> <%= f.label :remember_me %>

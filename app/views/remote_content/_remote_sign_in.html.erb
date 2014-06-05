@@ -10,14 +10,14 @@
           <div class="form-group">
             <%= f.label :email %>
             <%- if devise_mapping.registerable? %>
-              <%= link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right' %>
+              <%= link_to 'Sign up', new_registration_path(resource_name), class: 'pull-right', data: {toggle: "tooltip"}, title: "Sign up for a Bulldog Clip account" %>
             <% end -%>
             <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :password %>
             <%- if devise_mapping.recoverable? %>
-              <%= link_to "Forgot password?", new_password_path(resource_name), class: 'pull-right' %>
+              <%= link_to "Forgot password?", new_password_path(resource_name), class: 'pull-right', data: {toggle: "tooltip"}, title: "Request password reset" %>
             <% end -%>
             <%= f.password_field :password, class: 'form-control' %>
           </div>
@@ -30,9 +30,9 @@
       
         </div><!-- /.modal-body -->
         <div class="modal-footer">
-          <a class="action-btn std-btn" data-dismiss="modal">Close</a>
+          <a class="action-btn std-btn" data-dismiss="modal", data: {toggle: "tooltip"}, title: "Close window">Close</a>
 <!--<button type="button" class="action-btn std-btn" data-dismiss="modal">Close</button> -->
-          <%= f.submit 'Sign in', :class => 'create-btn std-btn' %>
+          <%= f.submit 'Sign in', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Sign in to your Bulldog Clip account" %>
         </div>
       <% end %><!-- end of form for -->
     </div><!-- /.modal-content -->

@@ -15,9 +15,7 @@
   <% end %>
   <%= form_group_for f, :description, label: false do %>
     <%= f.text_field :description, placeholder: 'Description', class: "form-control" %>
-  <% end %>
-
-  
+  <% end %>  
   <%= form_group_for f, :amount, label: false do %>
   <span class="currency-sign">£</span>
     <%= f.text_field :amount, placeholder: 'Amount', class: "form-control currency" %>
@@ -31,9 +29,9 @@
       <%= f.text_field :vat, placeholder: 'VAT amount', class: "form-control currency" %>
     <% end %>
   <% end %> <!-- end of VAT fields -->
-  <%= f.submit 'Save', :class => 'create-btn std-btn' %>
+  <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save changes" %>
   <% if params[:action] == 'edit' %>
-    <%= link_to 'Delete', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn' %>
+    <%= link_to 'Delete', @bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn', remote: true, data: {toggle: "tooltip"}, title: "Delete bill" %>
   <% end %>
-  <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true %>
+  <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true, data: {toggle: "tooltip"}, title: "Cancel and return to list of bills" %>
 <% end %> <!-- end of form_for -->

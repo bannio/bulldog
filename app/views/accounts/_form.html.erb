@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-  <%= f.submit 'Save', :class => 'create-btn std-btn' %>
-  <%= link_to 'Cancel', account_path(@account), class: 'action-btn std-btn' %>
+  <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save account settings"  %>
+  <%= link_to 'Cancel', account_path(@account), class: 'action-btn std-btn', data: {toggle: "tooltip"}, title: "Cancel and return to account details"  %>
 
 <% end %>

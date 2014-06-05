@@ -14,10 +14,23 @@ div.card-expiration > label {
 
 div.card-expiration > select {
   display: inline-block;
-  -webkit-appearance: menulist;
+  appearance: none;
+  -webkit-appearance: none;
   background-color: #ffffff;
   color: #424242;
   height: 3.25rem;
+  padding: 8px 6px;
+  border-width: 1px;
+  border-color: #444;
+}
+
+// Removes grey arrow from firefox card-expiration fields
+@-moz-document url-prefix() {
+  div.card-expiration > select {
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+  }
 }
 
 div.card-expiration > select#card_month {
@@ -586,11 +599,11 @@ div.customer-form > textarea.address {
   max-width: 100%;
 }
 
-// gives spacing between form fields (must match div.formgroup margin bottom) and colours outline red
+// gives spacing between form fields (must match div.formgroup margin bottom) and colours outline red, display:inline-block keeps message on one line
 p.help-block {
   margin: 0px 0px 5px 5px;
   color: #a94442;
-  // display: inline-block; 
+  // display: inline-block;  
 }
 
 

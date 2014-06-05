@@ -15,7 +15,7 @@
               <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
             <% end %>
           </div>
-          <%= f.button :submit, "Resend confirmation instructions", class: 'create-btn std-btn button right' %>
+          <%= f.button :submit, "Resend confirmation instructions", class: 'create-btn std-btn button right', data: {toggle: "tooltip"}, title: "Submit request for resend of confirmation instructions" %>
           <%# end %>
         </form>
       </div>

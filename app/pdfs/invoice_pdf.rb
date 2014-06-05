@@ -50,7 +50,7 @@ class InvoicePdf < Prawn::Document
           postcode = @invoice.setting.postcode
           tel = @invoice.setting.telephone 
           email = @invoice.setting.email
-          user_details = "#{name}\n#{addr}\n#{postcode}\n\nTelephone: #{tel}\nEmail: #{email}"
+          user_details = "#{name}\n#{addr}\n#{postcode}\n\n#{'Telephone: ' + tel if tel.present?}\n#{'Email:' + email if email.present?}"
           text_box user_details, :at => [0,cursor],
            :width => 180, :height => 105,
            :overflow => :shrink_to_fit

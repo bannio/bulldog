@@ -21,7 +21,7 @@
                 <% end %>
           </div>
               <%= hidden_field_tag :confirmation_token,@confirmation_token %>
-              <%= f.submit "Activate", class: 'create-btn std-btn pull-right' %>
+              <%= f.submit "Activate", class: 'create-btn std-btn pull-right', data: {toggle: "tooltip"}, title: "Activate your Bulldog Clip account" %>
         <% end %> <!-- </form> -->
       </div>
     </div>

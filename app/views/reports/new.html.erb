@@ -42,8 +42,8 @@
         <%= f.collection_select :category_id, Category.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
         <p class="help-block"></p>
 
-        <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data." %>
-        <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters." %>
+        <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
+        <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>
         
     </div><!--end panel body -->
   </div><!--end panel-->
