@@ -3,6 +3,8 @@
 //     background-color: white !important;
 // }
 
+
+
 // stripe form errors
 div.stripe-error {
   color: #a94442;
@@ -22,6 +24,16 @@ div.card-expiration > select {
   padding: 8px 6px;
   border-width: 1px;
   border-color: #444;
+}
+
+// Up and down arrow image background
+div.card-expiration > select {
+background-image: url(/assets/dropdown_arrow.png) !important;
+background-repeat: no-repeat;
+background-size: 25px 33px;
+background-position: right center;
+height: 100%;
+font-weight: bold;
 }
 
 // Removes grey arrow from firefox card-expiration fields
@@ -45,6 +57,7 @@ div.card-expiration > select#card_year {
 div.invoice > input.date_picker {
   float: right;
   width: 70%;
+  padding-left: 8px;
 }
 
 a.select2-choice:hover,
@@ -67,41 +80,63 @@ outline: 0px auto #66afe9 !important;
 outline-offset: 0px !important;
 }
 
-span.currency-sign {
-  display: inline-block;
-  width: 7%;
-  float: left;
-  padding: 9px 8px;
-  border-top: 1px solid #444;
-  border-bottom: 1px solid #444;
-  border-left: 1px solid #444;
-  // height: 26px;
-  height: 3.25rem;
-  color: #555;
-}
+// span.currency-sign {
+//   display: inline-block;
+//   width: 7%;
+//   float: left;
+//   padding: 9px 8px;
+//   border-top: 1px solid #444;
+//   border-bottom: 1px solid #444;
+//   border-left: 1px solid #444;
+//   // height: 26px;
+//   height: 3.25rem;
+//   color: #555;
+// }
 
-span.percentage-symbol {
-  display: inline-block;
-  width: 7%;
-  float: right;
-  padding: 9px 6px;
-  border-top: 1px solid #444;
-  border-bottom: 1px solid #444;
-  border-right: 1px solid #444;
-  // height: 26px;
-  height: 3.25rem;
-  color: #555; 
+// span.percentage-symbol {
+//   display: inline-block;
+//   width: 7%;
+//   float: right;
+//   padding: 9px 6px;
+//   border-top: 1px solid #444;
+//   border-bottom: 1px solid #444;
+//   border-right: 1px solid #444;
+//   // height: 26px;
+//   height: 3.25rem;
+//   color: #555; 
+// }
+
+// currency symbol placeholder
+input.currency  {
+background-image: url(/assets/currency_sign.png) !important;
+background-repeat: no-repeat;
+background-size: 25px 33px;
+background-position: left center;
+height: 100%;
+// font-weight: bold;
+padding-left: 28px;
 }
 
 input.form-control.currency {
-  width: 93%;
   display: inline-block;
+  padding-left: 33px;
+}
+
+// percentage symbol placeholder
+input.percentage  {
+background-image: url(/assets/percentage_sign.png) !important;
+background-repeat: no-repeat;
+background-size: 25px 33px;
+background-position: right center;
+height: 100%;
+// font-weight: bold;
+padding-left: 28px;
 }
 
 input.form-control.percentage  {
-  width: 93%;
   display: inline-block;
-  float: left;
+  // float: left;
+  padding-right: 33px;
 }
 
 input.date_picker.analysis {
