@@ -10,7 +10,7 @@ class Account < ActiveRecord::Base
   belongs_to :plan
 
   # accepts_nested_attributes_for :setting
-  after_create :add_setting
+  after_create :create_setting
 
   validates :name, :email, :plan_id, presence: true
   validates :email, uniqueness: true, format: {with: /\A[^@]+@[^@]+\z/}
@@ -38,8 +38,5 @@ class Account < ActiveRecord::Base
 
   private
 
-  def add_setting
-    create_setting
-  end
 
 end

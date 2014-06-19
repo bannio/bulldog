@@ -5,13 +5,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   # before_filter :https_redirect
 
-  def after_sign_in_path_for(resource)
-    welcome_index_path  # change this when we know where the new user should really start
-  end
 
-  def after_sign_out_path_for(resource)
-    home_path
-  end
+  # def after_sign_in_path_for(resource)
+  #   welcome_index_path  # change this when we know where the new user should really start
+  # end
 
   def user_has_account?
     @has_account ||= current_user ? current_user.account.present? : false
@@ -28,6 +25,14 @@ class ApplicationController < ActionController::Base
   def record_not_found
     flash[:alert] = "Item not found or not authorised"
     redirect_to home_path
+  end
+
+  def after_sign_in_path_for(resource)
+  session["user_return_to"] || welcome_index_path
+  end
+
+  def after_sign_out_path_for(resource)
+    home_path
   end
 
   # def https_redirect

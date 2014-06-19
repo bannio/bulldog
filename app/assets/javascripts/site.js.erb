@@ -3,6 +3,13 @@
         init: function() {
         // application-wide code
         console.log( "SITE init common" );
+        // $(document).ajaxError(function (e, xhr, settings) {
+        // if (xhr.status == 401) {
+        //   // trigger Warden via http GET if session is timed out
+        //   console.log( "SITE init common 401 processing triggered" );
+        //   location.reload();
+        }
+    });
         }
       },
      

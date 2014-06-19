@@ -15,10 +15,14 @@ class CategoriesController < ApplicationController
     new_name = params[:category][:name]
 
     if Category.visible_to(current_user).where(name: new_name).empty? && new_name != old_name
-      @category.update_attribute(:name, new_name)
-      flash[:success] = "category #{old_name} renamed to #{new_name}" 
+      if @category.update(name: new_name)
+        flash[:success] = "category #{old_name} renamed to #{new_name}"
+      else
+        render :edit
+        return
+      end
     else
-      unless new_name == old_name
+      unless new_name == old_name #|| new_name == ''
         @category.reassign_bills_to(new_name)
         @category.destroy
         flash[:success] = "category #{old_name} deleted and bills assigned to #{new_name}"

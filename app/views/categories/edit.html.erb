@@ -25,8 +25,10 @@
       <div class="form">
         <%= form_for @category do |f| %>
         <%#= f.label :name %>
-        <%= f.label :name, "Enter new category name" %>
-        <%= f.text_field :name, :class => 'category-name' %>
+        <%= form_group_for f, :name, label: false do %>
+          <%= f.label :name, "Enter new category name" %>
+          <%= f.text_field :name, :class => 'category-name' %>
+        <% end %>
         <div class="category-btns">
         <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save new category name"  %>
         <%= link_to "Cancel", categories_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel and return to list of categories"  %>

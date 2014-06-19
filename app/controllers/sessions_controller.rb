@@ -5,8 +5,6 @@ class SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     self.resource = warden.authenticate!(auth_options)
-    # self.resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
-    # self.resource = warden.authenticate!(scope: resource_name, redirect: "#{new_user_session_path}")
     respond_to do |format|
       format.html {
             set_flash_message(:notice, :signed_in) if is_flashing_format?
@@ -31,15 +29,14 @@ class SessionsController < Devise::SessionsController
       }
       format.js {
         Rails.logger.info "in the JS side of the SessionsController#new method"
-          #flash[:alert] = "Sign in failed"
-          if flash[:timedout] && flash[:alert]
+          if flash[:timedout] # && flash[:alert]
             # Your session expired. Please sign in again to continue.
             Rails.logger.info "flash timedout and alert = #{flash[:alert]}"
-            # @user = current_user
+            self.resource = resource_class.new(sign_in_params)
             render template: "remote_content/remote_sign_in.js.erb"
           else
             Rails.logger.info "NOT flash timedout and alert = #{flash[:alert]}"
-            render :template => "remote_content/devise_errors.js.erb"
+            render template: "remote_content/devise_errors.js.erb"
             flash.discard
           end
       }

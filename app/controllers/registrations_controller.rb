@@ -42,8 +42,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   protected
-    def after_update_path_for(resource)
-      welcome_index_path
+  
+  def after_update_path_for(resource)
+    welcome_index_path
   end
  # def create
  #  build_resource(sign_up_params)

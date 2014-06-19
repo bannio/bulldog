@@ -9,7 +9,7 @@ Feature: Sign up
     And a Base Plan exists
     And no emails have been sent
 
-  @wip @javascript
+  @ut @javascript
   Scenario: User signs up with valid data
     When I visit the home page
     When I click on Sign up
@@ -19,7 +19,8 @@ Feature: Sign up
     When I enter my name and email address
     And my credit card details
     And I click button Subscribe
-    And wait 5
+    Then I should see "Thanks for subscribing."
+    # And wait 5
     Then I should receive an email
     When I open the email
     Then I should see "confirm" in the email body
@@ -53,7 +54,7 @@ Feature: Sign up
 
   @javascript
   Scenario Outline: User enters an invalid credit card number
-    Note that the dates and years will go out of date. Need to ind a better way.
+    Note that the dates and years will go out of date. Need to find a better way.
     The form prevents years in the past.
     When I go to the new account page
     And I enter my name and email address
@@ -70,7 +71,7 @@ Feature: Sign up
       | 4242424242424241 | 321 | December | 2014 | Your card number is incorrect |
       | 4000000000000101 | 321 | December | 2014 | Your card's security code is incorrect |
 
-  @ut @javascript
+  @javascript
   Scenario: Card is declined and alternative card entered
     When I go to the new account page
     And I enter my name and email address

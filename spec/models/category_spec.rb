@@ -5,7 +5,10 @@ describe Category do
     category = FactoryGirl.build(:category, name: "")
     category.should_not be_valid
   end
-
+  it 'is invalid without a name on update' do
+    category = FactoryGirl.create(:category)
+    expect(category.update(name: "")).to be_false
+  end
   it 'knows the sum of its bills' do
     @category = FactoryGirl.create(:category)
     bill = FactoryGirl.create(:bill, category_id: @category.id, amount: 10 )

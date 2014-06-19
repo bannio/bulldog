@@ -8,14 +8,34 @@ class CustomFailure < Devise::FailureApp
   def redirect
     message = warden.message || warden_options[:message]
     if message == :timeout     
-      redirect_to home_path
+      redirect_to attempted_path
     else 
       super
     end
   end
 
   # def redirect_url
-  #   new_user_session_path
+  #   if request.xhr?
+  #     send(:"remote_sign_in_path", format: :js)
+  #   else
+  #     super
+  #   end
+  # end
+
+  # def redirect_url
+  #   if warden_message == :timeout
+  #     flash[:timedout] = true
+
+  #     path = if request.get?
+  #       attempted_path
+  #     else
+  #       request.referrer
+  #     end
+
+  #     path || scope_url
+  #   else
+  #     scope_url
+  #   end
   # end
 
   # def respond

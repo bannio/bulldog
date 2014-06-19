@@ -2,11 +2,16 @@ $('.modal').modal('hide')
 
 if($('#flash').length > 0) {
   $('#flash').remove();
-  $('body').prepend("<%= escape_javascript raw(flash_normal) %>");
-  window.location.replace("/welcome");
+  $('main').prepend("<%= escape_javascript raw(flash_normal) %>");
+  // window.location.replace("/welcome");
 }
 else {
   $('.modal').modal('hide')
-  $('body').prepend("<%= escape_javascript raw(flash_normal) %>");
+  $('main').prepend("<%= escape_javascript raw(flash_normal) %>");
+  // window.location.replace("/welcome");
+}
+
+if($("body[data-controller|='pages']").length > 0){
   window.location.replace("/welcome");
+  //otherwise stay on the page we are on.
 }
