@@ -9,7 +9,7 @@ Feature: Sign up
     And a Base Plan exists
     And no emails have been sent
 
-  @ut @javascript
+  @javascript
   Scenario: User signs up with valid data
     When I visit the home page
     When I click on Sign up

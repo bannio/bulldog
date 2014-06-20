@@ -1,93 +1,98 @@
-    SITENAME = {
-      common: {
-        init: function() {
-        // application-wide code
-        console.log( "SITE init common" );
-        // $(document).ajaxError(function (e, xhr, settings) {
-        // if (xhr.status == 401) {
-        //   // trigger Warden via http GET if session is timed out
-        //   console.log( "SITE init common 401 processing triggered" );
-        //   location.reload();
-        }
-    });
-        }
-      },
-     
-      accounts: {
-        init: function() {
-        // controller-wide code
-        },
-     
-        new: function() {
-        // action-specific code
-          console.log( "accounts#new" );
-          Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
-          return STRIPE.setupForm();
-        },
-        create: function() {
-        // action-specific code
-          console.log( "accounts#create" );
-          Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
-          return STRIPE.setupForm();
-        }
-      }
-    };
+var SITENAME;
+var STRIPE;
+var UTIL;
 
-    STRIPE = {
-      setupForm: function() {
-        console.log( "STRIPE setupForm" );
-        return $('#new_account').submit(function() {
-          $('input[type=submit]').attr('disabled', true);
-          if ($('#card_number').length) {
-            STRIPE.processCard();
-            return false; // so that form is not submitted yet
-          } else {
-            return true;
-          }
-        });
-      },
-      processCard: function() {
-        console.log( "STRIPE process card" );
-        var card;
-        card = {
-          number: $('#card_number').val(),
-          cvc: $('#card_code').val(),
-          expMonth: $('#card_month').val(),
-          expYear: $('#card_year').val()
-        };
-        return Stripe.createToken(card, STRIPE.handleStripeResponse);
-      },
-      handleStripeResponse: function(status, response) {
-        if (status === 200) {
-          $('#account_stripe_card_token').val(response.id);
-          return $('#new_account')[0].submit();
-        } else {
-          $('#stripe_error').text(response.error.message);
-          return $('input[type=submit]').attr('disabled', false);
-        }
+SITENAME = {
+  common: {
+    init: function () {
+    // application-wide code
+      console.log("SITE init common");
+    // $(document).ajaxError(function (e, xhr, settings) {
+    //   if (xhr.status == 401) {
+    //     // trigger Warden via http GET if session is timed out
+    //     console.log( "SITE init common 401 processing triggered" );
+    //     location.reload();
+    //   }
+    // });
+    }
+  },
+
+  accounts: {
+    init: function () {
+    // controller-wide code
+    },
+
+    new: function () {
+    // action-specific code
+      console.log("accounts#new");
+      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+      return STRIPE.setupForm();
+    },
+
+    create: function () {
+    // action-specific code
+      console.log("accounts#create");
+      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+      return STRIPE.setupForm();
+    }
+  }
+};
+
+STRIPE = {
+  setupForm: function () {
+    console.log("STRIPE setupForm");
+    return $('#new_account').submit(function () {
+      $('input[type=submit]').attr('disabled', true);
+      if ($('#card_number').length) {
+        STRIPE.processCard();
+        return false; // so that form is not submitted yet
       }
+      return true;
+    });
+  },
+
+  processCard: function () {
+    console.log("STRIPE process card");
+    var card;
+    card = {
+      number: $('#card_number').val(),
+      cvc: $('#card_code').val(),
+      expMonth: $('#card_month').val(),
+      expYear: $('#card_year').val()
     };
-     
-    UTIL = {
-      exec: function( controller, action ) {
-        var ns = SITENAME,
-          action = ( action === undefined ) ? "init" : action;
-         
-        if ( controller !== "" && ns[controller] && typeof ns[controller][action] == "function" ) {
-          ns[controller][action]();
-        }
-      },
-       
-      init: function() {
-        var body = document.body,
-            controller = body.getAttribute( "data-controller" ),
-            action = body.getAttribute( "data-action" );
-         
-        UTIL.exec( "common" );
-        UTIL.exec( controller );
-        UTIL.exec( controller, action );
-      }
-    };
-     
-    // $( document ).ready( UTIL.init );
-    $(document).on('page:update', UTIL.init);
+    return Stripe.createToken(card, STRIPE.handleStripeResponse);
+  },
+
+  handleStripeResponse: function (status, response) {
+    if (status === 200) {
+      $('#account_stripe_card_token').val(response.id);
+      return $('#new_account')[0].submit();
+    }
+    $('#stripe_error').text(response.error.message);
+    return $('input[type=submit]').attr('disabled', false);
+  }
+};
+
+UTIL = {
+  exec: function (controller, action) {
+    var ns = SITENAME,
+      action = (action === undefined) ? "init" : action;
+
+    if (controller !== "" && ns[controller] && typeof ns[controller][action] === "function") {
+      ns[controller][action]();
+    }
+  },
+
+  init: function () {
+    var body = document.body,
+      controller = body.getAttribute("data-controller"),
+      action = body.getAttribute("data-action");
+
+    UTIL.exec("common");
+    UTIL.exec(controller);
+    UTIL.exec(controller, action);
+  }
+};
+
+// $( document ).ready( UTIL.init );
+$(document).on('page:update', UTIL.init);

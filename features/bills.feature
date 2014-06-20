@@ -13,11 +13,12 @@ Feature: In order to track my costs
     | Household | Asda     | Food     |
     | Business  | Tesco    | Clothes  |
     And I start with a total expenses balance of £0
-    And I am on the new bill screen
+    # And I am on the new bill screen
 
 
-  @javascript 
+  @javascript @ut
   Scenario: Enter a receipt for known supplier and customer
+    Given I am on the new bill screen
     When I add a Household bill from Asda for £20
     And I am on the new bill screen
     And I add a Business bill from Tesco for £5

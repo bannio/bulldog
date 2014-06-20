@@ -23,7 +23,7 @@
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign out of your account" %>
       <% else %>
             <%#= link_to 'Sign in', new_user_session_path, class: 'nav-btn' %><!--replaced by modal remote sign in -->
-            <%= link_to 'Sign in', remote_sign_in_path, remote: true, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign in to your Bulldog Clip account" %>
+            <%= link_to 'Sign in', new_user_session_path, remote: true, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign in to your Bulldog Clip account" %>
         <%= link_to 'Sign up', plans_path, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign up for a Bulldog Clip account." %>
       <% end %>
       </div><!-- end logo-col -->

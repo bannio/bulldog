@@ -1,17 +1,14 @@
-$('.modal').modal('hide')
+$('.modal').modal('hide');
 
-if($('#flash').length > 0) {
-  $('#flash').remove();
-  $('main').prepend("<%= escape_javascript raw(flash_normal) %>");
-  // window.location.replace("/welcome");
+if ($('#flashes').length > 0) {
+  $('#flashes').remove();
 }
-else {
-  $('.modal').modal('hide')
-  $('main').prepend("<%= escape_javascript raw(flash_normal) %>");
-  // window.location.replace("/welcome");
-}
+$('main').prepend("<%= escape_javascript raw(flash_normal) %>");
 
-if($("body[data-controller|='pages']").length > 0){
+// If on a public page when timed out then we want to trigger a page reload 
+// and display the welcome page. Otherwise, as the page is not refreshed, 
+// it will show the sign in button etc.
+
+if ($("body[data-controller|='pages']").length > 0) {
   window.location.replace("/welcome");
-  //otherwise stay on the page we are on.
 }

@@ -1,6 +1,6 @@
-// $(document).ready(function(){
+// note the use of == instead of === is required in initSelection
 var ready;
-ready = function() {
+ready = function () {
 
   var customerData        = $('#bill_customer_id').data('customers');
   var invCustomerData     = $('#inv_customer_id').data('customers');
@@ -10,33 +10,37 @@ ready = function() {
   var categoryData        = $('#bill_category_id').data('categories');
   var vatRateData         = $('#bill_vat_rate_id').data('vat-rates');
 
-  function format(item) { return item.name || item.text; };
-  function text(value) { 
-      if (value[0]){
-        return value[0].name;
-      }
-      else {
-        return "";
-      }
-    };
+  function format(item) {
+    return item.name || item.text;
+  }
+
+  function text(value) {
+    if (value[0]) {
+      return value[0].name;
+    }
+    return "";
+  }
+
   function format_result(term) {
-      if (term.isNew) {
-        return '<span class="label label-important">New</span> ' + term.text;
-      }
-      else {
-        return term.name;
-      }
-    };
+    if (term.isNew) {
+      return '<span class="label label-important">New</span> ' + term.text;
+    }
+    return term.name;
+  }
+
   function create_choice(term, data) {
-      if ($(data).filter(function() {
+    if ($(data).filter(function () {
         return this.name.toLowerCase().localeCompare(term.toLowerCase()) === 0;
       }).length === 0) {
-        return {id: term, text: term, isNew: true};
-      } 
-    };
+      return {id: term, text: term, isNew: true};
+    }
+  }
 
-  $("input.date_picker").datepicker({ 
-    dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true });
+  $("input.date_picker").datepicker({
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    changeYear: true
+  });
 
 
   $('#bill_customer_id').select2({
@@ -45,12 +49,12 @@ ready = function() {
     width: 'resolve',
     data: {results: customerData, text: 'name'},
     initSelection : function (element, callback) {
-        var value = $(customerData).filter(function(index){
-                      return this.id == element.val();
-                    });
-        var data = {id: element.val(), 
-                    text: text(value)};
-        callback(data);
+      var value = $(customerData).filter(function () {
+          return this.id == element.val();
+        });
+      var data = {id: element.val(),
+                  text: text(value)};
+      callback(data);
     },
     createSearchChoice: create_choice,
     formatResult: format_result,
@@ -83,12 +87,12 @@ ready = function() {
     width: 'resolve',
     data: {results: invoiceHeaderData, text: 'name'},
     initSelection : function (element, callback) {
-        var value = $(invoiceHeaderData).filter(function(index){
-                      return this.id == element.val();
-                    });
-        var data = {id: element.val(), 
+      var value = $(invoiceHeaderData).filter(function () {
+          return this.id == element.val();
+        });
+      var data = {id: element.val(),
                     text: text(value)};
-        callback(data);
+      callback(data);
     },
     createSearchChoice: create_choice,
     formatResult: format_result,
@@ -103,12 +107,12 @@ ready = function() {
     width: 'resolve',
     data: {results: invCustomerData, text: 'name'},
     initSelection : function (element, callback) {
-        var value = $(invCustomerData).filter(function(index){
-                      return this.id == element.val();
-                    });
-        var data = {id: element.val(), 
-                    text: text(value)};
-        callback(data);
+      var value = $(invCustomerData).filter(function () {
+        return this.id == element.val();
+      });
+      var data = {id: element.val(),
+                  text: text(value)};
+      callback(data);
     },
     formatResult: format,
     formatSelection: format
@@ -120,12 +124,12 @@ ready = function() {
     width: 'resolve',
     data: {results: supplierData, text: 'name'},
     initSelection : function (element, callback) {
-        var value = $(supplierData).filter(function(index){
-                      return this.id == element.val();
-                    });
-        var data = {id: element.val(), 
-                    text: text(value)};
-        callback(data);
+      var value = $(supplierData).filter(function () {
+        return this.id == element.val();
+      });
+      var data = {id: element.val(),
+                  text: text(value)};
+      callback(data);
     },
     createSearchChoice: create_choice,
     formatResult: format_result,
@@ -138,12 +142,12 @@ ready = function() {
     width: 'resolve',
     data: {results: categoryData, text: 'name'},
     initSelection : function (element, callback) {
-        var value = $(categoryData).filter(function(index){
-                      return this.id == element.val();
-                    });
-        var data = {id: element.val(), 
-                    text: text(value)};
-        callback(data);
+      var value = $(categoryData).filter(function () {
+        return this.id == element.val();
+      });
+      var data = {id: element.val(),
+                  text: text(value)};
+      callback(data);
     },
     createSearchChoice: create_choice,
     formatResult: format_result,
@@ -164,27 +168,25 @@ ready = function() {
   // rowlink. If/when the invoices table changes to JS then this could 
   // be simplified. Note that data-rowlink results in an HTML 
 
-  $('tbody').on('click', 'tr.rowlink', function(e){
+  $('tbody').on('click', 'tr.rowlink', function (e) {
     // window.location = $(this).data("rowlink")
     var link = $(this).data("url");
     var link2 = $(this).data("rowlink");
     if (link) {
       $.getScript(link);
       e.stopImmediatePropagation();
-    }
-    else if (link2) {
+    } else if (link2) {
       window.location = link2;
-    }
-    else {
+    } else {
       return false;
     }
-  })
+  });
 };
 
 
 // fix for Select2 not working in modals. Note that this
 // overwrites something and maybe isn't the safest option.
-$.fn.modal.Constructor.prototype.enforceFocus = function() {};
+$.fn.modal.Constructor.prototype.enforceFocus = function () {};
 
 $(document).ready(ready);
 $(document).on('page:update', ready);

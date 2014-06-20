@@ -8,7 +8,7 @@ Bulldog::Application.routes.draw do
                                               sessions: 'sessions',
                                               registrations: 'registrations'}
 
-  get '/remote_sign_in' => 'remote_content#remote_sign_in', as: :remote_sign_in
+  # get '/remote_sign_in' => 'remote_content#remote_sign_in', as: :remote_sign_in
 
   resources :accounts
   resources :bills, except: :show

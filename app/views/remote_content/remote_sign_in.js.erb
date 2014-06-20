@@ -1,14 +1,22 @@
-if($('#sign_in_modal').length > 0) {
- $("#sign_in_modal").modal();
-}
-else {
- $("body").append("<%= escape_javascript(render "remote_content/remote_sign_in", :formats => [:html]) %>");
- $("#sign_in_modal").modal();
+// render the modal if it isn't already there
+if ($('#sign_in_modal').length > 0) {
+  $("#sign_in_modal").modal('show');
+} else {
+  $("body").append("<%= escape_javascript(render "remote_content/remote_sign_in", :formats => [:html]) %>");
+  $("#sign_in_modal").modal('show');
 }
 
+// set the flash messages
+if ($('#flashes').length > 0) {
+  $('#flashes').remove();
+}
+$('#sign_in_modal .modal-body').prepend("<%= escape_javascript raw(flash_normal) %>");
 
-$(document).ready(function() {
-    $(".modal").on('shown.bs.modal', function() {
-        $(this).find("[autofocus]:first").focus();
-    });
+// clear the password field if already used
+$('#user_password').val("");
+
+$(document).ready(function () {
+  $(".modal").on('shown.bs.modal', function () {
+    $(this).find("[autofocus]:first").focus();
+  });
 });
