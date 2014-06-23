@@ -1,5 +1,90 @@
-<p>Welcome <%= @email %>!</p>
+<!-- <p>Welcome <%#= @email %>!</p>
 
 <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+<p><%#= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p> -->
+
+
+<table style="width: 600px;">
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+      <%#= image_tag("bulldog_clip_navbar_logo.png", :alt => "Bulldog Clip") %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Hello <%= @resource.email %>,
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <th style="height: 37px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;border-top: 1px solid black;border-bottom: 1px solid black;">Bulldog Clip Account Confirmation Instructions
+    </th>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Welcome to Bulldog Clip!
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Please follow the link below to complete your registration and start using Bulldog Clip today.
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Thanks for joining.
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Regards,
+    </td>
+  </tr>
+
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">The Bulldog Clip team
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="border-top: 1px solid #d0d0d0;height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color: #777777;font-size: 12px;height: 27px;font-family: Arial, Sans-serif;">This email is confidential and intended solely to whom it is addressed. It may contain sensitive or privileged information. If you have received this email in error, please inform us at hello@bulldog-clip.com and destroy it.
+    </td>
+  </tr>
+</table>
