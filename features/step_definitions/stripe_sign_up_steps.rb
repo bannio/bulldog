@@ -10,7 +10,7 @@ end
 When(/^my credit card details$/) do
   fill_in 'card_number', with: '4242424242424242'
   fill_in 'card_code', with: '123'
-  select('January', from: 'card_month')
+  select('1 - January', from: 'card_month')
   select('2020', from: 'card_year')
 end
 
@@ -22,7 +22,7 @@ When(/^I Sign up for Base Plan$/) do
   within("div.signup"){click_link("Sign up")}
 end
 
-When(/^I enter (\d*), (\d*), (\w*) and (\d*)$/) do |card_number, cvc, month, year|
+When(/^I enter (\d*), (\d*), (\d+ - \w*) and (\d*)$/) do |card_number, cvc, month, year|
   fill_in 'card_number', with: card_number.to_i
   fill_in 'card_code', with: cvc.to_i
   select(month, from: 'card_month')

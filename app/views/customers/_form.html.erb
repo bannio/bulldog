@@ -7,6 +7,8 @@
         <%= errors_for f, :name %>
         <%= f.text_area :address, placeholder: 'Address', class: 'address' %>
         <%= f.text_field :postcode, placeholder: 'Postcode', class: 'postcode' %>
+        <%= f.label :is_default, 'set this as my default customer' %>
+        <%= f.check_box :is_default %>
       </div>
       <div>
       <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save customers details"  %>

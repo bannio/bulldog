@@ -16,7 +16,7 @@ Feature: In order to track my costs
     # And I am on the new bill screen
 
 
-  @javascript @ut
+  @javascript
   Scenario: Enter a receipt for known supplier and customer
     Given I am on the new bill screen
     When I add a Household bill from Asda for £20

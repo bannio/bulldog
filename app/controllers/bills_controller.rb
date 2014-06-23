@@ -18,6 +18,7 @@ class BillsController < ApplicationController
   def new
     @bill = Bill.new(account_id: current_account.id)
     @bill.date = Date.today
+    @bill.customer_id = default_customer.id if default_customer
   end
 
   def create
@@ -87,5 +88,9 @@ class BillsController < ApplicationController
 
    def sort_direction
      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+   end
+
+   def default_customer
+     @default_customer ||= current_account.customers.is_default.first
    end
 end

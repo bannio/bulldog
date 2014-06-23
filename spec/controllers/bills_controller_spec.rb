@@ -4,6 +4,22 @@ describe BillsController do
   login_user
   create_account
 
+  describe "GET #new" do
+    context "with default customer set" do
+      it "finds the default customer" do
+        default_customer = create(:customer, account_id: @account.id, is_default: true)
+        get :new
+        expect(assigns(:bill).customer_id).to eq default_customer.id
+      end
+    end
+    context "with no default customer set" do
+      it "still assigns a bill" do
+        get :new
+        expect(assigns(:bill)).to be_a_new(Bill)
+      end
+    end
+  end
+
   describe "GET #edit" do
     context "with valid data" do
       it "assigns the requested bill as @bill" do

@@ -40,6 +40,11 @@ Given /^I click the third table row$/ do
   find(:xpath, "//table/tbody/tr[3]").click 
 end
 
+# click on a row with given text in any td
+Given(/^I click the "(.*?)" row$/) do |txt|
+  find(:xpath, "//tbody/tr[td/text()='#{txt}']").click
+end
+
 When(/^I click on (.+)$/) do |link|
   Capybara.exact = true
   find_link(link)
@@ -52,6 +57,10 @@ end
 
 When(/^I click button (.*?)$/) do |btn|
   click_button(btn)
+end
+
+When(/^I check "(.*?)" checkbox$/) do |box|
+  check box
 end
 
 When(/^I click Delete and confirm$/) do

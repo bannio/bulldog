@@ -98,7 +98,7 @@ def sign_up
   fill_in "account_email", with: @visitor[:email]
   fill_in 'card_number', with: '4242424242424242'
   fill_in 'card_code', with: '123'
-  select('January', from: 'card_month')
+  select('1 - January', from: 'card_month')
   select('2020', from: 'card_year')
   click_button "Subscribe"
   find_user

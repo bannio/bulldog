@@ -7,13 +7,15 @@ SITENAME = {
     init: function () {
     // application-wide code
       console.log("SITE init common");
-    // $(document).ajaxError(function (e, xhr, settings) {
-    //   if (xhr.status == 401) {
-    //     // trigger Warden via http GET if session is timed out
-    //     console.log( "SITE init common 401 processing triggered" );
-    //     location.reload();
-    //   }
-    // });
+      // fix for Select2 not working in modals. 
+      // save the original function
+      // var enforceModalFocusFn = $.fn.modal.Constructor.prototype.enforceFocus;
+      // overwrite the function with an empty function block
+      $.fn.modal.Constructor.prototype.enforceFocus = function () {};
+      // do something to "myModal"
+      // then reset function in case it is needed
+      // $myModal.on('hidden', function () {
+          // $.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFn;
     }
   },
 

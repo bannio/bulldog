@@ -31,7 +31,7 @@
           </thead>
           <tbody>
             <% @customers.each do |customer| %>
-              <tr title="click to edit", class="pointer rowlink",
+              <tr title="click to edit" class="pointer rowlink"
                   data-rowlink="<%= edit_customer_path(customer)%>">
                 <td class="first-col customer-name"><%= customer.name %></td>
                 <td class="customer-address"><%= simple_format("#{customer.address}") %></td>

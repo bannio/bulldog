@@ -44,9 +44,32 @@ describe Customer do
     expect(Customer.unscoped.count).to eq 2
   end
 
-    it "will destroy itself if it has no bills" do
+  it "will destroy itself if it has no bills" do
     customer_one.destroy
     expect(Customer.unscoped.count).to eq 1
+  end
+
+  it "only allows one default customer within an account" do
+    customer_three = Customer.create(name: "Customer 3", account_id: 1)
+    customer_one.is_default = true
+    customer_one.save
+    expect(customer_one.is_default?).to be_true
+    customer_two.is_default = true
+    customer_two.save
+    customer_three.is_default = true
+    customer_three.save
+    # customer 3 replaces customer 1 as default
+    expect(customer_one.reload.is_default?).to be_false
+    expect(customer_two.is_default?).to be_true
+    expect(customer_three.is_default?).to be_true
+  end
+
+  it "allows removal of default flag" do
+    customer_one.is_default = true
+    customer_one.save
+    expect(customer_one.is_default).to be_true
+    customer_one.update_attribute(:is_default, false)
+    expect(customer_one.is_default).to be_false
   end
 
   # it "has a default scope by account" do

@@ -3,6 +3,7 @@ var ready;
 ready = function () {
 
   var customerData        = $('#bill_customer_id').data('customers');
+  // var customerDefault     = $('#bill_customer_id').data('default-customer');
   var invCustomerData     = $('#inv_customer_id').data('customers');
   var invoiceCustomerData = $('#invoice_customer_id').data('customers');
   var invoiceHeaderData   = $('#invoice_header_id').data('headers');
@@ -183,17 +184,5 @@ ready = function () {
   });
 };
 
-
-// fix for Select2 not working in modals. Note that this
-// overwrites something and maybe isn't the safest option.
-$.fn.modal.Constructor.prototype.enforceFocus = function () {};
-
 $(document).ready(ready);
 $(document).on('page:update', ready);
-
-
-
-
-
-
-
