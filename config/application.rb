@@ -30,5 +30,7 @@ module Bulldog
     config.i18n.enforce_available_locales = true
 
     config.force_ssl = (ENV["ENABLE_HTTPS"] == "yes")
+
   end
 end
+

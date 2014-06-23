@@ -1,5 +1,5 @@
-<% content_for :title do %>Bulldog-Clip | Features<% end %>
-<% content_for :description do %>Bulldog Clip features<% end %>
+<% content_for :title do %>BulldogClip | Features<% end %>
+<% content_for :description do %>BulldogClip features<% end %>
 
 <div class="container info-page">
   <div class="container">
@@ -20,7 +20,7 @@
           <a href="#bills">Bills</a>
         </dd>
         <dd>
-          <a href="#invoices">Invoices</a>
+          <a href="#documents">Documents</a>
         </dd>
         <dd>
           <a href="#analysis">Analysis</a>
@@ -32,7 +32,13 @@
           <a href="#customers">Customers</a>
         </dd>
         <dd>
+          <a href="#suppliers">Suppliers</a>
+        </dd>
+        <dd>
           <a href="#categories">Categories</a>
+        </dd>
+        <dd>
+          <a href="#invoices">Invoice Setup</a>
         </dd>
         <dd>
           <a href="#account">Account</a>
@@ -56,30 +62,31 @@
             <li>A simple entry form to add new bills.</li>
             <li>Unlimited amount of bill data storage.</li>
             <li>Link bills to customers to invoice at a later date.</li>
-            <li>Add categories, suppliers and descriptions.</li>
-            <li>Bulldog Clip remembers previous entries so you can simply select them from a drop down menu.</li>
+            <li>Add categories, suppliers and descriptions as you go. No need to set them up before you use them.</li>
+            <li>BulldogClip remembers previous entries so you can simply select them from a drop down menu.</li>
             <li>Sort bills by date, customer, supplier, category, description or amount.</li>
             <li>Fully editable so you can reasign to a different customer or category or correct any errors.</li>
-            <li>Easily delete unwanted bills</li>
-            <li>Export all your bills as a CSV file to keep as a back up or use elsewhere.</li>
+            <li>Easily delete unwanted bills.</li>
+            <li>Export all (or some of) your bills as a CSV file to keep as a back up or use elsewhere.</li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
 
       <hr>
-      <div class="row spacer" id="invoices">
-        <h3>Invoices</h3>
+      <div class="row spacer" id="documents">
+        <h3>Documents</h3>
           <ul>
-            <li>Select the customer you want to invoice and Bulldog Clip will automatically populate the invoice with all the relevant bills </li>
-            <li>Customise with your own logo</li>
-            <li>Automatically generates a fully formatted invoice containing your customers name and address details</li>
-            <li>Rename to suit your needs - invoice, expense claim, whatever works for you</li>
+            <li>Rename to suit your needs - invoice, expense claim, whatever works for you.</li>
+            <li>Select the customer you want and BulldogClip will automatically populate the document with all the relevant bills.</li>
+            <li>Customise with your own logo.</li>
+            <li>Automatically generates a fully formatted document containing your customers name and address details.</li>
             <li>Add comments or a message to your customer.</li>
-            <li>Optionally include your bank details. Select to include bank details in your account settings and they will automatically be added to any invoices you create. </li>
+            <li>Optionally include your bank details and they will be available to any document you create.</li>
+            <li>Select to include VAT.</li>
             <li>Fully editable – remove any bills you don't want, change the comment and invoice date at any point.</li>
             <li>Download as PDFs to print or email.</li>
-            <li>Unlimited number of invoices, no extra charges.</li>
-            <li>Quickly find what you are looking for - Search invoices by customer or comment, sort by invoice number, date or amount</li>
+            <li>Unlimited number of documents, no extra charges.</li>
+            <li>Quickly find what you are looking for - Search documents by customer or comment, sort by number, date or amount.</li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
@@ -88,7 +95,7 @@
       <div class="row spacer" id="analysis">
         <h3>Analysis</h3>
           <ul>
-            <li>Filter by date, customer, supplier and category to generate charts and tables of your data.</li>
+            <li>Filter by date, customer, supplier and/or category to generate charts and tables of your data.</li>
             <li>Charts to show:
               <ul>
                 <li>Data by category and by supplier.</li>
@@ -96,7 +103,7 @@
                 <li>Total number of bills per month.</li>
               </ul>
             </li>
-            <li>Searches also produce a data table which can be exported as a CSV file for use elsewhere</li>
+            <li>Searches also produce a data table which can be exported for use elsewhere</li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
@@ -105,7 +112,16 @@
       <div class="row spacer" id="vat">
         <h3>VAT</h3>
           <ul>
-            <li>INFO TO BE ADDED</li>
+            <li>Optionally select to include VAT in your account settings. Once activated you can:
+              <ul>
+                <li>Store your VAT registration number to include on your documents.</li>
+                <li>Add VAT entries to bills.</li>
+                <li>Add new VAT rates as required.</li>
+                <li>Choose to include VAT on a document by document basis.</li>
+                <li>Sumarises VAT by rate on documents.</li>
+                <li>Creates HMRC valid VAT invoices.</li>
+              </ul>
+            </li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
@@ -114,9 +130,23 @@
       <div class="row spacer" id="customers">
         <h3>Customers</h3>
           <ul>
-            <li>You only need to enter customers names and address' once and they will be stored in Bulldog Clip for future use.</li>
-            <li>View and easily edit existing customer details.</li>
+            <li>We call them customers but you may also choose to use this feature to group bills by home, business, employer, family member, payment method...</li>
+            <li>You only need to enter a customer's name and address once and they will be stored in BulldogClip for future use.</li>
+            <li>View and easily edit existing customers details.</li>
             <li>These details will be automatically added to any invoices you generate for that customer.</li>
+            <li>You can nominate one customer to be your default customer for simple bill entry.</li>
+          </ul>
+        <a class="top" href="#top">Back to top</a>
+      </div>
+
+      <hr>
+      <div class="row spacer" id="suppliers">
+        <h3>Suppliers</h3>
+          <ul>
+            <li>New suppliers can be created as you go along when you create a new bill.</li>
+            <li>Existing categories can be viewed and edited in the suppliers section.</li>
+            <li>Suppliers can be renamed to correct any mistakes. If you rename a supplier with existing bills they will be assigned to the new supplier.</li>
+            <li>Suppliers are used in analysis of your spending.</li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
@@ -128,41 +158,61 @@
             <li>New categories can be created as you go along when you create a new bill.</li>
             <li>Existing categories can be viewed and edited in the categories section.</li>
             <li>Categories can be renamed to correct any mistakes. If you rename a category with existing bills they will be assigned to the new category.</li>
+            <li>Categories are used in analysis of your spending.</li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
 
       <hr>
-      <div class="row spacer" id="account">
-        <h3>Account</h3>
+      <div class="row spacer" id="invoices">
+        <h3>Invoice setup</h3>
           <ul>
             <li>Choose what you want to include in your invoice design: 
-            <ul>
-              <li>Store your address and contact details.</li>
-              <li>Personalise your invoice heading.</li>
-              <li>Upload your company logo.</li>
-              <li>Select to include your bank details on your invoices.</li>
-            </ul>
-            <li>Update your user details - change your password or email address associated with the account. </li>
-            <li>Manage your subscription - update your payment details.</li>
+              <ul>
+                <li>Store your address and contact details.</li>
+                <li>Personalise your invoice heading.</li>
+                <li>Upload your company logo.</li>
+                <li>Add your bank details.</li>
+                <li>Set default invoice printing preferences to include bank details and VAT.</li>
+              </ul>
+            </li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
       <hr>
+
+      <hr>
+      <div class="row spacer" id="account">
+        <h3>Account</h3>
+          <ul>
+            <li>Update your user details - change your password or email address associated with the account. </li>
+            <li>Manage your subscription.</li>
+          </ul>
+        <a class="top" href="#top">Back to top</a>
+      </div>
+      <hr>
+
       <div class="row spacer" id="security">
         <h3>Data Security</h3>
         <ul>
-        <li>Bulldog Clip will automatically log you out if your account has been inactive for 30 minutes.</li>
+          <li>Access is controlled by password.</li>
+          <li>All traffic to and from the website is encrypted (look for "https://" in your browser').</li>
+          <li>BulldogClip will automatically log you out if your account has been inactive for 30 minutes.</li>
+          <li>Your data is backed up in the cloud.</li>
+          <li>You can take your own back up at anytime using the export function.</li>
+          <li>Password resets are verified by email.</li>
+          <li>Payment Card Industry (PCI) compliant card processing.</li>
         </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
+
       <hr>
       <div class="row spacer" id="access">
         <h3>Accessibility</h3>
         <ul>
-        <li>You will probably mostly use Bulldog Clip on your desktop computer but to give you added flexibility it has been designed for mobile use too.</li>
-        <li>No need to download an app our site has been created to work well on all mobile devices.</li>
-        <li>Use it anywhere - all you need is an internet connection to securely log on.</li>
+          <li>You will probably mostly use BulldogClip on your desktop computer but to give you added flexibility it has been designed for mobile use too.</li>
+          <li>No need to download an app. Our site has been created to work well on all mobile devices.</li>
+          <li>Use it anywhere - all you need is an internet connection to securely log on.</li>
         </ul>
         <a class="top" href="#top">Back to top</a>
       </div>

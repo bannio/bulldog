@@ -12,7 +12,8 @@
                     <%= link_to 'About Us', page_path('about') %>
                 </dd>
                 <dd>
-                    <%= link_to 'Contact Us', page_path('contact') %>
+                    <%= link_to 'Contact Us', new_contact_path %>
+                    <%#= link_to 'Contact Us', page_path ('contact') %>
                 </dd>
                 <br>
                 <dd>
@@ -49,19 +50,19 @@
                     Community
                 </dt>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Follow Bulldog Clip on Twitter">Twitter</a>
+                    <a href="#" data-toggle="tooltip" title="Follow BulldogClip on Twitter">Twitter</a>
                 </dd>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Follow Bulldog Clip on Facebook">Facebook</a>
+                    <a href="#" data-toggle="tooltip" title="Follow BulldogClip on Facebook">Facebook</a>
                 </dd>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Follow Bulldog Clip on Linked In">Linked In</a>
+                    <a href="#" data-toggle="tooltip" title="Follow BulldogClip on Linked In">Linked In</a>
                 </dd>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Read the Bulldog Clip blog">Blog</a>
+                    <a href="#" data-toggle="tooltip" title="Read the BulldogClip blog">Blog</a>
                 </dd>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Access the Bulldog Clip forum">Forum</a>
+                    <a href="#" data-toggle="tooltip" title="Access the BulldogClip forum">Forum</a>
                 </dd>
             </dl>
         </div>
@@ -72,16 +73,16 @@
                     Product
                 </dt>
                 <dd>
-                    <%= link_to 'Pricing', plans_path, data: {toggle: "tooltip"}, title: "View Bulldog Clip subscription plans" %>
+                    <%= link_to 'Pricing', plans_path, data: {toggle: "tooltip"}, title: "View BulldogClip subscription plans" %>
                 </dd>
                 <dd>
                     <%= link_to 'FAQs', page_path('faq'), data: {toggle: "tooltip"}, title: "Read frequently asked questions" %>
                 </dd>
                 <dd>
-                    <%= link_to 'Story', page_path('story'), data: {toggle: "tooltip"}, title: "Read the story behind Bulldog Clip" %>
+                    <%= link_to 'Story', page_path('story'), data: {toggle: "tooltip"}, title: "Read the story behind BulldogClip" %>
                 </dd>
                 <dd>
-                    <%= link_to 'Features', page_path('features'), data: {toggle: "tooltip"}, title: "Bulldog Clip features" %>
+                    <%= link_to 'Features', page_path('features'), data: {toggle: "tooltip"}, title: "BulldogClip features" %>
                 </dd>
             </dl>
         </div>

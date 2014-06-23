@@ -1,0 +1,27 @@
+<table style="width: 600px;">
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+      <%#= image_tag("bulldog_clip_navbar_logo.png", :alt => "BulldogClip") %>
+    </td>
+  </tr>
+
+  <tr>
+    <th style="height: 37px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;border-top: 1px solid black;border-bottom: 1px solid black;">Contact Request
+    </th>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">You have received the following email from <%= "#{ @name } (#{ @email }):" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"><%= sanitize @message %></td>
+  </tr>
+</table>
+

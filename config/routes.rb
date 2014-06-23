@@ -22,5 +22,6 @@ Bulldog::Application.routes.draw do
   resources :suppliers, only: [:index, :edit, :update]
   resources :welcome, only: [:index]
   resources :plans, only: [:index]
-
+  # post '/send_mail' => 'contacts#send_mail'
+  resources :contacts, only: [:new, :create]
 end
