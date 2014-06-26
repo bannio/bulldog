@@ -12,7 +12,7 @@ end
 
 Then(/^I should be on the (.*) page$/) do |pagename|
   # assumes that content_for :title includes pagename
-  # e.g. <% content_for :title do %>Bulldog-Clip:Home<% end %>
+  # e.g. <% content_for :title do %>BulldogClip:Home<% end %>
   title.should include pagename
 end
 

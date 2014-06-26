@@ -28,10 +28,15 @@ ul.faq {
   padding-left: 0;
 }
 
-div.panel.demo-info {
-  margin-bottom: 40px;
-}
 
 ul {
 list-style-type: square;
+}
+
+// styles free demo page
+div.panel.demo-info {
+  margin-bottom: 40px;
+}
+.demo-info ul {
+margin-bottom: 10px;
 }

@@ -1,6 +1,7 @@
-<% content_for :title do %>Bulldog-Clip | Contact<% end %>
-<% content_for :description do %>Contact Us<% end %>
+<!-- Not in use anymore. Moved to views/contacts/new -->
 
+<% content_for :title do %>BulldogClip | Contact<% end %>
+<% content_for :description do %>Contact Us<% end %>
 
 <div class="container contact-page">
   <section class="container">
@@ -30,6 +31,77 @@
         <div class="panel-body">
         <h2>Get in touch</h2>
           <div class="contact-form">
+            <%#= form_for @contact do |f| %>
+            <%= form_for Contact.new do |f| %>
+
+              <div class="form-group">
+                <%= f.label :name, 'Name' %>
+                <%= f.text_field :name, class: 'form-control', placeholder: 'Enter your name' %>
+                <p class="help-block hidden">Can't be blank</p>
+              </div>
+              <div class="form-group">
+                <%= f.label :email, 'Email Address' %>
+                <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
+                <p class="help-block hidden">Can't be blank</p>
+              </div>
+              <div class="form-group">
+                <%= f.label :message, 'Message' %>
+                <%= f.text_area :message, class: 'form-control', rows: 4, placeholder: 'Write your message here' %>
+              </div>
+              <div class="checkbox">
+                <%= f.label :mail_list, 'Please add me to the mailing list' %>
+                <%= f.check_box :mail_list %>
+              </div>
+                <%= f.submit 'Send', class: 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Send your message to BulldogClip" %>
+                <%= link_to "Cancel", home_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel and return to home page" %>
+            <% end %>      
+
+          </div><!--end form fields -->
+        </div><!-- end panel body -->
+      </div><!-- end panel -->
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>
+        We look forward to hearing from you
+        </p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+</div><!--end container -->
+
+
+
+<!-- <div class="container contact-page">
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <h1>Contact Us</h1>
+      </div> -->
+    <!-- </div> --><!--end row -->
+  <!-- </section> --><!--end container-->
+<!-- <hr>
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>
+        If you can't find the answer to your question in our <a href="/faq" class="faq-link">FAQ section</a> you can send us a message here and we will try our best to answer it for you.
+        </p>
+        <p>
+        If you just want to keep up to date with what we are up to, send us your details and we will add you to our mailing list.
+        </p>
+      </div> -->
+    <!-- </div> --><!--end row-->
+  <!-- </section> --><!--end container-->
+  <!-- <section class="container">
+    <div class="row">
+
+      <div class="col-md-4 col-md-offset-4 panel panel-default contact-page">
+        <div class="panel-body">
+        <h2>Get in touch</h2>
+          <div class="contact-form">
             <form role="form">
               <div class="form-group">
                 <label for="name">Name</label>
@@ -51,22 +123,22 @@
                   <input type="checkbox"> Please add me to the mailing list
                 </label>
               </div>
-              <a href="/home" class="create-btn std-btn", data: {toggle: "tooltip"}, title: "Send your message to Bulldog Clip">Send</a>
+              <a href="/home" class="create-btn std-btn", data: {toggle: "tooltip"}, title: "Send your message to BulldogClip">Send</a>
               <a href="/home" class="action-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel and return to home page">Cancel</a>
-            </form>
-          </div><!--end form fields -->
-        </div><!-- end panel body -->
-      </div><!-- end panel -->
-    </div><!--end row-->
-  </section><!--end container-->
-  <section class="container">
+            </form> -->
+          <!-- </div> --><!--end form fields -->
+        <!-- </div> --><!-- end panel body -->
+      <!-- </div> --><!-- end panel -->
+    <!-- </div> --><!--end row-->
+  <!-- </section> --><!--end container-->
+  <!-- <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <p>
         We look forward to hearing from you
         </p>
-      </div>
-    </div><!--end row-->
-  </section><!--end container-->
-</div><!--end container -->
+      </div> -->
+    <!-- </div> --><!--end row-->
+  <!-- </section> --><!--end container-->
+<!-- </div> --><!--end container -->
 

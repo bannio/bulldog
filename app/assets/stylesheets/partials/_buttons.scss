@@ -119,6 +119,23 @@ a.std-btn, input.std-btn {
   max-height: 34px;
 }
 
+a.lg-btn, input.lg-btn {
+  // border: #000000 2px solid;
+  border-radius: 5px 5px;
+  text-align: center;
+  // color: #000000;
+  padding: 10px 20px 6px 20px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 5px 5px 5px 0px;
+  overflow: hidden;
+  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  display: inline-block;
+  // min height required to ensure it doesn't inherit input fields height
+  min-height: 40px;
+  max-height: 40px;
+}
+
 // Pulls button to right of page, used on reports table
 .btn-right, input.std-btn.btn-right {
   float: right;
