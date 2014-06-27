@@ -5,5 +5,6 @@ FactoryGirl.define do
     name "Base Plan"
     amount 2000
     interval "year"
+    description {{head: "header", bullets: ["one","two"]}}
   end
 end

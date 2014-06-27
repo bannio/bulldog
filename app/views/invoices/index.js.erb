@@ -1,0 +1,5 @@
+$('#flashes').remove();
+$('main').prepend("<%= escape_javascript raw(flash_normal) %>");
+$('tbody#invoice_index_table').html('<%= escape_javascript render @invoices %>');
+$('#paginator').html('<%= escape_javascript(paginate(@invoices, :remote => true).to_s) %>');
+$('#filter_modal').modal('hide');

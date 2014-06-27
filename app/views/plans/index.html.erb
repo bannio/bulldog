@@ -11,18 +11,25 @@
         <div class="plan">
           <div class="name"><%= plan.name %></div>
           <div class="details">
+            <p><%= plan.description[:head] %></p>
+            <ul>
+              <% plan.description[:bullets].each do |item| %>
+                <li><%= item.to_s %></li>
+              <% end %>
+            </ul>
             <div class="price">
               <%= number_to_currency plan.amount/100 %>
             </div>
-            <div class="per_year">per year</div>
+            <div class="per_year">per year</div>  
             <div class="signup pull-right">
-              <a href="/home" class="action-btn std-btn">Cancel</a>
               <%= link_to "Sign up", new_account_path(plan_id: plan.id), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Sign up for a BulldogClip account" %>
             </div>
           </div>
         </div>
-      <% end %>
+        <hr/>
+      <% end %><!-- end of plan -->
       </div>
+      <a href="/home" class="action-btn std-btn">Cancel</a>
     </div>
   </div>
 </div>

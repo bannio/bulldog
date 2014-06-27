@@ -11,6 +11,10 @@ class InvoicesController < ApplicationController
                                                 filter_to(params[:to_date]).
                                                 page(params[:page]).
                                                 order(sort_column + " " + sort_direction)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

@@ -6,14 +6,14 @@ class ReportsController < ApplicationController
       format.html do
         params[:report] = {account_id: current_account.id}
         @report = Report.new(params[:report])
-        @bills = @report.bills.page(params[:page]).per(25)
+        @bills = @report.bills.page(params[:page])
       end
 
       format.js do
         # pagination request only
         @report = Report.new(report_params)
         @report.valid? # trigger validations
-        @bills = @report.bills.page(params[:page]).per(25)
+        @bills = @report.bills.page(params[:page])
       end
     end
   end
@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     if @report.valid?
       #@report.generate
-      @bills = @report.bills.page(params[:page]).per(25)
+      @bills = @report.bills.page(params[:page])
       if params[:commit] == "Export"
         send_data @report.bills.to_csv
       else
@@ -30,7 +30,7 @@ class ReportsController < ApplicationController
       end
     else
       flash.now[:error] = "Please correct the highlighted errors" 
-      @bills = @report.bills.page(params[:page]).per(25)
+      @bills = @report.bills.page(params[:page])
       render :new
     end
   end
