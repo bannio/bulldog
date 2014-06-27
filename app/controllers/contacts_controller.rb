@@ -12,16 +12,17 @@ class ContactsController < ApplicationController
         flash[:notice] = "Thanks, we have added you to our mailing list."
         add_to_mail_list
       elsif @contact.message_only?
-        flash[:notice] = "Message sent! Thanks for getting in touch."
+        flash[:notice] = "Message sent! Thanks for getting in touch, we will get back to you as soon as we can."
         ContactMailer.contact_email(@contact).deliver
       else # they want both
-        flash[:notice] = "Message sent! Thanks for getting in touch, we have added you to our mailing list."
+        flash[:notice] = "Message sent! Thanks for getting in touch, we have added you to our mailing list and we will get back to you as soon as we can."
         ContactMailer.contact_email(@contact).deliver
         add_to_mail_list
       end
       redirect_to home_path 
     else
-      redirect_to '/contact', notice: "Your message could not be sent. Please write a message or select add to mailing list before sending."
+      flash[:alert] = "Your message could not be sent. Please include a message or select add to mailing list before sending."
+      redirect_to '/contact'
     end
   end
 

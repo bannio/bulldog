@@ -29,17 +29,15 @@
         <div class="panel-body">
         <h2>Get in touch</h2>
           <div class="contact-form">
-            <%#= form_for @contact do |f| %>
             <%= form_for @contact do |f| %>
+            <%= @contact.errors.full_messages %>
               <div class="form-group">
                 <%= f.label :name, 'Name' %>
                 <%= f.text_field :name, class: 'form-control', placeholder: 'Enter your name' %>
-                <p class="help-block hidden">Can't be blank</p>
               </div>
               <div class="form-group">
                 <%= f.label :email, 'Email Address' %>
                 <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
-                <p class="help-block hidden">Can't be blank</p>
               </div>
               <div class="form-group">
                 <%= f.label :message, 'Message' %>
