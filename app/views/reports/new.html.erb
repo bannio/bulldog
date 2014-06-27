@@ -36,11 +36,11 @@
           <% end %>
         </div>
         <%= f.collection_select :customer_id, Customer.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
-        <p class="help-block"></p>
+        <!-- <p class="help-block"></p> -->
         <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
-        <p class="help-block"></p>
+        <!-- <p class="help-block"></p> -->
         <%= f.collection_select :category_id, Category.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
-        <p class="help-block"></p>
+        <!-- <p class="help-block"></p> -->
 
         <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
         <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>

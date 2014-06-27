@@ -181,14 +181,15 @@ h1.info-menu-page, .info-menu-page h1 {
 }
 
 // back to top links
-.info-page a {
-  font-size: 1rem;
+.info-page a.top {
+  font-size: 1.25rem;
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   line-height: 1.25rem;
   color: #000;
   text-align: left;
 }
+
 
 // sidenav title
 .info-page dt {
@@ -388,7 +389,7 @@ a.faq-link {
 
 // links to features page read more
 a.read-more {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   // font-style: italic;
   font-weight: 200;
   font-family: 'Source Sans Pro', Arial, sans-serif;

@@ -24,18 +24,18 @@
             <div class="field">
               <%= label_tag :card_number, "Card Number" %>
               <%= text_field_tag :card_number, nil, name: nil, class: "form-control", placeholder: "Enter 16 digit card number" %>
-              <p class="help-block"></p>
+              <!-- <p class="help-block"></p> -->
             </div>
             <div class="field">
               <%= label_tag :card_code, "Security Code on Card (CVC)" %>
               <%= text_field_tag :card_code, nil, name: nil, class: "form-control", placeholder: "Enter 3 digit security code" %>
-              <p class="help-block"></p>
+              <!-- <p class="help-block"></p> -->
             </div>
             <div class="field card-expiration" >
               <%= label_tag :card_month, "Card Expiration" %>
               <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
               <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-              <p class="help-block"></p>
+              <!-- <p class="help-block"></p> -->
             </div>
           <% end %>
           <div id="stripe_error" class="stripe-error">
