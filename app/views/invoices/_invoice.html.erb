@@ -1,0 +1,7 @@
+<tr title="click to show details" class="pointer rowlink" data-rowlink="<%= invoice_path(invoice)%>">
+  <td class="first-col number-col"><%= invoice.number %></td>
+  <td class="date-col"><%= invoice.date %></td>
+  <td class="customer-col"><%= invoice.customer_name %></td>
+  <td class="comment-col"><%= truncate(invoice.comment, length: 60, separator: ' ') %></td>
+ <td class="align-right amount-col"><%= number_to_currency(invoice.total) %></td>
+</tr>

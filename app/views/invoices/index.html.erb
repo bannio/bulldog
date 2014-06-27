@@ -2,7 +2,7 @@
 <% content_for :description do %>BulldogClip invoices index<% end %>
 
 <div class="container">
-  <h1>Invoices List</h1>
+  <h1>Invoices</h1>
      <a href="#" id="pop" class="info-btn pop"
      data-title="Invoices Index"
      data-content="
@@ -17,37 +17,16 @@
      <img src="/assets/info_btn.png" alt="info button" class="info-img"/>
      </a>
 
-  <div class="panel panel-default col-md-4" style="float:none">
-    <div class="panel-body">
-      <%= form_tag invoices_path, method: 'get', id: "invoices_search" do %>
-        <div class="form-group">
-          <h2 class="filter">Filter invoices</h2>
-        </div>
-        <div class="form-group invoice">
-              <%= label_tag :from_date %>
-              <%= text_field_tag :from_date, params[:from_date], class: "date_picker", placeholder: "yyyy-mm-dd" %>
-          </div>
-          <div class="form-group invoice">
-              <%= label_tag :to_date %>
-              <%= text_field_tag :to_date, params[:to_date], class: "date_picker", placeholder: "yyyy-mm-dd" %>
-          </div>
-          <div class="form-group">
-            <%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %>
-        </div>
-        <div class="form-group">
-          <%= text_field_tag :search, params[:search], class: "search-query form-control", placeholder: ' by text within comment' %>
-        </div>
-        <div>
-          <%= submit_tag "Filter", name: nil, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
-          <%= link_to "Clear", invoices_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>
-          <%= link_to "New Invoice", new_invoice_path, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Create a new invoice." %>
-        </div>
-      <% end %><!-- end of form -->
-    </div><!--end panel body -->
-  </div><!--end panel-->
+  <%#= render 'filter_form' %>
 
   <div class="panel panel-default">
     <div class="panel-body">
+    <div>
+          <a class="create-btn std-btn" data-toggle="modal" data-target="#invoice_filter_modal" data-toggle="tooltip" title="Select criteria to filter the list by">Filter</a>
+          <%#= submit_tag "Filter", name: nil, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
+          <%= link_to "Clear", invoices_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>
+          <%= link_to "New Invoice", new_invoice_path, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Create a new invoice." %>
+        </div>
       <div class="table-responsive">
         <table class="table table-hover table-condensed" id="invoice_table">
           <thead>
@@ -61,17 +40,9 @@
             </tr>
           </thead>
           <tbody>
-            <% @invoices.each do |invoice| %>
-              <tr title="click to show details", class="pointer rowlink",
-                  data-rowlink="<%= invoice_path(invoice)%>">
-                <td class="first-col number-col"><%= invoice.number %></td>
-                <td class="date-col"><%= invoice.date %></td>
-                <td class="customer-col"><%= invoice.customer_name %></td>
-                <td class="comment-col"><%= truncate(invoice.comment, length: 60, separator: ' ') %></td>
-<!--                 <td class="comment-col"><%= invoice.comment.first(50) %></td>
- -->                <td class="align-right amount-col"><%= number_to_currency(invoice.total) %></td>
-              </tr>
-            <% end %>
+            <%# @invoices.each do |invoice| %>
+            <%= render @invoices %>  
+            <%# end %>
           </tbody>
         </table>
       </div><!--end table responsive -->
@@ -79,3 +50,4 @@
     </div><!--end panel body -->
   </div><!--end panel-->
 </div><!-- end container -->
+<%= render 'filter_modal' %>
