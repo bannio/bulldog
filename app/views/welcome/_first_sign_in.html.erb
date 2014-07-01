@@ -1,0 +1,19 @@
+<!-- Modal -->
+  <div class="modal fade" id="first_sign_in_modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="modal_title">Welcome to BulldogClip</h4>
+        </div>
+        <div class="modal-body" id="first_sign_in">
+          <p>As this is your first login you may like to read the 'getting started' guide. This will open in a new tab or window. </br>You can also access this at any time from the help button on the left of the screen.</br>To continue using BulldogClip, come back to this window and click on 'Continue'.</p>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="action-btn std-btn" data-dismiss="modal">Continue</button> -->
+          <%= link_to 'Read getting Started', '/help/setup', target: ("_blank"), class: "action-btn std-btn" %>
+          <%= link_to 'Continue', '#', class: "create-btn std-btn", data: { dismiss: 'modal'} %>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

@@ -1,6 +1,8 @@
 <% content_for :title do %>BulldogClip | Welcome<% end %>
 <% content_for :description do %>A place to keep receipts<% end %>
 
+<%= render 'first_sign_in' if first_sign_in? %>
+
 <div class= "container ">
 <!-- <h1>Welcome</h1> -->
 <!--<div class="row welcome-button">
@@ -96,21 +98,6 @@
   </div>
 </div> <!-- end container -->
 
-<!-- Modal -->
-  <div class="modal fade" id="bill_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="modal_title">New Bill</h4>
-        </div>
-        <div class="modal-body" id="bill_form">
-          loading ...
-        </div>
-        <div class="modal-footer">
-<!--<button type="button" class="action-btn std-btn" data-dismiss="modal">Cancel</button>
-          <button type="button" class="create-btn std-btn">Submit</button> -->
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+
+
+

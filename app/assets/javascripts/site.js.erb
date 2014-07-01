@@ -36,6 +36,13 @@ SITENAME = {
       console.log("accounts#create");
       Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       return STRIPE.setupForm();
+    },
+  },
+
+  welcome: {
+    index: function () {
+      console.log("welcome#index");
+      $('#first_sign_in_modal').modal('show');
     }
   }
 };

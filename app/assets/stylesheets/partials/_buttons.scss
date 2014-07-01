@@ -1,7 +1,7 @@
 // Help Tab
 
 div.help_tab a {
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: 'ubuntu', Arial, sans-serif;
   color: #ffffff;
   font-weight: 600;
   background-color: #4D78CC;
@@ -140,7 +140,7 @@ a.std-btn, input.std-btn {
   font-weight: 600;
   margin: 5px 5px 5px 0px;
   overflow: hidden;
-  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  font-family: 'ubuntu', 'Helvetica Neau', sans-serif;
   display: inline-block;
   // min height required to ensure it doesn't inherit input fields height
   min-height: 34px;
@@ -157,7 +157,7 @@ a.lg-btn, input.lg-btn {
   font-weight: 600;
   margin: 5px 5px 5px 0px;
   overflow: hidden;
-  font-family: 'Source Sans Pro', 'Helvetica Neau', sans-serif;
+  font-family: 'ubuntu', 'Helvetica Neau', sans-serif;
   display: inline-block;
   // min height required to ensure it doesn't inherit input fields height
   min-height: 40px;
