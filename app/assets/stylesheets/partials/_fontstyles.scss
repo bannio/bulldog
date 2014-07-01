@@ -77,6 +77,34 @@ body {
   padding: 10px 0 10px 0;
 }
 
+// HELP PAGES
+.help-page h1 {
+  font-size: 4rem;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 4rem;
+  color: #000;
+  text-align: center;
+  display: block;
+}
+
+.help-page h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  line-height: 3rem;
+  color: #000;
+  text-align: left;
+  padding: 10px 0px;
+}
+
+.help-page li {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-family: 'ubuntu', Arial, sans-serif;
+  padding: 15px 0px;
+}
+
 // LANDING PAGE STRAPLINE
 
 h1.strapline {
@@ -86,15 +114,6 @@ h1.strapline {
   display: block;
   padding: 10px 0;
 }
-
-// h1.strapline {
-//   font-family: 'architects_daughter', Arial, sans-serif;
-//   text-align: center;
-//   font-size: 4rem;
-//   // margin: 0 auto;
-//   display: block;
-//   padding: 0em 0.5rem;
-// }
 
 // LANDING PAGE TITLES
 .landing-info h2 {
@@ -108,6 +127,7 @@ h1.strapline {
   padding-top: 40px;
   padding-left: 0px;
 }
+
 
 // INFO PAGE TEXT
 .info-page p {

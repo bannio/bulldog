@@ -1,0 +1,34 @@
+<% content_for :title do %>BulldogClip | Help<% end %>
+<% content_for :description do %>Help Index<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default col-md-10 col-md-offset-1">
+      <div class="panel-body info-page">
+        <h1>How To Use BulldogClip</h1>
+
+        <p>Throughout the application you will find blue information icons <img src="/assets/info_btn.png" alt="info button" class="info-img"/>. These give you a brief outline of the features on the page you are looking at. Hover your mouse over the icon or tap it once on a touchscreen to activate it.</p><br>
+        <p>For more detailed instructions on how to set up your BulldogClip account and use all of its features follow the links below.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default col-md-10 col-md-offset-1">
+      <div class="panel-body info-page">
+      <li> 
+      <%= link_to 'Getting started', '/help/setup' %>
+      </li> 
+      <li>
+      <%= link_to 'What is a bill?', '/help/bills' %>
+      </li>
+      <p>Documents and invoices</p>
+      <p>Analysis and reports</p>
+      <p>Customers</p>
+      <p>Categories</p>
+      <p>Suppliers</p>
+      <p>VAT</p>
+      <p>Your Account Details</p>
+      </div>
+    </div>
+  </div>
+</div>
