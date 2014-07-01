@@ -1,3 +1,28 @@
+// help pages
+@media screen and (max-width: 767px){
+div.help-page > ul > img {
+  width: 100%;
+  // margin-left: 5%;
+}
+}
+
+@media screen and (min-width: 768px){
+div.help-page > ul > img {
+  width: 80%;
+  margin-left: 5%;
+}
+}
+
+.help-page img {
+  border: 1px black solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+img.help-icon, img.help-logo {
+  border: none;
+}
+
 // prevents navbar from obscuring headings on in page links
 
 @media screen and (min-width: 768px){

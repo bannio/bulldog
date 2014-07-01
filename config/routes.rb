@@ -24,4 +24,7 @@ Bulldog::Application.routes.draw do
   resources :plans, only: [:index]
   # post '/send_mail' => 'contacts#send_mail'
   resources :contacts, only: [:new, :create]
+  get "help/:action" => "help#:action"
+  # get 'help/intro' => 'help#intro'
+
 end
