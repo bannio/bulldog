@@ -29,9 +29,9 @@
       <%= f.text_field :vat, placeholder: 'VAT amount', class: "form-control currency" %>
     <% end %>
   <% end %> <!-- end of VAT fields -->
-  <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save changes" %>
+  <%= f.submit 'Save', :class => 'create-btn std-btn', title: "Save changes" %>
   <% if params[:action] == 'edit' %>
     <%= link_to 'Delete', @bill, method: :delete, data: {confirm: 'Are you sure?'}, class: 'warn-btn std-btn', remote: true, title: "Delete bill" %>
   <% end %>
-  <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true, data: {toggle: "tooltip"}, title: "Cancel and return to list of bills" %>
+  <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true, title: "Cancel and return to list of bills" %>
 <% end %> <!-- end of form_for -->

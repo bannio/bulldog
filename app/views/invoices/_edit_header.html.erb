@@ -62,6 +62,6 @@
   <%= link_to 'Cancel', invoices_path, class: 'action-btn std-btn', data: {toggle: "tooltip"}, title: "Cancel and return to invoice list"  %>
 <% end %>
 
-<%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn', data: {toggle: "tooltip"}, title: "Delete invoice and return bills to pool"  %>
+<%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn', title: "Delete invoice and return bills to pool"  %>
 
 <%= link_to "Print Preview", invoice_path(@invoice, format: "pdf"), class: 'create-btn std-btn', target: "_blank", data: {toggle: "tooltip"}, title: "Download PDF of invoice to print or email"  %> 
