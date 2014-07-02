@@ -42,6 +42,6 @@ module ApplicationHelper
   def first_sign_in?
     return false if session[:first]
     session[:first] = true
-    true #current_user.sign_in_count == 1
+    current_user.sign_in_count == 1
   end
 end

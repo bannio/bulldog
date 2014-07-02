@@ -53,7 +53,7 @@ class BillsController < ApplicationController
     @bill = Bill.visible_to(current_user).find(params[:id])
     if @bill.destroy
       flash[:success] = "Bill successfully deleted"
-      redirect_to bills_url
+      redirect_to bills_url, status: 303
     else
       render 'edit'
     end

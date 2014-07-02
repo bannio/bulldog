@@ -22,7 +22,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
     <div>
-          <a class="create-btn std-btn" data-toggle="modal" data-target="#invoice_filter_modal" data-toggle="tooltip" title="Select criteria to filter the list by">Filter</a>
+          <a class="create-btn std-btn" href='#' data-toggle="modal" data-target="#invoice_filter_modal" title="Select criteria to filter the list by">Filter</a>
           <%#= submit_tag "Filter", name: nil, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
           <%= link_to "Clear", invoices_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>
           <%= link_to "New Invoice", new_invoice_path, class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Create a new invoice." %>

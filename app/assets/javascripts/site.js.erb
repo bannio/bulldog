@@ -44,6 +44,15 @@ SITENAME = {
       console.log("welcome#index");
       $('#first_sign_in_modal').modal('show');
     }
+  },
+
+  invoices: {
+    edit: function () {
+      console.log("invoices#edit");
+      $("#bill_table_body").on("click", "td.remove-col",function(){
+      $(this).parent().toggleClass("line-through");
+      });
+    }
   }
 };
 
