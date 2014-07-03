@@ -113,6 +113,7 @@ h1.strapline {
   font-size: 3.5rem;
   display: block;
   padding: 10px 0;
+  font-weight: 400;
 }
 
 // LANDING PAGE TITLES
@@ -128,6 +129,63 @@ h1.strapline {
   padding-left: 0px;
 }
 
+// PLANS PAGE TEXT
+.plans {
+  h1 {
+  font-size: 4rem;
+  font-weight: 400;
+  font-family: 'ubuntu', Arial, sans-serif;
+  line-height: 4rem;
+  color: #000;
+  text-align: center;
+  display: block;
+  padding: 0rem;
+  }
+  h2 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px 0px;
+  color: #000;
+  }
+  p.details {
+  font-size: 1.5rem;
+  color: #000;
+  text-align: center;
+  margin: 20px 0px 10px;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  li {
+  font-size: 1.5rem;
+  padding: 5px 0px;
+  margin-top: 5px;
+  color: #000;
+  list-style-type: none;
+  }
+  p.only {
+  color: #000;
+  font-size: 1.5rem;
+  margin: 10px 0px 10px;
+  padding-left: 50px;
+  color: #000;
+  font-size: 1.5rem;  
+  }
+  h3 {
+  font-size: 5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px 0px 0px 0px;
+  color: #000;   
+  }
+  p.per_year {
+  font-size: 1.5rem;
+  color: #000;
+  text-align: right;
+  padding-right: 50px;
+  }
+}
 
 // INFO PAGE TEXT
 .info-page p {
