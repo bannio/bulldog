@@ -1,0 +1,55 @@
+<% content_for :title do %>BulldogClip | Help<% end %>
+<% content_for :description do %>Analysis Instructions<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default col-md-10 col-md-offset-1">
+      <div class="panel-body help-page">
+        <h1>Analysis and Reports</h1>
+        <nav>
+          <ul class="nav nav-pills nav-justified" role="navigation">
+            <li class="active"><a href="#create" data-toggle="pill">Create charts and tables</a></li>
+            <li><a href="#export" data-toggle="pill">Export selected data</a></li>
+        </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="panel panel-default col-md-10 col-md-offset-1 tab-content">
+      <div class="panel-body help-page tab-pane active" id="create">
+      <h2>Create charts and tables from your data</h2>
+      <ul>
+        <li>NOTE: you will need to add some bills to your account before you can use the Analysis feature.</li>
+        <li>Select 'Analysis' from the main menu.</li>
+        <img src="" alt="analysis menu">
+        <li>Use the 'Filter Bills' form at the top of the page to set your parameters. You can select one or more criteria depending on what you want your reports to show.
+          <ol>
+            <li>Choose the date range using the From and To Date. Enter the dates using the date picker provided or by typing them in the format shown.</li>
+            <li>Select from your customers, suppliers and categories using the dropdown menus.</li>
+            <li>Once you have selected your criteria choose 'View' to show your filtered results.</li>
+            <li>Selecting 'Clear' will remove your filters and show results for all your bills.</li>
+          </ol>
+        </li>
+        <li>Beneath the form are two tabs 'Charts' and 'Table'. Select the tab you want to switch between views.</li>
+        <img src="" alt="Chart and Table tab">
+        <li>The 'Table' view shows your filtered bills in a table format. This can be useful if you want to filter your data before you download it (see 'Export Selected Data' for how to download the table)</li>
+        </ul>
+      </div>
+
+      <div class="panel-body help-page tab-pane" id="export">
+      <h2>Export selected data</h2>
+      <ul>
+        <li>You can export a filtered list of Bills in a CSV file. A CSV file allows data to be saved in a table structured format which you can use in any spreadsheet program.</li>
+        <li>Select 'Analysis' from the main menu.</li>
+        <img src="" alt="analysis menu">
+        <li>Use the filter form at the top of the page to choose the data that you want to export (see 'Create charts and tables' for instructions). If you don't filter your data you will export all of the bills on your account.</li>
+        <li>Select the 'Table' tab.</li>
+        <img src="" alt="Analysis page showing table tab">
+        <li>You will see a table showing the filtered data. To export this data select the blue 'Export' button at the top of the table.</li>
+        <img src="" alt="Analysis table page showing export button">
+        <li>Selecting 'Export' downloads the file to your computer. The file is named 'reports.csv'. You can find it in your computers downloads folder.</li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>

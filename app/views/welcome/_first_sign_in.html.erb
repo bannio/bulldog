@@ -7,12 +7,14 @@
           <h4 class="modal-title" id="modal_title">Welcome to BulldogClip</h4>
         </div>
         <div class="modal-body" id="first_sign_in">
-          <p>As this is your first login you may like to read the 'getting started' guide. This will open in a new tab or window. </br>You can also access this at any time from the help button on the left of the screen.</br>To continue using BulldogClip, come back to this window and click on 'Continue'.</p>
+          <p>Thank you for subscribing.</p>
+          <p>As this is your first login you may like to read the getting started guide. This will open in a new tab or window so that you can keep it open whilst using BulldogClip.</p>
+          <p>You can also access this at any time from the help button on the left of the screen. To continue using BulldogClip, come back to this window and click on ’Start using BulldogClip’.</p>
         </div>
         <div class="modal-footer">
           <!-- <button type="button" class="action-btn std-btn" data-dismiss="modal">Continue</button> -->
-          <%= link_to 'Read getting Started', '/help/setup', target: ("_blank"), class: "action-btn std-btn" %>
-          <%= link_to 'Continue', '#', class: "create-btn std-btn", data: { dismiss: 'modal'} %>
+          <%= link_to 'Read Getting Started', '/help/intro', target: ("_blank"), class: "action-btn std-btn" %>
+          <%= link_to 'Start using BulldogClip', '#', class: "create-btn std-btn", data: { dismiss: 'modal'} %>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
