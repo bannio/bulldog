@@ -30,7 +30,6 @@
         <h2>Get in touch</h2>
           <div class="contact-form">
             <%= form_for @contact do |f| %>
-            <%= @contact.errors.full_messages %>
               <div class="form-group">
                 <%= f.label :name, 'Name' %>
                 <%= f.text_field :name, class: 'form-control', placeholder: 'Enter your name' %>

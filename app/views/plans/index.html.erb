@@ -1,35 +1,43 @@
 <% content_for :title do %>BulldogClip | Plans<% end %>
 <% content_for :description do %>Subscription plans<% end %>
 
-
 <div class="container plans">
-    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3"> 
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <h1>Subscription Plans</h1>
+      </div>
+    </div><!--end row -->
+  </section><!--end container-->
+<hr>
+<div class="container plans">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <% @plans.each do |plan| %> 
     <div class="panel panel-default">
       <div class="panel-body">
-      <h1>Subscription Plans</h1>
-      <% @plans.each do |plan| %>
+      <%# @plans.each do |plan| %>
         <div class="plan">
-          <div class="name"><%= plan.name %></div>
-          <div class="details">
-            <p><%= plan.description[:head] %></p>
-            <ul>
+          <h2><%= plan.name %></h2>
+          <hr>
+            <p class="details"><%= plan.description[:head] %></p>
+            <ul class="tick">
               <% plan.description[:bullets].each do |item| %>
-                <li><%= item.to_s %></li>
+                <li>&#10004;&emsp;<%= item.to_s %></li>
               <% end %>
             </ul>
-            <div class="price">
-              <%= number_to_currency plan.amount/100 %>
-            </div>
-            <div class="per_year">per year</div>  
+            <p class="only">All this for only</p>
+            <h3 class="price">
+              <%= number_to_currency plan.amount/100, strip_insignificant_zeros: true %>
+            </h3>
+            <p class="per_year">per year</p>  
             <div class="signup pull-right">
+              <a href="/home" class="action-btn std-btn">Cancel</a>
               <%= link_to "Sign up", new_account_path(plan_id: plan.id), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Sign up for a BulldogClip account" %>
             </div>
           </div>
         </div>
-        <hr/>
-      <% end %><!-- end of plan -->
       </div>
-      <a href="/home" class="action-btn std-btn">Cancel</a>
+      <% end %><!-- end of plan -->
     </div>
   </div>
 </div>
