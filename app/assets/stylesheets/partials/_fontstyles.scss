@@ -102,8 +102,21 @@ body {
   font-size: 1.75rem;
   line-height: 2.25rem;
   font-family: 'ubuntu', Arial, sans-serif;
-  padding: 15px 0px;
+  padding: 10px 0px;
 }
+
+ul.nav-pills > li {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-family: 'ubuntu', Arial, sans-serif;
+  padding: 0px 0px;
+}
+
+ul.nav-stacked > li > a:hover {
+ color: #ffffff;
+ background-color: #428bca;
+}
+
 
 // LANDING PAGE STRAPLINE
 
