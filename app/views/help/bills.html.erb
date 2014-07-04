@@ -22,9 +22,9 @@
         <h2>Add a new bill</h2>
         <ul>
           <li>Navigate to the Bills page and select the green 'New' button to the top left of the screen. This will open a new bill form.</li>
-          <img src="/assets/new_bill_btn.png" alt="New bill button">
+          <img <%= 'new_bill_btn.png' %> alt="New bill button">
           <li>Enter the details of your bill into the form.</li>
-          <img src="/assets/new_bill_modal.png" alt="New bill form">
+          <img <%= 'new_bill_modal.png' %> alt="New bill form">
           <ol>
             <li>Enter the date the bill occured. You can use the dropdown date picker provided or type it in using the format shown.</li>
             <li>You can enter new customers, suppliers and categories by typing their names into the box provided. The next time you use the form there name will appear in the dropdown menu.<br>'Customer' is who the purchase was on behalf of or who the bill will be recharged to e.g. client 1, business or home. 'Supplier' is the name of the provider of the product or service you purchased. Categories allow you to group bills for analysis e.g. stationary, travel, utilities.</li>
@@ -32,7 +32,7 @@
             <li>Enter the amount excluding the £ sign which will be added for you. For example £20.00 can be entered as '20' or '20.00'.</li>
           </ol> 
           <li>Once you are happy with the details select 'Save' to add the bill to your bills list. If you do not want to add the bill select 'Cancel' to delete it.</li>
-          <img src="/assets/bill_success.png" alt="New bill success message">
+          <img <%= 'bill_success.png' %> alt="New bill success message">
           <li>Saving will return you to the bills list. Your new bill should appear in the list. You should see a green alert message 'Bill was successfully created' accross the top of the screen.</li>
         </ul>
       </div>
