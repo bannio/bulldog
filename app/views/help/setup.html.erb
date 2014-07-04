@@ -21,13 +21,13 @@
         <!-- <p>It won't take you long to find your way around with BulldogClip's simple navigation tools.</p> -->
         <ul>
           <li>On the homepage choose from one of the 6 icons. Click or tap on the panel to make your selection.</li>
-          <img src="/assets/homepage_menu.png" alt="Homepage navigation panels">
+          <img src=<%= asset_path('homepage_menu.png') %> alt="Homepage navigation panels">
           <li>Hovering or tapping on the Tools and Account panels will turn them over to reveal more options.</li>
-          <img src="/assets/flip_menu.png" alt="Panels flip to reveal more options">
+          <img src=<%= asset_path('flip_menu.png') %> alt="Panels flip to reveal more options">
           <li>From any page you can hover your mouse over or tap on the top bar to show the drop-down menu.</li>
-          <img src="/assets/subnav.png" alt="Dropdown menu bar">
+          <img src=<%= asset_path('subnav.png') %> alt="Dropdown menu bar">
           <li>To return to the homepage select the logo in the top left corner.</li>
-          <img src="/assets/return_to_home.png" alt="Return to homepage">
+          <img src=<%= asset_path('return_to_home.png') %> alt="Return to homepage">
         </ul>
       </div>
 
@@ -37,9 +37,9 @@
         <!-- <p>It won't take you long to find your way around with BulldogClip's simple navigation tools.</p> -->
         <ul>
           <li>Navigate to the Bills page and select the green 'New' button to the top left of the screen. This will open a new bill form.</li>
-          <img src="/assets/new_bill_btn.png" alt="New bill button">
+          <img src=<%= asset_path('new_bill_btn.png') %> alt="New bill button">
           <li>Enter the details of your bill into the form.</li>
-          <img src="/assets/new_bill_modal.png" alt="New bill form">
+          <img src=<%= asset_path('new_bill_modal.png') %> alt="New bill form">
           <ol>
             <li>Enter the date the bill occured. You can use the dropdown date picker provided or type it in using the format shown.</li>
             <li>You can enter new customers, suppliers and categories by typing their names into the box provided. The next time you use the form there name will appear in the dropdown menu.<br>'Customer' is who the purchase was on behalf of or who the bill will be recharged to e.g. client 1, business or home. 'Supplier' is the name of the provider of the product or service you purchased. Categories allow you to group bills for analysis e.g. stationary, travel, utilities.</li>
@@ -47,7 +47,7 @@
             <li>Enter the amount excluding the £ sign which will be added for you. For example £20.00 can be entered as '20' or '20.00'.</li>
           </ol> 
           <li>Once you are happy with the details select 'Save' to add the bill to your bills list. If you do not want to add the bill select 'Cancel' to delete it.</li>
-          <img src="/assets/bill_success.png" alt="New bill success message">
+          <img src=<%= asset_path('bill_success.png') %> alt="New bill success message">
           <li>Saving will return you to the bills list. Your new bill should appear in the list. You should see a green alert message 'Bill was successfully created' accross the top of the screen.</li>
         </ul>
       </div>
@@ -58,11 +58,11 @@
         <ul>
           <li>To get the most out of your BulldogClip account it is worth taking a few minutes to set up your account.</li>
           <li>Select Tools from the menu and choose Invoice Setup.</li>
-          <img src="/assets/invoice_setup_menu.png" alt="Navigate to invoice setup">
+          <img src=<%= asset_path('invoice_setup_menu.png') %> alt="Navigate to invoice setup">
           <li>These are the details that will appear on any documents you create. You will see that your Invoice Print Settings are currently blank. Select the green 'Edit' button at the bottom left of the form to add your details.</li>
-          <img src="/assets/invoice_setup_show.png" alt="Blank invoice settings">
+          <img src=<%= asset_path('invoice_setup_show.png') %> alt="Blank invoice settings">
           <li>Once you have completed the form you can store your details here for use on any of your documents.</li>
-          <img src="/assets/invoice_setup_add.png" alt="Invoice settings edit form">
+          <img src=<%= asset_path('invoice_setup_add.png') %> alt="Invoice settings edit form">
             <ol>
               <li>Your Address Details - Name, address and postcode are required. Telephone and email are optional.</li>
               <li>Your Bank Details - These details are entirely optional. You may want to include them for documents such as invoices and expense claims. You may wish to store them here so that you have the option to include them.</li>
