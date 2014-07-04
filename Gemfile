@@ -62,6 +62,7 @@ group :development do
   gem "binding_of_caller"
   gem "rails_layout"
   gem "letter_opener"
+  gem 'sprockets_better_errors'
 end
 
 group :test, :development do

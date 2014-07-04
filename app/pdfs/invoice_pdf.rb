@@ -244,24 +244,21 @@ end
   end
 
   def vat_summary_table
-  if @invoice.include_vat? && vat_summary.length > 0
-      # bounding_box([0,cursor], :width => 540) do
-        table vat_summary do
-          columns(1).font_style = :bold
-          columns(0..4).align = :right
-          cells.borders = []
-          cells.padding = [2,5]
-          columns(0).width = 80
-          columns(1).width = 240
-          columns(2).width = 80
-          columns(3).width = 80
-          columns(4).width = 60
-        end
+    if @invoice.include_vat? && vat_summary.length > 0
+    # bounding_box([0,cursor], :width => 540) do
+      table vat_summary do
+        columns(1).font_style = :bold
+        columns(0..4).align = :right
+        cells.borders = []
+        cells.padding = [2,5]
+        columns(0).width = 80
+        columns(1).width = 240
+        columns(2).width = 80
+        columns(3).width = 80
+        columns(4).width = 60
       end
-    else
-        #do nothing
     end
-  # end
+  end
   
   def vat_summary
     summary_table = []
@@ -296,20 +293,17 @@ end
       end
       # text "#{cursor}"
       # bounding_box([5,cursor], :width => 535) do
-        text "<b>Please make payment to:</b>", inline_format: true
-        move_down 5
-        table(payment_table) do
-          cells.borders = []
-          cells.padding = [0,0]
-          # cells.size = 9
-          columns(0).width = 100
-          columns(1).width = 150
-        end
+      text "<b>Please make payment to:</b>", inline_format: true
+      move_down 5
+      table(payment_table) do
+        cells.borders = []
+        cells.padding = [0,0]
+        # cells.size = 9
+        columns(0).width = 100
+        columns(1).width = 150
       end
-      else
-      # do nothing
     end
-  # end
+  end
   
   def price(num)
     @view.number_to_currency(num)
