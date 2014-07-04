@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+  before_action :setup_mcapi
   # before_filter :https_redirect
 
 
@@ -19,6 +21,10 @@ class ApplicationController < ActionController::Base
     @current_account ||= user_has_account? ? current_user.account : nil
   end
   helper_method :current_account
+
+  def setup_mcapi
+    @mc = Mailchimp::API.new(ENV['MAILCHIMP-API-KEY'])
+  end
 
   private
 

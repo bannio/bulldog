@@ -28,7 +28,7 @@ div.card-expiration > select {
 
 // Up and down arrow image background
 div.card-expiration > select {
-background-image: url(/assets/dropdown_arrow.png) !important;
+background-image: asset-url('dropdown_arrow.png') !important;
 background-repeat: no-repeat;
 background-size: 25px 33px;
 background-position: right center;
@@ -107,7 +107,7 @@ outline-offset: 0px !important;
 
 // currency symbol placeholder
 input.currency  {
-background-image: url(/assets/currency_sign.png) !important;
+background-image: asset-url('currency_sign.png') !important;
 background-repeat: no-repeat;
 background-size: 25px 33px;
 background-position: left center;
@@ -121,9 +121,10 @@ input.form-control.currency {
   padding-left: 33px;
 }
 
+
 // percentage symbol placeholder
 input.percentage  {
-background-image: url(/assets/percentage_sign.png) !important;
+background-image: asset-url('percentage_sign.png') !important;
 background-repeat: no-repeat;
 background-size: 25px 33px;
 background-position: right center;

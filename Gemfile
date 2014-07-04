@@ -30,7 +30,7 @@ gem 'kaminari'
 gem 'groupdate'
 gem 'chartkick'
 gem 'stripe'
-gem 'mailchimp-api', '~> 2.0.5'
+gem 'mailchimp-api', '~> 2.0.5', require: 'mailchimp'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
