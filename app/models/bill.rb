@@ -35,22 +35,32 @@ class Bill < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << %w{Date Customer Supplier Description Amount Invoice}
+      csv << %w{Date Customer Supplier Category Description Amount VAT_rate VAT Invoice}
       all.each do |bill|
-        row = [bill.date, bill.customer_name, bill.supplier_name, 
-              bill.description, bill.amount, bill.invoice_id]
+        row = [bill.date, bill.customer_name, bill.supplier_name, bill.category_name, 
+              bill.description, bill.amount, bill.vat_rate_name, bill.vat, bill.invoice_id]
         csv << row
       end     
     end
   end
 
-  # def self.import(file)
-  #   CSV.foreach(file.path, headers: true) do |row|
-  #     bill = new
-  #     bill.attributes = row.to_hash.slice(*accessible_attributes)
-  #     bill.save!
-  #   end
-  # end 
+  def self.import(file, account)
+    # CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(file, headers: true) do |row|
+      bill = new
+      imported = row.to_hash
+      bill.customer = Customer.find_or_create_by(name: imported['Customer'], account_id: account.id)
+      bill.supplier = Supplier.find_or_create_by(name: imported['Supplier'], account_id: account.id)
+      bill.category = Category.find_or_create_by(name: imported['Category'], account_id: account.id)
+      bill.date = imported['Date']
+      bill.amount = imported['Amount']
+      # bill.vat_rate_id = VatRate.find_or_create_by(name: imported['VAT_rate'], account_id: account.id)
+      # bill.vat = imported['VAT']
+      bill.account_id = account.id
+
+      bill.save!
+    end
+  end 
 
   def self.last_year_by_monthly_sum
     last_year.monthly_sum

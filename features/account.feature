@@ -20,16 +20,18 @@ Feature: Account
     And I click on Change Password
     Then I should be on the Change Password page
 
+  @javascript
   Scenario: I can change my email address
     Given I am a user with an account
     And  I sign in
-    When I visit the home page
-    And I click on Account
-    And I click on Change Email Address
+    When I visit the Change Email Address page 
+    # And I click on Account
+    # And I click on Change Email Address
     Then I should be on the Change Email Address page
     When I enter "changed@example.com" in the user_email field
     And I enter "changeme" in the user_current_password field
     And I click button Update
+    Then debug
     Then I should see "You updated your account successfully, but"
     And I should see "we need to verify your new email address."
     And I should see "Please check your email and click on the confirm link"

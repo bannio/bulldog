@@ -10,13 +10,13 @@ class ConfirmationsController < Devise::ConfirmationsController
       if @confirmable.has_no_password?
         @confirmable.attempt_set_password(params[:user])
         if @confirmable.valid?
-          # @confirmable.account_set_up(params[:user])
           do_confirm
         else
           do_show
           @confirmable.errors.clear #so that we wont render :new
         end
       else
+        # can't see where :password_allready_set is coming from and looks misspelt!
         self.class.add_error_on(self, :email, :password_allready_set)
       end
     end

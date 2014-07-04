@@ -18,8 +18,9 @@
 # Ignore things with passwords
 /config/database.yml
 /config/application.yml
-/config/initializers/stripe.rb
+# /config/initializers/stripe.rb # now moved to ENV and application.yml
 
 /coverage
 
 .DS_Store
+.env

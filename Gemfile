@@ -30,6 +30,7 @@ gem 'kaminari'
 gem 'groupdate'
 gem 'chartkick'
 gem 'stripe'
+gem 'mailchimp-api', '~> 2.0.5'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -82,6 +83,8 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
+
+gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

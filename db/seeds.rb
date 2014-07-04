@@ -6,13 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts 'CREATE PLAN'
+@plan = Plan.create(name: 'Base', amount: 2000, description: {bullets: ["Unlimited bills entry", "Optional VAT support", "Single user", "PDF output", "Advanced analysis", "Simple data export"], head: "This fully featured plan provides:"})
+
 puts 'SETTING UP DEMO USER LOGIN'
 @user = User.create!(email: 'demo@example.com', 
     password: 'password', 
     password_confirmation: 'password',
     confirmed_at: Time.now)
 
-@account = Account.create(name: 'Demo Account', user_id: @user.id)
+@account = Account.create(name: 'Demo Account', user_id: @user.id, plan_id: @plan.id)
 
 puts 'New user demo@example.com created: '
 
