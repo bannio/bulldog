@@ -1,4 +1,4 @@
-class InvoicePdf < Prawn::Document 
+class InvoicePdf < Prawn::Document
 
   def initialize(invoice, bills, view)
     super()
@@ -36,7 +36,11 @@ class InvoicePdf < Prawn::Document
     float do
       # adds logo
       bounding_box([0,0], :width => 360, :height => 100) do 
-        logopath =  "#{Rails.root}/app/assets/images/UbuntuLogo.png"
+        logopath =  "#{Rails.root}/app/assets/images/bulldog_clip_logo_rgb.jpg"
+        # logopath =  "#{Rails.root}/app/assets/images/UbuntuLogo.png"
+        # logopath =  @view.asset_path('bulldog_clip_logo_rgb.jpg')
+        # logopath =  @view.asset_url('bulldog_clip_logo_rgb.jpg')
+        # logopath = ActionController::Base.helpers.asset_path("bulldog_clip_logo_rgb.jpg", type: :image)
         image logopath, :fit => [250, 110]
       end
     end
