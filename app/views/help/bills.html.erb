@@ -22,9 +22,9 @@
         <h2>Add a new bill</h2>
         <ul>
           <li>Navigate to the Bills page and select the green 'New' button to the top left of the screen. This will open a new bill form.</li>
-          <img <%= 'new_bill_btn.png' %> alt="New bill button">
+          <img src=<%= asset_path('new_bill_btn.png') %> alt="New bill button">
           <li>Enter the details of your bill into the form.</li>
-          <img <%= 'new_bill_modal.png' %> alt="New bill form">
+          <img src=<%= asset_path('new_bill_modal.png') %> alt="New bill form">
           <ol>
             <li>Enter the date the bill occured. You can use the dropdown date picker provided or type it in using the format shown.</li>
             <li>You can enter new customers, suppliers and categories by typing their names into the box provided. The next time you use the form there name will appear in the dropdown menu.<br>'Customer' is who the purchase was on behalf of or who the bill will be recharged to e.g. client 1, business or home. 'Supplier' is the name of the provider of the product or service you purchased. Categories allow you to group bills for analysis e.g. stationary, travel, utilities.</li>
@@ -32,7 +32,7 @@
             <li>Enter the amount excluding the £ sign which will be added for you. For example £20.00 can be entered as '20' or '20.00'.</li>
           </ol> 
           <li>Once you are happy with the details select 'Save' to add the bill to your bills list. If you do not want to add the bill select 'Cancel' to delete it.</li>
-          <img <%= 'bill_success.png' %> alt="New bill success message">
+          <img src=<%= asset_path('bill_success.png') %> alt="New bill success message">
           <li>Saving will return you to the bills list. Your new bill should appear in the list. You should see a green alert message 'Bill was successfully created' accross the top of the screen.</li>
         </ul>
       </div>
@@ -42,14 +42,14 @@
         <ul>
           <li>If you have made a mistake or want to change any of the details on an existing bill you can do this from the Bills page.</li>
           <li>Find the bill you want to edit in the Bills list. To help you find the bill you want you can sort your list of bills by any of the column titles. Just select the column title you want to sort by and it will arrange your bills in alphabetical or numerical order.</li>
-          <img src="" alt="Sort bills by column title">
+          <img src=<%= asset_path('sort_bills.png') %> alt="Sort bills by column title">
           <li>Once you have identified the bill. Select the row in the table by tapping or clicking once.</li>
-          <img src="" alt="Row highlighted in list of bills">
+          <img src=<%= asset_path('select_bill.png') %> alt="Row highlighted in list of bills">
           <li>The Edit Bill form will open, displaying the details of the existing bill. Select the item in the form that you want to change and update it.</li>
           <li>Once you are happy with your changes select the green 'Save' button to submit your changes. If you change your mind and do not want to keep your changes select 'Cancel'.</li>
-          <img src="" alt="Bill edit form">
+          <img src=<%= asset_path('bill_edit.png') %> alt="Bill edit form">
           <li>You should see a green 'Bill successfully updated' message and any changes you have made will be updated in the Bills list.</li>
-          <img src="" alt="Bill successfully updated">
+          <img src=<%= asset_path('bill_edit_success.png') %> alt="Bill successfully updated">
         </ul>
       </div>
 
@@ -58,13 +58,13 @@
         <ul>
           <li>You can delete any bill stored in your Bills list. If you have already added a bill to a document you will need to remove it from the document first to return it to your bills list before you can delete it (see help on editing documents).</li>
           <li>Starting on the Bills page, find the bill you want to delete in the Bills list. To help you find the bill you can sort your list of bills by any of the column titles. Just select the column title you want to sort by and it will arrange your bills in alphabetical or numerical order.</li>
-          <img src="" alt="Sort bills by column title">
+          <img src=<%= asset_path('sort_bills.png') %> alt="Sort bills by column title">
           <li>Once you have identified the bill. Select the row in the table by tapping or clicking once.</li>
-          <img src="" alt="Row highlighted in list of bills">
+          <img src=<%= asset_path('select_bill.png') %> alt="Row highlighted in list of bills">
           <li>The Edit Bill form will open, displaying the details of the existing bill. To go ahead and permanently delete the bill select the red 'Delete' button at the bottom of the form. If you change your mind select 'Cancel' to return to the Bills list.</li>
-          <img src="" alt="Select delete button">
+          <img src=<%= asset_path('bill_form_delete.png') %> alt="Select delete button">
           <li>You should see a green 'Bill successfully deleted' message and the deleted bill will no longer appear in your Bills list.</li>
-          <img src="" alt="Bill successfully deleted">
+          <img src=<%= asset_path('bill_delete_success.png') %> alt="Bill successfully deleted">
         </ul>
       </div>
 
@@ -73,7 +73,7 @@
         <ul>
           <li>You can export your list of Bills in a CSV file. A CSV file allows data to be saved in a table structured format which you can use in any spreadsheet program.</li>
           <li>To export your Bills list, navigate to the Bills page and select the blue 'Export' button at the top left.</li>
-          <img src="" alt="Select Export on the Bills page">
+          <img src=<%= asset_path('export_bill.png') %> alt="Select Export on the Bills page">
           <li>Selecting 'Export' downloads the file to your computer. The file is named bills.csv. You can find it in your computers downloads folder.</li>
           <li>NOTE: The Bills export function exports all the bills shown in your bills list. If you want to filter the bills before exporting or export bills which you have already moved to a document use the export function in the Analysis feature (see the Analysis and Reports section).</li>
         </ul>

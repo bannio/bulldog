@@ -24,15 +24,15 @@
         <ul>
           <li>If you are VAT registered or you work with companies that require VAT invoices you can activate VAT support on your account. With VAT enabled you can add VAT to bills and invoices.</li>
           <li>From the menu select 'Account' and then 'Manage Subscription'.</li>
-          <img src="" alt="Manage subscription menu">
+          <img src=<%= asset_path('subscription_menu.png') %> alt="Manage subscription menu">
           <li>You will see your current Account Details.</li>
-          <img src="" alt="Account details show">
+          <img src=<%= asset_path('subscription_show.png') %> alt="Account details show">
           <li>To enable or disable VAT on your account select the 'Edit' button.</li>
           <li>Use the 'Enable VAT on bills?' checkbox to select your preference. Checked enables and unchecked disables VAT support.</li>
-          <img src="" alt="Account details edit form">
+          <img src=<%= asset_path('vat_enable.png') %> alt="Account details edit form">
           <li>To update your settings select the 'Save' button.</li>
           <li>You should see the message 'Account successfully updated'.</li>
-          <img src="" alt="Success message">
+          <img src=<%= asset_path('vat_success.png') %> alt="Success message">
         </ul>
       </div>
 
@@ -41,28 +41,29 @@
         <ul>
           <li>NOTE: In order to set VAT rates you need to have VAT enabled on your account (Enable VAT instructions).</li>
           <li>From the menu select 'Tools' and then 'VAT Rates'.</li>
-          <img src="" alt="Find VAT rates menu">
+          <img src=<%= asset_path('vat_rates_menu.png') %> alt="Find VAT rates menu">
           <li>All you current VAT rates will be displayed in a list. To add a new VAT rate select the 'New' button.</li>
-          <img src="" alt="New button on VAT rate list">
+          <img src=<%= asset_path('vat_rates_new_btn.png') %> alt="New button on VAT rate list">
           <ol>
             <li>In 'VAT rate name' enter the name you want to assign to the VAT rate. For standard rate VAT you could use 'Standard' or 'S'. This will appear on your documents alongside the VAT amount.</li>
             <li>In 'VAT rate' enter the %. e.g. standard rate might be 20.</li>
             <li>Ensure the 'Active' checkbox is ticked if you want to start using this rate. If you leave the box unchecked the rate will be added to your rate list but you will not be able to use it in your bills without activating it first.</li>
             <li>To save your new VAT rate select the 'Save' button.</li>
           </ol>
+          <img src=<%= asset_path('new_vat_rate.png') %> alt="new VAT rate form">
           <li>You should see the message 'VAT rate successfully added' at the top of the screen and your new VAT rate will appear in your list of rates.</li>
-          <img src="" alt="VAT rate list with success message">
+          <img src=<%= asset_path('vat_rate_success.png') %> alt="VAT rate list with success message">
         </ul>
       </div>
 
       <div class="panel-body help-page tab-pane" id="update">
         <h2>Update or delete a VAT rate</h2>
         <li>From the menu select 'Tools' and then 'VAT Rates'.</li>
-          <img src="" alt="Find VAT rates menu">
+        <img src=<%= asset_path('vat_rates_menu.png') %> alt="Find VAT rates menu">
           <li>All you current VAT rates will be displayed in a list.</li>
-          <img src="" alt="VAT rate list">
+          <img src=<%= asset_path('select_vat_rate.png') %> alt="VAT rate list">
           <li>To update or delete a VAT rate select the relevant row in the list by clicking or tapping on it.</li>
-          <img src="" alt="VAT rate edit form">
+          <img src=<%= asset_path('edit_vat_rate.png') %> alt="VAT rate edit form">
           <li>You can change any of the details in the form by removing the existing details and entering the new ones.</li>
           <li>NOTE: If you rename or change the rate % it will update the details on any existing bills using that VAT rate. If you only want to change future bills deactivate the existing rate and create a new one. For example if Standard rate changed from 20% to 15% you could create a new Standard rate for future bills without changing the rate on old bills where the higher rate applied. You can use the same name for a new rate once the old one is deactivated.</li>
           <li>If a rate is no longer in use or you want to replace it with an updated rate uncheck the 'Active' checkbox to deactivate it.</li>
@@ -70,36 +71,36 @@
           <li>If you have created a rate by mistake or want to remove rates you have never used select 'Delete'.</li>
           <li>NOTE: You cannot delete a rate that you have already used on a bill. If it is no longer in use you can deactivate it.</li>
           <li>Once you have submitted the form you should see the message 'VAT rate successfully updated' or 'VAT rate successfully deleted'. The VAT Rate list will be updated accordingly.</li>
-          <img src="" alt="VAT rate change success message">
+          <img src=<%= asset_path('rate_change_success.png') %> alt="VAT rate change success message">
           <li>If you have a lot of rates in your VAT Rate list you may find it easier to just view the active rates. To do this select the 'Show Active' button. To view your active and deactive rates select 'Show All'.</li>
-          <img src="" alt="Show active button on VAT Rate list">
+          <img src=<%= asset_path('active_rate.png') %> alt="Show active button on VAT Rate list">
       </div>
 
       <div class="panel-body help-page tab-pane" id="vat_bills">
         <h2>Add VAT to a bill</h2>
         <li>NOTE: To use VAT rates on your bills you need to have VAT enabled on your account (Enable VAT instructions) and VAT rates set (see Set VAT Rates instructions).</li>
         <li>With VAT enabled you can enter VAT for a bill on the New Bill form. You will see two new fields at the bottom of the form, VAT Rate and VAT Amount.</li>
-        <img src="" alt="New bill form with VAT fields">
+        <img src=<%= asset_path('new_bill_vat.png') %> alt="New bill form with VAT fields">
         <li>For VAT Rate use the dropdown menu to select from your VAT rates.</li>
         <li>In VAT Amount enter the total amount of VAT for the bill.</li>
         <li>Once you have completed all the form fields select 'Save' to add the bill to your Bills list. You will see the message 'Bill successfully created' and find the VAT details displayed in the last two columns.</li>
-        <img src="" alt="Bills list with VAT columns">
+        <img src=<%= asset_path('vat_bill_success.png') %> alt="Bills list with VAT columns">
       </div>
 
       <div class="panel-body help-page tab-pane" id="vat_docs">
         <h2>Include VAT in a document</h2>
       <ul>
         <li>To set the default setting to include your VAT details in your documents select 'Tools' from the menu and choose 'Invoice Setup'.</li>
-        <img src="/assets/invoice_setup_menu.png" alt="Navigate to invoice setup">
+        <img src=<%= asset_path('invoice_setup_menu.png') %> alt="Navigate to invoice setup">
         <li>Your current Print Settings will be displayed towards the bottom of the page. Select the green 'Edit' button to update them.</li>
-        <img src="" alt="Current invoice settings">
+        <img src=<%= asset_path('vat_print_settings.png') %> alt="Current invoice settings">
         <li>You can enter your VAT Registration Number in the VAT Details section.</li>
         <li>At the bottom of the form you can set 'Print Preferences' - Select the checkbox if you want the default setting for your account to be to include VAT in your documents.</li>
-        <img src="" alt="Invoice settings edit form"> 
+        <img src=<%= asset_path('vat_print_edit.png') %> alt="Invoice settings edit form">
         <li>Your account will now default to include VAT details, however, you can still turn VAT on and off on a document by document basis.</li>
         <li>When you create a new document (see 'Creating a document or invoice') you will see a checkbox asking if you want to 'Include VAT ?'.</li>
         <li>If you have VAT details set as default the box will already be checked. You can uncheck it if you do not wish to include details on that particular document. If you do not have it set as default you can still check the box to include VAT.</li>
-        <img src="" alt="Include VAT checkbox on invoice edit screen">
+        <img src=<%= asset_path('vat_invoice.png') %> alt="Include VAT checkbox on invoice edit screen">
       </ul>
       </div>
     </div>

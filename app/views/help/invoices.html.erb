@@ -23,21 +23,21 @@
         <ul>
           <li>NOTE: Before creating a document you need to have entered the bills you want to use into your Bills list (see Bills instructions).</li>
           <li>Select 'Invoices' from the main menu.</li>
-          <img src="" alt="invoices menu">
+          <img src=<%= asset_path('invoice_menu.png') %> alt="Invoices menu">
           <li>This will bring you to a list of all your existing documents. Select the 'New Invoice' button at the top of the list.</li>
-          <img src="" alt="Invoice list showing 'New Invoice' button">
+          <img src=<%= asset_path('invoice_list.png') %> alt="Invoice list showing 'New Invoice' button">
           <li>Complete the form.
-          <img src="" alt="Create Invoice form">
-          <ol>
-            <li>Enter the date you want to appear on the document. For an invoice this will be the Invoice Date. You can use the dropdown date picker provided or type it in using the format shown.</li>
-            <li>Customer - Select the customer that you are creating the document for. This will add to the document all bills in the Bills list for that customer. You can remove any unwanted ones later.</li>
-            <li>Header - A header should be short (one or two words) and describe the purpose of the document, this might be Invoice or Expense Claim. You can enter whatever suits your need. It will appear as a title beneath the address on your document. BulldogClip will remember it and next time you create a document it will be available in the dropdown menu.</li>
-            <li>Comments are optional and can be used to give a more detailed description of the purpose of the document or notes to a customer. For example you might write 'Building materials purchased for kitchen extension.' or 'Payment required by...'. The comment will appear just above the list of bills.</li>
-            <li>Once you have completed the form select 'Create Invoice' or choose 'Cancel' if you change your mind.</li>
-          </ol> 
+            <img src=<%= asset_path('new_invoice.png') %> alt="Create Invoice form">
+            <ol>
+              <li>Enter the date you want to appear on the document. For an invoice this will be the Invoice Date. You can use the dropdown date picker provided or type it in using the format shown.</li>
+              <li>Customer - Select the customer that you are creating the document for. This will add to the document all bills in the Bills list for that customer. You can remove any unwanted ones later.</li>
+              <li>Header - A header should be short (one or two words) and describe the purpose of the document, this might be Invoice or Expense Claim. You can enter whatever suits your need. It will appear as a title beneath the address on your document. BulldogClip will remember it and next time you create a document it will be available in the dropdown menu.</li>
+              <li>Comments are optional and can be used to give a more detailed description of the purpose of the document or notes to a customer. For example you might write 'Building materials purchased for kitchen extension.' or 'Payment required by...'. The comment will appear just above the list of bills.</li>
+              <li>Once you have completed the form select 'Create Invoice' or choose 'Cancel' if you change your mind.</li>
+            </ol> 
           </li>
           <li>You can now preview what will be included in your document and make any changes you want.</li>
-          <img src="" alt="Invoice preview/edit screen">
+          <img src=<%= asset_path('invoice_preview.png') %> alt="Invoice preview/edit screen">
           <ol>
             <li>You can change the date, header and comment in the form at the top of the page.</li>
             <li>If you want to include your bank details ensure that you have checked the box for 'Print Bank Details'.</li>
@@ -45,7 +45,7 @@
             <li>Once you have made all the changes you want select 'Save Changes' to update the document.</li>
           </ol>
           <li>You should see a green message at the top of the page saying 'Invoice successfully updated' and an updated view of the contents to be included in your document.</li>
-          <img src="" alt="Numbered view of invoice">
+          <img src=<%= asset_path('invoice_success.png') %> alt="Invoice successfully updated message">
           <li>
             <ol>
               <li>To make any further changes select 'Edit'.</li> 
@@ -61,15 +61,15 @@
       <ul>
         <li>The Invoices feature has a filter function to help you find an existing document in your list.</li>
         <li>Select 'Invoices' from the main menu.</li>
-        <img src="" alt="invoices menu">
+        <img src=<%= asset_path('invoice_menu.png') %> alt="Invoices menu">
         <li>This will bring you to a list of all your existing documents. Select the 'Filter' button at the top of the list.</li>
-        <img src="" alt="Invoice list showing 'Filter' button">
+        <img src=<%= asset_path('invoice_list_filter.png') %> alt="Invoice list showing 'Filter' button">
         <li>You can filter by one or more of the options provided.</li>
-        <img src="" alt="Invoice filter modal">
+        <img src=<%= asset_path('filter_modal.png') %> alt="Invoice filter modal">
         <li>Select 'Filter' to submit your search or 'Cancel' to return to the Invoice list.</li>
         <li>Once you have applied a filter the Invoice list will show only the documents that match the criteria you set. To return to seeing all of your documents select the 'Clear' button above the list.</li>
        <li>You can further sort your invoices by selecting any of the column headings. This will sort the column by alphabetical or numerical order.</li>
-        <img src="" alt="Filtered invoice list showing Clear button and column headings">
+       <img src=<%= asset_path('filter_clear.png') %> alt="Filtered invoice list showing Clear button and column headings">
       </ul>
       </div>
 
@@ -78,14 +78,14 @@
       <h2>Edit an existing document</h2>
       <ul>
         <li>Select 'Invoices' from the main menu.</li>
-        <img src="" alt="invoices menu">
+        <img src=<%= asset_path('invoice_menu.png') %> alt="Invoices menu">
         <li>This will bring you to a list of all your existing documents.</li>
         <li>Find the document you want to edit in the list and select the row by clicking or tapping. You may want to use the Filter feature if you have a lot of documents (see Find An Existing Document).</li>
-        <img src="" alt="invoice list showing row selected">
+        <img src=<%= asset_path('invoice_list_row.png') %> alt="Invoice list showing row selected">
         <li>This will open up the document so you can see its current setup. If you want to make any changes select the 'Edit' button.</li>
-        <img src="" alt="Invoice show page highlighting edit button">
+        <img src=<%= asset_path('invoice_edit_btn.png') %> alt="Invoice show page highlighting edit button">
         <li>On this page you can make changes to your document or delete it completely.</li>
-        <img src="" alt="numbered invoice edit page">
+        <img src=<%= asset_path('invoice_edit_form.png') %> alt="Numbered invoice edit page">
         <li>To make changes:
           <ol>
             <li>Edit the date, header or comment in the form at the top of the page.</li>
@@ -95,8 +95,8 @@
           </ol>
         </li>
         <li>To permanantly delete the document select the 'Delete' button.</li>
+        <img src=<%= asset_path('invoice_delete.png') %> alt="Delete invoice button">
         <li>You will be asked to confirm that you want to go ahead with the delete. If you want to go ahead with the delete select 'OK', otherwise select 'Cancel'.</li>
-        <img src="" alt="Delete invoice 'are you sure' message">
         <li>Your document will be permanently deleted and removed from your documents list. The bills associated with the document will be returned to the Bills list.</li>
       </ul>
       </div>
@@ -105,15 +105,17 @@
       <h2>Download a PDF of a document for print or email</h2>
       <ul>
         <li>Select 'Invoices' from the main menu.</li>
-        <img src="" alt="invoices menu">
+        <img src=<%= asset_path('invoice_menu.png') %> alt="Invoices menu">
         <li>This will bring you to a list of all your existing documents.</li>
         <li>Find the document in the list that you want to print and select the row by clicking or tapping. You may want to use the Filter feature if you have a lot of documents (see Find An Existing Document).</li>
-        <img src="" alt="invoice list showing row selected">
+        <img src=<%= asset_path('invoice_list_row.png') %> alt="Invoice list showing row selected">
         <li>This will open up the document so you can see its contents.</li>
         <li>To create a fully formatted PDF of the document select the 'Print Preview' button.</li>
-        <img src="" alt="Invoice show page highlighting print preview button">
+        <img src=<%= asset_path('invoice_print_btn.png') %> alt="Invoice show page highlighting print preview button">
         <li>A PDF of your document will open in a new tab on your browser window. You can save the document to your computer, print it or attach it to an email.</li>
-        <img src="" alt="PDF of document">
+        <li>If you have not stored the customers or your own address details the print preview will show you a red message prompting you to do so.</li>
+        <li>A small line on the left hand side indicates where to fold the page for the customer address details to appear in the window of a window envelope.</li>
+        <img src=<%= asset_path('print_preview.png') %> alt="PDF of document showing update details message">
       </ul>
       </div>
     </div>

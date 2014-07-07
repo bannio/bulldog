@@ -50,19 +50,13 @@
                     Community
                 </dt>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Follow BulldogClip on Twitter">Twitter</a>
+                    <%= link_to 'News', page_path('news'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
                 </dd>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Follow BulldogClip on Facebook">Facebook</a>
+                    <%= link_to 'Twitter', page_path('community'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
                 </dd>
                 <dd>
-                    <a href="#" data-toggle="tooltip" title="Follow BulldogClip on Linked In">Linked In</a>
-                </dd>
-                <dd>
-                    <a href="#" data-toggle="tooltip" title="Read the BulldogClip blog">Blog</a>
-                </dd>
-                <dd>
-                    <a href="#" data-toggle="tooltip" title="Access the BulldogClip forum">Forum</a>
+                    <%= link_to 'Linked In', page_path('community'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Linked In" %>
                 </dd>
             </dl>
         </div>

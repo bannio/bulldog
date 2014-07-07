@@ -1,4 +1,4 @@
-<div class="panel panel-default col-md-4 col-sm-6" style="float:none">
+<div class="panel panel-default col-md-6 col-sm-3" style="float:none">
     <div class="panel-body">
         <table class="invoice-show">
           <tr>
@@ -15,7 +15,9 @@
           </tr>
           <tr>
             <th class="th-invoice th-comment">Comment:</th>
-            <td class="td-invoice"><%= simple_format(@invoice.comment) %></td>
+            <!-- <td class="td-invoice"><%#= simple_format(@invoice.comment) %> -->
+            <td class="td-invoice"><%= simple_format truncate(@invoice.comment, length: 190, separator: ' ') %>
+            </td>
           </tr>
           <% if current_account.vat_enabled? %>
             <tr>
