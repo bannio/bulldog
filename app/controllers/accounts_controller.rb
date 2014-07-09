@@ -5,9 +5,13 @@ class AccountsController < ApplicationController
   def show
     @account = Account.owned_by_user(current_user).find(params[:id])
   end
+
   def new
     plan = Plan.find(params[:plan_id])
     @account = plan.accounts.build
+    @title = params[:title]
+    @price = params[:price]
+    @interval = params[:interval]
   end
 
   def edit
@@ -41,7 +45,7 @@ class AccountsController < ApplicationController
       :include_bank, :bank_account_name, :bank_name, :bank_address, 
       :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :invoice_heading,
       :vat_enabled, :plan_id, :email, :stripe_customer_token, :user_id,
-      :stripe_card_token)
+      :stripe_card_token, :title, :price, :interval)
   end
 
   def record_not_found

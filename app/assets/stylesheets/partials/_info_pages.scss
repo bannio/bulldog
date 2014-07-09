@@ -13,33 +13,40 @@
 }
 
 div.signup {
-  margin: 10px 0px 0px;
+  // margin: 10px 0px 0px;
+  text-align: center;
 }
 
-// help pages
+// help pages images and help nav logo
 @media screen and (max-width: 767px){
-.help-page img {
+div.help-page > ul > img {
   width: 100%;
-  // margin-left: 5%;
 }
 }
 
 @media screen and (min-width: 768px){
-.help-page img {
+div.help-page > ul > img {
   width: 80%;
   margin-left: 5%;
 }
 }
 
 .help-page img {
-  border: 1px black solid;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  border: 1px $black solid;
+  margin-top: 12px;
 }
 
 img.help-icon, img.help-logo {
   border: none;
 }
+
+// img.help-logo {
+// width: 232px;
+// }
+
+// img.help-icon {
+//   width: 38px;
+// }
 
 // prevents navbar from obscuring headings on in page links
 

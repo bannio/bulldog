@@ -1,474 +1,301 @@
 // base font size and style
 html {
-  font-family: Arial, sans-serif;
+  font-family: $ubuntu;
   font-size: 62.5%;
   line-height: 1.428571429;
-  color: #444;
-  background-color: #fff; }
+  color: $black;
+  background-color: $white;
+}
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: $ubuntu;
   font-size: 1.2rem;
   line-height: 1.5rem;
-  color: #444;
-  background-color: #fff;
+  color: $black;
+  background-color: $white;
 }
 
 
-// LANDING PAGE PARA FONT
 
-.landing-info p {
-  font-size: 1.75rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 3rem;
-  color: #000;
-  text-align: center;
-  padding: 0px 0px 20px 0px;
-}
+// LANDING PAGE 
 
-.contact-page p{
-  font-size: 1.75rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.75rem;
-  color: #000;
-  text-align: center;
-  padding: 10px 0px;
-}
-
-.story-info p {
-  font-size: 1.75rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.75rem;
-  color: #000;
-  text-align: center;
-  padding: 10px 0px 0px 0px;
-}
-
-.demo-info p {
-  font-size: 1.75rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.75rem;
-  color: #000;
-  text-align: left;
-  padding: 20px 0px 10px 0px;
-}
-
-.demo-info li {
-  font-size: 1.75rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.75rem;
-  color: #000;
-  text-align: left;
-  padding: 10px 0px 0px 0px;
-}
-
-.demo-info h2 {
-  font-size: 2.25rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.5rem;
-  color: #000;
-  text-align: center;
-  padding: 10px 0 10px 0;
-}
-
-// HELP PAGES
-.help-page h1 {
-  font-size: 4rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 4rem;
-  color: #000;
-  text-align: center;
-  display: block;
-}
-
-.help-page h2 {
-  font-size: 2.5rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 3rem;
-  color: #000;
-  text-align: left;
-  padding: 10px 0px;
-}
-
-.help-page li {
-  font-size: 1.75rem;
-  line-height: 2.25rem;
-  font-family: 'ubuntu', Arial, sans-serif;
-  padding: 10px 0px;
-}
-
-ul.nav-pills > li {
-  font-size: 1.75rem;
-  line-height: 2.25rem;
-  font-family: 'ubuntu', Arial, sans-serif;
-  padding: 0px 0px;
-}
-
-ul.nav-stacked > li > a:hover {
- color: #ffffff;
- background-color: #428bca;
-}
-
-
-// LANDING PAGE STRAPLINE
+// Landing page strapline
 
 h1.strapline {
-  font-family: 'ubuntu', Arial, sans-serif;
   text-align: center;
-  font-size: 3.5rem;
+  font-size: $landing-head-size;
   display: block;
   padding: 10px 0;
-  font-weight: 400;
+  font-weight: $regular;
 }
 
-// LANDING PAGE TITLES
+// Landing page titles
 .landing-info h2 {
-  font-size: 3.5rem;
-  font-weight: 400;
-  // font-family: 'ubuntu', Arial, sans-serif;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-size: $landing-head-size;
+  font-weight: $regular;
   line-height: 4rem;
-  color: #000;
   text-align: center;
   padding-top: 40px;
   padding-left: 0px;
 }
 
-// PLANS PAGE TEXT
-.plans {
-  h1 {
-  font-size: 4rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 4rem;
-  color: #000;
-  text-align: center;
-  display: block;
-  padding: 0rem;
-  }
-  h2 {
-  font-size: 3.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 10px 0px;
-  color: #000;
-  }
-  p.details {
-  font-size: 1.5rem;
-  color: #000;
-  text-align: left;
-  margin: 20px 0px 10px;
-  }
-  ul {
-    padding-left: 20px;
-  }
-  li {
-  font-size: 1.5rem;
-  padding: 5px 0px;
-  margin-top: 5px;
-  color: #000;
-  list-style-type: none;
-  }
-  p.only {
-  color: #000;
-  font-size: 1.5rem;
-  margin: 10px 0px 10px;
-  padding-left: 50px;
-  color: #000;
-  font-size: 1.5rem;  
-  }
-  h3 {
-  font-size: 5rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 10px 0px 0px 0px;
-  color: #000;   
-  }
-  p.per_year {
-  font-size: 1.5rem;
-  color: #000;
-  text-align: right;
-  padding-right: 50px;
-  }
-}
-
-// FIRST SIGN IN MODAL
-.first_sign_in p {
-  font-size: 1.5rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.5rem;
-  color: #000;
-}
-
-// INFO PAGE TEXT
-.info-page p {
-  font-size: 1.75rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.75rem;
-  color: #000;
-  text-align: left;
-}
-
-h1.info-page, .info-page h1, .contact-page h1, .demo-info h1{
-  font-size: 4rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 4rem;
-  color: #000;
-  text-align: center;
-  display: block;
-}
-
-h1.info-menu-page, .info-menu-page h1 {
-  font-size: 4rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 4rem;
-  color: #000;
-  text-align: left;
-  display: block;
-  padding: 0rem;
-}
-
-.info-page h2 {
-  font-size: 2.5rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
+// Landing page paras
+.landing-info p {
+  font-size: $external-para-size;
+  font-weight: $light;
   line-height: 3rem;
-  color: #000;
-  text-align: left;
-  padding: 10px 0px;
-}
-
-.contact-page h2 {
-  font-size: 2.25rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.5rem;
-  color: #000;
   text-align: center;
-  padding: 0 0 5px 0;
+  padding: 0px 0px 20px 0px;
 }
 
+
+// INFO PAGES
+
+// headings
+h1.info-page,
+.info-page h1,
+.contact-page h1,
+.demo-info h1,
+h1.info-menu-page {
+  font-size: $external-page-head-size;
+  font-weight: $regular;
+  line-height: 4rem;
+}
+
+h1.info-page,
+.info-page h1,
+.contact-page h1,
+.demo-info h1 {
+  text-align: center;
+  display: block;
+}
+
+// Headings on pages with sidenavs
+h1.info-menu-page {
+  text-align: left;
+  display: block;
+  padding: 0rem;
+}
+
+
+// Subheadings
+.demo-info h2,
+.contact-page h2 {
+  font-size: $external-panel-head;
+  font-weight: $regular;
+  line-height: 2.5rem;
+  text-align: center;
+  padding: 5px 0 10px 0;
+}
 
 .info-page h3 {
-  font-size: 2rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-size: $external-page-sub-head-size;
+  font-weight: $regular;
   line-height: 2.25rem;
-  color: #000;
   text-align: left;
   padding: 10px 0px;
 }
 
+// MAY NOT BE IN USE
+// .info-page h2 {
+//   font-weight: $regular;
+//   text-align: left;
+//   padding: 10px 0px;
+// }
+
+
+// Content
+.info-page p,
+.contact-page p,
+.story-info p,
+.demo-info p,
+.demo-info li,
 .info-page li {
-  font-size: 1.75rem;
-  font-weight: 300;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.5rem;
-  color: #000;
+  font-size: $external-para-size;
+  font-weight: $light;
+  line-height: $external-para-height;
+}
+
+.info-page p,
+.info-page li,
+.demo-info p,
+.demo-info li{
   text-align: left;
+}
+
+.contact-page p,
+.story-info p {
+  text-align: center;
+  padding: 10px 0px;
 }
 
 // back to top links
 .info-page a.top {
-  font-size: 1.25rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-size: $back-to-top-size;
+  font-weight: $light;
   line-height: 1.25rem;
-  color: #000;
+  color: $black;
   text-align: left;
 }
-
 
 // sidenav title
-.info-page dt {
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2rem;
-  color: #000;
-  text-align: left;
-  padding: 10px 0px 5px 0px;
-}
-
-// sidenav accordian title
+.info-page dt,
 .info-page dt > a {
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2rem;
-  color: #000;
+  font-size: $external-sidenav-head-size;
+  font-weight: $regular;
+  line-height: 2.5rem;
+  color: $black;
   text-align: left;
-  padding: 10px 0px 5px 0px;
+  padding: 5px 0px 0px 0px;
 }
 
 // sidenav
 .info-page dd > a {
-  font-size: 1.25rem;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-size: $external-sidenav-size;
+  font-weight: $light;
   line-height: 2.25rem;
-  color: #000;
+  color: $black;
   text-align: left;
 }
 
-// page headings and panel headings
+
+// INTERNAL SITE FONT STYLES
+
+// FIRST SIGN IN MODAL
+.first_sign_in p {
+  font-size: $modal-para-size;
+  font-weight: $light;
+  line-height: 2.5rem;
+}
+
+// Internal page headings and panel headings
 h1 {
-font-family: 'ubuntu', Arial, sans-serif;
-color: #000;
-font-weight: 700;
-font-size: 2.4rem;
-margin-top: 14px;
+font-weight: $bold;
+font-size: $internal-page-head-size;
+margin-top: 1.2rem;
 margin-bottom: 1.5rem;
 display: inline-block;
 }
 
 h2 {
-font-family: 'ubuntu', Arial, sans-serif;
-color: #000;
-font-weight: 700;
-font-size: 1.4rem;
+font-weight: $bold;
+// font-size: 1.4rem;
 }
 
 h3 {
-font-family: 'ubuntu', Arial, sans-serif;
-color: #000;
-font-weight: 500;
-font-size: 1.2rem;
+font-weight: $regular;
+// font-size: 1.2rem;
 }
 
-// table contents and headers
 
+// TABLES 
+
+// table contents and headers
 th {
-font-size: 1.2rem;
-font-family: Arial, sans-serif;
-font-weight: 700;
-color: #000;
+font-size: $th-size;
+font-family: $arial;
+font-weight: $bold;
 }
 
 td {
-font-size: 1.2rem;
-font-family: Arial, sans-serif;
-font-weight: 400;
+font-size: $td-size;
+font-family: $arial;
+font-weight: $regular;
 color: #444;
 }
 
 td > p {
-  font-size: 1.3rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
+  font-size: $td-size; // font size was 1.3rem
+  font-family: $arial;
+  font-weight: $regular;
   color: #444;
 }
 
 
 // table filter headers invoice and analysis pages
 h2.filter {
-font-size: 1.5rem;
-color: #000;
-font-weight: 700;
-font-family: Arial, sans-serif;
+font-size: $form-description-size;
+font-weight: $bold;
+font-family: $arial;
 padding-bottom: 15px;
 padding-top: 5px;
 }
 
 // styles text fields once text has been added
 .form-control, textarea, input, span {
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
+  font-size: $placeholder-size;
+  font-family: $arial;
+  font-weight: $regular;
 }
 
 
 // placeholder text 
-::input-placeholder {
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  color: #87878A;
+::input-placeholder,
+input::-moz-placeholder,
+input:-moz-placeholder,
+input:-ms-input-placeholder,
+::-webkit-input-placeholder {
+  font-size: $placeholder-size;
+  font-family: $arial;
+  font-weight: $regular;
+  color: $md-grey;
 }
 
-input::-moz-placeholder {
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  color: #87878A;
-}
 .select2-default {
   color: #999 !important;
 }
 
-input:-moz-placeholder {
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  color: #87878A;
+select > option {
+  font-size: $placeholder-size;
+  font-family: $arial;
+  font-weight: $regular;
 }
-
-input:-ms-input-placeholder {
-  font-size: 1.2 rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  color: #87878A;
-}
-
-
-::-webkit-input-placeholder {
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  color: #87878A;
-}
-
 // makes dropdown placeholder same colour as others 
 // but also makes everything in dropdown menu that colour too
 span.select2-chosen { 
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
+  font-size: $placeholder-size;
+  font-family: $arial;
+  font-weight: $regular;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
  {
-  color: #000;
-  font-weight: 700;
-  font-family: Arial, sans-serif;
+  color: $black;
+  font-weight: $bold;
+  font-family: $arial;
 }
 
 .nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
-  color: #000;
-  font-weight: 700;
-  font-family: Arial, sans-serif;
+  // color: $black;
+  font-weight: $bold;
+  font-family: $arial;
 }
 
 p.help-block {
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  color: #CC0000;
+  font-size: $placeholder-size;
+  font-family: $arial;
+  font-weight: $regular;
+  color: $red;
 }
 
-// new bill modal header
+// MODAL HEADER SIZE
 
-h4.modal-title {
-  font-family: 'ubuntu', Arial, sans-serif;
-  color: #000;
-  font-weight: 700;
-  font-size: 2.4rem;
+.modal-title {
+  font-weight: $bold;
+  font-size: $modal-title-size;
   line-height: 3rem;
   display: inline-block;
 }
 
+// h4.modal-title {
+//   font-weight: $bold;
+//   font-size: $modal-title-size;
+//   line-height: 3rem;
+//   display: inline-block;
+// }
+
+
+// CLOSE MODAL X
 .close, .close span,  {
   font-size: 2rem;
 }
@@ -476,67 +303,55 @@ h4.modal-title {
 
 // links within faq text
 a.faq-link {
-  font-size: 1.75rem;
-  // font-style: italic;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-size: $external-links-size;
+  font-weight: $light;
   line-height: 2.75rem;
-  color: #2056BF;
-  // color: #000;
+  color: $blue;
   text-decoration: underline;
 }
 
 // links to features page read more
 a.read-more {
-  font-size: 1.75rem;
-  // font-style: italic;
-  font-weight: 200;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-size: $external-links-size;
+  font-weight: $light;
   line-height: 2.75rem;
-  color: #2056BF;
-  // color: #000;
+  color: $blue;
   text-decoration: underline;
 }
 
 // sign up confirmation form
 h2.form-h2 {
   font-size: 1.5rem;
-  color: #000;
-  font-weight: 700;
-  font-family: Arial, sans-serif;
+  font-weight: $bold;
+  font-family: $arial;
   padding-bottom: 15px;
   padding-top: 5px;
 }
 
 // small print on sign up form
-p.small-print {
-  font-family: Arial, sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.5rem;
-  color: #444;
-}
+// p.small-print {
+//   font-family: $arial;
+//   font-size: 1.1rem;
+//   line-height: 1.5rem;
+//   color: #444;
+// }
 
 
 table.account-details > tbody > tr > td.td-name {
 font-size: 1.3rem;
-font-family: "ubuntu",Arial, sans-serif;
-font-weight: 600;
-color: #000;
+font-weight: $bold;
 line-height: 2rem;
 }
 
 label {
-font-weight: 600;
-font-family: 'ubuntu', Arial, sans-serif;
-font-size: 1.3rem;
+font-weight: $bold;
+font-size: $form-label-size;
 margin: 5px 0px 5px 0px;
-color: #000000;
 }
 
 // POPOVER STYLING
 ul.info-ul {
   list-style-type: none;
-  color: #000;
   padding-left: 10px;
   display: block;
 list-style-type: square;
@@ -556,29 +371,111 @@ padding-bottom: 5px;
 
 .popover-title {
   font-size: 1.5rem;
-  font-weight: 600;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-weight: $bold;
   line-height: 2rem;
-  color: #000;
   text-align: left;
   margin: 0px 0px 0px 0px;
 }
 
 .popover-content {
   font-size: 1.25rem;
-  font-weight: 400;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-weight: $regular;
   line-height: 2.25rem;
-  color: #000;
   text-align: left;
   text-decoration: none;
 }
 
 // form sub headings eg invoice setup form
 h2.form-sub-head {
-  font-family: 'ubuntu', Arial, sans-serif;
-  color: #000;
-  font-weight: 700;
-  font-size: 1.8rem;
+  font-weight: $bold;
+  font-size: $form-sub-title-size;
   margin: 10px 0px 10px 0px;
 }
+
+// HELP PAGES
+.help-page h1 {
+  font-size: $external-page-head-size;
+  font-weight: $regular;
+  line-height: 4rem;
+  text-align: center;
+  display: block;
+}
+
+.help-page h2 {
+  font-size: 2.5rem;
+  font-weight: $regular;
+  line-height: 3rem;
+  text-align: left;
+  padding: 10px 0px;
+}
+
+.help-page li {
+  font-size: $external-para-size;
+  line-height: 2.25rem;
+  padding: 10px 0px;
+}
+
+ul.nav-pills > li {
+  font-size: $external-links-size;
+  line-height: 2.25rem;
+  padding: 0px 0px;
+}
+
+ul.nav-stacked > li > a:hover {
+ color: $white;
+ background-color: $pill-blue;
+ // background-color: $blue;
+}
+
+// PLANS PAGE TEXT
+.plans {
+  h1 {
+  font-size: $external-page-head-size;
+  font-weight: $regular;
+  line-height: 4rem;
+  text-align: center;
+  display: block;
+  padding: 0rem;
+  }
+  h2 {
+  font-size: 3.5rem;
+  font-weight: $bold;
+  text-align: center;
+  margin: 10px 0px;
+  }
+  p.details {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  margin: 10px 0px 10px;
+  }
+  ul {
+    padding-left: 0px;
+  }
+  li {
+  font-size: 1.5rem;
+  padding: 5px 0px;
+  margin-top: 5px;
+  list-style-type: none;
+  }
+  h3 {
+  font-size: 2.5rem;
+  font-weight: $bold;
+  text-align: center;
+  margin: 10px 0px 10px 0px;   
+  }
+
+  div.ticklist {
+  text-align: center;
+  margin: 10px 0px;
+  }
+
+  div.ticklist professional {
+    margin-top: 20px;
+  }
+
+  h3 small {
+  color: $black;
+}
+}
+

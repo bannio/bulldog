@@ -2,20 +2,108 @@
   margin-bottom: 10px;
 }
 
+// STRIPE PAYMENT FORM
+
 // stripe form errors
 div.stripe-error {
-  color: #a94442;
+  color: $error-red;
 }
 
+.stripe div.field {
+  margin-top: 5px;
+}
+
+div.stripe.panel-default {
+  overflow: hidden;
+}
+
+div.panel-body.stripe {
+  padding: 0px 15px;
+}
+
+div.panel-body.sensitive {
+  // background: #eeeeee;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+div.cvc-exp {
+  padding-right: 0px;
+}
+
+div.stripe-secure {
+  margin: 0px 0px;
+  padding: 5px 0px 10px;
+  overflow: hidden
+}
+
+h1.secure {
+  font-size: 3rem;
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+
+div.subscribe {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+img.stripe-power {
+  max-width: 37%;
+  // max-width: 108px;
+  max-height: 33px;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-top: 5px;
+}
+
+img.secure {
+  max-height: 26px;
+  width: 10%;
+  max-width: 26px;
+  display: inline-block;
+  // vertical-align: text-bottom;
+  vertical-align: baseline;
+}
+
+p.secure {
+  max-width: 50%;
+  display: inline-block;
+  padding-top: 5px;
+}
+
+label.cvc {
+  display: block
+}
+
+input.cvc {
+  display: inline-block;
+}
+
+img.cvc {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+div.card-type > label,
 div.card-expiration > label {
   display: block;
 }
 
+span.exp-date {
+  font-size: 1.5rem;
+}
+
+div.card-type > select,
 div.card-expiration > select {
   display: inline-block;
   appearance: none;
   -webkit-appearance: none;
-  background-color: #ffffff;
+  background-color: $white;
   color: #424242;
   height: 3.25rem;
   padding: 8px 6px;
@@ -24,6 +112,7 @@ div.card-expiration > select {
 }
 
 // Up and down arrow image background
+div.card-type > select,
 div.card-expiration > select {
 background-image: asset-url('dropdown_arrow.png') !important;
 background-repeat: no-repeat;
@@ -34,6 +123,7 @@ height: 100%;
 
 // Removes grey arrow from firefox card-expiration fields
 @-moz-document url-prefix() {
+  div.card-type > select,
   div.card-expiration > select {
     -moz-appearance: none;
     text-indent: 0.01px;
@@ -41,15 +131,43 @@ height: 100%;
   }
 }
 
-div.card-expiration > select#card_month {
+div.card-type > select {
   width: 60%;
 }
 
-div.card-expiration > select#card_year {
-  width: 38%;
-  float: right;
+img.cards {
+  max-width: 38%;
+  max-height: 33px;
+  display: inline-block;
 }
 
+input.cvc {
+  width: 60px;
+}
+
+div.card-expiration > select#card_month {
+  width: 60px;
+}
+
+div.card-expiration > select#card_year {
+  // width: 38%;
+  width: 70px;
+}
+
+p.interval {
+  text-align: center;
+  line-height: 3rem;
+}
+
+h3.price {
+  font-size: 3.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  padding-top: 50px;
+}
+
+
+// INVOICES
 div.invoice > input.date_picker {
   float: right;
   width: 70%;
@@ -206,7 +324,7 @@ div.activate-form > form {
 // styles form labels
 label {
   font-weight: 600;
-  font-family: 'ubuntu', Arial, sans-serif;
+  font-family: $ubuntu;
   font-size: 1.3rem;
   margin: 5px 0px 5px 0px;
 }
@@ -222,7 +340,7 @@ div.form-group > a.pull-right {
 
 // sets dropdown menu border color to blue
 .select2-drop .select2-display-none .select2-with-searchbox .select2-drop-active {
-  border-color: #2056BF;
+  border-color: $blue;
 }
 
 
@@ -232,11 +350,11 @@ outline: none;
 }
 
 th>a {
-  color: #000000;
+  color: $black;
   text-decoration: none; }
 
 th>a:hover, th>a:focus {
-    color: #000000;
+    color: $black;
     text-decoration: underline; } 
 
 // removes grey outline on focus
@@ -253,7 +371,7 @@ margin: 30px auto;
 .modal-footer {
   margin-top: 0px;
   padding: 0px 20px 5px 20px;
-  border-top: 0px solid #ffffff;
+  border-top: 0px solid $white;
 }
 
 .modal-body {
@@ -301,7 +419,7 @@ input.search-query {
 .select2-container > a.select2-choice > span.select2-arrow {
   border-left: 1px solid #444;
   border-radius: 0 0; 
-  background-color: #ffffff;
+  background-color: $white;
   background-image: none;
   padding-left: 3px;
   padding-top: 3px;
@@ -310,7 +428,7 @@ input.search-query {
 
 // background of entry field on selected menu
 .select2-dropdown-open > a.select2-choice{
-  background-color: #ffffff;
+  background-color: $white;
   // color: #444;
 }
 
@@ -321,7 +439,7 @@ input.search-query {
 
  // glow or outline on active dropdown menu container
 div.select2-drop-active {
-  border: 1px solid #2056BF;
+  border: 1px solid $blue;
   border-top: none;
 }
 
@@ -403,7 +521,7 @@ ul.select2-results > li.select2-highlighted {
 
 // dropdown 'new' warning set to blue
 span.label.label-important {
-  color: #2056BF;
+  color: $blue;
 }
 
 // OVERIDES INLINE STYLING TO GIVE 100% WIDTH TO SELECT2-CONTAINERS
@@ -505,7 +623,7 @@ table.account-details > tbody > tr > td.td-content {
 // account details show form 
 td.td-name {
   font-size: 1.3rem;
-  // font-family: 'ubuntu', Arial, sans-serif;
+  // font-family: $ubuntu;
   font-family: Arial, sans-serif;
   font-weight: 600;
   color: #000;
@@ -627,7 +745,7 @@ div.customer-form > textarea.address {
 // gives spacing between form fields (must match div.formgroup margin bottom) and colours outline red, display:inline-block keeps message on one line
 p.help-block {
   // margin: 0px 0px 5px 5px;
-  color: #a94442;
+  color: $error-red;
   // display: inline-block;  
 }
 
@@ -679,16 +797,16 @@ div.modal-header > button.close {
 
 // red border on error fields using errors_for helper
 div.field_with_errors>input {
-  border-color: #a94442;
+  border-color: $error-red;
 }
 
 /* Red border styling for Select2s with errors */
 div.has-error ul.select2-choices {
-  border-color: #a94442;
+  border-color: $error-red;
 }
 
 div.has-error>div.select2-container>a.select2-choice {
-  border-color: #a94442; 
+  border-color: $error-red; 
 }
 
 // remove grey box shadow

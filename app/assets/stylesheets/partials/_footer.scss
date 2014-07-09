@@ -11,14 +11,9 @@ footer {
 }
 
 footer {
-  background-color: $background-dk-color;
+  background-color: $light-grey;
 }
 
-footer p {
-  color: $text-color-lt;
-  text-align: center;
-  margin: 1em 0;
-}
 
 // Footer copyright font size
 
@@ -46,16 +41,16 @@ footer p {
 // /*FOOTER*/
 
 footer {
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 footer>div.footer-background {
-  background-color: #eeeeee;
-  border-top: #000000 1px solid;
+  background-color: $light-grey;
+  border-top: $black 1px solid;
 }
 
 footer p {
-  color: #000000;
+  color: $black;
   text-align: center;
   margin: 1rem 0;
 }
@@ -67,7 +62,7 @@ div.footer-links {
 
 .footer-links a {
   margin: 2rem 0;
-  color: #000000;
+  color: $black;
 }
 
 p.status {
@@ -79,6 +74,6 @@ p.copyright {
 }
 
 dt {
-  color: #000;
+  color: $black;
 }
 
