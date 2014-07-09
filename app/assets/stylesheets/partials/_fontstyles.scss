@@ -31,7 +31,7 @@ body {
   font-size: 1.75rem;
   font-weight: 200;
   font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 3rem;
+  line-height: 2.75rem;
   color: #000;
   text-align: center;
   padding: 10px 0px;
@@ -41,7 +41,7 @@ body {
   font-size: 1.75rem;
   font-weight: 200;
   font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 3rem;
+  line-height: 2.75rem;
   color: #000;
   text-align: center;
   padding: 10px 0px 0px 0px;
@@ -51,7 +51,7 @@ body {
   font-size: 1.75rem;
   font-weight: 200;
   font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 3rem;
+  line-height: 2.75rem;
   color: #000;
   text-align: left;
   padding: 20px 0px 10px 0px;
@@ -61,7 +61,7 @@ body {
   font-size: 1.75rem;
   font-weight: 200;
   font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 3rem;
+  line-height: 2.75rem;
   color: #000;
   text-align: left;
   padding: 10px 0px 0px 0px;
@@ -200,12 +200,21 @@ h1.strapline {
   }
 }
 
+// FIRST SIGN IN MODAL
+.first_sign_in p {
+  font-size: 1.5rem;
+  font-weight: 200;
+  font-family: 'ubuntu', Arial, sans-serif;
+  line-height: 2.5rem;
+  color: #000;
+}
+
 // INFO PAGE TEXT
 .info-page p {
   font-size: 1.75rem;
   font-weight: 200;
   font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.5rem;
+  line-height: 2.75rem;
   color: #000;
   text-align: left;
 }
@@ -457,14 +466,13 @@ h4.modal-title {
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 3rem;
-  // margin-top: 1.4rem;
-  // margin-bottom: 1.5rem;
   display: inline-block;
 }
 
-.close {
-  font-size: 1.8rem;
+.close, .close span,  {
+  font-size: 2rem;
 }
+
 
 // links within faq text
 a.faq-link {
@@ -472,7 +480,7 @@ a.faq-link {
   // font-style: italic;
   font-weight: 200;
   font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.25rem;
+  line-height: 2.75rem;
   color: #2056BF;
   // color: #000;
   text-decoration: underline;
@@ -484,7 +492,7 @@ a.read-more {
   // font-style: italic;
   font-weight: 200;
   font-family: 'ubuntu', Arial, sans-serif;
-  line-height: 2.25rem;
+  line-height: 2.75rem;
   color: #2056BF;
   // color: #000;
   text-decoration: underline;

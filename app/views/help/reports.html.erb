@@ -21,7 +21,7 @@
       <ul>
         <li>NOTE: you will need to add some bills to your account before you can use the Analysis feature.</li>
         <li>Select 'Analysis' from the main menu.</li>
-        <img src="" alt="analysis menu">
+        <img src=<%= asset_path('analysis_menu.png') %> alt="Analysis menu">
         <li>Use the 'Filter Bills' form at the top of the page to set your parameters. You can select one or more criteria depending on what you want your reports to show.
           <ol>
             <li>Choose the date range using the From and To Date. Enter the dates using the date picker provided or by typing them in the format shown.</li>
@@ -31,7 +31,7 @@
           </ol>
         </li>
         <li>Beneath the form are two tabs 'Charts' and 'Table'. Select the tab you want to switch between views.</li>
-        <img src="" alt="Chart and Table tab">
+        <img src=<%= asset_path('analysis_filter.png') %> alt="Filter form">
         <li>The 'Table' view shows your filtered bills in a table format. This can be useful if you want to filter your data before you download it (see 'Export Selected Data' for how to download the table)</li>
         </ul>
       </div>
@@ -41,12 +41,12 @@
       <ul>
         <li>You can export a filtered list of Bills in a CSV file. A CSV file allows data to be saved in a table structured format which you can use in any spreadsheet program.</li>
         <li>Select 'Analysis' from the main menu.</li>
-        <img src="" alt="analysis menu">
+        <img src=<%= asset_path('analysis_menu.png') %> alt="Analysis menu">
         <li>Use the filter form at the top of the page to choose the data that you want to export (see 'Create charts and tables' for instructions). If you don't filter your data you will export all of the bills on your account.</li>
         <li>Select the 'Table' tab.</li>
-        <img src="" alt="Analysis page showing table tab">
+        <img src=<%= asset_path('table_tab.png') %> alt="Analysis page showing table tab">
         <li>You will see a table showing the filtered data. To export this data select the blue 'Export' button at the top of the table.</li>
-        <img src="" alt="Analysis table page showing export button">
+        <img src=<%= asset_path('analysis_export.png') %> alt="Analysis table page showing export button">
         <li>Selecting 'Export' downloads the file to your computer. The file is named 'reports.csv'. You can find it in your computers downloads folder.</li>
       </ul>
       </div>

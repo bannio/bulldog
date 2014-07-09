@@ -1,9 +1,6 @@
-// remove yellow background from form fields eg sign up form (doesn't work because color is linked to Chrome autocomplete)
-// input:-webkit-autofill {
-//     background-color: white !important;
-// }
-
-
+.analysis > div.select2-container {
+  margin-bottom: 10px;
+}
 
 // stripe form errors
 div.stripe-error {
@@ -129,8 +126,6 @@ background-repeat: no-repeat;
 background-size: 25px 33px;
 background-position: right center;
 height: 100%;
-// font-weight: bold;
-padding-left: 28px;
 }
 
 input.form-control.percentage  {
@@ -487,8 +482,9 @@ form > div > div.edit-settings {
   max-width: 100%;
 }
 
+// puts space between title and checkbox
 input[type="checkbox"] {
-  // margin: 4px 0 0 4px;
+  margin-left: 10px;
 }
 
 // makes account detail table fill full form field
@@ -585,7 +581,6 @@ div.customer-select>select {
   min-width: 100px;
   width: 226px;
   padding-left: 5px;
-  // height: 26px;
   height: 3.25rem;
 }
 
@@ -609,8 +604,8 @@ input.date_picker.analysis {
   width: 70%;
 }
 
-input.date_picker.analysis, div.select2-container.analysis {
-  margin-bottom: 5px;
+input.date_picker.analysis {
+  margin-bottom: 10px;
 }
 
 // STYLE NEW CUSTOMER FORM
@@ -618,11 +613,6 @@ input.date_picker.analysis, div.select2-container.analysis {
 input.name {
   width: 100%;
 }
-
-// textarea.address {
-//   width: 100%;
-//   max-width: 100%;
-// }
 
 input.postcode {
   width: 60%;
@@ -636,7 +626,7 @@ div.customer-form > textarea.address {
 
 // gives spacing between form fields (must match div.formgroup margin bottom) and colours outline red, display:inline-block keeps message on one line
 p.help-block {
-  margin: 0px 0px 5px 5px;
+  // margin: 0px 0px 5px 5px;
   color: #a94442;
   // display: inline-block;  
 }
@@ -673,7 +663,6 @@ nav.pagination > span > a {
 
 // MODAL
 input.form-control {
-  // height: 26px;
   height: 3.25rem;
 }
 
@@ -711,8 +700,6 @@ div.has-error>div.select2-container>a.select2-choice {
 .select2-container-multi .select2-choices .select2-search-choice {
   -webkit-box-shadow: none;
   box-shadow: none;  
-// -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
-//             box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
 // aligns placeholder text with select2 placeholders

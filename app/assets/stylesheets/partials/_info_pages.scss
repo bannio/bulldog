@@ -1,3 +1,9 @@
+// welcome modal
+
+.first_sign_in a.lg-btn {
+  margin: 0px 5px 15px 0px;
+}
+
 // plans page
 
 .plans {
@@ -12,14 +18,14 @@ div.signup {
 
 // help pages
 @media screen and (max-width: 767px){
-div.help-page > ul > img {
+.help-page img {
   width: 100%;
   // margin-left: 5%;
 }
 }
 
 @media screen and (min-width: 768px){
-div.help-page > ul > img {
+.help-page img {
   width: 80%;
   margin-left: 5%;
 }
