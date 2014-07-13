@@ -1,10 +1,10 @@
 // Help Tab
 
 div.help_tab a {
-  font-family: 'ubuntu', Arial, sans-serif;
-  color: #ffffff;
+  font-family: $ubuntu;
+  color: $white;
   font-weight: 600;
-  background-color: #4D78CC;
+  background-color: $help-blue;
   display: block;
   line-height: 50px;
   height: 41px;
@@ -25,7 +25,7 @@ div.help_tab a {
 
 div.help_tab a:hover {
   text-decoration: none;
-  background-color: #2056BF;
+  background-color: $blue;
   margin-left: -5px;
 }
 
@@ -72,75 +72,59 @@ a.info-btn {
 
  // green
 a.create-btn, input.create-btn {
-  border: #008418 2px solid;
-  color: #008418;
+  border: $green 2px solid;
+  color: $green;
 }
 
 a.create-btn:hover, input.create-btn:hover,
 a.create-btn:active, input.create-btn:active,
 a.create-btn:focus, input.create-btn:focus {
-  border: #008418 2px solid;
-  color: #008418;
+  border: $green 2px solid;
+  color: $green;
   outline: none;
   // background-color: #CCE6D1;
 }
 
 // blue  
 a.action-btn, input.action-btn {
-  border: #2056BF 2px solid;
-  color: #2056BF;
+  border: $blue 2px solid;
+  color: $blue;
 }
 
 a.action-btn:hover, input.action-btn:hover,
 a.action-btn:active, input.action-btn:active
 a.action-btn:focus, input.action-btn:focus,
 input.action-btn.std-btn:active {
-  border: #2056BF 2px solid;
-  color: #2056BF;
+  border: $blue 2px solid;
+  color: $blue;
   outline: none;
   // background-color: #BCCCEC;
 }
 
 // red
 a.warn-btn, input.warn-btn {
-  border: #CC0000 2px solid;
-  color: #CC0000;
+  border: $red 2px solid;
+  color: $red;
 }
 
 a.warn-btn:hover, input.warn-btn:hover,
 a.warn-btn:active, input.warn-btn:active,
 a.warn-btn:focus, input.warn-btn:focus {
-  border: #CC0000 2px solid;
-  color: #CC0000;
-  outline: none;
-}
-
-// purple
-a.export-btn, input.export-btn {
-  border: #890086 2px solid;
-  color: #890086;
-}
-
-a.export-btn:hover, input.export-btn:hover,
-a.export-btn:active, input.export-btn:active,
-a.export-btn:focus, input.export-btn:focus {
-  border: #890086 2px solid;
-  color: #890086;
+  border: $red 2px solid;
+  color: $red;
   outline: none;
 }
 
 // GENERIC BUTTON
 a.std-btn, input.std-btn {
-  // border: #000000 2px solid;
   border-radius: 5px 5px;
   text-align: center;
-  // color: #000000;
   padding: 7px 12px 6px 12px;
   font-size: 1.25rem;
   font-weight: 600;
   margin: 5px 5px 5px 0px;
   overflow: hidden;
-  font-family: 'ubuntu', 'Helvetica Neau', sans-serif;
+  font-family: $ubuntu;
   display: inline-block;
   // min height required to ensure it doesn't inherit input fields height
   min-height: 34px;
@@ -148,17 +132,16 @@ a.std-btn, input.std-btn {
 }
 
 a.lg-btn, input.lg-btn {
-  // border: #000000 2px solid;
   border-radius: 5px 5px;
   text-align: center;
-  // color: #000000;
   padding: 10px 10px 6px 10px;
   font-size: 1.25rem;
   font-weight: 600;
   margin: 5px 5px 5px 0px;
   overflow: hidden;
-  font-family: 'ubuntu', 'Helvetica Neau', sans-serif;
+  font-family: $ubuntu;
   display: inline-block;
+  // background-color: $white;
   // min height required to ensure it doesn't inherit input fields height
   min-height: 40px;
   max-height: 40px;
@@ -179,7 +162,7 @@ vertical-align: top;
 
 // REMOVES DARK GREY INHERITED BACKGROUND COLOUR ON INPUT AND SUBMIT BUTTONS
 input[type="button"].std-btn, input[type="submit"].std-btn, input[type="reset"].std-btn, button.std-btn {
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 // GIVES GREY HOVER COLOR AND REMOVES BLUE HALO ON BUTTONS
@@ -192,14 +175,11 @@ select.std-btn:hover, select.std-btn:focus, select.std-btn:active,
 button.std-btn:hover, button.std-btn:focus, button.std-btn:active
  {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: $light-grey;
   cursor: pointer;
-  // color: #000000;
   -webkit-box-shadow: none;
   box-shadow: none;
   outline: none;
-  // -webkit-box-shadow: 0 1px 1px #90AADF, 0 0 8px #90AADF;
-  // box-shadow: 0 1px 1px #90AADF, 0 0 8px #90AADF;
 }
 
 // REMOVES BLUE FOCUS OUTLINE

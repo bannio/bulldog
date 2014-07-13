@@ -1,37 +1,91 @@
 // THIS IS WHERE ALL BOOTSTRAP SASS VARIABLE OVERRIDES CAN GO //
 
+// TYPOGRAPHY
+
+$ubuntu: "ubuntu", Arial, sans-serif;
+$arial: Arial, sans-serif;
 
 // COLORS
 
 $white: #ffffff;
 $black: #000000;
-$dark-grey: #252422;
+$red: #CC0000;
+$blue: #2056BF;
+$green: #008418;
+$light-grey: #eeeeee; // footer grey
+$md-grey: #87878A; // placeholder grey
+$dk-grey: #555555;
+$help-blue: #4D78CC;
+$error-red: #a94442;
+$pill-blue: #428bca;
 
 
-// main backdrop color
-$background-lt-color: #fffcf5;
+// FONT SIZES
 
-// banner color
-$background-dk-color: #252422;
+$landing-head-size: 3.5rem;
+$landing-head-size: 3.5rem;
 
-$gradient-color: #f1ebe1;
+$external-para-size: 1.75rem;
+$external-page-head-size: 4rem;
+$external-page-sub-head-size: 2rem;
+$external-sidenav-head-size: 1.5rem;
+$external-sidenav-size: 1.25rem;
+$external-links-size: 1.75rem;
+$back-to-top-size: 1.25rem;
+$external-panel-head: 2.25rem;
 
-$accent-color: #a13b00;
+$internal-page-head-size: 2.4rem; 
+// $internal-panel-head-size:
 
-$text-color: #3b3a3e;
+$modal-title-size: 2.4rem;
+$modal-para-size: 1.5rem;
 
-$text-color-lt: #fffcf5;
+$form-sub-title-size: 1.8rem;
+$form-description-size: 1.5rem;
+$form-label-size: 1.3rem;
+$placeholder-size: 1.2rem;
 
-// subnav color
-$background-md-color: #f2eadf;
-$border: 2px $background-dk-color solid;
+$th-size: 1.2rem;
+$td-size: 1.2rem;
 
-// $text-color-dk: 
 
-$link-color-dk: #252422;
-$link-color-lt: #fffcf5;
+// LINE HEIGHT
+$external-para-height: 2.75rem;
+$external-sub-heading-height: 2.5rem;
 
-$link-hover-color:      darken($link-color-dk, 15%);
+//  FONT WEIGHT
+
+$light: 200;
+$regular: 400;
+$bold: 600;
+
+// COLORS
+
+
+// // main backdrop color
+// $background-lt-color: #fffcf5;
+
+// // banner color
+// $background-dk-color: #252422;
+
+// $gradient-color: #f1ebe1;
+
+// $accent-color: #a13b00;
+
+// $text-color: #3b3a3e;
+
+// $text-color-lt: #fffcf5;
+
+// // subnav color
+// $background-md-color: #f2eadf;
+// $border: 2px $background-dk-color solid;
+
+// // $text-color-dk: 
+
+// $link-color-dk: #252422;
+// $link-color-lt: #fffcf5;
+
+// $link-hover-color:      darken($link-color-dk, 15%);
 
 
 $brand-primary:         #428bca !default;
