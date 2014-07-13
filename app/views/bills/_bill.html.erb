@@ -5,7 +5,7 @@
   <td class="category-col"><%= bill.category_name %></td>
   <td class="description-col-sm"><%= bill.description %></td>
   <td class="align-right amount-col"><%= number_to_currency(bill.amount) %></td>
-  <% if current_account.vat_enabled? %>
+  <% if current_account.vat_allowed? %>
     <td class="vat-rate-col"><%= bill.vat_rate_name %></td>
     <td class="align-right amount-col"><%= number_to_currency(bill.vat) %></td>
   <% end %>

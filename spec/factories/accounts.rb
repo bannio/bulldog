@@ -7,5 +7,6 @@ FactoryGirl.define do
     vat_enabled false
     plan_id 1
     sequence(:email) { |n| "account#{n}@example.com" }
+    stripe_customer_token "cust_token"
   end
 end

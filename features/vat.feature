@@ -5,6 +5,7 @@ Feature: VAT
 
 Background:
   Given I am a user with an account
+  And the account is professional
   And I sign in
 
 @javascript

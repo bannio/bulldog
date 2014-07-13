@@ -9,4 +9,3 @@ class ContactMailer < ActionMailer::Base
         mail(from: @email, subject: 'Contact Request')
     end
 end
-

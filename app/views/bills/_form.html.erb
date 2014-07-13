@@ -19,7 +19,7 @@
   <%= form_group_for f, :amount, label: false do %>
     <%= f.text_field :amount, placeholder: 'Amount', class: "form-control currency" %>
   <% end %>
-  <% if current_account.vat_enabled? %>
+  <% if current_account.vat_allowed? %>
     <%= form_group_for f, :vat_rate_id, label: false do %>
       <%= f.hidden_field :vat_rate_id, data: {vat_rates: get_vat_rate_data} %>
     <% end %>

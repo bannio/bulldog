@@ -31,6 +31,8 @@ module Bulldog
 
     config.force_ssl = (ENV["ENABLE_HTTPS"] == "yes")
 
+    config.stripe.publishable_key = ENV["STRIPE_PUBLIC_KEY"]
+
   end
 end
 

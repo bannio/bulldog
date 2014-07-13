@@ -37,7 +37,7 @@
               <th class="category-col"><%= sortable "categories.name", "Category" %> <%= arrow "categories.name" %></th>
               <th class="description-col-sm"><%= sortable "description", "Description" %> <%= arrow "description" %></th>
               <th class="amount-col"><%= sortable "amount", "Amount" %> <%= arrow "amount" %></th>
-              <% if current_account.vat_enabled? %>
+              <% if current_account.vat_allowed? %>
                 <th class="vat-rate-col">VAT rate</th>
                 <th class="amount-col">VAT</th>
               <% end %>

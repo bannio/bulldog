@@ -10,7 +10,7 @@
           <th class="category-col">Category</th>
           <th class="description-col-lg">Description</th>
           <th class="amount-col align-right">Amount</th>
-          <% if current_account.vat_enabled? %>
+          <% if current_account.vat_allowed? %>
             <th class="vat-rate-col">VAT rate</th>
             <th class="amount-col align-right">VAT</th>
           <% end %>
@@ -33,13 +33,13 @@
           <td></td>
           <td class="title-td align-right">Total </td>
           <td class="align-right"><%= number_to_currency(@invoice.total) %></td>
-          <% if current_account.vat_enabled? %>
+          <% if current_account.vat_allowed? %>
             <td></td>
             <td class="align-right"><%= number_to_currency(total_vat(@invoice)) %></td>
           <% end %>
         </tr>
 
-        <% if current_account.vat_enabled? %>
+        <% if current_account.vat_allowed? %>
           <% vat_rates(@bills).each_with_index do |rate, index| %>
             <tr>
               <% if params[:action] == 'edit' %>

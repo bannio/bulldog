@@ -1,3 +1,11 @@
+Given(/^the account is professional$/) do
+  @plan1 = FactoryGirl.create(:plan)
+  @plan2 = FactoryGirl.create(:plan) # plan with id of 2 should be enabled
+  @account.plan_id = 2
+  @account.vat_enabled = true
+  @account.save
+end
+
 When(/^I visit the VAT page$/) do
   visit "/vat_rates"
 end

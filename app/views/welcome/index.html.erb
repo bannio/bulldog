@@ -60,7 +60,7 @@
           <hr>
           <li><%= link_to 'Suppliers', suppliers_path, class: 'menu-item' %></li>
           <hr>
-          <% if current_account.vat_enabled? %>
+          <% if current_account.vat_allowed? %>
             <li><%= link_to 'VAT Rates', vat_rates_path, class: 'menu-item' %></li>
             <hr>
           <% end %>

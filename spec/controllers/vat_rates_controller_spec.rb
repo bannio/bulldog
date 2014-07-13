@@ -6,7 +6,7 @@ describe VatRatesController do
 
   def create_account
     user = subject.current_user
-    account = FactoryGirl.create(:account, user_id: user.id)
+    account = FactoryGirl.create(:account, user_id: user.id, plan_id: 2)
     # Account.current_id = account.id
   end
 

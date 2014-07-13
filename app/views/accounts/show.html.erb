@@ -2,7 +2,6 @@
 <% content_for :description do %>User account details<% end %>
 
 <div class="container">
-<div class="container">
   <div class="col-sm-6 col-sm-offset-3 panel panel-default">
     <div class="panel-body">
       <h1>Account Details</h1>
@@ -21,9 +20,19 @@
         <tr>
           <td class="td-name">Name</td><td class="td-content"><%= @account.name %></td>
         </tr>
+
+        <% if @account.business? %>
+          <tr>
+            <td class="td-name">Enable VAT on bills?</td>
+            <td class="td-content"><%= @account.vat_enabled? ? "Yes" : "No" %></td>
+          </tr>
+        <% end %>
+
         <tr>
-          <td class="td-name">Enable VAT on bills?</td><td class="td-content"><%= @account.vat_enabled ? "Yes" : "No" %></td>
+          <td class="td-name">Current Plan</td>
+          <td class="td-content"><%= @account.plan.name %></td>
         </tr>
+
       </table>
       <br/>
 

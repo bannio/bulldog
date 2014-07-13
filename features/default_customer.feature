@@ -12,7 +12,7 @@ Feature: I can set a default customer to use on bills
     | Household | Asda     | Food     |
     | Business  | Tesco    | Clothes  | 
 
-  @javascript @ut
+  @javascript
   Scenario: Set a customer as default
     Given I visit the Customers page
     And I click the "Household" row

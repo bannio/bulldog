@@ -1,3 +1,16 @@
+And(/^stripe-ruby-mock is running$/) do
+  require 'stripe_mock'
+  StripeMock.stop
+  StripeMock.start
+  Stripe::Plan.create(currency: "gbp",
+     name: "Test",
+     amount: 2000,
+     interval: "year",
+     interval_count: 1,
+     trial_period_days: 0,
+     id: 1)
+end
+
 Then(/^I should be on the Sign up form$/) do
   pending # express the regexp above with the code you wish you had
 end

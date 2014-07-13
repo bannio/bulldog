@@ -34,7 +34,8 @@ describe ReportsController do
       end
 
       it "responds to Export button" do
-        expect(subject).to receive(:send_data).with("Date,Customer,Supplier,Description,Amount,Invoice\n").
+        expect(subject).to receive(:send_data).
+          with("Date,Customer,Supplier,Category,Description,Amount,VAT_rate,VAT,Invoice\n").
           and_return { subject.render nothing: true }
         post :create, {commit: "Export", report: {account_id: @account.id}}
       end

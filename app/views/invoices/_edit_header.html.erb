@@ -38,7 +38,7 @@
   </div>
 <% end %>
 
-<% if current_account.vat_enabled? %>
+<% if current_account.vat_allowed? %>
   <%= form_group_for f, :include_vat, label: false do %>
     <div class="input-group invoice-edit">
       <%= f.label :include_vat, :class => "check"%>

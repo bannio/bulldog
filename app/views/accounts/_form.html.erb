@@ -6,12 +6,14 @@
       <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Enter account name' %>
     </div>
   <% end %>
-
-  <%= form_group_for f, :vat_enabled, label: false do %>
-    <div class="input-group vat-check">
-      <%= f.label "Enable VAT on bills?" %>
-      <%= f.check_box :vat_enabled, id: 'check_vat' %>
-    </div>
+ 
+  <% if @account.business? %>
+    <%= form_group_for f, :vat_enabled, label: false do %>
+      <div class="input-group vat-check">
+        <%= f.label "Enable VAT on bills?" %>
+        <%= f.check_box :vat_enabled, id: 'check_vat' %>
+      </div>
+    <% end %>
   <% end %>
 
   <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save account settings"  %>

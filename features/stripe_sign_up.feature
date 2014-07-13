@@ -1,13 +1,17 @@
-@stripe_sign_up
+@stripe_sign_up @wip
 Feature: Sign up
   In order to get access to protected sections of the site
   As a user
   I want to be able to sign up
+  # remove @wip for this feature to run
+  # NOTE stripe-ruby-mock needs work. It doesn't currently intercept createToken
+  # Without it, all calls go to stripe.com 
 
   Background:
     Given I am not logged in
     And a Base Plan exists
     And no emails have been sent
+    # And stripe-ruby-mock is running
 
   @javascript
   Scenario: User signs up with valid data

@@ -19,7 +19,7 @@
             <td class="td-invoice"><%= simple_format truncate(@invoice.comment, length: 190, separator: ' ') %>
             </td>
           </tr>
-          <% if current_account.vat_enabled? %>
+          <% if current_account.vat_allowed? %>
             <tr>
               <th class="th-invoice">Print VAT details?</th>
               <!-- <td class="td-invoice"><%= checkbox_image(@invoice.include_vat).html_safe %></td> -->

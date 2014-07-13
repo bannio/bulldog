@@ -7,6 +7,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'email_spec'
+require "pundit/rspec"
 # require 'email_spec/cucumber'
 
 # Requires supporting ruby files with custom matchers and macros, etc,

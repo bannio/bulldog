@@ -1,24 +1,17 @@
 class ApplicationController < ActionController::Base
+
+  include Pundit
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  before_action :setup_mcapi
-  # before_filter :https_redirect
-
-
-  # def after_sign_in_path_for(resource)
-  #   welcome_index_path  # change this when we know where the new user should really start
-  # end
-
-  def user_has_account?
-    @has_account ||= current_user ? current_user.account.present? : false
-  end
-  helper_method :user_has_account?
+  before_action :setup_mcapi  # Mailchimp API
 
   def current_account
-    @current_account ||= user_has_account? ? current_user.account : nil
+    @current_account ||= current_user.account if current_user
   end
   helper_method :current_account
 
@@ -31,6 +24,12 @@ class ApplicationController < ActionController::Base
   def record_not_found
     flash[:alert] = "Item not found or not authorised"
     redirect_to home_path
+  end
+
+  def user_not_authorized
+    flash[:error] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || home_path)
+    # redirect_to home_path
   end
 
   def after_sign_in_path_for(resource)
