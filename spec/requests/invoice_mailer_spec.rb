@@ -8,14 +8,19 @@ describe InvoiceMailer, type: :request do
   before do
     Stripe.api_key = 'sk_fake_api_key' # to ensure that Stripe.com isn't processing this
     StripeMock.start
-    # StripeMock.toggle_debug(true)
-    @user = FactoryGirl.create(:user)
-    @account = FactoryGirl.create(:account, user_id: @user.id, stripe_customer_token: "cust_token")
+    StripeMock.toggle_debug(true)
+    @account = FactoryGirl.create(:account, stripe_customer_token: "cust_token")
+    @charge = Stripe::Charge.create( :amount => 400, 
+      :currency => "gbp",
+       :card => "empty",
+       :description => "Charge for test@example.com" )
     @event = StripeMock.mock_webhook_event('invoice.created', {
         :customer => "cust_token",
-        :total => 1200
+        :total => 1200,
+        :charge => @charge.id
       })
-    @invoice = @event.data.object
+    @invoice = @event.data.object 
+    
   end
 
   describe '#after_invoice_created!' do
@@ -43,7 +48,7 @@ describe InvoiceMailer, type: :request do
 
   describe '#new_invoice' do
     before do
-      @mail =  InvoiceMailer.new_invoice(@user, @invoice)
+      @mail =  InvoiceMailer.new_invoice(@account, @invoice, @charge)
     end
 
     it "renders the subject" do
@@ -51,7 +56,7 @@ describe InvoiceMailer, type: :request do
     end
 
     it "renders the to" do
-      expect(@mail.to).to eq [@user.email]
+      expect(@mail.to).to eq [@account.email]
     end
 
     it "renders the from" do

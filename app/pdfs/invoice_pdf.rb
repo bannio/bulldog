@@ -7,7 +7,6 @@ class InvoicePdf < Prawn::Document
     @invoice = invoice
     @bills = bills
     @view = view
-    # stroke_axis
     fold_mark
     header
     divider_one
@@ -36,12 +35,8 @@ class InvoicePdf < Prawn::Document
     float do
       # adds logo
       bounding_box([0,0], :width => 360, :height => 100) do 
-        logopath =  "#{Rails.root}/app/assets/images/bulldog_clip_logo_rgb.jpg"
-        # logopath =  "#{Rails.root}/app/assets/images/UbuntuLogo.png"
-        # logopath =  @view.asset_path('bulldog_clip_logo_rgb.jpg')
-        # logopath =  @view.asset_url('bulldog_clip_logo_rgb.jpg')
-        # logopath = ActionController::Base.helpers.asset_path("bulldog_clip_logo_rgb.jpg", type: :image)
-        image logopath, :fit => [250, 110]
+        # logopath =  "#{Rails.root}/app/assets/images/bulldog_clip_logo_rgb.jpg"
+        # image logopath, :fit => [250, 110]
       end
     end
 
@@ -131,8 +126,6 @@ end
     bounding_box([0,510], :width => 540) do
     self.line_width = 0.5
     stroke_horizontal_line 0, 540, :at => [cursor]
-        # text "<color rgb='ff0000'>#{cursor}</color>",
-        #    inline_format: true     
   end
 end
 
@@ -140,9 +133,6 @@ end
     move_down 10
     bounding_box([5,cursor], :width => 535) do
     text "#{@invoice.comment}"
-        # text "<color rgb='ff0000'>#{cursor}</color>",
-        #    inline_format: true
-    # transparent(0.5) { stroke_bounds }
     move_down 10
   end
   end
@@ -163,57 +153,47 @@ end
 
 
   def invoice_table
-        # bounding_box([0,cursor], :width => 540) do
-        #                            stroke_bounds
-        # stroke_circle [0, 0], 10
+    if cursor > 464
+      move_cursor_to 460
+    end
 
-  # start = cursor < 464 ? cursor : 464
-      if cursor > 464
-        move_cursor_to 460
-      end
-
-      if @invoice.include_vat?
-        table invoice_lines do
-          row(0).font_style = :bold
-          columns(2..4).align = :right
-          self.header = true
-          cells.borders = []
-          cells.padding = [2,5]
-          row(0).borders = [:bottom]
-          row(-1).borders = [:bottom]
-          row(0).border_width = 0.5
-          row(-1).border_width = 0.5
-          columns(0).width = 80
-          columns(1).width = 240
-          columns(2).width = 80
-          columns(3).width = 80
-          columns(4).width = 60
-        end
-      else
-        table invoice_lines do
-          row(0).font_style = :bold
-          columns(3).align = :right
-          self.header = true
-          cells.borders = []
-          cells.padding = [2,5]
-          row(0).borders = [:bottom]
-          row(-1).borders = [:bottom]
-          row(0).border_width = 0.5
-          row(-1).border_width = 0.5
-          columns(0).width = 80
-          columns(1).width = 120
-          columns(2).width = 260
-          columns(3).width = 80
-        end
-      # end
-    # end
+    if @invoice.include_vat?
+      table invoice_lines do
+        row(0).font_style = :bold
+        columns(2..4).align = :right
+        self.header = true
+        cells.borders = []
+        cells.padding = [2,5]
+        row(0).borders = [:bottom]
+        row(-1).borders = [:bottom]
+        row(0).border_width = 0.5
+        row(-1).border_width = 0.5
+        columns(0).width = 80
+        columns(1).width = 240
+        columns(2).width = 80
+        columns(3).width = 80
+        columns(4).width = 60
+    end
+    else
+      table invoice_lines do
+        row(0).font_style = :bold
+        columns(3).align = :right
+        self.header = true
+        cells.borders = []
+        cells.padding = [2,5]
+        row(0).borders = [:bottom]
+        row(-1).borders = [:bottom]
+        row(0).border_width = 0.5
+        row(-1).border_width = 0.5
+        columns(0).width = 80
+        columns(1).width = 120
+        columns(2).width = 260
+        columns(3).width = 80
+    end
   end
-  
 
   
   def invoice_total
-    # bounding_box([0,cursor], :width => 540) do
-
       if @invoice.include_vat?
       data = [["Total:", "#{price(@invoice.total)}", "", "#{price(@view.total_vat(@invoice))}"]]
         table(data) do
@@ -224,7 +204,6 @@ end
           columns(2).width = 80
           columns(3).width = 60
           columns(0).font_style = :bold
-          # columns(2).width = 100
         end
       else
       data = [["Total:", "#{price(@invoice.total)}"]]
@@ -235,7 +214,6 @@ end
         columns(0).width = 460
         columns(1).width = 80
         columns(0).font_style = :bold
-        # columns(2).width = 100 
         end
       end
     end
@@ -249,7 +227,6 @@ end
 
   def vat_summary_table
     if @invoice.include_vat? && vat_summary.length > 0
-    # bounding_box([0,cursor], :width => 540) do
       table vat_summary do
         columns(1).font_style = :bold
         columns(0..4).align = :right
@@ -295,14 +272,11 @@ end
       if cursor > 300
         move_down 50
       end
-      # text "#{cursor}"
-      # bounding_box([5,cursor], :width => 535) do
       text "<b>Please make payment to:</b>", inline_format: true
       move_down 5
       table(payment_table) do
         cells.borders = []
         cells.padding = [0,0]
-        # cells.size = 9
         columns(0).width = 100
         columns(1).width = 150
       end

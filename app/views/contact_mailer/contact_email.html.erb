@@ -25,3 +25,192 @@
   </tr>
 </table>
 
+
+<table style="width: 600px;">
+  <tr>
+    <td style="height: 27px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Hello <%= @resource.email %>,
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;">
+    </td>
+  </tr>
+
+  <tr>
+    <th style="height: 37px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;border-top: 1px solid black;border-bottom: 1px solid black;">BulldogClip Subscription Invoice
+    </th>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Thank you for subscribing to BulldogClip. Below is your subscription invoice for you records.
+    </td>
+  </tr>
+
+  <tr>
+    <td style="border: 1px dashed #000000;" /></td>
+  </tr>
+
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    Invoice Number: <%= @invoice.id %>
+    </td> 
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    Invoice Date: <%= Time.at(@invoice.date) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">-- COMPANY DETAILS --
+    </th>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    BulldogClip is provided by Owen Bannister Limited.
+    </td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    Registered office: 9 Alba Close, Middleleaze, Swindon, Wiltshire, UK
+    </td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    Company registration number: 08675874
+    </td>
+  </tr>
+
+  <tr>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">-- CUSTOMER DETAILS --
+    </th>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Email: (customer email)</td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Payment Method: (card type) ending in (last 4)</td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"></td>
+  </tr>
+
+  <tr>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">-- TRANSACTION DETAILS --
+    </th>
+  </tr>
+  <tr>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">Supply Date</th>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">Descrition</th>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">Price</th>
+  </tr> 
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">(Date from)</td>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"><%= lines.data[0].plan.name %></td>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"><%= @invoice.total %></td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"></td>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">Total Amount Charged</th>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"><%= @invoice.total %></td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"></td>
+    <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;">Total Amount Owed</th>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">£0 (Paid in full)</td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"></td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"></td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"></td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;"></td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    Total Amount Owed: £0 (Paid in full)</td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+  </tr>
+  <tr>
+    <td style="border: 1px dashed #000000;" /></td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">We have debited your card for the amount due. This transaction will appear on your bank statement as "BulldogClip Subs".
+    </td>
+  </tr>
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">If you have any questons, please feel free to contact us at hello@bulldogclip.co.uk.
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Regards,
+    </td>
+  </tr>
+
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">The BulldogClip team
+    </td>
+  </tr>
+
+  <tr>
+    <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="border-top: 1px solid #d0d0d0;height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="color: #777777;font-size: 12px;height: 27px;font-family: Arial, Sans-serif;">This email is confidential and intended solely to whom it is addressed. It may contain sensitive or privileged information. If you have received this email in error, please inform us at hello@bulldogclip.co.uk and destroy it. Questions? contact us at hello@bulldogclip.co.uk
+    </td>
+  </tr>
+</table>
