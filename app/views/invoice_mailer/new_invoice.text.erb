@@ -3,7 +3,7 @@ Hello <%= @account.email %>,
 _________________________________
 
 
-BulldogClip Subscription Invoice 
+BulldogClip Subscription Invoice
 
 _________________________________
 
@@ -12,7 +12,7 @@ Thank you for subscribing to BulldogClip. Below is your subscription invoice for
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Invoice Number: <%= @invoice.id %>
-Invoice Date: <%= Time.at(@invoice.date) %>
+Invoice Date: <%= Time.at(@invoice.date).strftime("%m/%d/%Y") %>
 
 --COMPANY DETAILS--
 BulldogClip is provided by Owen Bannister Limited.
@@ -25,15 +25,15 @@ Payment Method: <%= @charge.card.type %> ending in <%= @charge.card.last4 %>
 
 --TRANSACTION DETAILS--
 Description: <%= @invoice.lines.data[0].plan.name %>
-Duration: <%= Time.at(@invoice.period_start) %> to <%= Time.at(@invoice.period_end) %>
-Price: £<%= @invoice.total/100 %>
+Duration: <%= Time.at(@invoice.period_start).strftime("%m/%d/%Y") %> to <%= Time.at(@invoice.period_end).strftime("%m/%d/%Y") %>
+Price: <%= number_to_currency(@invoice.total/100) %>
 
-Total Amount Charged: £<%= @invoice.total/100 %>
+Total Amount Charged: <%= number_to_currency(@invoice.total/100) %>
 Total Amount Owed: £0 (Paid in full)
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-We have debited your card for the amount due. This transaction will appear on your bank statement as "BulldogClip Subs". 
+We have debited your card for the amount due. This transaction will appear on your bank statement as "BulldogClip Subs".
 If you have any questons, please feel free to contact us at hello@bulldogclip.co.uk
 
 
@@ -47,5 +47,3 @@ The BulldogClip team
 **********************
 
 This email is confidential and intended solely to whom it is addressed. It may contain sensitive or privileged information. If you have received this email in error, please inform us at hello@bulldogclip.co.uk and destroy it. Questions? contact us at hello@bulldogclip.co.uk
-
-

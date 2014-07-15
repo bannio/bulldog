@@ -50,7 +50,7 @@
 
     <tr style="height: 10px;">
       <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Invoice Date: <%= Time.at(@invoice.date) %>
+      Invoice Date: <%= Time.at(@invoice.date).strftime("%m/%d/%Y") %>
       </td>
     </tr>
 
@@ -114,7 +114,7 @@
 
   <tr style="height: 10px;">
     <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Duration: <%= Time.at(@invoice.period_start) %> to <%= Time.at(@invoice.period_end) %>
+      Duration: <%= Time.at(@invoice.period_start).strftime("%m/%d/%Y") %> to <%= Time.at(@invoice.period_end).strftime("%m/%d/%Y") %>
     </td>
   </tr>
 
@@ -126,7 +126,7 @@
 
   <tr style="height: 10px;">
     <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Price: £<%= @invoice.total/100 %>
+      Price: <%= number_to_currency(@invoice.total/100) %>
     </td>
   </tr>
 
@@ -137,7 +137,7 @@
 
   <tr style="height: 10px;">
     <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Total Amount Charged: £<%= @invoice.total/100 %>
+      Total Amount Charged: <%= number_to_currency(@invoice.total/100) %>
     </td>
   </tr>
 
