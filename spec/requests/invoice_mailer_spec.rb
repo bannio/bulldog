@@ -8,7 +8,7 @@ describe InvoiceMailer, type: :request do
   before do
     Stripe.api_key = 'sk_fake_api_key' # to ensure that Stripe.com isn't processing this
     StripeMock.start
-    StripeMock.toggle_debug(true)
+    # StripeMock.toggle_debug(true)
     @account = FactoryGirl.create(:account, stripe_customer_token: "cust_token")
     @charge = Stripe::Charge.create( :amount => 400, 
       :currency => "gbp",
@@ -37,14 +37,6 @@ describe InvoiceMailer, type: :request do
     end
 
   end
-
-  # it "should process an event" do
-  #   evt = StripeMock.mock_webhook_event('invoice.created')
-
-  #   dup = Stripe::Event.retrieve(evt.id)
-
-  #   expect(dup.data.object.lines.count).to eq evt.data.object.lines.count
-  # end
 
   describe '#new_invoice' do
     before do
