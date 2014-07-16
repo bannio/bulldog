@@ -2,7 +2,7 @@
 <% content_for :description do %>Create new account<% end %>
 
 <div class="container stripe">
-  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 panel panel-default stripe">
+  <div class="col-md-4 col-md-offset-4 panel panel-default stripe">
     <div class="stripe-header">
       <h1 class="secure"><%= @title %></h1>
     </div>
@@ -29,22 +29,22 @@
       <% else %>
       <div class="field card-type">
         <label for="card_type">Card Type</label>
-        <select name="card-type" id="card_type">
-          <option value="1">Visa</option>
-          <option value="2">Mastercard</option>
-          <option value="3">American Express</option>
-        </select>
+          <select name="card-type" id="card_type">
+            <option value="1">Visa</option>
+            <option value="2">Mastercard</option>
+            <option value="3">American Express</option>
+          </select>
         <img src=<%= asset_path('cc.png') %> alt="card types accepted" class="cards">
       </div>
       <div class="field">
         <%= label_tag :card_number, "Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil, class: "form-control", placeholder: "Enter 16 digit card number" %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "form-control", placeholder: "Enter 16 digit card number", type: "number" %>
       </div>
       <div class="row">
         <div class="col-xs-7 cvc-exp">
           <div class="field">
             <%= label_tag :card_code, "CVC", class: "cvc" %>
-            <%= text_field_tag :card_code, nil, name: nil, class: "form-control cvc", placeholder: "123" %>
+            <%= text_field_tag :card_code, nil, name: nil, class: "form-control cvc", placeholder: "123", type: "number" %>
             <img src=<%= asset_path('cvc.png') %> alt="CVC on back of card" class="cvc">
           </div>
           <div class="field card-expiration" >

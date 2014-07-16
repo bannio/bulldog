@@ -2,8 +2,8 @@
 
   <%= form_group_for f, :name, label: false do %>
     <div class="input-group name">
-      <%= f.label :name, "Account name*" %>
-      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Enter account name' %>
+      <%= f.label :name, "Account name", class: 'acct_name' %>
+      <%= f.text_field :name, autofocus: true, class: 'form-control acct_name', placeholder: 'Enter account name' %>
     </div>
   <% end %>
  

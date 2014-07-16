@@ -111,25 +111,30 @@ div.card-expiration > select {
   border-color: #444;
 }
 
+
+
 // Up and down arrow image background
 div.card-type > select,
 div.card-expiration > select {
-background-image: asset-url('dropdown_arrow.png') !important;
+// -moz-appearance:none;
+background-image: asset-url('dropdown_arrow.png');
 background-repeat: no-repeat;
 background-size: 25px 33px;
 background-position: right center;
 height: 100%;
 }
 
-// Removes grey arrow from firefox card-expiration fields
+// Uses mozilla arrow instead of image unable to overwrite
 @-moz-document url-prefix() {
   div.card-type > select,
   div.card-expiration > select {
-    -moz-appearance: none;
+    -moz-appearance: select;
     text-indent: 0.01px;
     text-overflow: "";
+    background-image: none !important;
   }
 }
+
 
 div.card-type > select {
   width: 60%;
@@ -192,6 +197,11 @@ border-color: #444;
 box-shadow: inset 0 1px 1px #66afe9, 0 0 8px #66afe9 !important;
 outline: 0px auto #66afe9 !important;
 outline-offset: 0px !important;
+}
+
+// prevents header forms from overlaying table
+div.invoice_header, div.analysis_header {
+  float: none;
 }
 
 // span.currency-sign {
@@ -583,11 +593,12 @@ form > div > div.edit-settings {
 
 
 .input-group.vat-check > checkbox {
-  width: 60%;
+  // width: 60%;
 }
 
 .input-group.vat-check > label {
-  width: 40%;
+  // width: 40%;
+  width: 120px;
 }
 
 .input-group.address {
@@ -617,7 +628,7 @@ table.account-details > tbody > tr > td.td-name {
 
 table.account-details > tbody > tr > td.td-content {
   width: 70%;
-  vertical-align: top;
+  vertical-align: bottom;
 }
 
 // account details show form 
@@ -645,6 +656,15 @@ td.td-content {
   padding-left: 10px;
 }
 
+// Account details edit
+label.acct_name {
+  width: 90px;
+}
+
+input.acct_name.form-control {
+  float: none;
+  width: 100%;
+}
 
 // INVOICE FILTER FORM
 
@@ -734,6 +754,7 @@ input.name {
 
 input.postcode {
   width: 60%;
+  display: block;
 }
 
 div.customer-form > textarea.address {
@@ -742,11 +763,9 @@ div.customer-form > textarea.address {
   max-width: 100%;
 }
 
-// gives spacing between form fields (must match div.formgroup margin bottom) and colours outline red, display:inline-block keeps message on one line
+// error messages
 p.help-block {
-  // margin: 0px 0px 5px 5px;
   color: $error-red;
-  // display: inline-block;  
 }
 
 

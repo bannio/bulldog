@@ -4,6 +4,11 @@ div.analysis-panel {
   border: 0px solid $white;
 }
 
+// Removes padding from panel-body to align with form header
+div.panel-body.analysis-panel {
+    padding: 0px;
+}
+
 // TABS
 
 // Positioning and size
@@ -61,6 +66,8 @@ border: 1px solid #dddddd;
 // move pie charts down from top of tab 
 div.tab-pane > div.row {
   margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 10px;
 }
 
 //TABLE

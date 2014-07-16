@@ -14,7 +14,7 @@
         <div class="form-group">
           <%= form_group_for f, :email, label: false do %>
             <%= f.label :email, 'Email address' %>
-            <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Enter email address' %>
+            <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Enter email address', type: 'email' %>
           <% end %>
         </div>
           <%= f.submit 'Reset Password', :class => 'create-btn std-btn pull-right', data: {toggle: "tooltip"}, title: "Reset account password"  %>

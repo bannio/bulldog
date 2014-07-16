@@ -16,7 +16,7 @@
         <div class="form-group">
           <%= form_group_for f, :email, label: false do %>
             <%= f.label :email_address %>
-            <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Enter your email address' %>
+            <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Enter your email address', type: "email" %>
           <% end %>
         </div>
         <%= f.submit "Submit", class: 'create-btn std-btn pull-right', data: {toggle: "tooltip"}, title: "Submit request for confirmation token" %>
