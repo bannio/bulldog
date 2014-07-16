@@ -49,10 +49,21 @@ SITENAME = {
   invoices: {
     edit: function () {
       console.log("invoices#edit");
-      $("#bill_table_body").on("click", "td.remove-col",function(){
-      $(this).parent().toggleClass("line-through");
+      $("#bill_table_body").on("click", "td.remove-col", function (){
+        $(this).parent().toggleClass("line-through");
       });
     }
+  },
+
+  reports: {
+    new: function() {
+      console.log("reports#new");
+      $("#exportBtn").on("click", function (){ $('#new_report').submit(); });
+    },
+    create: function () {
+      console.log("reports#create");
+      $("#exportBtn").on("click", function () { $('#new_report').submit(); });
+    },
   }
 };
 

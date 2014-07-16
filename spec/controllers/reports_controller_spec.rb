@@ -18,7 +18,7 @@ describe ReportsController do
   describe "POST #create" do
     context "with valid data" do
       it "renders the new template" do
-        post :create, {report: {account_id: @account.id}}
+        post :create, {report: {account_id: @account.id}, commit: "View"}
         expect(response).to render_template :new
       end
 

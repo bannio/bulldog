@@ -3,7 +3,6 @@
 
 <div class="container">
   <h1>Analysis</h1>
-  </a>
      <a href="#" id="pop" class="info-btn pop"
      data-title="Data Analysis"
      data-content="
@@ -42,12 +41,12 @@
         </div>
         <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
         <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>
-        
+        <% end %> <!-- end of form -->
     </div><!--end panel body -->
   </div><!--end panel-->
 
   <div class="panel panel-default analysis-panel">
-    <!-- <div class="panel-body"> -->
+    <div class="panel-body">
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
@@ -82,10 +81,9 @@
 
       <!-- Tab pane tables -->
         <div class="tab-pane" id="Table">
-        <div class="row">
-        <%= f.submit 'Export', class: 'action-btn std-btn btn-right', data: {toggle: "tooltip"}, title: "Export current selection to csv file. Use submit first." %>
-        <% end %> <!-- end of form -->
-        </div>
+          <div class="row">
+            <a id="exportBtn" class="action-btn std-btn btn-right" >Export</a>
+          </div>
           <div class="table-responsive">
             <table class="table table-condensed" id="bill_table">
               <thead>
@@ -108,6 +106,6 @@
           </div>
         </div><!--end tab pane -->
       </div><!-- end tab content-->
-    </div><!-- end panel body -->
+    </div><!--end panel body -->
   </div><!-- end panel -->
 </div> <!-- end container -->

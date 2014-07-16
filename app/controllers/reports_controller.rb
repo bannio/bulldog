@@ -21,9 +21,8 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     if @report.valid?
-      #@report.generate
       @bills = @report.bills.page(params[:page])
-      if params[:commit] == "Export"
+      if params[:commit] != "View" # = submit by JS Export button
         send_data @report.bills.to_csv
       else
         render :new
