@@ -63,18 +63,36 @@ class Bill < ActiveRecord::Base
     CSV.foreach(file, headers: true) do |row|
       bill = new
       imported = row.to_hash
+      puts imported  # delete this line!
+      
+      bill.date = imported['Date']
       bill.customer = Customer.find_or_create_by(name: imported['Customer'], account_id: account.id)
       bill.supplier = Supplier.find_or_create_by(name: imported['Supplier'], account_id: account.id)
       bill.category = Category.find_or_create_by(name: imported['Category'], account_id: account.id)
-      bill.date = imported['Date']
       bill.amount = imported['Amount']
-      # bill.vat_rate_id = VatRate.find_or_create_by(name: imported['VAT_rate'], account_id: account.id)
-      # bill.vat = imported['VAT']
+      # vat_rate = imported.fetch('VAT_rate') {"Standard"}
+      # puts "***** VAT rate was: #{vat_rate} *****"
+      # bill.vat_rate_id = VatRate.find_or_create_by(name: vat_rate, account_id: account.id)
+      # bill.vat = imported.fetch('VAT')
       bill.account_id = account.id
-
       bill.save!
     end
-  end 
+  end
+
+  def self.import_from_psql(file, account)
+    CSV.foreach(file, headers: true) do |row|
+      row = row.to_hash
+      # puts "ROW is: #{row}"
+      unwanted = %w{created_at updated_at id}
+      row = row.reject! {|k, v| unwanted.include?(k) }
+      row = row.merge({'account_id' => account.id})
+      # puts "ROW is now: #{row}"
+      item = new(row)
+      item.save
+      # puts bill.inspect
+      # puts bill.errors.full_messages
+    end
+  end
 
   def self.last_year_by_monthly_sum
     last_year.monthly_sum
