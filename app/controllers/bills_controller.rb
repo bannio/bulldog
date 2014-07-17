@@ -10,7 +10,7 @@ class BillsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv  { @bills = current_account.bills.includes(:customer, :supplier, :category, :vat_rate)
-                    send_data @bills.to_csv }
+                    send_data @bills.to_csv, filename: 'BulldogClip_bills.csv'}
       format.js
     end
   end
