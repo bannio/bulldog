@@ -34,7 +34,7 @@
                 <%= f.text_field :name, class: 'form-control', placeholder: 'Enter your name' %>
                 <% end %>
               <%= form_group_for f, :email do %>
-                <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address' %>
+                <%= f.email_field :email, class: 'form-control', placeholder: 'Enter your email address', type: "email" %>
               <% end %>
               <%= form_group_for f, :message do %>
                 <%= f.text_area :message, class: 'form-control', rows: 4, placeholder: 'Write your message here' %>

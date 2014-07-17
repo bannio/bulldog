@@ -6,7 +6,7 @@
   <% end %>
   <%= form_group_for f, :rate, label: false do %>
     <%= f.label :VAT_rate %>
-    <%= f.text_field :rate, placeholder: 'enter VAT rate %', class: "form-control percentage" %>
+    <%= f.text_field :rate, placeholder: 'enter VAT rate %', class: "form-control percentage", type: "number" %>
   <% end %>
 
   <%= form_group_for f, :active, label: true do %>

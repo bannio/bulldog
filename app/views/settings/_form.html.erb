@@ -27,14 +27,14 @@
 <%= form_group_for f, :telephone, label: false do %>
   <div class="input-group name">
     <%= f.label :telephone, "Telephone", class: "invoice-settings" %>
-    <%= f.text_field :telephone, autofocus: true, class: 'form-control', placeholder: 'Telephone No.' %>
+    <%= f.text_field :telephone, autofocus: true, class: 'form-control', placeholder: 'Telephone No.', type: "tel" %>
   </div>
 <% end %>
 
 <%= form_group_for f, :email, label: false do %>
   <div class="input-group name">
     <%= f.label :email, "Email", class: "invoice-settings" %>
-    <%= f.text_field :email, autofocus: true, class: 'form-control', placeholder: 'Email address' %>
+    <%= f.text_field :email, autofocus: true, class: 'form-control', placeholder: 'Email address', type: "email" %>
   </div>
 <% end %>
 
@@ -64,14 +64,14 @@
 <%= form_group_for f, :bank_account_no, label: false do %>
   <div class="input-group bank">
     <%= f.label :bank_account_no, "Account number", class: "invoice-settings" %>
-    <%= f.text_field :bank_account_no, autofocus: true, class: 'form-control', placeholder: 'Account number' %>
+    <%= f.text_field :bank_account_no, autofocus: true, class: 'form-control', placeholder: 'Account number', type: "number" %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_sort, label: false do %>
   <div class="input-group bank">
     <%= f.label :bank_sort, "Sortcode", class: "invoice-settings" %>
-    <%= f.text_field :bank_sort, autofocus: true, class: 'form-control', placeholder: 'Sortcode' %>
+    <%= f.text_field :bank_sort, autofocus: true, class: 'form-control', placeholder: 'Sortcode', type: "number" %>
   </div>
 <% end %>
 
@@ -95,7 +95,7 @@
   <%= form_group_for f, :vat_reg_no, label: false do %>
     <div class="input-group vat-reg">
       <%= f.label :vat_reg_no, "VAT Registration Number", class: "invoice-settings" %>
-      <%= f.text_field :vat_reg_no, autofocus: true, class: 'form-control', placeholder: 'VAT Registration Number' %>
+      <%= f.text_field :vat_reg_no, autofocus: true, class: 'form-control', placeholder: 'VAT Registration Number', type: "number" %>
     </div>
   <% end %>
 <% end %>

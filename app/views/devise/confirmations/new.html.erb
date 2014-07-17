@@ -12,7 +12,7 @@
           <div class="form-group">
             <%= form_group_for f, :email, label: false do %>
               <%= f.label :email %>
-              <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+              <%= f.email_field :email, :autofocus => true, class: 'form-control', type: "email" %>
             <% end %>
           </div>
           <%= f.button :submit, "Resend confirmation instructions", class: 'create-btn std-btn button right', data: {toggle: "tooltip"}, title: "Submit request for resend of confirmation instructions" %>

@@ -13,7 +13,7 @@
           <%= f.hidden_field :edit_email %>
           <div class="form-group">
             <%= f.label :email %>
-            <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+            <%= f.email_field :email, :autofocus => true, class: 'form-control', type: "email" %>
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
