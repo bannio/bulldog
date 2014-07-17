@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     if @report.valid?
       @bills = @report.bills.page(params[:page])
-      if params[:commit] != "View" # = submit by JS Export button
+      if params[:commit] != "View" && !@bills.empty? # = submit by JS Export button
         send_data @report.bills.to_csv, type: 'text/csv', filename: 'BulldogClip_analysis.csv'
       else
         render :new
