@@ -2,11 +2,11 @@
 <%= form_tag invoices_path, method: 'get', id: "invoices_search" do %>
   <div class="form-group invoice">
     <%= label_tag :from_date %>
-    <%= text_field_tag :from_date, params[:from_date], class: "date_picker", placeholder: "yyyy-mm-dd" %>
+    <%= text_field_tag :from_date, params[:from_date], class: "date_picker", placeholder: "yyyy-mm-dd", type: "date" %>
   </div>
   <div class="form-group invoice">
     <%= label_tag :to_date %>
-    <%= text_field_tag :to_date, params[:to_date], class: "date_picker", placeholder: "yyyy-mm-dd" %>
+    <%= text_field_tag :to_date, params[:to_date], class: "date_picker", placeholder: "yyyy-mm-dd", type: "date" %>
   </div>
   <div class="form-group">
     <%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %>

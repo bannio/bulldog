@@ -38,13 +38,13 @@
       </div>
       <div class="field">
         <%= label_tag :card_number, "Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil, class: "form-control", placeholder: "Enter 16 digit card number", type: "number" %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "form-control", placeholder: "Enter 16 digit card number", pattern: "\d*", formnovalidate: "formnovalidate" %>
       </div>
       <div class="row">
         <div class="col-xs-7 cvc-exp">
           <div class="field">
             <%= label_tag :card_code, "CVC", class: "cvc" %>
-            <%= text_field_tag :card_code, nil, name: nil, class: "form-control cvc", placeholder: "123", type: "number" %>
+            <%= text_field_tag :card_code, nil, name: nil, class: "form-control cvc", placeholder: "123", pattern: "\d*", formnovalidate: "formnovalidate" %>
             <img src=<%= asset_path('cvc.png') %> alt="CVC on back of card" class="cvc">
           </div>
           <div class="field card-expiration" >

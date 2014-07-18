@@ -28,6 +28,8 @@ SITENAME = {
     // action-specific code
       console.log("accounts#new");
       Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+      $('#card_number').payment('formatCardNumber');
+      $('#card_code').payment('formatCardCVC');
       return STRIPE.setupForm();
     },
 
@@ -35,6 +37,8 @@ SITENAME = {
     // action-specific code
       console.log("accounts#create");
       Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+      $('#card_number').payment('formatCardNumber');
+      $('#card_code').payment('formatCardCVC');
       return STRIPE.setupForm();
     },
   },
