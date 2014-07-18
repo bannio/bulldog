@@ -45,11 +45,23 @@ h1.secure {
   width: 100%;
 }
 
+.stripe div.card-expiration {
+  margin-top: 10px;
+}
 
+div.cvc {
+  float: right;
+  padding-right: 15px;
+}
 div.subscribe {
   text-align: center;
   margin-top: 5px;
   margin-bottom: 10px;
+  padding-right: 0px;
+}
+
+input.pay {
+  margin: 15px 0px 5px
 }
 
 img.stripe-power {
@@ -89,55 +101,51 @@ img.cvc {
   padding-left: 5px;
 }
 
-div.card-type > label,
+div.card-number > label,
 div.card-expiration > label {
   display: block;
 }
 
-span.exp-date {
-  font-size: 1.5rem;
-}
+// span.exp-date {
+//   font-size: 1.5rem;
+// }
 
-div.card-type > select,
-div.card-expiration > select {
-  display: inline-block;
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: $white;
-  color: #424242;
-  height: 3.25rem;
-  padding: 8px 6px;
-  border-width: 1px;
-  border-color: #444;
-}
-
-
+// div.card-type > select {
+//   display: inline-block;
+//   appearance: none;
+//   -webkit-appearance: none;
+//   background-color: $white;
+//   color: #424242;
+//   height: 3.25rem;
+//   padding: 8px 6px;
+//   border-width: 1px;
+//   border-color: #444;
+// }
 
 // Up and down arrow image background
-div.card-type > select,
-div.card-expiration > select {
-// -moz-appearance:none;
-background-image: asset-url('dropdown_arrow.png');
-background-repeat: no-repeat;
-background-size: 25px 33px;
-background-position: right center;
-height: 100%;
-}
+// div.card-type > select {
+// // -moz-appearance:none;
+// background-image: asset-url('dropdown_arrow.png');
+// background-repeat: no-repeat;
+// background-size: 25px 33px;
+// background-position: right center;
+// height: 100%;
+// }
 
-// Uses mozilla arrow instead of image unable to overwrite
-@-moz-document url-prefix() {
-  div.card-type > select,
-  div.card-expiration > select {
-    -moz-appearance: select;
-    text-indent: 0.01px;
-    text-overflow: "";
-    background-image: none !important;
-  }
-}
+// // Uses mozilla arrow instead of image unable to overwrite
+// @-moz-document url-prefix() {
+//   div.card-type > select {
+//     -moz-appearance: select;
+//     text-indent: 0.01px;
+//     text-overflow: "";
+//     background-image: none !important;
+//   }
+// }
 
 
-div.card-type > select {
+input.card-number {
   width: 60%;
+  display: inline-block;
 }
 
 img.cards {
@@ -150,14 +158,8 @@ input.cvc {
   width: 60px;
 }
 
-div.card-expiration > select#card_month {
-  width: 60px;
-  margin-bottom: 5px;
-}
-
-div.card-expiration > select#card_year {
-  // width: 38%;
-  width: 70px;
+input.expiry-date {
+  width: 75px;
 }
 
 p.interval {
@@ -169,7 +171,7 @@ h3.price {
   font-size: 3.5rem;
   line-height: 2.5rem;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 // INVOICES
@@ -815,7 +817,8 @@ div.modal-header > button.close {
 }
 
 // red border on error fields using errors_for helper
-div.field_with_errors>input {
+div.field_with_errors>input,
+input.field_with_errors {
   border-color: $error-red;
 }
 

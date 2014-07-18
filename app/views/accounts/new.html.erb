@@ -18,7 +18,7 @@
       <%= f.hidden_field :stripe_card_token %>
       <%= form_group_for f, :name, label: false do %>
       <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Account name' %>
+      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Your name' %>
       <% end %>
       <%= form_group_for f, :email, label: false do %>
       <%= f.label :email %>
@@ -27,37 +27,25 @@
       <% if @account.stripe_card_token.present? && @account.errors[:base].empty?%>
         Credit card has been provided.
       <% else %>
-      <div class="field card-type">
-        <label for="card_type">Card Type</label>
-          <select name="card-type" id="card_type">
-            <option value="1">Visa</option>
-            <option value="2">Mastercard</option>
-            <option value="3">American Express</option>
-          </select>
+      <div class="field card-number">
+        <%= label_tag :card_number, "Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "form-control card-number", placeholder: "16 digit card number", type: "tel" %>
         <img src=<%= asset_path('cc.png') %> alt="card types accepted" class="cards">
       </div>
-      <div class="field">
-        <%= label_tag :card_number, "Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil, class: "form-control", placeholder: "Enter 16 digit card number", pattern: "\d*", formnovalidate: "formnovalidate" %>
-      </div>
+      <!-- <div class="field"> -->
+      <!-- </div> -->
       <div class="row">
-        <div class="col-xs-7 cvc-exp">
-          <div class="field">
-            <%= label_tag :card_code, "CVC", class: "cvc" %>
-            <%= text_field_tag :card_code, nil, name: nil, class: "form-control cvc", placeholder: "123", pattern: "\d*", formnovalidate: "formnovalidate" %>
-            <img src=<%= asset_path('cvc.png') %> alt="CVC on back of card" class="cvc">
-          </div>
+        <div class="col-xs-4 cvc-exp">
           <div class="field card-expiration" >
-            <%= label_tag :card_month, "Expiry Date" %>
-            <%= select_month nil, {use_two_digit_numbers: true}, {name: nil, id: "card_month"} %>
-            <span class="exp-date">/</span>
-            <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+            <%= label_tag :cc_exp, "Expiry Date" %>
+            <input id="cc_exp" type="tel" class="form-control expiry-date" placeholder="MM / YY" autocompletetype="cc-exp" required="required">
           </div>
         </div>
-        <div class="col-xs-5 price">
-          <div class="row">
-            <h3 class="price"><%= @price %></h3>
-            <p class="interval"><%= @interval %></p>
+        <div class="col-xs-8 cvc-exp">
+          <div class="field cvc">
+            <%= label_tag :card_code, "Security Code (CVC)", class: "cvc" %>
+            <%= text_field_tag :card_code, nil, name: nil, class: "form-control cvc", placeholder: "123", type: "tel" %>
+            <img src=<%= asset_path('cvc.png') %> alt="CVC on back of card" class="cvc">
           </div>
         </div>
       </div>
@@ -66,8 +54,14 @@
     <div id="stripe_error" class="stripe-error">
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
-    <div class="subscribe pull-right">
-    <%= f.submit "Subscribe Now", class: "create-btn std-btn lg-btn pay", data: {toggle: "tooltip"}, title: "Submit payment details and subscribe to BulldogClip" %>
+    <div class="col-xs-5 price">
+      <div class="row">
+        <h3 class="price"><%= @price %></h3>
+        <p class="interval"><%= @interval %></p>
+      </div>
+    </div>
+    <div class="col-xs-7 subscribe">
+    <%= f.submit "Subscribe Now", class: "create-btn std-btn lg-btn pay pull-right", data: {toggle: "tooltip"}, title: "Submit payment details and subscribe to BulldogClip" %>
     </div>
     <% end %><!-- end of the form -->
   </div><!-- end panel-default -->

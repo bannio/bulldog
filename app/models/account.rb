@@ -44,7 +44,7 @@ class Account < ActiveRecord::Base
   end
 
   def save_with_payment
-    if valid?
+    if valid? && stripe_card_token.present?
       customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
       self.stripe_customer_token = customer.id
       self.user = User.create(email: self.email)

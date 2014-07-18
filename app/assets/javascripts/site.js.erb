@@ -30,6 +30,8 @@ SITENAME = {
       Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       $('#card_number').payment('formatCardNumber');
       $('#card_code').payment('formatCardCVC');
+      $('#cc_exp').payment('formatCardExpiry');
+      // $('#cc_exp').payment('cardExpiryVal');
       return STRIPE.setupForm();
     },
 
@@ -39,6 +41,8 @@ SITENAME = {
       Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       $('#card_number').payment('formatCardNumber');
       $('#card_code').payment('formatCardCVC');
+      $('#cc_exp').payment('formatCardExpiry');
+      // $('#cc_exp').payment('cardExpiryVal');
       return STRIPE.setupForm();
     },
   },
@@ -76,6 +80,14 @@ STRIPE = {
     console.log("STRIPE setupForm");
     return $('#new_account').submit(function () {
       $('input[type=submit]').attr('disabled', true);
+
+      var expiry = $('#cc_exp').payment('cardExpiryVal');
+      var validateExpiry = $.payment.validateCardExpiry(expiry);
+      if (!validateExpiry) {
+        STRIPE.invalidExpiry();
+        return false;
+      }
+
       if ($('#card_number').length) {
         STRIPE.processCard();
         return false; // so that form is not submitted yet
@@ -86,22 +98,29 @@ STRIPE = {
 
   processCard: function () {
     console.log("STRIPE process card");
+    var expiry = $('#cc_exp').payment('cardExpiryVal');
     var card;
     card = {
       number: $('#card_number').val(),
       cvc: $('#card_code').val(),
-      expMonth: $('#card_month').val(),
-      expYear: $('#card_year').val()
+      expMonth: expiry["month"],
+      expYear: expiry["year"]
     };
     return Stripe.createToken(card, STRIPE.handleStripeResponse);
   },
-
+  
   handleStripeResponse: function (status, response) {
     if (status === 200) {
       $('#account_stripe_card_token').val(response.id);
       return $('#new_account')[0].submit();
     }
     $('#stripe_error').text(response.error.message);
+    return $('input[type=submit]').attr('disabled', false);
+  },
+
+  invalidExpiry: function (status, response) {
+    $('#stripe_error').text('invalid expiry date');
+    $('#cc_exp').toggleClass('field_with_errors');
     return $('input[type=submit]').attr('disabled', false);
   }
 };

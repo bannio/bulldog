@@ -32,6 +32,9 @@ class Bill < ActiveRecord::Base
   def vat_rate_name
     vat_rate_id ? vat_rate.name : ""
   end
+  def invoice_number
+    invoice_id ? invoice.number : ""
+  end
 
   def self.to_csv(options = {})
     if first.account.business?
@@ -39,7 +42,7 @@ class Bill < ActiveRecord::Base
         csv << %w{Date Customer Supplier Category Description Amount VAT_rate VAT Invoice}
         all.each do |bill|
           row = [bill.date, bill.customer_name, bill.supplier_name, bill.category_name, 
-                bill.description, bill.amount, bill.vat_rate_name, bill.vat, bill.invoice_id]
+                bill.description, bill.amount, bill.vat_rate_name, bill.vat, bill.invoice_number]
           csv << row
         end     
       end
@@ -48,7 +51,7 @@ class Bill < ActiveRecord::Base
       csv << %w{Date Customer Supplier Category Description Amount Invoice}
       all.each do |bill|
         row = [bill.date, bill.customer_name, bill.supplier_name, bill.category_name, 
-              bill.description, bill.amount, bill.invoice_id]
+              bill.description, bill.amount, bill.invoice_number]
         csv << row
       end     
     end
