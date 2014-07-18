@@ -817,8 +817,7 @@ div.modal-header > button.close {
 }
 
 // red border on error fields using errors_for helper
-div.field_with_errors>input,
-input.field_with_errors {
+div.field_with_errors>input {
   border-color: $error-red;
 }
 

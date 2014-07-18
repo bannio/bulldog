@@ -57,16 +57,16 @@ SITENAME = {
   invoices: {
     edit: function () {
       console.log("invoices#edit");
-      $("#bill_table_body").on("click", "td.remove-col", function (){
+      $("#bill_table_body").on("click", "td.remove-col", function () {
         $(this).parent().toggleClass("line-through");
       });
     }
   },
 
   reports: {
-    new: function() {
+    new: function () {
       console.log("reports#new");
-      $("#exportBtn").on("click", function (){ $('#new_report').submit(); });
+      $("#exportBtn").on("click", function () { $('#new_report').submit(); });
     },
     create: function () {
       console.log("reports#create");
@@ -79,10 +79,18 @@ STRIPE = {
   setupForm: function () {
     console.log("STRIPE setupForm");
     return $('#new_account').submit(function () {
+      var expiry, validateExpiry, card, validCard;
       $('input[type=submit]').attr('disabled', true);
-
-      var expiry = $('#cc_exp').payment('cardExpiryVal');
-      var validateExpiry = $.payment.validateCardExpiry(expiry);
+      $('.card-number').removeClass('field_with_errors');
+      $('.card-expiration').removeClass('field_with_errors');
+      card = $('#card_number').val();
+      validCard = $.payment.validateCardNumber(card);
+      expiry = $('#cc_exp').payment('cardExpiryVal');
+      validateExpiry = $.payment.validateCardExpiry(expiry);
+      if (!validCard) {
+        STRIPE.invalidCard();
+        return false;
+      }
       if (!validateExpiry) {
         STRIPE.invalidExpiry();
         return false;
@@ -103,12 +111,12 @@ STRIPE = {
     card = {
       number: $('#card_number').val(),
       cvc: $('#card_code').val(),
-      expMonth: expiry["month"],
-      expYear: expiry["year"]
+      expMonth: expiry.month,
+      expYear: expiry.year
     };
     return Stripe.createToken(card, STRIPE.handleStripeResponse);
   },
-  
+
   handleStripeResponse: function (status, response) {
     if (status === 200) {
       $('#account_stripe_card_token').val(response.id);
@@ -118,9 +126,15 @@ STRIPE = {
     return $('input[type=submit]').attr('disabled', false);
   },
 
-  invalidExpiry: function (status, response) {
+  invalidCard: function () {
+    $('#stripe_error').text('invalid card number');
+    $('.card-number').addClass('field_with_errors');
+    return $('input[type=submit]').attr('disabled', false);
+  },
+
+  invalidExpiry: function () {
     $('#stripe_error').text('invalid expiry date');
-    $('#cc_exp').toggleClass('field_with_errors');
+    $('.card-expiration').addClass('field_with_errors');
     return $('input[type=submit]').attr('disabled', false);
   }
 };

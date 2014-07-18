@@ -12,7 +12,8 @@
 
   $.fn.payment = function (funcName) {
     var args, method;
-    method = funcName, args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+    method = funcName;
+    args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
     return $.payment.fn[method].apply(this, args);
   };
 
@@ -99,7 +100,7 @@
     }
   ];
 
-  cardFromNumber = function(num) {
+  cardFromNumber = function (num) {
     var card, _i, _len;
     num = (num + '').replace(/\D/g, '');
     for (_i = 0, _len = cards.length; _i < _len; _i++) {
@@ -110,7 +111,7 @@
     }
   };
 
-  cardFromType = function(type) {
+  cardFromType = function (type) {
     var card, _i, _len;
     for (_i = 0, _len = cards.length; _i < _len; _i++) {
       card = cards[_i];
@@ -120,7 +121,7 @@
     }
   };
 
-  luhnCheck = function(num) {
+  luhnCheck = function (num) {
     var digit, digits, odd, sum, _i, _len;
     odd = true;
     sum = 0;
@@ -139,7 +140,7 @@
     return sum % 10 === 0;
   };
 
-  hasTextSelected = function($target) {
+  hasTextSelected = function ($target) {
     var _ref;
     if (($target.prop('selectionStart') != null) && $target.prop('selectionStart') !== $target.prop('selectionEnd')) {
       return true;
@@ -150,8 +151,8 @@
     return false;
   };
 
-  reFormatCardNumber = function(e) {
-    return setTimeout(function() {
+  reFormatCardNumber = function (e) {
+    return setTimeout(function () {
       var $target, value;
       $target = $(e.currentTarget);
       value = $target.val();
@@ -160,7 +161,7 @@
     });
   };
 
-  formatCardNumber = function(e) {
+  formatCardNumber = function (e) {
     var $target, card, digit, length, re, upperLength, value;
     digit = String.fromCharCode(e.which);
     if (!/^\d+$/.test(digit)) {
@@ -187,18 +188,18 @@
     }
     if (re.test(value)) {
       e.preventDefault();
-      return setTimeout(function() {
+      return setTimeout(function () {
         return $target.val(value + ' ' + digit);
       });
     } else if (re.test(value + digit)) {
       e.preventDefault();
-      return setTimeout(function() {
+      return setTimeout(function () {
         return $target.val(value + digit + ' ');
       });
     }
   };
 
-  formatBackCardNumber = function(e) {
+  formatBackCardNumber = function (e) {
     var $target, value;
     $target = $(e.currentTarget);
     value = $target.val();
@@ -210,19 +211,19 @@
     }
     if (/\d\s$/.test(value)) {
       e.preventDefault();
-      return setTimeout(function() {
+      return setTimeout(function () {
         return $target.val(value.replace(/\d\s$/, ''));
       });
     } else if (/\s\d?$/.test(value)) {
       e.preventDefault();
-      return setTimeout(function() {
+      return setTimeout(function () {
         return $target.val(value.replace(/\s\d?$/, ''));
       });
     }
   };
 
-  reFormatExpiry = function(e) {
-    return setTimeout(function() {
+  reFormatExpiry = function (e) {
+    return setTimeout(function () {
       var $target, value;
       $target = $(e.currentTarget);
       value = $target.val();
@@ -231,7 +232,7 @@
     });
   };
 
-  formatExpiry = function(e) {
+  formatExpiry = function (e) {
     var $target, digit, val;
     digit = String.fromCharCode(e.which);
     if (!/^\d+$/.test(digit)) {
@@ -241,18 +242,18 @@
     val = $target.val() + digit;
     if (/^\d$/.test(val) && (val !== '0' && val !== '1')) {
       e.preventDefault();
-      return setTimeout(function() {
+      return setTimeout(function () {
         return $target.val("0" + val + " / ");
       });
     } else if (/^\d\d$/.test(val)) {
       e.preventDefault();
-      return setTimeout(function() {
+      return setTimeout(function () {
         return $target.val("" + val + " / ");
       });
     }
   };
 
-  formatForwardExpiry = function(e) {
+  formatForwardExpiry = function (e) {
     var $target, digit, val;
     digit = String.fromCharCode(e.which);
     if (!/^\d+$/.test(digit)) {
@@ -265,7 +266,7 @@
     }
   };
 
-  formatForwardSlash = function(e) {
+  formatForwardSlash = function (e) {
     var $target, slash, val;
     slash = String.fromCharCode(e.which);
     if (slash !== '/') {
@@ -278,7 +279,7 @@
     }
   };
 
-  formatBackExpiry = function(e) {
+  formatBackExpiry = function (e) {
     var $target, value;
     $target = $(e.currentTarget);
     value = $target.val();
@@ -290,13 +291,13 @@
     }
     if (/\s\/\s\d?$/.test(value)) {
       e.preventDefault();
-      return setTimeout(function() {
+      return setTimeout(function () {
         return $target.val(value.replace(/\s\/\s\d?$/, ''));
       });
     }
   };
 
-  restrictNumeric = function(e) {
+  restrictNumeric = function (e) {
     var input;
     if (e.metaKey || e.ctrlKey) {
       return true;
@@ -314,7 +315,7 @@
     return !!/[\d\s]/.test(input);
   };
 
-  restrictCardNumber = function(e) {
+  restrictCardNumber = function (e) {
     var $target, card, digit, value;
     $target = $(e.currentTarget);
     digit = String.fromCharCode(e.which);
@@ -333,7 +334,7 @@
     }
   };
 
-  restrictExpiry = function(e) {
+  restrictExpiry = function (e) {
     var $target, digit, value;
     $target = $(e.currentTarget);
     digit = String.fromCharCode(e.which);
@@ -350,7 +351,7 @@
     }
   };
 
-  restrictCVC = function(e) {
+  restrictCVC = function (e) {
     var $target, digit, val;
     $target = $(e.currentTarget);
     digit = String.fromCharCode(e.which);
@@ -364,13 +365,13 @@
     return val.length <= 4;
   };
 
-  setCardType = function(e) {
+  setCardType = function (e) {
     var $target, allTypes, card, cardType, val;
     $target = $(e.currentTarget);
     val = $target.val();
     cardType = $.payment.cardType(val) || 'unknown';
     if (!$target.hasClass(cardType)) {
-      allTypes = (function() {
+      allTypes = (function () {
         var _i, _len, _results;
         _results = [];
         for (_i = 0, _len = cards.length; _i < _len; _i++) {
@@ -387,13 +388,13 @@
     }
   };
 
-  $.payment.fn.formatCardCVC = function() {
+  $.payment.fn.formatCardCVC = function () {
     this.payment('restrictNumeric');
     this.on('keypress', restrictCVC);
     return this;
   };
 
-  $.payment.fn.formatCardExpiry = function() {
+  $.payment.fn.formatCardExpiry = function () {
     this.payment('restrictNumeric');
     this.on('keypress', restrictExpiry);
     this.on('keypress', formatExpiry);
@@ -405,7 +406,7 @@
     return this;
   };
 
-  $.payment.fn.formatCardNumber = function() {
+  $.payment.fn.formatCardNumber = function () {
     this.payment('restrictNumeric');
     this.on('keypress', restrictCardNumber);
     this.on('keypress', formatCardNumber);
@@ -418,16 +419,16 @@
     return this;
   };
 
-  $.payment.fn.restrictNumeric = function() {
+  $.payment.fn.restrictNumeric = function () {
     this.on('keypress', restrictNumeric);
     return this;
   };
 
-  $.payment.fn.cardExpiryVal = function() {
+  $.payment.fn.cardExpiryVal = function () {
     return $.payment.cardExpiryVal($(this).val());
   };
 
-  $.payment.cardExpiryVal = function(value) {
+  $.payment.cardExpiryVal = function (value) {
     var month, prefix, year, _ref;
     value = value.replace(/\s/g, '');
     _ref = value.split('/', 2), month = _ref[0], year = _ref[1];
@@ -444,7 +445,7 @@
     };
   };
 
-  $.payment.validateCardNumber = function(num) {
+  $.payment.validateCardNumber = function (num) {
     var card, _ref;
     num = (num + '').replace(/\s+|-/g, '');
     if (!/^\d+$/.test(num)) {
@@ -457,7 +458,7 @@
     return (_ref = num.length, __indexOf.call(card.length, _ref) >= 0) && (card.luhn === false || luhnCheck(num));
   };
 
-  $.payment.validateCardExpiry = function(month, year) {
+  $.payment.validateCardExpiry = function (month, year) {
     var currentTime, expiry, _ref;
     if (typeof month === 'object' && 'month' in month) {
       _ref = month, month = _ref.month, year = _ref.year;
@@ -493,7 +494,7 @@
     return expiry > currentTime;
   };
 
-  $.payment.validateCardCVC = function(cvc, type) {
+  $.payment.validateCardCVC = function (cvc, type) {
     var _ref, _ref1;
     cvc = $.trim(cvc);
     if (!/^\d+$/.test(cvc)) {
@@ -506,7 +507,7 @@
     }
   };
 
-  $.payment.cardType = function(num) {
+  $.payment.cardType = function (num) {
     var _ref;
     if (!num) {
       return null;
@@ -514,7 +515,7 @@
     return ((_ref = cardFromNumber(num)) != null ? _ref.type : void 0) || null;
   };
 
-  $.payment.formatCardNumber = function(num) {
+  $.payment.formatCardNumber = function (num) {
     var card, groups, upperLength, _ref;
     card = cardFromNumber(num);
     if (!card) {
@@ -531,14 +532,14 @@
         return;
       }
       groups.shift();
-      groups = $.grep(groups, function(n) {
+      groups = $.grep(groups, function (n) {
         return n;
       });
       return groups.join(' ');
     }
   };
 
-  $.payment.formatExpiry = function(expiry) {
+  $.payment.formatExpiry = function (expiry) {
     var mon, parts, sep, year;
     parts = expiry.match(/^\D*(\d{1,2})(\D+)?(\d{1,4})?/);
     if (!parts) {

@@ -87,7 +87,7 @@ describe AccountsController do
         exception = Stripe::InvalidRequestError.new("",{})
         Stripe::Customer.should_receive(:create).and_raise(exception)
         expect {
-          post :create, account: attributes_for(:account).merge(user_id: "")
+          post :create, account: attributes_for(:account).merge(user_id: "", stripe_card_token: "xx")
         }.to change(Account, :count).by(0)
       end
 
