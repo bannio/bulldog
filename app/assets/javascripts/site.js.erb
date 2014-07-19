@@ -27,22 +27,20 @@ SITENAME = {
     new: function () {
     // action-specific code
       console.log("accounts#new");
-      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       $('#card_number').payment('formatCardNumber');
       $('#card_code').payment('formatCardCVC');
       $('#cc_exp').payment('formatCardExpiry');
-      // $('#cc_exp').payment('cardExpiryVal');
+      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       return STRIPE.setupForm();
     },
 
     create: function () {
     // action-specific code
       console.log("accounts#create");
-      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       $('#card_number').payment('formatCardNumber');
       $('#card_code').payment('formatCardCVC');
       $('#cc_exp').payment('formatCardExpiry');
-      // $('#cc_exp').payment('cardExpiryVal');
+      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       return STRIPE.setupForm();
     },
   },
@@ -79,18 +77,28 @@ STRIPE = {
   setupForm: function () {
     console.log("STRIPE setupForm");
     return $('#new_account').submit(function () {
-      var expiry, validateExpiry, card, validCard;
+      var expiry, validateExpiry, card, validCard, cvc, validCvc;
       $('input[type=submit]').attr('disabled', true);
       $('.card-number').removeClass('field_with_errors');
       $('.card-expiration').removeClass('field_with_errors');
+
       card = $('#card_number').val();
       validCard = $.payment.validateCardNumber(card);
       expiry = $('#cc_exp').payment('cardExpiryVal');
       validateExpiry = $.payment.validateCardExpiry(expiry);
+
       if (!validCard) {
         STRIPE.invalidCard();
         return false;
       }
+
+      cvc = $('#card_code').val();
+      validCvc = $.payment.validateCardCVC(cvc);
+      if (!validCvc) {
+        STRIPE.invalidCVC();
+        return false;
+      }
+
       if (!validateExpiry) {
         STRIPE.invalidExpiry();
         return false;
@@ -135,6 +143,12 @@ STRIPE = {
   invalidExpiry: function () {
     $('#stripe_error').text('invalid expiry date');
     $('.card-expiration').addClass('field_with_errors');
+    return $('input[type=submit]').attr('disabled', false);
+  },
+
+  invalidCVC: function () {
+    $('#stripe_error').text('invalid security code');
+    $('.cvc').addClass('field_with_errors');
     return $('input[type=submit]').attr('disabled', false);
   }
 };
