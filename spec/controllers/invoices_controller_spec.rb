@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe InvoicesController do
   login_user
-  create_account
   create_customer 
   create_bill
 

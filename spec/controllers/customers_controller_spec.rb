@@ -4,18 +4,12 @@ describe CustomersController do
 
   login_user
   # let(:account){mock_model Account, current_id: 1}
-  
-  def create_account
-    user = subject.current_user
-    account = FactoryGirl.create(:account, user_id: user.id)
-    # Account.current_id = account.id
-  end
 
   def valid_attributes
    { name: "A Customer",
    address: "", 
    postcode: "",
-   account_id: create_account.id
+   account_id: @account.id
    }
  end
 
@@ -25,7 +19,6 @@ describe CustomersController do
 
   describe "GET 'index'" do
     it "returns http success even when no customers" do
-      create_account
       get 'index'
       response.should be_success
     end
@@ -41,7 +34,6 @@ describe CustomersController do
  
  describe "GET new" do
    it "assigns a new customer as @customer" do
-     create_account
      get :new, {}
      assigns(:customer).should be_a_new(Customer)
    end

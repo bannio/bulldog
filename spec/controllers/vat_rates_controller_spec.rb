@@ -4,16 +4,16 @@ describe VatRatesController do
 
   login_user
 
-  def create_account
+  def business_plan_account
     user = subject.current_user
-    account = FactoryGirl.create(:account, user_id: user.id, plan_id: 2)
-    # Account.current_id = account.id
+    user.account.update_attribute('plan_id', 2)
+    user.account
   end
 
   def valid_attributes
    { name: "Standard",
     rate: "20", 
-    account_id: create_account.id,
+    account_id: business_plan_account.id,
     active: true
    }
  end
@@ -24,7 +24,7 @@ describe VatRatesController do
 
   describe "GET 'index'" do
     it "returns http success even when no customers" do
-      create_account
+      business_plan_account
       get 'index'
       response.should be_success
     end
@@ -50,13 +50,13 @@ describe VatRatesController do
 
  describe "GET new" do
    it "builds a rate with an account id" do
-     create_account
+     business_plan_account
      get :new, {format: :js}
      assigns(:vat_rate).should be_a_new(VatRate)
      expect(assigns(:vat_rate).account_id).to_not be_blank
    end
    it "builds a rate with active set to true" do
-     create_account
+     business_plan_account
      get :new, {format: :js}
      assigns(:vat_rate).should be_a_new(VatRate)
      expect(assigns(:vat_rate).active?).to be_true

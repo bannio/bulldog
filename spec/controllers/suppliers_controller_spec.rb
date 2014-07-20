@@ -2,8 +2,15 @@ require 'spec_helper'
 
 describe SuppliersController do
 
+    # before(:each) do
+    #   @request.env["devise.mapping"] = Devise.mappings[:user]
+    #   @user = FactoryGirl.create(:user)
+    #   @user.confirm!
+    #   sign_in @user
+    #   @account = FactoryGirl.create(:account, user_id: @user.id)
+    # end
+
   login_user
-  create_account
 
   describe "GET 'index'" do
     it "returns http success" do

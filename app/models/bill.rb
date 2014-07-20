@@ -6,6 +6,7 @@ class Bill < ActiveRecord::Base
   belongs_to :supplier
   belongs_to :category
   belongs_to :vat_rate
+  belongs_to :invoice
 
   validates :date, date: true
   validates :account_id, :date, :customer_id, :supplier_id, :category_id, :amount, presence: true
@@ -37,6 +38,7 @@ class Bill < ActiveRecord::Base
   end
 
   def self.to_csv(options = {})
+    return unless first # at least one bill
     if first.account.business?
       CSV.generate(options) do |csv|
         csv << %w{Date Customer Supplier Category Description Amount VAT_rate VAT Invoice}

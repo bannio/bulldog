@@ -46,15 +46,28 @@ describe Bill do
   end
 
   it "can name its customer, supplier etc." do
-    customer = create(:customer, name: 'John')
+    customer = create(:customer_with_bill, name: 'John')
     supplier = create(:supplier, name: 'Fred')
     category = create(:category, name: 'Food')
+    vat_rate = create(:vat_rate, name: 'standard')
+    invoice =  create(:invoice, number: '99', customer_id: customer.id)
     bill = Bill.new(@attr.merge(customer_id: customer.id,
                                 supplier_id: supplier.id,
-                                category_id: category.id))
+                                category_id: category.id,
+                                vat_rate_id: vat_rate.id,
+                                invoice_id:  invoice.id))
     expect(bill.customer_name).to eq 'John'
     expect(bill.supplier_name).to eq 'Fred'
     expect(bill.category_name).to eq 'Food'
+    expect(bill.vat_rate_name).to eq 'standard'
+    expect(bill.invoice_number).to eq '99'
+  end
+
+  it "can name vat and invoice number even when these are missing" do
+    bill = Bill.new(@attr.merge(vat_rate_id: nil,
+                                invoice_id:  nil))
+    expect(bill.vat_rate_name).to eq ''
+    expect(bill.invoice_number).to eq ''
   end
 
   it "can accept a new customer" do

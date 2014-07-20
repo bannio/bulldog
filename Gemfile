@@ -72,7 +72,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'database_cleaner'
   # gem 'capybara','~> 2.0.1'         installed as part of cucumber-rails
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.4.0'
   gem 'launchy'
   # gem 'rack-mini-profiler'
   gem 'selenium-client'

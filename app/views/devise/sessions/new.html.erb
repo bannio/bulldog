@@ -10,7 +10,7 @@
           <%= devise_error_messages! %>
           <div class="form-group">
             <%- if devise_mapping.registerable? %>
-            <%= link_to 'Sign up', plans_path(resource_name), class: 'pull-right', data: {toggle: "tooltip"}, title: "Sign up for a BulldogClip account" %>
+            <%= link_to 'Sign up', plans_path, class: 'pull-right', data: {toggle: "tooltip"}, title: "Sign up for a BulldogClip account" %>
             <% end -%>
             <%= f.label :email %>
             <%= f.email_field :email, :autofocus => true, class: 'form-control', type: "email" %>

@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe BillsController do
   login_user
-  create_account
 
   describe "GET #new" do
     context "with default customer set" do

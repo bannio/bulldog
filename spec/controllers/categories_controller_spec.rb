@@ -3,7 +3,6 @@ require 'spec_helper'
 describe CategoriesController do
  
   login_user
-  create_account
 
   describe "GET 'index'" do
     it "returns http success" do

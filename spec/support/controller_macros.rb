@@ -10,20 +10,21 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user)
+      @account = FactoryGirl.create(:account, user_id: @user.id)
       @user.confirm!
       sign_in @user
+      def current_user
+        @user
+      end
     end
   end
 
-  def create_account
-    before(:each) do
-      @account = FactoryGirl.create(:account, user_id: @user.id)
-    end
-  end
+  # Note that @account is set in login_user
+  # setting is always created by Account after_save, create_setting adds more attributes
 
   def create_setting
     before(:each) do
-      @setting = FactoryGirl.create(:setting, account_id: @account.id)
+      @account.setting.update_attributes(attributes_for(:setting)).save
     end
   end
 

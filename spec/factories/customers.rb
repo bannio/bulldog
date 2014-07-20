@@ -3,14 +3,14 @@
 FactoryGirl.define do
   factory :customer do
     sequence(:name) { |n| "Customer ##{n}" }
-    account_id "1"
+    account_id 1
     address "MyText"
     postcode "MyString"
 
-    # factory :customer_with_bill do
-    #   after_create do |customer|
-    #     create(:bill, customer: customer)
-    #   end
-    # end
+    factory :customer_with_bill do
+      after(:create) do |customer|
+        create(:bill, customer_id: customer.id)
+      end
+    end
   end
 end

@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe ReportsController do
   login_user
-  create_account
 
   describe "GET #new" do
     it "assigns @report" do
