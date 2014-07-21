@@ -1,15 +1,16 @@
 Hello <%= @account.email %>,
 
-_________________________________
+_______________________________________________________________________________
 
 
-BulldogClip Subscription Invoice
+                  BulldogClip Subscription Invoice
 
-_________________________________
+_______________________________________________________________________________
 
-Thank you for subscribing to BulldogClip. Below is your subscription invoice for your records.
+Thank you for subscribing to BulldogClip. Below is your subscription invoice for 
+your records.
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Invoice Number: <%= @invoice.id %>
 Invoice Date: <%= Time.at(@invoice.date).strftime("%d/%m/%Y") %>
@@ -25,21 +26,24 @@ Payment Method: <%= @charge.card.type %> ending in <%= @charge.card.last4 %>
 
 --TRANSACTION DETAILS--
 <% @invoice.lines.each do |line| %>
-Description: <%= line.description || "subscription to #{line.plan.name} plan" %>
-Amount:      <%= number_to_currency(line.amount/100) %>
+<% text = line.description || "subscription to #{line.plan.name} plan" %>
+<%= text %><%= number_to_currency(line.amount/100).rjust(80 - text.size) %>
 <% end %>
 
-Duration: <%= Time.at(@invoice.period_start).strftime("%d/%m/%Y") %> to <%= Time.at(@invoice.period_end).strftime("%d/%m/%Y") %>
-Price: <%= number_to_currency(@invoice.total/100) %>
+Invoice Total: <%= number_to_currency(@invoice.total/100).rjust(65) %>
 
-Total Amount Charged: <%= number_to_currency(@invoice.total/100) %>
-Total Amount Owed: £0 (Paid in full)
+Total Amount Charged: <%= number_to_currency(@invoice.total/100).rjust(58) %>
+Total Amount Owed:                                                         £0.00 
+                                                                  (Paid in full)
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-We have debited your card for the amount due. This transaction will appear on your bank statement as "BulldogClip Subs".
-If you have any questons, please feel free to contact us at hello@bulldogclip.co.uk
+We have debited your card for the amount due. This transaction will appear on 
+your bank statement as "BulldogClip Subs".
 
+If you have any questons, please feel free to contact us at:
+
+   hello@bulldogclip.co.uk
 
 Regards,
 
@@ -47,7 +51,9 @@ Regards,
 The BulldogClip team
 
 
-
 **********************
 
-This email is confidential and intended solely to whom it is addressed. It may contain sensitive or privileged information. If you have received this email in error, please inform us at hello@bulldogclip.co.uk and destroy it. Questions? contact us at hello@bulldogclip.co.uk
+This email is confidential and intended solely to whom it is addressed. It may 
+contain sensitive or privileged information. If you have received this email in
+error, please inform us at hello@bulldogclip.co.uk and destroy it. 
+Questions? contact us at hello@bulldogclip.co.uk

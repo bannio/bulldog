@@ -64,7 +64,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "rails_layout"
-  gem "letter_opener"
   gem 'sprockets_better_errors'
 end
 
@@ -80,6 +79,7 @@ group :test, :development do
   gem 'simplecov', :require => false
   gem 'rb-fsevent', :require => false
   gem 'guard-rspec'
+  gem "letter_opener"
 end
 
 # Use ActiveModel has_secure_password
