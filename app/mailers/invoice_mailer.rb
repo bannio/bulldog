@@ -5,14 +5,14 @@ class InvoiceMailer < ActionMailer::Base
 
   after_invoice_payment_succeeded! do |invoice, event|
     Rails.logger.info "InvoiceMailer: in the after invoice payment succeeded mailer"
-    if account = Account.find_by_stripe_customer_token(invoice.customer)
-      begin
-        charge = Stripe::Charge.retrieve(invoice.charge)
-        new_invoice(account, invoice, charge).deliver
-      rescue Stripe::InvalidRequestError => e
-        Rails.logger.error e.message
-        error_invoice(invoice, event, e).deliver
-      end
+    charge = Stripe::Charge.retrieve(invoice.charge) rescue Stripe::InvalidRequestError
+    account = Account.find_by_stripe_customer_token(invoice.customer)
+    Rails.logger.info "CHARGE: #{charge}"
+    if account && charge != Stripe::InvalidRequestError
+      new_invoice(account, invoice, charge).deliver
+    else
+      Rails.logger.error 'InvoiceMailer: invoice.payment_received did not trigger an email '
+      error_invoice(invoice, event).deliver
     end
   end
 
@@ -24,10 +24,11 @@ class InvoiceMailer < ActionMailer::Base
     # add an attachment 
   end
 
-  def error_invoice(invoice, event, error)
+  def error_invoice(invoice, event)
     @invoice = invoice
     @event = event
-    @error = error
+    # @error = error
+    mail to: 'info@bulldogclip.co.uk', subject: 'Invoice error'
   end
 
 end

@@ -12,7 +12,7 @@ Thank you for subscribing to BulldogClip. Below is your subscription invoice for
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Invoice Number: <%= @invoice.id %>
-Invoice Date: <%= Time.at(@invoice.date).strftime("%m/%d/%Y") %>
+Invoice Date: <%= Time.at(@invoice.date).strftime("%d/%m/%Y") %>
 
 --COMPANY DETAILS--
 BulldogClip is provided by Owen Bannister Limited.
@@ -24,8 +24,12 @@ Email: <%= @account.email %>
 Payment Method: <%= @charge.card.type %> ending in <%= @charge.card.last4 %>
 
 --TRANSACTION DETAILS--
-Description: <%= @invoice.lines.data[0].plan.name %>
-Duration: <%= Time.at(@invoice.period_start).strftime("%m/%d/%Y") %> to <%= Time.at(@invoice.period_end).strftime("%m/%d/%Y") %>
+<% @invoice.lines.each do |line| %>
+Description: <%= line.description || "subscription to #{line.plan.name} plan" %>
+Amount:      <%= number_to_currency(line.amount/100) %>
+<% end %>
+
+Duration: <%= Time.at(@invoice.period_start).strftime("%d/%m/%Y") %> to <%= Time.at(@invoice.period_end).strftime("%d/%m/%Y") %>
 Price: <%= number_to_currency(@invoice.total/100) %>
 
 Total Amount Charged: <%= number_to_currency(@invoice.total/100) %>

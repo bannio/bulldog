@@ -50,7 +50,7 @@
 
     <tr style="height: 10px;">
       <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Invoice Date: <%= Time.at(@invoice.date).strftime("%m/%d/%Y") %>
+      Invoice Date: <%= Time.at(@invoice.date).strftime("%d/%m/%Y") %>
       </td>
     </tr>
 
@@ -114,21 +114,23 @@
 
   <tr style="height: 10px;">
     <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Duration: <%= Time.at(@invoice.period_start).strftime("%m/%d/%Y") %> to <%= Time.at(@invoice.period_end).strftime("%m/%d/%Y") %>
+      Duration: <%= Time.at(@invoice.period_start).strftime("%d/%m/%Y") %> to <%= Time.at(@invoice.period_end).strftime("%d/%m/%Y") %>
+    </td>
+  </tr>
+<% @invoice.lines.each do |line| %>
+  <tr style="height: 10px;">
+    <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+      Descrition: <%= line.description || "subscription to #{line.plan.name} plan" %>
     </td>
   </tr>
 
   <tr style="height: 10px;">
     <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Descrition: <%= @invoice.lines.data[0].plan.name %>
+      Amount: <%= number_to_currency(line.amount/100) %>
     </td>
   </tr>
 
-  <tr style="height: 10px;">
-    <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-      Price: <%= number_to_currency(@invoice.total/100) %>
-    </td>
-  </tr>
+<% end %>
 
   <tr>
     <td style="height: 10px;">

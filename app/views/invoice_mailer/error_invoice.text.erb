@@ -1,0 +1,14 @@
+______________________________________________
+
+
+BulldogClip Subscription Invoice Webhook Error
+
+______________________________________________
+
+We received a <%= @event.type %> event but our server process failed
+
+Invoice Number: <%= @invoice.id %>
+
+Invoice Date: <%= Time.at(@invoice.date).strftime("%d/%m/%Y") %>
+
+Customer stripe token: <%= @invoice.customer %>
