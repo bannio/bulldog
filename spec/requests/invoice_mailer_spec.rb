@@ -23,7 +23,7 @@ describe InvoiceMailer, type: :request do
     
   end
 
-  describe '#after_invoice_created!' do
+  describe '#after_invoice_payment_succeeded!' do
     it "responds with success" do
       post 'stripe/events', @event.to_h, {'HTTP_ACCEPT' => "application/json"}
       expect(response.code).to eq '201'
