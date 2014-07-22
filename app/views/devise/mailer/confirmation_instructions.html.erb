@@ -1,8 +1,16 @@
-<% if @resource.sign_in_count > 1 %>
-<%= render 'email_change_confirmation' %>
-<% else %>
-<%= render 'new_registration_confirmation' %>
-<% end %>
+<!DOCTYPE html>
+
+<html>
+  <head>
+  </head>
+  <body>
+    <% if @resource.sign_in_count > 1 %>
+    <%= render 'email_change_confirmation' %>
+    <% else %>
+    <%= render 'new_registration_confirmation' %>
+    <% end %>
+  </body>
+</html>
 
 <!-- <table style="width: 600px;">
   <tr>

@@ -3,7 +3,7 @@
 
       <%= f.hidden_field :account_id %>
       <div class="customer-form">
-        <%= f.text_field :name, placeholder: 'Name', class: 'name' %>
+        <%= f.text_field :name, placeholder: 'Name', class: 'name', autofocus: 'autofocus' %>
         <%= errors_for f, :name %>
         <%= f.text_area :address, placeholder: 'Address', class: 'address' %>
         <%= f.text_field :postcode, placeholder: 'Postcode', class: 'postcode' %>

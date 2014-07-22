@@ -52,6 +52,14 @@ SITENAME = {
     }
   },
 
+  pages: {
+     show: function () {
+      console.log("pages#show");
+      var myPlayer = videojs('example_video_1');
+     }
+   },
+
+
   invoices: {
     edit: function () {
       console.log("invoices#edit");

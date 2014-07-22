@@ -56,7 +56,7 @@ class InvoicePdf < Prawn::Document
            :width => 180, :height => 105,
            :overflow => :shrink_to_fit
         else
-          text "<color rgb='ff0000'>Update your Account \n for address to appear here</color>",
+          text "<color rgb='ff0000'>Update your Invoice Settings \n for your address to appear here</color>",
             inline_format: true
         end
       end
@@ -119,11 +119,12 @@ end
         columns(1).width = 90
       end
     end
-    move_down 15
+    # move_down 15
+    move_down 20
   end
 
   end
-  
+
   def divider_two
     bounding_box([0,cursor], :width => 540) do
     self.line_width = 0.5
@@ -304,7 +305,7 @@ end
 
   def generated_by
     repeat(:all) do
-      draw_text "generated using www.bulldogclip.co.uk", :at => [400,-5], size: 6
+      draw_text "generated using www.bulldogclip.co.uk", :at => [440,-5], size: 6
     end
   end
 end

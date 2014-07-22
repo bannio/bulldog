@@ -83,6 +83,15 @@ describe Account do
       expect(account.stripe_customer_token).to_not be_nil
     end
 
+    it "adds the user id to the account" do
+      card_token = "a card" #StripeMock.generate_card_token(last4: "9191", exp_year: 2016)
+      account = Account.new(attributes_for(:account).merge(user_id: "", 
+        email: "54321@example.com", stripe_card_token: card_token, plan_id: 1))
+      account.save_with_payment
+      expect(account.reload.user_id).to_not be_nil
+      # expect{account.save_with_payment}.to change(User, :count).by(1)
+    end
+
     context "with stripe error" do
       before(:each) do
         allow(Stripe::Customer).to receive(:create).with(anything()).and_raise("Stripe::InvalidRequestError")

@@ -1,0 +1,50 @@
+<% content_for :title do %>BulldogClip | Help<% end %>
+<% content_for :description do %>Help Index<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default col-md-10 col-md-offset-1">
+      <div class="panel-body help-page">
+        <h1>Getting Started</h1>
+        <nav>
+          <ul class="nav nav-pills nav-justified" role="navigation">
+            <li class="active"><a href="#how_works" data-toggle="pill">How BulldogClip works</a></li>
+            <li><a href="#tutorials" data-toggle="pill">Video Tutorials</a></li>
+            <!-- <li><a href="#setup" data-toggle="pill"></a></li> -->
+        </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="panel panel-default col-md-10 col-md-offset-1 tab-content">
+      <div class="panel-body help-page tab-pane active" id="how_works">
+        <h2>Using BulldogClip for Business</h2>
+        <video id="business_video" class="img-responsive video-js vjs-default-skin help-video"
+           controls preload="auto" width="640px" height="360px"
+           poster=<%= asset_path('business_poster.png') %>>
+          <source src= "https://s3.amazonaws.com/bulldogclip-dev-assets/videos/business_plan.mp4" type='video/mp4' />
+<!--           <source src=<%#= asset_path ('business_plan.webm') %> type='video/webm' />
+          <source src=<%#= asset_path ('business_plan.ogv') %> type='video/ogg' /> -->
+          <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+        <hr>
+
+        <h2 class="video-header">Using BulldogClip for Home</h2>
+        <video id="personal_video" class="img-responsive video-js vjs-default-skin help-video"
+           controls preload="auto" width="640px" height="360px"
+           poster=<%= asset_path('personal_poster.png') %>
+           data-setup='{"example_option":true}'>
+          <source src= "https://s3.amazonaws.com/bulldogclip-dev-assets/videos/personal_plan.mp4" type='video/mp4' />
+<!--           <source src=<%#= asset_path ('personal_plan.webm') %> type='video/webm' />
+          <source src=<%#= asset_path ('personal_plan.ogv') %> type='video/ogg' /> -->
+          <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+      </div>
+
+
+      <div class="panel-body help-page tab-pane" id="tutorials">
+        <h2>Video Tutorials</h2>
+        <p style="font-size: 2.5rem; padding: 50px 0; text-align: center;">Coming soon!</p>
+      </div>
+
+  </div>
+

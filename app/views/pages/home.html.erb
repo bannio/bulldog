@@ -5,27 +5,42 @@
 <!-- BODY CONTAINER -->
 
 <div class="landing-page container">
-    <div class="row landing-top-row">
-        <img src=<%= asset_path('door_dog_pre_production.png') %> alt="Dog waiting for bills image" class="bills-img img-responsive">
+  <div class="row landing-top-row">
+    <div class="videocontent col-xs-12">
+      <video id="example_video_1" class="img-responsive video-js vjs-default-skin"
+       controls preload="auto" width="640px" height="360px"
+       poster=<%= asset_path('door_dog.png') %>
+       data-setup= '{"example_option":true}'>
+      <source src= "https://s3.amazonaws.com/bulldogclip-dev-assets/videos/intro_video.mp4" type='video/mp4' />
+<!--       <source src=<%#= asset_path ('intro_video.webm') %> type='video/webm' />
+      <source src=<%#= asset_path ('intro_video.ogv') %> type='video/ogg' /> -->
+      <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+       </video>
     </div>
-    <div class="row strapline arrow-box">
-      <h1 class="strapline">capture, analyse and reclaim your costs</h1>
-      <!-- <h1 class="strapline">A simple way to capture your costs</h1> -->
-    </div>
-   <div class="row strapline">
+      <!-- <img src=<%#= asset_path('door_dog_pre_production.png') %> alt="Dog waiting for bills image" class="bills-img img-responsive"> -->
+  </div>
+  <!-- <div class="row strapline arrow-box"> --> <!-- adds arrow to beneath strapline -->
+  <div class="row strapline ">
+    <h1 class="strapline">capture, analyse and reclaim your costs</h1>
   </div>
 </div><!--end landing-page container-->
 
+<div class="container landing-info">
+<hr>
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Find out more", '/features', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about BulldogClip features." %>
+        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- Section 1 - Capture -->
 <div class="container landing-info">
-  <section class="container">
-
-<!-- Sub Heading -->
-<div class="row strapline">
-  <!-- <h1 class="strapline">BulldogClip is...</h1> -->
 <hr>
-</div><!--end row strapline-->
+  <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <h2>A simple way to <br>capture your costs</h2>
@@ -43,7 +58,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>Simple by design. Minimal set up. Fast and easy to use. <br>No more complex spreadsheets. <a href="/features#bills" class="read-more">Find out more</a></p>
+        <p>Simple by design. Minimal set up. Fast and easy to use. <br>No more complex spreadsheets. <!-- <a href="/features#bills" class="read-more">Find out more</a> --></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -54,7 +69,7 @@
   <section class="container">
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <%= link_to "Try now for free", page_path('try_now'), class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Try free demo account." %>
+        <%= link_to "Find out more", '/features#bills', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about bills." %>
         <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
@@ -81,7 +96,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>A range of charts to visualise your data. Quickly identify spending patterns. Easily export your data for use elsewhere - or as a backup. <a href="/features#analysis" class="read-more">Find out more</a></p>
+        <p>A range of charts to visualise your data. Quickly identify spending patterns. Easily export your data for use elsewhere - or as a backup. <!-- <a href="/features#analysis" class="read-more">Find out more</a> --></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -92,7 +107,7 @@
   <section class="container">
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <%= link_to "Try now for free", page_path('try_now'), class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Try free demo account." %>
+        <%= link_to "Find out more", '/features#analysis', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about analysis." %>
         <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
@@ -119,7 +134,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>Quickly create custom documents such as invoices and expense claims. Choose to customise with your company details and logo. <br>Recharge your clients, reclaim from your employer or provide itemised backup to your bookkeeper. <a href="/features#invoices" class="read-more">Find out more</a></p>
+        <p>Quickly create custom documents such as invoices and expense claims. Choose to customise with your company details and logo. <br>Recharge your clients, reclaim from your employer or provide itemised backup to your bookkeeper. <!-- <a href="/features#invoices" class="read-more">Find out more</a> --></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -130,7 +145,7 @@
   <section class="container">
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <%= link_to "Try now for free", page_path('try_now'), class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Try free demo account." %>
+        <%= link_to "Find out more", '/features#invoices', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about invoices." %>
         <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
@@ -157,7 +172,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>If you are VAT registered or need to record VAT we can support you. <br><a href="/features#vat" class="read-more">Find out more</a></p>
+        <p>If you are VAT registered or need to record VAT we can support you. <br><!-- <a href="/features#vat" class="read-more">Find out more</a> --></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -168,7 +183,7 @@
   <section class="container">
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <%= link_to "Try now for free", page_path('try_now'), class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Try free demo account." %>
+        <%= link_to "Find out more", '/features#vat', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about VAT support." %>
         <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
@@ -194,7 +209,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>All your data is encrypted using the familiar, high street bank level of security. The bills are stored in the cloud so they won't be lost if you have an unfortunate incident with your computer. <a href="/features#security" class="read-more">Find out more</a></p>
+        <p>All your data is encrypted using the familiar, high street bank level of security. The bills are stored in the cloud so they won't be lost if you have an unfortunate incident with your computer. <!-- <a href="/features#security" class="read-more">Find out more</a> --></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -205,7 +220,7 @@
   <section class="container">
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <%= link_to "Try now for free", page_path('try_now'), class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Try free demo account." %>
+        <%= link_to "Find out more", '/features#security', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about security." %>
         <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
@@ -232,7 +247,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <p>You can use BulldogClip on phone and tablet devices as well as your desktop computer. So if you are away from base you can still check in.<br>Because your data is stored in the cloud you can log in securely from anywhere with internet access. <a href="/features#access" class="read-more">Find out more</a></p>
+        <p>You can use BulldogClip on phone and tablet devices as well as your desktop computer. So if you are away from base you can still check in.<br>Because your data is stored in the cloud you can log in securely from anywhere with internet access. <!-- <a href="/features#access" class="read-more">Find out more</a> --></p>
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -244,7 +259,7 @@
   <section class="container">
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <%= link_to "Try now for free", page_path('try_now'), class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Try free demo account." %>
+        <%= link_to "Find out more", '/features#access', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about accessability." %>
         <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
