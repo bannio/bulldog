@@ -61,38 +61,28 @@ class Bill < ActiveRecord::Base
   end
 
   def self.import(file, account)
-    # CSV.foreach(file.path, headers: true) do |row|
+    # used to manually (via console) import from old bulldog
+    # account should be empty of bills
     CSV.foreach(file, headers: true) do |row|
       bill = new
       imported = row.to_hash
-      puts imported  # delete this line!
-      
-      bill.date = imported['Date']
-      bill.customer = Customer.find_or_create_by(name: imported['Customer'], account_id: account.id)
-      bill.supplier = Supplier.find_or_create_by(name: imported['Supplier'], account_id: account.id)
-      bill.category = Category.find_or_create_by(name: imported['Category'], account_id: account.id)
-      bill.amount = imported['Amount']
-      # vat_rate = imported.fetch('VAT_rate') {"Standard"}
-      # puts "***** VAT rate was: #{vat_rate} *****"
-      # bill.vat_rate_id = VatRate.find_or_create_by(name: vat_rate, account_id: account.id)
-      # bill.vat = imported.fetch('VAT')
+      bill.date = imported['transaction_date']
+      bill.customer = Customer.find_or_create_by(name: imported['customer'], account_id: account.id)
+      bill.supplier = Supplier.find_or_create_by(name: imported['supplier'], account_id: account.id)
+      bill.category = Category.find_or_create_by(name: imported['category'], account_id: account.id)
+      bill.description = imported['description']
+      bill.amount = imported['amount']
+      bill.invoice_id = imported['invoice_id']
       bill.account_id = account.id
       bill.save!
     end
   end
 
-  def self.import_from_psql(file, account)
-    CSV.foreach(file, headers: true) do |row|
-      row = row.to_hash
-      # puts "ROW is: #{row}"
-      unwanted = %w{created_at updated_at id}
-      row = row.reject! {|k, v| unwanted.include?(k) }
-      row = row.merge({'account_id' => account.id})
-      # puts "ROW is now: #{row}"
-      item = new(row)
-      item.save
-      # puts bill.inspect
-      # puts bill.errors.full_messages
+  def self.update_invoice_ids(invoice)
+    # used to update bills via console after invoices are loaded
+    bills = Bill.where(invoice_id: invoice.number, account_id: invoice.account_id)
+    bills.each do |bill|
+      bill.update_attribute(:invoice_id, invoice.id)
     end
   end
 

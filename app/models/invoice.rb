@@ -39,7 +39,25 @@ class Invoice < ActiveRecord::Base
   def include_vat?
     include_vat
   end
-  
+
+  def self.import(file, account)
+    # used to import via the console
+    # bills must be loaded first
+    # the account must be empty before this
+    CSV.foreach(file, headers: true) do |row|
+      invoice = new
+      imported = row.to_hash
+      invoice.account_id = account.id
+      invoice.customer_id = Customer.find_by_name(imported['customer']).id
+      invoice.date = imported['date']
+      invoice.number = imported['id']
+      invoice.total = imported['total']
+      invoice.comment = imported['comment']
+
+      invoice.save
+    end
+  end
+
   private
 
   def customer_has_uninvoiced_bills?
