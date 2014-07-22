@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   has_one :account
 
+  before_save do
+    self.email.downcase! if self.email
+  end
+
   # validates :email, uniqueness: true # apparently handled by Devise!
   # accepts_nested_attributes_for :account
   attr :account_name

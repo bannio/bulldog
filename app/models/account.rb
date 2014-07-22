@@ -14,7 +14,7 @@ class Account < ActiveRecord::Base
 
   validates :name, :email, :plan_id, presence: true
   validates :email, uniqueness: true, format: {with: /\A[^@]+@[^@]+\z/}
-  # validates :user_id, presence: true, on: :create
+  validate :email_not_in_use, on: :create
 
   # scope :owned_by_user, -> { where(user_id: current_user.id) }
   attr_accessor :stripe_card_token
@@ -44,11 +44,11 @@ class Account < ActiveRecord::Base
   end
 
   def save_with_payment
-    if valid? && stripe_card_token.present?
+    if valid? && stripe_card_token.present? # && email_not_in_use
       customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
       self.stripe_customer_token = customer.id
-      self.user = User.create(email: self.email)
       save!
+      self.user = User.create(email: self.email)
     end
   rescue Stripe::InvalidRequestError, Stripe::CardError => e
     logger.error "Stripe error while creating customer: #{e.message}"
@@ -69,6 +69,11 @@ class Account < ActiveRecord::Base
   end
 
   private
+
+  def email_not_in_use
+    # User.where(email: email).empty?
+    errors.add(:email, "that email is already in use") unless User.where(email: email.downcase).empty?
+  end
 
 
 end

@@ -31,7 +31,7 @@ Bulldog::Application.configure do
   # ActionMailer::Base.deliveries array.
   # config.action_mailer.delivery_method = :test
   # Change from :test to :cache for email_spec testing with Selenium
-  config.action_mailer.delivery_method = :letter_opener #:cache
+  config.action_mailer.delivery_method = :cache # :letter_opener
   config.action_mailer.cache_settings = { :location => "#{Rails.root}/tmp/mail.cache" }
   # config.action_mailer.perform_deliveries = :true
   config.action_mailer.default_url_options = {host: 'example.com'}

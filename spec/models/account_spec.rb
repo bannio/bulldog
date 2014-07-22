@@ -27,6 +27,16 @@ describe Account do
     expect(Account.new(attributes_for(:account).merge(plan_id: ""))).to_not be_valid
   end
 
+  it "validates email not already in use" do
+    user = FactoryGirl.create(:user, email: "reused@example.com")
+    expect(Account.new(attributes_for(:account).merge(email: "reused@example.com"))).to_not be_valid
+  end
+
+  it "validates email not already in use - regardless of case" do
+    user = FactoryGirl.create(:user, email: "reusED@example.com")
+    expect(Account.new(attributes_for(:account).merge(email: "REused@example.com"))).to_not be_valid
+  end
+
   it "responds to vat_enabled?" do
     account = Account.new(vat_enabled: true)
     expect(account.vat_enabled?).to be_true
@@ -63,7 +73,8 @@ describe Account do
     }
     it "creates a user" do
       card_token = "a card" #StripeMock.generate_card_token(last4: "9191", exp_year: 2016)
-      account = Account.new(attributes_for(:account).merge(user_id: "", stripe_card_token: card_token, plan_id: 1))
+      account = Account.new(attributes_for(:account).merge(user_id: "", 
+        email: "54321@example.com", stripe_card_token: card_token, plan_id: 1))
       expect{account.save_with_payment}.to change(User, :count).by(1)
     end
 
@@ -77,6 +88,14 @@ describe Account do
         account = Account.new(attributes_for(:account).merge(user_id: "", stripe_card_token: "void_card"))
         expect{account.save_with_payment}.to raise_error("Stripe::InvalidRequestError")
         expect(User.count).to eq 0
+      end
+    end
+    context "when email already in use by a user" do
+      it "does not create a new user or an account" do
+        user = FactoryGirl.create(:user, email: "reused@example.com")
+        account = Account.new(attributes_for(:account).merge(email: "reused@example.com"))
+        expect{account.save_with_payment}.to_not change(Account, :count).by(1)
+        expect(User.count).to eq 1 
       end
     end
   end
