@@ -78,6 +78,14 @@ describe Account do
       expect{account.save_with_payment}.to change(User, :count).by(1)
     end
 
+    it "adds the user id to itself" do
+      card_token = "a card" #StripeMock.generate_card_token(last4: "9191", exp_year: 2016)
+      account = Account.new(attributes_for(:account).merge(user_id: nil, 
+        email: "54321@example.com", stripe_card_token: card_token, plan_id: 1))
+      account.save_with_payment
+      expect(account.reload.user_id).to_not be_nil
+    end
+
     context "with stripe error" do
       before(:each) do
         # Stripe::Customer.stub(:create).with(anything()).and_return("")

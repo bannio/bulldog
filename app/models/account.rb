@@ -47,8 +47,9 @@ class Account < ActiveRecord::Base
     if valid? && stripe_card_token.present? # && email_not_in_use
       customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
       self.stripe_customer_token = customer.id
-      save!
+      save!  # to validate email not used
       self.user = User.create(email: self.email)
+      save!  # now with user_id added
     end
   rescue Stripe::InvalidRequestError, Stripe::CardError => e
     logger.error "Stripe error while creating customer: #{e.message}"
