@@ -1,3 +1,5 @@
+require "prawn/table"
+
 class InvoicePdf < Prawn::Document
 
   def initialize(invoice, bills, view)
