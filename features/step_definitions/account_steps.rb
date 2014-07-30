@@ -4,7 +4,7 @@ end
 
 Then(/^VAT Enabled\? should be checked$/) do
   expect(page).to have_content "Enable VAT on bills? Yes"
-  expect(@account.reload.vat_enabled).to be_true
+  expect(@account.reload.vat_enabled).to be_truthy
 end
 
 When(/^I visit the Change Email Address page$/) do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe InvoicesHelper do
 
@@ -21,18 +21,18 @@ describe InvoicesHelper do
   end
 
   it "calculates VAT total" do
-    expect(total_vat(@invoice)).to eq 70
+    expect(helper.total_vat(@invoice)).to eq 70
   end
 
   it "calculates sums by rate" do
-    expect(vat_by_rate(@invoice, @vat_rate)).to eq 60
-    expect(vat_by_rate(@invoice, @vat_rate2)).to eq 10
+    expect(helper.vat_by_rate(@invoice, @vat_rate)).to eq 60
+    expect(helper.vat_by_rate(@invoice, @vat_rate2)).to eq 10
   end
 
   it "lists vat rates" do
     # expect an array of vat rate objects
     @bills = @invoice.bills
-    expect(vat_rates(@bills)).to eq [@vat_rate, @vat_rate2]
+    expect(helper.vat_rates(@bills)).to eq [@vat_rate, @vat_rate2]
   end
   
 end

@@ -29,13 +29,13 @@ module ApplicationHelper
   end
 
   def flash_type_style(type)
-   case type
-     when :errors   then "alert-danger"
-     when :alert    then "alert-danger"
-     when :error    then "alert-danger"
-     when :notice   then "alert-success"
-     when :success  then "alert-success"
-     else "alert-info"
+    case type
+      when :errors   then "alert-danger"
+      when :alert    then "alert-danger"
+      when :error    then "alert-danger"
+      when :notice   then "alert-success"
+      when :success  then "alert-success"
+      else "alert-info"
     end
   end
 

@@ -21,11 +21,11 @@ Given(/^I am not signed in$/) do
 end
 
 Then(/^I should see a (.*) link$/) do |link|
-  expect(page.has_link?(link)).to be_true
+  expect(page.has_link?(link)).to be_truthy
 end
 
 Then(/^I should not see a (.*) link$/) do |link|
-  expect(page.has_link?(link)).to be_false
+  expect(page.has_link?(link)).to be_falsey
 end
 
 Given /^I click the first table row$/ do
@@ -98,7 +98,7 @@ end
 Then(/^I have an Account record saved$/) do
   user = User.where(email: 'example@example.com').first
   account = Account.find_by user_id: user.id
-  expect(account).to be_true
+  expect(account).to be_truthy
 end
 
 When(/^I fill in customer details and click save$/) do
@@ -110,7 +110,7 @@ end
 
 Then(/^I should have a Customer record saved$/) do
   customer = Customer.find_by account_id: @account.id
-  expect(customer).to be_true
+  expect(customer).to be
 end
 
 Given(/^I have a customer$/) do

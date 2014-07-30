@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Customer do
 
@@ -6,24 +6,29 @@ describe Customer do
   let!(:customer_one) { Customer.create(name: "Customer1", account_id: 1) }
   let!(:customer_two) { Customer.create(name: "Customer2", account_id: 2) }
 
-  it "fails validation with no name (using error_on)" do
-    expect(Customer.new).to have(1).error_on(:name)
+  it "fails validation with no name or account id" do
+    customer = Customer.new
+    customer.valid?
+    expect(customer.errors[:name]).to_not be_empty 
+    expect(customer.errors[:account_id]).to_not be_empty 
   end
 
-  it "passes validation with a name" do
-    expect(Customer.new(name: "Me")).to have(:no).error_on(:name)
+  it "passes validation with a name and account id" do
+    customer = Customer.new(name: "Me", account_id: 1)
+    customer.valid?
+    expect(customer.errors).to be_empty
   end
 
   it "fails validation on no account ID" do
-    expect(Customer.new(account_id: "")).to have(1).error_on(:account_id)
-  end
-
-  it "passes validation with an account ID" do
-    expect(Customer.new(account_id: 1)).to have(:no).error_on(:account_id)
+    customer = Customer.new
+    customer.valid?
+    expect(customer.errors[:account_id]).to_not be_empty
   end
 
   it "fails validation with no name expecting a specific message" do
-    expect(Customer.new.errors_on(:name)).to include("can't be blank")
+    customer = Customer.new
+    customer.valid?
+    expect(customer.errors[:name]).to include("can't be blank")
   end
 
   it 'knows the sum of its bills' do
@@ -53,23 +58,23 @@ describe Customer do
     customer_three = Customer.create(name: "Customer 3", account_id: 1)
     customer_one.is_default = true
     customer_one.save
-    expect(customer_one.is_default?).to be_true
+    expect(customer_one.is_default?).to be_truthy
     customer_two.is_default = true
     customer_two.save
     customer_three.is_default = true
     customer_three.save
     # customer 3 replaces customer 1 as default
-    expect(customer_one.reload.is_default?).to be_false
-    expect(customer_two.is_default?).to be_true
-    expect(customer_three.is_default?).to be_true
+    expect(customer_one.reload.is_default?).to be_falsey
+    expect(customer_two.is_default?).to be_truthy
+    expect(customer_three.is_default?).to be_truthy
   end
 
   it "allows removal of default flag" do
     customer_one.is_default = true
     customer_one.save
-    expect(customer_one.is_default).to be_true
+    expect(customer_one.is_default).to be_truthy
     customer_one.update_attribute(:is_default, false)
-    expect(customer_one.is_default).to be_false
+    expect(customer_one.is_default).to be_falsey
   end
 
   # it "has a default scope by account" do

@@ -1,9 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CustomersController do
 
   login_user
-  # let(:account){mock_model Account, current_id: 1}
 
   def valid_attributes
    { name: "A Customer",

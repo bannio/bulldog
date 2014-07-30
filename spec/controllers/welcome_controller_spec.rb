@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe WelcomeController do
 
-  login_user # so authenticate_user! works and sets @user
+  login_user
 
   describe "GET 'index'" do
     it "returns http success" do

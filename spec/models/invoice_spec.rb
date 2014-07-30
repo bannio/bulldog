@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Invoice do
 
@@ -21,20 +21,22 @@ describe Invoice do
   it "is not valid without a customer_id" do
     invoice = Invoice.new(customer_id: "",
                                  date: "2014-02-01")
-    expect(invoice).to have(1).errors_on(:customer_id)
+    expect(invoice).to_not be_valid
   end
   
   it "is not valid with no bills" do
     customer = create(:customer)
     invoice = Invoice.new(customer: customer,
                               date: "2014-02-01")
-    expect(invoice).to have(1).errors_on(:customer_id)
+    expect(invoice).to_not be_valid
+    # expect(invoice).to have(1).errors_on(:customer_id)
   end
 
   it "requires a date" do
     invoice = Invoice.new(customer: @customer, 
                               date: "")
-    expect(invoice).to have(1).errors_on(:date)
+    # expect(invoice).to have(1).errors_on(:date)
+    expect(invoice).to_not be_valid
   end
 
   it "responds to customer_name with the customer's name" do
@@ -44,8 +46,8 @@ describe Invoice do
   end
 
   it "calculates the next number" do
-    account = mock_model('Account')
-    account.stub(:id).and_return(1)
+    account = double('Account')
+    allow(account).to receive(:id){1}
     invoice1 = Invoice.create(customer_id: @customer.id,
                                      date: "2014-02-01",
                                account_id: "1",
@@ -54,8 +56,8 @@ describe Invoice do
   end
 
   it "calculates the next number within its account group" do
-    account = mock_model('Account')
-    account.stub(:id).and_return(1)
+    account = double('Account')
+    allow(account).to receive(:id){1}
     invoice1 = Invoice.create(customer_id: @customer.id,
                                      date: "2014-02-01",
                                account_id: "2",

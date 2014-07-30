@@ -34,7 +34,7 @@ When(/^I uncheck "active" and click Save$/) do
 end
 
 Then(/^the "(.*?)" rate should be inactive$/) do |name|
-  expect(VatRate.find_by_name(name).active?).to be_false
+  expect(VatRate.find_by_name(name).active?).to be_falsey
 end
 
 Given(/^I have a bill using the "(.*?)" rate$/) do |rate|

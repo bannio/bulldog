@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'stripe_mock'
 
 describe Account do
@@ -39,21 +39,21 @@ describe Account do
 
   it "responds to vat_enabled?" do
     account = Account.new(vat_enabled: true)
-    expect(account.vat_enabled?).to be_true
+    expect(account.vat_enabled?).to be_truthy
     account.vat_enabled = false
-    expect(account.vat_enabled?).to be_false
+    expect(account.vat_enabled?).to be_falsey
   end
 
   it "responds to vat_allowed?" do
     account = create(:account, vat_enabled: true, plan_id: 2)
-    expect(account.vat_allowed?).to be_true         # both true
+    expect(account.vat_allowed?).to be_truthy         # both true
     account.vat_enabled = false
-    expect(account.vat_allowed?).to be_false        # plan true, account false
+    expect(account.vat_allowed?).to be_falsey        # plan true, account false
     account.plan_id = 1
     account.vat_enabled = true
-    expect(account.vat_allowed?).to be_false        # plan false, account true
+    expect(account.vat_allowed?).to be_falsey        # plan false, account true
     account.vat_enabled = false
-    expect(account.vat_allowed?).to be_false        # both false
+    expect(account.vat_allowed?).to be_falsey        # both false
   end
 
   it "sets up the settings entry" do
@@ -88,21 +88,22 @@ describe Account do
 
     context "with stripe error" do
       before(:each) do
-        # Stripe::Customer.stub(:create).with(anything()).and_return("")
         Stripe::Customer.stub(:create).with(anything()).and_raise("Stripe::InvalidRequestError")
-        # StripeMock.prepare_card_error(:card_declined)
       end
-      it "does not creates a user" do
+
+      it "does not creates a user or an account" do
         account = Account.new(attributes_for(:account).merge(user_id: "", stripe_card_token: "void_card"))
         expect{account.save_with_payment}.to raise_error("Stripe::InvalidRequestError")
         expect(User.count).to eq 0
+        expect(Account.count).to eq 0
       end
     end
+    
     context "when email already in use by a user" do
       it "does not create a new user or an account" do
         user = FactoryGirl.create(:user, email: "reused@example.com")
         account = Account.new(attributes_for(:account).merge(email: "reused@example.com"))
-        expect{account.save_with_payment}.to_not change(Account, :count).by(1)
+        expect{account.save_with_payment}.to change(Account, :count).by(0)
         expect(User.count).to eq 1 
       end
     end

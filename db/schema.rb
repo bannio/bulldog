@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627170615) do
+ActiveRecord::Schema.define(version: 20140725170456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,24 @@ ActiveRecord::Schema.define(version: 20140627170615) do
     t.datetime "updated_at"
     t.text     "description"
   end
+
+  create_table "sales", force: true do |t|
+    t.integer  "plan_id"
+    t.integer  "account_id"
+    t.string   "state"
+    t.string   "stripe_charge_id"
+    t.string   "stripe_customer_id"
+    t.string   "card_last4"
+    t.date     "card_expiration"
+    t.text     "error"
+    t.integer  "fee_amount"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sales", ["account_id"], name: "index_sales_on_account_id", using: :btree
+  add_index "sales", ["plan_id"], name: "index_sales_on_plan_id", using: :btree
 
   create_table "settings", force: true do |t|
     t.integer  "account_id"

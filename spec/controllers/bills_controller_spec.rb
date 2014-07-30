@@ -1,6 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe BillsController do
+
   login_user
 
   describe "GET #new" do

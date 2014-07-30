@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Contact do
   before do
@@ -37,34 +37,34 @@ describe Contact do
   context "mail_only?" do
     it "is true when message is blank and mail_list checked" do
       c = Contact.new(@attr.merge(message: ""))
-      expect(c.mail_only?).to be_true
+      expect(c.mail_only?).to be_truthy
     end
 
     it "is false when message is not blank and mail_list checked" do
       c = Contact.new(@attr)
-      expect(c.mail_only?).to be_false
+      expect(c.mail_only?).to be_falsey
     end
 
     it "is false when message is not blank and mail_list not checked" do
       c = Contact.new(@attr.merge(mail_list: "0"))
-      expect(c.mail_only?).to be_false
+      expect(c.mail_only?).to be_falsey
     end
   end
 
   context "message_only?" do
     it "is true when message is not blank and mail_list is not checked" do
       c = Contact.new(@attr.merge(mail_list: '0'))
-      expect(c.message_only?).to be_true
+      expect(c.message_only?).to be_truthy
     end
 
     it "is false when message is not blank and mail_list is checked" do
       c = Contact.new(@attr)
-      expect(c.message_only?).to be_false
+      expect(c.message_only?).to be_falsey
     end
 
     it "is false when message is blank and mail_list is not checked" do
       c = Contact.new(@attr.merge(message: "", mail_list: "0"))
-      expect(c.message_only?).to be_false
+      expect(c.message_only?).to be_falsey
     end
   end
 
@@ -87,7 +87,7 @@ describe Contact do
   it "adds to mail list if mail_list checked" do
     c = Contact.new(@attr)
     c.stub_chain(:mailchimp, :lists, :subscribe).and_return(true)
-    expect(c.add_to_mail_list).to be_true
+    expect(c.add_to_mail_list).to be_truthy
   end
 
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe VatRatesController do
 
@@ -59,7 +59,7 @@ describe VatRatesController do
      business_plan_account
      get :new, {format: :js}
      assigns(:vat_rate).should be_a_new(VatRate)
-     expect(assigns(:vat_rate).active?).to be_true
+     expect(assigns(:vat_rate).active?).to be_truthy
    end
  end 
 
@@ -145,7 +145,7 @@ describe "DELETE destroy" do
     bill = FactoryGirl.create(:bill, account_id: @vat_rate.account_id, vat_rate_id: @vat_rate.id)
     expect {
       delete :destroy, {id: @vat_rate.to_param}
-    }.to_not change(VatRate, :count).by(-1)
+    }.to change(VatRate, :count).by(0)
   end
 
   it "redirects to the vat rates index" do

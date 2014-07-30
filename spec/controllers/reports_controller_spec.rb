@@ -1,6 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ReportsController do
+
   login_user
 
   describe "GET #new" do
@@ -34,14 +35,15 @@ describe ReportsController do
 
       it "responds to Export button" do
         pending "awaiting way to test csv creation without setting up complete bill hierarchy"
-        # post :create, { report: {account_id: @account.id}}
+        fail
       end
     end
     context "with invalid data" do
       it "requires an account id to be present" do
         post :create, {report: {account_id: ""}}
         expect(assigns(:report)).to_not be_valid
-        expect(assigns(:report)).to have(1).error_on(:account_id)
+        expect(assigns(:report).errors).to include(:account_id)
+        # expect(assigns(:report)).to have(1).error_on(:account_id)
       end
       it "renders the new template" do
         post :create, {report: {account_id: ""}}

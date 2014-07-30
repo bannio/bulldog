@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe VatRate do
   before do
@@ -41,7 +41,7 @@ describe VatRate do
 
   it "responds to active?" do
     vat_rate = VatRate.new(@attr)
-    expect(vat_rate.active?).to be_true
+    expect(vat_rate.active?).to be_truthy
   end
 
   it "has a scope for active only" do

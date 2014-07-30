@@ -6,6 +6,7 @@ class Account < ActiveRecord::Base
   has_many :bills
   has_many :vat_rates
   has_many :headers
+  has_many :sales
   has_one  :setting
   belongs_to :plan
 
@@ -44,7 +45,7 @@ class Account < ActiveRecord::Base
   end
 
   def save_with_payment
-    if valid? && stripe_card_token.present? # && email_not_in_use
+    if valid? && stripe_card_token.present?
       customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
       self.stripe_customer_token = customer.id
       save!  # to validate email not used
@@ -72,7 +73,6 @@ class Account < ActiveRecord::Base
   private
 
   def email_not_in_use
-    # User.where(email: email).empty?
     errors.add(:email, "that email is already in use") unless User.where(email: email.downcase).empty?
   end
 

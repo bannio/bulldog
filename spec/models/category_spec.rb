@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Category do
   it 'is invalid without a name' do
     category = FactoryGirl.build(:category, name: "")
-    category.should_not be_valid
+    expect(category).to_not be_valid
   end
   it 'is invalid without a name on update' do
     category = FactoryGirl.create(:category)
-    expect(category.update(name: "")).to be_false
+    expect(category.update(name: "")).to be_falsey
   end
   it 'knows the sum of its bills' do
     @category = FactoryGirl.create(:category)
@@ -15,7 +15,7 @@ describe Category do
     bill2 = FactoryGirl.create(:bill, category_id: @category.id, amount: 10 )
     bill3 = FactoryGirl.create(:bill, amount: 10 )
 
-    @category.total.should eq 20
+    expect(@category.total).to eq 20
   end
 
   it "requires a unique name within account" do

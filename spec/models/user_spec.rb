@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
 
@@ -78,13 +78,13 @@ describe User do
     it "should require a password when persisted" do
       user = User.create!(@attr)
       user.update_attributes(password: "").
-        should_not be_true
+        should_not be_truthy
     end
 
     it "should require a matching password confirmation when persisted" do
       user = User.create!(@attr)
       user.update_attributes(password_confirmation: "invalid").
-        should_not be_true
+        should_not be_truthy
     end
 
     it "should reject short passwords" do

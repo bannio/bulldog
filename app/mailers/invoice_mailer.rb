@@ -27,7 +27,6 @@ class InvoiceMailer < ActionMailer::Base
   def error_invoice(invoice, event)
     @invoice = invoice
     @event = event
-    # @error = error
     mail to: 'info@bulldogclip.co.uk', subject: 'Invoice error'
   end
 

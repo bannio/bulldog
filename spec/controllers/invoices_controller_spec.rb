@@ -1,9 +1,11 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe InvoicesController do
+
   login_user
   create_customer 
   create_bill
+
 
   def valid_attributes
    { date:      Time.now,  
@@ -18,7 +20,7 @@ describe InvoicesController do
  end
 
   it "should have a current_user" do
-    subject.current_user.should_not be_nil
+    expect(subject.current_user).to_not be_nil
   end
 
   describe "GET #index" do
@@ -57,7 +59,7 @@ describe InvoicesController do
   describe "GET #new" do
     it "assigns a new invoice as @invoice" do
       get :new, {}
-      assigns(:invoice).should be_a_new(Invoice)
+      expect(assigns(:invoice)).to be_a_new(Invoice)
     end
   end
 
@@ -100,23 +102,24 @@ describe InvoicesController do
       it "sets defaults for printing" do
         @account.setting.update_attribute(:include_vat, true)
         post :create, {invoice: valid_attributes}
-        expect(Invoice.last.include_vat).to be_true
-        expect(Invoice.last.include_bank).to be_false
+        expect(Invoice.last.include_vat).to be_truthy
+        expect(Invoice.last.include_bank).to be_falsey
       end
 
       it "sets defaults for printing" do
         @account.setting.update_attribute(:include_bank, true)
         post :create, {invoice: valid_attributes}
-        expect(Invoice.last.include_vat).to be_false
-        expect(Invoice.last.include_bank).to be_true
+        expect(Invoice.last.include_vat).to be_falsey
+        expect(Invoice.last.include_bank).to be_truthy
       end
     end
 
     describe "with invalid attributes" do
       it "renders the new template" do
-        Invoice.any_instance.stub(:save).and_return(false)
-        post :create, {invoice: valid_attributes}
-        response.should render_template('new')
+        allow(Invoice).to receive(:save) {false}
+        # Invoice.any_instance.stub(:save).and_return(false)
+        post :create, {invoice: valid_attributes.merge(customer_id: nil)}
+        expect(response).to render_template(:new)
       end
     end
   end

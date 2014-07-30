@@ -1,6 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AccountsController do
+
   login_user # so authenticate_user! works and sets @user
 
 
@@ -101,7 +102,7 @@ describe AccountsController do
       it "does not save the new account to the database" do
         expect{
           post :create, account: attributes_for(:account).merge(email: "")
-        }.to_not change(Account, :count).by(1)
+        }.to change(Account, :count).by(0)
       end
       it "renders the new template" do
         post :create, account: attributes_for(:account).merge(email: "")
