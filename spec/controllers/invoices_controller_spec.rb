@@ -26,7 +26,7 @@ describe InvoicesController do
   describe "GET #index" do
     it "returns http success even when no invoices" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "assigns all invoices as @invoices" do
@@ -40,13 +40,13 @@ describe InvoicesController do
     it "assigns the chosen invoice as @invoice" do
       invoice = create(:invoice, valid_attributes)
       get :show, {id: invoice.to_param}
-      assigns(:invoice).should eq invoice
+      expect(assigns(:invoice)).to eq invoice
     end
 
     it "assigns the customer as @customer" do
       invoice = create(:invoice, valid_attributes)
       get :show, {id: invoice.to_param}
-      assigns(:customers).should eq [@customer]
+      expect(assigns(:customers)).to eq [@customer]
     end
 
     it "limits the customer choice to one" do
@@ -73,13 +73,13 @@ describe InvoicesController do
 
       it "assigns the newly created invoice as @invoice" do
         post :create, {invoice: valid_attributes}
-        assigns(:invoice).should be_a(Invoice)
-        assigns(:invoice).should be_persisted
+        expect(assigns(:invoice)).to be_a(Invoice)
+        expect(assigns(:invoice)).to be_persisted
       end
 
       it "displays the show view for checking of bills" do
         post :create, {invoice: valid_attributes}
-        response.should redirect_to(edit_invoice_path(Invoice.last))
+        expect(response).to redirect_to(edit_invoice_path(Invoice.last))
       end
 
       it "updates associated bills" do
@@ -129,7 +129,7 @@ describe InvoicesController do
     it "assigns the requested invoice as @invoice" do
       invoice = create(:invoice, valid_attributes)
       get :edit, id: invoice.to_param
-      assigns(:invoice).should eq(invoice)
+      expect(assigns(:invoice)).to eq(invoice)
     end 
 
     it "does not assign another users invoice" do

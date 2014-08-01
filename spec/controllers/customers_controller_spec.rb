@@ -13,13 +13,13 @@ describe CustomersController do
  end
 
   it "should have a current_user" do
-    subject.current_user.should_not be_nil
+    expect(subject.current_user).to_not be_nil
   end
 
   describe "GET 'index'" do
     it "returns http success even when no customers" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
  
@@ -27,14 +27,14 @@ describe CustomersController do
    it "assigns all customers as @customers" do
      customer = Customer.create! valid_attributes
      get :index, {}
-     assigns(:customers).should eq([customer])
+     expect(assigns(:customers)).to eq([customer])
    end
  end
  
  describe "GET new" do
    it "assigns a new customer as @customer" do
      get :new, {}
-     assigns(:customer).should be_a_new(Customer)
+     expect(assigns(:customer)).to be_a_new(Customer)
    end
  end
 
@@ -42,7 +42,7 @@ describe CustomersController do
    it "assigns the requested customer as @customer" do
      customer = Customer.create! valid_attributes
      get :edit, {:id => customer.to_param}
-     assigns(:customer).should eq(customer)
+     expect(assigns(:customer)).to eq(customer)
    end
  end
 
@@ -82,28 +82,28 @@ describe CustomersController do
 
      it "assigns a newly created customer as @customer" do
        post :create, {:customer => valid_attributes}
-       assigns(:customer).should be_a(Customer)
-       assigns(:customer).should be_persisted
+       expect(assigns(:customer)).to be_a(Customer)
+       expect(assigns(:customer)).to be_persisted
      end
 
      it "redirects to the customers index" do
        post :create, {:customer => valid_attributes}
-       response.should redirect_to(customers_url)
+       expect(response).to redirect_to(customers_url)
      end
    end
 
    context "with invalid params" do
      it "assigns a newly created but unsaved customer as @customer" do
-       Customer.any_instance.stub(:save).and_return(false)
+       allow_any_instance_of(Customer).to receive(:save).and_return(false)
        post :create, {:customer => { name: "" }}
-       assigns(:customer).should be_a_new(Customer)
+       expect(assigns(:customer)).to be_a_new(Customer)
      end
 
      it "re-renders the 'new' template" do
        # Trigger the behavior that occurs when invalid params are submitted
-       Customer.any_instance.stub(:save).and_return(false)
+       allow_any_instance_of(Customer).to receive(:save).and_return(false)
        post :create, {:customer => { name: "" }}
-       response.should render_template("new")
+       expect(response).to render_template("new")
      end
    end
  end
@@ -118,7 +118,7 @@ describe CustomersController do
    it "redirects to the customers list" do
      customer = Customer.create! valid_attributes
      delete :destroy, {:id => customer.to_param}
-     response.should redirect_to(customers_url)
+     expect(response).to redirect_to(customers_url)
    end
    
    it "fails if there are bills" do

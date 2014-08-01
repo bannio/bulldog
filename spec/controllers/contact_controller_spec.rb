@@ -19,7 +19,7 @@ describe ContactsController do
 
   describe "POST#create" do
     before do
-      Contact.any_instance.stub(:add_to_mail_list).and_return(true)
+      allow_any_instance_of(Contact).to receive(:add_to_mail_list).and_return(true)
     end
 
     context "with full valid attributes" do

@@ -72,9 +72,11 @@ describe AccountsController do
 
         sign_out @user
         user = double(User)
-        Account.any_instance.stub(:save_with_payment).and_return(user)
+        allow_any_instance_of(Account).to receive(:save_with_customer).and_return(true)
+        allow_any_instance_of(Sale).to receive(:process!).and_return(true)
+        allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
       end
-      subject {post :create, account: attributes_for(:account).merge(user_id: "")}
+      subject {post :create, account: attributes_for(:account).merge(user_id: "", email: "newaccount@example.com")}
 
       it "redirects to home path" do
         expect(subject).to redirect_to home_path
@@ -82,22 +84,25 @@ describe AccountsController do
       it "flashes a message" do
         expect(subject.request.flash[:notice]).to_not be_nil
       end
+      it "creates a user" do
+        expect{subject}.to change(User, :count).by(1)
+      end
     end
 
-      it 'does not creates a new subscription if stripe fails to create a token' do
-        exception = Stripe::InvalidRequestError.new("",{})
-        Stripe::Customer.should_receive(:create).and_raise(exception)
-        expect {
-          post :create, account: attributes_for(:account).merge(user_id: "", stripe_card_token: "xx")
-        }.to change(Account, :count).by(0)
-      end
+    it 'does not creates a new account if stripe fails to create a token' do
+      exception = Stripe::InvalidRequestError.new("",{})
+      expect(Stripe::Customer).to receive(:create).and_raise(exception)
+      expect {
+        post :create, account: attributes_for(:account).merge(user_id: "", stripe_card_token: "xx")
+      }.to change(Account, :count).by(0)
+    end
 
     context "with invalid attributes" do
       before(:each) do
         sign_out @user
         # err = double(Stripe::InvalidRequestError)
         stripe_customer = OpenStruct.new(id: "cust_id")
-        Stripe::Customer.stub(:create).with(anything()).and_return(stripe_customer)
+        allow(Stripe::Customer).to receive(:create).with(anything()).and_return(stripe_customer)
       end
       it "does not save the new account to the database" do
         expect{

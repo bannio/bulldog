@@ -44,18 +44,37 @@ class Account < ActiveRecord::Base
     user
   end
 
-  def save_with_payment
+  def save_with_customer
     if valid? && stripe_card_token.present?
-      customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
+      customer = Stripe::Customer.create(description: "Customer for #{email}", card: stripe_card_token)
       self.stripe_customer_token = customer.id
-      save!  # to validate email not used
-      self.user = User.create(email: self.email)
-      save!  # now with user_id added
+      self.save
     end
   rescue Stripe::InvalidRequestError, Stripe::CardError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your payment card: #{e.message}"
     false
+  end
+
+  # def save_with_payment
+  #   if valid? && stripe_card_token.present?
+  #     customer = Stripe::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
+  #     self.stripe_customer_token = customer.id
+  #     save!  # to validate email not used
+  #     self.user = User.create(email: self.email)
+  #     save!  # now with user_id added
+  #   end
+  # rescue Stripe::InvalidRequestError, Stripe::CardError => e
+  #   logger.error "Stripe error while creating customer: #{e.message}"
+  #   errors.add :base, "There was a problem with your payment card: #{e.message}"
+  #   false
+  # end
+
+  def create_user
+    self.save # to prevent triggering uniqueness check on user
+    self.update(
+      user_id: User.create(email: self.email).id
+    )
   end
 
   def change_account_plan(new_plan_id)
@@ -73,7 +92,7 @@ class Account < ActiveRecord::Base
   private
 
   def email_not_in_use
-    errors.add(:email, "that email is already in use") unless User.where(email: email.downcase).empty?
+    errors.add(:email, "The email #{email.downcase} is already in use") unless User.where(email: email.downcase).empty?
   end
 
 

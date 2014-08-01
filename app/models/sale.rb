@@ -29,15 +29,19 @@ class Sale < ActiveRecord::Base
     customer = Stripe::Customer.retrieve(self.stripe_customer_id)
     if customer.subscriptions.total_count == 0
       # create sub
-      customer.subscriptions.create({plan: self.plan_id})
+      customer.subscriptions.create({plan: self.plan_id.to_s})
     else
-      # update sub
+      # update sub - currently expect to only ever have one subscription
       sub_id = customer.subscriptions.first.id
       subscription = customer.subscriptions.retrieve(sub_id)
-      subscription.plan = self.plan_id
+      subscription.plan = self.plan_id.to_s
       subscription.save   
     end
-   
+    card = customer.cards.retrieve(customer.default_card)
+    self.update(
+      card_last4:       card.last4,
+      card_expiration:  Date.new(card.exp_year, card.exp_month, 1)
+      )
     self.finish!
   rescue Stripe::StripeError => e
     self.update_attributes(error: e.message)

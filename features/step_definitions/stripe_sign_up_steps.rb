@@ -21,10 +21,14 @@ When(/^I enter my name and email address$/) do
 end
 
 When(/^my credit card details$/) do
-  fill_in 'card_number', with: '4242424242424242'
+  # fill_in 'card_number', with: '4242424242424242'
+  page.execute_script("$('#card_number').val('4242424242424242')")
+  page.execute_script("$('#cc_exp').val('01 / 2020')")
+  # find('#card_number').set("4242424242424242")
   fill_in 'card_code', with: '123'
-  select('1 - January', from: 'card_month')
-  select('2020', from: 'card_year')
+  # fill_in 'cc_exp', with: '01/20'
+  # select('1 - January', from: 'card_month')
+  # select('2020', from: 'card_year')
 end
 
 Given(/^a Base Plan exists$/) do
@@ -32,14 +36,22 @@ Given(/^a Base Plan exists$/) do
 end
 
 When(/^I Sign up for Base Plan$/) do
-  within("div.signup"){click_link("Sign up")}
+  # within("div.signup"){click_link("Sign up")}
+  click_link("Get the personal plan")
 end
 
-When(/^I enter (\d*), (\d*), (\d+ - \w*) and (\d*)$/) do |card_number, cvc, month, year|
-  fill_in 'card_number', with: card_number.to_i
+# When(/^I enter (\d*), (\d*) and (\d*)$/) do |card_number, cvc, expiry|
+When(/^I enter (\d+), (.*) and (\d+ \/ \d+)$/) do |card_number, cvc, expiry|
+  # page.execute_script("$('#card_number').val('4242 4242 4242 4242')")
+  card = card_number.to_i.to_s
+  card = card[0..3] + ' ' + card[4..7] + ' ' + card[8..11] + ' ' + card[12..15]
+  page.execute_script("$('#card_number').val('#{card}')")
+  page.execute_script("$('#cc_exp').val('#{expiry}')")
   fill_in 'card_code', with: cvc.to_i
-  select(month, from: 'card_month')
-  select(year.to_i.to_s, from: 'card_year')
+  # fill_in 'card_number', with: card_number.to_i
+  # fill_in 'cc_exp', with: expiry.to_i
+  # select(month, from: 'card_month')
+  # select(year.to_i.to_s, from: 'card_year')
   click_button "Subscribe"
 end
 
@@ -50,4 +62,12 @@ end
 
 Then(/^I should get (.*)$/) do |result|
   expect(page).to have_content(result)
+end
+
+When(/^I use a card that will be declined$/) do
+  StripeMock.prepare_card_error(:card_declined)
+end
+
+Then(/^I use a card that is valid$/) do
+  
 end

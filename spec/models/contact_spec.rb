@@ -86,7 +86,7 @@ describe Contact do
 
   it "adds to mail list if mail_list checked" do
     c = Contact.new(@attr)
-    c.stub_chain(:mailchimp, :lists, :subscribe).and_return(true)
+    allow(c).to receive_message_chain(:mailchimp, :lists, :subscribe).and_return(true)
     expect(c.add_to_mail_list).to be_truthy
   end
 

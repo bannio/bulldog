@@ -19,32 +19,32 @@ describe VatRatesController do
  end
 
   it "should have a current_user" do
-    subject.current_user.should_not be_nil
+    expect(subject.current_user).to_not be_nil
   end
 
   describe "GET 'index'" do
     it "returns http success even when no customers" do
       business_plan_account
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
 
    it "assigns all vat rates as @vat_rates" do
      vat_rate = VatRate.create! valid_attributes
      get :index, {}
-     assigns(:vat_rates).should eq([vat_rate])
+     expect(assigns(:vat_rates)).to eq([vat_rate])
    end
 
    it "shows active rates by default" do
      vat_rate = VatRate.create! valid_attributes.merge(active: false)
      get :index, {}
-     assigns(:vat_rates).should eq([])
+     expect(assigns(:vat_rates)).to eq([])
    end
 
    it "shows inactive rates by request" do
      vat_rate = VatRate.create! valid_attributes.merge(active: false)
      get :index, {all: true}
-     assigns(:vat_rates).should eq([vat_rate])
+     expect(assigns(:vat_rates)).to eq([vat_rate])
    end
  end
 
@@ -52,13 +52,13 @@ describe VatRatesController do
    it "builds a rate with an account id" do
      business_plan_account
      get :new, {format: :js}
-     assigns(:vat_rate).should be_a_new(VatRate)
+     expect(assigns(:vat_rate)).to be_a_new(VatRate)
      expect(assigns(:vat_rate).account_id).to_not be_blank
    end
    it "builds a rate with active set to true" do
      business_plan_account
      get :new, {format: :js}
-     assigns(:vat_rate).should be_a_new(VatRate)
+     expect(assigns(:vat_rate)).to be_a_new(VatRate)
      expect(assigns(:vat_rate).active?).to be_truthy
    end
  end 

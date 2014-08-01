@@ -29,14 +29,38 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
-    if @account.save_with_payment
-
-      redirect_to home_path, notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
+    if @account.save_with_customer
+      sale = Sale.new(
+        account_id:         @account.id,
+        plan_id:            @account.plan_id,
+        stripe_customer_id: @account.stripe_customer_token,
+        email:              @account.email
+      )
+      sale.process!
+      if sale.finished?
+        @account.create_user
+        redirect_to home_path, 
+        notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
+      else
+        flash.now[:error] = sale.error
+        render 'new'
+      end
     else
       flash[:error] = @account.errors[:base][0]
       render 'new'
     end
   end
+
+  # def create
+  #   @account = Account.new(account_params)
+  #   if @account.save_with_payment
+
+  #     redirect_to home_path, notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
+  #   else
+  #     flash[:error] = @account.errors[:base][0]
+  #     render 'new'
+  #   end
+  # end
 
   private
 

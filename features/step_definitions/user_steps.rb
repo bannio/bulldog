@@ -98,9 +98,10 @@ def sign_up
   fill_in "account_email", with: @visitor[:email]
   fill_in 'card_number', with: '4242424242424242'
   fill_in 'card_code', with: '123'
-  select('1 - January', from: 'card_month')
-  select('2020', from: 'card_year')
-  click_button "Subscribe"
+  fill_in 'cc_exp', with: '0120'
+  # select('1 - January', from: 'card_month')
+  # select('2020', from: 'card_year')
+  click_button "Subscribe Now"
   find_user
 end
 
@@ -220,13 +221,13 @@ end
 
 def set_up_unconfirmed_user
   new_token = Devise.token_generator.digest(User, :confirmation_token, 'xyz')
+  @account = FactoryGirl.create(:account)
   @user = FactoryGirl.create(:user,
-                          password: "",
-                          password_confirmation: "",
-                          confirmation_token: new_token)
-  @account = FactoryGirl.create(:account, 
-                          user_id: @user.id, 
-                          email: @user.email)
+    email: @account.email,
+    password: "",
+    password_confirmation: "",
+    confirmation_token: new_token)
+  @account.update_attribute(:user_id, @user.id)
   @user.update_attribute(:confirmed_at, "")
   @user.save
   visit '/confirmation?confirmation_token=xyz'

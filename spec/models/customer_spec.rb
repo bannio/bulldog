@@ -34,13 +34,13 @@ describe Customer do
   it 'knows the sum of its bills' do
     bill = FactoryGirl.create(:bill, customer_id: customer_one.id, amount: 10 )
     bill2 = FactoryGirl.create(:bill, customer_id: customer_one.id, amount: 10 )
-    customer_one.total.should eq 20
+    expect(customer_one.total).to eq 20
   end
 
   it 'knows the sum of its bills and ignores others' do
     bill = FactoryGirl.create(:bill, customer_id: customer_one.id, amount: 10 )
     bill2 = FactoryGirl.create(:bill, customer_id: customer_two.id, amount: 10 )
-    customer_one.total.should eq 10
+    expect(customer_one.total).to eq 10
   end
 
   it "will not destroy itself if it has bills" do
@@ -78,6 +78,6 @@ describe Customer do
   end
 
   # it "has a default scope by account" do
-  #   Customer.all.to_a.should eq [customer_one]
+  #  expect( Customer.all.to_a).to eq [customer_one]
   # end
 end
