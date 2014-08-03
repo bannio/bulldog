@@ -75,7 +75,10 @@
             {name: "Last Year", data: @report.bills.last_year_by_monthly_sum},
             {name: "This Year", data: @report.bills.this_year_by_monthly_sum}
           ], library: {title: "Total spend by month"} %>
-          <%= line_chart @report.bills.group_by_month(:date).count, library: {title: "Number of bills per month"} %>
+  
+          <%= line_chart [@report.bills.last_year_by_monthly_count,
+            @report.bills.this_year_by_monthly_count], 
+            discrete: true, library: {title: "Number of bills per month"} %>
 
         </div><!--end tab pane -->
 

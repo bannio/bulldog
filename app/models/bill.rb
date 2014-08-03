@@ -86,12 +86,44 @@ class Bill < ActiveRecord::Base
     end
   end
 
+  MNTHS = %w[Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec]
+
   def self.last_year_by_monthly_sum
-    last_year.monthly_sum
+    q = last_year.monthly_sum
+    result = {}
+    12.times{|i| result[MNTHS[i]] = q[i+1] || 0.0}
+    result
   end
 
   def self.this_year_by_monthly_sum
-    this_year.monthly_sum
+    q = this_year.monthly_sum
+    result = {}
+    12.times{|i| result[MNTHS[i]] = q[i+1] || 0.0}
+    result
+  end
+
+  def self.this_year_by_monthly_count
+    q = this_year.monthly_count
+    result = {}
+    12.times{|i| result[MNTHS[i]] = q[i+1] || 0.0}
+    # result
+    {name: this_year_label, data: result}
+  end
+
+  def self.last_year_by_monthly_count
+    q = last_year.monthly_count
+    result = {}
+    12.times{|i| result[MNTHS[i]] = q[i+1] || 0.0}
+    # result
+    {name: last_year_label, data: result}
+  end
+
+  def self.last_year_label
+    Date.today.prev_year.year.to_s
+  end
+
+  def self.this_year_label
+    Date.today.year.to_s
   end
 
   # If timestamp is required for Y-axis then you can use groupdate functions e.g. group_by_month
@@ -101,6 +133,13 @@ class Bill < ActiveRecord::Base
     order("cast(EXTRACT(month FROM date) as integer)"). 
     group("cast(EXTRACT(month FROM date) as integer)").
     sum(:amount)
+  end
+
+
+  def self.monthly_count
+    order("cast(EXTRACT(month FROM date) as integer)"). 
+    group("cast(EXTRACT(month FROM date) as integer)").
+    count
   end
 
 
