@@ -21,7 +21,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.visible_to(current_user).find(params[:id])
     @customers = []
     @customers << @invoice.customer
-    @bills = @invoice.bills.includes(:category, :supplier, :vat_rate)
+    @bills = @invoice.bills.includes(:category, :supplier, :vat_rate).order(date: :asc)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -68,7 +68,7 @@ class InvoicesController < ApplicationController
     collect_new_entries
     @invoice = Invoice.new(invoice_params)
     @invoice.number = Invoice.next_number(current_account)
-    @bills =  current_account.bills.uninvoiced.where(customer_id: @invoice.customer_id)
+    @bills =  current_account.bills.uninvoiced.where(customer_id: @invoice.customer_id).order(date: :desc)
     @invoice.total = @bills.sum(:amount)
     @customers = current_account.customers # in case of no save
     @invoice.include_vat = current_account.setting.include_vat  # set default
