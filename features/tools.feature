@@ -53,6 +53,12 @@ Feature: The tools menu provides access to a number of set up
     And I should see "0101010101"
     And I should see "test@example.com"
 
-
-
-    
+  Scenario: Upload logo file
+    Given the account is professional
+    And I visit the settings page
+    Then I should see "Logo"
+    When I click on Edit
+    And I attach a logo file
+    And I click button Save
+    Then I should be on the Invoice Setup page
+    And the logo thumbnail is displayed

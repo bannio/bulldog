@@ -1,4 +1,4 @@
-<%= form_for @setting do |f| %>
+<%= form_for @setting, html: { multipart: true } do |f| %>
 
 <h2 class="form-sub-head">Your Address Details</h2>
 
@@ -64,14 +64,14 @@
 <%= form_group_for f, :bank_account_no, label: false do %>
   <div class="input-group bank">
     <%= f.label :bank_account_no, "Account number", class: "invoice-settings" %>
-    <%= f.text_field :bank_account_no, autofocus: true, class: 'form-control', placeholder: 'Account number', type: "number" %>
+    <%= f.text_field :bank_account_no, autofocus: true, class: 'form-control', placeholder: 'Account number', type: "tel" %>
   </div>
 <% end %>
 
 <%= form_group_for f, :bank_sort, label: false do %>
   <div class="input-group bank">
     <%= f.label :bank_sort, "Sortcode", class: "invoice-settings" %>
-    <%= f.text_field :bank_sort, autofocus: true, class: 'form-control', placeholder: 'Sortcode', type: "number" %>
+    <%= f.text_field :bank_sort, autofocus: true, class: 'form-control', placeholder: 'Sortcode', type: "tel" %>
   </div>
 <% end %>
 
@@ -95,7 +95,7 @@
   <%= form_group_for f, :vat_reg_no, label: false do %>
     <div class="input-group vat-reg">
       <%= f.label :vat_reg_no, "VAT Registration Number", class: "invoice-settings" %>
-      <%= f.text_field :vat_reg_no, autofocus: true, class: 'form-control', placeholder: 'VAT Registration Number', type: "number" %>
+      <%= f.text_field :vat_reg_no, autofocus: true, class: 'form-control', placeholder: 'VAT Registration Number', type: "tel" %>
     </div>
   <% end %>
 <% end %>
@@ -106,7 +106,7 @@
 <% if current_account.vat_enabled? %>
   <%= form_group_for f, :include_vat, label: false do %>
     <div class="input-group name">
-      <%= f.label :include_vat %>
+      <%= f.label :include_vat, class: "invoice-settings" %>
       <%= f.check_box :include_vat %>
     </div>
   <% end %>
@@ -114,8 +114,19 @@
 
   <%= form_group_for f, :include_bank, label: false do %>
   <div class="input-group name">
-    <%= f.label :include_bank %>
+    <%= f.label :include_bank, class: "invoice-settings" %>
     <%= f.check_box :include_bank %>
+  </div>
+<% end %>
+<% if current_account.business? %>
+  <%= form_group_for f, :logo do %>
+    <div class="input-group logo-upload">
+    <%#= f.label :logo %>
+    <%= f.file_field :logo %>
+    </div>
+  <% end %>
+  <div class="current-logo-upload">
+    <label class="invoice-settings">Current logo image: </label><%= image_tag @setting.logo.url(:thumb), alt: "No logo uploaded" %>
   </div>
 <% end %>
 

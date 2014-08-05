@@ -613,6 +613,20 @@ form > div > div.edit-settings {
   max-width: 100%;
 }
 
+div.logo-upload {
+  display: inline-block;
+  width: 70%;
+  float: right;
+}
+
+div.current-logo-upload {
+  padding: 10px 0 10px;
+}
+
+div.logo-upload > input {
+  width: 100%;
+}
+
 // puts space between title and checkbox
 input[type="checkbox"] {
   margin-left: 10px;

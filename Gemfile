@@ -34,6 +34,8 @@ gem 'stripe-rails'
 gem 'mailchimp-api', '~> 2.0.5', require: 'mailchimp'
 gem 'pundit'
 gem 'aasm'
+gem "paperclip", "~> 4.1"
+gem 'aws-sdk', '~> 1.5.7'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

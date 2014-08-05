@@ -37,8 +37,8 @@ class InvoicePdf < Prawn::Document
     float do
       # adds logo
       bounding_box([0,0], :width => 360, :height => 100) do 
-        # logopath =  "#{Rails.root}/app/assets/images/bulldog_clip_logo_rgb.jpg"
-        # image logopath, :fit => [250, 110]
+        logo = @view.logo_file(@invoice)
+        image open("#{ logo.to_s.sub!(/\?.+\Z/, '') }"), :fit => [250, 100] if logo
       end
     end
 
@@ -125,9 +125,10 @@ end
   end
   
   def divider_two
-    bounding_box([0,510], :width => 540) do
+    bounding_box([0,cursor], :width => 540) do
     self.line_width = 0.5
     stroke_horizontal_line 0, 540, :at => [cursor]
+    # horizontal_rule
   end
 end
 

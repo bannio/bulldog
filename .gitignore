@@ -22,5 +22,8 @@
 
 /coverage
 
+# Paperclip files temporary location
+/public/system
+
 .DS_Store
 .env

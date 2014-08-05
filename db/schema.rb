@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801184654) do
+ActiveRecord::Schema.define(version: 20140804124835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,10 @@ ActiveRecord::Schema.define(version: 20140801184654) do
     t.boolean  "include_bank"
     t.string   "telephone"
     t.string   "email"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "settings", ["account_id"], name: "index_settings_on_account_id", using: :btree
