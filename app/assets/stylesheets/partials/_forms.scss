@@ -2,6 +2,16 @@
   margin-bottom: 10px;
 }
 
+// SIGNIN MODAL
+.checkbox.remember-me input[type="checkbox"] {
+  margin-left: 5px;
+  float:none;
+}
+
+.checkbox.remember-me label {
+  padding-left: 5px;
+}
+
 // STRIPE PAYMENT FORM
 
 // stripe form errors
@@ -593,13 +603,17 @@ form > div > div.edit-settings {
   width: 100%;
 }
 
+div.include_vat > input[type="checkbox"], div.include_bank > input[type="checkbox"] {
+  margin-left: 0px;
+}
 
-.input-group.vat-check > checkbox {
-  // width: 60%;
+div.include_vat > input[type="checkbox"]:hover,
+div.include_bank > input[type="checkbox"]:hover,
+div.logo-upload > input:hover {
+  cursor: pointer;
 }
 
 .input-group.vat-check > label {
-  // width: 40%;
   width: 120px;
 }
 
@@ -625,6 +639,8 @@ div.current-logo-upload {
 
 div.logo-upload > input {
   width: 100%;
+  border: none;
+  margin-top: 5px;
 }
 
 // puts space between title and checkbox

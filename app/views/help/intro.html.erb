@@ -6,10 +6,12 @@
     <div class="panel panel-default col-md-10 col-md-offset-1">
       <div class="panel-body info-page">
         <h1>How To Use BulldogClip</h1>
-
+        <p>This help section opens in a new tab or window on your web browser. This means you can keep it open while continuing to use BulldogClip. To go back to using the BulldogClip app just look for it in your tabs or another window.</p>
+        <br>
         <p>Throughout the application you will find blue information icons <img src=<%= asset_path('info_btn.png') %> alt="info button" class="info-img"/>. These give you a brief outline of the features on the page you are looking at. Hover your mouse over the icon or tap it once on a touchscreen to activate it.</p>
         <br>
         <p>For more detailed instructions on how to set up your BulldogClip account and use all of its features follow the links below.</p>
+        
       </div>
     </div>
   </div>
@@ -17,6 +19,7 @@
     <div class="panel panel-default col-md-10 col-md-offset-1">
       <div class="panel-body help-page">
         <ul class="nav nav-pills nav-stacked">
+          <li><%= link_to 'Video tutorials', '/help/video' %></li>
           <li><%= link_to 'Getting started', '/help/setup' %></li>
           <li><%= link_to 'Bills', '/help/bills' %></li>
           <li><%= link_to 'Document print settings', '/help/print_settings' %></li>
@@ -25,7 +28,7 @@
           <li><%= link_to 'Customers', '/help/customers' %></li>
           <li><%= link_to 'Categories', '/help/categories' %></li>
           <li><%= link_to 'Suppliers', '/help/suppliers' %></li>
-          <li><%= link_to 'VAT (Professional Plan Only)', '/help/vat' %></li>
+          <li><%= link_to 'VAT (Business Plan Only)', '/help/vat' %></li>
           <li><%= link_to 'Your account details', '/help/account' %></li>
         </ul>
       </div>

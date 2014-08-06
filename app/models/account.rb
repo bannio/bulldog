@@ -49,7 +49,7 @@ class Account < ActiveRecord::Base
       customer = Stripe::Customer.create(description: "Customer for #{email}", card: stripe_card_token)
       self.stripe_customer_token = customer.id
       self.save
-    end
+  end
   rescue Stripe::InvalidRequestError, Stripe::CardError => e
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your payment card: #{e.message}"

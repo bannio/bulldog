@@ -40,13 +40,21 @@ img.help-icon, img.help-logo {
   border: none;
 }
 
-// img.help-logo {
-// width: 232px;
-// }
+// help page videos
 
-// img.help-icon {
-//   width: 38px;
-// }
+div.help-video {
+  margin: 20px auto 40px !important;
+  border: 1px solid $black !important;
+}
+
+div.help-video.vjs-default-skin > div.vjs-big-play-button {
+  top: 5% !important;
+  left: 3% !important;
+}
+
+h2.video-header {
+  padding-top: 40px;
+}
 
 // prevents navbar from obscuring headings on in page links
 

@@ -83,7 +83,7 @@ describe InvoiceMailer, type: :request do
     end
 
     it "renders the from" do
-      expect(@mail.from).to eq ['hello@bulldogclip.co.uk']
+      expect(@mail.from).to eq ['noreply@bulldogclip.co.uk']
     end
 
     it "sends an email" do

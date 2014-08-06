@@ -1,7 +1,7 @@
 class InvoiceMailer < ActionMailer::Base
   include Stripe::Callbacks
 
-  default from: 'hello@bulldogclip.co.uk'
+  default from: 'noreply@bulldogclip.co.uk'
 
   after_invoice_payment_succeeded! do |invoice, event|
     Rails.logger.info "InvoiceMailer: in the after invoice payment succeeded mailer"

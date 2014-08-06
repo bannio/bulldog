@@ -1,3 +1,56 @@
+// VIDEO
+
+.vjs-default-skin .vjs-big-play-button {
+left: 45% !important;
+top: 45% !important;
+width: 50px !important;
+height: 50px !important;
+background-color: transparent !important;
+// background-color: rgba(7,20,30,.7);
+border: 2px solid $red !important;
+-webkit-border-radius: 0.25em !important;
+-moz-border-radius: 0.25em !important;
+border-radius: 0.25em !important;
+color: $red !important;
+}
+
+.vjs-default-skin .vjs-big-play-button:before {
+  content: "\e001" !important;
+  font-size: 3rem !important;
+  line-height: 45px !important;
+}
+
+.vjs-poster {
+  background-position: 75% 50% !important;
+}
+
+.video-js {
+  margin: 0 auto;
+}
+
+.video-js .vjs-default-skin,
+.vjs-poster,
+.video-js,
+.video-js .vjs-tech {
+  background-color: $white;
+}
+
+.vjs-default-skin .vjs-control-bar {
+  background-color: none !important;
+}
+
+.vjs-default-skin .vjs-big-play-button,
+.vjs-default-skin .vjs-big-play-button:before {
+  text-shadow: none !important;
+}
+
+// changes arrow color if arrow hovered
+.vjs-default-skin .vjs-big-play-button:hover {
+  background-color: #07141E !important;
+  border: $black;
+  opacity: 0.75;
+}
+
 
 /*BODY MAIN*/
 
