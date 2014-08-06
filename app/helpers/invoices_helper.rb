@@ -13,6 +13,10 @@ module InvoicesHelper
   end
 
   def logo_file(invoice)
-    invoice.account.setting.logo.url(:medium)
+    if invoice.account.setting.logo_file_name.present?
+      invoice.account.setting.logo.url(:medium)
+    else
+      nil
+    end
   end
 end
