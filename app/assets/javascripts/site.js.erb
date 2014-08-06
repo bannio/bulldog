@@ -55,7 +55,8 @@ SITENAME = {
   pages: {
      show: function () {
       console.log("pages#show");
-      var myPlayer = videojs('example_video_1');
+      $('body').attr("data-no-turbolink", "true");
+      // var myPlayer = videojs('example_video_1');
      }
    },
 
