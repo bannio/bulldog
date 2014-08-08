@@ -5,6 +5,7 @@ describe InvoicesHelper do
   before(:each) do
     @customer = create(:customer)
     @account = create(:account)
+    # @setting = create(:setting, account_id: @account.id)
     @vat_rate = create(:vat_rate, account_id: @account.id, name: "Standard", rate: "20")
     @vat_rate2 = create(:vat_rate, account_id: @account.id, name: "Reduced", rate: "5")
     @bill = create(:bill, account_id: @account.id, customer_id: @customer.id, amount: "120", vat: "20", vat_rate_id: @vat_rate.id )
@@ -33,6 +34,12 @@ describe InvoicesHelper do
     # expect an array of vat rate objects
     @bills = @invoice.bills
     expect(helper.vat_rates(@bills)).to eq [@vat_rate, @vat_rate2]
+  end
+
+  it "returns nil or a valid logo file name" do
+    expect(logo_file(@invoice)).to eq nil
+    @invoice.account.setting.update_attribute(:logo_file_name, "myLogo")
+    expect(logo_file(@invoice)).to include "/medium/myLogo"
   end
   
 end

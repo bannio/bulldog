@@ -60,7 +60,6 @@ describe Sale do
       it "updates subscription if exists" do
         Stripe::Plan.create({id: '1'})
         @customer.subscriptions.create({plan: '1'})
-        # allow_any_instance_of(Stripe::ListObject).to receive(:total_count).and_return(1)
         expect_any_instance_of(Stripe::Subscription).to receive(:save)
         @sale.process!
       end

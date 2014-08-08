@@ -15,5 +15,9 @@ FactoryGirl.define do
     bank_sort "MyString"
     include_vat nil
     include_bank nil
+    logo_file_name nil
+    logo_content_type nil
+    logo_file_size nil
+    logo_updated_at nil
   end
 end

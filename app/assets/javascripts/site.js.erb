@@ -1,3 +1,4 @@
+//= depend_on_asset "door_dog.png"
 var SITENAME;
 var STRIPE;
 var UTIL;
@@ -53,13 +54,18 @@ SITENAME = {
   },
 
   pages: {
-     show: function () {
+    show: function () {
       console.log("pages#show");
-      $('body').attr("data-no-turbolink", "true");
-      // var myPlayer = videojs('example_video_1');
-     }
-   },
+      VIDEO.checkForVideos();
+    }
+  },
 
+  help: {
+    video: function () {
+      console.log("help#video");
+      VIDEO.checkForVideos();
+    }
+  },
 
   invoices: {
     edit: function () {
@@ -79,6 +85,49 @@ SITENAME = {
       console.log("reports#create");
       $("#exportBtn").on("click", function () { $('#new_report').submit(); });
     },
+  }
+};
+
+VIDEO = {
+  checkForVideos: function () {
+    if($('video').length > 0) {
+      var videos, video;
+      videos = $('video')
+      videos.each(function () {
+        video = $(this).attr('id');
+        VIDEO.reset(video);
+        VIDEO.init(video);
+      });
+    }
+  },
+  reset: function (videoId) {
+    var vid;
+    console.log("resetting " + videoId);
+    for( vid in _V_.players ){
+      console.log("found player for: " + vid.toString());
+      if(vid.toString() === videoId){
+       delete _V_.players[vid];
+       console.log("reset " + videoId)
+      }
+    }
+  },
+  init: function (videoId) {
+    var id = "#" + videoId;
+    console.log("checking for " + videoId + " existance");
+    if($(id).length > 0){
+      videojs(videoId, {
+        'controls': true,
+        'preload': 'auto',
+        'width': '640px',
+        'height': '360px'
+      }, function () {
+        // Player (this) is initialized and ready.
+        console.log("video " + videoId + " initialised");
+        // var myPlayer = this;
+        // myPlayer.addChild('PosterImage');
+        // this.poster("<%= asset_path('door_dog.png') %>");
+      });
+    }
   }
 };
 
