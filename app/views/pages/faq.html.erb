@@ -155,7 +155,7 @@
       <hr>
         <div class="row spacer" id="bc_app">
             <h3>Is there a BulldogClip app?</h3>
-            <p>We don't have an app for BulldogClip. However the software has been designed to work on tablet device as well as on your desktop computer.</p>
+            <p>We don't have an app for BulldogClip. However the software has been designed to work on a tablet device as well as on your desktop computer.</p>
             <a class="top" href="#top">Back to top</a>
         </div>
       <hr>    
@@ -178,7 +178,7 @@
       <hr>
       <div class="row spacer" id="how_much">
           <h3>How much does it cost?</h3>
-          <p>The current pricing plan is shown on our pricing page <%= link_to 'sign up', plans_path, class: 'faq-link' %>.</p>
+          <p>The current pricing plan is shown on our pricing page <%= link_to 'here', plans_path, class: 'faq-link' %>.</p>
           <a class="top" href="#top">Back to top</a>
         </div>
 
@@ -234,21 +234,27 @@
       <hr>
       <div class="row spacer" id="cancel_account">
           <h3>How can I cancel my account?</h3>
-          <p>TO BE ADDED You can cancel your account at any point. Log in to BulldogClip, select the 'Account' option from the main menu. In the account view select 'Cancel Account'. You will be asked to confirm that you do want to cancel the account. Your account will then be closed. Make sure your export any data you want to keep before cancelling. Your data will be stored for 60 days in case you change your mind. If we don't hear from you with in 60 days your data will be purged.</p>
+          <p>TO BE ADDED</p><p>You can cancel your account at any point. Log in to BulldogClip, select the 'Account' option from the main menu. In the account view select 'Cancel Account'. You will be asked to confirm that you do want to cancel the account. Your account will then be closed. Make sure your export any data you want to keep before cancelling. Your data will be stored for 60 days in case you change your mind. If we don't hear from you with in 60 days your data will be purged.</p>
           <a class="top" href="#top">Back to top</a>
         </div>
 
       <hr>
       <div class="row spacer" id="how_many_users">
           <h3>How many users can I add to my account</h3>
-          <p>TO BE ADDED</p>
+          <p>In the current version, only one email address can be used with an account. If you would be interested in us adding optional additional users, please <%= link_to 'let us know', new_contact_path, class: 'faq-link' %>. </p>
           <a class="top" href="#top">Back to top</a>
         </div>
 
       <hr>
       <div class="row spacer" id="vat">
-          <h3>Does BulldogClip support VAT / GST / other tax tracking?</h3>
-          <p>TO BE ADDED</p>
+          <h3>Does BulldogClip support VAT?</h3>
+          <p>Yes. The business plan allows you to create VAT rates and to
+          record VAT on your bills. It does not calculate the amount of VAT for
+          you but does add it up and summarise it by rate on invoices, as
+          required by HMRC.</p>
+          <p>The primary driver for adding this was to support reclaiming of
+          VAT on business expenses. This may be useful to you or to your
+          employer and make expense claiming easier.</p>
           <a class="top" href="#top">Back to top</a>
         </div>
 
@@ -267,15 +273,17 @@
           <a class="top" href="#top">Back to top</a>
         </div>
 
-
       <hr>
       <div class="row spacer" id="data_protect">
           <h3>How is my data protected?</h3>
-          <p>All the data is encrypted as it goes across the Internet using the familiar, high street bank level of security. Look for the padlock symbol and 'https:' in your browser address bar.</p>
+          <p>All the data is encrypted as it goes across the Internet using the
+          familiar, high street bank level of security. Look for the padlock 
+          symbol and 'https:' in your browser address bar.</p><p>Your data is
+          stored in a database that is fully backed up and maintained with high
+          availability by our platform provider. The data centres are
+          certified to be very secure from both physical and virtual attack.</p>
           <a class="top" href="#top">Back to top</a>
         </div>
-
-
 
       <hr>
       <div class="row spacer" id="safer_on_computer">
@@ -287,7 +295,9 @@
       <hr>
       <div class="row spacer" id="data_out">
           <h3>Can I get my data out of BulldogClip?</h3>
-          <p>Yes you can. In the Bills section you can export a copy of all of your bills. Alternatively in the Analysis section you can filter your bills by date, customer, supplier and category before exporting them. These files can be downloaded in CSV format. In the Invoice section you can download invoices as PDFs.</p>
+          <p>Yes you can. In the Bills section you can export a copy of all of your bills. Alternatively in the Analysis section you can filter your bills by date, customer, supplier and category before exporting them. These files can be downloaded in 
+          <a href="#csv">CSV format</a>. In the Invoice section you can 
+          download invoices as PDFs.</p>
           <a class="top" href="#top">Back to top</a>
         </div>
 
@@ -315,14 +325,14 @@
       <hr>
       <div class="row spacer" id="suggest_new">
           <h3>How can I suggest a new feature?</h3>
-          <p>We always like to get feedback from our users. If there is a feature you would just love to have on BulldogClip <a href="/contact" class="faq-link">let us know</a> and we'll do our best to accommodate it.</p>
+          <p>We always like to get feedback from our users. If there is a feature you would just love to have on BulldogClip <a href=<%= new_contact_path %> class="faq-link">let us know</a> and we'll do our best to accommodate it.</p>
           <a class="top" href="#top">Back to top</a>
         </div>
 
       <hr>
       <div class="row spacer" id="contact">
           <h3>How can I contact BulldogClip?</h3>
-          <p>Can't find the answer to your question here? <a href="/contact" class="faq-link">Get in touch</a> and we will try our best to answer it.</p>
+          <p>Can't find the answer to your question here? <a href=<%= new_contact_path %> class="faq-link">Get in touch</a> and we will try our best to answer it.</p>
           <a class="top" href="#top">Back to top</a>
         </div>
       </div><!-- end div col-sm-8-->
