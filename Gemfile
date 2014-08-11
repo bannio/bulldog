@@ -36,6 +36,7 @@ gem 'pundit'
 gem 'aasm'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk', '~> 1.5.7'
+gem 'cookies_eu'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

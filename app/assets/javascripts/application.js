@@ -19,4 +19,5 @@
 //= require jsapi
 //= require chartkick
 //= require turbolinks
+//= require cookies_eu
 //= require_tree .

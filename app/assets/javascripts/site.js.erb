@@ -1,7 +1,8 @@
 //= depend_on_asset "door_dog.png"
-var SITENAME;
-var STRIPE;
-var UTIL;
+var SITENAME,
+    STRIPE,
+    UTIL,
+    VIDEO; 
 
 SITENAME = {
   common: {
@@ -9,14 +10,14 @@ SITENAME = {
     // application-wide code
       console.log("SITE init common");
       // fix for Select2 not working in modals. 
-      // save the original function
-      // var enforceModalFocusFn = $.fn.modal.Constructor.prototype.enforceFocus;
       // overwrite the function with an empty function block
       $.fn.modal.Constructor.prototype.enforceFocus = function () {};
-      // do something to "myModal"
-      // then reset function in case it is needed
-      // $myModal.on('hidden', function () {
-          // $.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFn;
+      // Cookie alert
+      $('.cookies-eu-ok').click(function (e) {
+        e.preventDefault();
+        $.cookie('cookie_eu_consented', 'true', { path: '/', expires: 365 });
+        $('.cookies-eu').remove();
+      });
     }
   },
 
@@ -90,9 +91,9 @@ SITENAME = {
 
 VIDEO = {
   checkForVideos: function () {
-    if($('video').length > 0) {
+    if ($('video').length > 0) {
       var videos, video;
-      videos = $('video')
+      videos = $('video');
       videos.each(function () {
         video = $(this).attr('id');
         VIDEO.reset(video);
@@ -103,18 +104,18 @@ VIDEO = {
   reset: function (videoId) {
     var vid;
     console.log("resetting " + videoId);
-    for( vid in _V_.players ){
+    for (vid in _V_.players ) {
       console.log("found player for: " + vid.toString());
-      if(vid.toString() === videoId){
-       delete _V_.players[vid];
-       console.log("reset " + videoId)
+      if (vid.toString() === videoId) {
+        delete _V_.players[vid];
+        console.log("reset " + videoId);
       }
     }
   },
   init: function (videoId) {
     var id = "#" + videoId;
     console.log("checking for " + videoId + " existance");
-    if($(id).length > 0){
+    if ($(id).length > 0) {
       videojs(videoId, {
         'controls': true,
         'preload': 'auto',
@@ -123,9 +124,6 @@ VIDEO = {
       }, function () {
         // Player (this) is initialized and ready.
         console.log("video " + videoId + " initialised");
-        // var myPlayer = this;
-        // myPlayer.addChild('PosterImage');
-        // this.poster("<%= asset_path('door_dog.png') %>");
       });
     }
   }

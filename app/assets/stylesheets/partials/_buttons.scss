@@ -188,3 +188,8 @@ input[type="reset"].std-btn:focus, button.std-btn:hover,button.std-btn:focus {
 outline: 0px;
 outline-width: 0px;
 }
+
+// Cookie alert button
+button.cookies_eu_ok:hover {
+  cursor: pointer !important;
+}
