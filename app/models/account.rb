@@ -4,6 +4,7 @@ class Account < ActiveRecord::Base
   has_many :customers
   has_many :categories
   has_many :bills
+  has_many :invoices
   has_many :vat_rates
   has_many :headers
   has_many :sales

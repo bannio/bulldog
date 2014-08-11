@@ -48,7 +48,7 @@ class Invoice < ActiveRecord::Base
       invoice = new
       imported = row.to_hash
       invoice.account_id = account.id
-      invoice.customer_id = Customer.find_by_name(imported['customer']).id
+      invoice.customer_id = account.customers.find_by_name(imported['customer']).id
       invoice.date = imported['date']
       invoice.number = imported['id']
       invoice.total = imported['total']

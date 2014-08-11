@@ -67,9 +67,9 @@ class Bill < ActiveRecord::Base
       bill = new
       imported = row.to_hash
       bill.date = imported['transaction_date']
-      bill.customer = Customer.find_or_create_by(name: imported['customer'], account_id: account.id)
-      bill.supplier = Supplier.find_or_create_by(name: imported['supplier'], account_id: account.id)
-      bill.category = Category.find_or_create_by(name: imported['category'], account_id: account.id)
+      bill.customer = account.customers.find_or_create_by(name: imported['customer'])
+      bill.supplier = account.suppliers.find_or_create_by(name: imported['supplier'])
+      bill.category = account.categories.find_or_create_by(name: imported['category'])
       bill.description = imported['description']
       bill.amount = imported['amount']
       bill.invoice_id = imported['invoice_id']
@@ -80,7 +80,8 @@ class Bill < ActiveRecord::Base
 
   def self.update_invoice_ids(invoice)
     # used to update bills via console after invoices are loaded
-    bills = Bill.where(invoice_id: invoice.number, account_id: invoice.account_id)
+    number = invoice.number.to_i + 5000
+    bills = Bill.where(invoice_id: number, account_id: invoice.account_id)
     bills.each do |bill|
       bill.update_attribute(:invoice_id, invoice.id)
     end
