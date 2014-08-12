@@ -189,7 +189,26 @@ outline: 0px;
 outline-width: 0px;
 }
 
-// Cookie alert button
-button.cookies_eu_ok:hover {
+// COOKIE ALERT BUTTON
+.cookies-eu .cookies-eu-button-holder .cookies-eu-ok {
   cursor: pointer !important;
+  background-color: #4d78cc !important;
+  background-image: -webkit-linear-gradient(top, #4d78cc, #4d78cc) !important;
+}
+
+.cookies-eu .cookies-eu-button-holder .cookies-eu-ok:hover {
+  background-color: $blue !important;
+  background-image: -webkit-linear-gradient(top, $blue, $blue) !important;
+}
+
+a .cookies_eu_link {
+  color: #4d78cc !important;
+}
+
+a .cookies_eu_link:hover {
+  color: $blue !important;
+}
+
+.cookies-eu {
+  background-color: #eeeeee !important;
 }
