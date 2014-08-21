@@ -49,14 +49,16 @@
                 <dt>
                     Community
                 </dt>
+<!--                 <dd>
+                    <%#= link_to 'News', page_path('news'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
+                </dd> -->
                 <dd>
-                    <%= link_to 'News', page_path('news'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
-                </dd>
-                <dd>
-                    <%= link_to 'Twitter', page_path('community'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
-                </dd>
-                <dd>
-                    <%= link_to 'Linked In', page_path('community'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Linked In" %>
+                    <%#= link_to 'Twitter', "https://twitter.com/Bulldog4bills", target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
+                    <%= link_to image_tag("Twitter_logo_blue.png", class: 'twitter-logo'), "https://twitter.com/Bulldog4bills", target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
+                <!-- </dd> -->
+                <!-- <dd> -->
+                    <%#= link_to 'Linked In', page_path('community'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Linked In" %>
+                    <%= link_to image_tag("Linked_In_logo.png", class: 'linkedin-logo'), page_path('community'), target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Linked In" %>
                 </dd>
             </dl>
         </div>
