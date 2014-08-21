@@ -8,8 +8,15 @@
   float:none;
 }
 
-.checkbox.remember-me label {
+.checkbox.remember-me label,
+.checkbox.contact-us label {
   padding-left: 5px;
+}
+
+// CONTACT US FORM
+.checkbox.contact-us input[type="checkbox"] {
+  margin-left: 0px;
+  float: none;
 }
 
 // STRIPE PAYMENT FORM

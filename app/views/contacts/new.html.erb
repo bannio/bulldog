@@ -39,9 +39,9 @@
               <%= form_group_for f, :message do %>
                 <%= f.text_area :message, class: 'form-control', rows: 4, placeholder: 'Write your message here' %>
               <% end %>
-              <div class="checkbox">
-                <%= f.label :mail_list, 'Please add me to the mailing list' %>
+              <div class="checkbox contact-us">
                 <%= f.check_box :mail_list %>
+                <%= f.label :mail_list, 'Please add me to the mailing list' %>
               </div>
                 <%= f.submit 'Send', class: 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Send your message to BulldogClip" %>
                 <%= link_to "Cancel", home_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel and return to home page" %>
