@@ -104,6 +104,24 @@ describe AccountsController do
           )
       }.to change(Account, :count).by(0)
     end
+    context "does not create a sale" do
+      it 'if account is invalid - no email' do
+        expect_any_instance_of(Account).to_not receive(:process_subscription)
+        post :create, account: attributes_for(:account).merge(user_id: "", 
+          stripe_customer_token: nil,
+          stripe_card_token: "card",
+          email: ""
+          )
+      end
+      it 'if account is invalid - no name' do
+        expect_any_instance_of(Account).to_not receive(:process_subscription)
+        post :create, account: attributes_for(:account).merge(user_id: "", 
+          stripe_customer_token: nil,
+          stripe_card_token: "card",
+          name: ""
+          )
+      end
+    end
 
     context "with invalid attributes" do
       before(:each) do
