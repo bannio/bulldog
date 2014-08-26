@@ -20,47 +20,43 @@ class AccountsController < ApplicationController
 
   def update
     @account = Account.find(params[:id])
-    if @account.update(account_params)
-      redirect_to @account, notice: "Account successfully updated"
-    else
-      render 'edit'
-    end
+    # if @account.plan_id_changed?
+    #   if @account.process_changes
+    #     redirect_to @account, notice: "Account successfully updated"
+    #   else
+    #     render 'edit'
+    #   end
+    # else # only changing name or VAT flag
+      if @account.update(account_params)
+        redirect_to @account, notice: "Account successfully updated"
+      else
+        if params[:account][:plan_id] == "0" # the action was a cancellation
+          flash[:error] = "There was a problem with this transaction"
+          render 'show'
+        else
+          flash[:error] = "There was a problem with this transaction"
+          render 'edit'
+        end
+      end
+    # end
   end
 
   def create
     @account = Account.new(account_params)
-    if @account.save_with_customer
-      sale = Sale.new(
-        account_id:         @account.id,
-        plan_id:            @account.plan_id,
-        stripe_customer_id: @account.stripe_customer_token,
-        email:              @account.email
-      )
-      sale.process!
-      if sale.finished?
-        @account.create_user
-        redirect_to home_path, 
-        notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
-      else
-        flash.now[:error] = sale.error
-        render 'new'
-      end
+    sub = @account.process_subscription
+    if sub && @account.save
+      @account.create_user
+      redirect_to home_path, 
+      notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
     else
       flash[:error] = @account.errors[:base][0]
       render 'new'
     end
   end
 
-  # def create
-  #   @account = Account.new(account_params)
-  #   if @account.save_with_payment
-
-  #     redirect_to home_path, notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
-  #   else
-  #     flash[:error] = @account.errors[:base][0]
-  #     render 'new'
-  #   end
-  # end
+  def cancel
+    @account = Account.owned_by_user(current_user).find(params[:id])
+  end
 
   private
 

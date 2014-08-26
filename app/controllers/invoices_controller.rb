@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @invoices = Invoice.visible_to(current_user).includes(:customer).
+    @invoices = current_account.invoices.includes(:customer).
                                                 customer_filter(params[:inv_customer_id]).
                                                 search(params[:search]).
                                                 filter_from(params[:from_date]).
@@ -18,7 +18,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @invoice = Invoice.visible_to(current_user).find(params[:id])
+    @invoice = current_account.invoice(params[:id])
     @customers = []
     @customers << @invoice.customer
     @bills = @invoice.bills.includes(:category, :supplier, :vat_rate).order(date: :asc)
@@ -35,13 +35,13 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    @invoice = Invoice.new(account_id: current_account.id)
+    @invoice = current_account.invoices.build
     @invoice.date = Date.today
     @customers = current_account.customers
   end
 
   def edit
-    @invoice = Invoice.visible_to(current_user).find(params[:id])
+    @invoice = current_account.invoice(params[:id])
     @customers = []
     @customers << @invoice.customer
     @bills = @invoice.bills.includes(:category, :supplier, :vat_rate)
@@ -49,7 +49,7 @@ class InvoicesController < ApplicationController
 
   def update
     collect_new_entries
-    @invoice = Invoice.visible_to(current_user).find(params[:id])
+    @invoice = current_account.invoice(params[:id])
     @customers = []
     @customers << @invoice.customer
     if params[:bill_ids]
@@ -87,7 +87,7 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
-    @invoice = Invoice.find(params[:id])
+    @invoice = current_account.invoice(params[:id])
     @invoice.bills.each do |bill|
                    bill.invoice_id = nil
                    bill.save

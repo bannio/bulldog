@@ -45,4 +45,6 @@ class User < ActiveRecord::Base
       !password.nil? || !password_confirmation.nil?
     end
   end
+  private
+
 end

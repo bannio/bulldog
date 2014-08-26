@@ -18,7 +18,7 @@ class BillsController < ApplicationController
   end
 
   def new
-    @bill = Bill.new(account_id: current_account.id)
+    @bill = current_account.bills.build
     @bill.date = Date.today
     @bill.customer_id = default_customer.id if default_customer
   end
@@ -34,12 +34,12 @@ class BillsController < ApplicationController
   end
 
   def edit
-    @bill = Bill.visible_to(current_user).find(params[:id])
+    @bill = current_account.bill(params[:id])
   end
 
   def update
     collect_new_entries
-    @bill = Bill.visible_to(current_user).find(params[:id])
+    @bill = current_account.bill(params[:id])
     if @bill.update(bill_params)
       flash[:success] = "Bill successfully updated"
       respond_to do |format|
@@ -52,7 +52,7 @@ class BillsController < ApplicationController
   end
 
   def destroy
-    @bill = Bill.visible_to(current_user).find(params[:id])
+    @bill = current_account.bill(params[:id])
     if @bill.destroy
       flash[:success] = "Bill successfully deleted"
       redirect_to bills_url, status: 303
@@ -62,7 +62,7 @@ class BillsController < ApplicationController
   end
 
   def category_chart
-    render json: Bill.visible_to(current_user).
+    render json: current_account.bills.
                       includes(:category).
                       group("categories.name").
                       references(:category).

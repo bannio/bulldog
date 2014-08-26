@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  include Visible
+  # include Visible
   belongs_to :account
   has_many :bills
 

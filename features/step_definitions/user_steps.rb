@@ -96,9 +96,11 @@ def sign_up
   visit new_account_path(plan_id: plan.id)
   fill_in "account_name", with: @visitor[:name]
   fill_in "account_email", with: @visitor[:email]
-  fill_in 'card_number', with: '4242424242424242'
+  page.execute_script("$('#card_number').val('4242424242424242')")
+  page.execute_script("$('#cc_exp').val('01 / 2020')")
+  # fill_in 'card_number', with: '4242424242424242'
   fill_in 'card_code', with: '123'
-  fill_in 'cc_exp', with: '0120'
+  # fill_in 'cc_exp', with: '0120'
   # select('1 - January', from: 'card_month')
   # select('2020', from: 'card_year')
   click_button "Subscribe Now"
@@ -192,7 +194,7 @@ end
 
 When /^I sign up with an invalid email$/ do
   create_visitor
-  @visitor = @visitor.merge(:email => "notanemail")
+  @visitor = @visitor.merge(:email => "notanemail", name: "Visitor")
   sign_up
 end
 

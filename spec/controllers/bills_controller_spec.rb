@@ -128,12 +128,17 @@ describe BillsController do
 
       it "destroys the requested bill" do
         expect{
-          delete :destroy, id: @bill.to_param 
+          delete :destroy, id: @bill.to_param
         }.to change(Bill, :count).by(-1)
       end
       it "redirects to the bills index" do
-        delete :destroy, id: @bill.to_param 
+        delete :destroy, id: @bill.to_param
         expect(response).to redirect_to bills_url
+      end
+      it "does not destroy other account's bills" do
+        bill = create(:bill, account_id: @account.id + 1)
+        delete :destroy, id: bill.to_param
+        expect(response).to redirect_to home_url
       end
     end
 

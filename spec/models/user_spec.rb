@@ -111,6 +111,15 @@ describe User do
 
   end
 
+  # describe "before_update email" do
+  #   it "updates the account email" do
+  #     user = User.create(@attr)
+  #     account = Account.new(user_id: user.id)
+  #     expect(account).to receive(:update).with(email: "new@example.com")
+  #     user.update(email: "new@example.com")
+  #   end
+  # end
+
 # accounts now create user rather than user creating account
   # describe "account creation" do
   #   before(:each) do

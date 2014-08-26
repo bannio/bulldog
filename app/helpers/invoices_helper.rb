@@ -19,4 +19,30 @@ module InvoicesHelper
       nil
     end
   end
+
+  def current_plan_name(account)
+    if account.plan_id == 0
+      "no current subscription"
+    else
+      account.plan.name + " at " + 
+      number_to_currency(@account.plan.amount/100) + " per " + 
+      @account.plan.interval
+    end
+  end
+
+  def next_invoice_date(account)
+    if account.next_invoice.present?
+      account.next_invoice.strftime("%d/%m/%Y")
+    else
+      "NA"
+    end
+  end
+
+  def current_card(account)
+    if account.card_last4.present?
+      account.card_last4
+    else
+      "NA"
+    end
+  end
 end

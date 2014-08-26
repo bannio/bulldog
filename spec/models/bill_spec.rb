@@ -49,7 +49,7 @@ describe Bill do
     customer = create(:customer_with_bill, name: 'John')
     supplier = create(:supplier, name: 'Fred')
     category = create(:category, name: 'Food')
-    vat_rate = create(:vat_rate, name: 'standard')
+    vat_rate = create(:vat_rate, name: 'standard', account_id: 1)
     invoice =  create(:invoice, number: '99', customer_id: customer.id)
     bill = Bill.new(@attr.merge(customer_id: customer.id,
                                 supplier_id: supplier.id,

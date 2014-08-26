@@ -36,7 +36,6 @@ describe Sale do
 
       it "transitions to finished" do
         Stripe::Plan.create({id: '1'})
-        # current version of stripe-ruby-mock does not support total_count
         allow_any_instance_of(Stripe::ListObject).to receive(:total_count).and_return(0)
         @sale.process!
         expect(@sale.finished?).to be_truthy
@@ -99,6 +98,40 @@ describe Sale do
         allow(@customer).to receive_message_chain(:subscriptions, :retrieve).with('test').and_raise(error)
         @sale.process!
         expect(@sale.error).to include('does not have a subscription with ID')
+      end
+    end
+  end
+
+  describe "cancel" do
+    context "successfully" do
+      before do
+        @sale = Sale.new(
+          email: 'test.sale@example.com',
+          stripe_customer_id: 'customer_token',
+          plan_id: 1,
+          account_id: @account.id 
+          )
+        Stripe::Plan.create({id: '1'})
+        @customer.subscriptions.create({plan: '1'})
+      end
+      it "transitions to finished" do
+        @sale.cancel!
+        expect(@sale.finished?).to be_truthy
+      end
+    end
+    context "unsuccessfully" do
+      before do
+        @sale = Sale.create(
+          email: 'test.sale@example.com',
+          stripe_customer_id: 'missing_customer',
+          plan_id: 1,
+          account_id: @account.id 
+          )
+      end
+      it "saves with an errored state" do
+        @sale.cancel!
+        expect(@sale.errored?).to be_truthy
+        expect(@sale.error).to include('No such customer: missing_customer')
       end
     end
   end

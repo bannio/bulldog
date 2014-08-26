@@ -3,7 +3,6 @@ Feature: Sign up
   In order to get access to protected sections of the site
   As a user
   I want to be able to sign up
-  # remove @wip for this feature to run
   # NOTE stripe-ruby-mock needs work. It doesn't currently intercept createToken
   # Without it, all calls go to stripe.com 
 
@@ -34,14 +33,14 @@ Feature: Sign up
     Then I should see "Your account was successfully confirmed."
     And I should be on the Welcome page
     And I have an Account record saved
-    
-  
+
+  @javascript
   Scenario: User signs up with invalid email
     When I sign up with an invalid email
     Then I should see an invalid email message
-
+  @javascript
   Scenario: User signs up without a name
-    When I sign up with an invalid email
+    When I sign up without a name
     Then I should see a missing name message
 
   Scenario: User activates account without password

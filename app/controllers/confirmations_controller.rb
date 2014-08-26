@@ -61,7 +61,15 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   def do_confirm
     @confirmable.confirm!
+    check_email_change
     set_flash_message :notice, :confirmed
     sign_in_and_redirect(resource_name, @confirmable)
   end
+
+  def check_email_change
+    if @confirmable.email != @confirmable.account.email
+      @confirmable.account.update(email: @confirmable.email)
+    end
+  end
+
 end

@@ -1,7 +1,7 @@
 class VatRatePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.visible_to(user)
+      scope.where(account_id: user.account.id)
     end
   end
 

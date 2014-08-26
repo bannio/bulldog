@@ -54,7 +54,13 @@ Feature: The tools menu provides access to a number of set up
     And I should see "test@example.com"
 
   Scenario: Upload logo file
-    Given the account is professional
+    # lots of setup because of the before_update callback on account.save
+    Given a Base Plan exists
+    And a Business Monthly Plan exists
+    And a Business Annual Plan exists
+    And stripe-ruby-mock is running
+    And the account has a valid Stripe Customer token
+    And the account is subscribed to a business plan
     And I visit the settings page
     Then I should see "Logo"
     When I click on Edit

@@ -119,23 +119,23 @@ ready = function () {
     formatSelection: format
   });
 
-  $('#bill_supplier_id').select2({
-    placeholder: 'Supplier',
-    allowClear: true,
-    width: 'resolve',
-    data: {results: supplierData, text: 'name'},
-    initSelection : function (element, callback) {
-      var value = $(supplierData).filter(function () {
-        return this.id == element.val();
-      });
-      var data = {id: element.val(),
-                  text: text(value)};
-      callback(data);
-    },
-    createSearchChoice: create_choice,
-    formatResult: format_result,
-    formatSelection: format
-  });
+  // $('#bill_supplier_id').select2({
+  //   placeholder: 'Supplier',
+  //   allowClear: true,
+  //   width: 'resolve',
+  //   data: {results: supplierData, text: 'name'},
+  //   initSelection : function (element, callback) {
+  //     var value = $(supplierData).filter(function () {
+  //       return this.id == element.val();
+  //     });
+  //     var data = {id: element.val(),
+  //                 text: text(value)};
+  //     callback(data);
+  //   },
+  //   createSearchChoice: create_choice,
+  //   formatResult: format_result,
+  //   formatSelection: format
+  // });
 
   $('#bill_category_id').select2({
     placeholder: 'Category',

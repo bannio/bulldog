@@ -8,5 +8,9 @@ FactoryGirl.define do
     plan_id 1
     sequence(:email) { |n| "account#{n}@example.com" }
     stripe_customer_token "cust_token"
+    card_last4       nil
+    card_expiration  nil
+    next_invoice     nil
+    date_reminded    nil
   end
 end

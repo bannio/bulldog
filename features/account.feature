@@ -6,6 +6,9 @@ Feature: Account
 
   Background:
     Given I am not logged in
+    And a Base Plan exists
+    And a Business Monthly Plan exists
+    And a Business Annual Plan exists
 
   Scenario: Sign in a second time
     Given I am a user with an account
@@ -25,8 +28,6 @@ Feature: Account
     Given I am a user with an account
     And  I sign in
     When I visit the Change Email Address page 
-    # And I click on Account
-    # And I click on Change Email Address
     Then I should be on the Change Email Address page
     When I enter "changed@example.com" in the user_email field
     And I enter "changeme" in the user_current_password field
@@ -64,14 +65,33 @@ Feature: Account
 
   Scenario: Edit account level settings - VAT enabled
     Given I am a user with an account
-    And the account is professional
+    And the account is subscribed to a business plan
     And  I sign in
     When I visit the home page
     And I click on Account
     And I click on Manage Subscription
     Then I should be on the Account page
-    When I click on Edit
+    When I click on Change Plan
     And I check VAT Enabled?
     And I click button Save
     Then I should be on the Account page
     And VAT Enabled? should be checked
+
+  Scenario: Upgrade subscription plan
+    Given I am a user with an account
+    And stripe-ruby-mock is running
+    And the account has a valid Stripe Customer token
+    And  I sign in
+    When I visit the home page
+    And I click on Account
+    And I click on Manage Subscription
+    Then I should be on the Account page
+    And I should see "Personal"
+    When I click on Change Plan
+    Then I should see "Plan"
+    And the Personal plan should be selected
+    When I choose the Business Annual plan
+    And I click button Save
+    Then I should be on the Account page
+    And I should see "Business Annual"
+

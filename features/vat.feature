@@ -5,7 +5,10 @@ Feature: VAT
 
 Background:
   Given I am a user with an account
-  And the account is professional
+  And a Base Plan exists
+  And a Business Monthly Plan exists
+  And a Business Annual Plan exists
+  And the account is subscribed to a business plan
   And I sign in
 
 @javascript
@@ -29,6 +32,7 @@ Scenario: change the name of an active rate and deactivate it
   Then I should be on the "Edit VAT Rate" modal
   When I fill in name with "Old Standard"
   And I uncheck "active" and click Save
+  And wait 1
   Then I should be on the VAT page
   And the "Old Standard" rate should be inactive
 
@@ -83,6 +87,7 @@ Scenario: list only active rates, button to show all
   When I visit the VAT page
   Then I should see 2 rates
   When I click on Show All
+  And wait 1
   Then I should see 3 rates
 
 @javascript
@@ -104,7 +109,7 @@ Scenario: delete a VAT rate
 @javascript
 Scenario: select to enable VAT
   When I visit the Account page
-  And I click on Edit
+  And I click on Change Plan
   And I check Enable VAT on bills?
   And I click button Save
   Then I visit the Bills page
@@ -112,7 +117,7 @@ Scenario: select to enable VAT
   Then I should see "VAT rate"
   And I should see placeholder "VAT amount"
   Then I visit the Account page
-  And I click on Edit
+  And I click on Change Plan
   And I uncheck Enable VAT on bills?
   And I click button Save
   Then I visit the Bills page

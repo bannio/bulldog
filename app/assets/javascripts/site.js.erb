@@ -2,7 +2,8 @@
 var SITENAME,
     STRIPE,
     UTIL,
-    VIDEO; 
+    VIDEO,
+    SELECT; 
 
 SITENAME = {
   common: {
@@ -45,6 +46,16 @@ SITENAME = {
       Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       return STRIPE.setupForm();
     },
+
+    edit: function () {
+      console.log("accounts#edit");
+      SELECT.accountPlan();
+    },
+
+    update: function () {
+      console.log("accounts#edit");
+      SELECT.accountPlan();
+    }
   },
 
   welcome: {
@@ -65,6 +76,13 @@ SITENAME = {
     video: function () {
       console.log("help#video");
       VIDEO.checkForVideos();
+    }
+  },
+
+  bills: {
+    index: function () {
+      console.log("bills#index");
+      SELECT.billSupplier();
     }
   },
 
@@ -126,6 +144,62 @@ VIDEO = {
         console.log("video " + videoId + " initialised");
       });
     }
+  }
+};
+
+SELECT = {
+  format: function (item) {
+    return item.name || item.text;
+  },
+  text: function (value) {
+    if (value[0]) {
+      return value[0].name;
+    }
+    return "";
+  },
+  format_result: function (term) {
+    if (term.isNew) {
+      return '<span class="label label-important">New</span> ' + term.text;
+    }
+    return term.name;
+  },
+  create_choice: function (term, data) {
+    if ($(data).filter(function () {
+        return this.name.toLowerCase().localeCompare(term.toLowerCase()) === 0;
+      }).length === 0) {
+      return {id: term, text: term, isNew: true};
+    }
+  },
+  accountPlan: function () {
+    var PlanData = $('#account_plan_id').data('plans');
+    $('#account_plan_id').select2({
+    placeholder: 'Plan',
+    allowClear: true,
+    width: 'resolve',
+    data: {results: PlanData, text: 'name'},
+    formatResult: SELECT.format,
+    formatSelection: SELECT.format
+  });
+  },
+  billSupplier: function () {
+    var supplierData = $('#bill_supplier_id').data('suppliers');
+    $('#bill_supplier_id').select2({
+    placeholder: 'Supplier',
+    allowClear: true,
+    width: 'resolve',
+    data: {results: supplierData, text: 'name'},
+    initSelection : function (element, callback) {
+      var value = $(supplierData).filter(function () {
+        return this.id == element.val();
+      });
+      var data = {id: element.val(),
+                  text: SELECT.text(value)};
+      callback(data);
+    },
+    createSearchChoice: SELECT.create_choice,
+    formatResult: SELECT.format_result,
+    formatSelection: SELECT.format
+  });
   }
 };
 

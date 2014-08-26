@@ -4,35 +4,43 @@ describe SettingsController do
 
   login_user
 
-  before(:each) do
-    Rails.logger.info "The user is: #{@user.id}"
-    def current_user
-      @user
-    end
-    Rails.logger.info "The current_user is: #{current_user.id}"
+  def current_user
+    @user
   end
 
+  before do
+    @setting = @account.setting
+  end
+  
+
   describe "GET 'show'" do
+
     it "returns http success" do
-      Rails.logger.info "The current_user is: #{current_user.id}"
-      get :show, id: @account.setting
+      get :show, id: @setting
       expect(response).to be_success
+    end
+    it "assigns the setting" do
+      get :show, id: @setting
+      expect(assigns(:setting)).to eq @setting
     end
   end
 
   describe "GET 'edit'" do
     it "returns http success" do
-      Rails.logger.info "The current_user is: #{current_user.id}"
-      get :edit, id: @account.setting
+      get :edit, id: @setting
       expect(response).to be_success
     end
   end
 
   describe "PATCH 'update'" do
+
+    it "assigns the setting" do
+      get :update, id: @setting, setting: attributes_for(:setting)
+      expect(assigns(:setting)).to eq @setting
+    end
     it "returns http success" do
-      Rails.logger.info "The current_user is: #{current_user.id}"
-      get :update, id: @account.setting, setting: attributes_for(:setting).merge(account_id: @account.id)
-      expect(response).to redirect_to setting_path(@account.setting)
+      get :update, id: @setting, setting: attributes_for(:setting)
+      expect(response).to redirect_to setting_path(@setting)
     end
   end
 

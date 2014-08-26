@@ -2,19 +2,19 @@ class SuppliersController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @suppliers = Supplier.visible_to(current_user).order(name: :asc)
+    @suppliers = current_account.suppliers.order(name: :asc)
   end
 
   def edit
-    @supplier = Supplier.visible_to(current_user).find(params[:id])
+    @supplier = current_account.supplier(params[:id])
   end
 
   def update
-    @supplier = Supplier.visible_to(current_user).find(params[:id])
+    @supplier = current_account.supplier(params[:id])
     old_name = @supplier.name
     new_name = params[:supplier][:name]
 
-    if Supplier.visible_to(current_user).where(name: new_name).empty? && new_name != old_name
+    if current_account.suppliers.where(name: new_name).empty? && new_name != old_name
       @supplier.update_attribute(:name, new_name)
       flash[:success] = "supplier #{old_name} renamed to #{new_name}" 
     else

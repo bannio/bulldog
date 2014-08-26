@@ -1,5 +1,5 @@
 class Bill < ActiveRecord::Base
-  include Visible
+  # include Visible
 
   belongs_to :account
   belongs_to :customer

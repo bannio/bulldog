@@ -3,7 +3,7 @@ require "prawn/table"
 class InvoicePdf < Prawn::Document
 
   def initialize(invoice, bills, view)
-    super()
+    super(page_size: "A4", page_layout: :portrait)
     font_size 9
     font "Helvetica"
     @invoice = invoice
@@ -26,14 +26,14 @@ class InvoicePdf < Prawn::Document
   
   def fold_mark
     repeat([1]) do         # only on first page
-      transparent(0.5){stroke_horizontal_line -20, -10, at: 464 }
+      transparent(0.5){stroke_horizontal_line -20, -10, at: 514 }
     end
   end
   
 
 
   def header
-    bounding_box([0,720], :width => 540) do
+    bounding_box([0,745], :width => 523) do
     float do
       # adds logo
       bounding_box([0,0], :width => 360, :height => 100) do 
@@ -67,11 +67,11 @@ end
   
   def divider_one
     self.line_width= 0.5
-    stroke_horizontal_line 0, 540, :at => [610]
+    stroke_horizontal_line 0, 523, :at => [640]
   end
 
   def sub_header
-  bounding_box([0,600], :width => 540) do
+  bounding_box([0,630], :width => 523) do
     # adds customer address_box
     bounding_box([18,0], :width => 360) do
       customer_details = "#{@invoice.customer_name}\n#{@invoice.customer.address}\n#{@invoice.customer.postcode}"
@@ -84,6 +84,8 @@ end
         inline_format: true
       end 
     end
+
+    @end_of_customer_address = cursor
     
     # adds invoice_heading
       bounding_box([360,0], :width => 180) do
@@ -119,6 +121,7 @@ end
         columns(1).width = 90
       end
     end
+
     # move_down 15
     move_down 20
   end
@@ -126,16 +129,16 @@ end
   end
 
   def divider_two
-    bounding_box([0,cursor], :width => 540) do
+    bounding_box([0,cursor], :width => 523) do
     self.line_width = 0.5
-    stroke_horizontal_line 0, 540, :at => [cursor]
+    stroke_horizontal_line 0, 523, :at => [cursor]
     # horizontal_rule
   end
 end
 
   def invoice_comment
     move_down 10
-    bounding_box([5,cursor], :width => 535) do
+    bounding_box([5,cursor], :width => 520) do
     text "#{@invoice.comment}"
     move_down 10
   end
@@ -157,8 +160,8 @@ end
 
 
   def invoice_table
-    if cursor > 464
-      move_cursor_to 460
+    if cursor > 514
+      move_cursor_to 514
     end
 
     if @invoice.include_vat?
@@ -172,10 +175,15 @@ end
         row(-1).borders = [:bottom]
         row(0).border_width = 0.5
         row(-1).border_width = 0.5
-        columns(0).width = 80
-        columns(1).width = 240
-        columns(2).width = 80
-        columns(3).width = 80
+        # columns(0).width = 80
+        # columns(1).width = 240
+        # columns(2).width = 80
+        # columns(3).width = 80
+        # columns(4).width = 60
+        columns(0).width = 75
+        columns(1).width = 238
+        columns(2).width = 75
+        columns(3).width = 75
         columns(4).width = 60
     end
     else
@@ -189,10 +197,14 @@ end
         row(-1).borders = [:bottom]
         row(0).border_width = 0.5
         row(-1).border_width = 0.5
-        columns(0).width = 80
-        columns(1).width = 120
-        columns(2).width = 260
-        columns(3).width = 80
+        # columns(0).width = 80
+        # columns(1).width = 120
+        # columns(2).width = 260
+        # columns(3).width = 80
+        columns(0).width = 75
+        columns(1).width = 115
+        columns(2).width = 258
+        columns(3).width = 75
     end
   end
 
@@ -203,9 +215,13 @@ end
         table(data) do
           cells.borders = []
           columns(0..3).align = :right
-          columns(0).width = 320
-          columns(1).width = 80
-          columns(2).width = 80
+          # columns(0).width = 320
+          # columns(1).width = 80
+          # columns(2).width = 80
+          # columns(3).width = 60
+          columns(0).width = 313
+          columns(1).width = 75
+          columns(2).width = 75
           columns(3).width = 60
           columns(0).font_style = :bold
         end
@@ -215,8 +231,10 @@ end
         cells.borders = []
         columns(0).align = :right
         columns(1).align = :right
-        columns(0).width = 460
-        columns(1).width = 80
+        # columns(0).width = 460
+        # columns(1).width = 80
+        columns(0).width = 448
+        columns(1).width = 75
         columns(0).font_style = :bold
         end
       end
@@ -225,7 +243,7 @@ end
 
   def divider_three
     self.line_width= 0.5
-    stroke_horizontal_line 0, 540, :at => [cursor]
+    stroke_horizontal_line 0, 523, :at => [cursor]
     move_down 5
   end
 
@@ -294,7 +312,7 @@ end
   def invoice_page_number
     string = "page <page> of <total>"
     options = {
-              at: [bounds.left,0],
+              at: [bounds.left,8],
               start_count: 1,
               size: 8
               }
@@ -305,7 +323,7 @@ end
 
   def generated_by
     repeat(:all) do
-      draw_text "generated using www.bulldogclip.co.uk", :at => [440,-5], size: 6
+      draw_text "generated using www.bulldogclip.co.uk", :at => [420,5], size: 6
     end
   end
 end

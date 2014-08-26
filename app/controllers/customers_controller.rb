@@ -19,11 +19,11 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.visible_to(current_user).find(params[:id])
+    @customer = current_account.customer(params[:id])
   end
 
   def update
-    @customer = Customer.visible_to(current_user).find(params[:id])
+    @customer = current_account.customer(params[:id])
     if @customer.update_attributes(cust_params)
       redirect_to customers_url, notice: "Customer successfully updated"
     else
@@ -32,7 +32,7 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
+    @customer = current_account.customer(params[:id])
     if @customer.destroy
       msg = "#{@customer.name} destroyed"
     else

@@ -16,7 +16,13 @@ describe CategoriesController do
       category = create(:category, account_id: @account.id)
       get :index
       expect(assigns(:categories)).to eq [category]
-    end    
+    end
+    it "ignores other's categories" do
+      category = create(:category, account_id: @account.id)
+      category2 = create(:category, account_id: @account.id + 1)
+      get :index
+      expect(assigns(:categories)).to eq [category]
+    end  
   end
 
   describe "GET #edit" do

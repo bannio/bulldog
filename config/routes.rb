@@ -10,7 +10,11 @@ Bulldog::Application.routes.draw do
 
   # get '/remote_sign_in' => 'remote_content#remote_sign_in', as: :remote_sign_in
 
-  resources :accounts
+  resources :accounts do
+    member do
+      get 'cancel'
+    end
+  end
   resources :bills, except: :show
   resources :customers, except: :show
   resources :invoices

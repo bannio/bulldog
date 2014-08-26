@@ -35,9 +35,9 @@
           <% end %>
         </div>
         <div class="form-group analysis">
-        <%= f.collection_select :customer_id, Customer.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
-        <%= f.collection_select :supplier_id, Supplier.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
-        <%= f.collection_select :category_id, Category.visible_to(current_user).order(:name), :id, :name, include_blank: true %>
+        <%= f.collection_select :customer_id, current_account.customers.order(:name), :id, :name, include_blank: true %>
+        <%= f.collection_select :supplier_id, current_account.suppliers.order(:name), :id, :name, include_blank: true %>
+        <%= f.collection_select :category_id, current_account.categories.order(:name), :id, :name, include_blank: true %>
         </div>
         <%= f.submit 'View', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Submits filter choices to refresh data" %>
         <%= link_to "Clear", new_report_path, class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Clear current filters" %>

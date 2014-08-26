@@ -70,13 +70,19 @@ describe AccountsController do
     context "with valid attributes" do
       before(:each) do
 
-        sign_out @user
-        user = double(User)
-        allow_any_instance_of(Account).to receive(:save_with_customer).and_return(true)
+        # sign_out @user
+        # user = double(User)
+        # allow_any_instance_of(Account).to receive(:save_with_customer).and_return(true)
         allow_any_instance_of(Sale).to receive(:process!).and_return(true)
         allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
+        stripe_customer = OpenStruct.new(id: "cust_id")
+        allow(Stripe::Customer).to receive(:create).with(anything()).and_return(stripe_customer)
       end
-      subject {post :create, account: attributes_for(:account).merge(user_id: "", email: "newaccount@example.com")}
+      subject {post :create, account: attributes_for(:account).merge(user_id: "", 
+        stripe_customer_token: nil,
+        stripe_card_token: "card",
+        email: "newaccount@example.com"
+        )}
 
       it "redirects to home path" do
         expect(subject).to redirect_to home_path
@@ -90,10 +96,12 @@ describe AccountsController do
     end
 
     it 'does not creates a new account if stripe fails to create a token' do
-      exception = Stripe::InvalidRequestError.new("",{})
-      expect(Stripe::Customer).to receive(:create).and_raise(exception)
+      allow_any_instance_of(Account).to receive(:get_customer).and_return(false)
       expect {
-        post :create, account: attributes_for(:account).merge(user_id: "", stripe_card_token: "xx")
+        post :create, account: attributes_for(:account).merge(user_id: "", 
+          stripe_customer_token: nil,
+          stripe_card_token: "xx"
+          )
       }.to change(Account, :count).by(0)
     end
 
@@ -116,9 +124,25 @@ describe AccountsController do
     end
   end
 
+  describe "GET #cancel" do
+    it "renders the cancel template" do
+      account = create(:account, user: @user)
+      get :cancel, id: account
+      expect(response).to render_template :cancel
+    end
+
+    it "assigns the requested account as @account" do
+      account = create(:account, user: @user)
+      get :cancel, id: account
+      expect(assigns(:account)).to eq account
+    end
+  end
+
   describe "PATCH #update" do
     before :each do
       @account = create(:account, name: 'Test Account')
+      stripe_customer = OpenStruct.new(id: "cust_id")
+      allow(Stripe::Customer).to receive(:retrieve).with(anything()).and_return(stripe_customer)
     end
     context "with valid attributes" do
       it "finds the account in question" do

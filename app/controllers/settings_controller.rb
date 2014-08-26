@@ -1,20 +1,23 @@
 class SettingsController < ApplicationController
   before_action :authenticate_user!
 
+  # Because setting is one to one with account we don't need the params[:id]
+  # Access is limited to current_account only
+
   def index
-    @setting = Setting.visible_to(current_user).first
+    @setting = current_account.setting
     render :show
   end
   def show
-    @setting = Setting.visible_to(current_user).find(params[:id])
+    @setting = current_account.setting
   end
 
   def edit
-    @setting = Setting.visible_to(current_user).find(params[:id])
+    @setting = current_account.setting
   end
 
   def update
-    @setting = Setting.visible_to(current_user).find(params[:id])
+    @setting = current_account.setting
     if @setting.update(setting_params)
       redirect_to @setting
     else

@@ -8,22 +8,16 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # before_action :setup_mcapi  # Mailchimp API - moved to Contact model
-
   def current_account
     @current_account ||= current_user.account if current_user
   end
   helper_method :current_account
 
-  # def setup_mcapi
-  #   @mc = Mailchimp::API.new(ENV['MAILCHIMP-API-KEY'])
-  # end
-
   private
 
   def record_not_found
     flash[:alert] = "Item not found or not authorised"
-    redirect_to home_path
+    redirect_to (request.referrer || home_path)
   end
 
   def user_not_authorized

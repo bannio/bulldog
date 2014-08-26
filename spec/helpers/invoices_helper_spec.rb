@@ -4,6 +4,8 @@ describe InvoicesHelper do
 
   before(:each) do
     @customer = create(:customer)
+    allow_any_instance_of(Account).to receive(:get_customer).and_return(true)
+    allow_any_instance_of(Account).to receive(:process_sale).and_return(true)
     @account = create(:account)
     # @setting = create(:setting, account_id: @account.id)
     @vat_rate = create(:vat_rate, account_id: @account.id, name: "Standard", rate: "20")
@@ -40,6 +42,26 @@ describe InvoicesHelper do
     expect(logo_file(@invoice)).to eq nil
     @invoice.account.setting.update_attribute(:logo_file_name, "myLogo")
     expect(logo_file(@invoice)).to include "/medium/myLogo"
+  end
+
+  it "responds to current_card" do
+    account = Account.new(card_last4: 1234)
+    expect(current_card(account)).to eq 1234
+  end
+
+  it "responds to current_card with NA when empty" do
+    account = Account.new()
+    expect(current_card(account)).to eq "NA"
+  end
+
+  it "responds to next_invoice_date" do
+    account = Account.new(next_invoice: "2014-10-25".to_date)
+    expect(next_invoice_date(account)).to eq "25/10/2014"
+  end
+
+  it "responds to next_invoice_date with NA when empty" do
+    account = Account.new()
+    expect(next_invoice_date(account)).to eq "NA"
   end
   
 end

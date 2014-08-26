@@ -2,19 +2,19 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @categories = Category.visible_to(current_user).order(name: :asc)
+    @categories = current_account.categories.order(name: :asc)
   end
 
   def edit
-    @category = Category.visible_to(current_user).find(params[:id])
+    @category = current_account.category(params[:id])
   end
 
   def update
-    @category = Category.visible_to(current_user).find(params[:id])
+    @category = current_account.category(params[:id])
     old_name = @category.name
     new_name = params[:category][:name]
 
-    if Category.visible_to(current_user).where(name: new_name).empty? && new_name != old_name
+    if current_account.categories.where(name: new_name).empty? && new_name != old_name
       if @category.update(name: new_name)
         flash[:success] = "category #{old_name} renamed to #{new_name}"
       else

@@ -126,8 +126,8 @@ Feature: Invoices
     And I should see "Cancel"
 
   Scenario: VAT columns and totals
-    Given VAT is enabled
-    And the account is professional
+    Given the account is subscribed to a business plan
+    And VAT is enabled
     And I have the Business invoice
     And I am on the edit page for this invoice
     Then I should see "VAT"
@@ -160,8 +160,8 @@ Feature: Invoices
   @javascript
   Scenario: Set vat and bank details flags
     Given I have the Business invoice
+    And the account is subscribed to a business plan
     And VAT is enabled
-    And the account is professional
     And I am on the edit page for this invoice
     Then I should see "Print VAT Details?"
     And I should see "Print Bank Details?"

@@ -1,9 +1,5 @@
-Given(/^the account is professional$/) do
-  @plan1 = FactoryGirl.create(:plan)
-  @plan2 = FactoryGirl.create(:plan) # plan with id of 2 should be enabled
-  @account.plan_id = 2
-  @account.vat_enabled = true
-  @account.save
+Given(/^the account is subscribed to a business plan$/) do
+  @account.update_columns(plan_id: 2)
 end
 
 When(/^I visit the VAT page$/) do
@@ -63,7 +59,7 @@ Then(/^I can select "(.*?)" from the VAT rate list$/) do |option|
 end
 
 Given(/^VAT is enabled$/) do
-  @account.update_attribute(:vat_enabled, true)
+  @account.update_columns(vat_enabled: true)
 end
 
 Then(/^I should see (\d+) rates$/) do |num|

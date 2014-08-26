@@ -1,0 +1,42 @@
+<% content_for :title do %>BulldogClip | Cancel Subscription<% end %>
+<% content_for :description do %>Cancel subscription<% end %>
+
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 panel panel-default">
+    <div class="panel-body">
+      <h1>Subscription Cancellation</h1>
+
+     <a href="#" id="pop" class="info-btn pop"
+     data-title="Cancel subscription"
+     data-content="
+     <ul class='info-ul'>
+     <li>Cancelling your subscription will disable your account.</li>
+     <li>Please ensure that you have a copy of your data before you go.</li>
+     <li>Use the 'Back' button to keep the account active.</li>
+     </ul>">
+     <img src=<%= asset_path('info_btn.png') %> alt="info button" class="info-img"/>
+     </a>
+
+      <table class="account-details">
+        <tr>
+          <td class="td-name">Name</td><td class="td-content"><%= @account.name %></td>
+        </tr>
+        
+        <tr>
+          <td class="td-name">Current Plan</td>
+          <td class="td-content"><%= current_plan_name(@account) %></td>
+        </tr>
+
+        <tr>
+          <td class="td-name">Paid up until</td>
+          <td class="td-content"><%= next_invoice_date(@account) %></td>
+        </tr>
+
+      </table>
+      <br/>
+
+      <%= link_to 'Back', account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Back to account details"  %>
+      <%= link_to 'Cancel subscription', account_path(@account, account: {plan_id: 0}), method: :patch, class: "warn-btn std-btn", data: {confirm: "Are you sure?"}, title: "Cancel subscription"  %>
+    </div>
+  </div>
+</div>

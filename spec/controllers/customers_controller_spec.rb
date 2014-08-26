@@ -30,6 +30,16 @@ describe CustomersController do
      expect(assigns(:customers)).to eq([customer])
    end
  end
+
+ describe "GET index" do
+   it "assigns only customers belonging to current account" do
+     customer = Customer.create! valid_attributes
+     customer2 = Customer.create! valid_attributes.merge(account_id: @account.id + 1)
+     get :index, {}
+     expect(assigns(:customers)).to eq([customer])
+   end
+ end
+
  
  describe "GET new" do
    it "assigns a new customer as @customer" do
@@ -43,6 +53,14 @@ describe CustomersController do
      customer = Customer.create! valid_attributes
      get :edit, {:id => customer.to_param}
      expect(assigns(:customer)).to eq(customer)
+   end
+ end
+
+ describe "GET edit" do
+   it "does not assign another account's customer" do
+     customer = Customer.create! valid_attributes.merge(account_id: @account.id + 1)
+     get :edit, {:id => customer.to_param}
+     expect(assigns(:customer)).to eq(nil)
    end
  end
 
@@ -65,8 +83,8 @@ describe CustomersController do
      end
 
      it "rejects someone else's customer" do
-       customer = Customer.create! valid_attributes.merge(account_id: "999")
-       patch :update, id: customer, customer: valid_attributes.merge(account_id: "999")
+       customer = Customer.create! valid_attributes.merge(account_id: @account.id + 1)
+       patch :update, id: customer, customer: valid_attributes.merge(account_id: @account.id + 1)
        expect(response).to redirect_to home_path
      end
    end

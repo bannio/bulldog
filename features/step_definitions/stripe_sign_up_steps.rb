@@ -3,12 +3,26 @@ And(/^stripe-ruby-mock is running$/) do
   StripeMock.stop
   StripeMock.start
   Stripe::Plan.create(currency: "gbp",
-     name: "Test",
-     amount: 2000,
+     name: "Personal Test",
+     amount: 1000,
      interval: "year",
      interval_count: 1,
      trial_period_days: 0,
      id: 1)
+  Stripe::Plan.create(currency: "gbp",
+     name: "Business Monthly Test",
+     amount: 500,
+     interval: "month",
+     interval_count: 1,
+     trial_period_days: 0,
+     id: 2)
+  Stripe::Plan.create(currency: "gbp",
+     name: "Business Annual test",
+     amount: 5000,
+     interval: "year",
+     interval_count: 1,
+     trial_period_days: 0,
+     id: 3)
 end
 
 Then(/^I should be on the Sign up form$/) do
@@ -32,7 +46,39 @@ When(/^my credit card details$/) do
 end
 
 Given(/^a Base Plan exists$/) do
-  @plan = FactoryGirl.create(:plan, id: 1)
+  @plan = FactoryGirl.create(:plan, 
+    id:       1,
+    name:     "Personal",
+    interval: "year",
+    amount:   1000
+    )
+end
+
+Given(/^a Business Monthly Plan exists$/) do
+  @plan = FactoryGirl.create(:plan,
+    id:       2,
+    name:     "Business Monthly",
+    interval: "month",
+    amount:   500
+    )
+end
+
+Given(/^a Business Annual Plan exists$/) do
+  @plan = FactoryGirl.create(:plan,
+    id:       3,
+    name:     "Business Annual", 
+    interval: "year",
+    amount:   5000
+    )
+end
+
+Given(/^the account has a valid Stripe Customer token$/) do
+  @account.update_attribute(:stripe_customer_token, "cust_token")
+  customer = Stripe::Customer.create({
+      id:     'cust_token', 
+      email: 'cucumber@example.com',
+      card: 'void_card_token'
+    })
 end
 
 When(/^I Sign up for Base Plan$/) do
@@ -40,18 +86,12 @@ When(/^I Sign up for Base Plan$/) do
   click_link("Get the personal plan")
 end
 
-# When(/^I enter (\d*), (\d*) and (\d*)$/) do |card_number, cvc, expiry|
 When(/^I enter (\d+), (.*) and (\d+ \/ \d+)$/) do |card_number, cvc, expiry|
-  # page.execute_script("$('#card_number').val('4242 4242 4242 4242')")
   card = card_number.to_i.to_s
   card = card[0..3] + ' ' + card[4..7] + ' ' + card[8..11] + ' ' + card[12..15]
   page.execute_script("$('#card_number').val('#{card}')")
   page.execute_script("$('#cc_exp').val('#{expiry}')")
   fill_in 'card_code', with: cvc.to_i
-  # fill_in 'card_number', with: card_number.to_i
-  # fill_in 'cc_exp', with: expiry.to_i
-  # select(month, from: 'card_month')
-  # select(year.to_i.to_s, from: 'card_year')
   click_button "Subscribe"
 end
 

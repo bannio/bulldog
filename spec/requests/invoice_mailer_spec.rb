@@ -9,6 +9,8 @@ describe InvoiceMailer, type: :request do
     Stripe.api_key = 'sk_fake_api_key' # to ensure that Stripe.com isn't processing this
     StripeMock.start
     # StripeMock.toggle_debug(true)
+    allow_any_instance_of(Account).to receive(:get_customer).and_return(true)
+    allow_any_instance_of(Account).to receive(:process_sale).and_return(true)
     @account = FactoryGirl.create(:account, stripe_customer_token: "cust_token")
     @charge = Stripe::Charge.create( :amount => 400, 
       :currency => "gbp",
@@ -88,6 +90,15 @@ describe InvoiceMailer, type: :request do
 
     it "sends an email" do
       expect { @mail.deliver }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+  end
+
+  describe "#update_account" do
+    it "stores a date" do
+      invoice_dbl = double("stripe invoice")
+      allow(Stripe::Invoice).to receive_message_chain(:upcoming, :date).and_return(1405670902)
+      InvoiceMailer.update_account(@account, @invoice)
+      expect(@account.next_invoice).to eq "2014-07-18".to_date
     end
   end
 end

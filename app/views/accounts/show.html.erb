@@ -10,8 +10,11 @@
      data-title="Your Account Details"
      data-content="
      <ul class='info-ul'>
-     <li>Settings that apply to your Account. See also 'Tools - Invoice Setup for invoice specific settings</li>
-     <li>Use the 'Edit' button to update your details.</li>
+     <li>See also 'Tools - Invoice Setup' for invoice specific settings</li>
+     <li>'Change Plan' allows you to upgrade your plan or set the VAT option (business plan only).</li>
+     <li>Use the 'Update Card' button to change your payment card or reset its expiry date.</li>
+     <li>'Billing History' will show your most recent invoices. It may take some minutes to update after a plan change.</li>
+     <li>We hope that you do not wish to 'Cancel Subscription' but this is where you can start the process.</li>
      </ul>">
      <img src=<%= asset_path('info_btn.png') %> alt="info button" class="info-img"/>
      </a>
@@ -19,6 +22,21 @@
       <table class="account-details">
         <tr>
           <td class="td-name">Name</td><td class="td-content"><%= @account.name %></td>
+        </tr>
+        
+        <tr>
+          <td class="td-name">Current Plan</td>
+          <td class="td-content"><%= current_plan_name(@account) %></td>
+        </tr>
+
+        <tr>
+          <td class="td-name">Next payment due</td>
+          <td class="td-content"><%= next_invoice_date(@account) %></td>
+        </tr>
+
+        <tr>
+          <td class="td-name">Card ending</td>
+          <td class="td-content"><%= current_card(@account) %></td>
         </tr>
 
         <% if @account.business? %>
@@ -28,15 +46,14 @@
           </tr>
         <% end %>
 
-        <tr>
-          <td class="td-name">Current Plan</td>
-          <td class="td-content"><%= @account.plan.name %></td>
-        </tr>
-
       </table>
       <br/>
 
-      <%= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit account settings"  %>
+      <%#= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit account settings"  %>
+      <%= link_to 'Change Plan', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change subscription plan or options"  %>
+      <%= link_to 'Update card', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change payment card details"  %>
+      <%= link_to 'Billing history', edit_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "View billing history"  %>
+      <%= link_to 'Cancel subscription', cancel_account_path(@account), class: "warn-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel Subscription"  %>
       <%#= link_to 'Change Password', edit_user_registration_path, class: "warn-btn std-btn" %>
     </div>
   </div>
