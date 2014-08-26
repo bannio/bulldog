@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="noindex,nofollow">
+    <title>BulldogClip | Subscription Invoice</title>
   </head>
   <body>
     <table style="width: 98%;">
@@ -68,7 +71,7 @@
           </td>
         </tr>
 
-        <tr>
+<!--         <tr>
           <th style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;text-align:left;">COMPANY DETAILS:
           </th>
         </tr>
@@ -89,12 +92,12 @@
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
             Company registration number: 08675874
           </td>
-        </tr>
+        </tr> -->
 
-        <tr>
+<!--         <tr>
           <td style="height: 20px;">
           </td>
-        </tr>
+        </tr> -->
 
         <tr>
           <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;text-align:left;">CUSTOMER DETAILS:
@@ -146,21 +149,53 @@
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Total Amount Charged: 
+            Invoice Total: 
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
             <%= number_to_currency(@invoice.total/100) %>
           </td>
         </tr>
 
+        <tr>
+          <td style="height: 10px;">
+          </td>
+        </tr>
+
         <tr style="height: 10px;">
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+            Starting Account Balance: 
+          </td>
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
+            <%= number_to_currency(@invoice.starting_balance/100) %>
+          </td>
+        </tr>
+
+        <tr style="height: 10px;">
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+            Total Amount Due: 
+          </td>
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
+            <%= number_to_currency(@invoice.amount_due/100) %>
+          </td>
+        </tr>
+
+        <tr style="height: 10px;">
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+            Closing Account Balance: 
+          </td>
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
+            <%= number_to_currency(@invoice.ending_balance/100) %>
+          </td>
+        </tr>
+
+<!--         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
             Total Amount Owed:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
             £0 (Paid in full)
           </td>
-        </tr>
+        </tr> -->
 
         <tr>
           <td style="height: 20px;">
@@ -219,7 +254,15 @@
         </tr>
 
         <tr>
-          <td style="color: #777777;font-size: 12px;height: 27px;font-family: Arial, Sans-serif;">This email is confidential and intended solely to whom it is addressed. It may contain sensitive or privileged information. If you have received this email in error, please inform us at hello@bulldogclip.co.uk and destroy it. Questions? contact us at hello@bulldogclip.co.uk
+          <td style="color: #777777;font-size: 12px;height: 27px;font-family: Arial, Sans-serif;">BulldogClip is provided by Owen Bannister Limited. Registered office: 9 Alba Close, Middleleaze, Swindon, Wiltshire, UK. Company registration number: 08675874.
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #777777;font-size: 12px;height: 27px;font-family: Arial, Sans-serif;">This email is confidential and intended solely to whom it is addressed. It may contain sensitive or privileged information. If you have received this email in error, please inform us at hello@bulldogclip.co.uk and destroy it.
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #777777;font-size: 12px;height: 27px;font-family: Arial, Sans-serif;">Questions? contact us at hello@bulldogclip.co.uk
           </td>
         </tr>
       </table>

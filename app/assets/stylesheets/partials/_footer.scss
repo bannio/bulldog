@@ -5,14 +5,16 @@
 footer {
    position:absolute;
    bottom:0;
-   height:202px;   /* Height of the footer */
+   // height:202px;   /* Height of the footer should match padding btm of main*/
+   height:169px;   /* Height of the footer should match padding btm of main to ensure sticks to bottom*/
    width: 100%
 
 }
 
-footer {
-  background-color: $light-grey;
-}
+// footer > div.footer-background {
+//   background-color: $light-grey;
+//   bottom: 0;
+// }
 
 
 // Footer copyright font size

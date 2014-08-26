@@ -4,14 +4,14 @@
   }
 
 // sets position fixed at 80px from top for larger sizes. 
-// data-offset-top of 120 gives allows it to scroll 120px from start position before fixing
+// data-offset-top of 120 allows it to scroll 120px from start position before fixing
 // @media (min-width: 694px) {
 @media (min-width: 768px) {
   dl.affix {
-    top: 80px; 
+    top: 70px; 
     position: fixed;
+    // position: -webkit-sticky; //for iOS
     width: 25%;
   }
 }
 
-// ACCORDIAN SIDEBAR

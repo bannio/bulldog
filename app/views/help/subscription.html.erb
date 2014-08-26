@@ -1,0 +1,76 @@
+<% content_for :title do %>BulldogClip | Help<% end %>
+<% content_for :description do %>Manage Your Subscription Instructions<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default col-md-10 col-md-offset-1">
+      <div class="panel-body help-page">
+        <h1>Manage Your Subscription</h1>
+        <nav>
+          <ul class="nav nav-pills nav-justified" role="navigation">
+            <li class="active"><a href="#plan" data-toggle="pill">Change plan</a></li>
+            <li><a href="#card" data-toggle="pill">Update card</a></li>
+            <li><a href="#billing" data-toggle="pill">Billing history</a></li>
+            <li><a href="#cancel" data-toggle="pill">Cancel subscription</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="panel panel-default col-md-10 col-md-offset-1 tab-content">
+      <div class="panel-body help-page tab-pane active" id="plan">
+        <h2>Change your subscription plan</h2>
+        <ul>
+          <li>From the menu select 'Account' and then 'Manage Subscription'.</li>
+          <img src=<%= asset_path('subscription_menu.png') %> alt="Manage subscription menu">
+          <li>The account details page shows you what plan you are currently on. To change to a different plan select 'Change Plan'</li>
+          <img src=<%= asset_path('account_details_change_plan.png') %> alt="Change plan button">
+          <li>Select the plan you would like from the drop down menu. To submit your changes press 'Save'.</li>
+          <img src=<%= asset_path('select_plan.png') %> alt="Select plan from dropdown menu">
+          <li>If you choose a more expensive plan your card will be charged for the difference.</li>
+          <li>If the plan you choose is cheaper than your existing plan any credit on your account will be used against future payments and you will not be charged again until your credit runs out. Account credit is worked out on a pro rata basis.</li>
+          <img src=<%= asset_path('plan_change_success.png') %> alt="Plan changed success message">
+          <li>Your new plan will be displayed on the Account Details page. A green success message will show at the top of the screen.</li>
+        </ul>
+      </div>
+
+      <div class="panel-body help-page tab-pane" id="card">
+        <h2>Update your card details</h2>
+        <ul>
+          <li>From the menu select 'Account' and then 'Manage Subscription'.</li>
+          <img src=<%= asset_path('subscription_menu.png') %> alt="Manage subscription menu">
+          <li>The Account Details page shows you the last 4 digits of the your payment card. To update your card select the 'Update Card' button.</li>
+          <img src=<%= asset_path('account_details_update_card.png') %> alt="Update card button">
+          <li>Enter your new card details and then select 'Update Card'</li>
+          <img src=<%= asset_path('new_card_details.png') %> alt="Account details show">
+          <li>Your new card details will be displayed on the Account Details page. A green success message will show at the top of the screen.</li>
+          <img src=<%= asset_path('new_card_success.png') %> alt="Account details show">
+        </ul>
+      </div>
+
+      <div class="panel-body help-page tab-pane" id="billing">
+        <h2>View your billing history</h2>
+        <ul>
+          <li>This feature is coming soon.</li>
+        </ul>
+      </div>
+
+      <div class="panel-body help-page tab-pane" id="cancel">
+        <h2>Cancel your subscription</h2>
+        <ul>
+          <li>WARNING: Once you have cancelled your subscription you will no longer be able to access your account.</li>
+          <li>Before cancelling your subscription we suggest that you export any data that you want to keep using the 'Export' features on the Analysis and Bills pages.</li>
+          <li>From the menu select 'Account' and then 'Manage Subscription'.</li>
+          <img src=<%= asset_path('subscription_menu.png') %> alt="Manage subscription menu">
+          <li>Select 'Cancel Subscription'.</li>
+          <img src=<%= asset_path('account_details_cancel_subscription.png') %> alt="Cancel subscription button">
+          <li>You will be shown the details of the account you have requested to cancel. Confirm that you wish to go ahead with the cancellation by reselecting 'Cancel Subscription'.</li>
+          <img src=<%= asset_path('account_cancellation_confirm.png') %> alt="Account details show">
+          <li>You will be taken to a page confirming your subscription has been cancelled.</li>
+          <li>In case you change your mind and wish to resubscribe BulldogClip will keep your data for you for 30days. To resubscribe sign in using the same email address and password and follow the steps to reactivate your account.</li>
+          <li>If you do not want your data to be stored please email hello@bulldogclip.co.uk and we can delete your data immediately.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

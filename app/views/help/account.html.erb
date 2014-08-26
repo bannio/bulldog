@@ -1,18 +1,17 @@
 <% content_for :title do %>BulldogClip | Help<% end %>
-<% content_for :description do %>Account Details Instructions<% end %>
+<% content_for :description do %>Edit Account Details Instructions<% end %>
 
 <div class="container">
   <div class="row">
     <div class="panel panel-default col-md-10 col-md-offset-1">
       <div class="panel-body help-page">
-        <h1>Account Details</h1>
+        <h1>Edit Account Details</h1>
         <nav>
           <ul class="nav nav-pills nav-justified" role="navigation">
             <li class="active"><a href="#pwd" data-toggle="pill">Change password</a></li>
             <li><a href="#email" data-toggle="pill">Change email address</a></li>
             <li><a href="#name" data-toggle="pill">Change user name</a></li>
-            <li><a href="#vat" data-toggle="pill">Enable VAT</a></li>
-        </ul>
+          </ul>
         </nav>
       </div>
     </div>
@@ -64,24 +63,6 @@
           <img src=<%= asset_path('account_update_success.png') %> alt="Account details edit form">
         </ul>
       </div>
-
-      <div class="panel-body help-page tab-pane" id="vat">
-        <h2>Enable VAT on your account</h2>
-        <ul>
-          <li>If you are VAT registered or you work with companies that require VAT invoices you can activate VAT support on your account. With VAT enabled you can add VAT to bills and invoices (see the VAT instructions for more information).</li>
-          <li>From the menu select 'Account' and then 'Manage Subscription'.</li>
-          <img src=<%= asset_path('subscription_menu.png') %> alt="Manage subscription menu">
-          <li>You will see your current Account Details.</li>
-          <li>To enable or disable VAT on your account select the 'Edit' button.</li>
-          <img src=<%= asset_path('subscription_show.png') %> alt="Account details show">
-          <li>Use the 'Enable VAT on bills?' checkbox to select your preference. Checked enables and unchecked disables VAT support.</li>
-          <img src=<%= asset_path('account_edit_vat.png') %> alt="Account details edit form">
-          <li>To update your settings select the 'Save' button.</li>
-          <li>You should see the message 'Account successfully updated'.</li>
-          <img src=<%= asset_path('account_update_success.png') %> alt="Success message">
-        </ul>
-      </div>
-
     </div>
   </div>
 </div>

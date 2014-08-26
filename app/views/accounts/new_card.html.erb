@@ -2,7 +2,7 @@
 <% content_for :description do %>Update card for account<% end %>
 
 <div class="container stripe">
-  <div class="col-md-4 col-md-offset-4 panel panel-default stripe">
+  <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 panel panel-default stripe">
     <div class="stripe-header">
       <h1 class="secure">New Card Details</h1>
     </div>
@@ -43,9 +43,9 @@
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
     
-    <div class="col-xs-7 subscribe">
-    <%= f.submit "Update Card", class: "create-btn std-btn lg-btn pay pull-right", data: {toggle: "tooltip"}, title: "Update payment card for BulldogClip subscription" %>
-    </div>
+    <div class="col-xs-12 subscribe">
+    <%= f.submit "Update Card", class: "create-btn std-btn lg-btn pull-right update-card", data: {toggle: "tooltip"}, title: "Update payment card for BulldogClip subscription" %>
+    <!-- </div> -->
     <%= link_to 'Cancel', account_path(@account), class: "action-btn std-btn lg-btn pull-right",
       data: {toggle: "tooltip"}, title: "Cancel changes" %>
     <% end %><!-- end of the form -->
