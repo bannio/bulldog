@@ -159,6 +159,9 @@ describe AccountsController do
   describe "PATCH #update" do
     before :each do
       @account = create(:account, name: 'Test Account')
+      allow_any_instance_of(Sale).to receive(:process!).and_return(true)
+      allow_any_instance_of(Sale).to receive(:cancel!).and_return(true)
+      allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
       stripe_customer = OpenStruct.new(id: "cust_id")
       allow(Stripe::Customer).to receive(:retrieve).with(anything()).and_return(stripe_customer)
     end
@@ -176,6 +179,14 @@ describe AccountsController do
       it "redirects to the updated account" do
         patch :update, id: @account, account: attributes_for(:account)
         expect(response).to redirect_to @account
+      end
+      it "redirects to goodbye when account cancelled" do
+        patch :update, id: @account, account: attributes_for(:account).merge(plan_id: 0)
+        expect(response).to redirect_to page_path('goodbye')
+      end
+      it "logs out user when account cancelled" do
+        patch :update, id: @account, account: attributes_for(:account).merge(plan_id: 0)
+        expect(subject.current_user).to be_nil
       end
     end
     context "with invalid attributes" do

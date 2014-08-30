@@ -28,7 +28,12 @@ class AccountsController < ApplicationController
     #   end
     # else # only changing name or VAT flag
       if @account.update(account_params)
-        redirect_to @account, notice: "Account successfully updated"
+        if @account.active?
+          redirect_to @account, notice: "Account successfully updated"
+        else
+          sign_out current_user
+          redirect_to page_path('goodbye')
+        end
       else
         if params[:account][:plan_id] == "0" # the action was a cancellation
           flash[:error] = "There was a problem with this transaction"

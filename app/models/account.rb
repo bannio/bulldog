@@ -38,6 +38,10 @@ class Account < ActiveRecord::Base
     subscription_type == :personal
   end
 
+  def active?
+    plan_id.present? && plan_id > 0
+  end
+
   def self.owned_by_user(user)
     where(user_id: user.id)
   end
@@ -132,6 +136,7 @@ class Account < ActiveRecord::Base
     errors.add :base, sale.error if sale.errored?
     if sale.finished?
       self.next_invoice = nil
+      self.plan_id = 0
     end
     sale.finished? ? true : false
   end

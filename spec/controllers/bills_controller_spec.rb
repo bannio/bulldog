@@ -4,6 +4,14 @@ describe BillsController do
 
   login_user
 
+  # before(:each) do
+  #   @request.env["devise.mapping"] = Devise.mappings[:user]
+  #   @user = FactoryGirl.create(:user)
+  #   @account = FactoryGirl.create(:account, user_id: @user.id)
+  #   @user.confirm!
+  #   sign_in :user, @user
+  # end
+
   describe "GET #new" do
     context "with default customer set" do
       it "finds the default customer" do

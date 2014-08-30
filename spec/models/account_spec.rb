@@ -85,6 +85,33 @@ describe Account do
     expect(account.personal?).to be_falsey
   end
 
+  describe "active?" do
+
+    it "false when plan_id empty" do
+      account = Account.new()
+      expect(account.active?).to be_falsey
+    end
+
+    it "true when plan_id 1" do
+      account = Account.new()
+      account.plan_id = 1
+      expect(account.active?).to be_truthy
+    end
+
+    it "false when plan_id blank" do
+      account = Account.new()
+      account.plan_id = ""
+      expect(account.active?).to be_falsey
+    end
+
+    it "false when plan_id 0" do
+      account = Account.new()
+      account.plan_id = 0
+      expect(account.active?).to be_falsey
+    end
+
+  end
+
   it "can find a customer" do
     # allow_any_instance_of(Account).to receive(:get_customer).and_return(true)
     # allow_any_instance_of(Account).to receive(:process_sale).and_return(true)
@@ -217,6 +244,14 @@ describe Account do
       allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
       account.send(:process_cancellation)
       expect(account.next_invoice).to be_nil
+    end
+    it "sets plan_id to zero" do
+      account = Account.new(@attr)
+      allow_any_instance_of(Sale).to receive(:cancel!)
+      allow_any_instance_of(Sale).to receive(:errored?).and_return(false)
+      allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
+      account.send(:process_cancellation)
+      expect(account.plan_id).to eq 0
     end
   end
 

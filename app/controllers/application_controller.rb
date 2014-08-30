@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  # before_action :check_account_active
+
   def current_account
     @current_account ||= current_user.account if current_user
   end
@@ -32,6 +34,13 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     home_path
+  end
+
+  def check_account_active
+    if current_account && !current_account.active?
+      flash[:error] = "Your account is not active, you may resubscribe here"
+      # redirect_to edit_account_path(current_account)
+    end
   end
 
   # def https_redirect
