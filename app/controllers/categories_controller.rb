@@ -1,18 +1,22 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
+  after_action :verify_authorized
 
   def index
     @categories = current_account.categories.order(name: :asc)
+    authorize @categories
   end
 
   def edit
     @category = current_account.category(params[:id])
+    authorize @category
   end
 
   def update
     @category = current_account.category(params[:id])
+    authorize @category
     old_name = @category.name
-    new_name = params[:category][:name]
+    new_name = cat_params[:name]
 
     if current_account.categories.where(name: new_name).empty? && new_name != old_name
       if @category.update(name: new_name)
@@ -29,6 +33,12 @@ class CategoriesController < ApplicationController
       end
     end
     redirect_to categories_url
+  end
+
+    private
+
+  def cat_params
+    params.require(:category).permit(*policy(@category || Category).permitted_attributes)
   end
 
 end

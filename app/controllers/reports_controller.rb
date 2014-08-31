@@ -1,17 +1,20 @@
 class ReportsController < ApplicationController
   before_action :authenticate_user!
+  after_action :verify_authorized
 
   def new
     respond_to do |format|
       format.html do
         params[:report] = {account_id: current_account.id}
         @report = Report.new(params[:report])
+        authorize @report
         @bills = @report.bills.order(date: :desc).page(params[:page])
       end
 
       format.js do
         # pagination request only
         @report = Report.new(report_params)
+        authorize @report
         @report.valid? # trigger validations
         @bills = @report.bills.order(date: :desc).page(params[:page])
       end
@@ -20,6 +23,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
+    authorize @report
     if @report.valid?
       @bills = @report.bills.order(date: :desc).page(params[:page])
       if params[:commit] != "View" && !@bills.empty? # = submit by JS Export button
@@ -37,6 +41,6 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:from_date, :to_date, :account_id, :customer_id, :supplier_id, :category_id)
+    params.require(:report).permit(*policy(@report || Report).permitted_attributes)
   end
 end

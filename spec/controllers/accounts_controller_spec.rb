@@ -67,16 +67,18 @@ describe AccountsController do
 
   describe "POST #create" do
 
+    before do
+      allow_any_instance_of(Account).to receive(:create_user).and_return(true)
+    end
+
     context "with valid attributes" do
       before(:each) do
 
-        # sign_out @user
-        # user = double(User)
-        # allow_any_instance_of(Account).to receive(:save_with_customer).and_return(true)
         allow_any_instance_of(Sale).to receive(:process!).and_return(true)
         allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
         stripe_customer = OpenStruct.new(id: "cust_id")
         allow(Stripe::Customer).to receive(:create).with(anything()).and_return(stripe_customer)
+        allow_any_instance_of(Account).to receive(:get_next_invoice_date).and_return(nil)
       end
       subject {post :create, account: attributes_for(:account).merge(user_id: "", 
         stripe_customer_token: nil,
@@ -91,7 +93,8 @@ describe AccountsController do
         expect(subject.request.flash[:notice]).to_not be_nil
       end
       it "creates a user" do
-        expect{subject}.to change(User, :count).by(1)
+        expect_any_instance_of(Account).to receive(:create_user)
+        subject
       end
     end
 
@@ -120,24 +123,6 @@ describe AccountsController do
           stripe_card_token: "card",
           name: ""
           )
-      end
-    end
-
-    context "with invalid attributes" do
-      before(:each) do
-        sign_out @user
-        # err = double(Stripe::InvalidRequestError)
-        stripe_customer = OpenStruct.new(id: "cust_id")
-        allow(Stripe::Customer).to receive(:create).with(anything()).and_return(stripe_customer)
-      end
-      it "does not save the new account to the database" do
-        expect{
-          post :create, account: attributes_for(:account).merge(email: "")
-        }.to change(Account, :count).by(0)
-      end
-      it "renders the new template" do
-        post :create, account: attributes_for(:account).merge(email: "")
-        expect(response).to render_template :new
       end
     end
   end

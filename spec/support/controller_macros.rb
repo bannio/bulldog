@@ -10,10 +10,17 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user)
-      # allow_any_instance_of(Account).to receive(:get_customer).and_return(true)
-      # allow_any_instance_of(Account).to receive(:process_sale).and_return(true)
-
       @account = FactoryGirl.create(:account, user_id: @user.id)
+      @user.confirm!
+      sign_in @user
+    end
+  end
+
+  def login_business_user
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @user = FactoryGirl.create(:user)
+      @account = FactoryGirl.create(:account, user_id: @user.id, plan_id: 2)
       @user.confirm!
       sign_in @user
     end

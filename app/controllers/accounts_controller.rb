@@ -1,14 +1,17 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  after_action :verify_authorized
 
   def show
     @account = Account.owned_by_user(current_user).find(params[:id])
+    authorize @account
   end
 
   def new
     plan = Plan.find(params[:plan_id])
     @account = plan.accounts.build
+    authorize @account
     @title = params[:title]
     @price = params[:price]
     @interval = params[:interval]
@@ -16,10 +19,12 @@ class AccountsController < ApplicationController
 
   def edit
     @account = Account.owned_by_user(current_user).find(params[:id])
+    authorize @account
   end
 
   def update
     @account = Account.find(params[:id])
+    authorize @account
     # if @account.plan_id_changed?
     #   if @account.process_changes
     #     redirect_to @account, notice: "Account successfully updated"
@@ -48,6 +53,7 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
+    authorize @account
     if @account.valid?
       sub = @account.process_subscription
       if sub && @account.save
@@ -66,16 +72,13 @@ class AccountsController < ApplicationController
 
   def cancel
     @account = Account.owned_by_user(current_user).find(params[:id])
+    authorize @account
   end
 
   private
 
   def account_params
-    params.require(:account).permit(:name, :address, :postcode, 
-      :include_bank, :bank_account_name, :bank_name, :bank_address, 
-      :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :invoice_heading,
-      :vat_enabled, :plan_id, :email, :stripe_customer_token, :user_id,
-      :stripe_card_token, :title, :price, :interval)
+    params.require(:account).permit(*policy(@account || Account).permitted_attributes)
   end
 
   def record_not_found

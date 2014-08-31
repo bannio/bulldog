@@ -1,8 +1,8 @@
 class BillsController < ApplicationController
   before_action :authenticate_user!
-  # after_action :verify_authorized
+  after_action :verify_authorized
   # after_action :verify_policy_scoped, except: [:new, :create]
-  # helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction
 
   def index
     @bills = current_account.bills.uninvoiced.includes(:customer, :supplier, :category, :vat_rate).
@@ -68,29 +68,9 @@ class BillsController < ApplicationController
     end
   end
 
-  # def category_chart
-  #   @bills = current_account.bills.
-  #                     includes(:category).
-  #                     group("categories.name").
-  #                     references(:category).
-  #                     order("categories.name").
-  #                     sum(:amount)
-  #   authorize @bills
-  #   render json: @bills
-  #   # render json: current_account.bills.
-  #   #                   includes(:category).
-  #   #                   group("categories.name").
-  #   #                   references(:category).
-  #   #                   order("categories.name").
-  #   #                   sum(:amount)
-  # end
-
   private
+  
   def bill_params
-    # params.require(:bill).permit(:account_id, :customer_id, :supplier_id, 
-    #                              :date, :category_id, :description, :amount, 
-    #                              :new_customer, :new_supplier, :new_category,
-    #                              :vat_rate_id, :vat)
     params.require(:bill).permit(*policy(@bill || Bill).permitted_attributes)
   end
 
@@ -101,14 +81,14 @@ class BillsController < ApplicationController
   end
 
   def sort_column
-     %w[date customers.name suppliers.name categories.name description amount].include?(params[:sort]) ? params[:sort] : "date"
-   end
+    %w[date customers.name suppliers.name categories.name description amount].include?(params[:sort]) ? params[:sort] : "date"
+  end
 
-   def sort_direction
-     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-   end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+  end
 
-   def default_customer
-     @default_customer ||= current_account.customers.is_default.first
-   end
+  def default_customer
+    @default_customer ||= current_account.customers.is_default.first
+  end
 end

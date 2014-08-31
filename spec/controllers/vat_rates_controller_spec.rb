@@ -2,18 +2,12 @@ require 'rails_helper'
 
 describe VatRatesController do
 
-  login_user
-
-  def business_plan_account
-    user = subject.current_user
-    user.account.update_attribute('plan_id', 2)
-    user.account
-  end
+  login_business_user
 
   def valid_attributes
    { name: "Standard",
     rate: "20", 
-    account_id: business_plan_account.id,
+    account_id: @account.id,
     active: true
    }
  end
@@ -24,7 +18,6 @@ describe VatRatesController do
 
   describe "GET 'index'" do
     it "returns http success even when no customers" do
-      business_plan_account
       get 'index'
       expect(response).to be_success
     end
@@ -50,13 +43,11 @@ describe VatRatesController do
 
  describe "GET new" do
    it "builds a rate with an account id" do
-     business_plan_account
      get :new, {format: :js}
      expect(assigns(:vat_rate)).to be_a_new(VatRate)
      expect(assigns(:vat_rate).account_id).to_not be_blank
    end
    it "builds a rate with active set to true" do
-     business_plan_account
      get :new, {format: :js}
      expect(assigns(:vat_rate)).to be_a_new(VatRate)
      expect(assigns(:vat_rate).active?).to be_truthy

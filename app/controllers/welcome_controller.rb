@@ -9,7 +9,8 @@ class WelcomeController < ApplicationController
 
   def reroute_cancelled_account_users
     if current_account && !current_account.active?
-      flash[:error] = "Your account is not active, you may resubscribe here"
+      flash[:error] = "Your account is not active, you may resubscribe here
+      using your saved card information. Please select a plan."
       redirect_to edit_account_path(current_account)
     end
   end

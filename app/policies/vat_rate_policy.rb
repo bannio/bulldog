@@ -11,20 +11,12 @@ class VatRatePolicy < ApplicationPolicy
     # end
   end
 
-  def index?
-    user.account.business?
-  end
-
-  def create?
-    user.account.business?
-  end
-
-  def update?
-    user.account.business?
-  end
-
-  def destroy?
-    user.account.business?
-  end
+  def index?    ; user.account.business?                  ; end
+  # def show?     ; user.account.business?                  ; end
+  def create?   ; user.account.business?                  ; end
+  def new?      ; create?                                 ; end
+  def update?   ; user.account.business?                  ; end
+  def edit?     ; update?                                 ; end
+  def destroy?  ; user.account.business?                  ; end
 
 end

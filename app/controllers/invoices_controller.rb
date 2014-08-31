@@ -1,6 +1,7 @@
 class InvoicesController < ApplicationController
 
   before_action :authenticate_user!
+  after_action :verify_authorized
   helper_method :sort_column, :sort_direction
 
   def index
@@ -11,6 +12,7 @@ class InvoicesController < ApplicationController
                                                 filter_to(params[:to_date]).
                                                 page(params[:page]).
                                                 order(sort_column + " " + sort_direction)
+    authorize @invoices
     respond_to do |format|
       format.html
       format.js
@@ -19,6 +21,7 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = current_account.invoice(params[:id])
+    authorize @invoice
     @customers = []
     @customers << @invoice.customer
     @bills = @invoice.bills.includes(:category, :supplier, :vat_rate).order(date: :asc)
@@ -36,12 +39,14 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = current_account.invoices.build
+    authorize @invoice
     @invoice.date = Date.today
     @customers = current_account.customers
   end
 
   def edit
     @invoice = current_account.invoice(params[:id])
+    authorize @invoice
     @customers = []
     @customers << @invoice.customer
     @bills = @invoice.bills.includes(:category, :supplier, :vat_rate)
@@ -50,6 +55,7 @@ class InvoicesController < ApplicationController
   def update
     collect_new_entries
     @invoice = current_account.invoice(params[:id])
+    authorize @invoice
     @customers = []
     @customers << @invoice.customer
     if params[:bill_ids]
@@ -67,6 +73,7 @@ class InvoicesController < ApplicationController
   def create
     collect_new_entries
     @invoice = Invoice.new(invoice_params)
+    authorize @invoice
     @invoice.number = Invoice.next_number(current_account)
     @bills =  current_account.bills.uninvoiced.where(customer_id: @invoice.customer_id).order(date: :desc)
     @invoice.total = @bills.sum(:amount)
@@ -88,6 +95,7 @@ class InvoicesController < ApplicationController
 
   def destroy
     @invoice = current_account.invoice(params[:id])
+    authorize @invoice
     @invoice.bills.each do |bill|
                    bill.invoice_id = nil
                    bill.save
@@ -106,8 +114,7 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:date, :customer_id, :comment, :number, :account_id, 
-                                    :total, :new_header, :header_id, :include_bank, :include_vat)
+    params.require(:invoice).permit(*policy(@invoice || Invoice).permitted_attributes)
   end
 
   def sort_column

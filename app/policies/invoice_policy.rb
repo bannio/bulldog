@@ -1,17 +1,13 @@
-class BillPolicy < ApplicationPolicy
-  class Scope < Scope
+class InvoicePolicy < ApplicationPolicy
+  class Scope < Struct.new(:user, :scope)
     def resolve
       scope.where(account_id: user.account.id)
     end
   end
 
   def permitted_attributes
-    # if user.admin? || user.owner_of?(vat_rate)
-      [:account_id, :customer_id, :supplier_id, 
-       :date, :category_id, :description, :amount, 
-       :new_customer, :new_supplier, :new_category,
-       :vat_rate_id, :vat]
-    # end
+    [:date, :customer_id, :comment, :number, :account_id, 
+    :total, :new_header, :header_id, :include_bank, :include_vat]
   end
 
   def index?    ; user.account.active?                  ; end
