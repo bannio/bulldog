@@ -8,6 +8,8 @@ class Customer < ActiveRecord::Base
   scope :is_default, -> { where(is_default: true) }
 
   validates :name, :account_id, presence: true
+  validates :name, uniqueness: { scope: :account,
+    message: "A customer with that name already exists" }
   before_destroy :check_has_no_bills?
   before_save :check_default
 

@@ -51,19 +51,6 @@ def create_setting
   @setting = @account.create_setting
 end
 
-def create_customer
-  @user ||= create_user
-  @account ||= FactoryGirl.create(:account, user_id: @user.id)
-  @customer = FactoryGirl.create(:customer, account_id: @account.id)
-end
-
-def create_another_customer
-  @another_user ||= create_another_user
-  @another_account ||= FactoryGirl.create(:account, user_id: @another_user.id)
-  @another_customer = FactoryGirl.create(:customer, account_id: @another_account.id, 
-                      name: "Another customer #{@another_account.id}")
-end
-
 def delete_user
   @user ||= User.where(:email => @visitor[:email]).first
   @user.destroy unless @user.nil?

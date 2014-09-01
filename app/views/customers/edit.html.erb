@@ -7,7 +7,7 @@
       <h1>Edit Customer</h1>
           <a href="#" id="pop" class="info-btn pop" data-trigger="hover" data-placement="left" data-container= "body" data-original-title="About this page" data-content="Change an existing customers name or address by entering the details in the form and pressing 'Save'"><img src=<%= asset_path('info_btn.png') %> alt="info button" class="info-img"/></a>
       <div class="authform">
-        <%= render 'form' %>
+        <%= render partial: 'form', locals: {customer: @customer} %>
       </div>
     </div>
   </div>

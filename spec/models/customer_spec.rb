@@ -13,6 +13,17 @@ describe Customer do
     expect(customer.errors[:account_id]).to_not be_empty 
   end
 
+  it "rejects a duplicate name in same account scope" do
+    customer_one.save
+    customer = Customer.new(name: "Customer1", account_id: 1)
+    expect(customer).to_not be_valid
+  end
+  it "accepts a duplicate name in different account scope" do
+    customer_one.save
+    customer = Customer.new(name: "Customer1", account_id: 2)
+    expect(customer).to be_valid
+  end
+
   it "passes validation with a name and account id" do
     customer = Customer.new(name: "Me", account_id: 1)
     customer.valid?

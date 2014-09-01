@@ -41,11 +41,13 @@ class CustomersController < ApplicationController
     @customer = current_account.customer(params[:id])
     authorize @customer
     if @customer.destroy
-      msg = "#{@customer.name} destroyed"
+      flash[:notice] = "#{@customer.name} destroyed"
+      redirect_to customers_url
     else
-      msg = "#{@customer.name} has bills in the system"
+      flash[:error] = "Not deleted. #{@customer.name} has bills in the system"
+      redirect_to customers_url
     end
-    redirect_to customers_url, notice: msg
+    # redirect_to customers_url, notice: msg
   end
 
   private

@@ -101,39 +101,6 @@ Then(/^I have an Account record saved$/) do
   expect(account).to be_truthy
 end
 
-When(/^I fill in customer details and click save$/) do
-  fill_in 'customer_name', with: 'My Customer'
-  fill_in 'customer_address', with: 'My House\n My Street\n My Town'
-  fill_in 'customer_postcode', with: 'ABC 123'
-  click_on 'Save'
-end
-
-Then(/^I should have a Customer record saved$/) do
-  customer = Customer.find_by account_id: @account.id
-  expect(customer).to be
-end
-
-Given(/^I have a customer$/) do
-  create_customer
-end
-
-Given(/^I visit the Customers page$/) do
-  visit '/customers'
-end
-
-Given(/^There is another account with a customer$/) do
-  create_another_customer
-end
-
-Then(/^I should only see my customer$/) do
-  page.should_not have_content 'Another'
-end
-
-Given(/^I type the other customers ID in the edit URL$/) do
-  id = @another_customer.id
-  visit "/customers/#{id}/edit"
-end
-
 Given(/^I visit the settings page$/) do
   visit "/settings"
 end
