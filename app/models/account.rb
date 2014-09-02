@@ -82,8 +82,18 @@ class Account < ActiveRecord::Base
   end
 
   def process_subscription
-    if get_customer
+    if create_stripe_customer
       process_sale
+    else
+      return false
+    end
+  end
+
+  def update_card(token)
+    if customer = retrieve_stripe_customer
+      customer.card = token
+      customer.save
+      update_default_card
     else
       return false
     end
@@ -97,7 +107,6 @@ class Account < ActiveRecord::Base
       else
         result = process_sale
       end
-      Rails.logger.info "result is #{result}"
       return false unless result
     end
     if email_changed?
@@ -121,6 +130,9 @@ class Account < ActiveRecord::Base
       self.card_last4 =       sale.card_last4
       self.card_expiration =  sale.card_expiration
       self.next_invoice =     get_next_invoice_date
+      if plan_id == 1
+        self.vat_enabled = false
+      end
     end
     sale.finished? ? true : false
   end
@@ -142,17 +154,24 @@ class Account < ActiveRecord::Base
   end
 
   def change_email
+    if customer = retrieve_stripe_customer
+      customer.description = "Customer for #{email}"
+      customer.email = email
+      customer.save
+    else
+      return false
+    end
+  end
+
+  def retrieve_stripe_customer
     customer = Stripe::Customer.retrieve(stripe_customer_token)
-    customer.description = "Customer for #{email}"
-    customer.email = email
-    customer.save
-  rescue Stripe::StripeError => e
-    logger.error {"Stripe error while updating customer email: #{e.message}"}
-    errors.add :base, "There was a problem updating email: #{e.message}"
+  rescue Stripe::InvalidRequestError => e
+    logger.error {"Stripe error while retrieving customer: #{e.message}"}
+    errors.add :base, "#{e.message}"
     false
   end
 
-  def get_customer
+  def create_stripe_customer
     # if valid? && stripe_card_token.present?
     if stripe_card_token.present?
       customer = Stripe::Customer.create(
@@ -166,6 +185,18 @@ class Account < ActiveRecord::Base
     logger.error {"Stripe error while creating customer: #{e.message}"}
     errors.add :base, "There was a problem with your payment card: #{e.message}"
     false
+  end
+
+  def update_default_card
+    if customer = retrieve_stripe_customer
+      card = customer.cards.retrieve(customer.default_card)
+      self.update(
+        card_expiration:  Date.new(card.exp_year, card.exp_month, 1),
+        card_last4:       card.last4
+        )
+    else
+      false
+    end
   end
 
   def email_not_in_use

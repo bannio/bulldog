@@ -51,7 +51,7 @@
 
       <%#= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit account settings"  %>
       <%= link_to 'Change Plan', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change subscription plan or options"  %>
-      <%= link_to 'Update card', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change payment card details"  %>
+      <%= link_to 'Update card', new_card_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change payment card details"  %>
       <%= link_to 'Billing history', edit_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "View billing history"  %>
       <%= link_to 'Cancel subscription', cancel_account_path(@account), class: "warn-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel Subscription"  %>
       <%#= link_to 'Change Password', edit_user_registration_path, class: "warn-btn std-btn" %>

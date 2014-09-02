@@ -20,12 +20,14 @@ class AccountPolicy < ApplicationPolicy
   end
 
   # def index?    ; user.account.active?                  ; end
-  def show?     ; true                                  ; end
-  def create?   ; true                                  ; end
-  def new?      ; true                                  ; end
-  def update?   ; true                                  ; end
-  def edit?     ; true                                  ; end
-  def cancel?   ; user.account.active?                  ; end
+  def show?        ; true                                  ; end
+  def create?      ; true                                  ; end
+  def new?         ; true                                  ; end
+  def update?      ; true                                  ; end
+  def edit?        ; true                                  ; end
+  def cancel?      ; user.account.active?                  ; end
+  def new_card?    ; true                                  ; end
+  def update_card? ; true                                  ; end
   # def destroy?  ; user.account.active?                  ; end
 
 end

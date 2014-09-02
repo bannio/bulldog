@@ -17,6 +17,24 @@ class AccountsController < ApplicationController
     @interval = params[:interval]
   end
 
+  def new_card
+    @account = policy_scope(Account).find(params[:id])
+    authorize @account
+  end
+
+  def update_card
+    @account = policy_scope(Account).find(params[:id])
+    authorize @account
+
+    if @account.update_card(params[:account][:stripe_card_token])
+      flash[:success] = "Thankyou. Your card details have been updated"
+      redirect_to @account
+    else
+      flash[:error] = "There was a problem with your payment card"
+      render :new_card
+    end
+  end
+
   def edit
     @account = Account.owned_by_user(current_user).find(params[:id])
     authorize @account
@@ -25,13 +43,6 @@ class AccountsController < ApplicationController
   def update
     @account = Account.find(params[:id])
     authorize @account
-    # if @account.plan_id_changed?
-    #   if @account.process_changes
-    #     redirect_to @account, notice: "Account successfully updated"
-    #   else
-    #     render 'edit'
-    #   end
-    # else # only changing name or VAT flag
       if @account.update(account_params)
         if @account.active?
           redirect_to @account, notice: "Account successfully updated"

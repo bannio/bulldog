@@ -282,6 +282,24 @@ describe Account do
       expect(@account).to receive(:change_email)
       @account.save
     end
+    it "sets vat_enabled to false if change to personal plan" do
+      allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
+      @account.vat_enabled = true
+      @account.plan_id = 2
+      @account.save           # account now business and vat_enabled true
+      @account.plan_id = 1    # 
+      @account.save           # simulate downgrade to personal plan
+      expect(@account.vat_enabled).to be_falsey
+    end
+    it "leaves vat_enabled true if change to business plan" do
+      allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
+      @account.vat_enabled = true
+      @account.plan_id = 2
+      @account.save           # account now business and vat_enabled true
+      @account.plan_id = 3    # 
+      @account.save           # simulate upgrade to annual plan
+      expect(@account.vat_enabled).to be_truthy
+    end
   end
 
   describe "change_email" do
@@ -295,6 +313,46 @@ describe Account do
       account.send(:change_email)
       customer = Stripe::Customer.retrieve('my_customer')
       expect(customer.email).to eq "newone@example.com"
+    end
+  end
+
+  describe "update_card" do
+
+    it "updates expiry date and last4" do
+      card_token = StripeMock.generate_card_token(last4: "9191", exp_year: 1984, exp_month: 10)
+      cus = Stripe::Customer.create(card: card_token)
+      card_token_2 = StripeMock.generate_card_token(last4: "1234", exp_year: 1952, exp_month: 10)
+      account = create(:account, stripe_customer_token: cus.id)
+      account.update_card(card_token_2)
+      expect(account.card_last4).to eq 1234
+      expect(account.card_expiration).to eq "Wed, 01 Oct 1952".to_date
+    end
+
+    it "raises an error when Stripe customer missing" do
+      allow(Stripe::Customer).to receive(:retrieve).and_raise("Stripe::InvalidRequestError")
+      card_token = StripeMock.generate_card_token(last4: "9191", exp_year: 1984, exp_month: 10)
+      cus = Stripe::Customer.create(card: card_token)
+      card_token_2 = StripeMock.generate_card_token(last4: "1234", exp_year: 1952, exp_month: 10)
+      account = create(:account, stripe_customer_token: cus.id)
+      expect {account.update_card(card_token_2)}.to raise_error("Stripe::InvalidRequestError")
+    end
+
+    it "returns true on success" do
+      card_token = StripeMock.generate_card_token(last4: "9191", exp_year: 1984, exp_month: 10)
+      cus = Stripe::Customer.create(card: card_token)
+      card_token_2 = StripeMock.generate_card_token(last4: "1234", exp_year: 1952, exp_month: 10)
+      account = create(:account, stripe_customer_token: cus.id)
+      expect(account.update_card(card_token_2)).to be_truthy
+    end
+
+    it "returns false on failure" do
+      # allow(Stripe::Customer).to receive(:retrieve).and_raise("Stripe::InvalidRequestError")
+      allow(Stripe::Customer).to receive(:retrieve).and_return(false)
+      card_token = StripeMock.generate_card_token(last4: "9191", exp_year: 1984, exp_month: 10)
+      cus = Stripe::Customer.create(card: card_token)
+      card_token_2 = StripeMock.generate_card_token(last4: "1234", exp_year: 1952, exp_month: 10)
+      account = create(:account, stripe_customer_token: cus.id)
+      expect(account.update_card(card_token_2)).to be_falsey
     end
   end
 

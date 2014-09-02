@@ -13,6 +13,8 @@ Bulldog::Application.routes.draw do
   resources :accounts do
     member do
       get 'cancel'
+      get 'new_card'
+      patch 'update_card'
     end
   end
   resources :bills, except: :show

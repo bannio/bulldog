@@ -1,0 +1,53 @@
+<% content_for :title do %>BulldogClip | New Card<% end %>
+<% content_for :description do %>Update card for account<% end %>
+
+<div class="container stripe">
+  <div class="col-md-4 col-md-offset-4 panel panel-default stripe">
+    <div class="stripe-header">
+      <h1 class="secure">New Card Details</h1>
+    </div>
+    <hr>
+    <div class="stripe-secure">
+      <img src=<%= asset_path('padlock.png') %> alt="padlock" class="secure img-responsive">
+      <p class="secure">SSL encrypted secure</p>
+      <img src=<%= asset_path('stripe.png') %> alt="powered by stripe" class="stripe-power pull-right">
+    </div>
+    <%= form_for @account, url: update_card_account_path do |f| %>
+    <div class="panel-body sensitive well">
+      <%= f.hidden_field :stripe_card_token %>
+      
+      <div class="field card-number">
+        <%= label_tag :card_number, "Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "form-control card-number", placeholder: "16 digit card number", type: "tel", required: 'required' %>
+        <img src=<%= asset_path('cc.png') %> alt="card types accepted" class="cards">
+      </div>
+      <!-- <div class="field"> -->
+      <!-- </div> -->
+      <div class="row">
+        <div class="col-xs-4 cvc-exp">
+          <div class="field card-expiration" >
+            <%= label_tag :cc_exp, "Expiry Date" %>
+            <input id="cc_exp" type="tel" class="form-control expiry-date" placeholder="MM / YY" autocompletetype="cc-exp" required="required">
+          </div>
+        </div>
+        <div class="col-xs-8 cvc-exp">
+          <div class="field cvc">
+            <%= label_tag :card_code, "Security Code (CVC)", class: "cvc" %>
+            <%= text_field_tag :card_code, nil, name: nil, class: "form-control cvc", placeholder: "123", type: "tel", required: 'required' %>
+            <img src=<%= asset_path('cvc.png') %> alt="CVC on back of card" class="cvc">
+          </div>
+        </div>
+      </div>
+    </div><!-- end sensitive well -->
+    <div id="stripe_error" class="stripe-error">
+      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+    </div>
+    
+    <div class="col-xs-7 subscribe">
+    <%= f.submit "Update Card", class: "create-btn std-btn lg-btn pay pull-right", data: {toggle: "tooltip"}, title: "Update payment card for BulldogClip subscription" %>
+    </div>
+    <%= link_to 'Cancel', account_path(@account), class: "action-btn std-btn lg-btn pull-right",
+      data: {toggle: "tooltip"}, title: "Cancel changes" %>
+    <% end %><!-- end of the form -->
+  </div><!-- end panel-default -->
+</div><!-- end container -->

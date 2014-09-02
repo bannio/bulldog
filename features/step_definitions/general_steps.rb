@@ -88,6 +88,10 @@ Then(/^I should not see "(.*?)"$/) do |text|
   page.should_not have_content text
 end
 
+Then(/^I should see button "(.*?)"$/) do |button|
+  expect(page).to have_button(button)
+end
+
 When(/^I fill in address details and click save$/) do
   fill_in 'account_name', with: 'My Name'
   fill_in 'account_address', with: 'My House\n My Street\n My Town'

@@ -33,7 +33,14 @@ describe AccountsController do
       get :show, id: account2
       expect(response).to redirect_to root_path
     end 
-  end  
+  end
+
+  describe "GET #new_card" do
+    it "assigns account as @account" do
+      get :new_card, id: @account
+      expect(assigns(:account)).to eq @account
+    end
+  end 
 
   describe "GET #new" do
     it "assigns an new account as @account" do
@@ -99,7 +106,7 @@ describe AccountsController do
     end
 
     it 'does not creates a new account if stripe fails to create a token' do
-      allow_any_instance_of(Account).to receive(:get_customer).and_return(false)
+      allow_any_instance_of(Account).to receive(:create_stripe_customer).and_return(false)
       expect {
         post :create, account: attributes_for(:account).merge(user_id: "", 
           stripe_customer_token: nil,
@@ -187,6 +194,28 @@ describe AccountsController do
         expect(response).to render_template :edit
       end
     end
+  end
+
+  describe "PATCH #update_card" do
+
+    let(:attrs){{stripe_card_token: "card_token"}}
+
+    it "redirects to the updated account on success" do
+      allow_any_instance_of(Account).to receive(:update_card).and_return(true)
+      patch :update_card, id: @account, account: attrs
+      expect(response).to redirect_to @account
+    end
+    it "renders new_card on failure" do
+      allow_any_instance_of(Account).to receive(:update_card).and_return(false)
+      patch :update_card, id: @account, account: attrs
+      expect(response).to render_template :new_card
+    end
+    it "flashes an error message on failure" do
+      allow_any_instance_of(Account).to receive(:update_card).and_return(false)
+      patch :update_card, id: @account, account: attrs
+      expect(flash[:error]).to eq "There was a problem with your payment card"
+    end
+
   end
 
 end

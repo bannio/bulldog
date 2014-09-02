@@ -111,3 +111,18 @@ end
 Then(/^I use a card that is valid$/) do
   
 end
+
+When(/^I visit the Manage Subscription page$/) do
+  visit account_path(@account)
+end
+
+When(/^I enter new card expiry "(.*)"$/) do |date|
+  page.execute_script("$('#card_number').val('4242424242424242')")
+  page.execute_script("$('#cc_exp').val('#{date}')")
+  fill_in 'card_code', with: '123'
+  click_button "Update Card"
+end
+
+And(/^My account has the expiry date "(.*)"$/) do |date|
+  expect(@account.card_expiration).to eq date.to_date
+end

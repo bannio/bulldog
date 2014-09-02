@@ -37,6 +37,26 @@ SITENAME = {
       return STRIPE.setupForm();
     },
 
+    new_card: function () {
+    // action-specific code
+      console.log("accounts#new_card");
+      $('#card_number').payment('formatCardNumber');
+      $('#card_code').payment('formatCardCVC');
+      $('#cc_exp').payment('formatCardExpiry');
+      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+      return STRIPE.setupForm();
+    },
+
+    update_card: function () {
+    // action-specific code
+      console.log("accounts#new_card");
+      $('#card_number').payment('formatCardNumber');
+      $('#card_code').payment('formatCardCVC');
+      $('#cc_exp').payment('formatCardExpiry');
+      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+      return STRIPE.setupForm();
+    },
+
     create: function () {
     // action-specific code
       console.log("accounts#create");
@@ -206,7 +226,11 @@ SELECT = {
 STRIPE = {
   setupForm: function () {
     console.log("STRIPE setupForm");
-    return $('#new_account').submit(function () {
+    return $('form').submit(function () {
+    // must only have one form on the page as the selector above
+    // does not target an id so that the same code can be used on 
+    // both new account and new card. Old specific target was:
+    // return $('#new_account').submit(function () {
       var expiry, validateExpiry, card, validCard, cvc, validCvc;
       $('input[type=submit]').attr('disabled', true);
       $('.card-number').removeClass('field_with_errors');
@@ -258,7 +282,8 @@ STRIPE = {
   handleStripeResponse: function (status, response) {
     if (status === 200) {
       $('#account_stripe_card_token').val(response.id);
-      return $('#new_account')[0].submit();
+      // return $('#new_account')[0].submit();
+      return $('form')[0].submit();
     }
     $('#stripe_error').text(response.error.message);
     return $('input[type=submit]').attr('disabled', false);

@@ -14,7 +14,7 @@
     data: {toggle: "tooltip"}, title: "Save customers details"  %>
   <%= link_to "Cancel", customers_path, class: "action-btn std-btn",
     data: {toggle: "tooltip"}, title: "Cancel and return to list of customers"  %>
-  <% if action_name == 'edit' %>
+  <% if action_name != 'new' %>
     <%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warn-btn std-btn', title: "Delete customer"  %>
   <% end %>
   </div>
