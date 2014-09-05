@@ -30,8 +30,14 @@ class Bill < ActiveRecord::Base
   def category_name
     category.name
   end
+  def excl_vat
+    vat ? amount - vat : amount
+  end
   def vat_rate_name
     vat_rate_id ? vat_rate.name : ""
+  end
+  def vat_rate_value
+    vat_rate_id ? vat_rate.rate.to_s : ""
   end
   def invoice_number
     invoice_id ? invoice.number : ""

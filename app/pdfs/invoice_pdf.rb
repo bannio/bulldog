@@ -17,7 +17,7 @@ class InvoicePdf < Prawn::Document
     invoice_comment
     invoice_table
     invoice_total
-    divider_three
+    # divider_three
     vat_summary_table
     payment_details
     invoice_page_number
@@ -148,7 +148,7 @@ end
       if @invoice.include_vat?
         [["Date", "Description", "Amount", "VAT rate", "VAT"]] +
         @bills.map do |bill|
-        [bill.date, bill.description, price(bill.amount), bill.vat_rate_name, price(bill.vat)]
+        [bill.date, bill.description, price(bill.excl_vat), bill.vat_rate_value, price(bill.vat)]
       end
       else
         [["Date", "Type", "Description", "Amount"]] +
@@ -211,7 +211,7 @@ end
   
   def invoice_total
       if @invoice.include_vat?
-      data = [["Total:", "#{price(@invoice.total)}", "", "#{price(@view.total_vat(@invoice))}"]]
+      data = [["Total excl. VAT", "#{price(@invoice.total - @view.total_vat(@invoice))}", "", "#{price(@view.total_vat(@invoice))}"]]
         table(data) do
           cells.borders = []
           columns(0..3).align = :right
@@ -254,10 +254,14 @@ end
         columns(0..4).align = :right
         cells.borders = []
         cells.padding = [2,5]
-        columns(0).width = 80
-        columns(1).width = 240
-        columns(2).width = 80
-        columns(3).width = 80
+        row(0).borders = [:bottom]
+        # row(-1).borders = [:bottom]
+        row(0).border_width = 0.5
+        # row(-1).border_width = 0.5
+        columns(0).width = 83
+        columns(1).width = 230
+        columns(2).width = 75
+        columns(3).width = 75
         columns(4).width = 60
       end
     end
@@ -265,9 +269,12 @@ end
   
   def vat_summary
     summary_table = []
-    @view.vat_rates(@bills).each_with_index do |rate, index|
-    summary_table << ["", "#{'VAT Summary' if index == 0}", "", rate.name, "#{price(@view.vat_by_rate(@invoice, rate))}"]
-    end
+    summary_table << ["","VAT", "#{price(@view.total_vat(@invoice))}","",""]
+    summary_table << ["","TOTAL", "#{price(@invoice.total)}","",""]
+    # @view.vat_rates(@bills).each_with_index do |rate, index|
+    # summary_table << ["", "#{'VAT Summary' if index == 0}", "", rate.name, "#{price(@view.vat_by_rate(@invoice, rate))}"]
+    # summary_table << ["", "#{'VAT Summary' if index == 0}", "", rate.name, "#{price(@view.vat_by_rate(@invoice, rate))}"]
+    # end
     summary_table
   end
 
