@@ -74,20 +74,33 @@ describe Contact do
     expect(Contact.new(@attr.merge(message: "Short message"))).to be_valid
   end
 
-  it "will not try to send email if no address given" do
-    c = Contact.new(@attr.merge(email: ""))
-    expect(c.add_to_mail_list).to eq nil
-  end
+  describe "add_to_mail_list" do
+    before do
+      mailchimp = double('mailchimp').as_null_object
+      allow(Mailchimp::API).to receive(:new).and_return(mailchimp)
+    end
 
-  it "will not try to send email if mail_list not checked" do
-    c = Contact.new(@attr.merge(mail_list: "0"))
-    expect(c.add_to_mail_list).to eq nil
-  end
+    it "will not try to send email if no address given" do
+      c = Contact.new(@attr.merge(email: ""))
+      expect(c.add_to_mail_list).to eq nil
+    end
 
-  it "adds to mail list if mail_list checked" do
-    c = Contact.new(@attr)
-    allow(c).to receive_message_chain(:mailchimp, :lists, :subscribe).and_return(true)
-    expect(c.add_to_mail_list).to be_truthy
-  end
+    it "will not try to send email if mail_list not checked" do
+      c = Contact.new(@attr.merge(mail_list: "0"))
+      expect(c.add_to_mail_list).to eq nil
+    end
 
+    it "will not call mailchimp if mail_list not checked" do
+      c = Contact.new(@attr.merge(mail_list: "0"))
+      expect(c).not_to receive(:mailchimp) 
+      # expect(c).not_to receive_message_chain(:mailchimp, :lists, :subscribe) 
+      c.add_to_mail_list
+      # expect(c.add_to_mail_list).to eq nil
+    end
+
+    it "adds to mail list if mail_list checked" do
+      c = Contact.new(@attr)
+      expect(c.add_to_mail_list).to be_truthy
+    end
+  end
 end
