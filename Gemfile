@@ -46,7 +46,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'bootstrap-sass', '~> 3.1.1.0' #'>= 3.0.0.0'
+gem 'bootstrap-sass', '~> 3.2.0.0'#'~> 3.1.1.0' #'>= 3.0.0.0'
 
 # gem 'high_voltage'  # for static pages
 gem 'simple_form'
@@ -69,6 +69,7 @@ group :development do
   gem "binding_of_caller"
   gem "rails_layout"
   gem 'sprockets_better_errors'
+  gem "brakeman", :require => false
 end
 
 group :test, :development do
