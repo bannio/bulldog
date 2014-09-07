@@ -356,4 +356,27 @@ describe Account do
     end
   end
 
+  describe "add_to_subscriber_list" do
+    before do
+      mailchimp = double('mailchimp').as_null_object
+      allow(Mailchimp::API).to receive(:new).and_return(mailchimp)
+    end
+
+    it "responds to add_to_subscriber_list" do
+      account = Account.new(email: "test@example.com", mail_list: "1") 
+      expect(account.add_to_subscriber_list).to be_truthy
+    end
+
+    it "calls mailchimp if mail_list checked" do
+      account = Account.new(email: "test@example.com", mail_list: "1")
+      expect(account).to receive(:mailchimp)
+      account.add_to_subscriber_list
+    end
+
+    it "does not call mailchimp if mail_list un-checked" do
+      account = Account.new(email: "test@example.com", mail_list: "0")
+      expect(account).not_to receive(:mailchimp)
+      account.add_to_subscriber_list
+    end
+  end
 end

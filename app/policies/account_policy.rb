@@ -16,7 +16,7 @@ class AccountPolicy < ApplicationPolicy
       :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :invoice_heading,
       :vat_enabled, :plan_id, :email, :stripe_customer_token, :user_id,
       :stripe_card_token, :title, :price, :interval, :card_last4,
-      :card_expiration, :next_invoice, :date_reminded]
+      :card_expiration, :next_invoice, :date_reminded, :mail_list]
   end
 
   # def index?    ; user.account.active?                  ; end
