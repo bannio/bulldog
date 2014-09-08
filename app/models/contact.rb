@@ -30,9 +30,12 @@ class Contact
   def add_to_mail_list
     # only if there is a to address and the add to list box was checked
     return unless self.email.present? && self.mail_list == '1'
-    list_id = ENV["MAILCHIMP_MAIL_LIST"]
+    grouping_id = ENV["MAILCHIMP_GROUP_TYPE_ID"]
+    list_id =     ENV["MAILCHIMP_MAIL_LIST"]
+    merge_vars =  {groupings: [id: grouping_id, groups: ["Contacts"]]}
     begin
-      mailchimp.lists.subscribe(list_id, {'email' => email})
+      mailchimp.lists.subscribe(list_id, {'email' => email},merge_vars)
+      # mailchimp.lists.subscribe(list_id, {'email' => email},merge_vars,'',false)
     rescue => e
       Rails.logger.error("MAILCHIMP lists.subscribe #{email} to list #{list_id} said: #{e}")
       # don't want to bother the user with success or failure here.
