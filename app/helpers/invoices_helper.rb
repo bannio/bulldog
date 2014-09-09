@@ -57,4 +57,12 @@ module InvoicesHelper
       "NA"
     end
   end
+
+  def logo_thumb(setting)
+    if setting.logo_file_name
+      image_tag setting.logo.url(:thumb)
+    else
+      "No logo uploaded"
+    end
+  end
 end

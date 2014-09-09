@@ -87,7 +87,7 @@
       <% if current_account.business? %>
         <table class="account-details">
           <tr>
-            <td class="td-name">Logo</td><td class="td-content"><%= image_tag @setting.logo.url(:thumb), alt: "No logo uploaded" %></td>
+            <td class="td-name">Logo</td><td class="td-content"><%= logo_thumb(@setting) %></td>
           </tr>
         </table>
       <% end %>
