@@ -90,7 +90,8 @@ describe AccountsController do
       subject {post :create, account: attributes_for(:account).merge(user_id: "", 
         stripe_customer_token: nil,
         stripe_card_token: "card",
-        email: "newaccount@example.com"
+        email: "newaccount@example.com",
+        mail_list: "1"
         )}
 
       it "redirects to home path" do
@@ -101,6 +102,10 @@ describe AccountsController do
       end
       it "creates a user" do
         expect_any_instance_of(Account).to receive(:create_user)
+        subject
+      end
+      it "subscribes to a list" do
+        expect_any_instance_of(Account).to receive(:add_to_subscriber_list)
         subject
       end
     end

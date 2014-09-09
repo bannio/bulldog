@@ -2,21 +2,17 @@
   margin-bottom: 10px;
 }
 
-// SIGNIN MODAL
-.checkbox.remember-me input[type="checkbox"] {
+// SIGNIN MODAL AND MAILLIST CHECKBOXES
+.checkbox.remember-me input[type="checkbox"],
+.checkbox.contact-us input[type="checkbox"] {
   margin-left: 5px;
   float:none;
 }
 
 .checkbox.remember-me label,
 .checkbox.contact-us label {
-  padding-left: 5px;
-}
-
-// CONTACT US FORM
-.checkbox.contact-us input[type="checkbox"] {
-  margin-left: 0px;
-  float: none;
+  margin-top: 0px;
+  padding-left: 25px;
 }
 
 // STRIPE PAYMENT FORM

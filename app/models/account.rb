@@ -20,7 +20,7 @@ class Account < ActiveRecord::Base
   validate :email_not_in_use, on: :create
 
   # scope :owned_by_user, -> { where(user_id: current_user.id) }
-  attr_accessor :stripe_card_token
+  attr_accessor :stripe_card_token, :mail_list
 
   # Stripe Plans: 1: Personal annual, 2: Business monthly, 3: Business annual
 
@@ -96,6 +96,20 @@ class Account < ActiveRecord::Base
       update_default_card
     else
       return false
+    end
+  end
+
+  def add_to_subscriber_list
+    # only if there is a to address and the add to list box was checked
+    return unless self.email.present? && self.mail_list == '1'
+    grouping_id = ENV["MAILCHIMP_GROUP_TYPE_ID"]
+    list_id = ENV["MAILCHIMP_MAIL_LIST"]
+    merge_vars = {groupings: [id: grouping_id, groups: ["Users"]]}
+    begin
+      mailchimp.lists.subscribe(list_id, {'email' => email},merge_vars)
+    rescue => e
+      Rails.logger.error("MAILCHIMP lists.subscribe #{email} to list #{list_id} said: #{e}")
+      # don't want to bother the user with success or failure here.
     end
   end
 
@@ -211,4 +225,7 @@ class Account < ActiveRecord::Base
     self.next_invoice = nil
   end
 
+  def mailchimp
+    mailchimp ||= Mailchimp::API.new(ENV['MAILCHIMP-API-KEY'])
+  end
 end

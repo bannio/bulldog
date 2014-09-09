@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery.payment
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require select2
 //= require jsapi
 //= require chartkick

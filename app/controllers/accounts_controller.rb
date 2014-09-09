@@ -69,6 +69,7 @@ class AccountsController < ApplicationController
       sub = @account.process_subscription
       if sub && @account.save
         @account.create_user
+        @account.add_to_subscriber_list
         redirect_to home_path, 
         notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
       else
