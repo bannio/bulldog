@@ -21,7 +21,7 @@ class ContactsController < ApplicationController
       end
       redirect_to home_path 
     else
-      flash[:alert] = "Your message could not be sent. Please include a message or select add to mailing list before sending."
+      flash.now[:alert] = "Your message could not be sent. Please include a message or select add to mailing list before sending."
       render 'new'
     end
   end
