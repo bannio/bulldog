@@ -15,6 +15,15 @@
   padding-left: 25px;
 }
 
+// SIGN IN PAGE
+div.authform > form > div.checkbox > input#user_remember_me {
+  float: none;
+  margin-left: 0px;
+}
+div.authform > form > div.checkbox > label {
+  padding-left: 10px;
+}
+
 // STRIPE PAYMENT FORM
 
 // stripe form errors
@@ -185,6 +194,11 @@ h3.price {
   line-height: 2.5rem;
   text-align: center;
   padding-top: 10px;
+}
+
+// UPDATE CARD FORM
+div.subscribe > input.update-card {
+  margin-right: 0px;
 }
 
 // INVOICES

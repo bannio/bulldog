@@ -74,7 +74,8 @@ main {
   padding-top: 80px; 
   background-color: $white;
   height: 100%;
-  padding-bottom: 207px;
+  // padding-bottom: 207px; //should match height of footer to ensure sticks to bottom
+  padding-bottom: 169px; //should match height of footer to ensure sticks to bottom
 }
 
 

@@ -12,6 +12,10 @@
 }
 }
 
+div.container.plans {
+  margin-bottom: 10px;
+}
+
 div.signup {
   // margin: 10px 0px 0px;
   text-align: center;
@@ -61,7 +65,8 @@ h2.video-header {
 @media screen and (min-width: 768px){
 .spacer {
   padding-top: 80px;
-  margin-top: -80px;
+  // margin-top: -80px;
+  margin-top: -60px;
 }
 }
 
@@ -89,6 +94,14 @@ ul.faq {
 
 ul {
 list-style-type: square;
+}
+
+// CONTACT US PAGE
+div.row.first-row {
+  margin-top: 20px;
+}
+div.row.last-row {
+  margin: 10px 0 30px;
 }
 
 // styles free demo page
