@@ -19,7 +19,10 @@ describe InvoiceMailer, type: :request do
     @event = StripeMock.mock_webhook_event('invoice.payment_succeeded', {
         :customer => "cust_token",
         :total => 1200,
-        :charge => @charge.id
+        :charge => @charge.id,
+        :starting_balance => -2400,
+        :ending_balance => -1200,
+        :amount_due => 0
       })
     @invoice = @event.data.object
     @error = {message: 'test error message'}

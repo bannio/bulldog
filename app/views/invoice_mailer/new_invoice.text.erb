@@ -30,9 +30,6 @@ Invoice Total: <%= number_to_currency(@invoice.total/100).rjust(65) %>
 Starting Account Balance: <%= number_to_currency(@invoice.starting_balance/100).rjust(54) %>
 Total Amount Due: <%= number_to_currency(@invoice.amount_due/100).rjust(62) %>
 Closing Account Balance: <%= number_to_currency(@invoice.ending_balance/100).rjust(55) %>
-<!-- Total Amount Charged: <#%= number_to_currency(@invoice.total/100).rjust(58) %> -->
-<!-- Total Amount Owed:                                                         £0.00 
-                                                                  (Paid in full) -->
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
