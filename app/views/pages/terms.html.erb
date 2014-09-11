@@ -42,6 +42,12 @@
           <a href="#wrong">Things can go Wrong</a>
         </dd>
         <dd>
+          <a href="#very_wrong">Things can go very Wrong</a>
+        </dd>
+        <dd>
+          <a href="#refunds">Upgrades, downgrades and refunds</a>
+        </dd>
+        <dd>
           <a href="#viruses">Viruses</a>
         </dd>
         <dd>
@@ -59,7 +65,8 @@
     <div class="row spacer" id="top">
       <h3>Terms of Use</h3>
       <p> Please read before using this website. If you have any queries in 
-      respect of these terms of use, please contact us here.</p>
+      respect of these terms of use, please contact us
+      <%= link_to 'here', new_contact_path, class: "faq-link" %>.</p>
       <br>
       <hr>
     </div>
@@ -145,6 +152,32 @@
       due to maintenance, malfunction or other reasons. We don’t take any 
       responsibility for this and can’t make any promises in relation to the 
       performance of this website.</p>
+      <a class="top" href="#top">Back to top</a>
+    </div>
+
+    <hr>
+    <div class="row spacer" id="very_wrong">
+      <h3>Things can go very wrong</h3>
+      <p>We cannot guarentee that BulldogClip will always be available and
+      must reserve the right to withdraw the service on a permanent basis
+      at any time. If we ever do need to do this, we will make every effort
+      to provide plenty of notice.
+      </p>
+      <a class="top" href="#top">Back to top</a>
+    </div>
+
+    <hr>
+    <div class="row spacer" id="refunds">
+      <h3>Upgrades, downgrades and refund policy</h3>
+      <p>We do not offer refunds. If you change plans part way through
+      a pre-paid period, we will pro-rate any unused subscription and credit
+      your account accordingly. If you were to downgrade from an annual plan
+      to a monthly plan then the monthly payments would start immediately but
+      nothing would be due until the credit was used up. If you upgrade to a
+      more expensive plan you will not be be charged until your next payment 
+      due date. The amount then charged will include the pro-rated higher cost
+      of the part period just ended.
+      </p>
       <a class="top" href="#top">Back to top</a>
     </div>
 
