@@ -45,7 +45,7 @@ Feature: Manage Customer records
     Given I have a customer "MyCustomer"
     When I create another "MyCustomer"
     Then I should see "A customer with that name already exists"
-  @ut
+    
   Scenario: Delete a customer with no bills
     Given I have a customer "MyCustomer"
     When I edit the customer "MyCustomer"

@@ -16,12 +16,14 @@ Feature: In order to track my costs
     # And I am on the new bill screen
 
 
-  @javascript
+  @javascript @ut
   Scenario: Enter a receipt for known supplier and customer
     Given I am on the new bill screen
     When I add a Household bill from Asda for £20
-    And I am on the new bill screen
+    And I click button Save
+    And I click for another new bill
     And I add a Business bill from Tesco for £5
+    And I click button Save
     Then the total expenses should be £25
     And the Household customer total should be £20
     And the Asda supplier total should be £20
@@ -33,6 +35,7 @@ Feature: In order to track my costs
     When I am on the bills page
     And I click on New
     When I leave the amount empty
+    And I click button Save
     Then I should see "can't be blank" in modal form
     And I should be on the "New Bill" modal
 

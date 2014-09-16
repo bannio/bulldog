@@ -80,7 +80,7 @@ group :test, :development do
   gem 'launchy'
   # gem 'rack-mini-profiler'
   gem 'selenium-client'
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", '~> 2.43.0'
   gem 'simplecov', :require => false
   gem 'rb-fsevent', :require => false
   gem 'guard-rspec'

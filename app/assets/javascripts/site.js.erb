@@ -3,7 +3,8 @@ var SITENAME,
     STRIPE,
     UTIL,
     VIDEO,
-    SELECT; 
+    SELECT,
+    TABLES;
 
 SITENAME = {
   common: {
@@ -19,35 +20,44 @@ SITENAME = {
         $.cookie('cookie_eu_consented', 'true', { path: '/', expires: 365 });
         $('.cookies-eu').remove();
       });
-      // iOS check...ugly but necessary
-      if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
-        $('.modal').on('show.bs.modal', function() {
+      // iOS check
+      if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        $('.modal').on('show.bs.modal', function () {
         // Position modal absolute and bump it down to the scrollPosition
-        $(this)
-          .css({
-          position: 'absolute',
-          marginTop: $(window).scrollTop() + 'px',
-          bottom: 'auto'
-          });
+          $(this)
+            .css({
+              position: 'absolute',
+              marginTop: $(window).scrollTop() + 'px',
+              bottom: 'auto'
+            });
         // Position backdrop absolute and make it span the entire page
         //
         // Also dirty, but we need to tap into the backdrop after Boostrap
         // positions it but before transitions finish.
         //
-        setTimeout( function() {
-          $('.modal-backdrop').css({
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: Math.max(
-            document.body.scrollHeight, document.documentElement.scrollHeight,
-            document.body.offsetHeight, document.documentElement.offsetHeight,
-            document.body.clientHeight, document.documentElement.clientHeight
-            ) + 'px'
-          });
-        }, 0);
-      });
+          setTimeout(function () {
+            $('.modal-backdrop').css({
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+                document.body.clientHeight,
+                document.documentElement.clientHeight
+              ) + 'px'
+            });
+          }, 0);
+        });
+        // Date picker used in many places
+        $("input.date_picker").datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          changeYear: true
+        });
       }    
     }
   },
@@ -132,16 +142,59 @@ SITENAME = {
   bills: {
     index: function () {
       console.log("bills#index");
+      SELECT.billCustomer();
       SELECT.billSupplier();
+      SELECT.billCategory();
+      SELECT.billVatRate();
+      TABLES.clickable_row();
     }
   },
 
   invoices: {
+    index: function () {
+      console.log("invoices#index");
+      TABLES.clickable_row();
+      SELECT.invCustomer();
+    },
     edit: function () {
       console.log("invoices#edit");
       $("#bill_table_body").on("click", "td.remove-col", function () {
         $(this).parent().toggleClass("line-through");
       });
+      SELECT.invoiceHeader();
+    },
+    new: function () {
+      console.log("invoicess#new");
+      SELECT.invoiceCustomer();
+      SELECT.invoiceHeader();
+    }
+  },
+
+  vat_rates: {
+    index: function () {
+      console.log("vat_rates#index");
+      TABLES.clickable_row();
+    }
+  },
+
+  categories: {
+    index: function () {
+      console.log("categories#index");
+      TABLES.clickable_row();
+    }
+  },
+
+  customers: {
+    index: function () {
+      console.log("customers#index");
+      TABLES.clickable_row();
+    }
+  },
+
+  suppliers: {
+    index: function () {
+      console.log("suppliers#index");
+      TABLES.clickable_row();
     }
   },
 
@@ -223,33 +276,156 @@ SELECT = {
   accountPlan: function () {
     var PlanData = $('#account_plan_id').data('plans');
     $('#account_plan_id').select2({
-    placeholder: 'Plan',
-    allowClear: true,
-    width: 'resolve',
-    data: {results: PlanData, text: 'name'},
-    formatResult: SELECT.format,
-    formatSelection: SELECT.format
-  });
+      placeholder: 'Plan',
+      allowClear: true,
+      width: 'resolve',
+      data: {results: PlanData, text: 'name'},
+      formatResult: SELECT.format,
+      formatSelection: SELECT.format
+    });
+  },
+  billCustomer: function () {
+    var customerData = $('#bill_customer_id').data('customers');
+    $('#bill_customer_id').select2({
+      placeholder: 'Customer',
+      allowClear: true,
+      width: 'resolve',
+      data: {results: customerData, text: 'name'},
+      initSelection : function (element, callback) {
+        var value = $(customerData).filter(function () {
+            return this.id == element.val();
+          });
+        var data = {id: element.val(),
+                    text: SELECT.text(value)};
+        callback(data);
+      },
+      createSearchChoice: SELECT.create_choice,
+      formatResult: SELECT.format_result,
+      formatSelection: SELECT.format
+    });
   },
   billSupplier: function () {
     var supplierData = $('#bill_supplier_id').data('suppliers');
     $('#bill_supplier_id').select2({
-    placeholder: 'Supplier',
-    allowClear: true,
-    width: 'resolve',
-    data: {results: supplierData, text: 'name'},
-    initSelection : function (element, callback) {
-      var value = $(supplierData).filter(function () {
-        return this.id == element.val();
-      });
-      var data = {id: element.val(),
-                  text: SELECT.text(value)};
-      callback(data);
-    },
-    createSearchChoice: SELECT.create_choice,
-    formatResult: SELECT.format_result,
-    formatSelection: SELECT.format
-  });
+      placeholder: 'Supplier',
+      allowClear: true,
+      width: 'resolve',
+      data: {results: supplierData, text: 'name'},
+      initSelection : function (element, callback) {
+        var value = $(supplierData).filter(function () {
+          return this.id == element.val();
+        });
+        var data = {id: element.val(),
+                    text: SELECT.text(value)};
+        callback(data);
+      },
+      createSearchChoice: SELECT.create_choice,
+      formatResult: SELECT.format_result,
+      formatSelection: SELECT.format
+    });
+  },
+  billCategory: function () {
+    var categoryData = $('#bill_category_id').data('categories');
+    $('#bill_category_id').select2({
+      placeholder: 'Category',
+      allowClear: true,
+      width: 'resolve',
+      data: {results: categoryData, text: 'name'},
+      initSelection : function (element, callback) {
+        var value = $(categoryData).filter(function () {
+          return this.id == element.val();
+        });
+        var data = {id: element.val(),
+                    text: SELECT.text(value)};
+        callback(data);
+      },
+      createSearchChoice: SELECT.create_choice,
+      formatResult: SELECT.format_result,
+      formatSelection: SELECT.format
+    });
+  },
+  billVatRate: function () {
+    var vatRateData = $('#bill_vat_rate_id').data('vat-rates');
+    $('#bill_vat_rate_id').select2({
+      placeholder: 'VAT rate',
+      allowClear: true,
+      width: 'resolve',
+      data: {results: vatRateData, text: 'name'},
+      formatResult: SELECT.format_result,
+      formatSelection: SELECT.format
+    });
+  },
+  invoiceCustomer: function () {
+    var invoiceCustomerData = $('#invoice_customer_id').data('customers');
+    $('#invoice_customer_id').select2({
+      placeholder: 'Customer',
+      allowClear: true,
+      width: 'resolve',
+      data: {results: invoiceCustomerData, text: 'name'},
+      formatResult: SELECT.format,
+      formatSelection: SELECT.format
+    });
+  },
+  invCustomer: function () {
+    var invCustomerData  = $('#inv_customer_id').data('customers');
+    $('#inv_customer_id').select2({
+      placeholder: 'by customer',
+      allowClear: true,
+      width: 'resolve',
+      data: {results: invCustomerData, text: 'name'},
+      initSelection : function (element, callback) {
+        var value = $(invCustomerData).filter(function () {
+          return this.id == element.val();
+        });
+        var data = {id: element.val(),
+                    text: SELECT.text(value)};
+        callback(data);
+      },
+      formatResult: SELECT.format,
+      formatSelection: SELECT.format
+    });
+  },
+  invoiceHeader: function () {
+    var invoiceHeaderData = $('#invoice_header_id').data('headers');
+    $('#invoice_header_id').select2({
+      placeholder: 'Header',
+      maximumInputLength: 27,
+      allowClear: true,
+      width: 'resolve',
+      data: {results: invoiceHeaderData, text: 'name'},
+      initSelection : function (element, callback) {
+        var value = $(invoiceHeaderData).filter(function () {
+            return this.id == element.val();
+          });
+        var data = {id: element.val(),
+                      text: SELECT.text(value)};
+        callback(data);
+      },
+      createSearchChoice: SELECT.create_choice,
+      formatResult: SELECT.format_result,
+      formatSelection: SELECT.format
+    });
+  }
+};
+
+TABLES = {
+  clickable_row: function () {
+    // This function is adapted to work on either data-rowlink (invoices)
+    // or data-url (bills) within a table where the rows have a class of 
+    // rowlink. If/when the invoices table changes to JS then this could 
+    // be simplified. Note that data-rowlink results in an HTML 
+    $('tbody').on('click', 'tr.rowlink', function (e) {
+      var link = $(this).data("url");
+      var link2 = $(this).data("rowlink");
+      if (link) {
+        $.getScript(link);
+        e.stopImmediatePropagation();
+      } else if (link2) {
+        window.location = link2;
+      } else {
+        return false;
+      }
+    });
   }
 };
 

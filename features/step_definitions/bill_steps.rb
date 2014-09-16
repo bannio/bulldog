@@ -39,6 +39,7 @@ end
 # end
 
 When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer, supplier, value|
+  find('#bill_date')
   fill_in 'bill_date',        with: Date.today
   steps %{
     When I type "#{customer}" in the customer select field
@@ -47,7 +48,7 @@ When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer,
   }
   fill_in 'bill_description', with: 'my bill'
   fill_in 'bill_amount',      with: value
-  click_button 'Save'
+  # click_button 'Save'
 end
 
 When(/^I leave the amount empty$/) do
@@ -59,11 +60,15 @@ When(/^I leave the amount empty$/) do
   }
   fill_in 'bill_description', with: 'my bill'
   # fill_in 'bill_amount',      with: value
-  click_button 'Save'
+  # click_button 'Save'
 end
 
 Then /^the total expenses should be £(#{CAPTURE_A_NUMBER})$/ do |amount|
-  Bill.sum(:amount).should == amount
+  # This one keeps going wrong so trying to give it some space by
+  # first visiting home
+  visit '/home'
+  total = @account.bills.sum(:amount)
+  expect(total).to eq amount
 end
 
 Then /^the (\w+) customer total should be £(#{CAPTURE_A_NUMBER})$/ do |customer, amount|
@@ -71,7 +76,7 @@ Then /^the (\w+) customer total should be £(#{CAPTURE_A_NUMBER})$/ do |customer
 end
 
 Then /^the (\w+) supplier total should be £(#{CAPTURE_A_NUMBER})$/ do |supplier, amount|
-  Supplier.find_by_name(supplier).total.should == amount
+  Supplier.find_by_name(supplier).reload.total.should == amount
 end
 
 Given /^the supplier (\w+) does not exist$/ do |supplier|
@@ -85,6 +90,12 @@ end
 
 When(/^I am on the bills page$/) do
   visit '/bills'
+end
+
+When(/^I click for another new bill$/) do
+  # modal should have closed. Wait for new link to be visible.
+  find_link('New')
+  click_on 'New'
 end
 
 Given /^I have the following bills$/ do |table|
