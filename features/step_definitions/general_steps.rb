@@ -118,6 +118,11 @@ Then(/^we should be on the Plans page$/) do
   expect(current_path).to eq("/plans")
 end
 
+Then(/^we should be on the Home page$/) do
+  sleep 1
+  expect(current_path).to eq("/")
+end
+
 Then(/^we should be on the New Account page$/) do
   sleep 1
   expect(current_path).to eq("/accounts/new")

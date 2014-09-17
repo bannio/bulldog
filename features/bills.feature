@@ -73,7 +73,7 @@ Feature: In order to track my costs
     Given another user has a bill
     And I type in the other users bill ID in the /bills/ID/edit URL
     Then I should see "not found or not authorised"
-    And I should be on the Home page
+    And we should be on the Home page
 
   Scenario: I can cancel an edit
     Given I have the following bills
