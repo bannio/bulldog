@@ -114,10 +114,12 @@ And(/^wait (\d+)$/) do |secs|
 end
 
 Then(/^we should be on the Plans page$/) do
+  sleep 1
   expect(current_path).to eq("/plans")
 end
 
 Then(/^we should be on the New Account page$/) do
+  sleep 1
   expect(current_path).to eq("/accounts/new")
 end
 
