@@ -2,9 +2,9 @@
 <div class="container">
   <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 panel panel-default">
     <div class="panel-body">
-      <%= simple_form_for(resource, :as => resource_name, 
-                                :url => confirmation_path(resource_name), 
-                                :html => { :method => :post }) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, 
+                                      url: confirmation_path(resource_name), 
+                                      html: { method: :post }) do |f| %>
       <h1>Resend confirmation instructions</h1>
       <%#= f.error_notification %>
       <%#= f.full_error :confirmation_token %>
@@ -13,7 +13,7 @@
           <div class="form-group">
             <%= form_group_for f, :email, label: false do %>
               <%= f.label :email %>
-              <%= f.email_field :email, :autofocus => true, class: 'form-control', type: "email" %>
+              <%= f.email_field :email, autofocus: true, class: 'form-control', type: "email" %>
             <% end %>
           </div>
           <%= f.button :submit, "Resend confirmation instructions", class: 'create-btn std-btn button right', data: {toggle: "tooltip"}, title: "Submit request for resend of confirmation instructions" %>
