@@ -68,8 +68,9 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "rails_layout"
-  gem 'sprockets_better_errors'
+  # gem 'sprockets_better_errors'    not 4.1 compatible
   gem "brakeman", :require => false
+  gem "spring"
 end
 
 group :test, :development do

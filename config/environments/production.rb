@@ -1,4 +1,5 @@
-Bulldog::Application.configure do
+Rails.application.configure do
+# Bulldog::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -33,7 +34,7 @@ Bulldog::Application.configure do
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
+  # config.assets.version = '1.0'
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
@@ -100,4 +101,6 @@ Bulldog::Application.configure do
     },
     :s3_protocol => 'https'
   }
+  # from Rails 4.1.6 
+  config.active_record.dump_schema_after_migration = false
 end

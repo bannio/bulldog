@@ -1,4 +1,5 @@
-Bulldog::Application.configure do
+Rails.application.configure do
+# Bulldog::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -28,7 +29,8 @@ Bulldog::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  config.assets.raise_production_errors = true
+  # config.assets.raise_production_errors = true
+  config.assets.raise_runtime_errors = true
 
   config.paperclip_defaults = {
     :storage => :s3,
@@ -39,5 +41,5 @@ Bulldog::Application.configure do
     },
     :s3_protocol => 'https'
   }
-
+  # config.action_view.raise_on_missing_translations = true
 end

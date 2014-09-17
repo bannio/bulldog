@@ -43,12 +43,12 @@ describe VatRatesController do
 
  describe "GET new" do
    it "builds a rate with an account id" do
-     get :new, {format: :js}
+     xhr :get, :new, {format: :js}
      expect(assigns(:vat_rate)).to be_a_new(VatRate)
      expect(assigns(:vat_rate).account_id).to_not be_blank
    end
    it "builds a rate with active set to true" do
-     get :new, {format: :js}
+     xhr :get, :new, {format: :js}
      expect(assigns(:vat_rate)).to be_a_new(VatRate)
      expect(assigns(:vat_rate).active?).to be_truthy
    end
@@ -57,7 +57,7 @@ describe VatRatesController do
  describe "GET edit" do
    it "assigns the requested rate as @vat_rate" do
      vat_rate = VatRate.create! valid_attributes
-     get :edit, {id: vat_rate.to_param, format: :js}
+     xhr :get, :edit, {id: vat_rate.to_param, format: :js}
      expect(assigns(:vat_rate)).to eq vat_rate
    end
  end
