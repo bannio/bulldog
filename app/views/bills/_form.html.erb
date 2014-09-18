@@ -1,5 +1,5 @@
 
-<%= form_for @bill, remote: true do |f| %>
+<%= form_for bill, remote: true do |f| %>
   <%= f.hidden_field :account_id %>
   <%= form_group_for f, :date, label: false do %>
     <%= f.text_field :date, class: "date_picker form-control" %>
@@ -27,9 +27,9 @@
       <%= f.text_field :vat, placeholder: 'VAT amount', class: "form-control currency", type: "tel" %>
     <% end %>
   <% end %> <!-- end of VAT fields -->
-  <%= f.submit 'Save', :class => 'create-btn std-btn', title: "Save changes" %>
-  <% if params[:action] == 'edit' %>
-    <%= link_to 'Delete', @bill, method: :delete, data: {confirm: 'Are you sure?'}, class: 'warn-btn std-btn', remote: true, title: "Delete bill" %>
+  <%= f.submit 'Save', class: 'create-btn std-btn', title: "Save changes" %>
+<% end %> <!-- end of form_for -->
+  <% if action_name == 'edit' %>
+    <%= button_to 'Delete', bill, method: :delete, data: {confirm: 'Are you sure?'}, class: 'warn-btn std-btn', remote: true, title: "Delete bill" %>
   <% end %>
   <%= link_to "Cancel", bills_path, class: "action-btn std-btn", remote: true, title: "Cancel and return to list of bills" %>
-<% end %> <!-- end of form_for -->

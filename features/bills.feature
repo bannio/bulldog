@@ -16,7 +16,7 @@ Feature: In order to track my costs
     # And I am on the new bill screen
 
 
-  @javascript @ut
+  @javascript
   Scenario: Enter a receipt for known supplier and customer
     Given I am on the new bill screen
     When I add a Household bill from Asda for £20
@@ -97,8 +97,7 @@ Feature: In order to track my costs
     | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
     | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
     And I am on the edit page for the first bill
-    Then I should see "Delete"
-    When I click on Delete
+    When I click button Delete
     Then I should see "Bill successfully deleted"
     And I should be on the Bills page
     And I should not see "Coffee"

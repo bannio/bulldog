@@ -38,7 +38,8 @@ class BillsController < ApplicationController
   end
 
   def edit
-    @bill = current_account.bill(params[:id])
+    # @bill = current_account.bill(params[:id])
+    @bill = policy_scope(Bill).find(params[:id])
     authorize @bill
   end
 

@@ -14,8 +14,8 @@
   <% end %>
    
   <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save changes to VAT rate"  %>
-  <% if params[:action] == 'edit' %>
-    <%= link_to 'Delete', @vat_rate, method: :delete, data: { confirm: 'Are you sure?', toggle: "tooltip" }, class: 'warn-btn std-btn', title: "Delete VAT rate"  %>
+<% end %> <!-- end of form_for -->
+  <% if action_name == 'edit' %>
+    <%= button_to 'Delete', @vat_rate, method: :delete, data: { confirm: 'Are you sure?', toggle: "tooltip" }, class: 'warn-btn std-btn', title: "Delete VAT rate"  %>
   <% end %>
   <%= link_to "Cancel", vat_rates_path, class: "action-btn std-btn", remote: true, data: {toggle: "tooltip"}, title: "Cancel and return to list of VAT rates"  %>
-<% end %> <!-- end of form_for -->
