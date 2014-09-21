@@ -48,9 +48,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bootstrap-sass', '~> 3.2.0.0' #'~> 3.1.1.0'
 
-# gem 'high_voltage'  # for static pages
-gem 'simple_form'
-gem 'high_voltage'
+gem 'high_voltage'  # for static pages
+# gem 'simple_form'  # removed 19/9/2014
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -75,6 +74,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.2'
+  gem 'spring-commands-rspec'
   gem 'database_cleaner'
   # gem 'capybara','~> 2.0.1'         installed as part of cucumber-rails
   gem 'factory_girl_rails', '~> 4.4.0'

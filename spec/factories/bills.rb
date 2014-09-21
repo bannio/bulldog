@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :bill do
     account_id "1"
     date "2014-01-01"
-    customer_id "1"
+    customer
     supplier
     category
     description "MyText"

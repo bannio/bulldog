@@ -104,6 +104,7 @@ describe BillsController do
           post :create, bill: attributes_for(:bill).except(:invoice_id).
                                                     merge(category_id: "1",
                                                           supplier_id: "1",
+                                                          customer_id: "1",
                                                           account_id: @account.id)
         }.to change(Bill, :count).by(1)
       end
@@ -112,6 +113,7 @@ describe BillsController do
         post :create, bill: attributes_for(:bill).except(:invoice_id).
                                                     merge(category_id: "1",
                                                           supplier_id: "1",
+                                                          customer_id: "1",
                                                           account_id: @account.id)
         expect(response).to redirect_to bills_url
       end

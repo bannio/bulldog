@@ -9,7 +9,8 @@ FactoryGirl.define do
 
     factory :customer_with_bill do
       after(:create) do |customer|
-        create(:bill, customer_id: customer.id)
+        create(:bill, customer: customer)
+        # create(:bill, customer_id: customer.id)
       end
     end
   end
