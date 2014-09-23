@@ -10,7 +10,7 @@ class InvoiceMailer < ActionMailer::Base
     Rails.logger.info "CHARGE: #{charge}"
     if account && charge != Stripe::InvalidRequestError
       new_invoice(account, invoice, charge).deliver
-      update_account(account, invoice)
+      update_account_next_invoice(account, invoice)
     else
       Rails.logger.error 'InvoiceMailer: invoice.payment_received did not trigger an email '
       error_invoice(invoice, event).deliver
@@ -31,7 +31,7 @@ class InvoiceMailer < ActionMailer::Base
     mail to: 'info@bulldogclip.co.uk', subject: 'Invoice error'
   end
 
-  def update_account(account, invoice)
+  def update_account_next_invoice(account, invoice)
     next_due = Stripe::Invoice.upcoming(customer: invoice.customer).date
     account.update(next_invoice: Time.at(next_due))
   rescue Stripe::InvalidRequestError

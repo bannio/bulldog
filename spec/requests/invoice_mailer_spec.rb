@@ -100,7 +100,7 @@ describe InvoiceMailer, type: :request do
     it "stores a date" do
       invoice_dbl = double("stripe invoice")
       allow(Stripe::Invoice).to receive_message_chain(:upcoming, :date).and_return(1405670902)
-      InvoiceMailer.update_account(@account, @invoice)
+      InvoiceMailer.update_account_next_invoice(@account, @invoice)
       expect(@account.next_invoice).to eq "2014-07-18".to_date
     end
   end
