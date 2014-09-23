@@ -1,5 +1,31 @@
+
 .analysis > div.select2-container {
   margin-bottom: 10px;
+}
+
+// PLACES DELETE BUTTONS INLINE WITH OTHER FORM BUTTONS
+
+form.edit_vat_rate,
+form.edit_bill,
+form.new_vat_rate,
+form.new_bill {
+  display: inline;
+}
+
+form.edit_vat_rate > input.create-btn,
+form.edit_bill > input.create-btn,
+form.edit_customer > div > input.create-btn,
+form.edit_invoice > div > div > input.create-btn {
+  float: left;
+}
+
+form.button_to {
+  display: inline-block;
+  float: left;
+}
+
+form.edit_invoice > div > div.panel-body > a.warn-btn {
+  float: left;
 }
 
 // SIGNIN MODAL AND MAILLIST CHECKBOXES
@@ -15,6 +41,10 @@
   padding-left: 25px;
 }
 
+div.authform > form.new_user > div.checkbox > label {
+  margin-top: 2px;
+  padding-left: 20px;
+}
 // SIGN IN PAGE
 div.authform > form > div.checkbox > input#user_remember_me {
   float: none;
