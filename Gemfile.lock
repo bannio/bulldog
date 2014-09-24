@@ -202,6 +202,7 @@ GEM
     prawn (1.2.1)
       pdf-core (~> 0.2.5)
       ttfunk (~> 1.2.0)
+    prawn-table (0.1.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -377,6 +378,7 @@ DEPENDENCIES
   paperclip (~> 4.1)
   pg
   prawn
+  prawn-table
   pundit
   rails (= 4.1.6)
   rails_12factor
