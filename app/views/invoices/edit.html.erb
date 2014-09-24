@@ -1,17 +1,17 @@
-<% content_for :title do %>BulldogClip | Edit Invoice<% end %>
-<% content_for :description do %>Edit invoice<% end %>
+<% content_for :title do %>BulldogClip | Edit Document<% end %>
+<% content_for :description do %>Edit document<% end %>
 <div class="container">
-    <h1>Invoice <%= @invoice.number %></h1>
+    <h1>Document <%= @invoice.number %></h1>
 
      <a href="#" id="pop" class="info-btn pop"
-     data-title="Edit Invoice"
+     data-title="Edit Document"
      data-content="
      <ul class='info-ul'>
-     <li>Select any bills that you want to remove from the invoice. Once you are happy with all your changes use the 'Save Changes' button to confirm.</li>
-     <li>Use 'Delete' to remove the invoice and return all the bills to the the pool.
-     <li>*Note if you have invoiced the wrong customer, delete this invoice, then edit the bills to be associated with the correct customer before creating a new invoice.</li>
-     <li>The 'Print Preview' button will generate a PDF of the fully formatted invoice in a new window for you to download or print.</li>
-     <li>To return to the invoice index use 'Cancel'</li>
+     <li>Select any bills that you want to remove from the document. Once you are happy with all your changes use the 'Save Changes' button to confirm.</li>
+     <li>Use 'Delete' to remove the document and return all the bills to the the pool.
+     <li>*Note if you have created a document for the wrong customer, delete this document, then edit the bills to be associated with the correct customer before creating a new document.</li>
+     <li>The 'Print Preview' button will generate a PDF of the fully formatted document in a new window for you to download or print.</li>
+     <li>To return to the document index use 'Cancel'</li>
      </ul>">
      <img src=<%= asset_path('info_btn.png') %> alt="info button" class="info-img"/>
      </a>

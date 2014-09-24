@@ -1,16 +1,16 @@
-<% content_for :title do %>BulldogClip | Invoice Setup<% end %>
-<% content_for :description do %>BulldogClip settings show page<% end %>
+<% content_for :title do %>BulldogClip | Document Setup<% end %>
+<% content_for :description do %>BulldogClip document settings show page<% end %>
 <div class="container">
   <div class="col-sm-6 col-sm-offset-3 panel panel-default">
     <div class="panel-body">
-      <h1>Invoice Print Settings</h1>
+      <h1>Document Print Settings</h1>
 
      <a href="#" id="pop" class="info-btn pop"
-     data-title="Your Invoice Setup Details"
+     data-title="Your Document Setup Details"
      data-content="
      <ul class='info-ul'>
-     <li>Your details will appear on any 'invoices' you print.</li>
-     <li>Complete your bank account details if you want to also print them on invoices. Note that at an individual document level you can also select by tick box to show or not show these details.</li>
+     <li>Your details will appear on any documents you print.</li>
+     <li>Complete your bank account details if you want to also print them on documents. Note that at an individual document level you can also select by tick box to show or not show these details.</li>
      <li>You can also set the document header (e.g. 'Invoice' or 'Expense Claim') at the document level.</li>
      <li>Use the 'Edit' button to add or update your details.</li>
      </ul>">
@@ -92,7 +92,7 @@
         </table>
       <% end %>
 
-      <%= link_to 'Edit', edit_setting_path(@setting), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit invoice print settings"  %>
+      <%= link_to 'Edit', edit_setting_path(@setting), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit document print settings"  %>
     </div>
   </div>
 </div>

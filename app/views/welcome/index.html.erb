@@ -4,17 +4,6 @@
 <%= render 'first_sign_in' if first_sign_in? %>
 
 <div class= "container ">
-<!-- <h1>Welcome</h1> -->
-<!--<div class="row welcome-button">
-
-<%#= link_to "Fast Bill", new_bill_path, remote: true, class: "create-btn std-btn welcome" %>
-  </div> -->
-<!--   <div class="row welcome-btn">
-    <div class="col-xs-10 col-xs-offset-1">
-    <%#= link_to "Enter New Bill", new_bill_path, remote: true, class: "create-btn std-btn welcome" %>
-    </div>
-  </div> -->
-
   <div class="row welcome">
     <div class="col-xs-10 col-xs-offset-1">
     <div class="panel panel-default welcome">
@@ -22,17 +11,14 @@
       <a href="/bills" class="clickable-block">
       <img src=<%= asset_path('bills_icon.png') %> alt="bills icon image" class="image-responsive welcome">
         <p>Bills</p>
-        <%#= link_to 'Bills', bills_path, class: 'subnav-btn active welcome' %>
-        <%#= link_to "New", new_bill_path, remote: true, class: "create-btn std-btn welcome" %>
       </a>
      </div>
     </div>
     <div class="panel panel-default welcome">
       <div class="panel-body">
       <a href="/invoices" class="clickable-block">
-          <img src=<%= asset_path('invoices_icon.png') %> alt="invoices icon image" class="image-responsive welcome">
-          <p>Invoices</p>
-          <%#= link_to 'Invoices', invoices_path, class: 'subnav-btn' %>
+          <img src=<%= asset_path('invoices_icon.png') %> alt="documents icon image" class="image-responsive welcome">
+          <p>Documents</p>
       </a>
       </div>
     </div>
@@ -41,12 +27,9 @@
       <a href="/reports" class="clickable-block">
         <img src=<%= asset_path('analysis_icon.png') %> alt="analysis icon image" class="image-responsive welcome">
         <p>Analysis</p>
-        <%#= link_to 'Analysis', new_report_path, class: 'subnav-btn'%>
       </a>
       </div>
     </div>
-  <!-- </div> -->
-  <!-- <div class="row welcome"> -->
     <div class="panel panel-default welcome flipable">
       <div class="panel-body front card">
       <img src=<%= asset_path('tools_icon.png') %> alt="tools icon image" class="image-responsive welcome">
@@ -64,7 +47,7 @@
             <li><%= link_to 'VAT Rates', vat_rates_path, class: 'menu-item' %></li>
             <hr>
           <% end %>
-          <li><%= link_to 'Invoice Setup', settings_path, class: 'menu-item' %></li>
+          <li><%= link_to 'Document Setup', settings_path, class: 'menu-item' %></li>
           <hr>
         </ul>
       </div>

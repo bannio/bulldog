@@ -1,4 +1,4 @@
-Given(/^I am on the New Invoice page$/) do
+Given(/^I am on the New Document page$/) do
   visit '/invoices/new'
 end
 
@@ -33,7 +33,7 @@ Given(/^I have the (.*?) invoice$/) do |customer|
   bills.each {|bill| bill.update_attribute(:invoice_id, invoice.id)}
 end
 
-Given(/^I am on the invoices index page$/) do
+Given(/^I am on the documents index page$/) do
   visit '/invoices/'
 end
 

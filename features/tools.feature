@@ -10,8 +10,8 @@ Feature: The tools menu provides access to a number of set up
   Scenario: Document Settings
     Given I visit the home page
     And I click on Tools
-    And I click on Invoice Setup
-    Then I should be on the Invoice Setup page
+    And I click on Document Setup
+    Then I should be on the Document Setup page
     And I should see "Your Address Details"
 
   Scenario: VAT registration number on settings page
@@ -21,7 +21,7 @@ Feature: The tools menu provides access to a number of set up
     When I click on Edit
     And I enter "12345678" in the setting_vat_reg_no field
     And I click button Save
-    Then I should be on the Invoice Setup page
+    Then I should be on the Document Setup page
     And I should see "12345678"
 
   Scenario: No VAT fields when VAT not enabled
@@ -49,7 +49,7 @@ Feature: The tools menu provides access to a number of set up
     And I enter "0101010101" in the setting_telephone field
     And I enter "test@example.com" in the setting_email field
     And I click button Save
-    Then I should be on the Invoice Setup page
+    Then I should be on the Document Setup page
     And I should see "0101010101"
     And I should see "test@example.com"
 
@@ -66,5 +66,5 @@ Feature: The tools menu provides access to a number of set up
     When I click on Edit
     And I attach a logo file
     And I click button Save
-    Then I should be on the Invoice Setup page
+    Then I should be on the Document Setup page
     And the logo thumbnail is displayed

@@ -29,12 +29,12 @@ Feature: Invoices
     Given I am on the bills page
     Then I should see "Business"
     And I should see "Household"
-    Given I am on the New Invoice page
+    Given I am on the New Document page
     And I select "Business" as the invoice customer
-    And I click button Create Invoice
-    Then I should be on the Edit Invoice page
+    And I click button Create Document
+    Then I should be on the Edit Document page
     And I should not see "Back"
-    And I should see "Invoice 1"
+    And I should see "Document 1"
     And I should see "Total £130.00"
     When I am on the bills page
     Then I should not see "Business"
@@ -54,10 +54,10 @@ Feature: Invoices
     | 10 | Business  | F invoice   | 2012-10-11 | 5.00   | 
 
     Given I visit the home page
-    And I click on Invoices
-    Then I should be on the Invoices page
+    And I click on Documents
+    Then I should be on the Documents page
     And I should see 6 invoices
-    And I should see a New Invoice button
+    And I should see a New Document button
     And There is a search field for comment
     When I type "B" in the search field and press enter
     Then I should see 2 invoices
@@ -82,17 +82,17 @@ Feature: Invoices
     all the bills would be removed in any case. 
 
     Given I have the Business invoice
-    And I am on the invoices index page
+    And I am on the documents index page
     When I click the first table row
-    Then I should be on the Show Invoice page
+    Then I should be on the Show Document page
     When I click on Edit
     And I wait
-    Then I should be on the Edit Invoice page
+    Then I should be on the Edit Document page
     And I should see "Cancel"
     When I change the comment to "changed comment"
     And I change the date to "2014-01-01"
     And I click button Save Changes
-    Then I should be on the Show Invoice page
+    Then I should be on the Show Document page
     And I should see "changed comment"
 
   @javascript
@@ -101,7 +101,7 @@ Feature: Invoices
     And I am on the edit page for this invoice
     Then I should see 3 bills
     When I check one bill and click Save Changes
-    Then I should be on the Show Invoice page
+    Then I should be on the Show Document page
     Then I should see 2 bills 
 
   @javascript
@@ -109,12 +109,12 @@ Feature: Invoices
     Given I have the Business invoice
     When I am on the bills page
     Then I should not see "business trip"
-    When I am on the invoices index page
+    When I am on the documents index page
     Then I should see "My business invoice"
     When I am on the edit page for this invoice
     Then I should see "Delete"
     When I click the Delete button and confirm OK
-    Then I should be on the Invoices page
+    Then I should be on the Documents page
     And I should not see "My business invoice"
     When I am on the bills page
     Then I should see "business trip"
@@ -144,7 +144,7 @@ Feature: Invoices
     And I am on the edit page for this invoice
     When I fill in header with "Test Header"
     And I click button Save Changes
-    Then I should be on the Show Invoice page
+    Then I should be on the Show Document page
     And I should see "Test Header"
 
   @javascript
@@ -154,7 +154,7 @@ Feature: Invoices
     And I am on the edit page for this invoice
     When I fill in header with "Test Header"
     And I click button Save Changes
-    Then I should be on the Show Invoice page
+    Then I should be on the Show Document page
     And I should see "Test Header"
 
   @javascript
@@ -177,8 +177,8 @@ Feature: Invoices
     | 10 | Business  | F invoice   | 2012-10-11 | 5.00   | 
 
     Given I visit the home page
-    And I click on Invoices
-    Then I should be on the Invoices page
+    And I click on Documents
+    Then I should be on the Documents page
     And I should see 6 invoices
     And I select "2012-10-12" as invoice from date
     And I click button Filter
