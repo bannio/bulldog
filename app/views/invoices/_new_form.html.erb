@@ -9,15 +9,15 @@
   <% end %>
 
   <%= form_group_for f, :header_id, label: false do %>
-    <%= f.text_field :header_id, data: {headers: get_header_data}, placeholder: "Header - will appear as title on printed invoice" %>
+    <%= f.text_field :header_id, data: {headers: get_header_data}, placeholder: "Header - will appear as title on printed document" %>
   <% end %>
 
   <%= form_group_for f, :comment, label: false do %>
-    <%= f.text_area :comment, placeholder: "Comment - will appear as on printed invoice", rows: "5" %>
+    <%= f.text_area :comment, placeholder: "Comment - will appear as on printed document", rows: "5" %>
   <% end %>
 
   
-  <%= f.submit 'Create Invoice', class: 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Create a new invoice"  %>
-  <%= link_to 'Cancel', invoices_path, class: 'action-btn std-btn', data: {toggle: "tooltip"}, title: "Cancel and return to list of invoices"  %>
+  <%= f.submit 'Create Document', class: 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Create a new document"  %>
+  <%= link_to 'Cancel', invoices_path, class: 'action-btn std-btn', data: {toggle: "tooltip"}, title: "Cancel and return to list of documents"  %>
 
 <% end %>

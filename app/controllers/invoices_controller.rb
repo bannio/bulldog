@@ -63,7 +63,7 @@ class InvoicesController < ApplicationController
     end
     total = @invoice.bills.sum(:amount)
     if @invoice.update(invoice_params.merge(total: total))
-      flash[:success] = "Invoice successfully updated"
+      flash[:success] = "Document successfully updated"
       redirect_to @invoice
     else
       render 'edit'

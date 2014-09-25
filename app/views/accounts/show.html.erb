@@ -4,16 +4,15 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 panel panel-default">
     <div class="panel-body">
-      <h1>Account Details</h1>
+      <h1>Subscription Details</h1>
 
      <a href="#" id="pop" class="info-btn pop"
-     data-title="Your Account Details"
+     data-title="Your Subscription Details"
      data-content="
      <ul class='info-ul'>
-     <li>See also 'Tools - Invoice Setup' for invoice specific settings</li>
-     <li>'Change Plan' allows you to upgrade your plan or set the VAT option (business plan only).</li>
+     <li>See also 'Tools - Document Setup' for document specific account settings</li>
+     <li>'Change Plan' allows you to upgrade your plan or enable VAT (business plan only).</li>
      <li>Use the 'Update Card' button to change your payment card or reset its expiry date.</li>
-     <li>'Billing History' will show your most recent invoices. It may take some minutes to update after a plan change.</li>
      <li>We hope that you do not wish to 'Cancel Subscription' but this is where you can start the process.</li>
      </ul>">
      <img src=<%= asset_path('info_btn.png') %> alt="info button" class="info-img"/>
@@ -51,8 +50,8 @@
 
       <%#= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit account settings"  %>
       <%= link_to 'Change Plan', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change subscription plan or options"  %>
-      <%= link_to 'Update card', new_card_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change payment card details"  %>
-      <%= link_to 'Billing history', edit_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "View billing history"  %>
+      <%= link_to 'Update card', new_card_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Change payment card details"  %>
+      <%#= link_to 'Billing history', edit_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "View billing history" %>
       <%= link_to 'Cancel subscription', cancel_account_path(@account), class: "warn-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel Subscription"  %>
       <%#= link_to 'Change Password', edit_user_registration_path, class: "warn-btn std-btn" %>
     </div>
