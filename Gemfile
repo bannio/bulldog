@@ -94,6 +94,7 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'rack-timeout'
 
 gem 'rails_12factor', group: :production
 
