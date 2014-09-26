@@ -76,7 +76,7 @@ Rails.application.configure do
     :authentication => :plain
   }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'enigmatic-island-2019.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'bulldogclip.co.uk'}
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
