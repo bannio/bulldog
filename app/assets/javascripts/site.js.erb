@@ -99,6 +99,7 @@ SITENAME = {
 
     create: function () {
     // action-specific code
+    // reset env vars for production
       console.log("accounts#create");
       $('#card_number').payment('formatCardNumber');
       $('#card_code').payment('formatCardCVC');
