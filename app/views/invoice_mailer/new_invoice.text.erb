@@ -16,8 +16,8 @@ Invoice Number: <%= @invoice.id.rjust(64) %>
 Invoice Date: <%= Time.at(@invoice.date).strftime("%d %B %Y").rjust(66) %>
 
 --CUSTOMER DETAILS--
-Email: <%= @account.email %>
-Payment Method: <%= @charge.card.type %> ending in <%= @charge.card.last4 %>
+Email: <%= @account.email.rjust(73) %>
+Payment Method: <%= "#{@charge.card.type} ending in #{@charge.card.last4}".rjust(64) %>
 
 --TRANSACTION DETAILS--
 <% @invoice.lines.each do |line| %>
@@ -28,7 +28,7 @@ Payment Method: <%= @charge.card.type %> ending in <%= @charge.card.last4 %>
 Invoice Total: <%= number_to_currency(@invoice.total/100).rjust(65) %>
 
 Starting Account Balance: <%= number_to_currency(@invoice.starting_balance/100).rjust(54) %>
-Amount Paid: <%= number_to_currency(@invoice.amount_due/100).rjust(62) %>
+Amount Paid: <%= number_to_currency(@invoice.amount_due/100).rjust(67) %>
 Closing Account Balance: <%= number_to_currency(@invoice.ending_balance/100).rjust(55) %>
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

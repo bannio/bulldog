@@ -41,24 +41,28 @@
         </tr>
 
         <tr>
-          <td style="height: 20px;">
+          <td style="height: 20px;"> </td>
+        </tr>
+
+        <tr>
+          <td style="border-top: 1px dashed #000000; height:10px" >
           </td>
         </tr>
 
         <tr>
-          <td style="border-top: 1px dashed #000000; height:1px" /></td>
-        </tr>
-
-        <tr>
           <td style="height: 20px;">
           </td>
         </tr>
+        </table>
+        <table style="width:100%;max-width: 600px;">
+          <col style="width: 70%">
+          <col style="width: 30%">
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
           Invoice Number:
           </td>
-          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;text-align: right;">
           <%= @invoice.id %>
           </td>
         </tr>
@@ -73,36 +77,37 @@
         </tr>
 
         <tr>
-          <td style="height: 20px;">
-          </td>
+          <td style="height: 20px;"></td><td style="height: 20px;"></td>
         </tr>
 
         <tr>
           <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;text-align:left;">CUSTOMER DETAILS:
           </th>
+          <th></th>
         </tr>
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Email: <%= @account.email %>
+            Email:
+          </td>
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;text-align: right;">
+            <%= @account.email %>
           </td>
         </tr>
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Payment Method: <%= @charge.card.type %> ending in <%= @charge.card.last4 %>
+            Payment Method:
+          </td>
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;text-align: right;">
+            <%= @charge.card.type %> ending in <%= @charge.card.last4 %>
           </td>
         </tr>
 
         <tr>
-          <td style="height: 20px;">
-          </td>
+          <td style="height: 20px;"></td>
+          <td style="height: 20px;"></td>
         </tr>
-      </table>
-
-      <table style="width:100%;max-width: 600px;">
-        <col style="width: 70%">
-        <col style="width: 30%">
 
         <tr>
           <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;text-align:left;">TRANSACTION DETAILS:
