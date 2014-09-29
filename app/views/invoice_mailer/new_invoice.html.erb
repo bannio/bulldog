@@ -56,13 +56,19 @@
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-          Invoice Number: <%= @invoice.id %>
+          Invoice Number:
+          </td>
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
+          <%= @invoice.id %>
           </td>
         </tr>
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-          Invoice Date: <%= Time.at(@invoice.date).strftime("%d/%m/%Y") %>
+          Invoice Date: 
+          </td>
+          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;text-align: right;">
+          <%= Time.at(@invoice.date).strftime("%d %B %Y") %>
           </td>
         </tr>
 
@@ -70,34 +76,6 @@
           <td style="height: 20px;">
           </td>
         </tr>
-
-<!--         <tr>
-          <th style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;text-align:left;">COMPANY DETAILS:
-          </th>
-        </tr>
-
-        <tr style="height: 10px;">
-          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            BulldogClip is provided by: Owen Bannister Limited
-          </td>
-        </tr>
-
-        <tr style="height: 10px;">
-          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Registered office: 9 Alba Close, Middleleaze, Swindon, Wiltshire, UK
-          </td>
-        </tr>
-
-        <tr style="height: 10px;">
-          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Company registration number: 08675874
-          </td>
-        </tr> -->
-
-<!--         <tr>
-          <td style="height: 20px;">
-          </td>
-        </tr> -->
 
         <tr>
           <th style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;font-style: bold;text-align:left;">CUSTOMER DETAILS:
@@ -187,15 +165,6 @@
             <%= number_to_currency(@invoice.ending_balance/100) %>
           </td>
         </tr>
-
-<!--         <tr style="height: 10px;">
-          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Total Amount Owed:
-          </td>
-          <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
-            £0 (Paid in full)
-          </td>
-        </tr> -->
 
         <tr>
           <td style="height: 20px;">

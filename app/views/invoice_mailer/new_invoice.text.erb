@@ -12,8 +12,8 @@ for your records.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Invoice Number: <%= @invoice.id %>
-Invoice Date: <%= Time.at(@invoice.date).strftime("%d/%m/%Y") %>
+Invoice Number: <%= @invoice.id.rjust(64) %>
+Invoice Date: <%= Time.at(@invoice.date).strftime("%d %B %Y").rjust(66) %>
 
 --CUSTOMER DETAILS--
 Email: <%= @account.email %>
