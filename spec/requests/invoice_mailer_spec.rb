@@ -76,7 +76,8 @@ describe InvoiceMailer, type: :request do
 
   describe '#new_invoice' do
     before do
-      @mail =  InvoiceMailer.new_invoice(@account, @invoice, @charge)
+      @card = "NA"
+      @mail =  InvoiceMailer.new_invoice(@account, @invoice, @card)
     end
 
     it "renders the subject" do
@@ -88,17 +89,50 @@ describe InvoiceMailer, type: :request do
     end
 
     it "renders the from" do
-      expect(@mail.from).to eq ['noreply@bulldogclip.co.uk']
+      expect(@mail).to be_delivered_from('BulldogClip<noreply@bulldogclip.co.uk>')
     end
 
     it "sends an email" do
       expect { @mail.deliver }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
+
+    it "gets the card details" do
+      expect(@mail).to have_body_text('NA')
+    end
+  end
+
+  describe "card_detail" do
+    
+    it "retrieves the charge if present" do
+      card = double('card', type: 'visa', last4: '4567')
+      charge = double('charge', card: card)
+      invoice = double('invoice', charge: "not null")
+      allow(Stripe::Charge).to receive(:retrieve).and_return(charge) 
+      card = InvoiceMailer.card_detail(invoice)
+      expect(card).to eq "visa ending in 4567"
+    end
+
+    it "returns NA if no charge" do
+      card = double('card', type: 'visa', last4: '4567')
+      charge = double('charge', card: card)
+      invoice = double('invoice', charge: "null")
+      allow(Stripe::Charge).to receive(:retrieve).and_return(charge) 
+      card = InvoiceMailer.card_detail(invoice)
+      expect(card).to eq "NA"
+    end
+
+    it "returns NA if Stripe error" do
+      card = double('card', type: 'visa', last4: '4567')
+      charge = double('charge', card: card)
+      invoice = double('invoice', charge: "not null")
+      # allow(Stripe::Charge).to receive(:retrieve).and_raise(Stripe::InvalidRequestError) 
+      card = InvoiceMailer.card_detail(invoice)
+      expect(card).to eq "NA"
+    end
   end
 
   describe "#update_account" do
     it "stores a date" do
-      invoice_dbl = double("stripe invoice")
       allow(Stripe::Invoice).to receive_message_chain(:upcoming, :date).and_return(1405670902)
       InvoiceMailer.update_account_next_invoice(@account, @invoice)
       expect(@account.next_invoice).to eq "2014-07-18".to_date

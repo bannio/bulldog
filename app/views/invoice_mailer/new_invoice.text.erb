@@ -17,7 +17,7 @@ Invoice Date: <%= Time.at(@invoice.date).strftime("%d %B %Y").rjust(66) %>
 
 --CUSTOMER DETAILS--
 Email: <%= @account.email.rjust(73) %>
-Payment Method: <%= "#{@charge.card.type} ending in #{@charge.card.last4}".rjust(64) %>
+Payment Method: <%= @card.rjust(64) %>
 
 --TRANSACTION DETAILS--
 <% @invoice.lines.each do |line| %>

@@ -5,11 +5,10 @@ class InvoiceMailer < ActionMailer::Base
 
   after_invoice_payment_succeeded! do |invoice, event|
     # Rails.logger.info "InvoiceMailer: in the after invoice payment succeeded mailer"
-    charge = Stripe::Charge.retrieve(invoice.charge) rescue Stripe::InvalidRequestError
+    card = card_detail(invoice)
     account = Account.find_by_stripe_customer_token(invoice.customer)
-    Rails.logger.info "CHARGE: #{charge}"
-    if account && charge != Stripe::InvalidRequestError
-      new_invoice(account, invoice, charge).deliver
+    if account
+      new_invoice(account, invoice, card).deliver
       update_account_next_invoice(account, invoice)
     else
       Rails.logger.error 'InvoiceMailer: invoice.payment_received did not trigger an email '
@@ -17,10 +16,10 @@ class InvoiceMailer < ActionMailer::Base
     end
   end
 
-  def new_invoice(account, invoice, charge)
+  def new_invoice(account, invoice, card)
     @account = account
     @invoice = invoice
-    @charge = charge
+    @card = card
     mail :to => account.email, :subject => 'BulldogClip - Your new invoice'
     # add an attachment 
   end
@@ -37,4 +36,16 @@ class InvoiceMailer < ActionMailer::Base
   rescue Stripe::InvalidRequestError
   end
 
+  def self.card_detail(invoice)
+    if invoice.charge == "null"
+      card = "NA"
+    else
+      begin
+        charge = Stripe::Charge.retrieve(invoice.charge)
+        card = "#{charge.card.type} ending in #{charge.card.last4}"
+      rescue Stripe::InvalidRequestError
+        card = "NA"
+      end
+    end
+  end
 end
