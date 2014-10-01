@@ -191,7 +191,7 @@ class Account < ActiveRecord::Base
       customer = Stripe::Customer.create(
         description: "Customer for #{email}",
         card:         stripe_card_token,
-        email:        email 
+        email:        email
         )
       self.stripe_customer_token = customer.id
     end
@@ -214,7 +214,7 @@ class Account < ActiveRecord::Base
   end
 
   def email_not_in_use
-    errors.add(:email, "The email #{email.downcase} is already in use") unless 
+    errors.add(:email, "The email #{email.downcase} is already in use") unless
       User.where(email: email.downcase).empty?
   end
 

@@ -32,6 +32,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    awesome_print (1.2.0)
     aws-sdk (1.5.8)
       httparty (~> 0.7)
       json (~> 1.4)
@@ -74,6 +75,8 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
+    code_analyzer (0.4.5)
+      sexp_processor
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -82,6 +85,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colored (1.2)
     cookies_eu (1.0.11)
       jquery-cookie-rails
       jquery-rails
@@ -226,6 +230,16 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_best_practices (1.15.4)
+      activesupport
+      awesome_print
+      code_analyzer (>= 0.4.3)
+      colored
+      erubis
+      i18n
+      json
+      require_all
+      ruby-progressbar
     rails_layout (1.0.22)
     rails_serve_static_assets (0.0.2)
     rails_stdout_logging (0.0.3)
@@ -241,6 +255,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    require_all (1.3.2)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -264,6 +279,7 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    ruby-progressbar (1.6.0)
     ruby2ruby (2.1.2)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
@@ -384,6 +400,7 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.1.6)
   rails_12factor
+  rails_best_practices
   rails_layout
   rb-fsevent
   rspec-rails (~> 3.0.2)

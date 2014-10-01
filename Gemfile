@@ -71,6 +71,7 @@ group :development do
   # gem 'sprockets_better_errors'    not 4.1 compatible
   gem "brakeman", :require => false
   gem "spring"
+  gem 'rails_best_practices'
 end
 
 group :test, :development do
