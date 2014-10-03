@@ -5,8 +5,8 @@ if ($('#flashes').length > 0) {
 }
 $('main').prepend("<%= escape_javascript raw(flash_normal) %>");
 
-// If on a public page when timed out then we want to trigger a page reload 
-// and display the welcome page. Otherwise, as the page is not refreshed, 
+// If on a public page when timed out then we want to trigger a page reload
+// and display the welcome page. Otherwise, as the page is not refreshed,
 // it will show the sign in button etc.
 
 if ($("body[data-controller|='pages']").length > 0) {

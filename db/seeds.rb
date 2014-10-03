@@ -10,8 +10,8 @@ puts 'CREATE PLAN'
 @plan = Plan.create(name: 'Personal', amount: 2000)
 
 puts 'SETTING UP DEMO USER LOGIN'
-@user = User.create!(email: 'demo@example.com', 
-    password: 'password', 
+@user = User.create!(email: 'demo@example.com',
+    password: 'password',
     password_confirmation: 'password',
     confirmed_at: Time.now)
 

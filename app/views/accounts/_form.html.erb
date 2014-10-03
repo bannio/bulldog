@@ -10,7 +10,7 @@
   <%= form_group_for f, :plan_id do %>
     <%= f.hidden_field :plan_id, data: {plans: get_plan_data} %>
   <% end %>
- 
+
   <% if @account.business? %>
     <%= form_group_for f, :vat_enabled, label: false do %>
       <div class="input-group vat-check">

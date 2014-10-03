@@ -7,8 +7,8 @@ class BillPolicy < ApplicationPolicy
 
   def permitted_attributes
     # if user.admin? || user.owner_of?(vat_rate)
-      [:account_id, :customer_id, :supplier_id, 
-       :date, :category_id, :description, :amount, 
+      [:account_id, :customer_id, :supplier_id,
+       :date, :category_id, :description, :amount,
        :new_customer, :new_supplier, :new_category,
        :vat_rate_id, :vat]
     # end

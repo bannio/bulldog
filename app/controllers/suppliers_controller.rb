@@ -1,7 +1,7 @@
 class SuppliersController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_authorized
-  
+
   def index
     @suppliers = current_account.suppliers.order(name: :asc)
     authorize @suppliers
@@ -20,7 +20,7 @@ class SuppliersController < ApplicationController
 
     if current_account.suppliers.where(name: new_name).empty? && new_name != old_name
       @supplier.update_attribute(:name, new_name)
-      flash[:success] = "supplier #{old_name} renamed to #{new_name}" 
+      flash[:success] = "supplier #{old_name} renamed to #{new_name}"
     else
       unless new_name == old_name
         @supplier.reassign_bills_to(new_name)

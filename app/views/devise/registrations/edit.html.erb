@@ -6,7 +6,7 @@
       <div class="authform">
         <h1>Change Password</h1>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
-          
+
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div class="form-group">
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

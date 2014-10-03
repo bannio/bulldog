@@ -11,8 +11,8 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:name, :address, :postcode, 
-      :include_bank, :bank_account_name, :bank_name, :bank_address, 
+    [:name, :address, :postcode,
+      :include_bank, :bank_account_name, :bank_name, :bank_address,
       :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :invoice_heading,
       :vat_enabled, :plan_id, :email, :stripe_customer_token, :user_id,
       :stripe_card_token, :title, :price, :interval, :card_last4,

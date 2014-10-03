@@ -21,7 +21,7 @@ class InvoiceMailer < ActionMailer::Base
     @invoice = invoice
     @card = card
     mail :to => account.email, :subject => 'BulldogClip - Your new invoice'
-    # add an attachment 
+    # add an attachment
   end
 
   def error_invoice(invoice, event)

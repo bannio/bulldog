@@ -110,7 +110,7 @@ class InvoicesController < ApplicationController
   private
 
   def collect_new_entries
-    params[:invoice][:new_header] = params[:invoice][:header_id] if params[:invoice][:header_id].to_i == 0 
+    params[:invoice][:new_header] = params[:invoice][:header_id] if params[:invoice][:header_id].to_i == 0
   end
 
   def invoice_params

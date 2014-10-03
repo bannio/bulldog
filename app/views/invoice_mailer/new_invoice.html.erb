@@ -69,7 +69,7 @@
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-          Invoice Date: 
+          Invoice Date:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;text-align: right;">
           <%= Time.at(@invoice.date).strftime("%d %B %Y") %>
@@ -132,7 +132,7 @@
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Invoice Total: 
+            Invoice Total:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
             <%= number_to_currency(@invoice.total/100) %>
@@ -146,7 +146,7 @@
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Starting Account Balance: 
+            Starting Account Balance:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
             <%= number_to_currency(@invoice.starting_balance/100) %>
@@ -155,7 +155,7 @@
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Amount Paid: 
+            Amount Paid:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
             <%= number_to_currency(@invoice.amount_due/100) %>
@@ -164,7 +164,7 @@
 
         <tr style="height: 10px;">
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">
-            Closing Account Balance: 
+            Closing Account Balance:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
             <%= number_to_currency(@invoice.ending_balance/100) %>

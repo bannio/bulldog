@@ -24,8 +24,8 @@ module InvoicesHelper
     if account.plan_id == 0
       "no current subscription"
     else
-      account.plan.name + " at " + 
-      number_to_currency(@account.plan.amount/100) + " per " + 
+      account.plan.name + " at " +
+      number_to_currency(@account.plan.amount/100) + " per " +
       @account.plan.interval
     end
   end

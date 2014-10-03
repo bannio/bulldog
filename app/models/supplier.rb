@@ -5,7 +5,7 @@ class Supplier < ActiveRecord::Base
   has_many :bills
 
   validates :name, presence: true
-  validates :name, uniqueness: { scope: :account_id, 
+  validates :name, uniqueness: { scope: :account_id,
     message: "This Supplier already exists" ,
     case_sensitive: false }   # Food and food cannot co-exist
   before_destroy :check_for_bills
@@ -23,7 +23,7 @@ class Supplier < ActiveRecord::Base
 
   def check_for_bills
     unless self.bills.reload.empty?
-      errors.add(:name, "This Supplier has bills associated. Rename to reassign those bills") 
+      errors.add(:name, "This Supplier has bills associated. Rename to reassign those bills")
       false
     else
       true

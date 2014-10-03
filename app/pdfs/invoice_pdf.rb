@@ -23,20 +23,20 @@ class InvoicePdf < Prawn::Document
     invoice_page_number
     generated_by
   end
-  
+
   def fold_mark
     repeat([1]) do         # only on first page
       transparent(0.5){stroke_horizontal_line -20, -10, at: 514 }
     end
   end
-  
+
 
 
   def header
     bounding_box([0,745], :width => 523) do
     float do
       # adds logo
-      bounding_box([0,0], :width => 360, :height => 100) do 
+      bounding_box([0,0], :width => 360, :height => 100) do
         logo = @view.logo_file(@invoice)
         image open("#{ logo.to_s.sub!(/\?.+\Z/, '') }"), :fit => [250, 100] if logo
       end
@@ -49,7 +49,7 @@ class InvoicePdf < Prawn::Document
           name = @invoice.setting.name
           addr = @invoice.setting.address
           postcode = @invoice.setting.postcode
-          tel = @invoice.setting.telephone 
+          tel = @invoice.setting.telephone
           email = @invoice.setting.email
           user_details = "#{name}\n#{addr}\n#{postcode}\n\n#{'Telephone: ' + tel if tel.present?}\n#{'Email: ' + email if email.present?}"
           text_box user_details, :at => [0,cursor],
@@ -64,7 +64,7 @@ class InvoicePdf < Prawn::Document
   end
 end
 
-  
+
   def divider_one
     self.line_width= 0.5
     stroke_horizontal_line 0, 523, :at => [640]
@@ -80,22 +80,22 @@ end
            :width => 360, :height => 85,
            :overflow => :shrink_to_fit
       else
-        text_box "#{@invoice.customer_name}\n<color rgb='ff0000'>Update your Customer for their \n address to appear here</color>", 
+        text_box "#{@invoice.customer_name}\n<color rgb='ff0000'>Update your Customer for their \n address to appear here</color>",
         inline_format: true
-      end 
+      end
     end
 
     @end_of_customer_address = cursor
-    
+
     # adds invoice_heading
       bounding_box([360,0], :width => 180) do
-        text_box (@invoice.header_name.upcase).presence || "INVOICE", 
-              size: 16, 
+        text_box (@invoice.header_name.upcase).presence || "INVOICE",
+              size: 16,
               style: :bold,
               :width => 180, :height => 20,
               :overflow => :shrink_to_fit
     end
-    
+
     # adds invoice_number_and_date
       bounding_box([360,cursor], :width => 180) do
         move_down 20
@@ -106,7 +106,7 @@ end
           data = [["Document No:", "#{@invoice.number}"],["Date:","#{@invoice.date}"],["VAT Registration No:","#{@invoice.setting.vat_reg_no}"]]
           end
         else
-          if @invoice.header_name.upcase == "INVOICE"  
+          if @invoice.header_name.upcase == "INVOICE"
           data = [["Invoice No:", "#{@invoice.number}"],["Invoice Date:","#{@invoice.date}"]]
           else
           data = [["Document No:", "#{@invoice.number}"],["Date:","#{@invoice.date}"]]
@@ -153,7 +153,7 @@ end
       else
         [["Date", "Type", "Description", "Amount"]] +
         @bills.map do |bill|
-        [bill.date, bill.category.name, bill.description, price(bill.amount)]     
+        [bill.date, bill.category.name, bill.description, price(bill.amount)]
       end
     end
   end
@@ -208,7 +208,7 @@ end
     end
   end
 
-  
+
   def invoice_total
       if @invoice.include_vat?
       data = [["Total excl. VAT", "#{price(@invoice.total - @view.total_vat(@invoice))}", "", "#{price(@view.total_vat(@invoice))}"]]
@@ -266,7 +266,7 @@ end
       end
     end
   end
-  
+
   def vat_summary
     summary_table = []
     summary_table << ["","VAT", "#{price(@view.total_vat(@invoice))}","",""]
@@ -295,7 +295,7 @@ end
 
     if @invoice.include_bank_details? && payment_table.length > 0
       move_down 5
-      if cursor < 95 
+      if cursor < 95
         start_new_page
       end
       if cursor > 300
@@ -311,11 +311,11 @@ end
       end
     end
   end
-  
+
   def price(num)
     @view.number_to_currency(num)
   end
-  
+
   def invoice_page_number
     string = "page <page> of <total>"
     options = {

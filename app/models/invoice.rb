@@ -62,7 +62,7 @@ class Invoice < ActiveRecord::Base
 
   def customer_has_uninvoiced_bills?
     unless self.customer.blank?
-      if self.customer.has_uninvoiced_bills? 
+      if self.customer.has_uninvoiced_bills?
         return true
       else
         errors.add(:customer_id, "This customer has no bills")
@@ -113,7 +113,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.date_valid?(date)
-    true if (date.is_a?(Date) || date =~ /\A\d{4}-\d{2}-\d{2}\z/ ) && 
+    true if (date.is_a?(Date) || date =~ /\A\d{4}-\d{2}-\d{2}\z/ ) &&
       begin
         date.to_date.is_a?(Date)
       rescue ArgumentError

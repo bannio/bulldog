@@ -12,7 +12,7 @@
   <%= form_group_for f, :active, label: true do %>
     <%= f.check_box :active %>
   <% end %>
-   
+
   <%= f.submit 'Save', :class => 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Save changes to VAT rate"  %>
 <% end %> <!-- end of form_for -->
   <% if action_name == 'edit' %>

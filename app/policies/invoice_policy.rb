@@ -6,7 +6,7 @@ class InvoicePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:date, :customer_id, :comment, :number, :account_id, 
+    [:date, :customer_id, :comment, :number, :account_id,
     :total, :new_header, :header_id, :include_bank, :include_vat]
   end
 

@@ -101,6 +101,6 @@ Rails.application.configure do
     },
     :s3_protocol => 'https'
   }
-  # from Rails 4.1.6 
+  # from Rails 4.1.6
   config.active_record.dump_schema_after_migration = false
 end
