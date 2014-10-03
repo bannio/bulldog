@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
   # include Visible
-  
+
   belongs_to :account
   has_many :bills
   has_many :invoices

@@ -14,7 +14,7 @@ class SessionsController < Devise::SessionsController
         flash[:notice] = "signed in successfully."
         sign_in(resource_name, resource)
         render :template => "remote_content/devise_success_sign_in.js.erb"
-        flash.discard       
+        flash.discard
       }
     end
   end

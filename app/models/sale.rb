@@ -25,7 +25,7 @@ class Sale < ActiveRecord::Base
 
     event :fail do
       transitions from: :processing, to: :errored
-    end 
+    end
   end
 
   def process_subscription

@@ -15,7 +15,7 @@
     <%= form_for @account, url: update_card_account_path do |f| %>
     <div class="panel-body sensitive well">
       <%= f.hidden_field :stripe_card_token %>
-      
+
       <div class="field card-number">
         <%= label_tag :card_number, "Card Number" %>
         <%= text_field_tag :card_number, nil, name: nil, class: "form-control card-number", placeholder: "16 digit card number", type: "tel", required: 'required' %>
@@ -42,7 +42,7 @@
     <div id="stripe_error" class="stripe-error">
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
-    
+
     <div class="col-xs-12 subscribe">
     <%= f.submit "Update Card", class: "create-btn std-btn lg-btn pull-right update-card", data: {toggle: "tooltip"}, title: "Update payment card for BulldogClip subscription" %>
     <!-- </div> -->

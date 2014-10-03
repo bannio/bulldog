@@ -6,8 +6,8 @@ class SettingPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:account_id, :name, :address, :postcode, 
-      :bank_account_name, :bank_name, :bank_address, 
+    [:account_id, :name, :address, :postcode,
+      :bank_account_name, :bank_name, :bank_address,
       :bank_account_no, :bank_sort, :bank_bic, :bank_iban, :vat_reg_no,
       :include_vat, :include_bank, :telephone, :email, :logo]
   end

@@ -19,7 +19,7 @@ class ContactsController < ApplicationController
         ContactMailer.contact_email(@contact).deliver
         @contact.add_to_mail_list
       end
-      redirect_to home_path 
+      redirect_to home_path
     else
       flash.now[:alert] = "Your message could not be sent. Please include a message or select add to mailing list before sending."
       render 'new'

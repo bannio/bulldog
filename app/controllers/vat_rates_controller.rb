@@ -3,7 +3,7 @@ class VatRatesController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_authorized
   after_action :verify_policy_scoped, except: [:new, :create]
-  
+
   def index
     @vat_rates = policy_scope(VatRate).order(name: :asc )
     authorize @vat_rates

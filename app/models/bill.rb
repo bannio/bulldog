@@ -49,19 +49,19 @@ class Bill < ActiveRecord::Base
       CSV.generate(options) do |csv|
         csv << %w{Date Customer Supplier Category Description Amount VAT_rate VAT Invoice}
         all.each do |bill|
-          row = [bill.date, bill.customer_name, bill.supplier_name, bill.category_name, 
+          row = [bill.date, bill.customer_name, bill.supplier_name, bill.category_name,
                 bill.description, bill.amount, bill.vat_rate_name, bill.vat, bill.invoice_number]
           csv << row
-        end     
+        end
       end
     else
     CSV.generate(options) do |csv|
       csv << %w{Date Customer Supplier Category Description Amount Invoice}
       all.each do |bill|
-        row = [bill.date, bill.customer_name, bill.supplier_name, bill.category_name, 
+        row = [bill.date, bill.customer_name, bill.supplier_name, bill.category_name,
               bill.description, bill.amount, bill.invoice_number]
         csv << row
-      end     
+      end
     end
     end
   end
@@ -137,14 +137,14 @@ class Bill < ActiveRecord::Base
   # This monthly_sum method returns integers 1 to 12 to represent months so that multiple years can be laid
   # over each other in chartkick charts. Note that this is only available for bar or column charts.
   def self.monthly_sum
-    order("cast(EXTRACT(month FROM date) as integer)"). 
+    order("cast(EXTRACT(month FROM date) as integer)").
     group("cast(EXTRACT(month FROM date) as integer)").
     sum(:amount)
   end
 
 
   def self.monthly_count
-    order("cast(EXTRACT(month FROM date) as integer)"). 
+    order("cast(EXTRACT(month FROM date) as integer)").
     group("cast(EXTRACT(month FROM date) as integer)").
     count
   end
@@ -159,14 +159,14 @@ class Bill < ActiveRecord::Base
   def create_category
     self.category = Category.create(name: new_category, account_id: self.account_id) if new_category.present?
   end
-  
+
   def create_supplier
     self.supplier = Supplier.create(name: new_supplier, account_id: self.account_id) if new_supplier.present?
   end
 
   def check_for_invoice
     unless self.invoice_id.blank?
-      errors.add(:amount, "This bill is invoiced and cannot be deleted") 
+      errors.add(:amount, "This bill is invoiced and cannot be deleted")
       false
     end
   end

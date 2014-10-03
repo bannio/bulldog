@@ -1,3 +1,3 @@
 class RemoteContentController < ApplicationController
-  
+
 end

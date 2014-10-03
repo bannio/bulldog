@@ -37,7 +37,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
     if !@confirmable.errors.empty?
       self.resource = @confirmable
-      render 'confirmations/new' 
+      render 'confirmations/new'
     end
   end
 

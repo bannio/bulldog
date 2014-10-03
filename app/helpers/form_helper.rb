@@ -15,7 +15,7 @@ module FormHelper
   end
 
   def checkbox_image(boolean)
-    if boolean 
+    if boolean
       "<span class='glyphicon glyphicon-check'></span>"
     else
       "<span class='glyphicon glyphicon-unchecked'></span>"

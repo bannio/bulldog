@@ -21,13 +21,13 @@
             <% end -%>
             <%= f.password_field :password, class: 'form-control' %>
           </div>
-            
+
           <% if devise_mapping.rememberable? -%>
             <div class="checkbox remember-me">
               <%= f.check_box :remember_me %> <%= f.label :remember_me %>
             </div>
           <% end -%>
-      
+
         </div><!-- /.modal-body -->
         <div class="modal-footer">
           <a class="action-btn std-btn" data-dismiss="modal", data: {toggle: "tooltip"}, title: "Close window">Close</a>

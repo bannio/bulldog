@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,
-         :recoverable, :rememberable, :trackable, :validatable, 
+         :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :timeoutable
 
   has_one :account
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     pending_any_confirmation {yield}
   end
 
-    # new function to set the password without knowing the current password used in our confirmation controller. 
+    # new function to set the password without knowing the current password used in our confirmation controller.
   def attempt_set_password(params)
     p = {}
     p[:password] = params[:password]
@@ -36,10 +36,10 @@ class User < ActiveRecord::Base
   def has_no_password?
     self.encrypted_password.blank?
   end
-  
+
   def password_required?
   # Password is required if it is being set, but not for new records
-    if !persisted? 
+    if !persisted?
       false
     else
       !password.nil? || !password_confirmation.nil?

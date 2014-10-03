@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
         render :new
       end
     else
-      flash.now[:error] = "Please correct the highlighted errors" 
+      flash.now[:error] = "Please correct the highlighted errors"
       @bills = @report.bills.order(date: :desc).page(params[:page])
       render :new
     end

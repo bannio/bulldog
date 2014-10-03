@@ -4,7 +4,7 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to title, params.merge(sort: column, direction: direction)
   end
-  
+
   def arrow(column)
     direction = sort_direction == "desc" ? "down" : "up"
     icon = column == sort_column ? "glyphicon-chevron-#{direction}" : nil

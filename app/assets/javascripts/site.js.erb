@@ -11,7 +11,7 @@ SITENAME = {
     init: function () {
     // application-wide code
       console.log("SITE init common");
-      // fix for Select2 not working in modals. 
+      // fix for Select2 not working in modals.
       // overwrite the function with an empty function block
       $.fn.modal.Constructor.prototype.enforceFocus = function () {};
       // Cookie alert
@@ -58,7 +58,7 @@ SITENAME = {
         dateFormat: "yy-mm-dd",
         changeMonth: true,
         changeYear: true
-      });    
+      });
     }
   },
 
@@ -412,9 +412,9 @@ SELECT = {
 TABLES = {
   clickable_row: function () {
     // This function is adapted to work on either data-rowlink (invoices)
-    // or data-url (bills) within a table where the rows have a class of 
-    // rowlink. If/when the invoices table changes to JS then this could 
-    // be simplified. Note that data-rowlink results in an HTML 
+    // or data-url (bills) within a table where the rows have a class of
+    // rowlink. If/when the invoices table changes to JS then this could
+    // be simplified. Note that data-rowlink results in an HTML
     $('tbody').on('click', 'tr.rowlink', function (e) {
       var link = $(this).data("url");
       var link2 = $(this).data("rowlink");
@@ -435,7 +435,7 @@ STRIPE = {
     console.log("STRIPE setupForm");
     return $('form').submit(function () {
     // must only have one form on the page as the selector above
-    // does not target an id so that the same code can be used on 
+    // does not target an id so that the same code can be used on
     // both new account and new card. Old specific target was:
     // return $('#new_account').submit(function () {
       var expiry, validateExpiry, card, validCard, cvc, validCvc;

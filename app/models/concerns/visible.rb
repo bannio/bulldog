@@ -3,6 +3,6 @@ module Visible
   module ClassMethods
     def visible_to(person)
       where("#{table_name}.account_id = (?)", person.account.id)
-    end 
+    end
   end
 end
