@@ -1,7 +1,28 @@
-<!-- NO LONGER IN USE -->
 
-<!-- Hello <%#= @resource.email %>,
+<% if @resource.sign_in_count > 1 %>
+Hello <%= @resource.unconfirmed_email %>,
 
+________________________________________
+
+
+New Email Address For BulldogClip Account
+
+________________________________________
+
+
+We have received a request to change your BulldogClip account email address 
+from <%= @resource.email %> to <%= @resource.unconfirmed_email %>. To confirm
+this change and start using your new address follow the link below.
+
+<%= confirmation_url(@resource, :confirmation_token => @token) %>
+
+
+If you didn't make the request, please ignore this email. The account email 
+address will remain unchanged until you follow the link above.
+
+<% else %>
+
+Hello <%= @resource.email %>,
 ______________________________________________
 
 
@@ -11,11 +32,13 @@ ______________________________________________
 
 Welcome to BulldogClip!
 
-Please follow the link below to complete your registration and start using BulldogClip today.
+Please follow the link below to complete your registration and start using 
+BulldogClip today.
 
-<%#= confirmation_url(@resource, :confirmation_token => @token) %>
+<%= confirmation_url(@resource, :confirmation_token => @token) %>
 
 Thanks for joining.
+<% end %>
 
 Regards,
 
@@ -24,6 +47,7 @@ The BulldogClip team
 
 **********************
 
-This email is confidential and intended solely to whom it is addressed. It may contain sensitive or privileged information. If you have received this email in error, please inform us at hello@bulldogclip.co.uk and destroy it. Questions? contact us at hello@bulldogclip.co.uk -->
-
-
+This email is confidential and intended solely to whom it is addressed. It may
+contain sensitive or privileged information. If you have received this email in
+error, please inform us at hello@bulldogclip.co.uk and destroy it. 
+Questions? contact us at hello@bulldogclip.co.uk
