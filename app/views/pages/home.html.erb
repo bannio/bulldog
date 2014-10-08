@@ -1,12 +1,12 @@
 <% content_for :title do %>Track Costs & Create Invoices Online with BulldogClip<% end %>
-<% content_for :description do %>Keep track of your finances with BulldogClip cloud software. Quick & easy bill entry, instant graphs & professional invoices. Small business & personal use.<% end %>
+<% content_for :description do %>Keep track of your finances with BulldogClip cloud software. Free trial. Easy bill entry, instant graphs & invoices. Small business & personal use.<% end %>
 
 
 <!-- BODY CONTAINER -->
 <div class="landing-page container">
   <div class="row landing-top-row">
     <div class="videocontent col-xs-12">
-      <video id="intro_video" class="img-responsive video-js vjs-default-skin" poster=<%= asset_path('door_dog_poster.png') %> title="Watch video" >
+      <video id="intro_video" class="img-responsive video-js vjs-default-skin" poster=<%= asset_path('door_dog_poster_freetrial.png') %> title="Watch video" >
       <source src= <%= video_path('intro_video.mp4') %> type='video/mp4' />
       <source src= <%= video_path('intro_video.webm') %> type='video/webm' />
       <!-- <source src= "https://s3.amazonaws.com/bulldogclip-dev-assets/videos/intro_video.webm" type='video/webm' /> -->
@@ -28,7 +28,7 @@
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <%= link_to "Find out more", '/features', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about BulldogClip features." %>
-        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
   </section>
@@ -48,7 +48,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src=<%= asset_path('simple_design.png') %> alt="New Bill" class="img-responsive landing-img">
+        <img src=<%= asset_path('simple_design.png') %> alt="Quickly create new bill entries" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -67,7 +67,7 @@
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <%= link_to "Find out more", '/features#bills', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about bills." %>
-        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
   </section>
@@ -86,7 +86,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src=<%= asset_path('pie_chart.png') %> alt="Pie Chart" class="img-responsive landing-img">
+        <img src=<%= asset_path('pie_chart.png') %> alt="Pie charts and graphs of your data" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -105,7 +105,7 @@
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <%= link_to "Find out more", '/features#analysis', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about analysis." %>
-        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
   </section>
@@ -124,7 +124,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src=<%= asset_path('documents.png') %> alt="Invoice" class="img-responsive landing-img">
+        <img src=<%= asset_path('documents.png') %> alt="Create invoice and expense claims" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -143,7 +143,7 @@
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <%= link_to "Find out more", '/features#documents', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about documents." %>
-        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
   </section>
@@ -162,7 +162,7 @@
     <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src=<%= asset_path('vat.png') %> alt="File" class="img-responsive landing-img">
+        <img src=<%= asset_path('vat.png') %> alt="VAT support" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -181,7 +181,7 @@
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <%= link_to "Find out more", '/features#vat', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about VAT support." %>
-        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
   </section>
@@ -200,7 +200,7 @@
   <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src=<%= asset_path('cloud.png') %> alt="Pile of bills" class="img-responsive landing-img">
+        <img src=<%= asset_path('cloud.png') %> alt="Safe and secure in the cloud" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -219,7 +219,7 @@
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <%= link_to "Find out more", '/features#security', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about security." %>
-        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
   </section>
@@ -238,7 +238,7 @@
     <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src=<%= asset_path('access.png') %> alt="File" class="img-responsive landing-img">
+        <img src=<%= asset_path('access.png') %> alt="Access anywhere" class="img-responsive landing-img">
       </div>
     </div><!--end row-->
   </section><!--end container-->
@@ -258,9 +258,47 @@
     <div class="btn-center row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
         <%= link_to "Find out more", '/features#access', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about accessability." %>
-        <%= link_to 'Sign me up now', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
       </div>
     </div>
   </section>
 </div>
 
+<!-- Section 6 - Free Trial -->
+<div class="container landing-info">
+<hr>
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <h2>Start Your Free Trial Today</h2>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+    <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <img src=<%= asset_path('free_trial.png') %> alt="Free Trial" class="img-responsive landing-img">
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <p>Try now for free with our no obligation 30 day free trial. <br> During your free trial, you can use all of BulldogClip’s features completely free of charge.</p>
+      </div>
+    </div><!--end row-->
+  </section><!--end container-->
+  <hr>
+</div><!-- end container landing-info -->
+
+
+<div class="container landing-info">
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Find out more", '/features#access', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Read more about accessability." %>
+        <%= link_to 'Start free trial', plans_path, class: 'create-btn lg-btn try-now-btn', data: {toggle: "tooltip"}, title: "Sign up for BulldogClip." %>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,5 +1,5 @@
 <% content_for :title do %>BulldogClip Features - Easy Cost Tracking & Invoicing<% end %>
-<% content_for :description do %>BulldogClip features easy receipt & bill archiving, graphs & spreadsheets of your spending, professional invoices, VAT support. Business & personal plans.<% end %>
+<% content_for :description do %>BulldogClip features easy receipt archiving, spending graphs & spreadsheets, instant invoices, VAT support. Try now for free. Business & personal plans.<% end %>
 
 <div class="container info-page">
   <div class="container">
@@ -50,6 +50,9 @@
           <a href="#access">Accessibility</a>
         </dd>
         <dd>
+          <a href="#freetrial">Free Trial</a>
+        </dd>
+        <dd>
           <a href="/home">Return to homepage</a>
         </dd>
       </dl>
@@ -67,7 +70,7 @@
             <li>Sort bills by date, customer, supplier, category, description or amount.</li>
             <li>Fully editable so you can reasign to a different customer or category or correct any errors.</li>
             <li>Easily delete unwanted bills.</li>
-            <li>Export all (or some of) your bills as a <%= link_to 'CSV file', page_path('faq',anchor: 'csv')  %> to keep as a back up or use elsewhere.</li>
+            <li>Export all (or some of) your bills as a <%= link_to 'CSV file', page_path('faq',anchor: 'csv'), class:"faq-link" %> to keep as a back up or use elsewhere.</li>
           </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
@@ -215,6 +218,20 @@
         </ul>
         <a class="top" href="#top">Back to top</a>
       </div>
+
+
+      <hr>
+      <div class="row spacer" id="freetrial">
+        <h3>30 Day Free Trial</h3>
+        <ul>
+          <li>The best way to see how BulldogClip will help you or your business is to try it. That's why we offer a 30 day no obligation free trial.</li>
+          <li>During your trial you will have unlimited access to all of the features. You will be able to add your bills, view charts and graphs and create documents.</li>
+          <li>We will email you towards the end of your trial to let you know it is coming to an end. We expect that you will find BulldogClip so useful you will choose to stay with us. But if you decide its not for you just choose to cancel and you won't be charged a penny.</li>
+          <li>Keen to get started? Click here to <%= link_to 'start your free trial', plans_path, data: {toggle: "tooltip"}, title: "Start your free trial today", class:"faq-link" %> today.</li>
+        </ul>
+        <a class="top" href="#top">Back to top</a>
+      </div>
+
       </div><!-- end div col-sm-8-->
     </div><!--end row-->
   </div><!--end page content container -->

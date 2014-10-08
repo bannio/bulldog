@@ -113,7 +113,7 @@ div.subscribe {
 }
 
 input.pay {
-  margin: 15px 0px 5px
+  margin: 20px 0px 5px
 }
 
 img.stripe-power {
@@ -223,7 +223,7 @@ h3.price {
   font-size: 3.5rem;
   line-height: 2.5rem;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 0px;
 }
 
 // UPDATE CARD FORM
@@ -267,7 +267,7 @@ div.invoice_header, div.analysis_header {
 //   border-right: 1px solid #444;
 //   // height: 26px;
 //   height: 3.25rem;
-//   color: #555; 
+//   color: #555;
 // }
 
 // currency symbol placeholder
@@ -331,7 +331,7 @@ div.confirmation-error > form >div.form-group {
 }
 
 div.confirmation-error > form > p {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 // forgot password form
@@ -348,7 +348,7 @@ div.change-pwd > form > div.form-group {
   margin: 0px 0px 20px 0px;
 }
 
-// sign up form 
+// sign up form
 // div.signup-form > form > div.control-group > div.form-group {
 //   margin: 15px 0px 30px 0px;
 // }
@@ -405,7 +405,7 @@ th>a {
 
 th>a:hover, th>a:focus {
     color: $black;
-    text-decoration: underline; } 
+    text-decoration: underline; }
 
 // removes grey outline on focus
 a:focus {
@@ -468,7 +468,7 @@ input.search-query {
 // drop down box arrow box (arrow itself is an img)
 .select2-container > a.select2-choice > span.select2-arrow {
   border-left: 1px solid #444;
-  border-radius: 0 0; 
+  border-radius: 0 0;
   background-color: $white;
   background-image: none;
   padding-left: 3px;
@@ -525,7 +525,7 @@ input:hover,
 input:focus,
 input:active,
 input:visited,
-textarea:hover, 
+textarea:hover,
 textarea:focus,
 textarea:active,
 textarea:visited,
@@ -571,7 +571,7 @@ ul.select2-results > li.select2-highlighted {
 
 // attempts to make selected and placeholder text different colours
 // .select2-choice {
-// color: red !important; 
+// color: red !important;
 // }
 
 // .select2-default {
@@ -701,7 +701,7 @@ table.account-details > tbody > tr > td.td-content {
   vertical-align: bottom;
 }
 
-// account details show form 
+// account details show form
 td.td-name {
   font-size: 1.3rem;
   // font-family: $ubuntu;
@@ -777,12 +777,12 @@ select {
 
 // styles select customer select2 uses important to overright inline styling
 div.customer-select > div.select2-container {
-  width: 226px !important; 
+  width: 226px !important;
   margin-bottom: 0;
   }
 
 
-// removes webkit styling from customer select 
+// removes webkit styling from customer select
 div.customer-select>select {
   -webkit-appearance: none;
   max-width: 100%;
@@ -895,7 +895,7 @@ div.has-error ul.select2-choices {
 }
 
 div.has-error>div.select2-container>a.select2-choice {
-  border-color: $error-red; 
+  border-color: $error-red;
 }
 
 // aligns placeholder text with select2 placeholders
@@ -905,7 +905,7 @@ padding: 6px 8px;
 
 
 // Adds padding above contact form to give space between p and panel
-div.contact-page.panel { 
+div.contact-page.panel {
 margin-top: 20px;
 }
 
