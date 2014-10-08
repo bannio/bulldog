@@ -8,8 +8,11 @@
 
 .plans {
   div.panel {
-  margin-top: 30px;
+  margin-top: 5px;
 }
+  div.panel.freetrial {
+    margin-top: 30px;
+  }
 }
 
 div.container.plans {
@@ -80,7 +83,7 @@ h2.video-header {
 
 // styles back to tops
 a.top {
-  color: #000; 
+  color: #000;
   float: right;
   padding: 10px 0px;
 }

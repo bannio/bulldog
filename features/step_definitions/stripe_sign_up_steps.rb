@@ -46,7 +46,7 @@ When(/^my credit card details$/) do
 end
 
 Given(/^a Base Plan exists$/) do
-  @plan = FactoryGirl.create(:plan, 
+  @plan = FactoryGirl.create(:plan,
     id:       1,
     name:     "Personal",
     interval: "year",
@@ -66,7 +66,7 @@ end
 Given(/^a Business Annual Plan exists$/) do
   @plan = FactoryGirl.create(:plan,
     id:       3,
-    name:     "Business Annual", 
+    name:     "Business Annual",
     interval: "year",
     amount:   5000
     )
@@ -75,7 +75,7 @@ end
 Given(/^the account has a valid Stripe Customer token$/) do
   @account.update_attribute(:stripe_customer_token, "cust_token")
   customer = Stripe::Customer.create({
-      id:     'cust_token', 
+      id:     'cust_token',
       email: 'cucumber@example.com',
       card: 'void_card_token'
     })
@@ -83,7 +83,7 @@ end
 
 When(/^I Sign up for Base Plan$/) do
   # within("div.signup"){click_link("Sign up")}
-  click_link("Get the personal plan")
+  click_link("Start PERSONAL plan free trial")
 end
 
 When(/^I enter (\d+), (.*) and (\d+ \/ \d+)$/) do |card_number, cvc, expiry|
@@ -109,7 +109,7 @@ When(/^I use a card that will be declined$/) do
 end
 
 Then(/^I use a card that is valid$/) do
-  
+
 end
 
 When(/^I visit the Manage Subscription page$/) do
