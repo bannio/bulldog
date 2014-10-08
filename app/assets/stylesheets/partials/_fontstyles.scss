@@ -17,7 +17,7 @@ body {
 
 
 
-// LANDING PAGE 
+// LANDING PAGE
 
 // Landing page strapline
 
@@ -86,6 +86,11 @@ h1.info-menu-page {
   line-height: 2.5rem;
   text-align: center;
   padding: 5px 0 10px 0;
+}
+
+.press-page h2 {
+  font-size: 2.25rem;
+  line-height: 2.75rem;
 }
 
 .info-page h3 {
@@ -192,7 +197,7 @@ font-weight: $regular;
 }
 
 
-// TABLES 
+// TABLES
 
 // table contents and headers
 th {
@@ -233,7 +238,7 @@ padding-top: 5px;
 }
 
 
-// placeholder text 
+// placeholder text
 ::input-placeholder,
 input::-moz-placeholder,
 input:-moz-placeholder,
@@ -254,9 +259,9 @@ select > option {
   font-family: $arial;
   font-weight: $regular;
 }
-// makes dropdown placeholder same colour as others 
+// makes dropdown placeholder same colour as others
 // but also makes everything in dropdown menu that colour too
-span.select2-chosen { 
+span.select2-chosen {
   font-size: $placeholder-size;
   font-family: $arial;
   font-weight: $regular;
@@ -466,7 +471,7 @@ ul.nav-stacked > li > a:hover {
   font-size: 2.5rem;
   font-weight: $bold;
   text-align: center;
-  margin: 10px 0px 10px 0px;   
+  margin: 10px 0px 10px 0px;
   }
 
   div.ticklist {
