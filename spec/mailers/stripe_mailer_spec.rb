@@ -12,8 +12,13 @@ describe StripeMailer, type: :mailer do
       expect(mail.subject).to eq "Your trial period is coming to an end"
       expect(mail.to).to eq ['cust@example.com']
       expect(mail.from).to eq ["info@bulldogclip.co.uk"]
-      expect(mail.body).to include("free trial period ends on 06 October 2013")
+      expect(mail).to have_body_text("free trial period ends on 06 October 2013")
     end
+
+    # it "delivers an email" do
+    #   mail.deliver
+    #   expect{mail.deliver}.to change { ActionMailer::Base.deliveries.count }.by(1)
+    # end
   end
 
   describe 'new_invoice' do
