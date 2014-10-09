@@ -277,7 +277,8 @@
     <section class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-        <img src=<%= asset_path('free_trial.png') %> alt="Free Trial" class="img-responsive landing-img">
+    <!--     <img src=<%#= asset_path('free_trial.png') %> alt="Free Trial" class="img-responsive landing-img"> -->
+        <a href=<%= plans_path %>><img src=<%= asset_path('free_trial.png') %> alt="Free Trial" class="img-responsive landing-img"></a>
       </div>
     </div><!--end row-->
   </section><!--end container-->
