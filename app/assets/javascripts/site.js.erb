@@ -165,7 +165,12 @@ SITENAME = {
       SELECT.invoiceHeader();
     },
     new: function () {
-      console.log("invoicess#new");
+      console.log("invoices#new");
+      SELECT.invoiceCustomer();
+      SELECT.invoiceHeader();
+    },
+    create: function () {
+      console.log("invoices#create");
       SELECT.invoiceCustomer();
       SELECT.invoiceHeader();
     }
@@ -536,5 +541,5 @@ UTIL = {
   }
 };
 
-$( document ).ready( UTIL.init );
+// $(document).ready( UTIL.init );
 $(document).on('page:update', UTIL.init);
