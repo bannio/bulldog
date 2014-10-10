@@ -43,23 +43,24 @@ class AccountsController < ApplicationController
   def update
     @account = Account.find(params[:id])
     authorize @account
-      if @account.update(account_params)
-        if @account.active?
-          redirect_to @account, notice: "Account successfully updated"
-        else
-          sign_out current_user
-          redirect_to page_path('goodbye')
-        end
+    @account.assign_attributes(account_params)
+    if UpdateAccount.new(@account).update
+    # if @account.update(account_params)
+      if @account.active?
+        redirect_to @account, notice: "Account successfully updated"
       else
-        if params[:account][:plan_id] == "0" # the action was a cancellation
-          flash[:error] = "There was a problem with this transaction"
-          render 'show'
-        else
-          flash[:error] = "There was a problem with this transaction"
-          render 'edit'
-        end
+        sign_out current_user
+        redirect_to page_path('goodbye')
       end
-    # end
+    else
+      if is_cancellation?
+        flash[:error] = "There was a problem with this transaction"
+        render 'show'
+      else
+        flash[:error] = "There was a problem with this transaction"
+        render 'edit'
+      end
+    end
   end
 
   def create
@@ -100,5 +101,9 @@ class AccountsController < ApplicationController
     rescue ActionController::RedirectBackError
       redirect_to root_path
     end
+  end
+
+  def is_cancellation?
+    params[:account][:plan_id] == "0"
   end
 end

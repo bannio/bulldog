@@ -36,6 +36,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       end
     end
     if !@confirmable.errors.empty?
+      Rails.logger.info "@confirmable errors: #{@confirmable.errors.full_messages}"
       self.resource = @confirmable
       render 'confirmations/new'
     end
@@ -68,7 +69,9 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   def check_email_change
     if @confirmable.email != @confirmable.account.email
-      @confirmable.account.update(email: @confirmable.email)
+      @confirmable.account.email = @confirmable.email
+      UpdateAccount.new(@confirmable.account).update
+      # @confirmable.account.update(email: @confirmable.email)
     end
   end
 

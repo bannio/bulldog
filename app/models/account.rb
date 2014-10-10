@@ -11,7 +11,7 @@ class Account < ActiveRecord::Base
   has_one  :setting
   belongs_to :plan
 
-  before_update :process_changes
+  # before_update :process_changes
   after_create  :create_setting
 
   validates :name, :email, :plan_id, presence: true
@@ -114,67 +114,9 @@ class Account < ActiveRecord::Base
   end
 
   private
-  def process_changes
-    if plan_id_changed?
-      if plan_id == 0  # cancellation
-        result = process_cancellation
-      else
-        result = process_sale
-      end
-      return false unless result
-    end
-    if email_changed?
-      change_email
-    end
-    # before_update is done. Other changes not involving plan_id,
-    # like VAT enabled flag, fall through to here and get actioned
-  end
-
 
   def process_sale
-    sale = Sale.new(
-      account_id:         self.id,
-      plan_id:            self.plan_id,
-      stripe_customer_id: self.stripe_customer_token,
-      email:              self.email
-    )
-    sale.process!
-    errors.add :base, sale.error if sale.errored?
-    if sale.finished?
-      self.card_last4 =       sale.card_last4
-      self.card_expiration =  sale.card_expiration
-      self.next_invoice =     get_next_invoice_date
-      if plan_id == 1
-        self.vat_enabled = false
-      end
-    end
-    sale.finished? ? true : false
-  end
-
-  def process_cancellation
-    sale = Sale.new(
-      account_id:         self.id,
-      plan_id:            self.plan_id,
-      stripe_customer_id: self.stripe_customer_token,
-      email:              self.email
-    )
-    sale.cancel!
-    errors.add :base, sale.error if sale.errored?
-    if sale.finished?
-      self.next_invoice = nil
-      self.plan_id = 0
-    end
-    sale.finished? ? true : false
-  end
-
-  def change_email
-    if customer = retrieve_stripe_customer
-      customer.description = "Customer for #{email}"
-      customer.email = email
-      customer.save
-    else
-      return false
-    end
+    ProcessSale.new(self).process
   end
 
   def retrieve_stripe_customer

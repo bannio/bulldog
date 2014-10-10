@@ -46,7 +46,8 @@ class Sale < ActiveRecord::Base
     card = customer.cards.retrieve(customer.default_card)
     self.update(
       card_last4:       card.last4,
-      card_expiration:  Date.new(card.exp_year, card.exp_month, 1)
+      card_expiration:  Date.new(card.exp_year, card.exp_month, 1),
+      next_invoice:     get_next_invoice_date 
       )
     self.finish!
   rescue Stripe::StripeError => e
@@ -68,5 +69,12 @@ class Sale < ActiveRecord::Base
   rescue Stripe::StripeError => e
     self.update_attributes(error: e.message)
     self.fail!
+  end
+
+  def get_next_invoice_date
+    next_due = Stripe::Invoice.upcoming(customer: self.stripe_customer_id).date
+    self.next_invoice = Time.at(next_due)
+  rescue Stripe::InvalidRequestError
+    self.next_invoice = nil
   end
 end

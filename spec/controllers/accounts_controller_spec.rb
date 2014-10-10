@@ -154,25 +154,15 @@ describe AccountsController do
   end
 
   describe "PATCH #update" do
-    before :each do
-      @account = create(:account, name: 'Test Account')
-      allow_any_instance_of(Sale).to receive(:process!).and_return(true)
-      allow_any_instance_of(Sale).to receive(:cancel!).and_return(true)
-      allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
-      stripe_customer = OpenStruct.new(id: "cust_id")
-      allow(Stripe::Customer).to receive(:retrieve).with(anything()).and_return(stripe_customer)
-    end
+    before { @account = create(:account, name: 'Test Account') }
+
     context "with valid attributes" do
+      before {allow(UpdateAccount).to receive_message_chain(:new, :update).and_return(true)}
       it "finds the account in question" do
         patch :update, id: @account, account: attributes_for(:account)
         expect(assigns(:account)).to eq(@account)
       end
-      it "applies the requested changes" do
-        patch :update, id: @account, account: attributes_for(:account,
-          name: "New Account")
-        @account.reload
-        expect(@account.name).to eq "New Account"
-      end
+
       it "redirects to the updated account" do
         patch :update, id: @account, account: attributes_for(:account)
         expect(response).to redirect_to @account
@@ -187,12 +177,8 @@ describe AccountsController do
       end
     end
     context "with invalid attributes" do
-      it "does not apply the requested changes" do
-        patch :update, id: @account, account: attributes_for(:account,
-          name: "")
-        @account.reload
-        expect(@account.name).to eq "Test Account"
-      end
+      before {allow(UpdateAccount).to receive_message_chain(:new, :update).and_return(false)}
+
       it "renders the edit template" do
         patch :update, id: @account, account: attributes_for(:account,
           name: "")

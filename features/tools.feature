@@ -15,7 +15,8 @@ Feature: The tools menu provides access to a number of set up
     And I should see "Your Address Details"
 
   Scenario: VAT registration number on settings page
-    Given VAT is enabled
+    Given the account is subscribed to a business plan
+    And VAT is enabled
     And I visit the settings page
     Then I should see "VAT Registration Number"
     When I click on Edit
@@ -32,7 +33,8 @@ Feature: The tools menu provides access to a number of set up
     Then I should not see "Your VAT Details"
 
   Scenario: Set printing preferences
-    Given VAT is enabled
+    Given the account is subscribed to a business plan
+    And VAT is enabled
     And I visit the settings page
     Then I should see "Printing Preferences (set defaults)"
     And I should see "Include VAT?"

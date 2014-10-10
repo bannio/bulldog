@@ -4,7 +4,7 @@ class AccountPolicy < ApplicationPolicy
     @user = user
     @record = record
   end
-  class Scope < Struct.new(:user, :scope)
+  class Scope < Scope
     def resolve
       scope.where(user_id: user.id)
     end

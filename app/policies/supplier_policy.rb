@@ -1,5 +1,5 @@
 class SupplierPolicy < ApplicationPolicy
-  class Scope < Struct.new(:user, :scope)
+  class Scope < Scope
     def resolve
       scope.where(account_id: user.account.id)
     end
