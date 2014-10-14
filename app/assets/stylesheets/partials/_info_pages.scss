@@ -47,6 +47,15 @@ img.help-icon, img.help-logo {
   border: none;
 }
 
+// first login videos
+div.first-video {
+  margin: 20px auto 40px !important;
+  border: 1px solid $black !important;
+}
+
+div.first-video.vjs-default-skin > div.vjs-big-play-button {
+}
+
 // help page videos
 
 div.help-video {
@@ -55,8 +64,8 @@ div.help-video {
 }
 
 div.help-video.vjs-default-skin > div.vjs-big-play-button {
-  top: 5% !important;
-  left: 3% !important;
+  // top: 5% !important;
+  // left: 3% !important;
 }
 
 h2.video-header {
