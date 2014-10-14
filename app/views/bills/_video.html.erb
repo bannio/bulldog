@@ -1,0 +1,27 @@
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th class="first-col date-col"><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+              <th class="customer-col"><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+              <th class="supplier-col"><%= sortable "suppliers.name", "Supplier" %> <%= arrow "suppliers.name" %></th>
+              <th class="category-col"><%= sortable "categories.name", "Category" %> <%= arrow "categories.name" %></th>
+              <th class="description-col-sm"><%= sortable "description", "Description" %> <%= arrow "description" %></th>
+              <th class="amount-col"><%= sortable "amount", "Amount" %> <%= arrow "amount" %></th>
+              <% if current_account.vat_allowed? %>
+                <th class="vat-rate-col">VAT rate</th>
+                <th class="amount-col">VAT</th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody id="bill_index_table">
+          </tbody>
+        </table>
+      </div><!--end table responsive -->
+      <div class="panel-body" id="tutorials">
+        <h2 class="video-title">VIDEO: How To Enter Your First Bill</h2>
+        <video id="first_bill_video" class="img-responsive video-js vjs-default-skin first-video" title="Watch video" poster=<%= asset_path('add_bill_poster.png') %> >
+          <source src= <%= video_path('First_Bill_Video.mp4') %> type='video/mp4' />
+          <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+      </div>

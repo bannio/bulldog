@@ -5,11 +5,11 @@
   <div class="row">
     <div class="panel panel-default col-md-10 col-md-offset-1">
       <div class="panel-body help-page">
-        <h1>Getting Started</h1>
+        <h1>Video Tutorials</h1>
         <nav>
           <ul class="nav nav-pills nav-justified" role="navigation">
-            <li class="active"><a href="#how_works" data-toggle="pill">How BulldogClip works</a></li>
-            <li><a href="#tutorials" data-toggle="pill">Video Tutorials</a></li>
+            <li class="active"><a href="#how_works" data-toggle="pill">About BulldogClip</a></li>
+            <li><a href="#tutorials" data-toggle="pill">How To Videos</a></li>
             <!-- <li><a href="#setup" data-toggle="pill"></a></li> -->
         </ul>
         </nav>
@@ -20,28 +20,27 @@
 
       <div class="panel-body help-page tab-pane active" id="how_works">
         <h2>Using BulldogClip for Business</h2>
-        <video id="business_video" class="img-responsive video-js vjs-default-skin help-video" poster=<%= asset_path('business_poster.png') %> >
+        <video id="business_video" class="img-responsive video-js vjs-default-skin help-video" title="Watch video" poster=<%= asset_path('business_poster.png') %> >
           <source src= <%= video_path('business_plan.mp4') %> type='video/mp4' />
           <source src= <%= video_path('business_plan.webm') %> type='video/webm' />
-          <!-- <source src= "https://s3.amazonaws.com/bulldogclip-dev-assets/videos/business_plan.webm" type='video/webm' /> -->
-      <!-- <source src=<%#= asset_path ('business_plan.ogv') %> type='video/ogg' /> -->
           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
         </video>
         <hr>
 
         <h2 class="video-header">Using BulldogClip for Home</h2>
-        <video id="personal_video" class="img-responsive video-js vjs-default-skin help-video" poster=<%= asset_path('personal_poster.png') %> >
+        <video id="personal_video" class="img-responsive video-js vjs-default-skin help-video" title="Watch video" poster=<%= asset_path('personal_poster.png') %> >
           <source src= <%= video_path('personal_plan.mp4') %> type='video/mp4' />
           <source src= <%= video_path('personal_plan.webm') %> type='video/webm' />
-          <!-- <source src= "https://s3.amazonaws.com/bulldogclip-dev-assets/videos/personal_plan.webm" type='video/webm' />  -->
-<!--      <source src=<%#= asset_path ('personal_plan.ogv') %> type='video/ogg' /> -->
           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
         </video>
       </div>
 
       <div class="panel-body help-page tab-pane" id="tutorials">
-        <h2>Video Tutorials</h2>
-        <p style="font-size: 2.5rem; padding: 50px 0; text-align: center;">Coming soon!</p>
+        <h2 class="video-header">Entering Your First Bill</h2>
+        <video id="first_bill_video" class="img-responsive video-js vjs-default-skin help-video" title="Watch video" poster=<%= asset_path('first_bill_poster.png') %> >
+          <source src= <%= video_path('First_Bill_Video.mp4') %> type='video/mp4' />
+          <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
       </div>
 
     </div><!-- end of videos panel -->
