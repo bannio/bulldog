@@ -49,11 +49,15 @@ img.help-icon, img.help-logo {
 
 // first login videos
 div.first-video {
-  margin: 20px auto 40px !important;
-  border: 1px solid $black !important;
+  margin: 10px auto 40px !important;
 }
 
-div.first-video.vjs-default-skin > div.vjs-big-play-button {
+div#first_bill_video > div.vjs-poster {
+background-position: center !important;
+}
+
+div.first-video > div.vjs-big-play-button {
+  display: none !important;
 }
 
 // help page videos
@@ -61,11 +65,6 @@ div.first-video.vjs-default-skin > div.vjs-big-play-button {
 div.help-video {
   margin: 20px auto 40px !important;
   border: 1px solid $black !important;
-}
-
-div.help-video.vjs-default-skin > div.vjs-big-play-button {
-  // top: 5% !important;
-  // left: 3% !important;
 }
 
 h2.video-header {
