@@ -98,22 +98,28 @@ describe BillsController do
 
   describe "POST #create" do
 
+    before do
+      @customer = FactoryGirl.create(:customer, account_id: @account.id)
+      @supplier = FactoryGirl.create(:supplier, account_id: @account.id)
+      @category = FactoryGirl.create(:category, account_id: @account.id)
+    end
+
     context "with valid parameters" do
       it "creates a new bill" do
         expect {
           post :create, bill: attributes_for(:bill).except(:invoice_id).
-                                                    merge(category_id: "1",
-                                                          supplier_id: "1",
-                                                          customer_id: "1",
+                                                    merge(category_id: @category.id,
+                                                          supplier_id: @supplier.id,
+                                                          customer_id: @customer.id,
                                                           account_id: @account.id)
         }.to change(Bill, :count).by(1)
       end
 
       it "redirects to bills index" do
         post :create, bill: attributes_for(:bill).except(:invoice_id).
-                                                    merge(category_id: "1",
-                                                          supplier_id: "1",
-                                                          customer_id: "1",
+                                                    merge(category_id: @category.id,
+                                                          supplier_id: @supplier.id,
+                                                          customer_id: @customer.id,
                                                           account_id: @account.id)
         expect(response).to redirect_to bills_url
       end
@@ -124,6 +130,16 @@ describe BillsController do
         post :create, bill: attributes_for(:bill).except(:invoice_id).
                                                     merge(category_id: "",
                                                           supplier_id: "",
+                                                          account_id: @account.id)
+        expect(response).to render_template "new"
+      end
+
+      it "re-renders the new template when same 'new' entered twice" do
+        supplier = create(:supplier, name: "new_supplier",account_id: @account.id)
+        post :create, bill: attributes_for(:bill).except(:invoice_id).
+                                                    merge(category_id: "1",
+                                                          supplier_id: "new_supplier",
+                                                          customer_id: "1",
                                                           account_id: @account.id)
         expect(response).to render_template "new"
       end
@@ -161,5 +177,4 @@ describe BillsController do
       end
     end
   end
-
 end

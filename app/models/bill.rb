@@ -9,11 +9,13 @@ class Bill < ActiveRecord::Base
   belongs_to :invoice
 
   validates :date, date: true
+  # validates :account_id, :date, :customer, :supplier, :category, :amount, presence: true
   validates :account_id, :date, :customer_id, :supplier_id, :category_id, :amount, presence: true
+  # validates_associated :supplier, :category, :customer
   validates :amount, numericality: true
 
-  attr_accessor :new_category, :new_supplier, :new_customer
-  before_save :create_category, :create_supplier, :create_customer
+  # attr_accessor :new_category, :new_supplier, :new_customer
+  # before_save :create_category, :create_customer #, :create_supplier,
   before_destroy :check_for_invoice
 
   scope :uninvoiced, -> {where(invoice_id: nil)}
@@ -22,13 +24,13 @@ class Bill < ActiveRecord::Base
   scope :vat,       -> (rate){where(vat_rate_id: rate.id)}
 
   def customer_name
-    customer.name
+    customer ? customer.name : "Missing - please edit"
   end
   def supplier_name
-    supplier.name
+    supplier ? supplier.name : "Missing - please edit"
   end
   def category_name
-    category.name
+    category ? category.name : "Missing - please edit"
   end
   def excl_vat
     vat ? amount - vat : amount
@@ -152,17 +154,17 @@ class Bill < ActiveRecord::Base
 
   private
 
-  def create_customer
-    self.customer = Customer.create(name: new_customer, account_id: self.account_id) if new_customer.present?
-  end
+  # def create_customer
+  #   self.customer = Customer.create(name: new_customer, account_id: self.account_id) if new_customer.present?
+  # end
 
-  def create_category
-    self.category = Category.create(name: new_category, account_id: self.account_id) if new_category.present?
-  end
+  # def create_category
+  #   self.category = Category.create(name: new_category, account_id: self.account_id) if new_category.present?
+  # end
 
-  def create_supplier
-    self.supplier = Supplier.create(name: new_supplier, account_id: self.account_id) if new_supplier.present?
-  end
+  # def create_supplier
+  #   self.supplier = Supplier.create(name: new_supplier, account_id: self.account_id) if new_supplier.present?
+  # end
 
   def check_for_invoice
     unless self.invoice_id.blank?

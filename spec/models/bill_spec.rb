@@ -3,17 +3,20 @@ require 'rails_helper'
 
 describe Bill do
   before do
+    @customer = FactoryGirl.create(:customer, account_id: 1)
+    @supplier = FactoryGirl.create(:supplier, account_id: 1)
+    @category = FactoryGirl.create(:category, account_id: 1)
     @attr = {
       account_id: 1,
       date: '20140101',
-      customer_id: 1,
-      supplier_id: 1,
-      category_id: 1,
+      customer_id: @customer.id,
+      supplier_id: @supplier.id,
+      category_id: @category.id,
       description: "",
-      amount: "1",
-      new_customer: "",
-      new_supplier: "",
-      new_category: ""
+      amount: "1"
+      # new_customer: "",
+      # new_supplier: "",
+      # new_category: ""
     }
   end
 
@@ -70,30 +73,30 @@ describe Bill do
     expect(bill.invoice_number).to eq ''
   end
 
-  it "can accept a new customer" do
-    expect(Bill.new(@attr.merge(customer_id: "A new customer"))).to be_valid
-  end
+  # it "can accept a new customer" do
+  #   expect(Bill.new(@attr.merge(customer_id: "A new customer"))).to be_valid
+  # end
 
-  it "can accept a new supplier" do
-    expect(Bill.new(@attr.merge(supplier_id: "A new supplier"))).to be_valid
-  end
+  # it "can accept a new supplier" do
+  #   expect(Bill.new(@attr.merge(supplier_id: "A new supplier"))).to be_valid
+  # end
 
-  it "can accept a new category" do
-    expect(Bill.new(@attr.merge(category_id: "A new category"))).to be_valid
-  end
+  # it "can accept a new category" do
+  #   expect(Bill.new(@attr.merge(category_id: "A new category"))).to be_valid
+  # end
 
-  it "allocates the correct account to the new customer" do
-    bill = Bill.create(@attr.merge(customer_id: "A new customer", new_customer: "A new customer"))
-    expect(bill.customer.account_id).to eq bill.account_id
-  end
+  # it "allocates the correct account to the new customer" do
+  #   bill = Bill.create(@attr.merge(customer_id: "A new customer", new_customer: "A new customer"))
+  #   expect(bill.customer.account_id).to eq bill.account_id
+  # end
 
-  it "allocates the correct account to the new supplier" do
-    bill = Bill.create(@attr.merge(supplier_id: "A new supplier", new_supplier: "A new supplier"))
-    expect(bill.supplier.account_id).to eq bill.account_id
-  end
+  # it "allocates the correct account to the new supplier" do
+  #   bill = Bill.create(@attr.merge(supplier_id: "A new supplier", new_supplier: "A new supplier"))
+  #   expect(bill.supplier.account_id).to eq bill.account_id
+  # end
 
-  it "allocates the correct account to the new category" do
-    bill = Bill.create(@attr.merge(category_id: "A new category", new_category: "A new category"))
-    expect(bill.category.account_id).to eq bill.account_id
-  end
+  # it "allocates the correct account to the new category" do
+  #   bill = Bill.create(@attr.merge(category_id: "A new category", new_category: "A new category"))
+  #   expect(bill.category.account_id).to eq bill.account_id
+  # end
 end
