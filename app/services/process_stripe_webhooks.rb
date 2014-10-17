@@ -13,8 +13,9 @@ class ProcessStripeWebhooks
 
   after_invoice_payment_succeeded! do |invoice, event|
     card = card_detail(invoice)
+    status = subscription_status(invoice)
     account = Account.find_by_stripe_customer_token(invoice.customer)
-    if account
+    if account && status != 'trialing'
       StripeMailer.new_invoice(account, invoice, card).deliver
       update_account_next_invoice(account, invoice)
     else
@@ -41,5 +42,12 @@ class ProcessStripeWebhooks
         card = "NA"
       end
     end
+  end
+
+  def self.subscription_status(invoice)
+    customer = Stripe::Customer.retrieve(invoice.customer)
+    status = customer.subscriptions.first.status
+  rescue Stripe::InvalidRequestError
+    status = "unknown"
   end
 end

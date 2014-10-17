@@ -51,12 +51,14 @@ describe ProcessStripeWebhooks, type: :request do
 
     it "sends a new invoice email" do
       allow(Account).to receive(:find_by_stripe_customer_token).and_return(account)
+      allow(ProcessStripeWebhooks).to receive(:subscription_status).and_return("active")
       expect(StripeMailer).to receive_message_chain(:new_invoice, :deliver)
       post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
     end
 
     it "updates the account next invoice date" do
       allow(Account).to receive(:find_by_stripe_customer_token).and_return(account)
+      allow(ProcessStripeWebhooks).to receive(:subscription_status).and_return("active")
       allow(Stripe::Invoice).to receive_message_chain(:upcoming, :date).and_return(1381021530)
       date = Time.at(1381021530)
       expect(account).to receive(:update).with({ next_invoice: date })
@@ -69,9 +71,17 @@ describe ProcessStripeWebhooks, type: :request do
         :total => 1200,
         :charge => ""
       })
+      allow(ProcessStripeWebhooks).to receive(:subscription_status).and_return("active")
       expect(StripeMailer).to receive_message_chain(:error_invoice, :deliver)
       post 'stripe/events', error_event.to_h, {'HTTP_ACCEPT' => "application/json"}
       # open_email('info@bulldogclip.co.uk', with_text: 'Invoice Webhook Error')
+    end
+
+    it "does not send if status is 'trialing'" do
+      allow(Account).to receive(:find_by_stripe_customer_token).and_return(account)
+      allow(ProcessStripeWebhooks).to receive(:subscription_status).and_return("trialing")
+      expect(StripeMailer).to_not receive(:new_invoice)
+      post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
     end
   end
 
@@ -91,6 +101,27 @@ describe ProcessStripeWebhooks, type: :request do
       # date = Time.at(1405670902)
       expect(account).to_not receive(:update)#.with({next_invoice: nil})
       ProcessStripeWebhooks.update_account_next_invoice(account, invoice)
+    end
+  end
+
+  describe "subscription_status" do
+    let(:customer){Stripe::Customer.create(id: "cust_token")}
+    let(:invoice) {double('invoice', customer: "cust_token")}
+    it "returns a string" do
+      status = ProcessStripeWebhooks.subscription_status(invoice)
+      expect(status).to be_a(String)
+    end
+    it "returns a unknown if stripe error" do
+      status = ProcessStripeWebhooks.subscription_status(invoice)
+      expect(status).to eq("unknown")
+    end
+    it "returns trialing if trialing" do
+      allow(Stripe::Customer).to receive(:retrieve).and_return(customer)
+      allow(customer).
+        to receive_message_chain(:subscriptions, :first, :status).
+        and_return("trialing")
+      status = ProcessStripeWebhooks.subscription_status(invoice)
+      expect(status).to eq("trialing")
     end
   end
 
