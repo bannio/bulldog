@@ -20,7 +20,7 @@ class ProcessStripeWebhooks
       update_account_next_invoice(account, invoice)
     else
       Rails.logger.error 'StripeWebhooks: invoice.payment_received did not trigger an email '
-      StripeMailer.error_invoice(invoice, event).deliver
+      StripeMailer.error_invoice(invoice, event, status).deliver
     end
   end
 

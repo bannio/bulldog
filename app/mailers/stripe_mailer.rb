@@ -17,9 +17,10 @@ class StripeMailer < ActionMailer::Base
           from: "BulldogClip <noreply@bulldogclip.co.uk>")
   end
 
-  def error_invoice(invoice, event)
+  def error_invoice(invoice, event, status)
     @invoice = invoice
     @event = event
+    @status = status
     mail to: 'info@bulldogclip.co.uk', subject: 'Invoice error'
   end
 end

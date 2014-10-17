@@ -12,3 +12,5 @@ Invoice Number: <%= @invoice.id %>
 Invoice Date: <%= Time.at(@invoice.date).strftime("%d %B %Y") %>
 
 Customer stripe token: <%= @invoice.customer %>
+
+Subscription status: <%= @status %>

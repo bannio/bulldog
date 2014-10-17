@@ -52,8 +52,9 @@ describe StripeMailer, type: :mailer do
       date: 1405670902,
       id: "inv_123",
       customer: "cust" }
+    let(:status){"active"}
     let(:event){ double 'Event', type: "invoice.payment_succeeded"}
-    let(:mail){StripeMailer.error_invoice(invoice, event)}
+    let(:mail){StripeMailer.error_invoice(invoice, event, status)}
 
     it "sends an error invoice" do
       expect(mail.subject).to eq 'Invoice error'
@@ -62,6 +63,7 @@ describe StripeMailer, type: :mailer do
       expect(mail).to have_body_text("invoice.payment_succeeded event")
       expect(mail).to have_body_text("inv_123")
       expect(mail).to have_body_text("Invoice Date: 18 July 2014")
+      expect(mail).to have_body_text("Subscription status: active")
     end
   end
 end
