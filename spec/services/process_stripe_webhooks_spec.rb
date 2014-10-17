@@ -83,6 +83,13 @@ describe ProcessStripeWebhooks, type: :request do
       expect(StripeMailer).to_not receive(:new_invoice)
       post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
     end
+
+    it "does send if status is 'trialing' but value > 0" do
+      allow(Account).to receive(:find_by_stripe_customer_token).and_return(account)
+      allow(ProcessStripeWebhooks).to receive(:subscription_status).and_return("trialing amount due 10")
+      expect(StripeMailer).to receive_message_chain(:new_invoice, :deliver)
+      post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
+    end
   end
 
   describe "#update_account" do
@@ -106,7 +113,9 @@ describe ProcessStripeWebhooks, type: :request do
 
   describe "subscription_status" do
     let(:customer){Stripe::Customer.create(id: "cust_token")}
-    let(:invoice) {double('invoice', customer: "cust_token")}
+    let(:invoice) {double('invoice',
+      customer: "cust_token",
+      amount_due: 0)}
     it "returns a string" do
       status = ProcessStripeWebhooks.subscription_status(invoice)
       expect(status).to be_a(String)
@@ -122,6 +131,15 @@ describe ProcessStripeWebhooks, type: :request do
         and_return("trialing")
       status = ProcessStripeWebhooks.subscription_status(invoice)
       expect(status).to eq("trialing")
+    end
+    it "returns amount due if not zero" do
+      allow(Stripe::Customer).to receive(:retrieve).and_return(customer)
+      allow(customer).
+        to receive_message_chain(:subscriptions, :first, :status).
+        and_return("trialing")
+      allow(invoice).to receive(:amount_due).and_return(10)
+      status = ProcessStripeWebhooks.subscription_status(invoice)
+      expect(status).to eq("trialing amount_due 10")
     end
   end
 

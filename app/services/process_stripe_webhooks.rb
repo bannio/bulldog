@@ -47,6 +47,8 @@ class ProcessStripeWebhooks
   def self.subscription_status(invoice)
     customer = Stripe::Customer.retrieve(invoice.customer)
     status = customer.subscriptions.first.status
+    status = status + " amount_due #{invoice.amount_due}" if invoice.amount_due != 0
+    status
   rescue Stripe::InvalidRequestError
     status = "unknown"
   end
