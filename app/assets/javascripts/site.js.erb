@@ -1,11 +1,11 @@
 //= depend_on_asset "door_dog.png"
 var SITENAME,
-    STRIPE,
-    UTIL,
-    VIDEO,
-    SELECT,
-    TABLES,
-    GA;
+  STRIPE,
+  UTIL,
+  VIDEO,
+  SELECT,
+  TABLES,
+  GA;
 
 SITENAME = {
   common: {
@@ -53,7 +53,7 @@ SITENAME = {
             });
           }, 0);
         });
-      };
+      }
       // Date picker used in many places
       $("input.date_picker").datepicker({
         dateFormat: "yy-mm-dd",
@@ -77,12 +77,12 @@ SITENAME = {
     new: function () {
     // action-specific code
       console.log("accounts#new");
+      GA.ga_event('#ga_subscribe', 'button', 'click', 'subscribes');
       $('#card_number').payment('formatCardNumber');
       $('#card_code').payment('formatCardCVC');
       $('#cc_exp').payment('formatCardExpiry');
       Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
       return STRIPE.setupForm();
-      GA.ga_event('#ga_subscribe', 'button', 'click', 'subscribes');
     },
 
     new_card: function () {
