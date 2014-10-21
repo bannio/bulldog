@@ -163,8 +163,9 @@ SITENAME = {
   },
 
   contacts: {
-    new: function () {
-      console.log("contacts#new");
+    // controller-wide code covers new and create actions
+    init: function () {
+      console.log("contacts#init");
       GA.ga_event('#ga_contact_us', 'button', 'click', 'contact us');
     }
   },
