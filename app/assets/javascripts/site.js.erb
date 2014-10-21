@@ -1,10 +1,11 @@
 //= depend_on_asset "door_dog.png"
 var SITENAME,
-    STRIPE,
-    UTIL,
-    VIDEO,
-    SELECT,
-    TABLES;
+  STRIPE,
+  UTIL,
+  VIDEO,
+  SELECT,
+  TABLES,
+  GA;
 
 SITENAME = {
   common: {
@@ -52,13 +53,19 @@ SITENAME = {
             });
           }, 0);
         });
-      };
+      }
       // Date picker used in many places
       $("input.date_picker").datepicker({
         dateFormat: "yy-mm-dd",
         changeMonth: true,
         changeYear: true
       });
+      // Google analytics events
+      GA.ga_event('#ga_bdc_li', 'button', 'click', 'BDC linkedin');
+      GA.ga_event('#ga_twitter', 'button', 'click', 'BDC twitter');
+      GA.ga_event('#ga_pricing', 'button', 'click', 'pricing Link');
+      GA.ga_event('#ga_signup', 'button', 'click', 'sign up nav button');
+      GA.ga_event('#ga_signin', 'button', 'click', 'sign in');
     }
   },
 
@@ -70,6 +77,7 @@ SITENAME = {
     new: function () {
     // action-specific code
       console.log("accounts#new");
+      GA.ga_event('#ga_subscribe', 'button', 'click', 'subscribes');
       $('#card_number').payment('formatCardNumber');
       $('#card_code').payment('formatCardCVC');
       $('#cc_exp').payment('formatCardExpiry');
@@ -130,6 +138,19 @@ SITENAME = {
     show: function () {
       console.log("pages#show");
       VIDEO.checkForVideos();
+      // Google analytics events
+      GA.ga_event('#ga_trial_1', 'button', 'click', 'top free trial btn');
+      GA.ga_event('#ga_trial_2', 'button', 'click', 'simple free trial btn');
+      GA.ga_event('#ga_trial_3', 'button', 'click', 'analysis free trial btn');
+      GA.ga_event('#ga_trial_4', 'button', 'click', 'docs free trial btn');
+      GA.ga_event('#ga_trial_5', 'button', 'click', 'vat free trial btn');
+      GA.ga_event('#ga_trial_6', 'button', 'click', 'security free trial btn');
+      GA.ga_event('#ga_trial_7', 'button', 'click', 'anywhere free trial btn');
+      GA.ga_event('#ga_trial_8', 'button', 'click', 'bottom free trial');
+      GA.ga_event('#obl_li', 'button', 'click', 'OBL linkedin');
+      GA.ga_event('#ga_faq_1, #ga_faq_2, #ga_faq_3, #ga_faq_4', 'button', 'click', 'faq pricing link');
+      GA.ga_event('#ga_features_trial', 'button', 'click', 'features free trial link');
+      GA.ga_event('#intro_video', 'video', 'play', 'homepage video');
     }
   },
 
@@ -137,6 +158,23 @@ SITENAME = {
     video: function () {
       console.log("help#video");
       VIDEO.checkForVideos();
+      GA.ga_event('#business_video, #personal_video, #first_bill_video', 'video', 'play', 'help videos');
+    }
+  },
+
+  contacts: {
+    new: function () {
+      console.log("contacts#new");
+      GA.ga_event('#ga_contact_us', 'button', 'click', 'contact us');
+    }
+  },
+
+  plans: {
+    index: function () {
+      console.log("plans#index");
+      GA.ga_event('#ga_plan_1', 'button', 'click', 'personal plan');
+      GA.ga_event('#ga_plan_2', 'button', 'click', 'business monthly plan');
+      GA.ga_event('#ga_plan_3', 'button', 'click', 'business annual plan');
     }
   },
 
@@ -149,6 +187,7 @@ SITENAME = {
       SELECT.billVatRate();
       TABLES.clickable_row();
       VIDEO.checkForVideos();
+      GA.ga_event('#first_bill_video', 'video', 'play', 'first bill video');
     }
   },
 
@@ -432,6 +471,14 @@ TABLES = {
       } else {
         return false;
       }
+    });
+  }
+};
+
+GA = {
+  ga_event: function (selector, category, action, label, value) {
+    $(selector).on('click', function () {
+      ga('send', 'event', category, action, label, value);
     });
   }
 };
