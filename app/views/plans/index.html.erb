@@ -43,7 +43,7 @@
               </ul>
             </div>
             <div class="signup">
-              <%= link_to "Start PERSONAL plan free trial", new_account_path(plan_id: 1, title: "Personal", price: "£10", interval: "per year"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a personal account" %>
+              <%= link_to "Start PERSONAL plan free trial", new_account_path(plan_id: 1, title: "Personal", price: "£10", interval: "per year"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a personal account", id: "ga_plan_1" %>
             </div>
           </div>
         </div>
@@ -67,11 +67,11 @@
               </ul>
             </div>
             <div class="signup business">
-                <%= link_to "Start MONTHLY plan free trial", new_account_path(plan_id: 2, title: "Business Monthly", price: "£5", interval: "per month"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a business account" %>
+                <%= link_to "Start MONTHLY plan free trial", new_account_path(plan_id: 2, title: "Business Monthly", price: "£5", interval: "per month"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a business account", id: "ga_plan_2" %>
             </div>
               <h3><small>or </small>£50 <small>per year (save £10)</small></h3>
             <div class="signup business">
-              <%= link_to "Start ANNUAL plan free trial", new_account_path(plan_id: 3, title: "Business Annual", price: "£50", interval: "per year"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a business account" %>
+              <%= link_to "Start ANNUAL plan free trial", new_account_path(plan_id: 3, title: "Business Annual", price: "£50", interval: "per year"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a business account", id: "ga_plan_3" %>
             </div>
           </div>
         </div>

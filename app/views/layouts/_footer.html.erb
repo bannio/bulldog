@@ -56,11 +56,11 @@
                 </dd> -->
                 <dd>
                     <%#= link_to 'Twitter', "https://twitter.com/Bulldog4bills", target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
-                    <%= link_to image_tag("Twitter_logo_blue.png", class: 'twitter-logo'), "https://twitter.com/Bulldog4bills", target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter" %>
+                    <%= link_to image_tag("Twitter_logo_blue.png", class: 'twitter-logo'), "https://twitter.com/Bulldog4bills", target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Twitter", id: "ga_twitter" %>
                 <!-- </dd> -->
                 <!-- <dd> -->
                     <%#= link_to 'Linked In', page_path('community'), data: {toggle: "tooltip"}, title: "Follow BulldogClip on Linked In" %>
-                    <%= link_to image_tag("Linked_In_logo.png", class: 'linkedin-logo'), "http://www.linkedin.com/company/bulldogclip", target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Linked In" %>
+                    <%= link_to image_tag("Linked_In_logo.png", class: 'linkedin-logo'), "http://www.linkedin.com/company/bulldogclip", target: "_blank", data: {toggle: "tooltip"}, title: "Follow BulldogClip on Linked In", id: "ga_bdc_li" %>
                 </dd>
             </dl>
         </div>
@@ -71,7 +71,7 @@
                     Product
                 </dt>
                 <dd>
-                    <%= link_to 'Pricing', plans_path, data: {toggle: "tooltip"}, title: "View BulldogClip subscription plans" %>
+                    <%= link_to 'Pricing', plans_path, data: {toggle: "tooltip"}, title: "View BulldogClip subscription plans", id: "ga_pricing" %>
                 </dd>
                 <dd>
                     <%= link_to 'FAQs', page_path('faq'), data: {toggle: "tooltip"}, title: "Read frequently asked questions" %>
