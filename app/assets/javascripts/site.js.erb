@@ -484,40 +484,40 @@ GA = {
     });
   },
   // This version seemed to work but waiting 300ms might be avoidable
-  // ga_submit: function (form, category, action, label, value) {
-  //   console.log("GA.ga_submit");
-  //   $(form).each(function () {
-  //     var jqForm = $(this);
-  //     var jsForm = this;
-  //     jqForm.on('submit', function (event) {
-  //       event.preventDefault();
-  //       ga('send', 'event', category, action, label, value);
-  //       setTimeout(function () {
-  //         jsForm.submit();
-  //       }, 300);
-  //     });
-  //   });
-  // }
+  ga_submit: function (form, category, action, label, value) {
+    console.log("GA.ga_submit");
+    $(form).each(function () {
+      var jqForm = $(this);
+      var jsForm = this;
+      jqForm.on('submit', function (event) {
+        event.preventDefault();
+        ga('send', 'event', category, action, label, value);
+        setTimeout(function () {
+          jsForm.submit();
+        }, 300);
+      });
+    });
+  }
 
   // This version should wait until callback triggered
   // I note that the default action is only prevented by the return false
-  ga_submit: function (form, category, action, label, value) {
-    console.log("GA.ga_submit");
-    $(form).on('submit', function () {
-      // e.preventDefault();
-      var _this = this;
-      ga('send', 'event', category, action, label, value, {
-        'hitCallback': function () {
-          console.log("ga_submit hitCallback");
-          // $(_this).parents('form').first().submit();
-          $(_this).submit();
-        }
-      });
-      // here is check if google-analytics.js is loaded and if not - return true, otherwise false
-      // should guard against blocked use of ga.
-      return !(ga.hasOwnProperty('loaded') && ga.loaded === true);
-    });
-  }
+  // ga_submit: function (form, category, action, label, value) {
+  //   console.log("GA.ga_submit");
+  //   $(form).on('submit', function (e) {
+  //     // e.preventDefault();
+  //     var _this = this;
+  //     ga('send', 'event', category, action, label, value, {
+  //       'hitCallback': function () {
+  //         console.log("ga_submit hitCallback");
+  //         // $(_this).parents('form').first().submit();
+  //         $(_this).submit();
+  //       }
+  //     });
+  //     // here is check if google-analytics.js is loaded and if not - return true, otherwise false
+  //     // should guard against blocked use of ga.
+  //     return !(ga.hasOwnProperty('loaded') && ga.loaded === true);
+  //   });
+  // }
 };
 
 STRIPE = {
