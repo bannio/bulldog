@@ -484,8 +484,10 @@ GA = {
   },
   ga_submit: function (form, category, action, label, value) {
     $(form).submit(function () {
+      console.log("GA.ga_submit");
       ga('send', 'event', category, action, label, value, {
         'hitCallback': function () {
+          console.log("GA.ga_submit callback");
           $(form).submit();
         }
       });
