@@ -166,7 +166,8 @@ SITENAME = {
     // controller-wide code covers new and create actions
     init: function () {
       console.log("contacts#init");
-      GA.ga_submit('#new_contact', 'button', 'click', 'contact us');
+      // GA.ga_event('#ga_contact_us', 'button', 'click', 'contact us');
+      GA.ga_submit('#new_contact', 'form', 'submit', 'contact us');
     }
   },
 
@@ -482,15 +483,38 @@ GA = {
       ga('send', 'event', category, action, label, value);
     });
   },
+  // This version seemed to work but waiting 300ms might be avoidable
+  // ga_submit: function (form, category, action, label, value) {
+  //   console.log("GA.ga_submit");
+  //   $(form).each(function () {
+  //     var jqForm = $(this);
+  //     var jsForm = this;
+  //     jqForm.on('submit', function (event) {
+  //       event.preventDefault();
+  //       ga('send', 'event', category, action, label, value, {
+  //         // 'hitCallback': GA.form_submit(form)
+  //       });
+  //       setTimeout(function () {
+  //         jsForm.submit();
+  //       }, 300);
+  //     });
+  //   });
+  // }
+
+  // This version should wait until callback triggered
+  // I note that the default action is not prevented
   ga_submit: function (form, category, action, label, value) {
-    $(form).submit(function () {
-      console.log("GA.ga_submit");
+    console.log("GA.ga_submit");
+    $(form).on('submit', function () {
+      var _this = this;
       ga('send', 'event', category, action, label, value, {
         'hitCallback': function () {
-          console.log("GA.ga_submit callback");
-          $(form).submit();
+          $(_this).parents('form').first().submit();
         }
       });
+      // here is check if google-analytics.js is loaded and if not - return true, otherwise false
+      // should guard against blocked use of ga.
+      return !(ga.hasOwnProperty('loaded') && ga.loaded === true);
     });
   }
 };
