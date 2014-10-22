@@ -166,7 +166,7 @@ SITENAME = {
     // controller-wide code covers new and create actions
     init: function () {
       console.log("contacts#init");
-      GA.ga_event('#ga_contact_us', 'button', 'click', 'contact us');
+      GA.ga_submit('#new_contact', 'button', 'click', 'contact us');
     }
   },
 
@@ -480,6 +480,15 @@ GA = {
   ga_event: function (selector, category, action, label, value) {
     $(selector).on('click', function () {
       ga('send', 'event', category, action, label, value);
+    });
+  },
+  ga_submit: function (form, category, action, label, value) {
+    $(form).submit(function () {
+      ga('send', 'event', category, action, label, value, {
+        'hitCallback': function () {
+          $(form).submit();
+        }
+      });
     });
   }
 };
