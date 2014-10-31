@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+      xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
@@ -9,6 +11,16 @@
 <url>
   <loc>https://bulldogclip.co.uk/</loc>
   <changefreq>monthly</changefreq>
+  <video:video>
+    <video:content_loc>
+      https://s3.amazonaws.com/bulldogclip-assets/videos/intro_video.mp4
+    </video:content_loc>
+    <video:duration>99</video:duration>
+    <video:title>Introduction to BulldogClip</video:title>
+    <video:description>
+      Ever wonder where the money went? See how BulldogClip is a simple way to manage your bills
+    </video:description>
+  </video:video>
 </url>
 <url>
   <loc>https://bulldogclip.co.uk/sign_in</loc>
@@ -51,10 +63,6 @@
   <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>https://bulldogclip.co.uk/community</loc>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
   <loc>https://bulldogclip.co.uk/faq</loc>
   <changefreq>monthly</changefreq>
 </url>
@@ -69,6 +77,36 @@
 <url>
   <loc>https://bulldogclip.co.uk/help/video</loc>
   <changefreq>monthly</changefreq>
+  <video:video>
+    <video:content_loc>
+      https://s3.amazonaws.com/bulldogclip-assets/videos/business_plan.mp4
+    </video:content_loc>
+    <video:duration>141</video:duration>
+    <video:title>Using BulldogClip for Business</video:title>
+    <video:description>
+      Explains how to use BulldogClip to manage business expenses, track your costs and invoice customers.
+    </video:description>
+  </video:video>
+  <video:video>
+    <video:content_loc>
+      https://s3.amazonaws.com/bulldogclip-assets/videos/personal_plan.mp4
+    </video:content_loc>
+    <video:duration>112</video:duration>
+    <video:title>Using BulldogClip for Home</video:title>
+    <video:description>
+      Explains how best to use BulldogClip for tracking your household spending.
+    </video:description>
+  </video:video>
+  <video:video>
+    <video:content_loc>
+      https://s3.amazonaws.com/bulldogclip-assets/videos/First_Bill_Video.mp4
+    </video:content_loc>
+    <video:duration>120</video:duration>
+    <video:title>Entering your first bill</video:title>
+    <video:description>
+      Screen cast tutorial on entering a bill into BulldogClip.
+    </video:description>
+  </video:video>
 </url>
 <url>
   <loc>https://bulldogclip.co.uk/help/setup</loc>
