@@ -90,13 +90,12 @@ class Account < ActiveRecord::Base
   end
 
   def update_card(token)
-    if customer = retrieve_stripe_customer
-      customer.card = token
-      customer.save
-      update_default_card
-    else
-      return false
-    end
+    CardService.new({
+      token:        token,
+      customer_id:  self.stripe_customer_token,
+      account:      self
+    }).update_card
+    # update_default_card
   end
 
   def add_to_subscriber_list
@@ -143,17 +142,17 @@ class Account < ActiveRecord::Base
     false
   end
 
-  def update_default_card
-    if customer = retrieve_stripe_customer
-      card = customer.cards.retrieve(customer.default_card)
-      self.update(
-        card_expiration:  Date.new(card.exp_year, card.exp_month, 1),
-        card_last4:       card.last4
-        )
-    else
-      false
-    end
-  end
+  # def update_default_card
+  #   if customer = retrieve_stripe_customer
+  #     card = customer.cards.retrieve(customer.default_card)
+  #     self.update(
+  #       card_expiration:  Date.new(card.exp_year, card.exp_month, 1),
+  #       card_last4:       card.last4
+  #       )
+  #   else
+  #     false
+  #   end
+  # end
 
   def email_not_in_use
     errors.add(:email, "The email #{email.downcase} is already in use") unless
