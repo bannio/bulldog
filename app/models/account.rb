@@ -89,14 +89,14 @@ class Account < ActiveRecord::Base
     end
   end
 
-  def update_card(token)
-    CardService.new({
-      token:        token,
-      customer_id:  self.stripe_customer_token,
-      account:      self
-    }).update_card
-    # update_default_card
-  end
+  # def update_card(token)
+  #   CardService.new({
+  #     token:        token,
+  #     customer_id:  self.stripe_customer_token,
+  #     account:      self
+  #   }).update_card
+  #   # update_default_card
+  # end
 
   def add_to_subscriber_list
     # only if there is a to address and the add to list box was checked

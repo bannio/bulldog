@@ -32,7 +32,7 @@ describe AccountsController do
       #request.env["HTTP_REFERER"]=root_path
       get :show, id: account2
       expect(response).to redirect_to root_path
-    end 
+    end
   end
 
   describe "GET #new_card" do
@@ -40,7 +40,7 @@ describe AccountsController do
       get :new_card, id: @account
       expect(assigns(:account)).to eq @account
     end
-  end 
+  end
 
   describe "GET #new" do
     it "assigns an new account as @account" do
@@ -87,7 +87,7 @@ describe AccountsController do
         allow(Stripe::Customer).to receive(:create).with(anything()).and_return(stripe_customer)
         allow_any_instance_of(Account).to receive(:get_next_invoice_date).and_return(nil)
       end
-      subject {post :create, account: attributes_for(:account).merge(user_id: "", 
+      subject {post :create, account: attributes_for(:account).merge(user_id: "",
         stripe_customer_token: nil,
         stripe_card_token: "card",
         email: "newaccount@example.com",
@@ -113,7 +113,7 @@ describe AccountsController do
     it 'does not creates a new account if stripe fails to create a token' do
       allow_any_instance_of(Account).to receive(:create_stripe_customer).and_return(false)
       expect {
-        post :create, account: attributes_for(:account).merge(user_id: "", 
+        post :create, account: attributes_for(:account).merge(user_id: "",
           stripe_customer_token: nil,
           stripe_card_token: "xx"
           )
@@ -122,7 +122,7 @@ describe AccountsController do
     context "does not create a sale" do
       it 'if account is invalid - no email' do
         expect_any_instance_of(Account).to_not receive(:process_subscription)
-        post :create, account: attributes_for(:account).merge(user_id: "", 
+        post :create, account: attributes_for(:account).merge(user_id: "",
           stripe_customer_token: nil,
           stripe_card_token: "card",
           email: ""
@@ -130,7 +130,7 @@ describe AccountsController do
       end
       it 'if account is invalid - no name' do
         expect_any_instance_of(Account).to_not receive(:process_subscription)
-        post :create, account: attributes_for(:account).merge(user_id: "", 
+        post :create, account: attributes_for(:account).merge(user_id: "",
           stripe_customer_token: nil,
           stripe_card_token: "card",
           name: ""
@@ -192,17 +192,21 @@ describe AccountsController do
     let(:attrs){{stripe_card_token: "card_token"}}
 
     it "redirects to the updated account on success" do
-      allow_any_instance_of(Account).to receive(:update_card).and_return(true)
+      # allow_any_instance_of(Account).to receive(:update_card).and_return(true)
+
+      allow(subject).to receive(:update_card_service).and_return(true)
       patch :update_card, id: @account, account: attrs
       expect(response).to redirect_to @account
     end
     it "renders new_card on failure" do
-      allow_any_instance_of(Account).to receive(:update_card).and_return(false)
+      # allow_any_instance_of(Account).to receive(:update_card).and_return(false)
+      allow(subject).to receive(:update_card_service).and_return(false)
       patch :update_card, id: @account, account: attrs
       expect(response).to render_template :new_card
     end
     it "flashes an error message on failure" do
-      allow_any_instance_of(Account).to receive(:update_card).and_return(false)
+      # allow_any_instance_of(Account).to receive(:update_card).and_return(false)
+      allow(subject).to receive(:update_card_service).and_return(false)
       patch :update_card, id: @account, account: attrs
       expect(flash[:error]).to eq "There was a problem with your payment card"
     end

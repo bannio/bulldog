@@ -25,8 +25,9 @@ class AccountsController < ApplicationController
   def update_card
     @account = policy_scope(Account).find(params[:id])
     authorize @account
-
-    if @account.update_card(params[:account][:stripe_card_token])
+    success = update_card_service
+    if success
+    # if @account.update_card(params[:account][:stripe_card_token])
       flash[:success] = "Thankyou. Your card details have been updated"
       redirect_to @account
     else
@@ -89,6 +90,13 @@ class AccountsController < ApplicationController
   end
 
   private
+
+  def update_card_service
+    CardService.new({
+      account: @account,
+      token: params[:account][:stripe_card_token]
+      }).update_card
+  end
 
   def account_params
     params.require(:account).permit(*policy(@account || Account).permitted_attributes)

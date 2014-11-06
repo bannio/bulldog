@@ -3,11 +3,13 @@ require 'rails_helper'
 describe CardService do
 
   let(:customer){ double(id: "cus_12345") }
+  let(:account){ FactoryGirl.create(:account) }
 
   describe 'create_customer' do
     it "returns a customer" do
       params = {
-        email: "test@example.com"
+        email: "test@example.com",
+        account: account
       }
 
       expect(Stripe::Customer).to receive(:create).and_return(:customer)
@@ -15,7 +17,8 @@ describe CardService do
     end
     it "returns false if there is an error" do
       params = {
-        email: "test@example.com"
+        email: "test@example.com",
+        account: account
       }
 
       allow(Stripe::Customer).to receive(:create).and_raise(Stripe::StripeError)
@@ -27,14 +30,16 @@ describe CardService do
   describe 'get_customer' do
     it 'returns a customer' do
       params = {
-        customer_id: "cus_12345"
+        customer_id: "cus_12345",
+        account: account
       }
       expect(Stripe::Customer).to receive(:retrieve).and_return(:customer)
       customer = CardService.new(params).get_customer
     end
     it 'returns false when no customer' do
       params = {
-        customer_id: "cus_12345"
+        customer_id: "cus_12345",
+        account: account
       }
       allow(Stripe::Customer).to receive(:retrieve).and_raise(Stripe::StripeError)
       customer = CardService.new(params).get_customer
@@ -46,10 +51,11 @@ describe CardService do
     let(:subscription){ double("subscription") }
     # let(:get_customer){ double('customer') }
 
-    params = {
-        customer_id: "cus_12345",
-        plan_id: "1"
-      }
+    let(:params){{
+          customer_id: "cus_12345",
+          plan_id: "1",
+          account: account
+        }}
 
     it "gets a customer" do
       expect(Stripe::Customer).to receive(:retrieve).and_return(customer)
@@ -68,8 +74,9 @@ describe CardService do
     end
 
     it "returns false with invalid customer_id" do
-      allow(Stripe::Customer).to receive(:retrieve).and_raise(Stripe::StripeError)
+      # allow(Stripe::Customer).to receive(:retrieve).and_raise(Stripe::StripeError)
       # allow(customer).to receive_message_chain(:subscriptions, :create).and_return(subscription)
+      allow_any_instance_of(CardService).to receive(:get_customer).and_return(false)
       sub = CardService.new(params).create_subscription
       expect(sub).to eq false
     end
@@ -85,22 +92,38 @@ describe CardService do
 
   describe 'update_card' do
 
-    params = {
-      token: 'xxx',
-      customer_id: "cus_12345",
-      account: FactoryGirl.create(:account)
-    }
+    let(:params){{
+          customer_id: "cus_12345",
+          token: "xxx",
+          account: account
+        }}
+    let(:stripe_dbl){ double(Stripe::Customer).as_null_object }
+    let(:card_dbl) { double(
+        'card',
+        exp_year: 2020,
+        exp_month: 12,
+        last4: "4242"
+      )}
+    before do
+
+      allow_any_instance_of(CardService).to receive(:stripe_customer_card).and_return(card_dbl)
+    end
 
     it "updates Stripe customer" do
-      allow(Stripe::Customer).to receive(:retrieve).and_return(customer)
-      allow(customer).to receive(:card=)
-      expect(customer).to receive(:save)
+      allow_any_instance_of(CardService).to receive(:get_customer).and_return(stripe_dbl)
+      expect(stripe_dbl).to receive(:save)
       card = CardService.new(params).update_card
     end
+
     it "returns false if invalid token" do
-      allow(Stripe::Customer).to receive(:retrieve).and_return(customer)
-      allow(customer).to receive(:card=)
-      allow(customer).to receive(:save)#.and_raise(Stripe::CardError)
+      allow_any_instance_of(CardService).to receive(:get_customer).and_return(stripe_dbl)
+      allow(stripe_dbl).to receive(:save).and_raise(Stripe::StripeError)
+      card = CardService.new(params).update_card
+      expect(card).to eq false
+    end
+
+    it "returns false if no customer" do
+      allow_any_instance_of(CardService).to receive(:get_customer).and_return(false)
       card = CardService.new(params).update_card
       expect(card).to eq false
     end
