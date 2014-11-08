@@ -1,7 +1,6 @@
 class CardService
   def initialize(params)
     @email = params[:email]
-    # @customer_id = params[:customer_id]
     @plan_id = params[:plan_id]
     @token = params[:token]
     @account = params[:account]
@@ -10,15 +9,6 @@ class CardService
   def create_customer
     # This will return a Stripe::Customer object
     Stripe::Customer.create(customer_attributes)
-  rescue Stripe::StripeError => e
-    account.errors[:base] << e.message
-    Rails.logger.info "Stripe error: #{e.message}"
-    false
-  end
-
-  def get_customer
-    # This will return a Stripe::Customer object
-    Stripe::Customer.retrieve(customer_id)
   rescue Stripe::StripeError => e
     account.errors[:base] << e.message
     Rails.logger.info "Stripe error: #{e.message}"
@@ -41,12 +31,11 @@ class CardService
     customer = get_customer
     return false unless customer
     if update_stripe_customer_card(customer)
-    # retrieve updated card
-      card = stripe_customer_card(customer)
+      new_card = stripe_customer_card(customer)
     else
       return false
     end
-    update_account_card_details(card) if card
+    update_account_card_details(new_card) if new_card
   end
 
   private
@@ -56,7 +45,7 @@ class CardService
   def customer_attributes
     {
       email: email,
-      account: account
+      description: "customer for #{email}"
     }
   end
 
@@ -66,16 +55,17 @@ class CardService
 
   def plan_attributes
     {
-      plan: plan_id.to_s,
-      account: account
+      plan: plan_id.to_s
     }
   end
 
-  def card_attributes
-    {
-      account: account,
-      token:   token
-    }
+  def get_customer
+    # This will return a Stripe::Customer object
+    Stripe::Customer.retrieve(customer_id)
+  rescue Stripe::StripeError => e
+    account.errors[:base] << e.message
+    Rails.logger.info "Stripe error: #{e.message}"
+    false
   end
 
   def update_stripe_customer_card(customer)

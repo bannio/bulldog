@@ -27,7 +27,6 @@ class AccountsController < ApplicationController
     authorize @account
     success = update_card_service
     if success
-    # if @account.update_card(params[:account][:stripe_card_token])
       flash[:success] = "Thankyou. Your card details have been updated"
       redirect_to @account
     else
@@ -78,9 +77,13 @@ class AccountsController < ApplicationController
         flash[:error] = @account.errors[:base][0]
         render 'new'
       end
-    else
-      flash[:error] = @account.errors[:base][0]
-      render 'new'
+    # DRAFT alternative
+    # @account = CreateAccount.call(account_params)
+    # if @account.persisted?
+    #   redirect_to page_path('new_account')
+    # else
+    #   flash[:error] = @account.errors[:base][0]
+    #   render 'new'
     end
   end
 

@@ -17,7 +17,7 @@ class Account < ActiveRecord::Base
   validates :name, :email, :plan_id, presence: true
   # validates :stripe_customer_token, presence: true, on: :create
   validates :email, uniqueness: true, format: {with: /\A[^@]+@[^@]+\z/}, on: :create
-  validate :email_not_in_use, on: :create
+  # validate :email_not_in_use, on: :create
 
   # scope :owned_by_user, -> { where(user_id: current_user.id) }
   attr_accessor :stripe_card_token, :mail_list
@@ -70,12 +70,12 @@ class Account < ActiveRecord::Base
     invoices.find(id)
   end
 
-  def create_user
-    self.save # to prevent triggering uniqueness check on user
-    self.update(
-      user_id: User.create(email: self.email).id
-    )
-  end
+  # def create_user
+  #   self.save # to prevent triggering uniqueness check on user
+  #   self.update(
+  #     user_id: User.create(email: self.email).id
+  #   )
+  # end
 
   def vat_allowed?
     vat_enabled? && business?
@@ -118,13 +118,13 @@ class Account < ActiveRecord::Base
     ProcessSale.new(self).process
   end
 
-  def retrieve_stripe_customer
-    customer = Stripe::Customer.retrieve(stripe_customer_token)
-  rescue Stripe::InvalidRequestError => e
-    logger.error {"Stripe error while retrieving customer: #{e.message}"}
-    errors.add :base, "#{e.message}"
-    false
-  end
+  # def retrieve_stripe_customer
+  #   customer = Stripe::Customer.retrieve(stripe_customer_token)
+  # rescue Stripe::InvalidRequestError => e
+  #   logger.error {"Stripe error while retrieving customer: #{e.message}"}
+  #   errors.add :base, "#{e.message}"
+  #   false
+  # end
 
   def create_stripe_customer
     # if valid? && stripe_card_token.present?
@@ -154,19 +154,20 @@ class Account < ActiveRecord::Base
   #   end
   # end
 
-  def email_not_in_use
-    errors.add(:email, "The email #{email.downcase} is already in use") unless
-      User.where(email: email.downcase).empty?
-  end
+  # def email_not_in_use
+  #   return false unless email
+  #   errors.add(:email, "The email #{email.downcase} is already in use") unless
+  #     User.where(email: email.downcase).empty?
+  # end
 
-  def get_next_invoice_date
-    next_due = Stripe::Invoice.upcoming(customer: self.stripe_customer_token).date
-    self.next_invoice = Time.at(next_due)
-  rescue Stripe::InvalidRequestError
-    self.next_invoice = nil
-  end
+  # def get_next_invoice_date
+  #   next_due = Stripe::Invoice.upcoming(customer: self.stripe_customer_token).date
+  #   self.next_invoice = Time.at(next_due)
+  # rescue Stripe::InvalidRequestError
+  #   self.next_invoice = nil
+  # end
 
-  def mailchimp
-    mailchimp ||= Mailchimp::API.new(ENV['MAILCHIMP-API-KEY'])
-  end
+  # def mailchimp
+  #   mailchimp ||= Mailchimp::API.new(ENV['MAILCHIMP-API-KEY'])
+  # end
 end

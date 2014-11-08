@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   end
 
   # validates :email, uniqueness: true # apparently handled by Devise!
-  # accepts_nested_attributes_for :account
   attr :account_name
   attr_accessor :edit_email
 
@@ -24,7 +23,8 @@ class User < ActiveRecord::Base
     pending_any_confirmation {yield}
   end
 
-    # new function to set the password without knowing the current password used in our confirmation controller.
+    # new function to set the password without knowing the current password
+    # used in our confirmation controller.
   def attempt_set_password(params)
     p = {}
     p[:password] = params[:password]
