@@ -66,24 +66,12 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     authorize @account
-    if @account.valid?
-      sub = @account.process_subscription
-      if sub && @account.save
-        @account.create_user
-        @account.add_to_subscriber_list
-        redirect_to home_path,
-        notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
-      else
-        flash[:error] = @account.errors[:base][0]
-        render 'new'
-      end
-    # DRAFT alternative
-    # @account = CreateAccount.call(account_params)
-    # if @account.persisted?
-    #   redirect_to page_path('new_account')
-    # else
-    #   flash[:error] = @account.errors[:base][0]
-    #   render 'new'
+    @account = CreateAccount.call(account_params)
+    if @account.persisted?
+      redirect_to page_path('new_account')
+    else
+      flash[:error] = @account.errors.full_messages
+      render 'new'
     end
   end
 

@@ -74,69 +74,42 @@ describe AccountsController do
 
   describe "POST #create" do
 
-    before do
-      allow_any_instance_of(Account).to receive(:create_user).and_return(true)
-    end
+    let(:account){ instance_double('Account') }
 
     context "with valid attributes" do
-      before(:each) do
 
-        allow_any_instance_of(Sale).to receive(:process!).and_return(true)
-        allow_any_instance_of(Sale).to receive(:finished?).and_return(true)
-        stripe_customer = OpenStruct.new(id: "cust_id")
-        allow(Stripe::Customer).to receive(:create).with(anything()).and_return(stripe_customer)
-        allow_any_instance_of(Account).to receive(:get_next_invoice_date).and_return(nil)
-      end
       subject {post :create, account: attributes_for(:account).merge(user_id: "",
         stripe_customer_token: nil,
-        stripe_card_token: "card",
         email: "newaccount@example.com",
         mail_list: "1"
         )}
 
-      it "redirects to home path" do
-        expect(subject).to redirect_to home_path
-      end
-      it "flashes a message" do
-        expect(subject.request.flash[:notice]).to_not be_nil
-      end
-      it "creates a user" do
-        expect_any_instance_of(Account).to receive(:create_user)
-        subject
-      end
-      it "subscribes to a list" do
-        expect_any_instance_of(Account).to receive(:add_to_subscriber_list)
-        subject
+      it "redirects to page new_account" do
+        allow(CreateAccount).to receive(:call).and_return(account)
+        allow(account).to receive(:persisted?).and_return(true)
+        expect(subject).to redirect_to page_path('new_account')
       end
     end
 
-    # it 'does not creates a new account if stripe fails to create a token' do
-    #   allow_any_instance_of(Account).to receive(:create_stripe_customer).and_return(false)
-    #   expect {
-    #     post :create, account: attributes_for(:account).merge(user_id: "",
-    #       stripe_customer_token: nil,
-    #       stripe_card_token: "xx"
-    #       )
-    #   }.to change(Account, :count).by(0)
-    # end
-    # context "does not create a sale" do
-    #   it 'if account is invalid - no email' do
-    #     expect_any_instance_of(Account).to_not receive(:process_subscription)
-    #     post :create, account: attributes_for(:account).merge(user_id: "",
-    #       stripe_customer_token: nil,
-    #       stripe_card_token: "card",
-    #       email: ""
-    #       )
-    #   end
-    #   it 'if account is invalid - no name' do
-    #     expect_any_instance_of(Account).to_not receive(:process_subscription)
-    #     post :create, account: attributes_for(:account).merge(user_id: "",
-    #       stripe_customer_token: nil,
-    #       stripe_card_token: "card",
-    #       name: ""
-    #       )
-    #   end
-    # end
+    context "with invalid attributes" do
+
+      subject {post :create, account: {name: ""}}
+
+      it "renders flash message" do
+        allow(CreateAccount).to receive(:call).and_return(account)
+        allow(account).to receive(:persisted?).and_return(false)
+        allow(account).to receive_message_chain(:errors, :full_messages).and_return("account has errors")
+        subject
+        expect(flash[:error]).to include("account has errors")
+      end
+
+      it "renders new" do
+        allow(CreateAccount).to receive(:call).and_return(account)
+        allow(account).to receive(:persisted?).and_return(false)
+        allow(account).to receive_message_chain(:errors, :full_messages)
+        expect(subject).to render_template :new
+      end
+    end
   end
 
   describe "GET #cancel" do

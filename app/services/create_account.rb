@@ -16,11 +16,11 @@ class CreateAccount
   # note that running validations (i.e. account.valid? or account.save) will
   # clear the email_not_in_use errors added as this is not included in
   # the Account validations. Therefore evaluate this after the valid? and
-  # return without calling save.
+  # return without calling save if errors not empty.
 
   def call  # instance method
     if account.valid? && email_not_in_use  # run validations
-      CreateCustomer.call(account) # returns with account.stripe_customer_token
+      CreateCustomer.call(account) # adds account.stripe_customer_token
       account.user = User.create(email: email)
       AddToMailList.call(email) if mail_list_checked?
       account.save if account.errors.empty?
