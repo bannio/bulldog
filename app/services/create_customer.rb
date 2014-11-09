@@ -13,6 +13,8 @@ class CreateCustomer
         plan: account.plan_id
       )
       account.stripe_customer_token = customer.id
+      trial_end = customer.subscriptions.data.first.trial_end
+      account.trial_end = Time.at(trial_end)
     rescue Stripe::StripeError => e
       account.errors[:base] << e.message
       Rails.logger.info "Stripe error: #{e.message}"

@@ -1,32 +1,17 @@
-class CardService
+class UpdateCard
+
+  def self.call(*args)
+    new(*args).call
+  end
+
   def initialize(params)
-    @email = params[:email]
-    @plan_id = params[:plan_id]
+    # @email = params[:email]
+    # @plan_id = params[:plan_id]
     @token = params[:token]
     @account = params[:account]
   end
 
-  def create_customer
-    # This will return a Stripe::Customer object
-    Stripe::Customer.create(customer_attributes)
-  rescue Stripe::StripeError => e
-    account.errors[:base] << e.message
-    Rails.logger.info "Stripe error: #{e.message}"
-    false
-  end
-
-  def create_subscription
-    # This will return a Stripe::Subscription object
-    customer = get_customer
-    return false unless customer
-    customer.subscriptions.create(plan_attributes)
-  rescue Stripe::StripeError => e
-    account.errors[:base] << e.message
-    Rails.logger.info "Stripe error: #{e.message}"
-    false
-  end
-
-  def update_card
+  def call
     # required params account, token
     customer = get_customer
     return false unless customer
@@ -40,17 +25,11 @@ class CardService
 
   private
 
-  attr_reader :email, :plan_id, :token, :account #, :customer_id
+  attr_reader :token, :account #, :customer_id, :email, :plan_id
 
-  def customer_attributes
-    {
-      email: email,
-      description: "customer for #{email}"
-    }
-  end
 
   def customer_id
-    customer_id ||= account.stripe_customer_token
+    @customer_id ||= account.stripe_customer_token
   end
 
   def plan_attributes
@@ -82,6 +61,7 @@ class CardService
       card_expiration:  Date.new(card.exp_year, card.exp_month, 1),
       card_last4:       card.last4
     )
+    account.add_card! unless account.paid?
   end
 
   def stripe_customer_card(customer)

@@ -12,5 +12,7 @@ FactoryGirl.define do
     card_expiration  nil
     next_invoice     nil
     date_reminded    nil
+    state            "paid"
+    trial_end        Time.now + 1.day
   end
 end

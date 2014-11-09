@@ -83,10 +83,10 @@ class AccountsController < ApplicationController
   private
 
   def update_card_service
-    CardService.new({
+    UpdateCard.call({
       account: @account,
       token: params[:account][:stripe_card_token]
-      }).update_card
+      })
   end
 
   def account_params

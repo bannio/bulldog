@@ -4,10 +4,7 @@ class CreateAccount
   end
 
   def initialize(params)
-    # @name = params[:name]
     @email = params[:email]
-    # @plan_id = params[:plan_id]
-    # @mail_list = params[:mail_list]
     @account = Account.new(params)
   end
 

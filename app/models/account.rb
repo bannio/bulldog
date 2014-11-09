@@ -1,4 +1,7 @@
 class Account < ActiveRecord::Base
+
+  include AASM
+
   belongs_to :user
   has_many :suppliers
   has_many :customers
@@ -23,6 +26,46 @@ class Account < ActiveRecord::Base
 
   PLANS = { 1 => :personal, 2 => :business, 3 => :business }
 
+  aasm column: 'state' do
+    state :pending, initial: true
+    state :trialing
+    state :paying
+    state :paid
+    state :expired
+    state :closed
+    state :deleted
+
+    event :sign_up do
+      transitions from: :pending, to: :trialing
+    end
+
+    event :add_card do
+      transitions from: :trialing, to: :paying
+      transitions from: :expired, to: :paying
+    end
+
+    event :charge do
+      transitions from: :paying, to: :paid
+    end
+
+    event :expire do
+      transitions from: :trialing, to: :expired
+    end
+
+    event :close do
+      transitions from: :paid, to: :closed
+      transitions from: :trialing, to: :closed
+    end
+
+    event :restart do
+      transitions from: :closed, to: :paid
+    end
+
+    event :delete do
+      transitions from: :closed, to: :deleted
+    end
+  end
+
   def subscription_type
     PLANS[plan_id]
   end
@@ -36,7 +79,8 @@ class Account < ActiveRecord::Base
   end
 
   def active?
-    plan_id.present? && plan_id > 0
+    # plan_id.present? && plan_id > 0
+    trialing? || paid?
   end
 
   def self.owned_by_user(user)
@@ -70,35 +114,5 @@ class Account < ActiveRecord::Base
   def vat_allowed?
     vat_enabled? && business?
   end
-
-  # def process_subscription
-  #   if create_stripe_customer
-  #     process_sale
-  #   else
-  #     return false
-  #   end
-  # end
-
-  private
-
-  # def process_sale
-  #   ProcessSale.new(self).process
-  # end
-
-  # def create_stripe_customer
-  #   # if valid? && stripe_card_token.present?
-  #   if stripe_card_token.present?
-  #     customer = Stripe::Customer.create(
-  #       description: "Customer for #{email}",
-  #       card:         stripe_card_token,
-  #       email:        email
-  #       )
-  #     self.stripe_customer_token = customer.id
-  #   end
-  # rescue Stripe::InvalidRequestError, Stripe::CardError => e
-  #   logger.error {"Stripe error while creating customer: #{e.message}"}
-  #   errors.add :base, "There was a problem with your payment card: #{e.message}"
-  #   false
-  # end
 
 end

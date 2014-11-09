@@ -26,6 +26,27 @@ module ControllerMacros
     end
   end
 
+  def login_user_with_account_state(state)
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @user = FactoryGirl.create(:user)
+      @account = FactoryGirl.create(:account, user_id: @user.id, state: state)
+      @user.confirm!
+      sign_in @user
+    end
+  end
+
+  def login_user_with_expired_account_state(state)
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @user = FactoryGirl.create(:user)
+      @account = FactoryGirl.create(:account, user_id: @user.id, state: state,
+        trial_end: Time.now - 1.day)
+      @user.confirm!
+      sign_in @user
+    end
+  end
+
   def sign_in(user = double('user'))
     if user.nil?
       allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => :user})
@@ -50,7 +71,7 @@ module ControllerMacros
     !!current_user
   end
 
-  
+
   # Note that @account is set in login_user
   # setting is always created by Account after_save, create_setting adds more attributes
 
