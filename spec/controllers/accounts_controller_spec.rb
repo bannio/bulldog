@@ -127,34 +127,33 @@ describe AccountsController do
   end
 
   describe "PATCH #update" do
-    before { @account = create(:account, name: 'Test Account') }
+    let(:account){ FactoryGirl.create(:account)}
 
     context "with valid attributes" do
-      before {allow(UpdateAccount).to receive_message_chain(:new, :update).and_return(true)}
+      before { allow(UpdateAccount).to receive(:call).and_return(true) }
       it "finds the account in question" do
-        patch :update, id: @account, account: attributes_for(:account)
-        expect(assigns(:account)).to eq(@account)
+        patch :update, id: account, account: attributes_for(:account)
+        expect(assigns(:account)).to eq(account)
       end
 
       it "redirects to the updated account" do
-        patch :update, id: @account, account: attributes_for(:account)
-        expect(response).to redirect_to @account
+        patch :update, id: account, account: attributes_for(:account)
+        expect(response).to redirect_to account
       end
       it "redirects to goodbye when account cancelled" do
-        patch :update, id: @account, account: attributes_for(:account).merge(plan_id: 0)
+        patch :update, id: account, account: attributes_for(:account).merge(plan_id: 0, state: "closed")
         expect(response).to redirect_to page_path('goodbye')
       end
       it "logs out user when account cancelled" do
-        patch :update, id: @account, account: attributes_for(:account).merge(plan_id: 0)
-        expect(subject.current_user).to be_nil
+        patch :update, id: account, account: attributes_for(:account).merge(plan_id: 0, state: "closed")
+        expect(controller.current_user).to be_nil
       end
     end
     context "with invalid attributes" do
-      before {allow(UpdateAccount).to receive_message_chain(:new, :update).and_return(false)}
+      before {allow(UpdateAccount).to receive(:call).and_return(false)}
 
       it "renders the edit template" do
-        patch :update, id: @account, account: attributes_for(:account,
-          name: "")
+        patch :update, id: account, account: attributes_for(:account, name: "")
         expect(response).to render_template :edit
       end
     end

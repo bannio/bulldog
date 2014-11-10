@@ -70,11 +70,24 @@ describe Account do
       expect(a.trialing?).to be true
     end
 
-    it "add_card changes from trialing to paying" do
-      a = Account.new(state: "trialing")
+    it "add_card changes from expired to paying" do
+      a = Account.new(state: "expired")
       a.add_card
       expect(a.paying?).to be true
     end
+
+    it "add_card leaves trialing as trialing" do
+      a = Account.new(state: "trialing")
+      a.add_card
+      expect(a.trialing?).to be true
+    end
+
+    it "add_card leaves paid as paid" do
+      a = Account.new(state: "paid")
+      a.add_card
+      expect(a.paid?).to be true
+    end
+
 
     it "charge suceeding changes from paying to paid" do
       a = Account.new(state: "paying")

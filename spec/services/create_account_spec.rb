@@ -15,7 +15,15 @@ describe CreateAccount do
     expect(account.persisted?).to be true
   end
 
-  it "returns an account with errors" do
+  it "transitions state to trialing" do
+    allow(CreateCustomer).to receive(:call)
+    allow(User).to receive(:create).and_return(user)
+    allow(AddToMailList).to receive(:call).and_return(true)
+    account = CreateAccount.call(params)
+    expect(account.trialing?).to be true
+  end
+
+  it "returns an account with errors when missing params" do
     bad_params = {}
     account = CreateAccount.call(bad_params)
     expect(account).to be

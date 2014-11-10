@@ -44,13 +44,13 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     authorize @account
     @account.assign_attributes(account_params)
-    if UpdateAccount.new(@account).update
-    # if @account.update(account_params)
-      if @account.active?
-        redirect_to @account, notice: "Account successfully updated"
-      else
+    success = UpdateAccount.call(@account)
+    if success
+      if @account.closed?
         sign_out current_user
         redirect_to page_path('goodbye')
+      else
+        redirect_to @account, notice: "Account successfully updated"
       end
     else
       if is_cancellation?

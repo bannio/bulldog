@@ -5,15 +5,13 @@ class UpdateCard
   end
 
   def initialize(params)
-    # @email = params[:email]
-    # @plan_id = params[:plan_id]
     @token = params[:token]
     @account = params[:account]
   end
 
   def call
     # required params account, token
-    customer = get_customer
+    customer = RetrieveCustomer.call(account)
     return false unless customer
     if update_stripe_customer_card(customer)
       new_card = stripe_customer_card(customer)
@@ -25,27 +23,7 @@ class UpdateCard
 
   private
 
-  attr_reader :token, :account #, :customer_id, :email, :plan_id
-
-
-  def customer_id
-    @customer_id ||= account.stripe_customer_token
-  end
-
-  def plan_attributes
-    {
-      plan: plan_id.to_s
-    }
-  end
-
-  def get_customer
-    # This will return a Stripe::Customer object
-    Stripe::Customer.retrieve(customer_id)
-  rescue Stripe::StripeError => e
-    account.errors[:base] << e.message
-    Rails.logger.info "Stripe error: #{e.message}"
-    false
-  end
+  attr_reader :token, :account
 
   def update_stripe_customer_card(customer)
     customer.card = token
@@ -61,7 +39,7 @@ class UpdateCard
       card_expiration:  Date.new(card.exp_year, card.exp_month, 1),
       card_last4:       card.last4
     )
-    account.add_card! unless account.paid?
+    account.add_card! # unless account.paid?
   end
 
   def stripe_customer_card(customer)

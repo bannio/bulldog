@@ -1,6 +1,6 @@
 class CreateAccount
-  def self.call(*args) # class method
-    new(*args).call  # instantiate a CreateAccount instance and call the call instance method
+  def self.call(*args)
+    new(*args).call
   end
 
   def initialize(params)
@@ -8,24 +8,20 @@ class CreateAccount
     @account = Account.new(params)
   end
 
-  attr_reader :account, :email #, :plan_id, :mail_list, :name
-
-  # note that running validations (i.e. account.valid? or account.save) will
-  # clear the email_not_in_use errors added as this is not included in
-  # the Account validations. Therefore evaluate this after the valid? and
-  # return without calling save if errors not empty.
-
-  def call  # instance method
+  def call
     if account.valid? && email_not_in_use  # run validations
       CreateCustomer.call(account) # adds account.stripe_customer_token
       account.user = User.create(email: email)
       AddToMailList.call(email) if mail_list_checked?
+      account.sign_up  # transitions to trialing
       account.save if account.errors.empty?
     end
     return account
   end
 
   private
+
+  attr_reader :account, :email
 
   def mail_list_checked?
     account.mail_list == "1"

@@ -29,36 +29,46 @@ class Account < ActiveRecord::Base
   aasm column: 'state' do
     state :pending, initial: true
     state :trialing
-    state :paying
-    state :paid
-    state :expired
-    state :closed
+    state :paying  # when card added and previous state expired
+    state :paid    # when charge succeeds
+    state :expired # when trial ended
+    state :charge_failed
+    state :closed  # when account cancelled
     state :deleted
 
-    event :sign_up do
+    event :sign_up do # account create event
       transitions from: :pending, to: :trialing
     end
 
-    event :add_card do
-      transitions from: :trialing, to: :paying
+    event :add_card do # account update card event
       transitions from: :expired, to: :paying
+      transitions from: :trialing, to: :trialing
+      transitions from: :paid, to: :paid
     end
 
-    event :charge do
+    event :charge do  # webhook event
       transitions from: :paying, to: :paid
+      transitions from: :trialing, to: :paid
+      transitions from: :paid, to: :paid
     end
 
-    event :expire do
+    event :expire do  # welcome_controller sign_in event
       transitions from: :trialing, to: :expired
     end
 
-    event :close do
+    event :charge_failed do # webhook event
+      transitions from: :paid, to: :charge_failed  # webhook event - failed charge
+      transitions from: :paying, to: :charge_failed  # webhook event - failed charge
+      transitions from: :trialing, to: :charge_failed  # webhook event - failed charge
+    end
+
+    event :close do   # account cancellation event
       transitions from: :paid, to: :closed
       transitions from: :trialing, to: :closed
     end
 
-    event :restart do
-      transitions from: :closed, to: :paid
+    event :restart do # option offered when login after cancelled account
+      transitions from: :closed, to: :paying  # change plan event
     end
 
     event :delete do
