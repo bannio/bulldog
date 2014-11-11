@@ -6,7 +6,7 @@ class ChangePlan
       customer = RetrieveCustomer.call(account)
       sub_id = customer.subscriptions.first.id
       stripe_sub = customer.subscriptions.retrieve(sub_id)
-      stripe_sub.plan = to_plan
+      stripe_sub.plan = to_plan.to_s
       stripe_sub.save
     rescue Stripe::StripeError => e
       account.errors[:base] << e.message

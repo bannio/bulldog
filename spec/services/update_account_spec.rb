@@ -47,11 +47,11 @@ describe UpdateAccount do
       UpdateAccount.call(account)
     end
 
-    it "returns false if there are any errors" do
+    it "returns account with errors if there are any errors" do
       allow(account).to receive(:email_changed?).and_return(false)
       allow(ChangePlan).to receive(:call)
       allow(account).to receive_message_chain(:errors, :empty?).and_return(false)
-      expect(UpdateAccount.call(account)).to be_falsey
+      expect(UpdateAccount.call(account)).to eq account
     end
 
     it "saves an updated account if there are no errors" do

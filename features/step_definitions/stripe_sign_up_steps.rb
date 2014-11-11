@@ -2,27 +2,31 @@ And(/^stripe-ruby-mock is running$/) do
   require 'stripe_mock'
   StripeMock.stop
   StripeMock.start
+  # StripeMock.toggle_debug(true)
+  Rails.logger.info "Creating Stripe Plan 1"
   Stripe::Plan.create(currency: "gbp",
      name: "Personal Test",
      amount: 1000,
      interval: "year",
      interval_count: 1,
-     trial_period_days: 0,
-     id: 1)
+     trial_period_days: 1,
+     id: "1")
+  Rails.logger.info "Creating Stripe Plan 2"
   Stripe::Plan.create(currency: "gbp",
      name: "Business Monthly Test",
      amount: 500,
      interval: "month",
      interval_count: 1,
-     trial_period_days: 0,
-     id: 2)
+     trial_period_days: 1,
+     id: "2")
+  Rails.logger.info "Creating Stripe Plan 3"
   Stripe::Plan.create(currency: "gbp",
      name: "Business Annual test",
      amount: 5000,
      interval: "year",
      interval_count: 1,
-     trial_period_days: 0,
-     id: 3)
+     trial_period_days: 1,
+     id: "3")
 end
 
 Then(/^I should be on the Sign up form$/) do
@@ -77,7 +81,8 @@ Given(/^the account has a valid Stripe Customer token$/) do
   customer = Stripe::Customer.create({
       id:     'cust_token',
       email: 'cucumber@example.com',
-      card: 'void_card_token'
+      card: 'void_card_token',
+      plan: 1
     })
 end
 

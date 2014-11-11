@@ -8,6 +8,7 @@ Background:
   And a Base Plan exists
   And a Business Monthly Plan exists
   And a Business Annual Plan exists
+  And stripe-ruby-mock is running
 
 Scenario: Sign Up
   Given I visit the home page
@@ -17,4 +18,4 @@ Scenario: Sign Up
   Then we should be on the New Account page
   When I enter my name and email address
   And I click button Subscribe Now
-  Then I should be on the Signed Up Welcome page
+  Then I should be on the Thanks page

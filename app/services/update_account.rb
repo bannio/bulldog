@@ -12,7 +12,8 @@ class UpdateAccount
     ChangePlan.call(account) if plan_changed?
     CancelSubscription.call(account) if cancel?
     ChangeStripeEmail.call(account) if email_changed?
-    save_account
+    account.save if account.errors.empty?
+    account
   end
 
   private
@@ -32,11 +33,6 @@ class UpdateAccount
 
   def email_changed?
     account.email_changed?
-  end
-
-  def save_account
-    return false unless account.errors.empty?
-    account.save
   end
 
 end

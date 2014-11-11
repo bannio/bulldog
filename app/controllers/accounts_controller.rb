@@ -25,10 +25,16 @@ class AccountsController < ApplicationController
   def update_card
     @account = policy_scope(Account).find(params[:id])
     authorize @account
-    success = update_card_service
-    if success
-      flash[:success] = "Thankyou. Your card details have been updated"
-      redirect_to @account
+    call_update_card_service(@account)
+    if @account.errors.empty?
+      if @account.active?
+        flash[:success] = "Thankyou. Your card details have been updated"
+        redirect_to @account
+      else
+        flash[:success] = "Thankyou. Your card details have been updated"
+        sign_out current_user
+        redirect_to page_path('waiting_payment')
+      end
     else
       flash[:error] = "There was a problem with your payment card"
       render :new_card
@@ -44,8 +50,8 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     authorize @account
     @account.assign_attributes(account_params)
-    success = UpdateAccount.call(@account)
-    if success
+    UpdateAccount.call(@account)
+    if @account.errors.empty?
       if @account.closed?
         sign_out current_user
         redirect_to page_path('goodbye')
@@ -82,11 +88,15 @@ class AccountsController < ApplicationController
 
   private
 
-  def update_card_service
-    UpdateCard.call({
-      account: @account,
+  def call_update_card_service(account)
+    account = UpdateCard.call({
+      account: account,
       token: params[:account][:stripe_card_token]
       })
+    # account.add_card! if account.errors.empty?
+    # account
+    Rails.logger.info "account errors: #{account.errors.full_messages}"
+    account
   end
 
   def account_params

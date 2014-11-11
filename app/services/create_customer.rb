@@ -18,7 +18,7 @@ class CreateCustomer
     rescue Stripe::StripeError => e
       account.errors[:base] << e.message
       Rails.logger.info "Stripe error: #{e.message}"
-      false
+      # false
     end
     account
   end

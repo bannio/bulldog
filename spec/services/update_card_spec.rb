@@ -11,7 +11,7 @@ describe UpdateCard do
   describe 'call' do
 
     let(:params){{ token: "xxx", account: account }}
-    let(:stripe_dbl){ double(Stripe::Customer).as_null_object }
+    let(:customer){ double(Stripe::Customer).as_null_object }
     let(:card_dbl) { double(
       'card',
       exp_year: 2020,
@@ -19,54 +19,47 @@ describe UpdateCard do
       last4: "4242"
     )}
     before do
-      allow_any_instance_of(UpdateCard).
-      to receive(:stripe_customer_card).
-      and_return(card_dbl)
+      allow(RetrieveCustomer).to receive(:call).and_return(customer)
+      allow(customer).to receive_message_chain(:cards, :retrieve).and_return(card_dbl)
     end
 
     it "updates Stripe customer" do
-      allow(RetrieveCustomer).to receive(:call).and_return(stripe_dbl)
-      expect(stripe_dbl).to receive(:save)
+      expect(customer).to receive(:save)
       card = UpdateCard.call(params)
     end
 
     it "updates the account" do
-      allow(RetrieveCustomer).to receive(:call).and_return(stripe_dbl)
       expect(account).to receive(:update)
       card = UpdateCard.call(params)
-      # expect(account.card_last4).to eq("4242".to_i)
     end
 
-    it "returns false if invalid token" do
-      allow(RetrieveCustomer).to receive(:call).and_return(stripe_dbl)
-      allow(stripe_dbl).to receive(:save).and_raise(Stripe::StripeError)
+    it "returns account if invalid token" do
+      allow(customer).to receive(:save).and_raise(Stripe::StripeError)
       card = UpdateCard.call(params)
-      expect(card).to eq false
+      expect(card).to eq account
     end
 
-    it "returns false if no customer" do
-      allow(RetrieveCustomer).to receive(:call).and_return(false)
+    it "returns account if no customer" do
+      allow(RetrieveCustomer).to receive(:call).and_raise(Stripe::StripeError)
       card = UpdateCard.call(params)
-      expect(card).to eq false
+      expect(card).to eq account
     end
 
     it "transitions state to paying from expired" do
       account.update!(state: "expired")
-      allow(RetrieveCustomer).to receive(:call).and_return(stripe_dbl)
       card = UpdateCard.call(params)
       expect(account.reload.paying?).to be true
     end
 
     it "it leaves state at trialing" do
       account.update!(state: "trialing")
-      allow(RetrieveCustomer).to receive(:call).and_return(stripe_dbl)
       card = UpdateCard.call(params)
       expect(account.reload.trialing?).to be true
     end
 
     it "it leaves state at paid" do
       account.update!(state: "paid")
-      allow(RetrieveCustomer).to receive(:call).and_return(stripe_dbl)
+      allow(RetrieveCustomer).to receive(:call).and_return(customer)
       card = UpdateCard.call(params)
       expect(account.reload.paid?).to be true
     end

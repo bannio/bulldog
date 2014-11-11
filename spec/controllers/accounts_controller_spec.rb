@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe AccountsController do
 
-  login_user # so authenticate_user! works and sets @user
+  login_user # so authenticate_user! works and sets @user and @account
 
 
   describe "GET #show" do
@@ -127,33 +127,37 @@ describe AccountsController do
   end
 
   describe "PATCH #update" do
-    let(:account){ FactoryGirl.create(:account)}
+    # let(:account){ FactoryGirl.create(:account, user: @user)}
 
     context "with valid attributes" do
-      before { allow(UpdateAccount).to receive(:call).and_return(true) }
+      before { allow(UpdateAccount).to receive(:call) }
+
       it "finds the account in question" do
-        patch :update, id: account, account: attributes_for(:account)
-        expect(assigns(:account)).to eq(account)
+        patch :update, id: @account, account: attributes_for(:account)
+        expect(assigns(:account)).to eq(@account)
       end
 
-      it "redirects to the updated account" do
-        patch :update, id: account, account: attributes_for(:account)
-        expect(response).to redirect_to account
+      it "redirects to the updated @account" do
+        patch :update, id: @account, account: attributes_for(:account)
+        expect(response).to redirect_to @account
       end
-      it "redirects to goodbye when account cancelled" do
-        patch :update, id: account, account: attributes_for(:account).merge(plan_id: 0, state: "closed")
+      it "redirects to goodbye when @account cancelled" do
+        patch :update, id: @account, account: attributes_for(:account).merge(plan_id: 0, state: "closed")
         expect(response).to redirect_to page_path('goodbye')
       end
-      it "logs out user when account cancelled" do
-        patch :update, id: account, account: attributes_for(:account).merge(plan_id: 0, state: "closed")
+      it "logs out user when @account cancelled" do
+        patch :update, id: @account, account: attributes_for(:account).merge(plan_id: 0, state: "closed")
         expect(controller.current_user).to be_nil
       end
     end
     context "with invalid attributes" do
-      before {allow(UpdateAccount).to receive(:call).and_return(false)}
+      # before {allow(Update@Account).to receive(:call)}
+      # before {allow(@account).to receive_message_chain(:errors, :empty?).and_return(false)}
 
       it "renders the edit template" do
-        patch :update, id: account, account: attributes_for(:account, name: "")
+        allow(UpdateAccount).to receive(:call)
+        allow_any_instance_of(Account).to receive_message_chain(:errors, :empty?).and_return(false)
+        patch :update, id: @account, account: attributes_for(:account)
         expect(response).to render_template :edit
       end
     end
@@ -163,22 +167,31 @@ describe AccountsController do
 
     let(:attrs){{stripe_card_token: "card_token"}}
 
-    it "redirects to the updated account on success" do
-      # allow_any_instance_of(Account).to receive(:update_card).and_return(true)
-
-      allow(subject).to receive(:update_card_service).and_return(true)
+    it "redirects to the updated account on success if active" do
+      allow(subject).to receive(:call_update_card_service)
+      allow(@account).to receive_message_chain(:errors, :empty?).and_return(true)
+      allow_any_instance_of(Account).to receive(:active?).and_return(true)
       patch :update_card, id: @account, account: attrs
       expect(response).to redirect_to @account
     end
+
+    it "redirects to waiting payment on success if not active" do
+      allow(subject).to receive(:call_update_card_service)
+      allow(@account).to receive_message_chain(:errors, :empty?).and_return(true)
+      allow_any_instance_of(Account).to receive(:active?).and_return(false)
+      patch :update_card, id: @account, account: attrs
+      expect(response).to redirect_to page_path('waiting_payment')
+    end
+
     it "renders new_card on failure" do
-      # allow_any_instance_of(Account).to receive(:update_card).and_return(false)
-      allow(subject).to receive(:update_card_service).and_return(false)
+      allow(subject).to receive(:call_update_card_service)
+      allow_any_instance_of(Account).to receive_message_chain(:errors, :empty?).and_return(false)
       patch :update_card, id: @account, account: attrs
       expect(response).to render_template :new_card
     end
     it "flashes an error message on failure" do
-      # allow_any_instance_of(Account).to receive(:update_card).and_return(false)
-      allow(subject).to receive(:update_card_service).and_return(false)
+      allow(subject).to receive(:call_update_card_service)
+      allow_any_instance_of(Account).to receive_message_chain(:errors, :empty?).and_return(false)
       patch :update_card, id: @account, account: attrs
       expect(flash[:error]).to eq "There was a problem with your payment card"
     end
