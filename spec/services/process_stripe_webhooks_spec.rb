@@ -85,7 +85,7 @@ describe ProcessStripeWebhooks, type: :request do
     end
 
     it "copes with null charge" do
-      allow(Stripe::Charge).to receive(:retrieve).and_raise(Stripe::StripeError, 'no charge')
+      allow(Stripe::Charge).to receive(:retrieve).and_return(nil)
       allow(ProcessStripeWebhooks).to receive(:subscription_status).and_return("active")
       post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
       expect(response.code).to eq '201'
@@ -103,6 +103,12 @@ describe ProcessStripeWebhooks, type: :request do
     end
 
     it "creates a sale record" do
+      expect(Sale).to receive(:create)
+      post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
+    end
+
+    it "creates a sale even when nil charge" do
+      allow(Stripe::Charge).to receive(:retrieve).and_return(nil)
       expect(Sale).to receive(:create)
       post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
     end

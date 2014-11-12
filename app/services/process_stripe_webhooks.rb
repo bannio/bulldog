@@ -19,7 +19,15 @@ class ProcessStripeWebhooks
         card = card_detail(invoice) # returns a string not the card object!
         StripeMailer.new_invoice(account, invoice, card).deliver
         charge = Stripe::Charge.retrieve(invoice.charge)
-        balance_txn = Stripe::BalanceTransaction.retrieve(charge.balance_transaction)
+        if charge  # missing in test Stripe (or zero invoice?)
+          card_last4 = charge.card.last4
+          card_expire = Date.new(charge.card.exp_year, charge.card.exp_month, 1)
+          fee = Stripe::BalanceTransaction.retrieve(charge.balance_transaction).fee
+        else
+          card_last4 = "NA"
+          card_expire = nil
+          fee = 0
+        end
 
         Sale.create(
           account_id:         account.id,
@@ -27,9 +35,9 @@ class ProcessStripeWebhooks
           stripe_customer_id: invoice.customer,
           stripe_charge_id:   invoice.id,
           stripe_customer_id: invoice.customer,
-          card_last4:         charge.card.last4,
-          card_expiration:    Date.new(charge.card.exp_year, charge.card.exp_month, 1),
-          fee_amount:         balance_txn.fee,
+          card_last4:         card_last4,
+          card_expiration:    card_expire,
+          fee_amount:         fee,
           invoice_total:      invoice.total
           )
         update_account_next_invoice(account, invoice)
