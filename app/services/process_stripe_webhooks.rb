@@ -12,16 +12,35 @@ class ProcessStripeWebhooks
   end
 
   after_invoice_payment_succeeded! do |invoice, event|
-    card = card_detail(invoice)
     status = subscription_status(invoice)
     account = Account.find_by_stripe_customer_token(invoice.customer)
-    if account && status != 'trialing'
+    if account && status != 'trialing' # ignore first zero invoice
+      card = card_detail(invoice) # returns a string not the card object!
       StripeMailer.new_invoice(account, invoice, card).deliver
+      charge = Stripe::Charge.retrieve(invoice.charge)
+      balance_txn = Stripe::BalanceTransaction.retrieve(charge.balance_transaction)
+
+      Sale.create(
+        account_id:         account.id,
+        plan_id:            account.plan_id,
+        stripe_customer_id: invoice.customer,
+        stripe_charge_id:   invoice.id,
+        stripe_customer_id: invoice.customer,
+        card_last4:         charge.card.last4,
+        card_expiration:    Date.new(charge.card.exp_year, charge.card.exp_month, 1),
+        fee_amount:         balance_txn.fee,
+        invoice_total:      invoice.total
+        )
       update_account_next_invoice(account, invoice)
     else
       Rails.logger.error 'StripeWebhooks: invoice.payment_received did not trigger an email '
       StripeMailer.error_invoice(invoice, event, status).deliver
     end
+  end
+
+  after_charge_succeeded! do |charge, event|
+    account = Account.find_by_stripe_customer_token(charge.customer)
+    account.charge!
   end
 
   def self.update_account_next_invoice(account, invoice)

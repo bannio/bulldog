@@ -7,10 +7,12 @@ ______________________________________________
 
 We received a <%= @event.type %> event but our server process failed
 
-Invoice Number: <%= @invoice.id %>
+Livemode:               <%= @livemode %>
 
-Invoice Date: <%= Time.at(@invoice.date).strftime("%d %B %Y") %>
+Invoice Number:         <%= @invoice.id %>
 
-Customer stripe token: <%= @invoice.customer %>
+Invoice Date:           <%= Time.at(@invoice.date).strftime("%d %B %Y") %>
 
-Subscription status: <%= @status %>
+Customer stripe token:  <%= @invoice.customer %>
+
+Subscription status:    <%= @status %>
