@@ -40,4 +40,11 @@ describe ChangePlan do
     expect(account.state).to eq "paying"
   end
 
+  it "creates a subscription if one doesn't exist" do
+    allow(RetrieveCustomer).to receive(:call).and_return(stripe_customer)
+    allow(stripe_customer).to receive_message_chain(:subscriptions, :first).and_return(nil)
+    expect(stripe_customer).to receive_message_chain(:subscriptions, :create).with({:plan=>1})
+    ChangePlan.call(account)
+  end
+
 end
