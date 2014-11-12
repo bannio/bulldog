@@ -25,10 +25,16 @@ class AccountsController < ApplicationController
   def update_card
     @account = policy_scope(Account).find(params[:id])
     authorize @account
-
-    if @account.update_card(params[:account][:stripe_card_token])
-      flash[:success] = "Thankyou. Your card details have been updated"
-      redirect_to @account
+    call_update_card_service(@account)
+    if @account.errors.empty?
+      if @account.active?
+        flash[:success] = "Thankyou. Your card details have been updated"
+        redirect_to @account
+      else
+        flash[:success] = "Thankyou. Your card details have been updated"
+        sign_out current_user
+        redirect_to page_path('waiting_payment')
+      end
     else
       flash[:error] = "There was a problem with your payment card"
       render :new_card
@@ -44,13 +50,13 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     authorize @account
     @account.assign_attributes(account_params)
-    if UpdateAccount.new(@account).update
-    # if @account.update(account_params)
-      if @account.active?
-        redirect_to @account, notice: "Account successfully updated"
-      else
+    UpdateAccount.call(@account)
+    if @account.errors.empty?
+      if @account.closed?
         sign_out current_user
         redirect_to page_path('goodbye')
+      else
+        redirect_to @account, notice: "Account successfully updated"
       end
     else
       if is_cancellation?
@@ -66,19 +72,11 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     authorize @account
-    if @account.valid?
-      sub = @account.process_subscription
-      if sub && @account.save
-        @account.create_user
-        @account.add_to_subscriber_list
-        redirect_to home_path,
-        notice: "Thanks for subscribing. A confirmation link has been sent to your email address. Please open the link to activate your account."
-      else
-        flash[:error] = @account.errors[:base][0]
-        render 'new'
-      end
+    @account = CreateAccount.call(account_params)
+    if @account.persisted?
+      redirect_to page_path('new_account')
     else
-      flash[:error] = @account.errors[:base][0]
+      flash[:error] = @account.errors.full_messages
       render 'new'
     end
   end
@@ -89,6 +87,17 @@ class AccountsController < ApplicationController
   end
 
   private
+
+  def call_update_card_service(account)
+    account = UpdateCard.call({
+      account: account,
+      token: params[:account][:stripe_card_token]
+      })
+    # account.add_card! if account.errors.empty?
+    # account
+    Rails.logger.info "account errors: #{account.errors.full_messages}"
+    account
+  end
 
   def account_params
     params.require(:account).permit(*policy(@account || Account).permitted_attributes)

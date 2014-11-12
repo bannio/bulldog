@@ -40,6 +40,7 @@ describe AccountPolicy do
     end
     permissions :cancel? do
       it "allows access" do
+        allow(@user).to receive_message_chain(:account, :paying?).and_return true
         expect(subject).to permit(@user, Account.new)
       end
     end
@@ -77,7 +78,12 @@ describe AccountPolicy do
     end
     permissions :cancel? do
       it "denies access" do
+        allow(@user).to receive_message_chain(:account, :paying?).and_return false
         expect(subject).to_not permit(@user, Account.new)
+      end
+      it "allows if paying" do
+        allow(@user).to receive_message_chain(:account, :paying?).and_return true
+        expect(subject).to permit(@user, Account.new)
       end
     end
   end

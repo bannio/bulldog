@@ -5,8 +5,12 @@ _______________________________________________________________________________
              Your BulldogClip Free Trial Ends Soon
 _______________________________________________________________________________
 
-Your free trial period ends on <%= @end_date.strftime("%d %B %Y") %>. You do
-not need to take any action to continue using BulldogClip.
+Your free trial period ends on <%= @end_date.strftime("%d %B %Y") %>.
+
+To keep using BulldogClip you will need to enter a payment card which you can
+do here:
+
+<%= new_card_account_url(@account) %>
 
 We hope that you have enjoyed using BulldogClip. If you haven't found time
 to use it yet, now would be a good time. <%= root_url %>
@@ -24,6 +28,6 @@ The BulldogClip Team
 
 
 This email is confidential and intended solely to whom it is addressed. It may
-contain sensitive or privileged information. If you have received this email in 
-error, please inform us at hello@bulldogclip.co.uk and destroy it. 
+contain sensitive or privileged information. If you have received this email in
+error, please inform us at hello@bulldogclip.co.uk and destroy it.
 Questions? contact us at hello@bulldogclip.co.uk

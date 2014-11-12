@@ -4,7 +4,7 @@ Feature: Sign up
   As a user
   I want to be able to sign up
   # NOTE stripe-ruby-mock needs work. It doesn't currently intercept createToken
-  # Without it, all calls go to stripe.com 
+  # Without it, all calls go to stripe.com
 
   Background:
     Given I am not logged in
@@ -20,16 +20,16 @@ Feature: Sign up
     When I Sign up for Base Plan
     Then we should be on the New Account page
     When I enter my name and email address
-    And my credit card details
+    # And my credit card details
     And I click button Subscribe Now
-    Then I should see "Thanks for subscribing."
-    # And wait 5
+    # Then I should see "Thanks for subscribing."
+    Then I should be on the Thanks page
     Then I should receive an email
     When I open the email
     Then I should see "confirm" in the email body
     When I follow "confirm" in the email
     Then I should be on the Account Activation page
-    When I enter account activation details 
+    When I enter account activation details
     Then I should see "Your account was successfully confirmed."
     And I should be on the Welcome page
     And I have an Account record saved
@@ -59,14 +59,14 @@ Feature: Sign up
   Scenario Outline: User enters an invalid credit card number
     Note that the dates and years will go out of date. Need to find a better way.
     The form prevents years in the past.
-    This test uses card numbers provided by Stripe so only works when internet 
+    This test uses card numbers provided by Stripe so only works when internet
     connected and stripe-ruby-mock is not run. Hence marked as @wip
     When I go to the new account page
     And I enter my name and email address
     And I enter <card_no>, <cvc> and <expiry>
     Then I should get <result>
 
-    Examples: 
+    Examples:
       | card_no          | cvc | expiry  | result       |
       | 4242424242424242 | 123 | 01 / 14 | Your card's expiration month is invalid |
       | 4242424242424242 | 1   | 12 / 16 | Your card's security code is invalid   |

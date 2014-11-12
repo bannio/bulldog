@@ -34,7 +34,7 @@
       </tr>
 
       <tr>
-        <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Your free trial period ends on <%= @end_date.strftime("%d %B %Y") %>. You do not need to take any action to continue using <%= link_to 'BulldogClip', root_url %>.
+        <td style="height: 27px;color: #000000;font-family: Arial, Sans-serif;font-size: 14px;">Your free trial period ends on <%= @end_date.strftime("%d %B %Y") %>. To keep using BulldogClip you will need to enter a payment card which you can do <%= link_to 'by following this link', new_card_account_url(@account) %>.
         </td>
       </tr>
 

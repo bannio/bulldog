@@ -1,0 +1,45 @@
+<% content_for :title do %>BulldogClip | Waiting<% end %>
+<% content_for :description do %>BulldogClip come back soon <% end %>
+
+<div class="container contact-page">
+  <section class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+          <h1>Payment in process!</h1>
+        </div>
+      </div>
+    </section>
+  <hr>
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <br>
+        <br>
+        <h2>Your recent payment hasn't cleared yet. Please try again soon.</h2>
+        <br/>
+        <p>If its been a while and you think your card may need updating, you
+        can re-enter the details for us to try again. We will not charge you
+        twice! Use the button below.</p>
+        <br/>
+        <p>Sorry for any inconvenience.</p>
+        <br/><br/>
+        <p>The BulldogClip team.</p>
+        <br/>
+      </div>
+    </div>
+  </section>
+  <!-- <div class="container landing-info"> -->
+  <section class="container">
+    <div class="btn-center row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+        <%= link_to "Try later", '/sign_out', method: 'delete', class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Back to home page" %>
+        <% if current_account %>
+          <%= link_to "Update Card", new_card_account_path(current_account), class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Update payment card details" %>
+        <% else %>
+          <%= link_to "Sign in to Update Card", new_user_session_path, class: "action-btn lg-btn try-now-btn", data: {toggle: "tooltip"}, title: "Sign in" %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<!-- </div> -->
+</div><!-- end container -->

@@ -21,6 +21,7 @@ class StripeMailer < ActionMailer::Base
     @invoice = invoice
     @event = event
     @status = status
+    @livemode = invoice.livemode
     mail to: 'info@bulldogclip.co.uk', subject: 'Invoice error'
   end
 end

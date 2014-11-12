@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # before_action :check_account_active
-
   def current_account
     @current_account ||= current_user.account if current_user
   end
@@ -29,31 +27,15 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    session["user_return_to"] || welcome_index_path
+    if current_account.active?
+      session["user_return_to"] || welcome_index_path
+    else
+      welcome_index_path
+    end
   end
 
   def after_sign_out_path_for(resource)
     home_path
   end
 
-  def check_account_active
-    if current_account && !current_account.active?
-      flash[:error] = "Your account is not active, you may resubscribe here"
-      # redirect_to edit_account_path(current_account)
-    end
-  end
-
-  # def https_redirect
-  #     if ENV["ENABLE_HTTPS"] == "yes"
-  #       if request.ssl? && !use_https? || !request.ssl? && use_https?
-  #         protocol = request.ssl? ? "http" : "https"
-  #         flash.keep
-  #         redirect_to protocol: "#{protocol}://", status: :moved_permanently
-  #       end
-  #     end
-  #   end
-
-  #   def use_https?
-  #     true # Override in other controllers
-  #   end
 end

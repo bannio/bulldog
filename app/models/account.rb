@@ -1,4 +1,7 @@
 class Account < ActiveRecord::Base
+
+  include AASM
+
   belongs_to :user
   has_many :suppliers
   has_many :customers
@@ -11,13 +14,10 @@ class Account < ActiveRecord::Base
   has_one  :setting
   belongs_to :plan
 
-  # before_update :process_changes
   after_create  :create_setting
 
   validates :name, :email, :plan_id, presence: true
-  # validates :stripe_customer_token, presence: true, on: :create
   validates :email, uniqueness: true, format: {with: /\A[^@]+@[^@]+\z/}, on: :create
-  validate :email_not_in_use, on: :create
 
   # scope :owned_by_user, -> { where(user_id: current_user.id) }
   attr_accessor :stripe_card_token, :mail_list
@@ -25,6 +25,57 @@ class Account < ActiveRecord::Base
   # Stripe Plans: 1: Personal annual, 2: Business monthly, 3: Business annual
 
   PLANS = { 1 => :personal, 2 => :business, 3 => :business }
+
+  aasm column: 'state' do
+    state :pending, initial: true
+    state :trialing
+    state :paying  # when card added and previous state expired
+    state :paid    # when charge succeeds
+    state :expired # when trial ended
+    state :charge_failed
+    state :closed  # when account cancelled
+    state :deleted
+
+    event :sign_up do # account create event
+      transitions from: :pending, to: :trialing
+    end
+
+    event :add_card do # account update card event
+      transitions from: :expired, to: :paying
+      transitions from: :trialing, to: :trialing
+      transitions from: :paid, to: :paid
+      transitions from: :paying, to: :paying
+    end
+
+    event :charge do  # webhook event
+      transitions from: :paying, to: :paid
+      transitions from: :trialing, to: :paid
+      transitions from: :paid, to: :paid
+    end
+
+    event :expire do  # welcome_controller sign_in event
+      transitions from: :trialing, to: :expired
+    end
+
+    event :charge_failed do # webhook event
+      transitions from: :paid, to: :charge_failed  # webhook event - failed charge
+      transitions from: :paying, to: :charge_failed  # webhook event - failed charge
+      transitions from: :trialing, to: :charge_failed  # webhook event - failed charge
+    end
+
+    event :close do   # account cancellation event
+      transitions from: :paid, to: :closed
+      transitions from: :trialing, to: :closed
+    end
+
+    event :restart do # option offered when login after cancelled account
+      transitions from: :closed, to: :paying  # change plan event
+    end
+
+    event :delete do
+      transitions from: :closed, to: :deleted
+    end
+  end
 
   def subscription_type
     PLANS[plan_id]
@@ -39,7 +90,8 @@ class Account < ActiveRecord::Base
   end
 
   def active?
-    plan_id.present? && plan_id > 0
+    # plan_id.present? && plan_id > 0
+    trialing? || paid?
   end
 
   def self.owned_by_user(user)
@@ -70,104 +122,8 @@ class Account < ActiveRecord::Base
     invoices.find(id)
   end
 
-  def create_user
-    self.save # to prevent triggering uniqueness check on user
-    self.update(
-      user_id: User.create(email: self.email).id
-    )
-  end
-
   def vat_allowed?
     vat_enabled? && business?
   end
 
-  def process_subscription
-    if create_stripe_customer
-      process_sale
-    else
-      return false
-    end
-  end
-
-  def update_card(token)
-    if customer = retrieve_stripe_customer
-      customer.card = token
-      customer.save
-      update_default_card
-    else
-      return false
-    end
-  end
-
-  def add_to_subscriber_list
-    # only if there is a to address and the add to list box was checked
-    return unless self.email.present? && self.mail_list == '1'
-    grouping_id = ENV["MAILCHIMP_GROUP_TYPE_ID"]
-    list_id = ENV["MAILCHIMP_MAIL_LIST"]
-    merge_vars = {groupings: [id: grouping_id, groups: ["Users"]]}
-    begin
-      mailchimp.lists.subscribe(list_id, {'email' => email},merge_vars)
-    rescue => e
-      Rails.logger.error("MAILCHIMP lists.subscribe #{email} to list #{list_id} said: #{e}")
-      # don't want to bother the user with success or failure here.
-    end
-  end
-
-  private
-
-  def process_sale
-    ProcessSale.new(self).process
-  end
-
-  def retrieve_stripe_customer
-    customer = Stripe::Customer.retrieve(stripe_customer_token)
-  rescue Stripe::InvalidRequestError => e
-    logger.error {"Stripe error while retrieving customer: #{e.message}"}
-    errors.add :base, "#{e.message}"
-    false
-  end
-
-  def create_stripe_customer
-    # if valid? && stripe_card_token.present?
-    if stripe_card_token.present?
-      customer = Stripe::Customer.create(
-        description: "Customer for #{email}",
-        card:         stripe_card_token,
-        email:        email
-        )
-      self.stripe_customer_token = customer.id
-    end
-  rescue Stripe::InvalidRequestError, Stripe::CardError => e
-    logger.error {"Stripe error while creating customer: #{e.message}"}
-    errors.add :base, "There was a problem with your payment card: #{e.message}"
-    false
-  end
-
-  def update_default_card
-    if customer = retrieve_stripe_customer
-      card = customer.cards.retrieve(customer.default_card)
-      self.update(
-        card_expiration:  Date.new(card.exp_year, card.exp_month, 1),
-        card_last4:       card.last4
-        )
-    else
-      false
-    end
-  end
-
-  def email_not_in_use
-    errors.add(:email, "The email #{email.downcase} is already in use") unless
-      User.where(email: email.downcase).empty?
-  end
-
-  def get_next_invoice_date
-    next_due = Stripe::Invoice.upcoming(customer: self.stripe_customer_token).date
-    self.next_invoice = Time.at(next_due)
-  rescue Stripe::InvalidRequestError
-    self.next_invoice = nil
-  end
-
-  def mailchimp
-    mailchimp ||= Mailchimp::API.new(ENV['MAILCHIMP-API-KEY'])
-  end
 end

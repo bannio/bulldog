@@ -9,6 +9,7 @@ Feature: Account
     And a Base Plan exists
     And a Business Monthly Plan exists
     And a Business Annual Plan exists
+    And stripe-ruby-mock is running
 
   Scenario: Sign in a second time
     Given I am a user with an account
@@ -27,7 +28,7 @@ Feature: Account
   Scenario: I can change my email address
     Given I am a user with an account
     And  I sign in
-    When I visit the Change Email Address page 
+    When I visit the Change Email Address page
     Then I should be on the Change Email Address page
     When I enter "changed@example.com" in the user_email field
     And I enter "changeme" in the user_current_password field
@@ -77,9 +78,9 @@ Feature: Account
     Then I should be on the Account page
     And VAT Enabled? should be checked
 
+  @ut
   Scenario: Upgrade subscription plan
     Given I am a user with an account
-    And stripe-ruby-mock is running
     And the account has a valid Stripe Customer token
     And  I sign in
     When I visit the home page

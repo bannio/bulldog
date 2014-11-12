@@ -70,7 +70,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   def check_email_change
     if @confirmable.email != @confirmable.account.email
       @confirmable.account.email = @confirmable.email
-      UpdateAccount.new(@confirmable.account).update
+      UpdateAccount.call(@confirmable.account)
       # @confirmable.account.update(email: @confirmable.email)
     end
   end
