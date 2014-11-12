@@ -39,12 +39,14 @@ describe ProcessStripeWebhooks, type: :request do
         email: "cust@example.com"
         )
     }
+    let(:errors){ {base: []}}
     let(:account){
       double('Account',
         id: 1,
         stripe_customer_token: stripe_customer.id,
         email: "cust@example.com",
-        plan_id: 1
+        plan_id: 1,
+        errors: errors
       )
     }
 
@@ -80,6 +82,13 @@ describe ProcessStripeWebhooks, type: :request do
       allow(ProcessStripeWebhooks).to receive(:card_detail).and_return("card detail")
       allow(Stripe::Charge).to receive(:retrieve).and_return(charge)
       allow(Stripe::BalanceTransaction).to receive(:retrieve).and_return(balance)
+    end
+
+    it "copes with null charge" do
+      allow(Stripe::Charge).to receive(:retrieve).and_raise(Stripe::StripeError, 'no charge')
+      allow(ProcessStripeWebhooks).to receive(:subscription_status).and_return("active")
+      post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
+      expect(response.code).to eq '201'
     end
 
     it "responds with success" do
