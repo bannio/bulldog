@@ -22,14 +22,14 @@ Payment Method: <%= @card.rjust(64) %>
 --TRANSACTION DETAILS--
 <% @invoice.lines.each do |line| %>
 <% text = line.description || "subscription to #{line.plan.name} plan" %>
-<%= text %><%= number_to_currency(line.amount/100).rjust(80 - text.size) %>
+<%= text %><%= number_to_currency(line.amount.to_f/100).rjust(80 - text.size) %>
 <% end %>
 
-Invoice Total: <%= number_to_currency(@invoice.total/100).rjust(65) %>
+Invoice Total: <%= number_to_currency(@invoice.total.to_f/100).rjust(65) %>
 
-Starting Account Balance: <%= number_to_currency(@invoice.starting_balance/100).rjust(54) %>
-Amount Paid: <%= number_to_currency(@invoice.amount_due/100).rjust(67) %>
-Closing Account Balance: <%= number_to_currency(@invoice.ending_balance/100).rjust(55) %>
+Starting Account Balance: <%= number_to_currency(@invoice.starting_balance.to_f/100).rjust(54) %>
+Amount Paid: <%= number_to_currency(@invoice.amount_due.to_f/100).rjust(67) %>
+Closing Account Balance: <%= number_to_currency(@invoice.ending_balance.to_f/100).rjust(55) %>
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

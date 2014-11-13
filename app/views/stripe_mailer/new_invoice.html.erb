@@ -120,7 +120,7 @@
             <%= line.description || "Subscription to #{line.plan.name} plan:" %>
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
-            <%= number_to_currency(line.amount/100) %>
+            <%= number_to_currency(line.amount.to_f/100) %>
           </td>
         </tr>
         <% end %>
@@ -135,7 +135,7 @@
             Invoice Total:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
-            <%= number_to_currency(@invoice.total/100) %>
+            <%= number_to_currency(@invoice.total.to_f/100) %>
           </td>
         </tr>
 
@@ -149,7 +149,7 @@
             Starting Account Balance:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
-            <%= number_to_currency(@invoice.starting_balance/100) %>
+            <%= number_to_currency(@invoice.starting_balance.to_f/100) %>
           </td>
         </tr>
 
@@ -158,7 +158,7 @@
             Amount Paid:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
-            <%= number_to_currency(@invoice.amount_due/100) %>
+            <%= number_to_currency(@invoice.amount_due.to_f/100) %>
           </td>
         </tr>
 
@@ -167,7 +167,7 @@
             Closing Account Balance:
           </td>
           <td style="color: #000000;font-family: Arial, Sans-serif;font-size: 14px; text-align: right">
-            <%= number_to_currency(@invoice.ending_balance/100) %>
+            <%= number_to_currency(@invoice.ending_balance.to_f/100) %>
           </td>
         </tr>
 
