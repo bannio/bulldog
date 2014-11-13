@@ -88,7 +88,7 @@ end
 
 When(/^I Sign up for Base Plan$/) do
   # within("div.signup"){click_link("Sign up")}
-  click_link("Start PERSONAL plan free trial")
+  click_link("START FREE TRIAL")
 end
 
 When(/^I enter (\d+), (.*) and (\d+ \/ \d+)$/) do |card_number, cvc, expiry|

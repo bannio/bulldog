@@ -90,7 +90,7 @@ def sign_up
   # fill_in 'cc_exp', with: '0120'
   # select('1 - January', from: 'card_month')
   # select('2020', from: 'card_year')
-  click_button "Subscribe Now"
+  click_button "Start Free Trial"
   find_user
 end
 
