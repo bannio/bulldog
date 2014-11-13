@@ -46,7 +46,8 @@ describe ProcessStripeWebhooks, type: :request do
         stripe_customer_token: stripe_customer.id,
         email: "cust@example.com",
         plan_id: 1,
-        errors: errors
+        errors: errors,
+        state: 'paying'
       )
     }
 
@@ -74,7 +75,9 @@ describe ProcessStripeWebhooks, type: :request do
     let(:event){
       StripeMock.mock_webhook_event('invoice.payment_succeeded', {
         customer: stripe_customer.id,
-        charge:   charge})}
+        charge:   charge.id,
+        total:    0
+        })}
 
     before do
       allow(Account).to receive(:find_by_stripe_customer_token).and_return(account)
@@ -122,9 +125,9 @@ describe ProcessStripeWebhooks, type: :request do
 
     it "sends an error email if there is an error" do
       error_event = StripeMock.mock_webhook_event('invoice.payment_succeeded', {
-        :customer => "missing",
-        :total => 1200,
-        :charge => ""
+        customer: "missing",
+        total:    1200,
+        charge:   ""
       })
       allow(Account).to receive(:find_by_stripe_customer_token)
       expect(StripeMailer).to receive_message_chain(:error_invoice, :deliver)

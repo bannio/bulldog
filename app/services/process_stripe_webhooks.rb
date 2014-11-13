@@ -28,17 +28,17 @@ class ProcessStripeWebhooks
           card_expire = nil
           fee = 0
         end
-
         Sale.create(
           account_id:         account.id,
           plan_id:            account.plan_id,
           stripe_customer_id: invoice.customer,
-          stripe_charge_id:   invoice.id,
+          stripe_charge_id:   invoice.charge,
           stripe_customer_id: invoice.customer,
           card_last4:         card_last4,
           card_expiration:    card_expire,
           fee_amount:         fee,
-          invoice_total:      invoice.total
+          invoice_total:      invoice.total,
+          stripe_invoice_id:  invoice.id
           )
         update_account_next_invoice(account, invoice)
       else
