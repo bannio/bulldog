@@ -52,7 +52,8 @@ div.first-video {
   margin: 10px auto 40px !important;
 }
 
-div#first_bill_video > div.vjs-poster {
+div#first_bill_video > div.vjs-poster,
+div#first_invoice_video > div.vjs-poster {
 background-position: center !important;
 }
 

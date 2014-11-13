@@ -1,0 +1,19 @@
+<div class="table-responsive">
+  <table class="table table-hover table-condensed" id="invoice_table">
+    <thead>
+
+      <tr>
+        <th class="first-col number-col"><%= sortable "id", "No." %> <%= arrow "id" %></th>
+        <th class="date-col"><%= sortable "date", "Date" %> <%= arrow "date" %></th>
+        <th class="customer-col"><%= sortable "customers.name", "Customer" %> <%= arrow "customers.name" %></th>
+        <th class="comment-col"><%= sortable "comment", "Comment" %> <%= arrow "comment" %></th>
+        <th class="amount-col"><%= sortable "total", "Amount" %> <%= arrow "total" %></th>
+      </tr>
+    </thead>
+    <tbody id="invoice_index_table">
+      <%# @invoices.each do |invoice| %>
+      <%= render @invoices %>
+      <%# end %>
+    </tbody>
+  </table>
+</div><!--end table responsive -->
