@@ -37,6 +37,7 @@ class ProcessStripeWebhooks
           card_last4:         card_last4,
           card_expiration:    card_expire,
           fee_amount:         fee,
+          email:              account.email,
           invoice_total:      invoice.total,
           stripe_invoice_id:  invoice.id
           )
