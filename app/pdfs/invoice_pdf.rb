@@ -56,7 +56,7 @@ class InvoicePdf < Prawn::Document
            :width => 180, :height => 105,
            :overflow => :shrink_to_fit
         else
-          text "<color rgb='ff0000'>Update your Invoice Settings \n for your address to appear here</color>",
+          text "<color rgb='ff0000'>Update your Document Setup (in Tools) \n for your address to appear here</color>",
             inline_format: true
         end
       end

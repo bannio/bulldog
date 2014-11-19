@@ -27,7 +27,7 @@ describe ProcessStripeWebhooks, type: :request do
 
     it "sends an email to the account holder" do
       allow(Account).to receive(:find_by_stripe_customer_token).and_return(account)
-      # expect(StripeMailer).to receive_message_chain(:trial_period_ending, :deliver)
+      expect(StripeMailer).to receive_message_chain(:trial_period_ending, :deliver)
       post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
       # open_email('cust@example.com', with_subject: "Your trial period is coming to an end")
     end
