@@ -68,4 +68,34 @@ describe StripeMailer, type: :mailer do
       expect(mail).to have_body_text("Livemode: false")
     end
   end
+
+  describe "charge failed email" do
+    let(:event){ double 'Event', type: "charge.failed"}
+    let(:card){ double 'card',
+      brand:          "Visa",
+      last4:          "1234",
+      exp_month:      12,
+      exp_year:       2015
+    }
+    let(:charge){ double 'Charge',
+      livemode:         false,
+      id:               "chg_id",
+      customer:         "cust",
+      failure_code:     "A",
+      failure_message:  "it failed",
+      card: card
+    }
+    let(:mail){StripeMailer.charge_failed(charge, event)}
+
+    it "sends an email" do
+      expect(mail.subject).to eq 'Charge failed'
+      expect(mail.to).to eq ['info@bulldogclip.co.uk']
+      expect(mail).to be_delivered_from("BulldogClip <info@bulldogclip.co.uk>")
+      expect(mail).to have_body_text("charge.failed event")
+      expect(mail).to have_body_text("Charge: chg_id")
+      expect(mail).to have_body_text("last 4 1234")
+      expect(mail).to have_body_text("exp month 12")
+      expect(mail).to have_body_text("Livemode: false")
+    end
+  end
 end

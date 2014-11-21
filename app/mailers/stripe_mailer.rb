@@ -24,4 +24,11 @@ class StripeMailer < ActionMailer::Base
     @livemode = invoice.livemode
     mail to: 'info@bulldogclip.co.uk', subject: 'Invoice error'
   end
+
+  def charge_failed(charge, event)
+    @charge = charge
+    @event = event
+    @livemode = charge.livemode
+    mail to: 'info@bulldogclip.co.uk', subject: 'Charge failed'
+  end
 end

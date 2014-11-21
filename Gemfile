@@ -62,7 +62,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'email_spec'
   gem 'action_mailer_cache_delivery', '~> 0.3.7'
-  gem 'stripe-ruby-mock', '~> 1.10.1.7'
+  gem 'stripe-ruby-mock', '~> 2.0.0' #'~> 1.10.1.7'
 end
 
 group :development do

@@ -61,6 +61,7 @@ class ProcessStripeWebhooks
   after_charge_failed! do |charge, event|
     account = Account.find_by_stripe_customer_token(charge.customer)
     account.charge_failed!
+    StripeMailer.charge_failed(charge, event).deliver
   end
 
   def self.update_account_next_invoice(account, invoice)

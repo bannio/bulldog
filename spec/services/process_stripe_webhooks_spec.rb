@@ -6,6 +6,7 @@ require 'stripe_mock'
 describe ProcessStripeWebhooks, type: :request do
 
   before do
+    # StripeMock.toggle_debug(true)
     Stripe.api_key = 'sk_fake_api_key'
     StripeMock.start
   end
@@ -53,7 +54,7 @@ describe ProcessStripeWebhooks, type: :request do
 
     let(:charge){
       Stripe::Charge.create(
-        card: card.id,
+        card: card_token,
         amount: 400,
         currency: "gbp",
         description: "Charge for test",
@@ -63,8 +64,9 @@ describe ProcessStripeWebhooks, type: :request do
 
     let(:balance){ double('balance', fee: 44) }
 
-    let(:card){
-      stripe_customer.cards.create(
+    let(:stripe_helper) { StripeMock.create_test_helper }
+
+    let(:card_token){ stripe_helper.generate_card_token(
         number: "4242424242424242",
         exp_year: 2020,
         exp_month: 12,
@@ -278,6 +280,11 @@ describe ProcessStripeWebhooks, type: :request do
 
     it "updates account state" do
       expect(account).to receive(:charge_failed!)
+      post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
+    end
+
+    it "sends the admin an email" do
+      expect(StripeMailer).to receive_message_chain(:charge_failed, :deliver)
       post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
     end
   end

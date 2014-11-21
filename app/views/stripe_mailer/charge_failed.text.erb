@@ -1,0 +1,23 @@
+______________________________________________
+
+
+BulldogClip Charge Failed
+
+______________________________________________
+
+We received a <%= @event.type %> event
+
+Livemode:               <%= @livemode %>
+
+Charge:                 <%= @charge.id %>
+
+Customer:               <%= @charge.customer %>
+
+Failure code:           <%= @charge.failure_code %>
+
+Failure message:        <%= @charge.failure_message %>
+
+Card details: type      <%= @charge.card.brand %>
+              last 4    <%= @charge.card.last4 %>
+              exp month <%= @charge.card.exp_month %>
+              exp year  <%= @charge.card.exp_year %>
