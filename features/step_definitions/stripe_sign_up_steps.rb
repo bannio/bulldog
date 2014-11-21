@@ -87,8 +87,7 @@ Given(/^the account has a valid Stripe Customer token$/) do
 end
 
 When(/^I Sign up for Base Plan$/) do
-  # within("div.signup"){click_link("Sign up")}
-  click_link("START FREE TRIAL")
+  within("div.personal"){click_link("START FREE TRIAL")}
 end
 
 When(/^I enter (\d+), (.*) and (\d+ \/ \d+)$/) do |card_number, cvc, expiry|

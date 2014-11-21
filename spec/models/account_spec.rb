@@ -125,9 +125,9 @@ describe Account do
       expect(account.active?).to be false
     end
 
-    it "false when paying" do
+    it "true when paying" do
       account = Account.new(state: "paying")
-      expect(account.active?).to be false
+      expect(account.active?).to be true
     end
 
     it "false when closed" do

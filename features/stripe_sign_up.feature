@@ -21,7 +21,7 @@ Feature: Sign up
     Then we should be on the New Account page
     When I enter my name and email address
     # And my credit card details
-    And I click button Subscribe Now
+    And I click button Start Free Trial
     # Then I should see "Thanks for subscribing."
     Then I should be on the Thanks page
     Then I should receive an email

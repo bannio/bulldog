@@ -43,8 +43,10 @@ class WelcomeController < ApplicationController
   end
 
   def route_paying
-    flash[:alert] = "You card payment is still being processed, please try again soon"
-    redirect_to page_path('waiting_payment')
+    # allow paying access to avoid 1 hour delay and assuming charge will succeed
+    # add 'paying' to definition of 'active?' in account model
+    # flash[:alert] = "You card payment is still being processed, please try again soon"
+    # redirect_to page_path('waiting_payment')
   end
 
   def route_expired

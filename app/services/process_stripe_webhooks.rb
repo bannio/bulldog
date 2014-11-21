@@ -58,6 +58,11 @@ class ProcessStripeWebhooks
     account.charge!
   end
 
+  after_charge_failed! do |charge, event|
+    account = Account.find_by_stripe_customer_token(charge.customer)
+    account.charge_failed!
+  end
+
   def self.update_account_next_invoice(account, invoice)
     next_due = Stripe::Invoice.upcoming(customer: invoice.customer).date || false
     account.update(next_invoice: Time.at(next_due)) if next_due

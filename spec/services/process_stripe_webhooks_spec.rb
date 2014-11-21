@@ -254,4 +254,31 @@ describe ProcessStripeWebhooks, type: :request do
       post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
     end
   end
+
+  describe "after charge fails" do
+    let(:account){
+      double('Account',
+      stripe_customer_token: "cust_token",
+      email: "cust@example.com")}
+
+    let(:event){
+      StripeMock.mock_webhook_event('charge.failed', {
+        customer: "cust_token"
+        })}
+
+    before do
+      allow(account).to receive(:charge_failed!)
+      allow(Account).to receive(:find_by_stripe_customer_token).and_return(account)
+    end
+
+    it "responds with success" do
+      post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
+      expect(response.code).to eq '201'
+    end
+
+    it "updates account state" do
+      expect(account).to receive(:charge_failed!)
+      post 'stripe/events', event.to_h, {'HTTP_ACCEPT' => "application/json"}
+    end
+  end
 end

@@ -17,5 +17,5 @@ Scenario: Sign Up
   When I Sign up for Base Plan
   Then we should be on the New Account page
   When I enter my name and email address
-  And I click button Subscribe Now
+  And I click button Start Free Trial
   Then I should be on the Thanks page

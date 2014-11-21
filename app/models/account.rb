@@ -51,6 +51,7 @@ class Account < ActiveRecord::Base
       transitions from: :paying, to: :paid
       transitions from: :trialing, to: :paid
       transitions from: :paid, to: :paid
+      transitions from: :charge_failed, to: :paid
     end
 
     event :expire do  # welcome_controller sign_in event
@@ -91,7 +92,7 @@ class Account < ActiveRecord::Base
 
   def active?
     # plan_id.present? && plan_id > 0
-    trialing? || paid?
+    trialing? || paid? || paying?
   end
 
   def self.owned_by_user(user)
