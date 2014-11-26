@@ -39,8 +39,8 @@ end
 # end
 
 When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer, supplier, value|
-  find('#bill_date')
-  fill_in 'bill_date',        with: Date.today
+  # find('#bill_date')
+  fill_in 'bill_date',        with: Date.today.to_s(:db)
   steps %{
     When I type "#{customer}" in the customer select field
     When I type "#{supplier}" in the supplier select field
@@ -52,7 +52,7 @@ When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer,
 end
 
 When(/^I leave the amount empty$/) do
-  fill_in 'bill_date',        with: Date.today
+  fill_in 'bill_date',        with: Date.today.to_s(:db)
   steps %{
     When I type "Household" in the customer select field
     When I type "Asda" in the supplier select field
@@ -66,8 +66,8 @@ end
 Then /^the total expenses should be £(#{CAPTURE_A_NUMBER})$/ do |amount|
   # This one keeps going wrong so trying to give it some space by
   # first visiting home
-  visit '/home'
-  total = @account.bills.sum(:amount)
+  # visit '/home'
+  total = @account.reload.bills.sum(:amount)
   expect(total).to eq amount
 end
 
@@ -94,6 +94,7 @@ end
 
 When(/^I click for another new bill$/) do
   # modal should have closed. Wait for new link to be visible.
+  page.execute_script("$('#bill_modal').modal('hide')")
   find_link('New')
   click_on 'New'
 end
@@ -113,9 +114,9 @@ Given /^I have the following bills$/ do |table|
       bill = FactoryGirl.create(:bill,
                         account_id:  @account.id,  # assumes user with an account already called
                         customer_id: customer.id,
-                        supplier_id: supplier.id, 
-                        category_id: category.id, 
-                        date:        date, 
+                        supplier_id: supplier.id,
+                        category_id: category.id,
+                        date:        date,
                         description: description,
                         amount:      amount,
                         vat_rate_id: vat_rate_id,

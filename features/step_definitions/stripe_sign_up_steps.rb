@@ -81,7 +81,7 @@ Given(/^the account has a valid Stripe Customer token$/) do
   customer = Stripe::Customer.create({
       id:     'cust_token',
       email: 'cucumber@example.com',
-      card: 'void_card_token',
+      # card: 'void_card_token',
       plan: 1
     })
 end

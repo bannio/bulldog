@@ -36,6 +36,10 @@ module Bulldog
 
     config.stripe.publishable_key = ENV["STRIPE_PUBLIC_KEY"]
 
+    # as suggetsed here: http://robots.thoughtbot.com/content-compression-with-rack-deflater
+    # Note that controller specs skip Rack
+    config.middleware.use Rack::Deflater
+
   end
 end
 

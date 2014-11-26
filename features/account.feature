@@ -78,7 +78,6 @@ Feature: Account
     Then I should be on the Account page
     And VAT Enabled? should be checked
 
-  @ut
   Scenario: Upgrade subscription plan
     Given I am a user with an account
     And the account has a valid Stripe Customer token

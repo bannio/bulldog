@@ -2,10 +2,10 @@
 Feature: In order to track my costs
   I need to be able to input bills
 
-  Background: To recording a bill. 
+  Background: To recording a bill.
     To keep things simple let's make the following assumptions
     apply to all the scenarios:
-    
+
     Given I am a user with an account
     And I sign in
     And I have the following data already saved
@@ -16,7 +16,7 @@ Feature: In order to track my costs
     # And I am on the new bill screen
 
 
-  @javascript
+  @javascript @ut
   Scenario: Enter a receipt for known supplier and customer
     Given I am on the new bill screen
     When I add a Household bill from Asda for £20
@@ -46,7 +46,7 @@ Feature: In order to track my costs
     | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
     | Business  | Asda     | Mileage  | 10-12-2012 | business trip      | 100.00 |
     | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   |
-    | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   | 
+    | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   |
     When I am on the bills page
     Then I should see "more coffee"
     And I should see "Coffee"
@@ -60,7 +60,7 @@ Feature: In order to track my costs
     | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
     | Business  | Asda     | Mileage  | 10-12-2012 | business trip      | 100.00 |
     | Household | Asda     | Food     | 10-11-2012 | more coffee        | 5.00   |
-    | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   | 
+    | Business  | Asda     | Food     | 10-11-2012 | coffee biscuits    | 5.00   |
     And I am on the bills page
     And there is a link to add a new bill
     When I click the first table row
@@ -111,7 +111,7 @@ Feature: In order to track my costs
     | Household | Tesco    | Clothes  | 12-12-2012 | Tickets            | 46.00  |
     | Business  | BigCo    | Mileage  | 10-12-2012 | business trip      | 100.00 |
     | Household | Asda     | Food     | 14-11-2012 | more coffee        | 4.00   |
-    | Business  | Asda     | Food     | 13-11-2012 | coffee biscuits    | 5.00   | 
+    | Business  | Asda     | Food     | 13-11-2012 | coffee biscuits    | 5.00   |
     And I am on the bills page
     Then row 1 should include "Tickets"
     And row 2 should include "Coffee"

@@ -6,18 +6,20 @@ Feature: Edit User Account
 
   Background:
     Given I am a user with an account
+    And stripe-ruby-mock is running
+    And the account has a valid Stripe Customer token
     And I sign in
 
   Scenario: I sign in and edit my account
     When I edit my account details
     Then I should see an account edited message
 
-  Scenario: I can change my email 
+  Scenario: I can change my email
     When I edit my account and change the email to "new@example.com"
     Then I should see an account edited message
     And "new@example.com" should receive an email
     When I open the email
     Then I should see "confirm" in the email body
     When I follow "confirm" in the email
-    Then I should see "Your account was successfully confirmed." 
+    Then I should see "Your account was successfully confirmed."
 
