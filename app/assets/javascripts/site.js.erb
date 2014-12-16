@@ -60,6 +60,12 @@ SITENAME = {
         changeMonth: true,
         changeYear: true
       });
+
+      // Google analytics set up
+      GA.ga_setup();
+      // Send Google a pageview event
+      ga('send', 'pageview', window.location.pathname);
+
       // Google analytics events
       GA.ga_event('#ga_bdc_li', 'button', 'click', 'BDC linkedin');
       GA.ga_event('#ga_twitter', 'button', 'click', 'BDC twitter');
@@ -77,43 +83,26 @@ SITENAME = {
     new: function () {
     // action-specific code
       console.log("accounts#new");
-      GA.ga_event('#ga_subscribe', 'button', 'click', 'subscribes');
-      $('#card_number').payment('formatCardNumber');
-      $('#card_code').payment('formatCardCVC');
-      $('#cc_exp').payment('formatCardExpiry');
-      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
-      return STRIPE.setupForm();
+      // STRIPE.setupStripe();
     },
 
     new_card: function () {
     // action-specific code
       console.log("accounts#new_card");
-      $('#card_number').payment('formatCardNumber');
-      $('#card_code').payment('formatCardCVC');
-      $('#cc_exp').payment('formatCardExpiry');
-      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
-      return STRIPE.setupForm();
+      STRIPE.setupStripe();
     },
 
     update_card: function () {
     // action-specific code
       console.log("accounts#new_card");
-      $('#card_number').payment('formatCardNumber');
-      $('#card_code').payment('formatCardCVC');
-      $('#cc_exp').payment('formatCardExpiry');
-      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
-      return STRIPE.setupForm();
+      STRIPE.setupStripe();
     },
 
     create: function () {
     // action-specific code
     // reset env vars for production
       console.log("accounts#create");
-      $('#card_number').payment('formatCardNumber');
-      $('#card_code').payment('formatCardCVC');
-      $('#cc_exp').payment('formatCardExpiry');
-      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
-      return STRIPE.setupForm();
+      // STRIPE.setupStripe();
     },
 
     edit: function () {
@@ -158,7 +147,7 @@ SITENAME = {
     video: function () {
       console.log("help#video");
       VIDEO.checkForVideos();
-      GA.ga_event('#business_video, #personal_video, #first_bill_video', 'video', 'play', 'help videos');
+      GA.ga_event('#business_video, #personal_video, #first_bill_video, #first_invoice_video', 'video', 'play', 'help videos');
     }
   },
 
@@ -260,16 +249,26 @@ SITENAME = {
 };
 
 VIDEO = {
+  // getVjs: function () {
+  //   var vj_src = 'https://vjs.zencdn.net/4.7/video.js';
+  //   $.externalScript(vj_src).done(function (script, textStatus) {
+  //     console.log('VJS Script loading: ' + textStatus);
+  //   });
+  // },
   checkForVideos: function () {
-    if ($('video').length > 0) {
-      var videos, video;
-      videos = $('video');
-      videos.each(function () {
-        video = $(this).attr('id');
-        VIDEO.reset(video);
-        VIDEO.init(video);
-      });
-    }
+    var vj_src = 'https://vjs.zencdn.net/4.7/video.js';
+    $.externalScript(vj_src).done(function (script, textStatus) {
+      console.log('VJS Script loading: ' + textStatus);
+      if ($('video').length > 0) {
+        var videos, video;
+        videos = $('video');
+        videos.each(function () {
+          video = $(this).attr('id');
+          VIDEO.reset(video);
+          VIDEO.init(video);
+        });
+      };
+    });
   },
   reset: function (videoId) {
     var vid;
@@ -479,6 +478,24 @@ TABLES = {
 };
 
 GA = {
+  ga_setup: function () {
+    console.log('starting ga_setup');
+  // Google analytics set up
+    <% if Rails.env == 'production' %>
+      var ga_src = 'https://www.google-analytics.com/analytics.js';
+      $.externalScript(ga_src).done(function (script, textStatus) {
+        console.log('GA Script loading: ' + textStatus);
+      });
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-55810569-1', 'auto');
+    <% else %>
+      window.ga=window.ga||function() {
+        var params = Array.prototype.slice.call(arguments, ga.length);
+        console.log("GoogleAnalytics: " + params);
+      };
+    <% end %>
+  },
+
   ga_event: function (selector, category, action, label, value) {
     $(selector).on('click', function () {
       ga('send', 'event', category, action, label, value);
@@ -522,6 +539,17 @@ GA = {
 };
 
 STRIPE = {
+  setupStripe: function () {
+    var stripe_src = 'https://js.stripe.com/v2/';
+    $.externalScript(stripe_src).done(function (script, textStatus) {
+      console.log('Stripe Script loading: ' + textStatus);
+      $('#card_number').payment('formatCardNumber');
+      $('#card_code').payment('formatCardCVC');
+      $('#cc_exp').payment('formatCardExpiry');
+      Stripe.setPublishableKey('<%= STRIPE_PUBLIC_KEY %>');
+      return STRIPE.setupForm();
+    });
+  },
   setupForm: function () {
     console.log("STRIPE setupForm");
     return $('form').submit(function () {
