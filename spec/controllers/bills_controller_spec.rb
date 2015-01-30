@@ -41,6 +41,11 @@ describe BillsController do
         get :edit, id: bill
         expect(response).to render_template :edit
       end
+      it "renders the edit template (ajax)" do
+        bill = create(:bill, account_id: @account.id)
+        xhr :get, :edit, id: bill
+        expect(response).to render_template :edit
+      end
     end
     context "bill is not on your account" do
       it "redirects to home if unauthorised" do
@@ -93,7 +98,7 @@ describe BillsController do
         expect(response).to redirect_to home_path
       end
     end
-    
+
   end
 
   describe "POST #create" do
@@ -172,7 +177,7 @@ describe BillsController do
       it "does not destroy the bill" do
         @bill = create(:bill, account_id: @account.id, invoice_id: "1")
         expect{
-          delete :destroy, id: @bill.to_param 
+          delete :destroy, id: @bill.to_param
         }.to change(Bill, :count).by(0)
       end
     end
