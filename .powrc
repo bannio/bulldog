@@ -1,7 +1,3 @@
-# if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".rvmrc" ]; then
-#  source "$rvm_path/scripts/rvm"
-#  source ".rvmrc"
-# fi
 if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".ruby-version" ] && [ -f ".ruby-gemset" ] ; then
   source "$rvm_path/scripts/rvm"
   rvm use `cat .ruby-version`@`cat .ruby-gemset`
