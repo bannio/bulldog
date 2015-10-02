@@ -45,6 +45,7 @@ class Account < ActiveRecord::Base
       transitions from: :trialing, to: :trialing
       transitions from: :paid, to: :paid
       transitions from: :paying, to: :paying
+      transitions from: :charge_failed, to: :charge_failed
     end
 
     event :charge do  # webhook event

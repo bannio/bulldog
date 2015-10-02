@@ -106,6 +106,12 @@ describe Account do
       expect{a.delete}.to raise_error(AASM::InvalidTransition)
       expect(a.paid?).to be true
     end
+
+    it "add_card is allowed when charge_failed" do
+      a = Account.new(state: "charge_failed")
+      a.add_card
+      expect(a.charge_failed?).to be true
+    end
   end
 
   describe "active?" do
