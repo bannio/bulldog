@@ -71,6 +71,11 @@
                     library: {title: "Total by Supplier"} %>
             </div>
           </div><!--end of row -->
+          <div class="row">
+            <div class="col-md-12 chart-total">
+              Grand total of all selected bills:  <%= number_to_currency(@report.bills.sum(:amount)) %>
+            </div>
+          </div>
           <%= column_chart [
             {name: "Last Year", data: @report.bills.last_year_by_monthly_sum},
             {name: "This Year", data: @report.bills.this_year_by_monthly_sum}

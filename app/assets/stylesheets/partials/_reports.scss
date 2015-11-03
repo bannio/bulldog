@@ -46,6 +46,13 @@ div.tab-pane > div.row {
   margin-right: 10px;
 }
 
+// chart total above charts
+.chart-total {
+  text-align: center;
+  font-weight: $bold;
+//  font-size: 14px;
+}
+
 //TABLE
 // moves export button away from edge of box
 div.tab-pane > .action-btn, div.tab-pane > .export-btn {
