@@ -9,7 +9,8 @@ Background:
   And a Business Monthly Plan exists
   And a Business Annual Plan exists
   And the account is subscribed to a business plan
-  And I sign in
+  And I sign in with js
+  And wait 1
 
 @javascript
 Scenario: Add VAT rates
@@ -18,7 +19,7 @@ Scenario: Add VAT rates
   When I click on New
   And I fill in name with "Standard"
   And I fill in rate with "20"
-  And I check active 
+  And I check active
   And I click button Save
   Then I should be on the VAT page
   And I should see "VAT rate successfully added"
@@ -43,7 +44,7 @@ Scenario: Cannot duplicate name of an active rate
   When I click on New
   And I fill in name with "Standard"
   And I fill in rate with "20"
-  And I check active 
+  And I check active
   And I click button Save
   Then I should see "There is already an active rate with this name"
 
@@ -54,7 +55,7 @@ Scenario: I can duplicate name of an inactive rate
   When I click on New
   And I fill in name with "Standard"
   And I fill in rate with "20"
-  And I check active 
+  And I check active
   And I click button Save
   Then I should see "VAT rate successfully added"
 
@@ -105,25 +106,25 @@ Scenario: delete a VAT rate
   Then I should be on the "Edit VAT Rate" modal
   When I click Delete and confirm
   Then I should see "This rate is in use and cannot be deleted"
-  
-@javascript
-Scenario: select to enable VAT
-  When I visit the Account page
-  And I click on Change Plan
-  And I check Enable VAT on bills?
-  And I click button Save
-  Then I visit the Bills page
-  And I click on New
-  Then I should see "VAT rate"
-  And I should see placeholder "VAT amount"
-  Then I visit the Account page
-  And I click on Change Plan
-  And I uncheck Enable VAT on bills?
-  And I click button Save
-  Then I visit the Bills page
-  And I click on New
-  Then I should not see "VAT rate"
-  And I should not see placeholder "VAT amount" 
+
+# @javascript
+# Scenario: select to enable VAT
+#   When I visit the Account page
+#   And I click on Change Plan
+#   And I check Enable VAT on bills?
+#   And I click button Save
+#   Then I visit the Bills page
+#   And I click on New
+#   Then I should see "VAT rate"
+#   And I should see placeholder "VAT amount"
+#   Then I visit the Account page
+#   And I click on Change Plan
+#   And I uncheck Enable VAT on bills?
+#   And I click button Save
+#   Then I visit the Bills page
+#   And I click on New
+#   Then I should not see "VAT rate"
+#   And I should not see placeholder "VAT amount"
 
 @javascript
 Scenario: VAT select field limits choice to defined active entries

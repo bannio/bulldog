@@ -14,6 +14,8 @@ Feature: Account
   Scenario: Sign in a second time
     Given I am a user with an account
     When I sign in
+    # Then wait 3
+    # Then debug
     Then I should be on the Welcome page
 
   Scenario: I can change my password
@@ -27,7 +29,12 @@ Feature: Account
   @javascript
   Scenario: I can change my email address
     Given I am a user with an account
-    And  I sign in
+    When I sign in with js
+    Then wait 2
+    # When I sign in with valid credentials
+    # Then debug
+    # When I visit the home page
+    # Then debug
     When I visit the Change Email Address page
     Then I should be on the Change Email Address page
     When I enter "changed@example.com" in the user_email field
@@ -64,19 +71,19 @@ Feature: Account
     Then I should see "can't be blank"
     And I should be on the Change Email Address page
 
-  Scenario: Edit account level settings - VAT enabled
-    Given I am a user with an account
-    And the account is subscribed to a business plan
-    And  I sign in
-    When I visit the home page
-    And I click on Account
-    And I click on Manage Subscription
-    Then I should be on the Account page
-    When I click on Change Plan
-    And I check VAT Enabled?
-    And I click button Save
-    Then I should be on the Account page
-    And VAT Enabled? should be checked
+  # Scenario: Edit account level settings - VAT enabled
+  #   Given I am a user with an account
+  #   And the account is subscribed to a business plan
+  #   And  I sign in
+  #   When I visit the home page
+  #   And I click on Account
+  #   And I click on Manage Subscription
+  #   Then I should be on the Account page
+  #   When I click on Change Plan
+  #   And I check VAT Enabled?
+  #   And I click button Save
+  #   Then I should be on the Account page
+  #   And VAT Enabled? should be checked
 
   Scenario: Upgrade subscription plan
     Given I am a user with an account
@@ -87,11 +94,13 @@ Feature: Account
     And I click on Manage Subscription
     Then I should be on the Account page
     And I should see "Personal"
-    When I click on Change Plan
-    Then I should see "Plan"
-    And the Personal plan should be selected
-    When I choose the Business Annual plan
-    And I click button Save
-    Then I should be on the Account page
-    And I should see "Business Annual"
+    And I should not see "Change Plan"
+    And I should not see "Update card"
+    # When I click on Change Plan
+    # Then I should see "Plan"
+    # And the Personal plan should be selected
+    # When I choose the Business Annual plan
+    # And I click button Save
+    # Then I should be on the Account page
+    # And I should see "Business Annual"
 

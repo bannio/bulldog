@@ -13,11 +13,14 @@ Feature: Card update
   # @javascript
   Scenario: Visit manage subscription
     When I visit the Manage Subscription page
-    Then I should see "Update card"
-    When I click on Update card
-    Then I should see "New Card Details"
-    And I should see button "Update Card"
-    And I should see "Cancel"
+    Then I should not see "Update card"
+
+    # No longer supporting car changes - Oct 2016
+
+    # When I click on Update card
+    # Then I should see "New Card Details"
+    # And I should see button "Update Card"
+    # And I should see "Cancel"
     # Stopping the test here as it otherwise sends to Stripe.
     # The correct presentation of a card details view is tested.
     # Uncomment the next two lines to run against Stripe.

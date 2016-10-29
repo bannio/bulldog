@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1 col-sm-12">
         <!-- <h1 style="color:green">Start Your Free Trial Today</h1> -->
-        <h1>Start Your FREE Trial Today</h1>
+        <h1>BulldogClip subscriptions are closed</h1>
       </div>
     </div><!--end row -->
   </section><!--end container-->
@@ -16,7 +16,7 @@
     <div class="col-md-10 col-md-offset-1 col-sm-12">
       <!-- <div class="panel panel-default freetrial"> -->
         <!-- <div class="panel-body"> -->
-          <p class="details" style="font-size: 2rem">No card details required. 30 day free trial. Select a plan to get started today.</p>
+          <p class="details" style="font-size: 2rem">No new subscriptions are being issued. It is free to current subscribers. </p>
           <!-- <p> Don't worry, we will remind you when the trial period is coming to an end. </p> -->
         <!-- </div> -->
       <!-- </div> -->
@@ -24,60 +24,3 @@
   </div>
 </div>
 
-<div class="container plans">
-  <div class="col-md-4 col-md-offset-1 col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="plan">
-          <h2>Personal</h2>
-          <hr>
-          <!-- <h3 class="details" style="color:green">30 day free trial</h3> -->
-          <p class="details">Ideal for individuals who want to track and analyse their personal spending. Packed full of features including:</p>
-          <div class="ticklist">
-            <ul class="tick">
-                <!-- <li>&#10004;&emsp;30 day free trial</li> -->
-                <li>&#10004;&emsp;Unlimited bills</li>
-                <li>&#10004;&emsp;Advanced analysis</li>
-                <li>&#10004;&emsp;Create PDF documents</li>
-                <li>&#10004;&emsp;Simple data export</li>
-            </ul>
-          </div>
-          <h3><small>just </small>£10 <small>per year</small></h3>
-        </div>
-
-           <div class="signup personal">
-            <%= link_to "START FREE TRIAL", new_account_path(plan_id: 1, title: "Personal", price: "£10", interval: "per year"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a personal account", id: "ga_plan_1" %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <div class="col-md-4 col-md-offset-2 col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="plan">
-          <h2>Business</h2>
-          <hr>
-            <!-- <h3 class="details"style="color:green">30 day free trial</h3> -->
-            <p class="details">All the features of the personal plan and more. This plan is designed to meet the needs of sole-traders and small businesses.</p>
-          <div class="ticklist business">
-            <ul class="tick">
-              <li>&#10004;&emsp;Personal plan +</li>
-              <li>&#10004;&emsp;VAT support</li>
-              <li>&#10004;&emsp;Your logo on documents</li>
-            </ul>
-          </div>
-            <h3><small>just </small>£5 <small>per month</small></h3>
-          <div class="signup business">
-              <%= link_to "START FREE TRIAL", new_account_path(plan_id: 2, title: "Business Monthly", price: "£5", interval: "per month"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a business account", id: "ga_plan_2" %>
-          </div>
-            <h3><small>or </small>£50 <small>per year (save £10)</small></h3>
-          <div class="signup business">
-            <%= link_to "START FREE TRIAL", new_account_path(plan_id: 3, title: "Business Annual", price: "£50", interval: "per year"), class: "create-btn lg-btn", data: {toggle: "tooltip"}, title: "Sign up for a business account", id: "ga_plan_3" %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>

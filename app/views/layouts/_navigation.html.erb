@@ -24,7 +24,6 @@
       <% else %>
             <%#= link_to 'Sign in', new_user_session_path, class: 'nav-btn' %><!--replaced by modal remote sign in -->
             <%= link_to 'Sign in', new_user_session_path, remote: true, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign in to your BulldogClip account", id: "ga_signin" %>
-        <%= link_to 'Sign up', plans_path, class: 'nav-btn', data: {toggle: "tooltip"}, title: "Sign up for a BulldogClip account.", id: "ga_signup" %>
       <% end %>
       </div><!-- end logo-col -->
 

@@ -4,9 +4,10 @@ Feature: Create customers, suppliers and categories on the fly
   I don't need to go elsewhere to create a bill for a new
   customer, supplier or category
 
-  Background: 
+  Background:
     Given I am a user with an account
-    And I sign in
+    And I sign in with js
+    And wait 1
 
   @javascript
   Scenario: My first bill

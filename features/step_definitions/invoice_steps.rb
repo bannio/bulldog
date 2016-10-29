@@ -22,8 +22,8 @@ end
 
 Given(/^I have the (.*?) invoice$/) do |customer|
   customer = Customer.find_by_name(customer)
-  invoice = Invoice.new(account_id: @account.id, 
-                       customer_id: customer.id, 
+  invoice = Invoice.new(account_id: @account.id,
+                       customer_id: customer.id,
                        date: Time.now,
                        comment: "My business invoice")
   bills = Bill.uninvoiced.where(customer_id: customer.id)
@@ -82,7 +82,7 @@ Given /^I have the following invoices$/ do |table|
                         account_id: @account.id,     # assumes user with an account already called
                         number: number,
                         customer_id: customer.id,
-                        date: date, 
+                        date: date,
                         comment: comment,
                         total: total)
   end
@@ -101,13 +101,17 @@ When(/^I fill in header with "(.*?)"$/) do |value|
 end
 
 When(/^I click the Delete button and confirm OK$/) do
-  page.evaluate_script("window.confirm = function(msg) { return true; }")
-  find_link('Delete').click
+  # find_link('Delete').click
+  # page.evaluate_script("window.confirm = function(msg) { return true; }")
+  # find_link('Delete').click
+  accept_confirm do
+    click_link('Delete')
+  end
 end
 
-And(/^I wait$/) do
-  sleep 1
-end
+# And(/^I wait$/) do
+#   sleep 1
+# end
 
 Then(/^I am on the show page for this invoice$/) do
   id = Invoice.last.id

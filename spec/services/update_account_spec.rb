@@ -20,23 +20,23 @@ describe UpdateAccount do
     #   UpdateAccount.call(account)
     # end
 
-    it "changes a plan if plan changed" do
+    it "no longer changes a plan if plan changed" do
       allow(account).to receive(:email_changed?)
-      expect(ChangePlan).to receive(:call)
+      expect(ChangePlan).not_to receive(:call)
       UpdateAccount.call(account)
     end
 
-    it "processes a cancellation if the plan_id has changed to zero" do
+    it "no longer processes a cancellation if the plan_id has changed to zero" do
       allow(account).to receive(:plan_id).and_return(0)
       allow(account).to receive(:email_changed?)
-      expect(CancelSubscription).to receive(:call)
+      expect(CancelSubscription).not_to receive(:call)
       UpdateAccount.call(account)
     end
 
-    it "updates the Stripe customer email if the email has changed" do
+    it "no longer updates the Stripe customer email if the email has changed" do
       allow(account).to receive(:plan_id_changed?).and_return(false)
       allow(account).to receive(:email_changed?).and_return(true)
-      expect(ChangeStripeEmail).to receive(:call)
+      expect(ChangeStripeEmail).not_to receive(:call)
       UpdateAccount.call(account)
     end
 

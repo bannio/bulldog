@@ -11,8 +11,8 @@
      data-content="
      <ul class='info-ul'>
      <li>See also 'Tools - Document Setup' for document specific account settings</li>
-     <li>'Change Plan' allows you to upgrade your plan or enable VAT (business plan only).</li>
-     <li>Use the 'Update Card' button to change your payment card or reset its expiry date.</li>
+     <!-- <li>'Change Plan' allows you to upgrade your plan or enable VAT (business plan only).</li> -->
+     <!-- <li>Use the 'Update Card' button to change your payment card or reset its expiry date.</li> -->
      <li>We hope that you do not wish to 'Cancel Subscription' but this is where you can start the process.</li>
      </ul>">
      <img src=<%= asset_path('info_btn.png') %> alt="info button" class="info-img"/>
@@ -49,8 +49,8 @@
       <br/>
 
       <%#= link_to 'Edit', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Edit account settings"  %>
-      <%= link_to 'Change Plan', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change subscription plan or options"  %>
-      <%= link_to 'Update card', new_card_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Change payment card details"  %>
+      <%#= link_to 'Change Plan', edit_account_path(@account), class: "create-btn std-btn", data: {toggle: "tooltip"}, title: "Change subscription plan or options"  %>
+      <%#= link_to 'Update card', new_card_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "Change payment card details"  %>
       <%#= link_to 'Billing history', edit_account_path(@account), class: "action-btn std-btn", data: {toggle: "tooltip"}, title: "View billing history" %>
       <%= link_to 'Cancel subscription', cancel_account_path(@account), class: "warn-btn std-btn", data: {toggle: "tooltip"}, title: "Cancel Subscription"  %>
       <%#= link_to 'Change Password', edit_user_registration_path, class: "warn-btn std-btn" %>

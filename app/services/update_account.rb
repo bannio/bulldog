@@ -9,9 +9,10 @@ class UpdateAccount
   end
 
   def call
-    ChangePlan.call(account) if plan_changed?
-    CancelSubscription.call(account) if cancel?
-    ChangeStripeEmail.call(account) if email_changed?
+    # remove Stripe interactions Oct 2016
+    # ChangePlan.call(account) if plan_changed?
+    # CancelSubscription.call(account) if cancel?
+    # ChangeStripeEmail.call(account) if email_changed?
     account.save if account.errors.empty?
     account
   end

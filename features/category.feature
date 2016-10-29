@@ -5,7 +5,8 @@ Feature: In order to keep the categories fit for purpose
   Background: To managing categories
 
     Given I am a user with an account
-    And I sign in
+    And I sign in with js
+    And wait 1
     And I have the following bills
     # customer  | supplier | category | date       | description        | amount |
     | Household | Asda     | Food     | 10-12-2012 | Coffee             | 5.46   |
@@ -33,6 +34,7 @@ Feature: In order to keep the categories fit for purpose
   Scenario: I can edit a category name
     Given I visit the categories page
     When I click the second table row
+    And wait 1
     Then I should be on the Edit Category page
     And I should see "Food" within the category_name field
 
@@ -52,8 +54,8 @@ Feature: In order to keep the categories fit for purpose
   Scenario: I can rename to a brand new name
     If the new name is not already used then the category
     is renamed so the total numnber of categories is
-    unchanged. 
-    
+    unchanged.
+
     Given I visit the edit page for "foods"
     And I enter "Vitals" in the category_name field and click Save
     Then I should be on the Categories page

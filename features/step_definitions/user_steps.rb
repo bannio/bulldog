@@ -101,6 +101,14 @@ def sign_in
   click_button "Sign in"
 end
 
+def sign_in_js
+  visit '/home'
+  click_on 'Sign in'
+  fill_in "user_email", :with => @visitor[:email]
+  fill_in "user_password", :with => @visitor[:password]
+  click_button "Sign in"
+end
+
 ### GIVEN ###
 Given /^I am not logged in$/ do
   visit '/sign_out'
@@ -150,6 +158,10 @@ end
 
 When /^I sign in$/ do
   sign_in
+end
+
+When /^I sign in with js$/ do
+  sign_in_js
 end
 
 When /^I sign out$/ do
@@ -292,7 +304,7 @@ Then /^I should be signed in$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
+  page.should have_content "You are not currently signed in"
   page.should have_content "Sign in"
   page.should_not have_content "Sign out"
 end

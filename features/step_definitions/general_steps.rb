@@ -29,15 +29,15 @@ Then(/^I should not see a (.*) link$/) do |link|
 end
 
 Given /^I click the first table row$/ do
-  find(:xpath, "//table/tbody/tr[1]").click 
+  find(:xpath, "//table/tbody/tr[1]").click
 end
 
 Given /^I click the second table row$/ do
-  find(:xpath, "//table/tbody/tr[2]").click 
+  find(:xpath, "//table/tbody/tr[2]").click
 end
 
 Given /^I click the third table row$/ do
-  find(:xpath, "//table/tbody/tr[3]").click 
+  find(:xpath, "//table/tbody/tr[3]").click
 end
 
 # click on a row with given text in any td
@@ -69,8 +69,9 @@ When(/^I click Delete and confirm$/) do
 end
 
 When(/^I click for the next page$/) do
-  # find('span.next a', visible: false).click
-  click_on '2'
+  find('span.next a', visible: false).click
+  # Note that Selenium still will not click on an invisible link
+  # even if Capybara can find it.
 end
 
 # When(/^I enter a valid email and password$/) do

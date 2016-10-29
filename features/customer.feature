@@ -6,7 +6,8 @@ Feature: Manage Customer records
 
   Background:
     Given I am a user with an account
-    And I sign in
+    And I sign in with js
+    And wait 1
 
   Scenario: with no customer
     Given I have no customer
@@ -24,6 +25,7 @@ Feature: Manage Customer records
     Given I have a customer
     And I visit the Customers page
     And I click the first table row
+    And wait 1
     Then I should be on the Edit Customer page
     And I fill in customer details and click save
     Then I should see "Customer successfully updated"
@@ -45,7 +47,7 @@ Feature: Manage Customer records
     Given I have a customer "MyCustomer"
     When I create another "MyCustomer"
     Then I should see "A customer with that name already exists"
-    
+
   Scenario: Delete a customer with no bills
     Given I have a customer "MyCustomer"
     When I edit the customer "MyCustomer"

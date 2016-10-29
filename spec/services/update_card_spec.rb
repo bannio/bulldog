@@ -23,13 +23,13 @@ describe UpdateCard do
       allow(customer).to receive_message_chain(:cards, :retrieve).and_return(card_dbl)
     end
 
-    it "updates Stripe customer" do
-      expect(customer).to receive(:save)
+    it "No longer updates Stripe customer" do
+      expect(customer).not_to receive(:save)
       card = UpdateCard.call(params)
     end
 
-    it "updates the account" do
-      expect(account).to receive(:update)
+    it "No longer updates the account" do
+      expect(account).not_to receive(:update)
       card = UpdateCard.call(params)
     end
 
@@ -45,10 +45,10 @@ describe UpdateCard do
       expect(card).to eq account
     end
 
-    it "transitions state to paying from expired" do
+    it "no longer transitions state to paying from expired" do
       account.update!(state: "expired")
       card = UpdateCard.call(params)
-      expect(account.reload.paying?).to be true
+      expect(account.reload.paying?).to be false
     end
 
     it "it leaves state at trialing" do

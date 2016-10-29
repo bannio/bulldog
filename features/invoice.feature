@@ -7,7 +7,8 @@ Feature: Invoices
   Background:
     Given I am not logged in
     Given I am a user with an account
-    And I sign in 
+    And I sign in with js
+    And wait 1
     And I have an active "Standard" rate at 20%
     And I have an active "Zero" rate at 0%
     And I have the following bills
@@ -23,7 +24,7 @@ Feature: Invoices
   Scenario: Create an invoice
     As an invoice gathers all uninvoiced bills for the selected customer
     and the bills index page only shows uninvoiced bills, after creating
-    an invoice for Business, Business bills should disappear from the 
+    an invoice for Business, Business bills should disappear from the
     bills index.
 
     Given I am on the bills page
@@ -32,6 +33,7 @@ Feature: Invoices
     Given I am on the New Document page
     And I select "Business" as the invoice customer
     And I click button Create Document
+    And wait 1
     Then I should be on the Edit Document page
     And I should not see "Back"
     And I should see "Document 1"
@@ -50,8 +52,8 @@ Feature: Invoices
     | 2  | Business  | B invoice   | 2012-12-12 | 46.00  |
     | 3  | Business  | C invoice B | 2012-10-12 | 100.00 |
     | 4  | Household | D invoice   | 2012-10-11 | 4.00   |
-    | 5  | Business  | E invoice   | 2012-10-10 | 5.00   | 
-    | 10 | Business  | F invoice   | 2012-10-11 | 5.00   | 
+    | 5  | Business  | E invoice   | 2012-10-10 | 5.00   |
+    | 10 | Business  | F invoice   | 2012-10-11 | 5.00   |
 
     Given I visit the home page
     And I click on Documents
@@ -79,19 +81,21 @@ Feature: Invoices
   @javascript
   Scenario: Edit an invoice
     I can edit everything except the customer. If the customer were to change,
-    all the bills would be removed in any case. 
+    all the bills would be removed in any case.
 
     Given I have the Business invoice
     And I am on the documents index page
     When I click the first table row
+    And wait 1
     Then I should be on the Show Document page
     When I click on Edit
-    And I wait
+    And wait 1
     Then I should be on the Edit Document page
     And I should see "Cancel"
     When I change the comment to "changed comment"
     And I change the date to "2014-01-01"
     And I click button Save Changes
+    And wait 1
     Then I should be on the Show Document page
     And I should see "changed comment"
 
@@ -101,8 +105,9 @@ Feature: Invoices
     And I am on the edit page for this invoice
     Then I should see 3 bills
     When I check one bill and click Save Changes
+    And wait 1
     Then I should be on the Show Document page
-    Then I should see 2 bills 
+    Then I should see 2 bills
 
   @javascript
   Scenario: Delete an invoice
@@ -112,8 +117,10 @@ Feature: Invoices
     When I am on the documents index page
     Then I should see "My business invoice"
     When I am on the edit page for this invoice
+    And wait 1
     Then I should see "Delete"
     When I click the Delete button and confirm OK
+    And wait 1
     Then I should be on the Documents page
     And I should not see "My business invoice"
     When I am on the bills page
@@ -144,6 +151,7 @@ Feature: Invoices
     And I am on the edit page for this invoice
     When I fill in header with "Test Header"
     And I click button Save Changes
+    And wait 1
     Then I should be on the Show Document page
     And I should see "Test Header"
 
@@ -154,6 +162,7 @@ Feature: Invoices
     And I am on the edit page for this invoice
     When I fill in header with "Test Header"
     And I click button Save Changes
+    And wait 1
     Then I should be on the Show Document page
     And I should see "Test Header"
 
@@ -173,8 +182,8 @@ Feature: Invoices
     | 2  | Business  | B invoice   | 2012-12-12 | 46.00  |
     | 3  | Business  | C invoice B | 2012-10-12 | 100.00 |
     | 4  | Household | D invoice   | 2012-10-11 | 4.00   |
-    | 5  | Business  | E invoice   | 2012-10-10 | 5.00   | 
-    | 10 | Business  | F invoice   | 2012-10-11 | 5.00   | 
+    | 5  | Business  | E invoice   | 2012-10-10 | 5.00   |
+    | 10 | Business  | F invoice   | 2012-10-11 | 5.00   |
 
     Given I visit the home page
     And I click on Documents
@@ -191,6 +200,6 @@ Feature: Invoices
 
 
 
-    
+
 
 

@@ -43,12 +43,12 @@ describe CreateAccount do
     expect(account.errors[:email]).to include("The email #{params[:email]} is already in use")
   end
 
-  it "returns an account with errors when Stripe fails" do
+  it "no longer returns an account with errors when Stripe fails" do
     allow(Stripe::Customer).to receive(:create).and_raise(Stripe::StripeError, "Stripe error")
     allow(User).to receive(:create).and_return(user)
     allow(AddToMailList).to receive(:call).and_return(true)
     account = CreateAccount.call(params)
-    expect(account.persisted?).to be false
-    expect(account.errors[:base]).to include("Stripe error")
+    expect(account.persisted?).to be true
+    expect(account.errors[:base]).not_to include("Stripe error")
   end
 end

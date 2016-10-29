@@ -7,7 +7,8 @@ Feature: In order to track my costs
     apply to all the scenarios:
 
     Given I am a user with an account
-    And I sign in
+    And I sign in with js
+    And wait 1
     And I have the following data already saved
     # customer  | supplier | category |
     | Household | Asda     | Food     |
@@ -16,14 +17,16 @@ Feature: In order to track my costs
     # And I am on the new bill screen
 
 
-  @javascript @ut
+  @javascript
   Scenario: Enter a receipt for known supplier and customer
     Given I am on the new bill screen
     When I add a Household bill from Asda for £20
     And I click button Save
+    And wait 1
     And I click for another new bill
     And I add a Business bill from Tesco for £5
     And I click button Save
+    And wait 1
     Then the total expenses should be £25
     And the Household customer total should be £20
     And the Asda supplier total should be £20

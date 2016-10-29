@@ -10,7 +10,8 @@ class CreateAccount
 
   def call
     if account.valid? && email_not_in_use  # run validations
-      CreateCustomer.call(account) # adds account.stripe_customer_token
+      # remove Stripe interactions Oct 2016
+      # CreateCustomer.call(account) # adds account.stripe_customer_token
       account.user = User.create(email: email)
       AddToMailList.call(email) if mail_list_checked?
       account.sign_up  # transitions to trialing
