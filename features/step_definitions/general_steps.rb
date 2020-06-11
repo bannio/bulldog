@@ -29,15 +29,15 @@ Then(/^I should not see a (.*) link$/) do |link|
 end
 
 Given /^I click the first table row$/ do
-  find(:xpath, "//table/tbody/tr[1]").click
+  find(:xpath, "//table/tbody/tr[1]/td[1]").click
 end
 
 Given /^I click the second table row$/ do
-  find(:xpath, "//table/tbody/tr[2]").click
+  find(:xpath, "//table/tbody/tr[2]/td[1]").click
 end
 
 Given /^I click the third table row$/ do
-  find(:xpath, "//table/tbody/tr[3]").click
+  find(:xpath, "//table/tbody/tr[3]/td[1]").click
 end
 
 # click on a row with given text in any td

@@ -16,7 +16,7 @@ class VatRate < ActiveRecord::Base
   private
 
   def check_for_bills
-    self.bills.empty?
+    throw(:abort) if !self.bills.empty?
   end
 
   def rate_in_use

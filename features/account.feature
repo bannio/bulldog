@@ -9,7 +9,7 @@ Feature: Account
     And a Base Plan exists
     And a Business Monthly Plan exists
     And a Business Annual Plan exists
-    And stripe-ruby-mock is running
+    # And stripe-ruby-mock is running
 
   Scenario: Sign in a second time
     Given I am a user with an account
@@ -85,22 +85,17 @@ Feature: Account
   #   Then I should be on the Account page
   #   And VAT Enabled? should be checked
 
-  Scenario: Upgrade subscription plan
-    Given I am a user with an account
-    And the account has a valid Stripe Customer token
-    And  I sign in
-    When I visit the home page
-    And I click on Account
-    And I click on Manage Subscription
-    Then I should be on the Account page
-    And I should see "Personal"
-    And I should not see "Change Plan"
-    And I should not see "Update card"
-    # When I click on Change Plan
-    # Then I should see "Plan"
-    # And the Personal plan should be selected
-    # When I choose the Business Annual plan
-    # And I click button Save
-    # Then I should be on the Account page
-    # And I should see "Business Annual"
+# Stripe testing no longer valid
+  # Scenario: Upgrade subscription plan
+  #   Given I am a user with an account
+  #   And the account has a valid Stripe Customer token
+  #   And  I sign in
+  #   When I visit the home page
+  #   And I click on Account
+  #   And I click on Manage Subscription
+  #   Then I should be on the Account page
+  #   And I should see "Personal"
+  #   And I should not see "Change Plan"
+  #   And I should not see "Update card"
+
 

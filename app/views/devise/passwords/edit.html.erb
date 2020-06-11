@@ -1,4 +1,4 @@
-<% content_for :title do %>BulldogClip | Password Change<% end %>
+<% content_for :title do %>Bulldog Change Password<% end %>
 <% content_for :description do %>Change BulldogClip password<% end %>
 
 <div class="container">
@@ -7,6 +7,7 @@
       <h1>Change your password</h1>
         <div class="change-pwd">
         <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :patch }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
           <%= f.hidden_field :reset_password_token %>
           <div class="form-group">
             <%= form_group_for f, :password, label: false do %>
@@ -26,3 +27,5 @@
     </div>
   </div>
 </div>
+
+

@@ -24,7 +24,8 @@ class Supplier < ActiveRecord::Base
   def check_for_bills
     unless self.bills.reload.empty?
       errors.add(:name, "This Supplier has bills associated. Rename to reassign those bills")
-      false
+      # false
+      throw :abort
     else
       true
     end

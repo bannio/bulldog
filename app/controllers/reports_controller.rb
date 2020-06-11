@@ -6,7 +6,8 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html do
         params[:report] = {account_id: current_account.id}
-        @report = Report.new(params[:report])
+        # @report = Report.new(params[:report])
+        @report = Report.new(report_params)
         authorize @report
         @bills = @report.bills.order(date: :desc).page(params[:page])
       end

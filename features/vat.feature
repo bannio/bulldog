@@ -143,6 +143,7 @@ Scenario: VAT select field limits choice to defined active entries
   When I type "missing" in the vat_rate select field
   Then I should not see "missing"
   And I should see "Standard"
+  And I press escape to reset select search field
   When I type "Old" in the vat_rate select field
   Then I should not see "Old"
   And I should see "Standard"

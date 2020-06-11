@@ -35,7 +35,7 @@ end
 
 Given(/^I have a bill using the "(.*?)" rate$/) do |rate|
   vat_rate = VatRate.find_by_name(rate)
-  bill = FactoryGirl.create(:bill, account_id: @account.id, vat_rate_id: vat_rate.id)
+  bill = FactoryBot.create(:bill, account_id: @account.id, vat_rate_id: vat_rate.id)
 end
 
 When(/^I visit the Account page$/) do

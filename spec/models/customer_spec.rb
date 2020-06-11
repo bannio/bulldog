@@ -2,20 +2,23 @@ require 'rails_helper'
 
 describe Customer do
 
-  let(:account){mock_model Account, current_id: 1}
-  let!(:customer_one) { Customer.create(name: "Customer1", account_id: 1) }
+  # let(:account){mock_model Account, current_id: 1}
+  let!(:account) {FactoryBot.create(:account)}
+  let!(:customer_one) { Customer.create(name: "Customer1", account_id: account.id) }
   let!(:customer_two) { Customer.create(name: "Customer2", account_id: 2) }
+  let!(:customer_three) {Customer.create(name: "Customer 3", account_id: account.id)}
 
   it "fails validation with no name or account id" do
     customer = Customer.new
     customer.valid?
-    expect(customer.errors[:name]).to_not be_empty 
-    expect(customer.errors[:account_id]).to_not be_empty 
+    expect(customer.errors[:name]).to_not be_empty
+    expect(customer.errors[:account_id]).to_not be_empty
   end
 
   it "rejects a duplicate name in same account scope" do
+
     customer_one.save
-    customer = Customer.new(name: "Customer1", account_id: 1)
+    customer = Customer.new(name: "Customer1", account_id: account.id)
     expect(customer).to_not be_valid
   end
   it "accepts a duplicate name in different account scope" do
@@ -43,30 +46,30 @@ describe Customer do
   end
 
   it 'knows the sum of its bills' do
-    bill = FactoryGirl.create(:bill, customer_id: customer_one.id, amount: 10 )
-    bill2 = FactoryGirl.create(:bill, customer_id: customer_one.id, amount: 10 )
+    bill = FactoryBot.create(:bill, customer_id: customer_one.id, amount: 10 )
+    bill2 = FactoryBot.create(:bill, customer_id: customer_one.id, amount: 10 )
     expect(customer_one.total).to eq 20
   end
 
   it 'knows the sum of its bills and ignores others' do
-    bill = FactoryGirl.create(:bill, customer_id: customer_one.id, amount: 10 )
-    bill2 = FactoryGirl.create(:bill, customer_id: customer_two.id, amount: 10 )
+    bill = FactoryBot.create(:bill, customer_id: customer_one.id, amount: 10 )
+    bill2 = FactoryBot.create(:bill, customer_id: customer_two.id, amount: 10 )
     expect(customer_one.total).to eq 10
   end
 
   it "will not destroy itself if it has bills" do
-    bill = FactoryGirl.create(:bill, customer_id: customer_one.id, amount: 10, account_id: 1 )
+    bill = FactoryBot.create(:bill, customer_id: customer_one.id, amount: 10, account_id: 1 )
     customer_one.destroy
-    expect(Customer.unscoped.count).to eq 2
+    expect(Customer.unscoped.count).to eq 3
   end
 
   it "will destroy itself if it has no bills" do
     customer_one.destroy
-    expect(Customer.unscoped.count).to eq 1
+    expect(Customer.unscoped.count).to eq 2
   end
 
   it "only allows one default customer within an account" do
-    customer_three = Customer.create(name: "Customer 3", account_id: 1)
+    # customer_three = Customer.create(name: "Customer 3", account_id: 1)
     customer_one.is_default = true
     customer_one.save
     expect(customer_one.is_default?).to be_truthy

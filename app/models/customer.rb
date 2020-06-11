@@ -9,7 +9,8 @@ class Customer < ActiveRecord::Base
 
   validates :name, :account_id, presence: true
   validates :name, uniqueness: { scope: :account,
-    message: "A customer with that name already exists" }
+    message: "A customer with that name already exists",
+    case_sensitive: false }
   before_destroy :check_has_no_bills?
   before_save :check_default
 
@@ -31,7 +32,7 @@ class Customer < ActiveRecord::Base
 
   def check_has_no_bills?
     # false will stop the delete
-    self.bills.empty?
+    throw(:abort) if !self.bills.empty?
   end
 
   def check_default

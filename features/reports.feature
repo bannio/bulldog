@@ -34,7 +34,7 @@ Scenario: I can filter by date ranges
 
 Scenario: I can filter by customer, supplier and category
   Given I visit the Analysis page
-  And I select "Household" as customer
+  And I select "Household" as the customer
   And I click button View
   Then I should find 3 bills
   When I select "Asda" as supplier

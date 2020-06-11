@@ -1,8 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :header do
-    name "MyString"
-    account nil
+    name {"MyString"}
+    account {nil}
   end
 end

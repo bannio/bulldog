@@ -33,7 +33,7 @@ describe CreateAccount do
   end
 
   it "returns an account with errors when email in use" do
-    FactoryGirl.create(:user, email: params[:email])
+    FactoryBot.create(:user, email: params[:email])
     allow(CreateCustomer).to receive(:call)
     allow(User).to receive(:create).and_return(user)
     allow(AddToMailList).to receive(:call).and_return(true)

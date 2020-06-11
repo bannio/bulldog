@@ -1,8 +1,9 @@
 class ConfirmationsController < Devise::ConfirmationsController
   # Remove the first skip_before_filter (:require_no_authentication) if you
   # don't want to enable logged users to access the confirmation page.
-  skip_before_filter :require_no_authentication
-  skip_before_filter :authenticate_user!
+
+  # skip_before_action :require_no_authentication
+  skip_before_action :authenticate_user!, raise: false
 
   # PATCH /confirmation
   def update    # unique to us, not in Devise::ConfirmationsController
@@ -46,8 +47,10 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   def with_unconfirmed_confirmable
     original_token = params[:confirmation_token]
-    confirmation_token = Devise.token_generator.digest(User, :confirmation_token, original_token)
-    @confirmable = User.find_or_initialize_with_error_by(:confirmation_token, confirmation_token)
+    # currently storing the token as passed and not digested
+    # confirmation_token = Devise.token_generator.digest(User, :confirmation_token, original_token)
+    # @confirmable = User.find_or_initialize_with_error_by(:confirmation_token, confirmation_token)
+    @confirmable = User.find_or_initialize_with_error_by(:confirmation_token, original_token)
     if !@confirmable.new_record?
       @confirmable.only_if_unconfirmed {yield}
     end
@@ -61,7 +64,8 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def do_confirm
-    @confirmable.confirm!
+    # @confirmable.confirm! The bang method seems no longer to be valid
+    @confirmable.confirm
     check_email_change
     set_flash_message :notice, :confirmed
     sign_in_and_redirect(resource_name, @confirmable)

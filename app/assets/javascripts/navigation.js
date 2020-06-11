@@ -1,23 +1,26 @@
-  var subnavToggle = function(){
-    return $('#subnavBtn').on( "click", function(){
-    $('#subnav').toggleClass("hidden");
-    });
-  };
+// var NAVBAR;
 
-  $(document).on('page:update', subnavToggle);
-
-  var showNavBar = function(){
-    return $('#navbar').on('mouseenter', function(){
-      $('#subnav').removeClass("hidden");      
-    });
-  };
-
-  $(document).on('page:update', showNavBar);
-
-var hideNavBar = function(){
-    return $('#subnav').on('mouseleave', function(){
-      $('#subnav').addClass("hidden");      
-    });
-  };
-
-  $(document).on('page:update', hideNavBar);
+// NAVBAR = {
+//   subnavToggle: function () {
+//       return $('#subnavBtn').on("click", function () {
+//       $('#subnav').toggleClass("hidden");
+//     });
+//   },
+//   showNavBar: function () {
+//       return $('#navbar').on('mouseenter', function () {
+//       $('#subnav').removeClass("hidden");
+//     });
+//   },
+//   hideNavBar: function () {
+//       return $('#subnav').on('mouseleave', function () {
+//         $('#subnav').addClass("hidden");
+//     });
+//   },
+//   init: function () {
+//       NAVBAR.subnavToggle;
+//       NAVBAR.showNavBar;
+//       NAVBAR.hideNavBar;
+//   }
+// };
+//   // $(document).on('page:update', hideNavBar);
+// $(document).on('turbolinks:load', NAVBAR.init);

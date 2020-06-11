@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   include Pundit
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+
+  # May 2019 added prepend true based on Devise docs.
+  protect_from_forgery with: :exception, prepend: true
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -12,6 +16,12 @@ class ApplicationController < ActionController::Base
     @current_account ||= current_user.account if current_user
   end
   helper_method :current_account
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys: [:edit_email])
+  end
 
   private
 

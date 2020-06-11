@@ -12,11 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/datepicker
+//= require jquery-ui/widgets/datepicker
 //= require jquery.payment
 //= require bootstrap-sprockets
-//= require select2
-//= require jsapi
+//= require select2-full
+// require jsapi    // replaced by direct call to google charts api
 //= require chartkick
 //= require turbolinks
 //= require cookies_eu

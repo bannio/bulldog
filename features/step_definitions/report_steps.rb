@@ -20,8 +20,17 @@ Given(/^I select "(.*?)" as end date$/) do |date|
   fill_in 'report_to_date', with: date
 end
 
-Given(/^I select "(.*?)" as customer$/) do |customer|
+# version that works without JS
+Given(/^I select "(.*?)" as the customer$/) do |customer|
   select customer, from:'report_customer_id'
+end
+
+# version that works with JS i.e. select2 enabled
+Given(/^I select "(.*?)" as customer$/) do |customer|
+  page.find_by_id("select2-report_customer_id-container" ).click
+  find('.select2-dropdown input.select2-search__field').send_keys("#{customer}", :enter)
+  # previously:
+  # select customer, from:'report_customer_id'
 end
 
 Given(/^I select "(.*?)" as supplier$/) do |supplier|

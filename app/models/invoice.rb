@@ -75,9 +75,12 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.customer_filter(customer)
-    if customer.present?
-      where(customer_id: customer)
+    logger.debug "*** customer passed in to filter: #{customer}"
+    if customer.present? && customer[:customer_id] != ""
+      logger.debug "*** now in if side of customer filter"
+      where(customer_id: customer[:customer_id])
     else
+      logger.debug "*** now in else side of customer filter"
       all
     end
   end

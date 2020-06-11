@@ -3,7 +3,7 @@
 // FOOTER
 
 footer {
-   position:absolute;
+   // position:absolute;
    bottom:0;
    // height:202px;   /* Height of the footer should match padding btm of main*/
    height:169px;   /* Height of the footer should match padding btm of main to ensure sticks to bottom*/
@@ -27,13 +27,13 @@ footer {
 }
 @media(min-width: $screen-sm){
   footer p  {font-size: 1rem} //14px when screen is below 992px
-  }    
+  }
 @media(min-width: $screen-md){
   footer p  {font-size: 1rem} //16px when screen is below 1200px
-  }    
+  }
 @media(min-width: $screen-lg){
   footer p  {font-size: 1rem} //18px when screen is above 1200px
-  } 
+  }
 
 
 .footer-links {

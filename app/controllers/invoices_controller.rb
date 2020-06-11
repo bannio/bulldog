@@ -1,17 +1,19 @@
 class InvoicesController < ApplicationController
 
   before_action :authenticate_user!
-  after_action :verify_authorized
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
   helper_method :sort_column, :sort_direction
 
   def index
-    @invoices = current_account.invoices.includes(:customer).
-                                                customer_filter(params[:inv_customer_id]).
-                                                search(params[:search]).
-                                                filter_from(params[:from_date]).
-                                                filter_to(params[:to_date]).
-                                                page(params[:page]).
-                                                order(sort_column + " " + sort_direction)
+    @invoices = policy_scope(Invoice).includes(:customer).
+                                 # customer_filter(params["inv_customer_id"]).
+                                 customer_filter(params[:invoice]).
+                                 search(params[:search]).
+                                 filter_from(params[:from_date]).
+                                 filter_to(params[:to_date]).
+                                 page(params[:page]).
+                                 order(sort_column + " " + sort_direction)
     authorize @invoices
     respond_to do |format|
       format.html
@@ -45,7 +47,8 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    @invoice = current_account.invoice(params[:id])
+    # @invoice = current_account.invoice(params[:id])
+    @invoice = policy_scope(Invoice).find(params[:id])
     authorize @invoice
     @customers = []
     @customers << @invoice.customer
@@ -54,7 +57,8 @@ class InvoicesController < ApplicationController
 
   def update
     collect_new_entries
-    @invoice = current_account.invoice(params[:id])
+    @invoice = policy_scope(Invoice).find(params[:id])
+    # @invoice = current_account.invoice(params[:id])
     authorize @invoice
     @customers = []
     @customers << @invoice.customer
@@ -109,8 +113,22 @@ class InvoicesController < ApplicationController
 
   private
 
+  def valid_string?(str)
+    # not blank, not nil and not a string representation of an integer
+    # all params are strings so valid ids need converting
+    str.present? && str.to_i == 0
+  end
+
   def collect_new_entries
-    params[:invoice][:new_header] = params[:invoice][:header_id] if params[:invoice][:header_id].to_i == 0
+    # params[:invoice][:new_header] = params[:invoice][:header_id] if params[:invoice][:header_id].to_i == 0
+    if valid_string?(params[:invoice][:header_id])
+      new_id = Header.create(name: params[:invoice][:header_id], account_id: current_account.id).id
+      if new_id
+        params[:invoice][:header_id] = new_id.to_s
+      else
+        params[:invoice][:header_id] = nil
+      end
+    end
   end
 
   def invoice_params

@@ -3,9 +3,9 @@ require 'rails_helper'
 
 describe Bill do
   before do
-    @customer = FactoryGirl.create(:customer, account_id: 1)
-    @supplier = FactoryGirl.create(:supplier, account_id: 1)
-    @category = FactoryGirl.create(:category, account_id: 1)
+    @customer = FactoryBot.create(:customer, account_id: 1)
+    @supplier = FactoryBot.create(:supplier, account_id: 1)
+    @category = FactoryBot.create(:category, account_id: 1)
     @attr = {
       account_id: 1,
       date: '20140101',
@@ -49,11 +49,11 @@ describe Bill do
   end
 
   it "can name its customer, supplier etc." do
-    customer = FactoryGirl.create(:customer_with_bill, name: 'John')
-    supplier = FactoryGirl.create(:supplier, name: 'Fred')
-    category = FactoryGirl.create(:category, name: 'Food')
-    vat_rate = FactoryGirl.create(:vat_rate, name: 'standard', account_id: 1)
-    invoice =  FactoryGirl.create(:invoice, number: '99', customer_id: customer.id)
+    customer = FactoryBot.create(:customer_with_bill, name: 'John')
+    supplier = FactoryBot.create(:supplier, name: 'Fred')
+    category = FactoryBot.create(:category, name: 'Food')
+    vat_rate = FactoryBot.create(:vat_rate, name: 'standard', account_id: 1)
+    invoice =  FactoryBot.create(:invoice, number: '99', customer_id: customer.id)
     bill = Bill.new(@attr.merge(customer_id: customer.id,
                                 supplier_id: supplier.id,
                                 category_id: category.id,

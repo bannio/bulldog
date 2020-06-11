@@ -28,23 +28,23 @@ end
 def create_user
   create_visitor
   delete_user
-  @user = FactoryGirl.create(:user, @visitor)
+  @user = FactoryBot.create(:user, @visitor)
 end
 
 def create_another_user
   create_another_visitor
   delete_another_user
-  @another_user = FactoryGirl.create(:user, @another_visitor)
+  @another_user = FactoryBot.create(:user, @another_visitor)
 end
 
 def create_account
   @user ||= create_user
-  @account = FactoryGirl.create(:account, user_id: @user.id)
+  @account = FactoryBot.create(:account, user_id: @user.id)
 end
 
 def create_another_account
   @another_user ||= create_another_user
-  @another_account = FactoryGirl.create(:account, user_id: @another_user.id)
+  @another_account = FactoryBot.create(:account, user_id: @another_user.id)
 end
 
 def create_setting
@@ -79,7 +79,7 @@ end
 
 def sign_up
   delete_user
-  plan = Plan.first || FactoryGirl.create(:plan)
+  plan = Plan.first || FactoryBot.create(:plan)
   visit new_account_path(plan_id: plan.id)
   fill_in "account_name", with: @visitor[:name]
   fill_in "account_email", with: @visitor[:email]
@@ -222,8 +222,8 @@ end
 
 def set_up_unconfirmed_user
   new_token = Devise.token_generator.digest(User, :confirmation_token, 'xyz')
-  @account = FactoryGirl.create(:account)
-  @user = FactoryGirl.create(:user,
+  @account = FactoryBot.create(:account)
+  @user = FactoryBot.create(:user,
     email: @account.email,
     password: "",
     password_confirmation: "",
@@ -357,6 +357,10 @@ end
 
 Then /^I should see an account edited message$/ do
   page.should have_content "You updated your account successfully"
+end
+
+Then /^I should see a request to log in$/ do
+  page.should have_content "You need to sign in or sign up before continuing"
 end
 
 Then /^I should see my name$/ do

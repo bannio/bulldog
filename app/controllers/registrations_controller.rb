@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy, :edit_email]
+  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :edit_email]
 
   def edit_email
     resource.edit_email = true
@@ -23,7 +23,9 @@ class RegistrationsController < Devise::RegistrationsController
       # if edit_email?
       #   resource.account.update(email: resource.email)
       # end
-      sign_in resource_name, resource, bypass: true
+      # sign_in resource_name, resource, bypass: true  <- Deprecated
+      bypass_sign_in(resource, scope: :resource_name)
+      logger.info "LINE 28 RegistrationsController after bypass_sign_in #{current_user.email} resource_name #{resource_name}"
       respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource
@@ -47,6 +49,7 @@ class RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     welcome_index_path
   end
+
 
   private
 

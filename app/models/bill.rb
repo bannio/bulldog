@@ -169,7 +169,7 @@ class Bill < ActiveRecord::Base
   def check_for_invoice
     unless self.invoice_id.blank?
       errors.add(:amount, "This bill is invoiced and cannot be deleted")
-      false
+      throw :abort
     end
   end
 end

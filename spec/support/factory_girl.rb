@@ -4,6 +4,6 @@ RSpec.configure do |config|
 
   # MOVED to database_cleaner to resolves some flickering tests
   # config.before(:suite) do
-  #   FactoryGirl.lint
+  #   FactoryBot.lint
   # end
 end

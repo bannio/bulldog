@@ -17,9 +17,10 @@ Feature: In order to track my costs
     # And I am on the new bill screen
 
 
-  @javascript
+  @javascript @thisone
   Scenario: Enter a receipt for known supplier and customer
     Given I am on the new bill screen
+    # And wait 1
     When I add a Household bill from Asda for £20
     And I click button Save
     And wait 1
@@ -67,6 +68,7 @@ Feature: In order to track my costs
     And I am on the bills page
     And there is a link to add a new bill
     When I click the first table row
+    # And wait 1
     Then I should be on the "Edit Bill" modal
     When I change the bill Description to "changed it here" and press save
     Then I should be on the Bills page

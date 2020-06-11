@@ -6,7 +6,7 @@ describe CustomersController do
 
   def valid_attributes
    { name: "A Customer",
-   address: "", 
+   address: "",
    postcode: "",
    account_id: @account.id
    }
@@ -22,7 +22,7 @@ describe CustomersController do
       expect(response).to be_success
     end
   end
- 
+
  describe "GET index" do
    it "assigns all customers as @customers" do
      customer = Customer.create! valid_attributes
@@ -40,7 +40,7 @@ describe CustomersController do
    end
  end
 
- 
+
  describe "GET new" do
    it "assigns a new customer as @customer" do
      get :new, {}
@@ -51,7 +51,7 @@ describe CustomersController do
  describe "GET edit" do
    it "assigns the requested customer as @customer" do
      customer = Customer.create! valid_attributes
-     get :edit, {:id => customer.to_param}
+     get :edit, params: {:id => customer.to_param}
      expect(assigns(:customer)).to eq(customer)
    end
  end
@@ -59,7 +59,7 @@ describe CustomersController do
  describe "GET edit" do
    it "does not assign another account's customer" do
      customer = Customer.create! valid_attributes.merge(account_id: @account.id + 1)
-     get :edit, {:id => customer.to_param}
+     get :edit, params: {:id => customer.to_param}
      expect(assigns(:customer)).to eq(nil)
    end
  end
@@ -71,20 +71,20 @@ describe CustomersController do
   end
    context "with valid attributes" do
      it "updates the requested customer" do
-       patch :update, id: @customer, customer: valid_attributes
+       patch :update, params: {id: @customer, customer: valid_attributes}
        expect(assigns(:customer)).to eq @customer
      end
    end
 
    context "with invalid attributes" do
      it "re-render edit" do
-       patch :update, id: @customer, customer: {name: ""}
+       patch :update, params: {id: @customer, customer: {name: ""}}
        expect(response).to render_template 'edit'
      end
 
      it "rejects someone else's customer" do
        customer = Customer.create! valid_attributes.merge(account_id: @account.id + 1)
-       patch :update, id: customer, customer: valid_attributes.merge(account_id: @account.id + 1)
+       patch :update, params: {id: customer, customer: valid_attributes.merge(account_id: @account.id + 1)}
        expect(response).to redirect_to home_path
      end
    end
@@ -94,18 +94,18 @@ describe CustomersController do
    context "with valid params" do
      it "creates a new Customer" do
        expect {
-         post :create, {:customer => valid_attributes}
+         post :create, params: {:customer => valid_attributes}
        }.to change(Customer, :count).by(1)
      end
 
      it "assigns a newly created customer as @customer" do
-       post :create, {:customer => valid_attributes}
+       post :create, params: {:customer => valid_attributes}
        expect(assigns(:customer)).to be_a(Customer)
        expect(assigns(:customer)).to be_persisted
      end
 
      it "redirects to the customers index" do
-       post :create, {:customer => valid_attributes}
+       post :create, params: {:customer => valid_attributes}
        expect(response).to redirect_to(customers_url)
      end
    end
@@ -113,14 +113,14 @@ describe CustomersController do
    context "with invalid params" do
      it "assigns a newly created but unsaved customer as @customer" do
        allow_any_instance_of(Customer).to receive(:save).and_return(false)
-       post :create, {:customer => { name: "" }}
+       post :create, params: {:customer => { name: "" }}
        expect(assigns(:customer)).to be_a_new(Customer)
      end
 
      it "re-renders the 'new' template" do
        # Trigger the behavior that occurs when invalid params are submitted
        allow_any_instance_of(Customer).to receive(:save).and_return(false)
-       post :create, {:customer => { name: "" }}
+       post :create, params: {:customer => { name: "" }}
        expect(response).to render_template("new")
      end
    end
@@ -129,22 +129,22 @@ describe CustomersController do
    it "destroys the requested customer" do
      customer = Customer.create! valid_attributes
      expect {
-       delete :destroy, {:id => customer.to_param}
+       delete :destroy, params: {:id => customer.to_param}
      }.to change(Customer, :count).by(-1)
    end
 
    it "redirects to the customers list" do
      customer = Customer.create! valid_attributes
-     delete :destroy, {:id => customer.to_param}
+     delete :destroy, params: {:id => customer.to_param}
      expect(response).to redirect_to(customers_url)
    end
-   
+
    it "fails if there are bills" do
      customer = Customer.create! valid_attributes
-     bill = FactoryGirl.create(:bill, customer_id: customer.id)
+     bill = FactoryBot.create(:bill, customer_id: customer.id)
      expect {
-       delete :destroy, {:id => customer.to_param}
-     }.to change(Customer, :count).by(0)    
+       delete :destroy, params: {:id => customer.to_param}
+     }.to change(Customer, :count).by(0)
    end
  end
 end

@@ -23,7 +23,8 @@ class Category < ActiveRecord::Base
   def check_for_bills
     unless self.bills.reload.empty?
       errors.add(:name, "This category has bills associated. Rename to reassign those bills")
-      false
+      # false
+      throw :abort
     else
       true
     end

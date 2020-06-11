@@ -55,23 +55,41 @@ SITENAME = {
         });
       }
       // Date picker used in many places
-      $("input.date_picker").datepicker({
+      // $("input.date_picker").datepicker({
+      $(".date_picker").datepicker({
+        showOn: "focus",
         dateFormat: "yy-mm-dd",
         changeMonth: true,
         changeYear: true
       });
+      console.log("SITE datepicker");
+
+      // Moved from navigation.js
+
+      $('#subnavBtn').on("click", function () {
+        $('#subnav').toggleClass("hidden");
+      });
+
+      $('#navbar').on('mouseenter', function () {
+        $('#subnav').removeClass("hidden");
+      });
+
+      $('#subnav').on('mouseleave', function () {
+        $('#subnav').addClass("hidden");
+      });
+
 
       // Google analytics set up
-      GA.ga_setup();
+      // GA.ga_setup();
       // Send Google a pageview event
-      ga('send', 'pageview', window.location.pathname);
+      // ga('send', 'pageview', window.location.pathname);
 
       // Google analytics events
-      GA.ga_event('#ga_bdc_li', 'button', 'click', 'BDC linkedin');
-      GA.ga_event('#ga_twitter', 'button', 'click', 'BDC twitter');
-      GA.ga_event('#ga_pricing', 'button', 'click', 'pricing Link');
-      GA.ga_event('#ga_signup', 'button', 'click', 'sign up nav button');
-      GA.ga_event('#ga_signin', 'button', 'click', 'sign in');
+      // GA.ga_event('#ga_bdc_li', 'button', 'click', 'BDC linkedin');
+      // GA.ga_event('#ga_twitter', 'button', 'click', 'BDC twitter');
+      // GA.ga_event('#ga_pricing', 'button', 'click', 'pricing Link');
+      // GA.ga_event('#ga_signup', 'button', 'click', 'sign up nav button');
+      // GA.ga_event('#ga_signin', 'button', 'click', 'sign in');
     }
   },
 
@@ -171,14 +189,14 @@ SITENAME = {
 
   bills: {
     index: function () {
-      console.log("bills#index");
+      console.log("SITE bills#index");
       SELECT.billCustomer();
       SELECT.billSupplier();
       SELECT.billCategory();
       SELECT.billVatRate();
       TABLES.clickable_row();
       VIDEO.checkForVideos();
-      GA.ga_event('#first_bill_video', 'video', 'play', 'first bill video');
+      // GA.ga_event('#first_bill_video', 'video', 'play', 'first bill video');
     }
   },
 
@@ -240,26 +258,26 @@ SITENAME = {
     new: function () {
       console.log("reports#new");
       $("#exportBtn").on("click", function () { $('#new_report').submit(); });
+      SELECT.reportCustomer();
+      SELECT.reportSupplier();
+      SELECT.reportCategory();
     },
     create: function () {
       console.log("reports#create");
       $("#exportBtn").on("click", function () { $('#new_report').submit(); });
+      SELECT.reportCustomer();
+      SELECT.reportSupplier();
+      SELECT.reportCategory();
     },
   }
 };
 
 VIDEO = {
-  // getVjs: function () {
-  //   var vj_src = 'https://vjs.zencdn.net/4.7/video.js';
-  //   $.externalScript(vj_src).done(function (script, textStatus) {
-  //     console.log('VJS Script loading: ' + textStatus);
-  //   });
-  // },
   checkForVideos: function () {
+    if ($('video').length > 0) {
     var vj_src = 'https://vjs.zencdn.net/4.7/video.js';
     $.externalScript(vj_src).done(function (script, textStatus) {
       console.log('VJS Script loading: ' + textStatus);
-      if ($('video').length > 0) {
         var videos, video;
         videos = $('video');
         videos.each(function () {
@@ -267,8 +285,8 @@ VIDEO = {
           VIDEO.reset(video);
           VIDEO.init(video);
         });
-      };
-    });
+      });
+    };
   },
   reset: function (videoId) {
     var vid;
@@ -299,159 +317,126 @@ VIDEO = {
 };
 
 SELECT = {
-  format: function (item) {
-    return item.name || item.text;
-  },
-  text: function (value) {
-    if (value[0]) {
-      return value[0].name;
+  formatResult: function (term) {
+    var $term = $(
+     '<span class="label label-important">New</span> ' + term.text
+    );
+    if (term.id == term.text) {
+      return $term;
     }
-    return "";
-  },
-  format_result: function (term) {
-    if (term.isNew) {
-      return '<span class="label label-important">New</span> ' + term.text;
-    }
-    return term.name;
-  },
-  create_choice: function (term, data) {
-    if ($(data).filter(function () {
-        return this.name.toLowerCase().localeCompare(term.toLowerCase()) === 0;
-      }).length === 0) {
-      return {id: term, text: term, isNew: true};
-    }
+    return term.text;
   },
   accountPlan: function () {
-    var PlanData = $('#account_plan_id').data('plans');
     $('#account_plan_id').select2({
+      theme: "bootstrap",
       placeholder: 'Plan',
       allowClear: true,
       width: 'resolve',
-      data: {results: PlanData, text: 'name'},
-      formatResult: SELECT.format,
-      formatSelection: SELECT.format
     });
   },
   billCustomer: function () {
-    var customerData = $('#bill_customer_id').data('customers');
     $('#bill_customer_id').select2({
+      dropdownParent: $('#bill_modal'),
+      theme: "bootstrap",
       placeholder: 'Customer',
       allowClear: true,
-      width: 'resolve',
-      data: {results: customerData, text: 'name'},
-      initSelection : function (element, callback) {
-        var value = $(customerData).filter(function () {
-            return this.id == element.val();
-          });
-        var data = {id: element.val(),
-                    text: SELECT.text(value)};
-        callback(data);
-      },
-      createSearchChoice: SELECT.create_choice,
-      formatResult: SELECT.format_result,
-      formatSelection: SELECT.format
+      width: '100%',
+      selectOnClose: true, //try this to allow tab exit of fields
+      tags: true,
+      templateResult: SELECT.formatResult
     });
   },
   billSupplier: function () {
-    var supplierData = $('#bill_supplier_id').data('suppliers');
+    // console.log('billSupplier starting');
     $('#bill_supplier_id').select2({
+      dropdownParent: $('#bill_modal'),
+      theme: "bootstrap",
       placeholder: 'Supplier',
       allowClear: true,
-      width: 'resolve',
-      data: {results: supplierData, text: 'name'},
-      initSelection : function (element, callback) {
-        var value = $(supplierData).filter(function () {
-          return this.id == element.val();
-        });
-        var data = {id: element.val(),
-                    text: SELECT.text(value)};
-        callback(data);
-      },
-      createSearchChoice: SELECT.create_choice,
-      formatResult: SELECT.format_result,
-      formatSelection: SELECT.format
+      width: '100%',
+      selectOnClose: true, //try this to allow tab exit of fields
+      tags: true,
+      templateResult: SELECT.formatResult
     });
   },
   billCategory: function () {
-    var categoryData = $('#bill_category_id').data('categories');
     $('#bill_category_id').select2({
+      theme: "bootstrap",
       placeholder: 'Category',
       allowClear: true,
-      width: 'resolve',
-      data: {results: categoryData, text: 'name'},
-      initSelection : function (element, callback) {
-        var value = $(categoryData).filter(function () {
-          return this.id == element.val();
-        });
-        var data = {id: element.val(),
-                    text: SELECT.text(value)};
-        callback(data);
-      },
-      createSearchChoice: SELECT.create_choice,
-      formatResult: SELECT.format_result,
-      formatSelection: SELECT.format
+      width: '100%',
+      selectOnClose: true, //try this to allow tab exit of fields
+      tags: true,
+      templateResult: SELECT.formatResult
     });
   },
   billVatRate: function () {
-    var vatRateData = $('#bill_vat_rate_id').data('vat-rates');
     $('#bill_vat_rate_id').select2({
+      theme: "bootstrap",
       placeholder: 'VAT rate',
       allowClear: true,
-      width: 'resolve',
-      data: {results: vatRateData, text: 'name'},
-      formatResult: SELECT.format_result,
-      formatSelection: SELECT.format
+      width: '100%',
+      selectOnClose: true, //try this to allow tab exit of fields
+      tags: false  // prevent new creation - default value added for clarity
+    });
+  },
+  reportCustomer: function () {
+    $('#report_customer_id').select2({
+      theme: "bootstrap",
+      placeholder: 'Customer',
+      allowClear: true,
+      width: '100%',
+      selectOnClose: true
+    });
+  },
+    reportSupplier: function () {
+    $('#report_supplier_id').select2({
+      theme: "bootstrap",
+      placeholder: 'Supplier',
+      allowClear: true,
+      width: '100%',
+      selectOnClose: true
+    });
+  },
+    reportCategory: function () {
+    $('#report_category_id').select2({
+      theme: "bootstrap",
+      placeholder: 'Category',
+      allowClear: true,
+      width: '100%',
+      selectOnClose: true
     });
   },
   invoiceCustomer: function () {
-    var invoiceCustomerData = $('#invoice_customer_id').data('customers');
     $('#invoice_customer_id').select2({
+      theme: "bootstrap",
       placeholder: 'Customer',
       allowClear: true,
-      width: 'resolve',
-      data: {results: invoiceCustomerData, text: 'name'},
-      formatResult: SELECT.format,
-      formatSelection: SELECT.format
+      width: '100%',
+      selectOnClose: true
     });
   },
   invCustomer: function () {
-    var invCustomerData  = $('#inv_customer_id').data('customers');
-    $('#inv_customer_id').select2({
+    // used in a modal
+    $('#invoice_customer_id').select2({
+      // dropdownParent: $('#invoice_filter_modal .modal-content'), //may help with JS conflicts
+      theme: "bootstrap",
       placeholder: 'by customer',
       allowClear: true,
-      width: 'resolve',
-      data: {results: invCustomerData, text: 'name'},
-      initSelection : function (element, callback) {
-        var value = $(invCustomerData).filter(function () {
-          return this.id == element.val();
-        });
-        var data = {id: element.val(),
-                    text: SELECT.text(value)};
-        callback(data);
-      },
-      formatResult: SELECT.format,
-      formatSelection: SELECT.format
+      width: '100%',
+      selectOnClose: true
     });
   },
   invoiceHeader: function () {
-    var invoiceHeaderData = $('#invoice_header_id').data('headers');
     $('#invoice_header_id').select2({
+      theme: "bootstrap",
       placeholder: 'Header',
       maximumInputLength: 27,
       allowClear: true,
-      width: 'resolve',
-      data: {results: invoiceHeaderData, text: 'name'},
-      initSelection : function (element, callback) {
-        var value = $(invoiceHeaderData).filter(function () {
-            return this.id == element.val();
-          });
-        var data = {id: element.val(),
-                      text: SELECT.text(value)};
-        callback(data);
-      },
-      createSearchChoice: SELECT.create_choice,
-      formatResult: SELECT.format_result,
-      formatSelection: SELECT.format
+      width: '100%',
+      // width: 'resolve',
+      selectOnClose: true,
+      tags: true
     });
   }
 };
@@ -656,4 +641,7 @@ UTIL = {
 };
 
 // $(document).ready( UTIL.init );
-$(document).on('page:update', UTIL.init);
+// $(document).on('page:update', UTIL.init);
+$(document).on("turbolinks:load", UTIL.init);
+$(document).ajaxComplete(UTIL.init);
+// $('.modal').on('shown.bs.modal', UTIL.init);

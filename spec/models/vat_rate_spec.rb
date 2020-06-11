@@ -29,7 +29,7 @@ describe VatRate do
   it "cannot be deleted if there are bills" do
     vat_rate = VatRate.new(@attr)
     vat_rate.save
-    bill = FactoryGirl.create(:bill, vat_rate_id: vat_rate.id)
+    bill = FactoryBot.create(:bill, vat_rate_id: vat_rate.id)
     expect{vat_rate.destroy}.to_not change(VatRate, :count)
   end
 
@@ -50,16 +50,17 @@ describe VatRate do
     expect(VatRate.active.length).to eq 1
   end
 
-  it "can detect active duplicates" do
-    vat_rate = VatRate.new(@attr)
+  it "can detect active duplicates by name" do
+    ac = FactoryBot.create(:account)
+    vat_rate = VatRate.new(@attr.merge(account_id: ac.id))
     vat_rate.save
-    expect(VatRate.new(@attr)).to_not be_valid
+    expect(VatRate.new(@attr.merge(account_id: ac.id))).to_not be_valid
   end
 
   it "checks if the vat % rate has been used" do
     vat_rate = VatRate.new(@attr)
     vat_rate.save
-    bill = FactoryGirl.create(:bill, vat_rate_id: vat_rate.id)
+    bill = FactoryBot.create(:bill, vat_rate_id: vat_rate.id)
     vat_rate.update(rate: 15)
     expect(vat_rate).to_not be_valid
   end

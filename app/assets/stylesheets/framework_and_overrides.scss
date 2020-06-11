@@ -1,4 +1,5 @@
 // import the CSS framework
+// imports are commented out as imported in application.scss
 
 // @import "mixins";
 // @import "variables";
@@ -10,7 +11,7 @@
 
 // make all images responsive by default
 img {
-  @extend .img-responsive;
+  @extend .img-responsive !optional;
   margin: 0 auto;
   }
 
@@ -23,40 +24,45 @@ img {
 // create your own classes
 // to make views framework-neutral
 // Note from Owen:
-// Uses semantic tags mapped to bootstrap styles e.g 
+// Uses semantic tags mapped to bootstrap styles e.g
 // section extends .row
 // main extends .container
-// therefore no need to code the bootstrap specific 
+// therefore no need to code the bootstrap specific
 // classes in many cases.
+
+// 4/6/2020 Owen again. Needed to add !optional to many @extend lines.
+// possibly because I changed the order of loading.
+
 .column {
-  @extend .col-md-6;
-  @extend .text-center;
+  @extend .col-md-6 !optional;
+  @extend .text-center !optional;
   }
 .form {
-  @extend .col-md-6;
+  @extend .col-md-6 !optional;
   }
 .form-centered {
-  @extend .col-md-6;
-  @extend .text-center;
+  @extend .col-md-6 !optional;
+  @extend .text-center !optional;
   }
 .submit {
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .btn-lg;
+  @extend .btn !optional;
+  @extend .btn-primary !optional;
+  @extend .btn-lg !optional;
   }
 // apply styles to HTML elements
 // to make views framework-neutral
 
 main {
-  @extend .container;
-  background-color: #eee;
+  @extend .container !optional;
+  // background-color: #eee;
+  background-color: $white;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
 
 section {
-  @extend .row;
+  @extend .row !optional;
   margin-top: 20px;
   }
 
@@ -69,23 +75,23 @@ section {
   margin: 0 auto;
 }
 .authform form {
-  @extend .well;
-  @extend .well-lg;
+  @extend .well !optional;
+  @extend .well-lg !optional;
   padding-bottom: 40px;
 }
 .authform .right {
   float: right !important;
 }
 .authform .button {
-  @extend .btn;
-  @extend .btn-primary;
+  @extend .btn !optional;
+  @extend .btn-primary !optional;
 }
 .authform fieldset {
-  @extend .well;
+  @extend .well !optional;
 }
 #error_explanation {
-  @extend .alert;
-  @extend .alert-danger;
+  @extend .alert !optional;
+  @extend .alert-danger !optional;
 }
 #error_explanation h2 {
   font-size: 16px;
@@ -96,17 +102,17 @@ section {
 
 #flash_notice {
   @extend .alert;
-  @extend .alert-success
+  @extend .alert-success;
 }
 
 #flash_error, #flash_alert {
-  @extend .alert;
-  @extend .alert-danger;
+  @extend .alert !optional;
+  @extend .alert-danger !optional;
 }
 
 #flash_warning {
-  @extend .alert;
-  @extend .alert-warning;
+  @extend .alert !optional;
+  @extend .alert-warning !optional;
 }
 
 // set pointer to hand
@@ -115,5 +121,6 @@ section {
 // apparently missing from latest bootstrap
 // added to highlight the New in select2
 .label-important {
-    background-color: rgb(185, 74, 72);
+  background-color: $white
+    // background-color: rgb(185, 74, 72);
 }

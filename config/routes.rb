@@ -30,7 +30,20 @@ Bulldog::Application.routes.draw do
   resources :plans, only: [:index]
   # post '/send_mail' => 'contacts#send_mail'
   resources :contacts, only: [:new, :create]
-  get "help/:action" => "help#:action"
-  # get 'help/intro' => 'help#intro'
+  # get "help/:action" => "help#:action"
+  get 'help/intro' => 'help#intro'
+  get 'help/account' => 'help#account'
+  get 'help/bills' => 'help#bills'
+  get 'help/categories' => 'help#categories'
+  get 'help/customers' => 'help#customers'
+  get 'help/invoices' => 'help#invoices'
+  get 'help/logo' => 'help#logo'
+  get 'help/print_settings' => 'help#print_settings'
+  get 'help/reports' => 'help#reports'
+  get 'help/setup' => 'help#setup'
+  get 'help/subscription' => 'help#subscription'
+  get 'help/suppliers' => 'help#suppliers'
+  get 'help/vat' => 'help#vat'
+  get 'help/video' => 'help#video'
 
 end

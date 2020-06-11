@@ -2,16 +2,16 @@ module ControllerMacros
   # def login_admin
   #   before(:each) do
   #     @request.env["devise.mapping"] = Devise.mappings[:admin]
-  #     sign_in FactoryGirl.create(:admin) # Using factory girl as an example
+  #     sign_in FactoryBot.create(:admin) # Using factory girl as an example
   #   end
   # end
 
   def login_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = FactoryGirl.create(:user)
-      @account = FactoryGirl.create(:account, user_id: @user.id)
-      @user.confirm!
+      @user = FactoryBot.create(:user)
+      @account = FactoryBot.create(:account, user_id: @user.id)
+      @user.confirm
       sign_in @user
     end
   end
@@ -19,9 +19,9 @@ module ControllerMacros
   def login_business_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = FactoryGirl.create(:user)
-      @account = FactoryGirl.create(:account, user_id: @user.id, plan_id: 2)
-      @user.confirm!
+      @user = FactoryBot.create(:user)
+      @account = FactoryBot.create(:account, user_id: @user.id, plan_id: 2)
+      @user.confirm
       sign_in @user
     end
   end
@@ -29,9 +29,9 @@ module ControllerMacros
   def login_user_with_account_state(state)
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = FactoryGirl.create(:user)
-      @account = FactoryGirl.create(:account, user_id: @user.id, state: state)
-      @user.confirm!
+      @user = FactoryBot.create(:user)
+      @account = FactoryBot.create(:account, user_id: @user.id, state: state)
+      @user.confirm
       sign_in @user
     end
   end
@@ -39,10 +39,10 @@ module ControllerMacros
   def login_user_with_expired_account_state(state)
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = FactoryGirl.create(:user)
-      @account = FactoryGirl.create(:account, user_id: @user.id, state: state,
+      @user = FactoryBot.create(:user)
+      @account = FactoryBot.create(:account, user_id: @user.id, state: state,
         trial_end: Time.now - 1.day)
-      @user.confirm!
+      @user.confirm
       sign_in @user
     end
   end
@@ -83,13 +83,13 @@ module ControllerMacros
 
   def create_customer
     before(:each) do
-      @customer = FactoryGirl.create(:customer, account_id: @account.id)
+      @customer = FactoryBot.create(:customer, account_id: @account.id)
     end
   end
 
   def create_bill
     before(:each) do
-      @bill = FactoryGirl.create(:bill, account_id: @account.id, customer_id: @customer.id )
+      @bill = FactoryBot.create(:bill, account_id: @account.id, customer_id: @customer.id )
     end
   end
 end

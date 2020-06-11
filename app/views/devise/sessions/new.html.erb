@@ -7,7 +7,7 @@
       <div class="authform">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
           <h1>Sign in</h1>
-          <%= devise_error_messages! %>
+            <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-group">
             <%- if devise_mapping.registerable? %>
             <%= link_to 'Sign up', plans_path, class: 'pull-right', data: {toggle: "tooltip"}, title: "Sign up for a BulldogClip account", tabindex: 0 %>

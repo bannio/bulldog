@@ -63,7 +63,7 @@ describe UpdateAccount do
     end
 
     it "updates other attributes e.g. name" do
-      new_name_account = FactoryGirl.create(:account)
+      new_name_account = FactoryBot.create(:account)
       new_name_account.name = "my new name"
       UpdateAccount.call(new_name_account)
       expect(new_name_account.reload.name).to eq("my new name")

@@ -105,11 +105,12 @@ class AccountsController < ApplicationController
 
   def record_not_found
     flash[:error] = "You don't have access to that account"
-    begin
-      redirect_to :back
-    rescue ActionController::RedirectBackError
-      redirect_to root_path
-    end
+    # begin
+      # redirect_to :back
+      redirect_back(fallback_location: root_path)
+    # rescue ActionController::RedirectBackError
+    #   redirect_to root_path
+    # end
   end
 
   def is_cancellation?

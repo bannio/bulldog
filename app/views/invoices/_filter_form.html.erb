@@ -8,8 +8,8 @@
     <%= label_tag :to_date %>
     <%= text_field_tag :to_date, params[:to_date], class: "date_picker", placeholder: "yyyy-mm-dd" %>
   </div>
-  <div class="form-group">
-    <%= hidden_field_tag :inv_customer_id, params[:inv_customer_id], data: {customers: get_customer_data} %>
+  <div class="form-group" id="inv_customer_id">
+    <%= collection_select(:invoice, :customer_id, current_account.customers.order(:name), :id, :name, prompt: :true) %>
   </div>
   <div class="form-group">
     <%= text_field_tag :search, params[:search], class: "search-query form-control", placeholder: ' by text within comment' %>

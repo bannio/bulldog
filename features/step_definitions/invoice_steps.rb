@@ -66,6 +66,8 @@ Then(/^There is a search field for comment$/) do
 end
 
 When(/^I type "(.*?)" in the search field and press enter$/) do |search|
+  visit '/invoices/'
+  click_button('Filter')
   fill_in 'search', with: search
   click_button('Filter')
 end
@@ -78,7 +80,7 @@ Given /^I have the following invoices$/ do |table|
       comment  = row[2]
       date     = row[3]
       total    = row[4]
-      invoice  = FactoryGirl.create(:invoice,
+      invoice  = FactoryBot.create(:invoice,
                         account_id: @account.id,     # assumes user with an account already called
                         number: number,
                         customer_id: customer.id,
@@ -89,15 +91,19 @@ Given /^I have the following invoices$/ do |table|
 end
 
 When(/^I select "(.*?)" as the invoice customer$/) do |value|
-  page.find("#s2id_invoice_customer_id b" ).click
-  page.find(".select2-drop-active .select2-search .select2-input").set(value)
-  page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
+  page.find_by_id("select2-invoice_customer_id-container" ).click
+  # page.find_by_id("#s2id_invoice_customer_id b" ).click
+  find('.select2-dropdown input.select2-search__field').send_keys("#{value}", :enter)
+  # page.find(".select2-drop-active .select2-search .select2-input").set(value)
+  # page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
 end
 
 When(/^I fill in header with "(.*?)"$/) do |value|
-  page.find("#s2id_invoice_header_id b" ).click
-  page.find(".select2-drop-active .select2-search .select2-input").set(value)
-  page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
+  page.find_by_id("select2-invoice_header_id-container").click
+  find('.select2-dropdown input.select2-search__field').send_keys("#{value}", :enter)
+  # page.find("#s2id_invoice_header_id b" ).click
+  # page.find(".select2-drop-active .select2-search .select2-input").set(value)
+  # page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:return)
 end
 
 When(/^I click the Delete button and confirm OK$/) do

@@ -2,15 +2,15 @@ require 'rails_helper'
 
 describe Supplier do
   it 'is invalid without a name' do
-    @supplier = FactoryGirl.build(:supplier, name: "")
+    @supplier = FactoryBot.build(:supplier, name: "")
     expect(@supplier).to_not be_valid
   end
 
   it 'knows the sum of its bills' do
-    @supplier = FactoryGirl.create(:supplier)
-    bill = FactoryGirl.create(:bill, supplier_id: @supplier.id, amount: 10 )
-    bill2 = FactoryGirl.create(:bill, supplier_id: @supplier.id, amount: 10 )
-    bill3 = FactoryGirl.create(:bill, amount: 10 )
+    @supplier = FactoryBot.create(:supplier)
+    bill = FactoryBot.create(:bill, supplier_id: @supplier.id, amount: 10 )
+    bill2 = FactoryBot.create(:bill, supplier_id: @supplier.id, amount: 10 )
+    bill3 = FactoryBot.create(:bill, amount: 10 )
 
     expect(@supplier.total).to eq 20
   end
@@ -27,19 +27,19 @@ describe Supplier do
   end
 
   it "checks for bills before destroying" do
-    @supplier = FactoryGirl.create(:supplier)
-    bill = FactoryGirl.create(:bill, supplier_id: @supplier.id, amount: 10 )
+    @supplier = FactoryBot.create(:supplier)
+    bill = FactoryBot.create(:bill, supplier_id: @supplier.id, amount: 10 )
     expect{
       @supplier.destroy
     }.to_not change(Supplier, :count)
-    
+
   end
 
   it "can reassign its bills to another" do
-    supplier = FactoryGirl.create(:supplier, name: "one")
-    supplier2 = FactoryGirl.create(:supplier, name: "two")
-    bill = FactoryGirl.create(:bill, supplier_id: supplier.id )
-    bill2 = FactoryGirl.create(:bill, supplier_id: supplier2.id )
+    supplier = FactoryBot.create(:supplier, name: "one")
+    supplier2 = FactoryBot.create(:supplier, name: "two")
+    bill = FactoryBot.create(:bill, supplier_id: supplier.id )
+    bill2 = FactoryBot.create(:bill, supplier_id: supplier2.id )
     supplier.reassign_bills_to("two")
     expect(bill.reload.supplier_id).to eq supplier2.id
   end

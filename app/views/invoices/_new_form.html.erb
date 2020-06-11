@@ -3,17 +3,16 @@
   <%= form_group_for f, :date, label: false do %>
     <%= f.text_field :date, class: "date_picker invoice-date-picker" %>
   <% end %>
-
   <%= form_group_for f, :customer_id, label: false do %>
-    <%= f.hidden_field :customer_id, data: {customers: get_customer_data} %>
+    <%= f.collection_select(:customer_id, current_account.customers.order(:name), :id, :name, prompt: true) %>
   <% end %>
 
   <%= form_group_for f, :header_id, label: false do %>
-    <%= f.text_field :header_id, data: {headers: get_header_data}, placeholder: "Header - will appear as title on printed document" %>
+    <%= f.collection_select(:header_id, current_account.headers.order(:name), :id, :name, prompt: true) %>
   <% end %>
 
   <%= form_group_for f, :comment, label: false do %>
-    <%= f.text_area :comment, placeholder: "Comment - will appear as on printed document", rows: "5" %>
+    <%= f.text_area :comment, placeholder: "Comment - will appear on printed document", rows: "5" %>
   <% end %>
 
   <%= f.submit 'Create Document', class: 'create-btn std-btn', data: {toggle: "tooltip"}, title: "Create a new document"  %>

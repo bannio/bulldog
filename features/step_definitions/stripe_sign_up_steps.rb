@@ -1,3 +1,5 @@
+# Stripe is no longer in use so this test need not be called. Note it
+# would need updating for latest version of stripe-ruby-mock.
 And(/^stripe-ruby-mock is running$/) do
   require 'stripe_mock'
   StripeMock.stop
@@ -50,7 +52,7 @@ When(/^my credit card details$/) do
 end
 
 Given(/^a Base Plan exists$/) do
-  @plan = FactoryGirl.create(:plan,
+  @plan = FactoryBot.create(:plan,
     id:       1,
     name:     "Personal",
     interval: "year",
@@ -59,7 +61,7 @@ Given(/^a Base Plan exists$/) do
 end
 
 Given(/^a Business Monthly Plan exists$/) do
-  @plan = FactoryGirl.create(:plan,
+  @plan = FactoryBot.create(:plan,
     id:       2,
     name:     "Business Monthly",
     interval: "month",
@@ -68,7 +70,7 @@ Given(/^a Business Monthly Plan exists$/) do
 end
 
 Given(/^a Business Annual Plan exists$/) do
-  @plan = FactoryGirl.create(:plan,
+  @plan = FactoryBot.create(:plan,
     id:       3,
     name:     "Business Annual",
     interval: "year",
@@ -100,7 +102,7 @@ When(/^I enter (\d+), (.*) and (\d+ \/ \d+)$/) do |card_number, cvc, expiry|
 end
 
 When(/^I go to the new account page$/) do
-  plan = Plan.first || FactoryGirl.create(:plan)
+  plan = Plan.first || FactoryBot.create(:plan)
   visit new_account_path(plan_id: plan.id)
 end
 

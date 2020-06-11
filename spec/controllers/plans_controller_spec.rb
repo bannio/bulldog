@@ -8,7 +8,7 @@ describe PlansController do
       expect(response).to be_success
     end
     it "assigns all plans as @plans" do
-      plan = FactoryGirl.create(:plan)
+      plan = FactoryBot.create(:plan)
       get 'index'
       expect(assigns(:plans)).to eq [plan]
     end

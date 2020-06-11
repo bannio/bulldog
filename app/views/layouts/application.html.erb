@@ -16,6 +16,8 @@
     <link rel="apple-touch-icon" sizes="152x152" href=<%= asset_path('apple-touch-icon-152x152.png') %> />
     <link href="//vjs.zencdn.net/4.7/video-js.css" rel="stylesheet" />
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <!-- added for Chartkick to use google charts May 2020 -->
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
     <%= csrf_meta_tags %>
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" >
@@ -25,7 +27,7 @@
     </header>
     <main role="main">
        <%= render 'layouts/flashes' %>
-       <%= render 'cookies_eu/cookies_eu', link: page_path('cookies') %>
+       <%= render 'cookies_eu/consent_banner', link: page_path('cookies') %>
        <%= yield %>
     </main>
     <footer role="contentinfo">

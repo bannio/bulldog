@@ -31,7 +31,7 @@ Feature: Create customers, suppliers and categories on the fly
     And I click on New
     Then I should be on the "New Bill" modal
     When I type "a new customer" in the customer select field
-    And I type "" in the supplier select field
+    # And I type "" in the supplier select field
     And I type "a new category" in the category select field
     And I enter "My new bill" in the Description field
     And I enter "10" in the Amount field

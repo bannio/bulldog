@@ -6,7 +6,7 @@ describe Invoice do
     @customer = create(:customer)
     @bill = create(:bill, customer: @customer)
   end
-  
+
 
   it "has a valid factory - given a valid customer with bill" do
     expect(create(:invoice, customer: @customer)).to be_valid
@@ -23,7 +23,7 @@ describe Invoice do
                                  date: "2014-02-01")
     expect(invoice).to_not be_valid
   end
-  
+
   it "is not valid with no bills" do
     customer = create(:customer)
     invoice = Invoice.new(customer: customer,
@@ -33,7 +33,7 @@ describe Invoice do
   end
 
   it "requires a date" do
-    invoice = Invoice.new(customer: @customer, 
+    invoice = Invoice.new(customer: @customer,
                               date: "")
     # expect(invoice).to have(1).errors_on(:date)
     expect(invoice).to_not be_valid
@@ -99,12 +99,13 @@ describe Invoice do
     customer2 = create(:customer)
     customer3 = create(:customer)
     bill = create(:bill, customer: customer2)
-    invoice = create(:invoice, customer_id: @customer.id)
-    invoice2 = create(:invoice, customer_id: customer2.id)
-    expect(Invoice.customer_filter(@customer)).to eq [invoice]
-    expect(Invoice.customer_filter(customer2)).to eq [invoice2]
-    expect(Invoice.customer_filter("")).to eq [invoice, invoice2]
-    expect(Invoice.customer_filter(customer3)).to eq []
+    invoice = create(:invoice, customer: @customer)
+    invoice2 = create(:invoice, customer: customer2)
+    expect(Invoice.where(customer_id: @customer.id)).to match_array invoice
+    expect(Invoice.customer_filter({customer_id: @customer.id})).to match_array [invoice]
+    expect(Invoice.customer_filter({customer_id: customer2.id})).to match_array [invoice2]
+    expect(Invoice.customer_filter({customer_id: ""})).to match_array [invoice, invoice2]
+    expect(Invoice.customer_filter({customer_id: customer3.id})).to match_array []
   end
 
   it "can search by comment" do

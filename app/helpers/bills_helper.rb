@@ -17,7 +17,8 @@ module BillsHelper
   end
 
   def get_header_data
-    current_account.headers.order(:name).to_json(only: [:id, :name])
+    current_account.headers.order(:name) # revert to non-json format
+    # current_account.headers.order(:name).to_json(only: [:id, :name])
   end
 
 end

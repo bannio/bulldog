@@ -1,34 +1,34 @@
-Given /^I start with a total expenses balance of £(#{CAPTURE_A_NUMBER})$/ do |amount|
-  FactoryGirl.create(:bill, amount: amount) if amount > 0
-  Bill.sum(:amount).should == amount
+Given /^I start with a total expenses balance of £(\d+\.*\d*)$/ do |amount|
+  FactoryBot.create(:bill, amount: amount.to_i) if amount.to_i > 0
+  Bill.sum(:amount).should == amount.to_i
 end
 Given /^I have a supplier (\w+)$/ do |supplier|
-  FactoryGirl.create(:supplier, name: supplier)
+  FactoryBot.create(:supplier, name: supplier)
   Supplier.find_by_name(supplier).name.should == supplier
 end
 
 And /^I have a customer (\w+)$/ do |customer|
-  FactoryGirl.create(:customer, name: customer)
+  FactoryBot.create(:customer, name: customer)
   Customer.find_by_name(customer).name.should == customer
 end
 And /^I have a category (\w+)$/ do |category|
-  FactoryGirl.create(:category, name: category)
+  FactoryBot.create(:category, name: category)
   Category.find_by_name(category).name.should == category
 end
 
-When /^I add a bill for £(#{CAPTURE_A_NUMBER})$/ do |amount|
-  FactoryGirl.create(:bill, amount: amount)
+When /^I add a bill for £(\d+\.*\d*)$/ do |amount|
+  FactoryBot.create(:bill, amount: amount.to_i)
 end
 
 Given /^I have the following data already saved$/ do |table|
   table.raw.each do |row|
-    FactoryGirl.create(:customer, name: row[0], account_id: @account.id)
-    FactoryGirl.create(:supplier, name: row[1], account_id: @account.id)
-    FactoryGirl.create(:category, name: row[2], account_id: @account.id)
+    FactoryBot.create(:customer, name: row[0], account_id: @account.id)
+    FactoryBot.create(:supplier, name: row[1], account_id: @account.id)
+    FactoryBot.create(:category, name: row[2], account_id: @account.id)
   end
 end
 
-# When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer, supplier, value|
+# When /^I add a (\w+) bill from (\w+) for £(\d+\.*\d*)$/ do |customer, supplier, value|
 #   fill_in 'bill_date',        with: Date.today
 #   select supplier,            from: 'bill_supplier_id'
 #   select customer,            from: 'bill_customer_id'
@@ -38,21 +38,24 @@ end
 #   click_button 'Save'
 # end
 
-When /^I add a (\w+) bill from (\w+) for £(#{CAPTURE_A_NUMBER})$/ do |customer, supplier, value|
+# When /^I add a (\w+) bill from (\w+) for £(\d+\.*\d*)$/ do |customer, supplier, value|
+When /^I add a (\w+) bill from (\w+) for £(\d+\.*\d*)$/ do |customer, supplier, value|
+# date fills in by default and the datepicker can get in the way so
+# as no date is specified, let it default.
   # find('#bill_date')
-  fill_in 'bill_date',        with: Date.today.to_s(:db)
+  # fill_in 'bill_date',        with: Date.today.to_s(:db) + "\t"
   steps %{
     When I type "#{customer}" in the customer select field
     When I type "#{supplier}" in the supplier select field
     When I type "Food" in the category select field
   }
   fill_in 'bill_description', with: 'my bill'
-  fill_in 'bill_amount',      with: value
+  fill_in 'bill_amount',      with: value.to_i
   # click_button 'Save'
 end
 
 When(/^I leave the amount empty$/) do
-  fill_in 'bill_date',        with: Date.today.to_s(:db)
+  # fill_in 'bill_date',        with: Date.today.to_s(:db)
   steps %{
     When I type "Household" in the customer select field
     When I type "Asda" in the supplier select field
@@ -63,20 +66,21 @@ When(/^I leave the amount empty$/) do
   # click_button 'Save'
 end
 
-Then /^the total expenses should be £(#{CAPTURE_A_NUMBER})$/ do |amount|
+Then /^the total expenses should be £(\d+\.*\d*)$/ do |amount|
   # This one keeps going wrong so trying to give it some space by
   # first visiting home
   # visit '/home'
   total = @account.reload.bills.sum(:amount)
+  # expect(total).to eq amount.to_i
   expect(total).to eq amount
 end
 
-Then /^the (\w+) customer total should be £(#{CAPTURE_A_NUMBER})$/ do |customer, amount|
-  Customer.find_by_name(customer).reload.total.should eq(amount)
+Then /^the (\w+) customer total should be £(\d+\.*\d*)$/ do |customer, amount|
+  Customer.find_by_name(customer).reload.total.should eq(amount.to_i)
 end
 
-Then /^the (\w+) supplier total should be £(#{CAPTURE_A_NUMBER})$/ do |supplier, amount|
-  Supplier.find_by_name(supplier).reload.total.should == amount
+Then /^the (\w+) supplier total should be £(\d+\.*\d*)$/ do |supplier, amount|
+  Supplier.find_by_name(supplier).reload.total.should == amount.to_i
 end
 
 Given /^the supplier (\w+) does not exist$/ do |supplier|
@@ -111,7 +115,7 @@ Given /^I have the following bills$/ do |table|
       amount = row[5]
       vat = row[7] || ""
       vat_rate_id = vat_rate ? vat_rate.id : ""
-      bill = FactoryGirl.create(:bill,
+      bill = FactoryBot.create(:bill,
                         account_id:  @account.id,  # assumes user with an account already called
                         customer_id: customer.id,
                         supplier_id: supplier.id,
@@ -134,9 +138,12 @@ Then(/^there is a link to add a new bill$/) do
 end
 
 When(/^I type "(.*?)" in the (.*?) select field$/) do |value, field|
-  page.find("#s2id_bill_#{field}_id b" ).click
-  page.find(".select2-drop-active .select2-search .select2-input").set(value)
-  page.find(".select2-drop-active .select2-search .select2-input").native.send_keys(:tab)
+  page.find_by_id("select2-bill_#{field}_id-container" ).click
+  find('.select2-dropdown input.select2-search__field').send_keys("#{value}", :enter)
+end
+
+And(/^I press escape to reset select search field$/) do
+  page.first('.select2-dropdown input.select2-search__field').send_keys(:escape)
 end
 
 When(/^I enter "(.*?)" in the (.*?) field$/) do |value, field|
@@ -145,7 +152,7 @@ end
 
 Given(/^another user has a bill$/) do
   create_another_account
-  @another_bill = FactoryGirl.create(:bill, account_id: @another_account.id)
+  @another_bill = FactoryBot.create(:bill, account_id: @another_account.id)
 
 end
 

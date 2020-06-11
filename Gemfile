@@ -1,20 +1,23 @@
 source 'https://rubygems.org'
 
-ruby "2.1.2"
+# ruby "2.1.2"
+# ruby "2.4.0"
+ruby "2.7.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.7'
+# gem 'rails', '4.1.7'
+gem 'rails', '5.0.7.2'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails' #, '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier' #, '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails' #, '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -23,7 +26,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'select2-rails'
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'figaro'
 gem 'prawn'
 gem 'prawn-table'
@@ -35,8 +38,9 @@ gem 'stripe-rails'
 gem 'mailchimp-api', '~> 2.0.5', require: 'mailchimp'
 gem 'pundit'
 gem 'aasm'
-gem "paperclip", "~> 4.1"
-gem 'aws-sdk', '~> 1.5.7'
+gem "paperclip" #, "~> 4.1"
+# gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3', '~> 1'
 gem 'cookies_eu'
 gem 'newrelic_rpm'
 
@@ -46,9 +50,9 @@ gem 'turbolinks'
 # gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder' #, '~> 1.2'
 
-gem 'bootstrap-sass', '~> 3.2.0.0' #'~> 3.1.1.0'
+gem 'bootstrap-sass' #, '~> 3.2.0.0' #'~> 3.1.1.0'
 
 gem 'high_voltage'  # for static pages
 # gem 'simple_form'  # removed 19/9/2014
@@ -61,8 +65,10 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'email_spec'
-  gem 'action_mailer_cache_delivery', '~> 0.3.7'
-  gem 'stripe-ruby-mock', '~> 2.0.0' #'~> 1.10.1.7'
+  gem 'action_mailer_cache_delivery' #, '~> 0.3.7'
+  gem 'stripe-ruby-mock' #, '~> 2.0.0' #'~> 1.10.1.7'
+  # required to allow 'assigns' to be used in tests.
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -76,11 +82,12 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.0.2'
+  gem 'rspec-rails' #, '~> 3.0.2'
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
   # gem 'capybara','~> 2.0.1'         installed as part of cucumber-rails
-  gem 'factory_girl_rails', '~> 4.4.0'
+  # gem 'factory_girl_rails' #, '~> 4.4.0'
+  gem 'factory_bot_rails'
   gem 'launchy'
   # gem 'rack-mini-profiler'
   gem 'selenium-client'

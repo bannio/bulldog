@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe UpdateCard do
 
-  let(:account){ FactoryGirl.create(:account,
+  let(:account){ FactoryBot.create(:account,
     card_last4: "1234",
     state: "trialing"
     ) }
