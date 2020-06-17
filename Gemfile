@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 # ruby "2.1.2"
 # ruby "2.4.0"
-ruby "2.7.0"
+ruby "2.7.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'rails', '4.1.7'
 # gem 'rails', '5.0.7.2'
-gem 'rails', '5.1'
+gem 'rails', '~> 5.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
@@ -85,7 +85,8 @@ end
 group :test, :development do
   gem 'rspec-rails' #, '~> 3.0.2'
   gem 'spring-commands-rspec'
-  gem 'database_cleaner'
+  # gem 'database_cleaner'
+  gem 'database_cleaner-active_record'
   # gem 'capybara','~> 2.0.1'         installed as part of cucumber-rails
   # gem 'factory_girl_rails' #, '~> 4.4.0'
   gem 'factory_bot_rails'

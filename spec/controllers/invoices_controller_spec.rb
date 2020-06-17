@@ -26,7 +26,7 @@ describe InvoicesController do
   describe "GET #index" do
     it "returns http success even when no invoices" do
       get 'index'
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "assigns all invoices as @invoices" do

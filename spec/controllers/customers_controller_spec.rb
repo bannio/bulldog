@@ -19,7 +19,7 @@ describe CustomersController do
   describe "GET 'index'" do
     it "returns http success even when no customers" do
       get 'index'
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

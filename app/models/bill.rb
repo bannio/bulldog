@@ -139,14 +139,14 @@ class Bill < ActiveRecord::Base
   # This monthly_sum method returns integers 1 to 12 to represent months so that multiple years can be laid
   # over each other in chartkick charts. Note that this is only available for bar or column charts.
   def self.monthly_sum
-    order("cast(EXTRACT(month FROM date) as integer)").
+    order(Arel.sql("cast(EXTRACT(month FROM date) as integer)")).
     group("cast(EXTRACT(month FROM date) as integer)").
     sum(:amount)
   end
 
 
   def self.monthly_count
-    order("cast(EXTRACT(month FROM date) as integer)").
+    order(Arel.sql("cast(EXTRACT(month FROM date) as integer)")).
     group("cast(EXTRACT(month FROM date) as integer)").
     count
   end

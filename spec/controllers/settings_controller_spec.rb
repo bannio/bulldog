@@ -17,7 +17,7 @@ describe SettingsController do
 
     it "returns http success" do
       get :show, params: {id: @setting}
-      expect(response).to be_success
+      expect(response).to be_successful
     end
     it "assigns the setting" do
       get :show, params: {id: @setting}
@@ -28,7 +28,7 @@ describe SettingsController do
   describe "GET 'edit'" do
     it "returns http success" do
       get :edit, params: {id: @setting}
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

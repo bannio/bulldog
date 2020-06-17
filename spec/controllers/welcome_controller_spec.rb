@@ -7,7 +7,7 @@ describe WelcomeController do
 
     it "returns http success" do
       get 'index'
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -18,7 +18,7 @@ describe WelcomeController do
     it "continues to index when in date" do
       @account.trial_end = Time.now + 1.day
       get 'index'
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -43,7 +43,7 @@ describe WelcomeController do
 
     it "lets them in" do
       get 'index'
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "leaves the account as paid" do

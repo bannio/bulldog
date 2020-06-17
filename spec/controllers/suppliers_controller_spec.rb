@@ -7,7 +7,7 @@ describe SuppliersController do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "assigns suppliers" do
@@ -21,7 +21,7 @@ describe SuppliersController do
     it "returns http success" do
       supplier = create(:supplier, account_id: @account.id)
       get :edit, params: {id: supplier.to_param}
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "assigns supplier" do
