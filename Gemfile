@@ -58,6 +58,8 @@ gem 'bootstrap-sass' #, '~> 3.2.0.0' #'~> 3.1.1.0'
 gem 'high_voltage'  # for static pages
 # gem 'simple_form'  # removed 19/9/2014
 
+# gem 'secure_headers', '~> 6.3'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -104,8 +106,9 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
+gem 'puma'
 # Use unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 gem 'rack-timeout'
 
 gem 'rails_12factor', group: :production

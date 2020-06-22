@@ -336,7 +336,7 @@ SELECT = {
   },
   billCustomer: function () {
     $('#bill_customer_id').select2({
-      dropdownParent: $('#bill_modal'),
+      // dropdownParent: $('#bill_modal'),
       theme: "bootstrap",
       placeholder: 'Customer',
       allowClear: true,
@@ -349,7 +349,7 @@ SELECT = {
   billSupplier: function () {
     // console.log('billSupplier starting');
     $('#bill_supplier_id').select2({
-      dropdownParent: $('#bill_modal'),
+      // dropdownParent: $('#bill_modal'),
       theme: "bootstrap",
       placeholder: 'Supplier',
       allowClear: true,
@@ -358,6 +358,7 @@ SELECT = {
       tags: true,
       templateResult: SELECT.formatResult
     });
+    // console.log('billSupplier ending');
   },
   billCategory: function () {
     $('#bill_category_id').select2({
@@ -643,5 +644,5 @@ UTIL = {
 // $(document).ready( UTIL.init );
 // $(document).on('page:update', UTIL.init);
 $(document).on("turbolinks:load", UTIL.init);
-$(document).ajaxComplete(UTIL.init);
+// $(document).ajaxComplete(UTIL.init);
 // $('.modal').on('shown.bs.modal', UTIL.init);

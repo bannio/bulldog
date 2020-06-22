@@ -26,6 +26,9 @@
 # Paperclip files temporary location
 /public/system
 
+# local ssl certificate files for development
+/config/ssl
+
 .DS_Store
 .env
 .powenv

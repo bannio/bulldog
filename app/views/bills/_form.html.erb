@@ -1,8 +1,8 @@
 
-<%= form_for bill, remote: true do |f| %>
+<%= form_for @bill, remote: true do |f| %>
   <%= f.hidden_field :account_id %>
   <%= form_group_for f, :date, label: false do %>
-    <%= f.text_field :date, class: "date_picker form-control" %>
+    <%= f.text_field :date, class: "date_picker form-control", placeholder: "#{Date.current}"%>
   <% end %>
   <%= form_group_for f, :customer_id, label: false do %>
     <%= f.collection_select(:customer_id, current_account.customers.order(:name), :id, :name, prompt: true) %>

@@ -32,6 +32,14 @@ RSpec.configure do |config|
   # include FactoryBot to be able to use simplified calls e.g. create, attributes_for
   config.include FactoryBot::Syntax::Methods
 
+  # Might need the following for SSL but not now. Headless config is in:
+  #    features/support/env.rb
+  #
+  # config.before(:each, type: :system, js: true) do
+  #   driven_by :headless_firefox_ssl
+  # end
+
+
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"

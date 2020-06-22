@@ -9,6 +9,9 @@ class BillsController < ApplicationController
                                               page(params[:page]).
                                               order(sort_column + " " + sort_direction)
     authorize @bills
+    @bill = current_account.bills.build
+    @bill.date = Date.today
+    # authorize @bill
     respond_to do |format|
       format.html
       format.csv  {
@@ -79,7 +82,7 @@ class BillsController < ApplicationController
 
   def collect_new_entries
 
-    # If update then the params may be absent but the bill may still be valid. 
+    # If update then the params may be absent but the bill may still be valid.
     # If create then never valid without all three foriegn keys.
     # This method should create new entries if the id appears to be a name
 

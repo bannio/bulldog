@@ -14,10 +14,11 @@
     <link rel="apple-touch-icon" sizes="120x120" href=<%= asset_path('apple-touch-icon-120x120.png') %> />
     <link rel="apple-touch-icon" sizes="144x144" href=<%= asset_path('apple-touch-icon-144x144.png') %> />
     <link rel="apple-touch-icon" sizes="152x152" href=<%= asset_path('apple-touch-icon-152x152.png') %> />
-    <link href="//vjs.zencdn.net/4.7/video-js.css" rel="stylesheet" />
+    <!-- <link href="//vjs.zencdn.net/4.7/video-js.css" rel="stylesheet" /> -->
+    <%#= csp_meta_tag %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <!-- added for Chartkick to use google charts May 2020 -->
-    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <%#= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
     <%= csrf_meta_tags %>
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" >

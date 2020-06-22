@@ -14,11 +14,35 @@ require 'cucumber/rails'
 # selectors in your step definitions to use the XPath syntax.
 # Capybara.default_selector = :xpath
 
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = 15
 
 # added after this error message: Capybara is unable to load `puma` for its server
+# In other words, the default is puma which I have since switched to.
+# Capybara.server = :webrick
 
-Capybara.server = :webrick
+Capybara.app_host = "https://localhost.owen"
+Capybara.always_include_port = true
+
+Capybara.register_driver(:headless_firefox_ssl) do |app|
+  # options = Selenium::WebDriver::Firefox::Options.new(args: %w[--headless])
+  options = Selenium::WebDriver::Firefox::Options.new
+  capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(
+    acceptInsecureCerts: true,
+  )
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :firefox,
+    options: options,
+    desired_capabilities: capabilities
+  )
+end
+
+Capybara.javascript_driver = :headless_firefox_ssl
+
+Capybara.server = :puma, {
+  Host: "ssl://#{Capybara.server_host}:#{Capybara.server_port}?key=config/ssl/localhost.owen.key&cert=config/ssl/localhost.owen.crt"
+}
+
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how

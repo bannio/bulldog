@@ -42,4 +42,8 @@ Rails.application.configure do
     :s3_protocol => 'https'
   }
   # config.action_view.raise_on_missing_translations = true
+
+  # Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies.
+  config.force_ssl = true
 end

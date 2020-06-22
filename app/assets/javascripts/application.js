@@ -10,14 +10,18 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// DON'T put comments on the same line as these directives!!
+//
 //= require jquery
-//= require jquery_ujs
+//  require jquery_ujs
+//= require rails-ujs
 //= require jquery-ui/widgets/datepicker
-//= require jquery.payment
+//  require jquery.payment
 //= require bootstrap-sprockets
 //= require select2-full
-// require jsapi    // replaced by direct call to google charts api
+//  require jsapi
 //= require chartkick
+//= require Chart.bundle
 //= require turbolinks
 //= require cookies_eu
 //= require_tree .

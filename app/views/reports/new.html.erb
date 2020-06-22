@@ -62,13 +62,15 @@
               <%= pie_chart @report.bills.group("categories.name").references(:category).
                     order("categories.name").
                     sum(:amount),
-                    library: {title: "Total by Category"} %>
+                    title: "Total by Category",
+                    legend: false, prefix: "£", thousands: "," %>
             </div>
             <div class="col-md-6">
               <%= pie_chart @report.bills.group("suppliers.name").references(:supplier).
                     order("suppliers.name").
                     sum(:amount),
-                    library: {title: "Total by Supplier"} %>
+                    title: "Total by Supplier",
+                    legend: false, prefix: "£", thousands: "," %>
             </div>
           </div><!--end of row -->
           <div class="row">
@@ -79,11 +81,11 @@
           <%= column_chart [
             {name: "Last Year", data: @report.bills.last_year_by_monthly_sum},
             {name: "This Year", data: @report.bills.this_year_by_monthly_sum}
-          ], library: {title: "Total spend by month"} %>
+          ], title: "Total spend by month" %>
 
           <%= line_chart [@report.bills.last_year_by_monthly_count,
             @report.bills.this_year_by_monthly_count],
-            discrete: true, library: {title: "Number of bills per month"} %>
+            discrete: true, title: "Number of bills per month" %>
 
         </div><!--end tab pane -->
 

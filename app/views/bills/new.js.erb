@@ -1,3 +1,4 @@
 $('#modal_title').html('New Bill');
+$('#bill_form').html('<%= escape_javascript render partial: 'form', locals: {bill: @bill} %>');
+$('#bill_modal').on('show.bs.modal', UTIL.init);
 $('#bill_modal').modal('show');
-$('#bill_form').html('<%= escape_javascript render partial: 'form', locals: {bill: @bill} %>')
