@@ -20,7 +20,19 @@
 
       <div class="panel-body help-page tab-pane active" id="how_works">
         <h2>Using BulldogClip for Business</h2>
-        <video id="business_video" class="img-responsive video-js vjs-default-skin help-video" title="Watch video" poster=<%= asset_path('business_poster.png') %> >
+
+
+        <video
+            id="business_video"
+            class="img-responsive video-js vjs-default-skin help-video"
+            title="Watch video"
+            controls
+            preload="auto"
+            width="640"
+            height="360"
+            data-setup="{}"
+            poster=<%= asset_path('business_poster.png') %>
+        >
           <source src= <%= video_path('business_plan.mp4') %> type='video/mp4' />
           <source src= <%= video_path('business_plan.webm') %> type='video/webm' />
           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
@@ -28,7 +40,17 @@
         <hr>
 
         <h2 class="video-header">Using BulldogClip for Home</h2>
-        <video id="personal_video" class="img-responsive video-js vjs-default-skin help-video" title="Watch video" poster=<%= asset_path('personal_poster.png') %> >
+        <video
+          id="personal_video"
+          class="img-responsive video-js vjs-default-skin help-video"
+          title="Watch video"
+          controls
+          preload="auto"
+          width="640"
+          height="360"
+          data-setup="{}"
+          poster=<%= asset_path('personal_poster.png') %>
+        >
           <source src= <%= video_path('personal_plan.mp4') %> type='video/mp4' />
           <source src= <%= video_path('personal_plan.webm') %> type='video/webm' />
           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
@@ -37,7 +59,17 @@
 
       <div class="panel-body help-page tab-pane" id="tutorials">
         <h2 class="video-header">Entering Your First Bill</h2>
-        <video id="first_bill_video" class="img-responsive video-js vjs-default-skin help-video" title="Watch video" poster=<%= asset_path('first_bill_poster.png') %> >
+        <video
+          id="first_bill_video"
+          class="img-responsive video-js vjs-default-skin help-video"
+          title="Watch video"
+          controls
+          preload="auto"
+          width="640"
+          height="360"
+          data-setup="{}"
+          poster=<%= asset_path('first_bill_poster.png') %>
+        >
           <source src= <%= video_path('First_Bill_Video.mp4') %> type='video/mp4' />
           <source src= <%= video_path('First_Bill_Video.webm') %> type='video/webm' />
           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
@@ -45,7 +77,17 @@
         <hr>
 
         <h2 class="video-header">Creating Your First Document</h2>
-        <video id="first_invoice_video" class="img-responsive video-js vjs-default-skin help-video" title="Watch video" poster=<%= asset_path('first_invoice_poster.png') %> >
+        <video
+          id="first_invoice_video"
+          class="img-responsive video-js vjs-default-skin help-video"
+          title="Watch video"
+          controls
+          preload="auto"
+          width="640"
+          height="360"
+          data-setup="{}"
+          poster=<%= asset_path('first_invoice_poster.png') %>
+        >
           <source src= <%= video_path('First_invoice_video.mp4') %> type='video/mp4' />
           <source src= <%= video_path('First_invoice_video.webm') %> type='video/webm' />
           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>

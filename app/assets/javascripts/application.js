@@ -13,13 +13,12 @@
 // DON'T put comments on the same line as these directives!!
 //
 //= require jquery
-//  require jquery_ujs
+// require jquery_ujs
 //= require rails-ujs
 //= require jquery-ui/widgets/datepicker
 //  require jquery.payment
 //= require bootstrap-sprockets
 //= require select2-full
-//  require jsapi
 //= require chartkick
 //= require Chart.bundle
 //= require turbolinks

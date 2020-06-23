@@ -51,6 +51,6 @@ Feature: Manage Customer records
   Scenario: Delete a customer with no bills
     Given I have a customer "MyCustomer"
     When I edit the customer "MyCustomer"
-    And I click button Delete
+    And I click on Delete
     Then I should be on the Customers page
     And I should see "MyCustomer destroyed"
