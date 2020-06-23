@@ -51,7 +51,7 @@ SITENAME = {
             });
           }, 0);
         });
-      }
+      };
       // Date picker used in many places
       // $("input.date_picker").datepicker({
       $(".date_picker").datepicker({
@@ -76,18 +76,10 @@ SITENAME = {
         $('#subnav').addClass("hidden");
       });
 
+      // moved from popover.js
 
-      // Google analytics set up
-      // GA.ga_setup();
-      // Send Google a pageview event
-      // ga('send', 'pageview', window.location.pathname);
-
-      // Google analytics events
-      // GA.ga_event('#ga_bdc_li', 'button', 'click', 'BDC linkedin');
-      // GA.ga_event('#ga_twitter', 'button', 'click', 'BDC twitter');
-      // GA.ga_event('#ga_pricing', 'button', 'click', 'pricing Link');
-      // GA.ga_event('#ga_signup', 'button', 'click', 'sign up nav button');
-      // GA.ga_event('#ga_signin', 'button', 'click', 'sign in');
+      $('#pop').popover({html : true, trigger : 'hover', placement : 'left', container : 'body' });
+      console.log("SITE popover");
     }
   },
 
